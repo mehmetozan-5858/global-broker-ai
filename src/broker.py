@@ -1,6 +1,6 @@
 from __future__ import annotations
 import json, urllib.request
-from datetime import date, timedelta
+from datetime import date, timedelta\nfrom urllib.error import HTTPError
 
 TED_URL = "https://api.ted.europa.eu/v3/notices/search"
 
@@ -25,7 +25,7 @@ def ted_search(query: str, limit: int = 100):
     body=json.dumps({
         "query":query,
         "fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","estimated-value-procurement","classification-cpv"],
-        "page":1,"limit":limit,"checkQuerySyntax":False,"paginationMode":"PAGE_NUMBER"
+        "page":1,"limit":limit,"scope":"ACTIVE","checkQuerySyntax":False,"paginationMode":"PAGE_NUMBER","onlyLatestVersions":False
     }).encode()
     req=urllib.request.Request(TED_URL,data=body,headers={"Content-Type":"application/json","Accept":"application/json"})
     with urllib.request.urlopen(req,timeout=40) as r:
