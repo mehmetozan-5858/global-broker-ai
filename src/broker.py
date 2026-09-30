@@ -69,6 +69,13 @@ def main():
         item["deal_score"]=score(n)
         item["source"]="TED"
         item["mode"]="shadow"
+        item["buyer_verified"]=bool(n.get("buyer-name"))
+        item["supplier_status"]="pending"
+        item["landed_cost_status"]="pending"
+        item["compliance_status"]="source_verified_buyer_pending_due_diligence" if n.get("buyer-name") else "pending"
+        item["margin_status"]="pending_supplier_quote"
+        item["offer_status"]="shadow_not_sent"
+        item["commission_status"]="pending_deal_value_and_agreement"
         out.append(item)
     out.sort(key=lambda x:x["deal_score"],reverse=True)
     print(json.dumps({
