@@ -1,7 +1,7 @@
 {
   "generated": "2026-09-30",
   "scope": "ALL_GLOBAL_PRODUCTS",
-  "count": 112,
+  "count": 119,
   "opportunities": [
     {
       "deadline-receipt-tender-date-lot": [
@@ -173,7 +173,7 @@
       "title_tr": "Fransa – Atık ve çöp konteynerleri ve kutuları – CASA bölgesinde evsel ve benzeri atıkların toplanmasına yönelik konteynerlerin satın alınması ve teslimi",
       "detail_original": "La consultation a pour objet l'achat et la livraison de bacs pour la collecte des déchets ménagers sur le territoire sur la CASA. La consultation a pour objet l'achat et la livraison de sacs pour la collecte des déchets ménagers sur le territoire sur la CASA. La consultation a pour objet l'achat et la livraison de sacs biodégradables en papier pour la collecte des déchets végétaux et des bio déchets sur le territoire sur la CASA. La consultation a pour objet l'achat et la livraison de colonnes aériennes en bois pour la collecte en apport volontaire des déchets ménagers sur le territoire sur la CASA. La consultation a pour objet l'achat et la livraison de caissons industriels pour la collecte en apport volontaire des cartons sur le territoire sur la CASA. La consultation a pour objet l'achat et la livraison de colonnes aériennes en acier pour la collecte en apport volontaire des déchets ménagers sur le territoire sur la CASA. La consultation a pour objet l'achat et la livraison de colonnes en acier pour la collecte en apport volontaire des TLC* (Textiles, linges de maison et chaussures) sur le territoire sur la CASA.",
       "detail_tr": "Danışmanın amacı, CASA bölgesindeki evsel atıkların toplanması için kutuların satın alınması ve teslim edilmesidir. Danışmanın amacı, CASA bölgesindeki evsel atıkların toplanması için torbaların satın alınması ve teslim edilmesidir. Danışmanın amacı, CASA bölgesindeki bitki atıklarının ve organik atıkların toplanması için biyolojik olarak parçalanabilen kağıt torbaların satın alınması ve teslim edilmesidir. Danışmanın amacı, CASA bölgesindeki evsel atıkların gönüllü olarak toplanması için ahşap hava sütunlarının satın alınması ve teslim edilmesidir. Danışmanlığın amacı, CASA bölgesinde kutuların gönüllü olarak toplanması için endüstriyel kutuların satın alınması ve teslim edilmesidir. Danışmanın amacı, CASA bölgesindeki evsel atıkların gönüllü olarak toplanması için havai çelik sütunların satın alınması ve teslim edilmesidir. Danışmanın amacı, CASA bölgesinde TLC*'nin (Tekstil, ev tekstili ve ayakkabı) gönüllü olarak toplanması için çelik kolonların satın alınması ve teslim edilmesidir.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -182,6 +182,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -438,7 +440,7 @@
       "title_tr": "Norveç – Traktörler – RING-26-01 Traktör kiralama (yeni bildirim)",
       "detail_original": "Background and purpose Ringebu municipality intends to enter into a contract for leasing a new tractor. The procurement shall cover the contracting authority ́s need for a new, reliable and appropriate tractor for municipal use, in accordance with the requirement specifications. The tractor shall contribute to ensuring effective and reliable execution of the contracting authority ́s assignments and activities when this type of machine is necessary. The aim of the procurement is to have a tractor delivered and commissioned that fulfils the technical, functional and any operational requirements in the tender documentation, at the latest by 1 February 2027. It is important for the contracting authority that the delivery occurs by the deadline, so that the need for available and suitable equipment is taken care of without unnecessary interruptions in operations. Tenderers shall use their expertise and competence to offer a system that is adapted to the contracting authority ́s needs and contribute to the fulfilment of the contract's objective throughout the contract period. See the requirement specifications for a more detailed description of the contracting authority ́s needs and the requirements that are set for the delivery. The gender neutral preferred for the valuation of the trade-in tractor is Lars Da cathrine. Telephone number 91340205",
       "detail_tr": "Arka plan ve amaç Ringebu belediyesi yeni bir traktör kiralamak için bir sözleşme yapmayı planlıyor. İhale, ihale makamının ihtiyaç şartnamesine uygun, yeni, güvenilir ve belediye kullanımına uygun traktör ihtiyacını kapsayacaktır. Traktör, bu tür bir makineye ihtiyaç duyulduğunda ihale makamının görev ve faaliyetlerinin etkin ve güvenilir bir şekilde yürütülmesine katkıda bulunacaktır. İhale dokümanında yer alan teknik, fonksiyonel ve her türlü operasyonel gereklilikleri karşılayan bir traktörün en geç 1 Şubat 2027 tarihine kadar teslim edilmesi ve işletmeye alınması amaçlanmaktadır. Teslimatın son teslim tarihine kadar gerçekleşmesi, operasyonlarda gereksiz kesinti yaşanmadan mevcut ve uygun ekipman ihtiyacının karşılanması açısından idare açısından önemlidir. İstekliler, uzmanlıklarını ve yeterliliklerini, ihale makamının ihtiyaçlarına göre uyarlanmış bir sistem sunmak ve sözleşme süresi boyunca sözleşme amacının yerine getirilmesine katkıda bulunmak için kullanacaklardır. Sözleşme makamının ihtiyaçlarının ve teslimat için belirlenen gerekliliklerin daha ayrıntılı bir açıklaması için gereksinim spesifikasyonlarına bakın. Takas traktörünün değerlemesinde tercih edilen cinsiyet ayrımı gözetmeyen kişi Lars Da cathrine'dir. Telefon numarası 91340205",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -447,6 +449,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -732,7 +736,7 @@
       "title_tr": "Macaristan – Pansumanlar; klip, sütür, ligatür malzemeleri – Bandajlar ve cerrahi setler 2026",
       "detail_original": "Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 1. rész: Klórhexidinnel impregnált tüll-kötszer Klórhexidinnel impregnált tüll-kötszer Steril, 0,5%-os klórhexidin-acetáttal és fehér lágyparaffinnal impregnált tüll kötszer. A ritka szövésű tüllháló lehetővé teszi a sebváladék átjutását a másodlagos fedőkötésbe, vágható, nem szálasodik, a sebfelületről egy darabban eltávolítható. 5x5cm darab 1800 10x10cm darab 1100 15x20cm darab 760 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 2. rész: Általános sebészet I. műtéti szettek: szett 1 900 Hasi törlő 8 rétegű rtg. Szálas, szalag nélkül 45x70 cm 2 Hasi törlő 6 rétegű rtg. Szálas, szalag nélkül 30x40 cm 15 Hasi törlő 8 rétegű rtg. Szálas, szalag nélkül 13x15 cm 10 Gömbtörlő 30x30 cm 50 mull csík 7,5cm x 2m 1 mull csík 5cmx5m 1 preparáló tampon 10x12 cm 10 Műtéti paprika 25x25 cm 10 Flisz (vagy funkcionálisan egeynértékű) csomagoló - a szett elsődleges csomgolására 90x80 cm 1 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 3. rész: Általános sebészet II műtéti szettek szett 2 400 Hasi törlő 6 rétegű rtg. Szálas, szalag nélkül 30x40 cm 5 Hasi törlő 8 rétegű rtg. Szálas, szalag nélkül 13x15 cm 10 Gömbtörlő 30x30 cm 50 preparáló tampon 10x12 cm 30 Flisz (vagy funkcionálisan egeynértékű) csomagoló - a szett elsődleges csomgolására 80x60 cm 1 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 4. rész: Általános sebészeti műtéti szettek III, 3900 szett Általános sebészet III. Hasi törlő 6 rétegű rtg. Szálas, szalag nélkül 30x40 cm 4 Hasi törlő 8 rétegű rtg.szálas, szalag nélkül 13x15 cm 30 Gömbtörlő 30x30 cm 20 preparáló tampon 10x12cm 10 Flisz (vagy funkcionálisan egeynértékű) csomagoló - a szett elsődleges csomgolására 80x60 cm 1 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 5. rész: Általános sebészet VI műtéti szettek szett 4 300 Hasi törlő 6 rétegű rtg. Szálas, szalag nélkül 30x40 cm 2 Hasi törlő 8 rétegű rtg. Szálas, szalag nélkül 13x15 cm 10 Gömbtörlő 30x30 cm 40 preparáló tampon 10x12 cm 30 Flisz (vagy funkcionálisan egeynértékű) csomagoló - a szett elsődleges csomgolására 80x60 cm 1 Műtéti paprika 25x25cm 10 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 6. rész: Fej-Nyak sebészet II műtéti szettek Fej-Nyak sebészet II műtéti szettek szett 1 500 Hasi törlő 8 rétegű rtg. Szálas, szalag nélkül 13x15 cm 50 Többrétegű hatott mull-lap 16R 7,5x10 cm 10 Gömbtörlő 20x20 cm 30 preparáló tampon 10x12 cm 100 Flisz (vagy funkcionálisan egeynértékű) csomagoló - a szett elsődleges csomgolására 80x60 cm 1 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 7. rész: Fej-Nyak sebészeti III műtéti szettek Fej-Nyak sebészet III műtéti szettek szett 1 500 Hasi törlő 8 rétegű rtg. Szálas, szalag nélkül 13x15 cm 20 Többrétegű hatott mull-lap 16R 7,5x10 cm 10 Stil buci -preparáló tampon 10x12 cm 30 Gömbtörlő 20x20 cm 30 Flisz (vagy funkcionálisan egeynértékű) csomagoló - a szett elsődleges csomgolására 80x60 cm 1 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 8. rész: Jodoformos mullpólya 8.a. \"Jodoformmal impregnált mullpólya. Igazolt baktérium, és gombaellenes hatás. Váladékozó sebek tamponálásához. 1cm x 5m\" db 90 8.b 2cm x 5m db 130 8.c 5cm x 5m db 90 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 9. rész: Vérzéscsillapító szivacs 9.a. \" Steril, felszívódó vérzéscsillapító. Oxidált, regenerált cellulózból, klinikailag igazolt, baktericid hatású, biokompatibilis, 7 rétegre szedhető felszívódó rostos anyag. A termék rostos alakja lehetővé teszi a sebész számára, hogy csipesz segítségével kellő mennyiségű vérzéscsillapítót helyezzen a vérzés helyére a kívánt vérzéscsillapítás eléréshez. A kivett szálak továbbra is tapadnak egymáshoz és a vérzés területére történő felvitelük könnyen ellenőrizhető. Nem kívánt szétszóródás a műtéti területre nem fordul elő. Mérete: 2,5cm x 5cm \" darab 750 9.b 5cm x 10 cm darab 1600 9.b.1. \"Steril, felszívódó, állati eredetű, szárított zselatinból készült vérzéscsillapító szivacs (mátrix). PH-semleges, non-toxikus. 7cm x 5cm x 1cm\" darab 280 9.b.2. 8cm x 3cm darb 120 9.b.3. 1cm x 1cm darab 480 +/-5% méreteltérés Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 10 részben az Országos Onkológiai Intézet részére 10. rész: kanülrögzítő filmkötszer 10.a. Egyedileg sterilen csomagolt, hypoallergén akril ragasztófelülettel rendelkező, biztosan rögzül, bőrbarát eltávolíthatóság. Ovális, átlátszó antibakteriális poliuretán kanülrögzítő filmkötszer, 2%-os klórhexidin tartalmú zselépárnával (3x4 cm) \"kulcslyuk\" alakú bevágással, külön bevágott rögzítővel, körben flísz laminált megerősítéssel, külön öntapadó minőségbiztosítási címkével, felhelyezést segítő papírkerettel. Latexmentes. Pára- és légáteresztő, vízálló. Alkalmazkodik a testkontúrhoz. Baktériumok és vírusok ellen védőgátat képez. III. osztályú orvostecnikai eszköz. Mérete: 8,5-11,5cm darab 1100 10.b Steril, átlátszó, körben flísz megerősítéssel, csak a széleken hypoallergén akril ragasztófelülettel ellátott, poliuretán PORT (HUBER) tű rögzítő filmkötszer, 2%-os klórhexidin tartalmú zselépárnával téglalap alakú, több bevágással, külön öntapadó minőségbiztosítási címkével. Hypoallergén akril ragasztóval szerelt, biztosan rögzül, bőrbarát eltávolíthatóság, felhelyezést segítő papírkerettel. Latexmentes. Pára- és légáteresztő, vízlepergető. Alkalmazkodik a testkontúrhoz. Baktériumok és vírusok ellen igazoltan védőgátat képez. IIa. Osztályú orvostechnikai eszköz. Mérete 12x12cm darab 250 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak. Kötszerek és steril műtéti szettek beszerzése 11 részben az Országos Onkológiai Intézet részére 11. rész: Vákumterápiás kötszer és készülék 11.a. váladékgyűjtő tartály 800ml darab 600 11.b Hasi szett darab 40 11.c Steril sebkötöző szett, hidrofób poliuretán-észter habbal \"L\" darab 100 11.d. Steril sebkötöző szett, hidrofób poliuretán-észter habbal \"M\" darab 160 11.e. Steril sebkötöző szett, hidrofób poliuretán-észter habbal \"S\" darab 200 11.f. Mindkét oldalán tapadó glicerin/víz/poliszulfonát alapú hidrogél csík poliészter szövetmaggal 10x7cm darab 160 11.g. Habszivacskötszer steril vízzel előnedvesített hidrofil polivinil-alkoholból (PVA) \"S\" darab 100 11.h Habszivacskötszer steril vízzel előnedvesített hidrofil polivinil-alkoholból (PVA) \"L\" darab 40 11.i Steril port negatív nyomású habkötszerhez darab 40 11.j. Steril Y konnektor darab 30 Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlat csak a teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. A részletes műszaki követelményeket a közbeszerzési dokumentáció tartalmazza. Ajánlatkérő álláspontja az, hogy a 70% megrendelési kötelezettség, valamint a szerződés 12 hónapos időtartamának 12 hónappal történő meghosszabbítása megfelelő, megfelel a Kbt-ben és a kapcsolódó jogszabályokban foglaltaknak.",
       "detail_tr": "Uluslararası satın alma talebi",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -741,6 +745,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ön değerlendirme gerekli",
       "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -986,7 +992,7 @@
       "title_tr": "Almanya – Fotokopi Makineleri – Jena okulları için 2027-2032 yılları için kiralık fotokopi makineleri",
       "detail_original": "70 Farb- Multifunktionsgeräte für eine Grundlaufzeit von 72 Monaten Umfang ca. 430.000 Seiten A4 s/w / Monat und 20.000 Seitne A4 Farbe/Monat",
       "detail_tr": "72 aylık temel dönem için 70 renkli çok işlevli cihaz, hacim yakl. Ayda 430.000 sayfa A4 s/b ve 20.000 sayfa A4 renkli/ay",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -995,6 +1001,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -1249,6 +1257,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -1495,7 +1505,7 @@
       "title_tr": "İtalya - Sterilizasyon, dezenfeksiyon ve hijyen cihazları - İHALE N. 539/2026 - YASAMA KARARI UYARINCA TOPLUMLA İLGİLİ TELEMATİK AÇIK PROSEDÜR. 36/2023 ENDOSKOPLARIN YENİLENMESİ, KORUNMASI VE İZLENEBİLİRLİĞİNE YÖNELİK SİSTEMLERİN KİRA TEMİNİ İÇİN, TEKNİK YARDIM HİZMETİ VE 60 AYLIK BİR SÜRE İÇİN GEREKLİ AŞINMA VE SARF MALZEMESİ DAHİL, MUHTEMEL 24 AY DAHA YENİLENEBİLİR.",
       "detail_original": "FORNITURA IN NOLEGGIO DI SISTEMI PER IL RICONDIZIONAMENTO, LA CONSERVAZIONE E LA TRACCIABILITA’ DEGLI ENDOSCOPI, COMPRENSIVA DEL SERVIZIO DI ASSISTENZA TECNICA E DEL RELATIVO MATERIALE DI USURA E CONSUMO",
       "detail_tr": "TEKNİK YARDIM HİZMETİ VE İLGİLİ AŞINMA VE SARF MALZEMELERİ DAHİL, ENDOSKOPLARIN YENİLENMESİ, KORUNMASI VE İZLENEBİLİRLİĞİNE YÖNELİK SİSTEMLERİN KİRALIK TEMİNİ",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -1504,6 +1514,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -1758,7 +1770,7 @@
       "title_tr": "Almanya – Endüstriyel gazlar – endüstriyel gazların tedariğine ilişkin çerçeve anlaşması",
       "detail_original": "Lieferung von Flüssigstickstoff für den Betrieb in analytischen Laboren. Stickstoff in flüssiger Form, Reinheit 99.999 %. Der geschätzte Jahresbedarf wurde auf Basis historischer Verbräuche der vergangenen Jahre ermittelt und stellt keine Abnahmeverpflichtung dar. Für die Versorgung von Flüssigstickstoff ist der Versorgungstank vom Lieferanten zu stellen. Lieferung von Flaschengasen für den Betrieb in analytischen Laboren.",
       "detail_tr": "Analitik laboratuvarlarda kullanılmak üzere sıvı nitrojen temini. Sıvı formda nitrojen, %99,999 saflık. Tahmini yıllık ihtiyaç, önceki yıllardaki geçmiş tüketim esas alınarak belirlenmiştir ve bir satın alma yükümlülüğünü temsil etmez. Sıvı nitrojen tedariki için tedarik tankı tedarikçi tarafından sağlanmalıdır. Analitik laboratuvarlarda kullanılmak üzere şişelenmiş gazların temini.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -1767,6 +1779,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ön değerlendirme gerekli",
       "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -2024,6 +2038,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -2271,7 +2287,7 @@
       "title_tr": "Almanya – Bayraklar – saklama çantalı bayrak setleri",
       "detail_original": "Rahmenvertrag über die Lieferung von Flaggensätzen mit Aufbewahrungstasche für 4 Jahre Vertragslaufzeit. Die geschätzte Gesamtbedarfsmenge beträgt 3825 Stück Flaggensätze mit Aufbewahrungstasche. Die geschätzte Gesamtbedarfsmenge entspricht der Höchstmenge, weshalb maximal 3825 Stück Flaggensätze mit Aufbewahrungstasche aus der Rahmenvereinbarung abgerufen werden können. Es besteht keine Abnahmeverpflichtung. Neben den abrufberechtigten Behörden aus der unmittelbaren Bundesverwaltung, sind auch die Bundesanstalt für Post und Telekommunikation Deutsche Bundespost und der Bundesgerichtshof als Abrufberechtigte vorgesehen. Weiteres entnehmen Sie der Vergabeunterlage \" Bedarfsträgerliste\".",
       "detail_tr": "4 yıllık sözleşme süresi için bayrak setlerinin saklama torbalarıyla birlikte teslimine ilişkin çerçeve sözleşme. Tahmini toplam gereksinim, saklama çantasıyla birlikte 3825 bayrak setidir. Tahmini toplam ihtiyaç maksimum miktara karşılık gelir, bu nedenle çerçeve anlaşmasından saklama torbalarıyla birlikte maksimum 3.825 bayrak seti çağrılabilir. Satın alma zorunluluğu yoktur. Doğrudan federal idarenin yetkili makamlarının yanı sıra, Federal Posta ve Telekomünikasyon Ajansı Deutsche Bundespost ve Federal Adalet Divanı da yetkili taraflar olarak belirlenmiştir. Daha fazla bilgiye “Gereksinim Listesi” ihale dokümanından ulaşılabilir.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -2280,6 +2296,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -2525,7 +2543,7 @@
       "title_tr": "Fransa – Acente yakıt kartları – Territoire Habitat'ın ihtiyaçları için kredi kartlarıyla yakıt, geçiş ücreti ve hizmetlerin temini",
       "detail_original": "Fourniture de carburants, péages et services par cartes accréditives pour les besoins de Territoire Habitat",
       "detail_tr": "Territoire Habitat'ın ihtiyaçları için kredi kartlarıyla yakıt, geçiş ücreti ve hizmetlerin temini",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -2534,6 +2552,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ön değerlendirme gerekli",
       "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -2782,7 +2802,7 @@
       "title_tr": "Norveç – Elektrik, ısıtma, güneş ve nükleer enerji – Sveio belediyesi için elektrik alımı",
       "detail_original": "EOS Energi AS invites tenderers, on behalf of the contracting authority Sveio municipality, to an open tender competition for the procurement of electricity for the municipality ́s total construction portfolio. The agreement includes delivery of electricity to all municipal plants. * Expected volume: 6 GWh/annum * Number of measuring points: 97 (in accordance with the current site overview) * Network owner: Haugaland Kraft Network The delivery includes: ·       physical power delivery ·       spot based power contract with an option for price assurance for all or parts of the volume in the contract period. ·       joint billing of the network charge ·       web portal with consumption data, invoices and meter information.",
       "detail_tr": "EOS Energi A.Ş., ihale makamı Sveio Belediyesi adına isteklileri, belediyenin toplam inşaat portföyüne yönelik elektrik tedariki için açık ihale yarışmasına davet ediyor. Anlaşma tüm belediye tesislerine elektrik dağıtımını kapsıyor. * Beklenen hacim: 6 GWh/yıl * Ölçüm noktası sayısı: 97 (mevcut saha genel görünümüne uygun olarak) * Ağ sahibi: Haugaland Kraft Network Teslimat şunları içerir: · fiziksel güç dağıtımı · sözleşme süresindeki hacmin tamamı veya bir kısmı için fiyat güvencesi seçeneği içeren spot bazlı enerji sözleşmesi. · Şebeke ücretinin ortak faturalandırılması · Tüketim verileri, faturalar ve sayaç bilgilerinin yer aldığı web portalı.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -2791,6 +2811,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -3073,6 +3095,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -3327,6 +3351,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -3584,7 +3610,7 @@
       "title_tr": "Norveç - Mobilya (ofis mobilyaları dahil), mobilyalar, ev aletleri (aydınlatma hariç) ve temizlik ürünleri - 26221 Mobilya ve demirbaşlar, çerçeve sözleşmesi",
       "detail_original": "The competition is for a framework agreement for the purchase of new furniture within the following groups and associated services: Office and institution furniture The procurement ́s value is estimated to: NOK 3,000,000 excluding VAT per annum. Maximum value for the entire contract period, including any options and expected price rise: NOK 15,000,000 excluding VAT. The need is uncertain. The volume can vary both up and down and the contract period will depend on, among other things, the contracting authority ́s needs, activities, budgetary situations and other framework factors. See the procurement documents for further information. The contracting authority has assessed the procurement against the Public Procurement Act § 5h, and concluded that there is no requirement for apprentices in this procurement as the procurement is an procurement, cf. the Procurement Act § 5h 1st section.",
       "detail_tr": "Yarışma, aşağıdaki gruplar ve ilgili hizmetler kapsamında yeni mobilya alımına ilişkin bir çerçeve anlaşması içindir: Ofis ve kurum mobilyaları Satın alma değerinin tahmini olarak: KDV hariç yıllık 3.000.000 NOK. Tüm opsiyonlar ve beklenen fiyat artışı da dahil olmak üzere tüm sözleşme dönemi için maksimum değer: KDV hariç 15.000.000 NOK. İhtiyaç belirsiz. Hacim hem yukarı hem de aşağı değişebilir ve sözleşme süresi, diğer hususların yanı sıra, ihale makamının ihtiyaçlarına, faaliyetlerine, bütçe durumuna ve diğer çerçeve faktörlerine bağlı olacaktır. Daha fazla bilgi için satın alma belgelerine bakın. İhale makamı, ihaleyi Kamu İhale Kanunu § 5h uyarınca değerlendirmiş ve ihalenin bir ihale olması nedeniyle bu ihalede çırak zorunluluğu bulunmadığı sonucuna varmıştır, bkz. İhale Kanunu § 5h 1. bölüm.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -3593,6 +3619,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -3859,6 +3887,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ön değerlendirme gerekli",
       "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -4106,7 +4136,7 @@
       "title_tr": "Fransa – Öğle yemeği kuponları – Belediye personeli ve Cavalaire sur Mer Belediye Sosyal Eylem Merkezi personeli için restoran kuponlarının sağlanması",
       "detail_original": "Consultation lancée par un groupement de commandes. L'accord-cadre sera exécuté par l'émission de bons de commande. Les prestations sont réglées par des prix unitaires. Dans le cadre d'un groupement de commandes entre la commune de Cavalaire-sur-Mer et son Centre Communal d'Action Sociale (CCAS), une consultation est lancée pour attribuer un marché public de fourniture de titres-restaurant. Ces titres, destinés aux personnels de la commune et du CCAS, feront l'objet d'une commande mensuelle par le service des ressources humaines",
       "detail_tr": "Bir grup emir tarafından başlatılan istişare. Çerçeve anlaşması, satın alma siparişlerinin verilmesi yoluyla gerçekleştirilecektir. Hizmetler birim fiyatlara göre düzenlenir. Cavalaire-sur-Mer belediyesi ile Belediye Sosyal Eylem Merkezi (CCAS) arasındaki bir dizi talimat kapsamında, yemek kuponlarının teminine yönelik bir kamu ihalesi yapılması için bir istişare başlatıldı. Belediye ve CCAS personeline yönelik bu unvanlar, insan kaynakları departmanı tarafından aylık olarak sipariş edilecek.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -4115,6 +4145,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -4449,6 +4481,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -4695,7 +4729,7 @@
       "title_tr": "Almanya – Motorlu taşıtlar – Geraetetraeger mit Zubehoer SM Hip",
       "detail_original": "Beschaffung eines Geräteträger vom Typ Unimog, mit Mähgeräten für die Straßenmeisterei Hilpoltstein.",
       "detail_tr": "Hilpoltstein yol bakım departmanı için biçme ekipmanına sahip Unimog tipi ekipman taşıyıcısının tedariki.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -4704,6 +4738,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -4949,7 +4985,7 @@
       "title_tr": "Fransa – Aletler – TP motorlarının montajı ve demontajı için bir dizi özel alet temini",
       "detail_original": "Fourniture d’un set d’outillage spécial pour le montage et le démontage des moteurs Pielstick Niigata 6PA5-255 – activité pédagogique ENSM Marseille",
       "detail_tr": "Pielstick Niigata 6PA5-255 motorların montajı ve demontajı için özel alet seti temini – ENSM Marsilya eğitim etkinliği",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -4958,6 +4994,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -5219,6 +5257,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -5489,6 +5529,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -5735,7 +5777,7 @@
       "title_tr": "İspanya – Tıbbi sarf malzemeleri – Hospital del Oriente de Asturias'a Yönelik Taşınabilir Monitörün Transferi ile Tek Kullanımlık Esnek Sistoskopların Temini",
       "detail_original": "Suministro de Cistoscopios Flexibles Desechables con la cesión de un Monitor Portátil, con destino al Hospital del Oriente de Asturias",
       "detail_tr": "Hospital del Oriente de Asturias'a Yönelik Taşınabilir Monitörün Transferi ile Tek Kullanımlık Esnek Sistoskopların Temini",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -5744,6 +5786,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -5991,7 +6035,7 @@
       "title_tr": "Fransa – Öğle yemeği kuponları – Şehir personeli ve Limoges CCAS personeli için restoran kuponlarının sağlanması",
       "detail_original": "Cette consultation s'effectue dans le cadre d'un groupement de commandes conformément aux articles L. 2113-6 à L. 2113-8 du Code de la commande publique avec le Centre Communal d'Action Sociale de la ville de Limoges. Le coordonnateur du groupement de commandes est la ville de Limoges. L'accord-cadre sera exécuté par la conclusion de marchés subséquents et l'émission de bons de commande dans les conditions du cahier des charges. Les prestations sont réglées par des prix unitaires et forfaitaires. Les montants estimatifs sont indicatifs et comprennent la totalité des périodes de reconduction",
       "detail_tr": "Bu istişare, Limoges şehrinin Belediye Sosyal Eylem Merkezi ile Kamu İhale Kanunu'nun L. 2113-6 ila L. 2113-8 maddeleri uyarınca bir emir gruplaması çerçevesinde gerçekleştirilir. Emir grubunun koordinatörü Limoges şehridir. Çerçeve anlaşması, daha sonraki sözleşmelerin imzalanması ve şartname koşulları altında satın alma siparişlerinin verilmesiyle gerçekleştirilecektir. Hizmetler birim ve sabit fiyatlara göre düzenlenir. Tahmini tutarlar gösterge niteliğindedir ve tüm yenileme dönemlerini içerir.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -6000,6 +6044,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -6262,6 +6308,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ön değerlendirme gerekli",
       "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -6517,6 +6565,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -6773,6 +6823,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -7213,7 +7265,7 @@
       "title_tr": "Fransa – Laboratuvar reaktifleri – GARD BÖLÜMÜ ANALİZ LABORATUVARI İÇİN MİKROBİYOLOJİ REAKTİFLERİNİN TEMİNİ",
       "detail_original": "Milieux pour le dénombrement des levures et moisissures&amp;lt;br/&amp;gt; Tryptone sel&amp;lt;br/&amp;gt; Test oxydase prêt à l'emploi&amp;lt;br/&amp;gt; Poudres pour fabrication de milieux&amp;lt;br/&amp;gt; Milieux usuels&amp;lt;br/&amp;gt; Galeries d'identification biochimique miniaturisées et leurs réactifs compatibles&amp;lt;br/&amp;gt; Milieux et réactifs pour analyses microbiologiques légionelles&amp;lt;br/&amp;gt; Milieux et réactifs pour le dénombrement de Campylobacter spp&amp;lt;br/&amp;gt; Coffrets milieu + supplément pour le dénombrement de Staphylocoques à coagulase positive et bactéries sulfito-réductrices&amp;lt;br/&amp;gt; Milieux pour dénombrement Bacillus cereus&amp;lt;br/&amp;gt; Milieux pour dénombrement des micro-organismes mésophiles à 30 °C&amp;lt;br/&amp;gt; Milieux et suppléments pour le dénombrement de Pseudomonas spp&amp;lt;br/&amp;gt; Milieux pour dénombrement et confirmation Coliformes, Entérobactéries, Escherichia coli&amp;lt;br/&amp;gt; Isolement de Taylorella spp&amp;lt;br/&amp;gt; Bouillon et milieux pour la recherche de Salmonella spp&amp;lt;br/&amp;gt; Diluant et milieu pour la recherche de Listeria monocytogenes&amp;lt;br/&amp;gt; Milieux d'isolement pour recherche de Listeria monocytogenes&amp;lt;br/&amp;gt; Milieux pour antibiogrammes&amp;lt;br/&amp;gt; Milieux pour dénombrement de flore lactique&amp;lt;br/&amp;gt; Milieu de confirmation des Clostridium perfringens&amp;lt;br/&amp;gt; Isolement de Mycobacterium bovis&amp;lt;br/&amp;gt; Souches calibrées pour les domaines alimentaires et eaux&amp;lt;br/&amp;gt; Souche Campylobacter jejunii&amp;lt;br/&amp;gt; Souche calibrée&amp;lt;br/&amp;gt; Milieux classiques d'identification&amp;lt;br/&amp;gt; Contrôles de surfaces spécifiques&amp;lt;br/&amp;gt; Groupage des streptocoques&amp;lt;br/&amp;gt; Poches à segments à fusionner de diluant Eau Peptonnée Tamponnée et Eau Peptonnée Tamponnée Double concentration + EPT poudre&amp;lt;br/&amp;gt; Enrichissement et isolement sélectif pour Salmonella spp.&amp;lt;br/&amp;gt; Urée indole&amp;lt;br/&amp;gt; Plasma de lapin&amp;lt;br/&amp;gt; Lysine décarboxylase&amp;lt;br/&amp;gt; Réactifs en disque&amp;lt;br/&amp;gt; Kligler&amp;lt;br/&amp;gt; Bandelette mesures chlore&amp;lt;br/&amp;gt; Milieux potabilité des eaux et gélose dénombrement de Bacillus cereus présomptifs&amp;lt;br/&amp;gt; Isolement et identification de Brucella sp.&amp;lt;br/&amp;gt; Oxalate d'ammonium&amp;lt;br/&amp;gt; T.S.N&amp;lt;br/&amp;gt;",
       "detail_tr": "Maya ve küflerin sayımı için besiyeri&lt;br/&gt; Tripton tuzu&lt;br/&gt; Kullanıma hazır oksidaz testi&lt;br/&gt; Medya yapımına yönelik tozlar&lt;br/&gt; Olağan ortamlar&lt;br/&gt; Minyatürleştirilmiş biyokimyasal tanımlama galerileri ve bunların uyumlu reaktifleri&lt;br/&gt; Legionella mikrobiyolojik analizleri için ortamlar ve reaktifler&lt;br/&gt; Campylobacter spp.'nin sayımı için ortamlar ve reaktifler; Koagülaz pozitif Stafilokokların ve sülfit azaltıcı bakterilerin sayımı için orta + takviye kutuları<br/> Bacillus cereus sayımı için ortam<br/> 30 °C'de mezofilik mikroorganizmaların sayımı için ortam; Pseudomonas spp&lt;br/&gt; Sayım ve doğrulama için ortamlar Koliformlar, Enterobakteriler, Escherichia coli&lt;br/&gt; Taylorella spp.'nin izolasyonu<br/> Salmonella spp&lt;br/> tespiti için et suyu ve besiyeri; Listeria monocytogenes&lt;br/> tespiti için seyreltici ve ortam; Listeria monocytogenes'in test edilmesine yönelik izolasyon ortamı<br/> Antibiyogramlar için ortam&lt;br/&gt; Laktik flora sayımı için ortam&lt;br/&gt; Clostridium perfringens doğrulama ortamı&lt;br/&gt; Mycobacterium bovis'in izolasyonu<br/> Gıda ve su sektörleri için kalibre edilmiş suşlar&lt;br/&gt; Suşu Campylobacter jejunii&lt;br/&gt; Kalibre edilmiş suş<br/> Klasik kimlik arka planları&lt;br/&gt; Özel yüzey kontrolleri&lt;br/&gt; Streptokokların gruplandırılması&lt;br/&gt; Torbaları Tamponlu Peptonnée Su ve Çift Konsantrasyonlu Tamponlu Peptonnée Su seyreltici + EPT tozu ile birleştirmek için segmentlere ayırın<br/> Salmonella spp. için zenginleştirme ve seçici izolasyon.&lt;br/&gt; İndol üre&lt;br/&gt; Tavşan plazması<br/> Lizin dekarboksilaz<br/>; Disk reaktifleri&lt;br/&gt; Kligler&lt;br/&gt; Klor ölçüm şeridi<br/> Olası Bacillus cereus'un su ve agar sayımının ortam içilebilirliği<br/> Brucella sp.'nin izolasyonu ve tanımlanması.&lt;br/&gt; Amonyum oksalat&lt;br/&gt; T.S.N<br/>;",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -7222,6 +7274,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -7492,6 +7546,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -7747,6 +7803,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -8015,6 +8073,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -8298,6 +8358,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -8547,7 +8609,7 @@
       "title_tr": "Almanya – Çeşitli özel amaçlı makineler – Lot 1: Komple mekanik ve kontrol iyileştirmesi Lot 2: Genişletilmiş dijitalleştirme paketi (I4.0) - PR1068630-2720-W",
       "detail_original": "Los 1: Komplettes Mechanik- und Steuerungsretrofit Los 2: Erweitertes Digitalisierungspaket (I4.0)",
       "detail_tr": "Lot 1: Komple mekanik ve kontrol iyileştirmesi Lot 2: Genişletilmiş dijitalleştirme paketi (I4.0)",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -8556,6 +8618,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -8815,6 +8879,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -9071,6 +9137,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -9329,6 +9397,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -9591,6 +9661,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -9849,6 +9921,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -10161,6 +10235,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -10432,6 +10508,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -10714,6 +10792,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ön değerlendirme gerekli",
       "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -10966,6 +11046,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -11238,6 +11320,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ön değerlendirme gerekli",
       "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -11481,7 +11565,7 @@
       "title_tr": "Fransa – Güvenlik, yangınla mücadele, polis ve savunma teçhizatı – Video gözetim ve erişim kontrol sisteminin tedariki, kurulumu ve bakımı için çerçeve anlaşması 2026-2029",
       "detail_original": "Accord- cadre de Fourniture, Installation et Maintenance d'un système de vidéosurveillance et de contrôle d'accès 2026-2029",
       "detail_tr": "Video gözetim ve erişim kontrol sisteminin tedariki, kurulumu ve bakımı için çerçeve anlaşması 2026-2029",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -11490,6 +11574,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -11732,7 +11818,7 @@
       "title_tr": "Almanya – Özel amaçlı takım tezgahları – Plasmatechnologie",
       "detail_original": "non-transferred ARC-Plasmatorch",
       "detail_tr": "transfer edilmemiş ARC-Plasmatorch",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -11741,6 +11827,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -11993,6 +12081,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -12248,6 +12338,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -12501,6 +12593,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -12759,6 +12853,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -13057,6 +13153,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -13299,7 +13397,7 @@
       "title_tr": "İtalya – Çeşitli tıbbi cihazlar ve ürünler – 18 Sakral bölge için şekillendirilmiş atravmatik pansuman 17*17",
       "detail_original": "procedura aperta per la fornitura di 18 Medicazione atraumatica conformata per zona sacrale 17*17",
       "detail_tr": "Sakral bölge için şekillendirilmiş 18 adet atravmatik pansumanın temini için açık prosedür 17*17",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -13308,6 +13406,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -13550,7 +13650,7 @@
       "title_tr": "Fransa – Yüzer yapılar – 9461 - Metal çerçevelerin tasarımı ve üretimine yönelik satın alma siparişleri için çerçeve anlaşması - Endüstriyel pazar",
       "detail_original": "Accord-cadre à bons de commande pour la conception et la réalisation de ras métalliques - Marché industriel",
       "detail_tr": "Metal şeritlerin tasarımı ve üretimi için satın alma siparişleriyle çerçeve anlaşması - Endüstriyel pazar",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -13559,6 +13659,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -13871,6 +13973,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -14117,7 +14221,7 @@
       "title_tr": "Almanya – Çeşitli dış giyim – İtfaiye dış giyiminin değiştirilmesine ilişkin çerçeve anlaşması",
       "detail_original": "Lieferung von T-Shirts 1/2 und T-Shirts 1/1 und Polo T-Shirts gemäß Leistungsbeschreibung Lieferung von Fleece- und Sweatjacken gemäß Leistungsbeschreibung",
       "detail_tr": "Hizmet açıklamasına uygun tişört 1/2 ve tişört 1/1 ve polo tişört teslimatı. Hizmet açıklamasına uygun olarak polar ve sweat ceketlerin teslimi",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -14126,6 +14230,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -14387,7 +14493,7 @@
       "title_tr": "İspanya – Tıbbi ekipmanlar, ilaçlar ve kişisel bakım ürünleri – Ceuta Üniversite Hastanesi Eczane Hizmeti için ilaç temini.",
       "detail_original": "suministro de medicamentos Suministro de medicamentos Suministro de medicamentos Suministro de medicamentos Suministro de medicamentos",
       "detail_tr": "ilaç temini ilaç temini ilaç temini ilaç temini ilaç temini ilaç temini",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -14396,6 +14502,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -14642,7 +14750,7 @@
       "title_tr": "Macaristan – Bilgisayar ekipmanı ve malzemeleri – Müşteri tarafı BT ekipmanının tedariki SZGR24",
       "detail_original": "Jelen közbeszerzési eljárás eredményeként a keretmegállapodást kötött Ajánlattevők feladata „homogén” kliens oldali informatikai eszközök és kapcsolódó szolgáltatások értékesítése a Közbeszerzési dokumentumokban foglaltak szerint. A jelen keretmegállapodás megkötésére irányuló közbeszerzési eljárás 1. része vonatkozásában az alábbi specifikus szerepkörök szerinti termékekre és kapcsolódó szolgáltatásokra kell ajánlatot tenni az Ajánlatkérő által rendelkezésre bocsátott és Ajánlattevők részéről szakmai ajánlatként benyújtandó Részletes ártáblázatban és műszaki megfelelőségi táblázatban foglaltak szerint: - Önállóan rendelhető alaptermékek. - Önállóan nem rendelhető alaptermékek. - Önállóan rendelhető tartozékok. - Az alaptermékekhez kapcsolódó, önállóan nem rendelhető részegységek. - Az alaptermékekhez kapcsolódó, önállóan nem rendelhető szolgáltatások. - Önállóan nem rendelhető, nem gyártói szolgáltatások. Ajánlatkérő új (nem használt, nem felújított) eszközöket kíván jelen eljárás keretében beszerezni. „Homogén” megnevezés alatt azt érti Ajánlatkérő, hogy az adott gyártó vonatkozásában a Műszaki leírásban rögzítettek szerinti releváns alaptermék megajánlása kötelező. Az egyes szerepkörök szerinti termékekkel/szolgáltatásokkal, valamint a megajánlásokkal kapcsolatos további részletes előírásokat a Műszaki leírás tartalmaz. Ajánlatkérő rögzíti, hogy a Kbt. 3. § 18. pontja szerinti értelmező rendelkezéssel összhangban a keretmegállapodásban előirányozott teljes mennyiséget a nettó 500 000 000 000 Ft mértékű (opció nélkül számított) keretösszeg (a továbbiakban: keretösszeg) jelenti. Ajánlatkérő a közbeszerzési eljárásokban az alkalmasság és a kizáró okok igazolásának, valamint a közbeszerzési műszaki leírás meghatározásának módjáról szóló 321/2015. (X. 30.) Korm. rendelet (a továbbiakban: Kr.) 21. § (4) bekezdésében foglaltak alapján rögzíti, hogy a keretmegállapodás alapján megvalósítandó, egy időben teljesítendő külön szerződések várható nagyságrendje (értéke) nettó 14 687 535 181.,- Ft. Ezen nagyságrendet Ajánlatkérő a korábbi, DKM01SZGRH22 azonosítójú keretmegállapodás alapján megkötött egyedi szerződések adatainak, valamint a megkötendő keretmegállapodás becsült teljesülési volumenének figyelembevételével állapította meg. Jótállás: A Részletes ártáblázatban Ajánlatkérő konkrétan meghatározta a releváns terméksorok vonatkozásában az elvárt jótállás időtartamát 12, 24, 36 hónapban. Ennek megfelelően Ajánlattevőnek a Részletes ártáblázat jótállásra vonatkozó celláját nem kell kitöltenie. A keretmegállapodás alapján történő közbeszerzés megvalósítása során tehát a fentiek szerint meghatározott jótállási időtartamok irányadók mind a Kbt. 105. § (2) bekezdés a) pontja szerinti közvetlen megrendelés, mind pedig a Kbt. 105. § (2) bekezdés c) pontja alapján a verseny újranyitása során kötött egyedi szerződések vonatkozásában. Szállítási határidő: Ajánlatkérő rögzíti, hogy a Részletes ártáblázatban szereplő termékekkel kapcsolatos szállítási határidő nem az Ajánlattevők által és nem termékenként külön-külön kerül meghatározásra, hanem azt a keretmegállapodás alapján közbeszerzést megvalósító Ajánlatkérő jogosult meghatározni az adott közbeszerzés egy részére, vagy egészére tekintettel a keretmegállapodásban foglaltak szerint legalább 90, legfeljebb 180 naptári napban. Közvetlen megrendelés esetén a teljesítési/szállítási határidő a konkrét közbeszerzés tárgyára, és egyedi jellemzőire, azaz a konkrét szerződés objektív teljesíthetőségére figyelemmel legalább 90 naptári nap, legfeljebb 180 naptári nap lehet. A verseny újranyitása során az Érintett Szervezet – a közbeszerzési alapelvek figyelembe vételével – a konkrét közbeszerzés tárgyára és a beszerzés egyedi jellemzőire, azaz a konkrét szerződés objektív teljesíthetőségére figyelemmel, saját felelősségére és kockázatára, a rendelési és a kiszerelési egységet nem érintően – jogosult a fentiekben rögzítettek szerint meghatározott teljesítési határidőknél hosszabb vagy rövidebb teljesítési határidőt is meghatározni. Kérjük, hogy az ajánlattétel során legyenek különös figyelemmel a jótállással, valamint a szállítási határidőkkel kapcsolatos fenti előírásokra. Ajánlatkérő a Kbt. 57. § (1) bekezdésének eleget tevő, a felhívást kiegészítő közbeszerzési dokumentumokat (a továbbiakban: Egyéb közbeszerzési dokumentumok) készít. Ajánlatkérő az egyértelműség érdekében rögzíti, hogy a Közbeszerzési dokumentumok fogalmi köre alatt az Ajánlati felhívást, valamint az Egyéb közbeszerzési dokumentumokat érti együttvéve. A 321/2015. (X. 30.) Korm. rendelet (továbbiakban: Kr.) 46. § (3) bekezdésében foglaltakra tekintettel ajánlatkérő felhívja a figyelmet, hogy, amennyiben a közbeszerzés tárgyának egyértelmű és közérthető meghatározása szükségessé tette meghatározott gyártmányú, eredetű, típusú dologra, eljárásra, tevékenységre, személyre, szabadalomra vagy védjegyre való hivatkozást, a megnevezés csak a tárgy jellegének egyértelmű meghatározása érdekében történt, és megnevezés mellett a „vagy azzal egyenértékű” minden esetben értendő. Jelen közbeszerzési eljárás eredményeként a keretmegállapodást kötött Ajánlattevők feladata „általános” kliens oldali informatikai eszközök és kapcsolódó szolgáltatások értékesítése a Közbeszerzési dokumentumokban foglaltak szerint. A jelen keretmegállapodás megkötésére irányuló közbeszerzési eljárás 2. része vonatkozásában az alábbi specifikus szerepkörök szerinti termékekre és kapcsolódó szolgáltatásokra kell ajánlatot tenni az Ajánlatkérő által rendelkezésre bocsátott és Ajánlattevők részéről szakmai ajánlatként benyújtandó Részletes ártáblázatban és műszaki megfelelőségi táblázatban foglaltak szerint: - Önállóan rendelhető alaptermékek. - Önállóan nem rendelhető alaptermékek. - Önállóan rendelhető tartozékok. - Az alaptermékekhez kapcsolódó, önállóan nem rendelhető részegységek. - Az alaptermékekhez kapcsolódó, önállóan nem rendelhető szolgáltatások. - Önállóan nem rendelhető nem gyártói szolgáltatások. Ajánlatkérő új (nem használt, nem felújított) eszközöket kíván jelen eljárás keretében beszerezni. Ajánlatkérő rögzíti, hogy a Kbt. 3. § 18. pontja szerinti értelmező rendelkezéssel összhangban a keretmegállapodásban előirányozott teljes mennyiséget a nettó 200 000 000 000 Ft mértékű (opció nélkül számított) keretösszeg (a továbbiakban: keretösszeg) jelenti. Ajánlatkérő a közbeszerzési eljárásokban az alkalmasság és a kizáró okok igazolásának, valamint a közbeszerzési műszaki leírás meghatározásának módjáról szóló 321/2015. (X. 30.) Korm. rendelet (a továbbiakban: Kr.) 21. § (4) bekezdésében foglaltak alapján rögzíti, hogy a keretmegállapodás alapján megvalósítandó, egy időben teljesítendő külön szerződések várható nagyságrendje (értéke) nettó 3 078 231 427,- Ft. Ezen nagyságrendet Ajánlatkérő a korábbi, DKM01SZGRÁ22 azonosítójú keretmegállapodás alapján megkötött egyedi szerződések adatainak, valamint a megkötendő keretmegállapodás becsült teljesülési volumenének figyelembevételével állapította meg. Jótállás: A Részletes ártáblázatban Ajánlatkérő konkrétan meghatározta a releváns terméksorok vonatkozásában az elvárt jótállás időtartamát 12, 24, 36 hónapban. Ennek megfelelően Ajánlattevőnek a Részletes ártáblázat jótállásra vonatkozó celláját nem kell kitöltenie. A keretmegállapodás alapján történő közbeszerzés megvalósítása során tehát a fentiek szerint meghatározott jótállási időtartamok irányadók mind a Kbt. 105. § (2) bekezdés a) pontja szerinti közvetlen megrendelés, mind pedig a Kbt. 105. § (2) bekezdés c) pontja alapján a verseny újranyitása során kötött egyedi szerződések vonatkozásában. Szállítási határidő: Ajánlatkérő rögzíti, hogy a Részletes ártáblázatban szereplő termékekkel kapcsolatos szállítási határidő nem az Ajánlattevők által és nem termékenként külön-külön kerül meghatározásra, hanem azt a keretmegállapodás alapján közbeszerzést megvalósító Ajánlatkérő jogosult meghatározni az adott közbeszerzés egy részére, vagy egészére tekintettel a keretmegállapodásban foglaltak szerint legalább 90, legfeljebb 180 naptári napban. Közvetlen megrendelés esetén a teljesítési/szállítási határidő a konkrét közbeszerzés tárgyára, és egyedi jellemzőire, azaz a konkrét szerződés objektív teljesíthetőségére figyelemmel legalább 90 naptári nap, legfeljebb 180 naptári nap lehet. A verseny újranyitása során az Érintett Szervezet – a közbeszerzési alapelvek figyelembe vételével – a konkrét közbeszerzés tárgyára és a beszerzés egyedi jellemzőire, azaz a konkrét szerződés objektív teljesíthetőségére figyelemmel, saját felelősségére és kockázatára, a rendelési és a kiszerelési egységet nem érintően – jogosult a fentiekben rögzítettek szerint meghatározott teljesítési határidőknél hosszabb vagy rövidebb teljesítési határidőt is meghatározni. Kérjük, hogy az ajánlattétel során legyenek különös figyelemmel a jótállással, valamint a szállítási határidőkkel kapcsolatos fenti előírásokra. Ajánlatkérő a Kbt. 57. § (1) bekezdésének eleget tevő, a felhívást kiegészítő közbeszerzési dokumentumokat (a továbbiakban: Egyéb közbeszerzési dokumentumok) készít. Ajánlatkérő az egyértelműség érdekében rögzíti, hogy a Közbeszerzési dokumentumok fogalmi köre alatt az Ajánlati felhívást, valamint az Egyéb közbeszerzési dokumentumokat érti együttvéve. A 321/2015. (X. 30.) Korm. rendelet (továbbiakban: Kr.) 46. § (3) bekezdésében foglaltakra tekintettel ajánlatkérő felhívja a figyelmet, hogy, amennyiben a közbeszerzés tárgyának egyértelmű és közérthető meghatározása szükségessé tette meghatározott gyártmányú, eredetű, típusú dologra, eljárásra, tevékenységre, személyre, szabadalomra vagy védjegyre való hivatkozást, a megnevezés csak a tárgy jellegének egyértelmű meghatározása érdekében történt, és megnevezés mellett a „vagy azzal egyenértékű” minden esetben értendő.",
       "detail_tr": "Bu kamu ihale prosedürünün bir sonucu olarak, çerçeve anlaşmayı imzalayan Teklif Sahiplerinin görevi, Kamu İhale Dokümanları hükümlerine uygun olarak \"homojen\" müşteri tarafı BT cihazlarını ve ilgili hizmetleri satmaktır. Bu çerçeve anlaşmayı sonuçlandırmayı amaçlayan kamu ihale prosedürünün 1. kısmı ile ilgili olarak, ihale kuruluşları tarafından sağlanan Ayrıntılı Fiyat Tablosu ve Teknik Uygunluk Tablosuna göre aşağıdaki spesifik rollere göre ürünler ve ilgili hizmetler için teklifler yapılmalı ve Teklif Sahipleri tarafından profesyonel bir teklif olarak sunulmalıdır: - Bağımsız olarak sipariş edilebilecek temel ürünler. - Ayrı olarak sipariş edilemeyen temel ürünler. - Aksesuarlar ayrıca sipariş edilebilir. - Ayrı olarak sipariş edilemeyen temel ürünlerle ilgili bileşenler. - Bağımsız olarak sipariş edilemeyen temel ürünlerle ilgili hizmetler. - Bağımsız olarak sipariş edilemeyen, üretici dışı hizmetler. İstekli bu prosedür çerçevesinde yeni (kullanılmamış, yenilenmemiş) cihaz satın almak istemektedir. Teklif Sahibi, \"homojen\" terimi ile Teknik Açıklamada belirtilen ilgili temel ürünün teklifinin ilgili imalatçı için zorunlu olduğunu ifade etmektedir. Her role göre ürün/hizmetlere ve tekliflere ilişkin daha ayrıntılı spesifikasyonlar Teknik Açıklamada yer almaktadır. İstekli Kbt. Bölüm 3, madde 18'e göre yorumlayıcı hüküm uyarınca, çerçeve anlaşmada öngörülen toplam tutar net 500.000.000.000 HUF tutarındadır (seçeneksiz olarak hesaplanmıştır) (bundan sonra: tutar). Kamu alım prosedürlerinde uygunluğun ve ihale dışı bırakılma gerekçelerinin belgelendirilmesi yöntemi ve ayrıca kamu alımlarının teknik tanımının belirlenmesine ilişkin 321/2015 sayılı Kanun. (X. 30.) Hükümet Kararnamesi (bundan böyle Cr. olarak anılacaktır), § 21 paragraf (4) hükümlerine dayanarak, aynı anda gerçekleştirilecek çerçeve anlaşma temelinde uygulanacak ayrı sözleşmelerin beklenen büyüklüğünün (değerinin) net 14.687.535.181 HUF olduğunu belirlemektedir. sözleşmelerin verileri ve akdedilecek çerçeve sözleşmenin tahmini performans hacmi dikkate alınarak belirlenmiştir. Garanti: Ayrıntılı Fiyat Tablosunda Teklif Sahibi, ilgili ürün grupları için beklenen garanti süresini 12, 24, 36 ay olarak özel olarak tanımlamıştır. Buna göre İsteklinin Detaylı Fiyat Tablosu'ndaki garanti hücresini doldurmasına gerek yoktur. Kamu alımlarının çerçeve sözleşmesine dayalı olarak uygulanması sırasında yukarıda tanımlanan garanti süreleri hem Kbt'ye hem de Kbt'ye tabi olacaktır. § 105, paragraf (2)'nin a) maddesine ve Hukuk Muhakemeleri Kanunu'na göre doğrudan emir. Yarışmanın yeniden açılması sırasında 105 (2) maddesinin c) bendi uyarınca akdedilen bireysel sözleşmelerle ilgili olarak. Teslim tarihi: İstekli, Ayrıntılı Fiyat Tablosu'nda yer alan ürünler için teslim süresinin Teklif Sahipleri tarafından ve her bir ürün için ayrı ayrı belirlenmediğini, ancak çerçeve anlaşmaya dayalı olarak kamu alımlarını yürüten İsteklinin, söz konusu kamu alımının bir kısmı veya tamamı için çerçeve anlaşmada öngörüldüğü şekilde en az 90 en fazla 180 takvim günü içerisinde belirleme hakkına sahip olduğunu belirtir. Doğrudan sipariş durumunda, teslimat/teslimat son tarihi, belirli kamu ihalesinin konusuna ve kendine özgü özelliklerine, yani belirli bir sözleşmenin objektif fizibilitesine bağlı olarak en az 90 takvim günü ve maksimum 180 takvim günü olabilir. Yarışmanın yeniden açılması sırasında, Etkilenen Kuruluş - kamu alımlarının temel ilkelerini dikkate alarak - belirli kamu alımlarının konusunu ve alımların benzersiz özelliklerini, yani belirli bir sözleşmenin objektif bir şekilde yerine getirilmesini ve riski ve sorumluluğu kendisine ait olmak üzere, sipariş ve teslimat birimini etkilemeden - dikkate alarak, yukarıda belirtilen teslimat sürelerinden daha uzun veya daha kısa bir teslimat tarihi belirleme hakkına sahiptir. Teklif verirken lütfen garanti ve teslimat süreleri ile ilgili yukarıdaki düzenlemelere özellikle dikkat edin. Teklif veren Kbt'dir. § 57 paragraf (1)'e uygun ve çağrıyı tamamlayan kamu alım belgelerini (bundan sonra: Diğer kamu alım belgeleri olarak anılacaktır) hazırlar. Açıklık getirmek adına, İstekli, Kamu İhale dokümanları teriminin İhale Çağrısı ve birlikte alınan diğer kamu ihale dokümanlarını içerdiğini belirtmektedir. 321/2015. (X. 30.) Hükümet Kararnamesi'nin (bundan böyle: Kr.) § 46, paragraf (3) hükümleri göz önüne alındığında, ihale makamı, kamu ihale konusunun açık ve anlaşılır bir tanımının belirli bir yapıya, menşee, türe, sürece, faaliyete, kişiye, patente veya ticari markaya atıfta bulunmayı gerekli kılması durumunda, belirlemenin yalnızca nesnenin niteliğini açıkça tanımlamak amacıyla yapıldığına ve ayrıca aşağıdakilere dikkat çeker: adlandırma, \"veya eşdeğeri\" her durumda anlaşılmaktadır. Bu kamu ihale prosedürünün bir sonucu olarak, çerçeve anlaşmayı akdeden Teklif Sahiplerinin görevi, Kamu İhale Dokümanları hükümlerine uygun olarak \"genel\" müşteri tarafı BT cihazları ve ilgili hizmetlerin satışıdır. Bu çerçeve anlaşmayı sonuçlandırmayı amaçlayan kamu ihale prosedürünün 2. kısmı ile ilgili olarak, ihale kuruluşları tarafından sağlanan Ayrıntılı Fiyat Tablosu ve Teknik Uygunluk Tablosuna göre aşağıdaki spesifik rollere göre ürünler ve ilgili hizmetler için teklifler yapılmalı ve Teklif Sahipleri tarafından profesyonel bir teklif olarak sunulmalıdır: - Bağımsız olarak sipariş edilebilecek temel ürünler. - Ayrı olarak sipariş edilemeyen temel ürünler. - Aksesuarlar ayrıca sipariş edilebilir. - Ayrı olarak sipariş edilemeyen temel ürünlerle ilgili bileşenler. - Bağımsız olarak sipariş edilemeyen temel ürünlerle ilgili hizmetler. - Üretici dışı hizmetler bağımsız olarak sipariş edilemez. İstekli bu prosedür çerçevesinde yeni (kullanılmamış, yenilenmemiş) cihaz satın almak istemektedir. İstekli Kbt. § 3, madde 18'e göre yorumlayıcı hüküm uyarınca, çerçeve anlaşmada öngörülen toplam tutar net 200.000.000.000 HUF tutarındadır (seçeneksiz olarak hesaplanmıştır) (bundan sonra: tutar). Kamu alım prosedürlerinde uygunluğun ve ihale dışı bırakılma gerekçelerinin belgelendirilmesi yöntemi ve ayrıca kamu alımlarının teknik tanımının belirlenmesine ilişkin 321/2015 sayılı Kanun. (X. 30.) Hükümet Kararnamesi (bundan böyle: Kr.), § 21 paragraf (4) hükümlerine dayanarak, aynı anda ifa edilecek çerçeve anlaşma esas alınarak uygulanacak ayrı sözleşmelerin beklenen boyutunun (değerinin) net 3.078.231.427 HUF olduğunu tespit etmektedir. verileri ve akdedilecek çerçeve anlaşmasının tahmini gerçekleşme hacmi dikkate alınarak oluşturulmuştur. Garanti: Ayrıntılı Fiyat Tablosunda Teklif Sahibi, ilgili ürün grupları için beklenen garanti süresini 12, 24, 36 ay olarak özel olarak tanımlamıştır. Buna göre İsteklinin Detaylı Fiyat Tablosu'ndaki garanti hücresini doldurmasına gerek yoktur. Kamu alımlarının çerçeve sözleşmesine dayalı olarak uygulanması sırasında yukarıda tanımlanan garanti süreleri hem Kbt'ye hem de Kbt'ye tabi olacaktır. § 105, paragraf (2)'nin a) maddesine ve Hukuk Muhakemeleri Kanunu'na göre doğrudan emir. Yarışmanın yeniden açılması sırasında 105 (2) maddesinin c) bendi uyarınca akdedilen bireysel sözleşmelerle ilgili olarak. Teslim tarihi: İstekli, Ayrıntılı Fiyat Tablosu'nda yer alan ürünler için teslim süresinin Teklif Sahipleri tarafından ve her bir ürün için ayrı ayrı belirlenmediğini, ancak çerçeve anlaşmaya dayalı olarak kamu alımlarını yürüten İsteklinin, söz konusu kamu alımının bir kısmı veya tamamı için çerçeve anlaşmada öngörüldüğü şekilde en az 90 en fazla 180 takvim günü içerisinde belirleme hakkına sahip olduğunu belirtir. Doğrudan sipariş durumunda, teslimat/teslimat son tarihi, belirli kamu ihalesinin konusuna ve kendine özgü özelliklerine, yani belirli bir sözleşmenin objektif fizibilitesine bağlı olarak en az 90 takvim günü ve maksimum 180 takvim günü olabilir. Yarışmanın yeniden açılması sırasında, Etkilenen Kuruluş - kamu alımlarının temel ilkelerini dikkate alarak - belirli kamu alımlarının konusunu ve alımların benzersiz özelliklerini, yani belirli bir sözleşmenin objektif bir şekilde yerine getirilmesini ve riski ve sorumluluğu kendisine ait olmak üzere, sipariş ve teslimat birimini etkilemeden - dikkate alarak, yukarıda belirtilen teslimat sürelerinden daha uzun veya daha kısa bir teslimat tarihi belirleme hakkına sahiptir. Teklif verirken lütfen garanti ve teslimat süreleri ile ilgili yukarıdaki düzenlemelere özellikle dikkat edin. Teklif veren Kbt'dir. § 57 paragraf (1)'e uygun ve çağrıyı tamamlayan kamu alım belgelerini (bundan sonra: Diğer kamu alım belgeleri olarak anılacaktır) hazırlar. Açıklık getirmek adına, İstekli, Kamu İhale dokümanları teriminin İhale Çağrısı ve birlikte alınan diğer kamu ihale dokümanlarını içerdiğini belirtmektedir. 321/2015. (X. 30.) Hükümet Kararnamesi'nin (bundan böyle: Kr.) § 46, paragraf (3) hükümleri göz önüne alındığında, ihale makamı, kamu ihale konusunun açık ve anlaşılır bir tanımının belirli bir yapıya, menşee, türe, sürece, faaliyete, kişiye, patente veya ticari markaya atıfta bulunmayı gerekli kılması durumunda, belirlemenin yalnızca nesnenin niteliğini açıkça tanımlamak amacıyla yapıldığına ve ayrıca aşağıdakilere dikkat çeker: adlandırma, \"veya eşdeğeri\" her durumda anlaşılmaktadır.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -14651,6 +14759,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -14995,6 +15105,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -15246,6 +15358,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -15515,6 +15629,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -15770,6 +15886,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -16022,6 +16140,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -16292,6 +16412,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -16543,6 +16665,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -16804,6 +16928,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -17053,7 +17179,7 @@
       "title_tr": "Almanya – Yangınla mücadele araçları – römorklarda acil durum güç sistemleri",
       "detail_original": "Der Umfang der ausgeschriebenen Maßnahme ist im Detail dem Leistungsverzeichnis zu entnehmen. Der Umfang der ausgeschriebenen Maßnahme ist im Detail dem Leistungsverzeichnis zu entnehmen.",
       "detail_tr": "Reklamı yapılan tedbirin kapsamı, hizmetler listesinde ayrıntılı olarak bulunabilir. Reklamı yapılan tedbirin kapsamı, hizmetler listesinde ayrıntılı olarak bulunabilir.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -17062,6 +17188,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -17308,7 +17436,7 @@
       "title_tr": "Norveç – Tıbbi ekipmanlar, ilaçlar ve kişisel bakım ürünleri – Jet-ventilatör - STO",
       "detail_original": "St. Olavs Hospital has decided to procure one Jet ventilator; The estimated value of the procurement, including equipment dependent consumables in the equipment ́s lifetime, is NOK 1,000,000,000. NOK 1,200,000 excluding VAT. Justification procurement without competition: This intention notice is anchored in the procurement regulations § 13-4 letter b no. 2 on situations where competition is impossible for technical reasons. The ENT department currently has a Monsoon 3 jet ventilator that is approx. 10 years old. This has, in recent years, had repeated technical problems, and consumables have been difficult to procure. It has not been possible to treat patients with narrow stenoses or high BMI with the current jet ventilator, which has led to increased costs by sending these patients to Rikshospitalet-OUS for treatment. Rikshospitalet has now refused to receive several patients due to capacity challenges and informed that this patient group must be treated at the university hospitals. As a university hospital, St. Olavs Hospital is responsible for advanced airway surgery in the Mid-Norway Health Trust. When patients can no longer be transferred to Rikshospitalet, the hospital must therefore have equipment that allows treatment at equivalent professional levels locally. The Twin Stream jet ventilator is decisive for treating patients with high BMI, reduced lungcompliance and very tight subglottic stenosis and to avoid the risk of peroperative hypoxi and hypercapnia. It has high frequency and the possibility for superimposed high frequency jet ventilation which provides more stable ventilation and oxygenation. This is decisive for patients with excess weight and/or narrow stenosis in the respiratory tract, which is the most critical patient group. With the highest frequency that TS uses, in addition the movements in the operating field will be minimised in relation to jet ventilation with a lower frequency. The surgeon will have better working conditions, which reduces operational time and makes complex interventions easier and safer. The integrated jet system in the laryngoscopes also provides a good overview of operational fields and instrument access. Only TS enables oxygenation/ventilation of overweight patients and particularly tight stenoses, which have a high enough frequency to achieve a stable surgical field and have integrated jet nozzles in the laryngoscopes. The Twin Stream is used at the largest Norwegian and foreign centres, including the National Hospital in Oslo. Access to the same technology provides a joint competence platform, simple cooperation between the centres and easier training of surgeons and anaesthesia personnel. It is crucial for us in the treatment of such complex patients to have the same type of equipment, when we shall consult and discuss with, for example, Rikshospitalet.Based on a market analysis, only Simonsen &amp; Weel AS can deliver the solution in question based on St.Olav Hospital ́s needs and our assessment is that the terms to hold a competition without a prior notice in accordance with the procurement regulations § 13-4 letter b no. 2 are met.",
       "detail_tr": "St. Olavs Hastanesi bir adet Jet ventilatör almaya karar verdi; Ekipmanın kullanım ömrü boyunca ekipmana bağlı sarf malzemeleri de dahil olmak üzere satın almanın tahmini değeri 1.000.000.000 NOK'dur. KDV hariç 1.200.000 NOK. Rekabetsiz ihale gerekçesi: Bu niyet bildirimi, ihale düzenlemeleri § 13-4, harf b no. Teknik nedenlerden dolayı rekabetin mümkün olmadığı durumlara ilişkin 2. KBB departmanında şu anda yaklaşık olarak bir Muson 3 jet vantilatörü bulunmaktadır. 10 yaşında. Son yıllarda bu konuda tekrarlanan teknik sorunlar yaşandı ve sarf malzemelerinin temini zorlaştı. Dar darlığı veya yüksek BMI'si olan hastaların mevcut jet ventilatörle tedavisi mümkün olmayınca bu hastaların tedavi için Rikshospitalet-OUS'a gönderilmesi maliyetlerin artmasına neden oldu. Kapasite sıkıntısı nedeniyle çok sayıda hastayı kabul etmeyen Rikshospitalet, bu hasta grubunun üniversite hastanelerinde tedavi görmesi gerektiğini bildirdi. Bir üniversite hastanesi olarak St. Olavs Hastanesi, Orta Norveç Sağlık Vakfı'nda ileri hava yolu cerrahisinden sorumludur. Hastalar artık Rikshospitalet'e transfer edilemediğinde, hastanenin bu nedenle yerel düzeyde eşdeğer profesyonel düzeyde tedaviye olanak sağlayacak donanıma sahip olması gerekir. Twin Stream jet ventilatör, yüksek BMI, azalmış akciğer kompliansı ve çok sıkı subglottik stenozu olan hastaların tedavisinde ve peroperatif hipoksi ve hiperkapni riskinin önlenmesinde belirleyicidir. Yüksek frekansa ve daha stabil ventilasyon ve oksijenasyon sağlayan üst üste yüksek frekanslı jet ventilasyon olanağına sahiptir. Bu durum en kritik hasta grubu olan solunum yollarında aşırı kilolu ve/veya dar darlığı olan hastalar için belirleyicidir. TS'nin kullandığı en yüksek frekansla, ayrıca daha düşük frekansla jet havalandırmaya bağlı olarak operasyon alanındaki hareketler en aza indirilecektir. Cerrah daha iyi çalışma koşullarına sahip olacak, bu da operasyon süresini kısaltacak ve karmaşık müdahaleleri daha kolay ve güvenli hale getirecek. Laringoskoplardaki entegre jet sistemi aynı zamanda çalışma alanları ve alet erişimine ilişkin iyi bir genel bakış sağlar. Yalnızca TS, fazla kilolu hastaların ve özellikle dar darlıkların oksijenlenmesini/ventilasyonunu mümkün kılar; bu, stabil bir cerrahi alan elde etmek için yeterince yüksek frekansa sahiptir ve laringoskoplara entegre jet nozulları içerir. Twin Stream, Oslo'daki Ulusal Hastane de dahil olmak üzere Norveç'in en büyük ve yabancı merkezlerinde kullanılmaktadır. Aynı teknolojiye erişim, ortak yeterlilik platformu, merkezler arasında basit işbirliği ve cerrahların ve anestezi personelinin daha kolay eğitilmesini sağlar. Bu tür karmaşık hastaların tedavisinde, örneğin Rikshospitalet ile istişarede bulunup görüşeceğimizde aynı tip ekipmanlara sahip olmamız bizim için çok önemlidir. Pazar analizine göre, St.Olav Hastanesi'nin ihtiyaçlarına göre yalnızca Simonsen & Weel AS söz konusu çözümü sunabilir ve değerlendirmemiz, satın alma yönetmeliği § 13-4 bent b no. 2 karşılanıyor.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -17317,6 +17445,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -17572,6 +17702,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ön değerlendirme gerekli",
       "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -17814,7 +17946,7 @@
       "title_tr": "Almanya – Özel amaçlı motorlu taşıtlar – modüler sinyal bozucu",
       "detail_original": "Lieferung (inkl. Integration) von 2 modularen Störsendern",
       "detail_tr": "2 adet modüler sinyal bozucunun teslimatı (entegrasyon dahil)",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -17823,6 +17955,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -18065,7 +18199,7 @@
       "title_tr": "İspanya – Demiryolu ekipmanı – Castellón - Vandellós - La Boella bölümünde standart ölçünün uygulanması için ray ekipmanı temini",
       "detail_original": "Suministro de aparatos de vía para la implantación del ancho estándar en el tramo Castellón - Vandellós - La Boella",
       "detail_tr": "Castellón - Vandellós - La Boella bölümünde standart ölçüm uygulaması için ray cihazlarının temini",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -18074,6 +18208,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -18325,6 +18461,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -18641,6 +18779,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -18896,6 +19036,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -19159,6 +19301,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ön değerlendirme gerekli",
       "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -19420,7 +19564,7 @@
       "title_tr": "Almanya – Tıbbi sarf malzemeleri – RV_SKDD_OP-Sets",
       "detail_original": "Los 1.) Rahmenvereinbarung für OP-Sets für die Allgemeinchirurgie, Urologie, Gynäkologie, Plastische Chirurgie einschließlich deren Logistik (Direktbelieferung und Verräumservice) Min. Bestellmenge: 0 Sets Geschätzte Bestellmenge: 36.008 Sets Maximale Bestellmenge: 36.008 Sets Los 2.) Rahmenvereinbarung für OP-Sets für die Orthopädie und Unfallchirurgie einschließlich deren Logistik (Direktbelieferung und Verräumservice) Min. Bestellmenge: 0 Sets Geschätzte Bestellmenge: 33.512 Sets Maximale Bestellmenge: 33.512 Sets Los 3.) Rahmenvereinbarung für OP-Sets für die Gefäßchirurgie, Dermatologie, HNO, Neurochirurgie einschließlich deren Logistik (Direktbelieferung und Verräumservice) Min. Bestellmenge: 0 Sets Geschätzte Bestellmenge: 19.112 Sets Maximale Bestellmenge: 19.112 Sets Los 4.) Rahmenvereinbarung für OP-Sets für die Kardiologie (IHG) einschließlich deren Logistik (Direktbelieferung) Min. Bestellmenge: 0 Sets Geschätzte Bestellmenge: 13.716 Sets Maximale Bestellmenge: 13.716 Sets Los 5.) Rahmenvereinbarung für OP-Sets für die Augenheilkunde einschließlich deren Logistik (Direktbelieferung und Verräumservice) Min. Bestellmenge: 0 Sets Geschätzte Bestellmenge: 36.788 Sets Maximale Bestellmenge: 36.788 Sets",
       "detail_tr": "Lot 1.) Genel cerrahi, üroloji, jinekoloji, plastik cerrahiye yönelik cerrahi setler için lojistik dahil çerçeve anlaşması (doğrudan teslimat ve depolama hizmeti) Min. sipariş miktarı: 0 set Tahmini sipariş miktarı: 36.008 set Maksimum sipariş miktarı: 36.008 set Lot 2.) Ortopedi ve travma cerrahisine yönelik cerrahi setler için lojistik dahil çerçeve anlaşması (doğrudan teslimat ve Gümrükleme hizmeti) Min. sipariş miktarı: 0 set Tahmini sipariş miktarı: 33.512 set Maksimum sipariş miktarı: 33.512 set Lot 3.) Damar cerrahisi, dermatoloji, KBB, nöroşirürjiye yönelik cerrahi setler için lojistik dahil çerçeve anlaşması (doğrudan teslimat ve tasfiye hizmeti) Min. sipariş miktarı: 0 set Tahmini sipariş miktarı: 19.112 set Maksimum sipariş miktarı: 19.112 set Lot 4.) Kardiyoloji cerrahi setleri (IHG) için lojistik (doğrudan teslimat) dahil olmak üzere çerçeve anlaşması Min. sipariş miktarı: 0 set Tahmini sipariş miktarı: 13.716 set Maksimum sipariş miktarı: 13.716 set Lot 5.) Oftalmolojiye yönelik cerrahi setler için lojistik dahil çerçeve anlaşması (doğrudan teslimat ve depolama hizmeti) Min. sipariş miktarı: 0 takım Tahmini sipariş miktarı: 36.788 takım Maksimum sipariş miktarı: 36.788 takım",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -19429,6 +19573,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -19671,7 +19817,7 @@
       "title_tr": "İtalya – Çeşitli tıbbi cihazlar ve ürünler – 10 Sömürgecilikten kurtulma için kullanıma hazır ürün",
       "detail_original": "Procedura aperta per la fornitura di n.10 Prodotto pronto all’uso per la decolonizzazione",
       "detail_tr": "Sömürgecilikten kurtulmaya yönelik 10 adet kullanıma hazır ürünün tedarikine ilişkin açık prosedür",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -19680,6 +19826,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -19931,6 +20079,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -20184,6 +20334,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -20436,6 +20588,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -20789,6 +20943,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -21097,6 +21253,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -21358,6 +21516,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -21605,7 +21765,7 @@
       "title_tr": "Almanya – Laboratuvar, optik ve hassas ekipmanlar (gözlükler hariç) – 3PDE-HDX Avantaj Sistemi",
       "detail_original": "Technische Ausschließlichkeit und vorhandene Infrastruktur Die Beschaffung erfolgt nicht als isolierte Neuanschaffung eines beliebigen HDX-MS-Systems, sondern als gezielte Erweiterung der am Standort vorhandenen Massenspektrometrie-Infrastruktur. Für die vorgesehene Anwendung ist deshalb nicht allein entscheidend, ob ein Produkt grundsätzlich HDX-MS durchführen kann. Maßgeblich ist vielmehr, ob die Gesamtlösung die geforderte automatisierte Prozessführung und die erforderliche technische Interoperabilität mit der vorhandenen Geräte-, Steuerungs- und Softwareumgebung gewährleistet. Die Herstellerdokumentation des vorgesehenen Systems beschreibt einen integrierten HDX-MS-Workflow aus automatisierter HDX-Probenvorbereitung, Thermo Scientific Vanquish-UHPLC und Orbitrap-Massenspektrometrie einschließlich der Einbindung der HDX-Automatisierung in die Thermo Scientific-Softwareumgebung. Die technische Integration der Komponenten ermöglicht die für den vorgesehenen Einsatz erforderliche standardisierte und reproduzierbare Durchführung der zeitkritischen HDX-Prozessschritte und deren anschließende massenspektrometrische Analyse. Die technische Eignung ist daher anhand der gesamten Systemarchitektur und nicht anhand einzelner isolierter Gerätefunktionen zu bewerten. Vor der Festlegung der Verfahrensart wurde geprüft, ob am Markt verfügbare alternative HDX-MS-Lösungen die zwingenden funktionalen und technischen Anforderungen erfüllen und in die vorhandene Infrastruktur integriert werden können. Eine alternative Lösung wäre nur dann als vernünftige Ersatzlösung anzusehen, wenn sie den vollständigen erforderlichen Workflow - einschließlich zeitkritischer HDX-Automatisierung, Temperaturkontrolle, Probenaufbereitung, chromatographischer Trennung, Massenspektrometeranbindung, Gerätesteuerung, Datenerfassung und Datenintegration - mit gleichwertiger Funktionalität und ausreichender Reproduzierbarkeit bereitstellen kann. Die Markterkundung hat ergeben, dass zwar verschiedene HDX-MS-Komponenten und Einzelgeräte am Markt verfügbar sind, jedoch keine alternative Gesamtlösung identifiziert werden konnte, die die für den Standort erforderliche technische Integration in die bestehende Infrastruktur mit gleichwertiger Funktionalität und ohne unverhältnismäßige technische Anpassungen gewährleistet bzw. eine sehr kostenintensive Neuanschaffung eines Massenspektrometers von einem anderen Hersteller nach sich ziehen würde. Insbesondere würde die Verwendung einer nicht kompatiblen Alternativlösung eine abweichende Geräte-, Steuerungs- und Softwarearchitektur bzw. zusätzliche technische Komponenten und Anpassungen der bestehenden Infrastruktur erfordern. Dies würde den vorgesehenen integrierten Workflow auflösen und zu erheblichen technischen Anpassungs-, Validierungs- und Betriebsaufwänden führen. Eine solche Lösung stellt unter den konkreten technischen Rahmenbedingungen des Auftraggebers daher keine vernünftige Alternative oder Ersatzlösung im Sinne des § 14 Abs. 6 VgV dar. Die konkrete Markterkundung und technische Alternativenprüfung einschließlich der geprüften Hersteller, Systeme und jeweiligen Kompatibilitätsmerkmale werden als Anlagen zu diesem Vergabevermerk dokumentiert. Auf Grundlage der dokumentierten technischen Anforderungen, der vorhandenen Infrastruktur und der durchgeführten Markt- und Alternativenprüfung wird festgestellt, dass die für die Universitätsmedizin Greifswald erforderliche technische Gesamtlösung zum Zeitpunkt der Einleitung des Vergabeverfahrens nur durch den vorgesehenen Anbieter bereitgestellt bzw. technisch integriert werden kann. Eine gleichwertige vernünftige Ersatzlösung konnte nicht festgestellt werden. Die Voraussetzungen für die Durchführung eines Verhandlungsverfahrens ohne Teilnahmewettbewerb gemäß § 14 Abs. 4 Nr. 2 Buchst. b i. V. m. Abs. 6 VgV liegen damit vor. Die Vergabestelle wird daher das Verhandlungsverfahren ohne Teilnahmewettbewerb mit dem technisch hierfür geeigneten Unternehmen durchführen.",
       "detail_tr": "Teknik ayrıcalık ve mevcut altyapı Tedarik, herhangi bir HDX-MS sisteminin izole edilmiş yeni bir satın alınması değil, tesiste mevcut kütle spektrometresi altyapısının hedeflenen bir şekilde genişletilmesidir. Amaçlanan uygulama için, bir ürünün temelde HDX-MS'yi gerçekleştirip gerçekleştiremeyeceği önemli değildir. Daha da önemlisi, genel çözümün gerekli otomatik proses kontrolünü ve mevcut cihaz, kontrol ve yazılım ortamıyla gerekli teknik birlikte çalışabilirliği garanti edip etmediğidir. Önerilen sistemin üretici belgeleri, HDX otomasyonunun Thermo Scientific yazılım ortamına entegrasyonu da dahil olmak üzere, otomatik HDX örnek hazırlama, Thermo Scientific Vanquish UHPLC ve Orbitrap kütle spektrometresinin entegre bir HDX-MS iş akışını açıklamaktadır. Bileşenlerin teknik entegrasyonu, zaman açısından kritik HDX proses adımlarının standartlaştırılmış ve tekrarlanabilir bir şekilde uygulanmasına ve amaçlanan kullanım için gerekli olan müteakip kütle spektrometrik analizine olanak tanır. Bu nedenle teknik uygunluk, bireysel izole cihaz fonksiyonlarına göre değil, tüm sistem mimarisine göre değerlendirilmelidir. Proses tipi belirlenmeden önce piyasada mevcut alternatif HDX-MS çözümlerinin zorunlu fonksiyonel ve teknik gereksinimleri karşılayıp karşılamadığı ve mevcut altyapıya entegre edilip edilemeyeceği kontrol edildi. Alternatif bir çözüm, yalnızca zaman açısından kritik HDX otomasyonu, sıcaklık kontrolü, numune hazırlama, kromatografik ayırma, kütle spektrometre bağlantısı, cihaz kontrolü, veri toplama ve veri entegrasyonu dahil olmak üzere gerekli iş akışının tamamını eşdeğer işlevsellik ve yeterli tekrarlanabilirlik ile sağlayabiliyorsa makul bir alternatif olarak kabul edilebilir. Pazar araştırması, piyasada çeşitli HDX-MS bileşenleri ve bireysel cihazlar mevcut olmasına rağmen, saha için gerekli teknik entegrasyonu eşdeğer işlevselliğe sahip ve orantısız teknik ayarlamalar olmadan mevcut altyapıya sağlayacak veya başka bir üreticiden çok yüksek maliyetli yeni bir kütle spektrometresi satın alınmasıyla sonuçlanacak hiçbir alternatif genel çözümün tanımlanamayacağını göstermiştir. Özellikle uyumsuz bir alternatif çözümün kullanılması, farklı bir cihaz, kontrol ve yazılım mimarisi veya ek teknik bileşenler ve mevcut altyapıda ayarlamalar gerektirecektir. Bu, amaçlanan entegre iş akışını bozacak ve önemli teknik ayarlama, doğrulama ve operasyonel çabaya yol açacaktır. Bu nedenle böyle bir çözüm, müşterinin spesifik teknik çerçeve koşulları kapsamında Bölüm 14 Paragraf 6 VgV anlamında makul bir alternatif veya ikame çözümü temsil etmez. Test edilen üreticiler, sistemler ve ilgili uyumluluk özellikleri de dahil olmak üzere spesifik pazar araştırması ve teknik alternatif testler, bu ihale ilanının ekleri olarak belgelenmiştir. Belgelenen teknik gereksinimlere, mevcut altyapıya, pazara ve gerçekleştirilen alternatif değerlendirmeye dayanarak Greifswald Üniversitesi Tıp Merkezi için gereken genel teknik çözümün yalnızca ihale prosedürünün başlatıldığı sırada amaçlanan sağlayıcı tarafından sağlanabileceği veya teknik olarak entegre edilebileceği belirlendi. Eşdeğer, makul bir değişim çözümü bulunamadı. Bölüm 14 Paragraf 4 No. 2 Bent b uyarınca rekabet olmadan müzakere usulünün yürütülmesine ilişkin gereklilikler i. V.m. Para. Bu nedenle 6 VgV mevcuttur. Bu nedenle ihale makamı, teknik açıdan uygun olan firma ile rekabete girmeden müzakere sürecini yürütecektir.",
-      "market_region": "Diğer Pazarlar",
+      "market_region": "Avrupa",
       "buyer_verified": true,
       "supplier_status": "pending",
       "landed_cost_status": "pending",
@@ -21614,6 +21774,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -21877,6 +22039,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -22128,6 +22292,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -22379,6 +22545,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -22631,6 +22799,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -22884,6 +23054,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -23138,6 +23310,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -23389,6 +23563,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -23658,6 +23834,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -23911,6 +24089,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -24164,6 +24344,8 @@
       "offer_status": "shadow_not_sent",
       "commission_status": "pending_deal_value_and_agreement",
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -24266,6 +24448,565 @@
       }
     },
     {
+      "active": "Yes",
+      "additionalInfoLink": null,
+      "archiveDate": "2027-09-30",
+      "archiveType": "autocustom",
+      "award": null,
+      "baseType": "Solicitation",
+      "classificationCode": "2510",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=da9ba95e274843ef99f118348c860258",
+      "fullParentPathCode": "021.2100.AMC.ACC.ACC-OO.411TH CSB.W90VN6",
+      "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-OO.411TH CSB.0906 AQ CO     CONTRACTING BAT",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=da9ba95e274843ef99f118348c860258&limit=1"
+        }
+      ],
+      "naicsCode": "332999",
+      "naicsCodes": [
+        "332999"
+      ],
+      "noticeId": "da9ba95e274843ef99f118348c860258",
+      "officeAddress": {
+        "zipcode": "96202-0000",
+        "city": "APO",
+        "countryCode": "USA",
+        "state": "AP"
+      },
+      "organizationType": "OFFICE",
+      "placeOfPerformance": {
+        "streetAddress": "",
+        "zip": "96278"
+      },
+      "pointOfContact": [
+        {
+          "fax": "",
+          "type": "primary",
+          "email": "youjin.nam.ln@army.mil",
+          "phone": "3157576009",
+          "fullName": "You Jin Nam"
+        }
+      ],
+      "postedDate": "2026-09-30",
+      "resourceLinks": null,
+      "responseDeadLine": "2026-10-15T13:00:00+09:00",
+      "solicitationNumber": "W90VN626QA017",
+      "title": "ACTIVE VEHICLE BARRIERS AND ASSOCIATED CONTROL SYSTEM  AT OSAN AIR BASE ",
+      "type": "Solicitation",
+      "typeOfSetAside": null,
+      "typeOfSetAsideDescription": null,
+      "uiLink": "https://sam.gov/workspace/contract/opp/da9ba95e274843ef99f118348c860258/view",
+      "title_original": "ACTIVE VEHICLE BARRIERS AND ASSOCIATED CONTROL SYSTEM  AT OSAN AIR BASE ",
+      "title_tr": "OSAN HAVA ÜSSÜNDE AKTİF ARAÇ BARİYELERİ VE İLGİLİ KONTROL SİSTEMİ",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=da9ba95e274843ef99f118348c860258",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=da9ba95e274843ef99f118348c860258",
+      "buyer-country": "United States",
+      "market_region": "ABD / Kuzey Amerika",
+      "buyer-name": "",
+      "deadline-receipt-tender-date-lot": "2026-10-15T13:00:00+09:00",
+      "classification-cpv": "332999",
+      "procedure-type": "Solicitation",
+      "source_url": "https://sam.gov/workspace/contract/opp/da9ba95e274843ef99f118348c860258/view",
+      "source": "SAM_GOV",
+      "mode": "shadow",
+      "buyer_verified": false,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "deal_score": 60,
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
+      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter ACTIVE VEHICLE BARRIERS AND ASSOCIATED CONTROL SYSTEM  AT OSAN AIR BASE  https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=da9ba95e274843ef99f118348c860258 332999",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "United States",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": false,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": true,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "332999",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=da9ba95e274843ef99f118348c860258. Kategori / ürün grubu: 332999",
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "name": null,
+          "country": "United States",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
+      "active": "Yes",
+      "additionalInfoLink": null,
+      "archiveDate": "2026-10-21",
+      "archiveType": "auto15",
+      "award": null,
+      "baseType": "Combined Synopsis/Solicitation",
+      "classificationCode": "7110",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5529361e1e9462a8b73690ab3f2f1c8",
+      "fullParentPathCode": "012.12K3.126395",
+      "fullParentPathName": "AGRICULTURE, DEPARTMENT OF.ANIMAL AND PLANT HEALTH INSPECTION SERVICE.MRPBS MINNEAPOLIS MN",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=d5529361e1e9462a8b73690ab3f2f1c8&limit=1"
+        }
+      ],
+      "naicsCode": "337211",
+      "naicsCodes": [
+        "337211"
+      ],
+      "noticeId": "d5529361e1e9462a8b73690ab3f2f1c8",
+      "officeAddress": {
+        "zipcode": "55401",
+        "city": "MINNEAPOLIS",
+        "countryCode": "USA",
+        "state": "MN"
+      },
+      "organizationType": "OFFICE",
+      "placeOfPerformance": {
+        "city": {
+          "code": "27000",
+          "name": "Fresno"
+        },
+        "state": {
+          "code": "CA",
+          "name": "California"
+        },
+        "zip": "93721",
+        "country": {
+          "code": "USA",
+          "name": "UNITED STATES"
+        }
+      },
+      "pointOfContact": [
+        {
+          "fax": "",
+          "type": "primary",
+          "email": "mario.garcia2@usda.gov",
+          "phone": "9192577535",
+          "fullName": "Mario Garcia"
+        }
+      ],
+      "postedDate": "2026-09-30",
+      "resourceLinks": [
+        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/aa1e08f3d2a44bc28920d8b80684bb1f/download",
+        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/c312ed9c430b4997a60d2718c23580f1/download"
+      ],
+      "responseDeadLine": "2026-10-06T12:00:00-04:00",
+      "solicitationNumber": "12639526Q0316",
+      "title": "Request for Quote for Office Furniture and Installation  Fresno, CA USDA Location",
+      "type": "Combined Synopsis/Solicitation",
+      "typeOfSetAside": "SBA",
+      "typeOfSetAsideDescription": "Small Business Set Aside - Total",
+      "uiLink": "https://sam.gov/workspace/contract/opp/d5529361e1e9462a8b73690ab3f2f1c8/view",
+      "title_original": "Request for Quote for Office Furniture and Installation  Fresno, CA USDA Location",
+      "title_tr": "Ofis Mobilyaları ve Montajı İçin Teklif Talebi Fresno, CA USDA Konum",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5529361e1e9462a8b73690ab3f2f1c8",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5529361e1e9462a8b73690ab3f2f1c8",
+      "buyer-country": "United States",
+      "market_region": "ABD / Kuzey Amerika",
+      "buyer-name": "",
+      "deadline-receipt-tender-date-lot": "2026-10-06T12:00:00-04:00",
+      "classification-cpv": "337211",
+      "procedure-type": "Combined Synopsis/Solicitation",
+      "source_url": "https://sam.gov/workspace/contract/opp/d5529361e1e9462a8b73690ab3f2f1c8/view",
+      "source": "SAM_GOV",
+      "mode": "shadow",
+      "buyer_verified": false,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "deal_score": 60,
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
+      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter Request for Quote for Office Furniture and Installation  Fresno, CA USDA Location https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5529361e1e9462a8b73690ab3f2f1c8 337",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "United States",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": false,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": true,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "337211",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5529361e1e9462a8b73690ab3f2f1c8. Kategori / ürün grubu: 337211",
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "name": null,
+          "country": "United States",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
+      "active": "Yes",
+      "additionalInfoLink": null,
+      "archiveDate": "2026-10-27",
+      "archiveType": "auto15",
+      "award": null,
+      "baseType": "Sources Sought",
+      "classificationCode": "5810",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cd6d405fc1d54a3da881801d76de348c",
+      "fullParentPathCode": "097.97AS.DLA LAND.DLA LAND ABERDEEN.SPRBL1",
+      "fullParentPathName": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA LAND.DLA LAND ABERDEEN.DLA LAND AT ABERDEEN",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=cd6d405fc1d54a3da881801d76de348c&limit=1"
+        }
+      ],
+      "naicsCode": "334220",
+      "naicsCodes": [
+        "334220"
+      ],
+      "noticeId": "cd6d405fc1d54a3da881801d76de348c",
+      "officeAddress": {
+        "zipcode": "21005",
+        "city": "ABER PROV GRD",
+        "countryCode": "USA",
+        "state": "MD"
+      },
+      "organizationType": "OFFICE",
+      "placeOfPerformance": {
+        "city": {
+          "code": "175",
+          "name": "Aberdeen Proving Ground"
+        },
+        "state": {
+          "code": "MD",
+          "name": "Maryland"
+        },
+        "zip": "21005",
+        "country": {
+          "code": "USA",
+          "name": "UNITED STATES"
+        }
+      },
+      "pointOfContact": [
+        {
+          "fax": "",
+          "type": "primary",
+          "email": "oliver.pomajulca.civ@army.mil",
+          "phone": "",
+          "fullName": "Oliver Pomajulca"
+        },
+        {
+          "fax": "",
+          "type": "secondary",
+          "email": "rebecca.le.civ@army.mil",
+          "phone": "",
+          "fullName": "Rebecca Le"
+        }
+      ],
+      "postedDate": "2026-09-30",
+      "resourceLinks": [
+        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/22bd77c667db40dea357aed3a948c9bd/download"
+      ],
+      "responseDeadLine": "2026-10-12T17:00:00-04:00",
+      "solicitationNumber": "DLA-Aberdeen-26-080",
+      "title": "Market Survey for Procurement of NIIN 01-066-7587, FILL CABLE and NIIN 01-348-4675, DATA/FILL CABLE",
+      "type": "Sources Sought",
+      "typeOfSetAside": "NONE",
+      "typeOfSetAsideDescription": "No Set aside used",
+      "uiLink": "https://sam.gov/workspace/contract/opp/cd6d405fc1d54a3da881801d76de348c/view",
+      "title_original": "Market Survey for Procurement of NIIN 01-066-7587, FILL CABLE and NIIN 01-348-4675, DATA/FILL CABLE",
+      "title_tr": "NIIN 01-066-7587, FILL CABLE ve NIIN 01-348-4675, DATA/FILL CABLE Tedarikine İlişkin Pazar Araştırması",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cd6d405fc1d54a3da881801d76de348c",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cd6d405fc1d54a3da881801d76de348c",
+      "buyer-country": "United States",
+      "market_region": "ABD / Kuzey Amerika",
+      "buyer-name": "",
+      "deadline-receipt-tender-date-lot": "2026-10-12T17:00:00-04:00",
+      "classification-cpv": "334220",
+      "procedure-type": "Sources Sought",
+      "source_url": "https://sam.gov/workspace/contract/opp/cd6d405fc1d54a3da881801d76de348c/view",
+      "source": "SAM_GOV",
+      "mode": "shadow",
+      "buyer_verified": false,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "deal_score": 60,
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
+      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter Market Survey for Procurement of NIIN 01-066-7587, FILL CABLE and NIIN 01-348-4675, DATA/FILL CABLE https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cd6d405fc1d54a3da8",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "United States",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": false,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": true,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "334220",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cd6d405fc1d54a3da881801d76de348c. Kategori / ürün grubu: 334220",
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "name": null,
+          "country": "United States",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
       "id": "OP00462647",
       "notice_type": "Invitation for Bids",
       "project_id": "P178914",
@@ -24307,6 +25048,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -24458,6 +25201,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -24613,6 +25358,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -24756,6 +25503,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -24895,6 +25644,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -25042,6 +25793,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -25193,6 +25946,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -25336,6 +26091,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -25511,6 +26268,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -25658,6 +26417,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -25813,6 +26574,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 55,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -25915,6 +26678,824 @@
       }
     },
     {
+      "active": "Yes",
+      "additionalInfoLink": null,
+      "archiveDate": "2026-10-14",
+      "archiveType": "auto15",
+      "award": {
+        "date": "2026-09-29",
+        "number": "47QACA26P0058",
+        "amount": "937617.00",
+        "awardee": {
+          "name": "TUBE-LINE TECHNOLOGIES CORPORATION",
+          "location": {
+            "city": {
+              "code": "71510",
+              "name": "Surprise"
+            },
+            "state": {
+              "code": "AZ",
+              "name": "Arizona"
+            },
+            "zip": "85379",
+            "country": {
+              "code": "USA",
+              "name": "UNITED STATES"
+            }
+          }
+        }
+      },
+      "baseType": "Solicitation",
+      "classificationCode": "3441",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f55d20b204fa49269b83dfa5414c3289",
+      "fullParentPathCode": "047.4732.47QACA",
+      "fullParentPathName": "GENERAL SERVICES ADMINISTRATION.FEDERAL ACQUISITION SERVICE.OFFICE OF CENTRALIZED ACQUISITION SERVICES",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=f55d20b204fa49269b83dfa5414c3289&limit=1"
+        }
+      ],
+      "naicsCode": "333517",
+      "naicsCodes": [
+        "333517"
+      ],
+      "noticeId": "f55d20b204fa49269b83dfa5414c3289",
+      "officeAddress": {
+        "zipcode": "20405",
+        "city": "Washington",
+        "countryCode": "USA",
+        "state": "DC"
+      },
+      "organizationType": "OFFICE",
+      "placeOfPerformance": {},
+      "pointOfContact": [
+        {
+          "fax": "",
+          "type": "primary",
+          "email": "melissa.martel@gsa.gov",
+          "phone": "202-258-0072",
+          "fullName": "Melissa Martel"
+        }
+      ],
+      "postedDate": "2026-09-30",
+      "resourceLinks": null,
+      "responseDeadLine": null,
+      "solicitationNumber": "47QACA26P0058",
+      "title": "Flaring and Beading Machines - Notice of Award",
+      "type": "Award Notice",
+      "typeOfSetAside": "SBA",
+      "typeOfSetAsideDescription": "Small Business Set Aside - Total",
+      "uiLink": "https://sam.gov/workspace/contract/opp/f55d20b204fa49269b83dfa5414c3289/view",
+      "title_original": "Flaring and Beading Machines - Notice of Award",
+      "title_tr": "Ağız Açma ve Boncuklama Makinaları - İhale İlanı",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f55d20b204fa49269b83dfa5414c3289",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f55d20b204fa49269b83dfa5414c3289",
+      "buyer-country": "United States",
+      "market_region": "ABD / Kuzey Amerika",
+      "buyer-name": "",
+      "deadline-receipt-tender-date-lot": "",
+      "classification-cpv": "333517",
+      "procedure-type": "Award Notice",
+      "source_url": "https://sam.gov/workspace/contract/opp/f55d20b204fa49269b83dfa5414c3289/view",
+      "source": "SAM_GOV",
+      "mode": "shadow",
+      "buyer_verified": false,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "deal_score": 45,
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
+      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter Flaring and Beading Machines - Notice of Award https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f55d20b204fa49269b83dfa5414c3289 333517",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "United States",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": false,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": false,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "333517",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f55d20b204fa49269b83dfa5414c3289. Kategori / ürün grubu: 333517",
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "name": null,
+          "country": "United States",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
+      "active": "Yes",
+      "additionalInfoLink": null,
+      "archiveDate": "2026-10-30",
+      "archiveType": "autocustom",
+      "award": {
+        "date": "2026-09-29",
+        "number": "36C25926P0764",
+        "amount": "54033.00",
+        "awardee": {
+          "name": "AMISH FURNITURE BY DAVID LLC",
+          "location": {
+            "streetAddress": "",
+            "streetAddress2": "",
+            "city": {
+              "name": "MOUNTAIN TOP"
+            },
+            "state": {
+              "name": "PA"
+            },
+            "zip": "18707",
+            "country": {
+              "name": "PA"
+            }
+          }
+        }
+      },
+      "baseType": "Combined Synopsis/Solicitation",
+      "classificationCode": "7G21",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e204d5145f78418ba4a21b6a29b94ff6",
+      "fullParentPathCode": "036.3600.36C259",
+      "fullParentPathName": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.NETWORK CONTRACT OFFICE 19 (36C259)",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=e204d5145f78418ba4a21b6a29b94ff6&limit=1"
+        }
+      ],
+      "naicsCode": "334111",
+      "naicsCodes": [
+        "334111"
+      ],
+      "noticeId": "e204d5145f78418ba4a21b6a29b94ff6",
+      "officeAddress": {
+        "zipcode": "80111",
+        "city": "Greenwood Village",
+        "countryCode": "USA",
+        "state": "CO"
+      },
+      "organizationType": "OFFICE",
+      "placeOfPerformance": {
+        "streetAddress": "",
+        "streetAddress2": "",
+        "city": {},
+        "state": {},
+        "zip": "",
+        "country": {}
+      },
+      "pointOfContact": [
+        {
+          "fax": "",
+          "type": "primary",
+          "email": "joseph.wurmstein@va.gov",
+          "phone": "303-712-5740",
+          "title": "Contracting Officer",
+          "fullName": "Joseph B. Wurmstein"
+        }
+      ],
+      "postedDate": "2026-09-30",
+      "resourceLinks": [
+        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/bb6557d0415f4a1a9f02c686f7b8b101/download"
+      ],
+      "responseDeadLine": null,
+      "solicitationNumber": "36C25926Q0864",
+      "title": "7G21--Teleradiology Equipment",
+      "type": "Award Notice",
+      "typeOfSetAside": "SBA",
+      "typeOfSetAsideDescription": "Small Business Set Aside - Total",
+      "uiLink": "https://sam.gov/workspace/contract/opp/e204d5145f78418ba4a21b6a29b94ff6/view",
+      "title_original": "7G21--Teleradiology Equipment",
+      "title_tr": "7G21-Teleradyoloji Ekipmanları",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e204d5145f78418ba4a21b6a29b94ff6",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e204d5145f78418ba4a21b6a29b94ff6",
+      "buyer-country": "United States",
+      "market_region": "ABD / Kuzey Amerika",
+      "buyer-name": "",
+      "deadline-receipt-tender-date-lot": "",
+      "classification-cpv": "334111",
+      "procedure-type": "Award Notice",
+      "source_url": "https://sam.gov/workspace/contract/opp/e204d5145f78418ba4a21b6a29b94ff6/view",
+      "source": "SAM_GOV",
+      "mode": "shadow",
+      "buyer_verified": false,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "deal_score": 45,
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
+      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter 7G21--Teleradiology Equipment https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e204d5145f78418ba4a21b6a29b94ff6 334111",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "United States",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": false,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": false,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "334111",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e204d5145f78418ba4a21b6a29b94ff6. Kategori / ürün grubu: 334111",
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "name": null,
+          "country": "United States",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
+      "active": "Yes",
+      "additionalInfoLink": null,
+      "archiveDate": "2026-10-15",
+      "archiveType": "autocustom",
+      "award": {
+        "date": "2026-09-11",
+        "number": "N00135-26-F-4314",
+        "amount": "79494983.00",
+        "awardee": {
+          "name": "ELECTRIC BOAT CORPORATION",
+          "location": {
+            "city": {
+              "code": "34180",
+              "name": "Groton"
+            },
+            "state": {
+              "code": "CT",
+              "name": "Connecticut"
+            },
+            "zip": "06340",
+            "country": {
+              "code": "USA",
+              "name": "UNITED STATES"
+            }
+          }
+        }
+      },
+      "baseType": "Award Notice",
+      "classificationCode": "1905",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db2dab9874eb4fe985b68f6e80827b07",
+      "fullParentPathCode": "017.1700.NAVSEA.NAVSEA HQ.N00024",
+      "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.NAVSEA HQ.NAVSEA HQ",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=db2dab9874eb4fe985b68f6e80827b07&limit=1"
+        }
+      ],
+      "naicsCode": "336611",
+      "naicsCodes": [
+        "336611"
+      ],
+      "noticeId": "db2dab9874eb4fe985b68f6e80827b07",
+      "officeAddress": {
+        "zipcode": "20376-5000",
+        "city": "WASHINGTON NAVY YARD",
+        "countryCode": "USA",
+        "state": "DC"
+      },
+      "organizationType": "OFFICE",
+      "placeOfPerformance": {
+        "city": {
+          "code": "34180",
+          "name": "Groton"
+        },
+        "state": {
+          "code": "CT",
+          "name": "Connecticut"
+        },
+        "country": {
+          "code": "USA",
+          "name": "UNITED STATES"
+        }
+      },
+      "pointOfContact": [
+        {
+          "fax": "",
+          "type": "primary",
+          "email": "leigh.a.marvin.civ@us.navy.mil",
+          "phone": "2027810485",
+          "fullName": "Leigh Marvin"
+        },
+        {
+          "fax": "",
+          "type": "secondary",
+          "email": "jack.a.klipfel.civ@us.navy.mil",
+          "phone": "2027812932",
+          "fullName": "Jack Klipfel"
+        }
+      ],
+      "postedDate": "2026-09-30",
+      "resourceLinks": null,
+      "responseDeadLine": null,
+      "solicitationNumber": "N00135-26-F-4314",
+      "title": "Post Award Synopsis VIRGINIA Class Materials BOA Order (FY26)",
+      "type": "Award Notice",
+      "typeOfSetAside": "NONE",
+      "typeOfSetAsideDescription": "No Set aside used",
+      "uiLink": "https://sam.gov/workspace/contract/opp/db2dab9874eb4fe985b68f6e80827b07/view",
+      "title_original": "Post Award Synopsis VIRGINIA Class Materials BOA Order (FY26)",
+      "title_tr": "Ödül Sonrası Özet VIRGINIA Sınıfı Malzemeleri BOA Siparişi (26 MY)",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db2dab9874eb4fe985b68f6e80827b07",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db2dab9874eb4fe985b68f6e80827b07",
+      "buyer-country": "United States",
+      "market_region": "ABD / Kuzey Amerika",
+      "buyer-name": "",
+      "deadline-receipt-tender-date-lot": "",
+      "classification-cpv": "336611",
+      "procedure-type": "Award Notice",
+      "source_url": "https://sam.gov/workspace/contract/opp/db2dab9874eb4fe985b68f6e80827b07/view",
+      "source": "SAM_GOV",
+      "mode": "shadow",
+      "buyer_verified": false,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "deal_score": 45,
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
+      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter Post Award Synopsis VIRGINIA Class Materials BOA Order (FY26) https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db2dab9874eb4fe985b68f6e80827b07 336611",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "United States",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": false,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": false,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "336611",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db2dab9874eb4fe985b68f6e80827b07. Kategori / ürün grubu: 336611",
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "name": null,
+          "country": "United States",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
+      "active": "Yes",
+      "additionalInfoLink": null,
+      "archiveDate": "2026-10-09",
+      "archiveType": "auto15",
+      "award": {
+        "date": "2026-09-24",
+        "number": "SP3300-26-P-1089",
+        "amount": "182041.86",
+        "awardee": {
+          "name": "BUY IT SOLUTIONS INC",
+          "location": {
+            "city": {
+              "code": "5639",
+              "name": "Bellerose"
+            },
+            "state": {
+              "code": "NY",
+              "name": "New York"
+            },
+            "zip": "11426",
+            "country": {
+              "code": "USA",
+              "name": "UNITED STATES"
+            }
+          }
+        }
+      },
+      "baseType": "Award Notice",
+      "classificationCode": "6140",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a9982f304a32446ab21436febd5e1e62",
+      "fullParentPathCode": "097.97AS.DLA DISTRIBUTION.SP3300",
+      "fullParentPathName": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA DISTRIBUTION.DLA DISTRIBUTION",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=a9982f304a32446ab21436febd5e1e62&limit=1"
+        }
+      ],
+      "naicsCode": "335910",
+      "naicsCodes": [
+        "335910"
+      ],
+      "noticeId": "a9982f304a32446ab21436febd5e1e62",
+      "officeAddress": {
+        "zipcode": "17070-5002",
+        "city": "NEW CUMBERLAND",
+        "countryCode": "USA",
+        "state": "PA"
+      },
+      "organizationType": "OFFICE",
+      "placeOfPerformance": {
+        "city": {
+          "code": "yokosuka",
+          "name": "yokosuka"
+        },
+        "state": {
+          "code": "JP-14",
+          "name": "Kanagawa"
+        },
+        "country": {
+          "code": "JPN",
+          "name": "JAPAN"
+        }
+      },
+      "pointOfContact": [
+        {
+          "fax": "",
+          "type": "primary",
+          "email": "thomas.semones@dla.mil",
+          "phone": "",
+          "fullName": "Tom Semones"
+        }
+      ],
+      "postedDate": "2026-09-30",
+      "resourceLinks": null,
+      "responseDeadLine": null,
+      "solicitationNumber": "SP3300-26-Q-0250",
+      "title": "Forklift Spare Parts",
+      "type": "Award Notice",
+      "typeOfSetAside": "SBA",
+      "typeOfSetAsideDescription": "Small Business Set Aside - Total",
+      "uiLink": "https://sam.gov/workspace/contract/opp/a9982f304a32446ab21436febd5e1e62/view",
+      "title_original": "Forklift Spare Parts",
+      "title_tr": "Forklift Yedek Parçaları",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a9982f304a32446ab21436febd5e1e62",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a9982f304a32446ab21436febd5e1e62",
+      "buyer-country": "United States",
+      "market_region": "ABD / Kuzey Amerika",
+      "buyer-name": "",
+      "deadline-receipt-tender-date-lot": "",
+      "classification-cpv": "335910",
+      "procedure-type": "Award Notice",
+      "source_url": "https://sam.gov/workspace/contract/opp/a9982f304a32446ab21436febd5e1e62/view",
+      "source": "SAM_GOV",
+      "mode": "shadow",
+      "buyer_verified": false,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "deal_score": 45,
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ön değerlendirme gerekli",
+      "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter Forklift Spare Parts https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a9982f304a32446ab21436febd5e1e62 335910",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "United States",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": false,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": false,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "335910",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a9982f304a32446ab21436febd5e1e62. Kategori / ürün grubu: 335910",
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "name": null,
+          "country": "United States",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
       "id": "OP00452338",
       "notice_type": "Invitation for Bids",
       "project_id": "P180742",
@@ -25947,6 +27528,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -26080,6 +27663,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -26214,6 +27799,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -26348,6 +27935,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -26482,6 +28071,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -26615,6 +28206,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -26748,6 +28341,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -26881,6 +28476,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -27014,6 +28611,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -27148,6 +28747,8 @@
       "commission_status": "pending_deal_value_and_agreement",
       "deal_score": 40,
       "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
       "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
       "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
       "supplier_search_status": "Ajan araştırması bekliyor",
@@ -27248,6 +28849,96 @@
           "status": "not_started"
         }
       }
+    }
+  ],
+  "market_sources": [
+    {
+      "region": "Orta Doğu",
+      "country": "Saudi Arabia",
+      "name": "Saudi Etimad",
+      "url": "https://tenders.etimad.sa/Tender",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "Orta Doğu",
+      "country": "United Arab Emirates",
+      "name": "UAE Federal Digital Procurement",
+      "url": "https://mof.gov.ae/en/public-finance/government-procurement/digital-procurement-platform/",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "Çin / Doğu Asya",
+      "country": "China",
+      "name": "China Government Procurement",
+      "url": "https://www.ccgp.gov.cn/",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "Çin / Doğu Asya",
+      "country": "China",
+      "name": "National Public Resources Trading Platform",
+      "url": "https://www.ggzy.gov.cn/",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "ABD / Kuzey Amerika",
+      "country": "United States",
+      "name": "SAM.gov Contract Opportunities",
+      "url": "https://sam.gov/opportunities",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "ABD / Kuzey Amerika",
+      "country": "Canada",
+      "name": "CanadaBuys",
+      "url": "https://canadabuys.canada.ca/",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "Asya-Pasifik",
+      "country": "India",
+      "name": "India CPPP",
+      "url": "https://eprocure.gov.in/eprocure/app",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "Asya-Pasifik",
+      "country": "Singapore",
+      "name": "GeBIZ",
+      "url": "https://www.gebiz.gov.sg/",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "Afrika",
+      "country": "South Africa",
+      "name": "South Africa eTenders",
+      "url": "https://www.etenders.gov.za/",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "Afrika",
+      "country": "Kenya",
+      "name": "Kenya PPIP",
+      "url": "https://tenders.go.ke/",
+      "mode": "official_portal",
+      "scale": "large_priority"
+    },
+    {
+      "region": "Afrika",
+      "country": "Morocco",
+      "name": "Morocco Public Procurement",
+      "url": "https://www.marchespublics.gov.ma/",
+      "mode": "official_portal",
+      "scale": "large_priority"
     }
   ]
 }
