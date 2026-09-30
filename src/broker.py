@@ -149,6 +149,20 @@ def demand_summary_tr(item):
     if cat: parts.append("Kategori / ürün grubu: "+cat)
     return ". ".join(parts).strip() or "İlan kaynağında ayrıntılı talep açıklaması bulunmuyor."
 
+def is_tradeable_goods(item):
+    text=(" ".join([text_of(item.get("title_original")),text_of(item.get("detail_original")),text_of(item.get("classification-cpv")),text_of(item.get("contract-nature")),text_of(item.get("procurement_category"))])).lower()
+    nature=text_of(item.get("contract-nature")).lower()
+    goods=["supplies","goods","supply of","purchase of","delivery of","equipment","machinery","machine","vehicle","medical device","material","furniture","food","chemical","textile","cable","steel","spare part","hardware","instrument","consumable"]
+    services=["services","consulting","consultancy","maintenance service","repair service","training","study","supervision","audit","insurance","cleaning","security service","software development","technical assistance","legal service"]
+    works=["works","construction works","civil works","renovation","reconstruction"]
+    g=sum(1 for w in goods if w in text)
+    sv=sum(1 for w in services if w in text)
+    wk=sum(1 for w in works if w in text)
+    if "supplies" in nature or "goods" in nature: g+=5
+    if "services" in nature: sv+=5
+    if "works" in nature: wk+=5
+    return g>0 and g>sv and g>wk
+
 def commercial_signals(item):
     text=(" ".join([text_of(item.get("title_original")),text_of(item.get("detail_original")),text_of(item.get("classification-cpv")),text_of(item.get("categories"))])).lower()
     goods_words=["supply","purchase","procurement","equipment","material","goods","product","vehicle","machine","medical","food","chemical","textile","steel","cable","furniture"]
@@ -313,6 +327,16 @@ def main():
                 out.append(item)
         except Exception:
             continue
+
+    # Global Broker is a physical-goods brokerage engine: keep opportunities
+    # where a product can be sourced, bought and resold/brokered. Exclude pure
+    # services, consultancy and construction works from the commercial radar.
+    goods_out=[]
+    for item in out:
+        if is_tradeable_goods(item):
+            item["opportunity_type"]="SATILABİLİR_ÜRÜN"
+            goods_out.append(item)
+    out=goods_out
 
     # Deduplicate across sources by normalized title + buyer/country.
     deduped=[]
