@@ -102,6 +102,13 @@ def title_tr(n):
         if k in cats:return v
     return "Uluslararası satın alma talebi"
 
+def choose_detail_text(n):
+    d=text_of(n.get("description-lot")).strip()
+    if d: return d
+    q=text_of(n.get("quantity-lot")).strip()
+    t=first_title(n).strip()
+    return ("Talep: "+t+(". Miktar: "+q if q else "")).strip()
+
 def score(row):
     # Product-neutral initial score. Later agents add supplier, landed-cost,
     # payment-risk, sanctions/compliance, margin and close-probability signals.
@@ -141,7 +148,7 @@ def normalize_world_bank(n):
     item["buyer-name"]=buyer
     item["deadline-receipt-tender-date-lot"]=deadline
     item["categories"]=categories(item["detail_original"])\n    item["classification-cpv"]=text_of(n.get("procurement_category") or n.get("sector"))\n    item["procedure-type"]=text_of(n.get("procurement_method") or n.get("notice_type"))\n    item["source_url"]=text_of(n.get("url"))
-    item["source"]="WORLD_BANK"
+    item["source"]="WORLD_BANK"\n    item["region_hint"]="GLOBAL_WORLD_BANK"
     item["mode"]="shadow"
     item["buyer_verified"]=bool(buyer)
     item["supplier_status"]="pending"
@@ -173,7 +180,7 @@ def main():
         item["title_original"]=first_title(n)
         item["title_tr"]=auto_translate_tr(first_title(n)) or title_tr(n)
         item["detail_original"]=preferred_lang_text(n.get("description-lot")) or first_title(n)
-        item["detail_tr"]=auto_translate_tr(item["detail_original"]) or title_tr({"notice-title": n.get("description-lot")}) if n.get("description-lot") else (auto_translate_tr(item["detail_original"]) or title_tr(n))
+        item["detail_tr"]=auto_translate_tr(item["detail_original"]) or title_tr(n)
         item["buyer-name"]=preferred_lang_text(n.get("buyer-name"))\n        item["buyer-country"]=preferred_lang_text(n.get("buyer-country"))\n        item["buyer_verified"]=bool(item["buyer-name"])
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
