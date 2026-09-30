@@ -1,14 +1,27 @@
 <!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101828"><link rel="manifest" href="manifest.webmanifest"><title>Global Broker AI</title><style>
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f2f4f7;color:#101828}header{background:#101828;color:white;padding:28px 18px 20px}.wrap{max-width:900px;margin:auto}.badge{opacity:.7;font-size:12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:16px}.card{background:white;border-radius:18px;padding:18px;box-shadow:0 2px 10px #0000000d}.card b{font-size:17px}.card p{margin:8px 0 0;color:#667085;font-size:13px}.wide{grid-column:1/-1}.score{font-size:32px;font-weight:700}nav{position:sticky;bottom:0;background:white;padding:12px;display:flex;justify-content:space-around;border-top:1px solid #eee}button{border:0;background:#101828;color:white;border-radius:12px;padding:10px 14px}</style></head><body>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f2f4f7;color:#101828}header{background:#101828;color:white;padding:28px 18px 20px}.wrap{max-width:900px;margin:auto}.badge{opacity:.7;font-size:12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:16px}.card{background:white;border-radius:18px;padding:18px;box-shadow:0 2px 10px #0000000d;cursor:pointer}.card b{font-size:17px}.card p{margin:8px 0 0;color:#667085;font-size:13px}.wide{grid-column:1/-1}.hidden{display:none}.back{margin-bottom:14px;background:#e4e7ec;color:#101828}button{border:0;background:#101828;color:white;border-radius:12px;padding:10px 14px}pre{white-space:pre-wrap;font-size:12px;background:#f8fafc;padding:12px;border-radius:12px;overflow:auto}nav{position:sticky;bottom:0;background:white;padding:12px;display:flex;justify-content:space-around;border-top:1px solid #eee}</style></head><body>
 <header><div class="wrap"><div class="badge">SHADOW MODE</div><h1>Global Broker AI</h1><div>Dünya Ticaret Kontrol Merkezi</div></div></header>
-<main class="wrap"><div class="grid">
-<div class="card"><b>Fırsatlar</b><p>Global RFQ ve satın alma talepleri</p></div>
-<div class="card"><b>Ajanlar</b><p>Çalışma, bekleme ve hata durumları</p></div>
-<div class="card"><b>Alıcılar</b><p>Doğrulama ve güven sinyalleri</p></div>
-<div class="card"><b>Tedarikçiler</b><p>Üretici ve teklif havuzu</p></div>
-<div class="card"><b>Fiyat / Marj</b><p>Landed cost ve komisyon</p></div>
-<div class="card"><b>Lojistik</b><p>Rota, navlun ve teslimat</p></div>
-<div class="card wide"><b>CEO Raporu</b><p>En yüksek Deal Score fırsatları burada özetlenecek.</p></div>
-<div class="card wide"><b>Geliştirme / İsteklerim</b><p>Yeni özellik taleplerini buradan yöneteceğiz.</p><br><button>Yeni istek</button></div>
-</div></main><nav><span>Ana Sayfa</span><span>Fırsatlar</span><span>Ajanlar</span><span>Ayarlar</span></nav>
-<script>if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js");</script></body></html>
+<main class="wrap"><section id="home"><div class="grid">
+<div class="card" onclick="openPanel('opps')"><b>Fırsatlar</b><p>Canlı radar çıktısı ve Deal Score</p></div>
+<div class="card" onclick="openPanel('agents')"><b>Ajanlar</b><p>Çalışma ve bekleme durumları</p></div>
+<div class="card" onclick="openPanel('buyers')"><b>Alıcılar</b><p>Doğrulama ve güven sinyalleri</p></div>
+<div class="card" onclick="openPanel('suppliers')"><b>Tedarikçiler</b><p>Üretici ve teklif havuzu</p></div>
+<div class="card" onclick="openPanel('pricing')"><b>Fiyat / Marj</b><p>Landed cost ve komisyon</p></div>
+<div class="card" onclick="openPanel('logistics')"><b>Lojistik</b><p>Rota, navlun ve teslimat</p></div>
+<div class="card wide" onclick="openPanel('report')"><b>CEO Raporu</b><p>En yüksek puanlı fırsatların özeti</p></div>
+<div class="card wide" onclick="openPanel('requests')"><b>Geliştirme / İsteklerim</b><p>Yeni özellik fikirlerini kaydet</p></div>
+</div></section><section id="panel" class="hidden"><div class="grid"><div class="card wide"><button class="back" onclick="home()">← Geri</button><h2 id="title"></h2><div id="content"></div></div></div></section></main>
+<nav><span onclick="home()">Ana Sayfa</span><span onclick="openPanel('opps')">Fırsatlar</span><span onclick="openPanel('agents')">Ajanlar</span><span onclick="openPanel('requests')">İstekler</span></nav>
+<script>
+const names={opps:"Fırsatlar",agents:"Ajanlar",buyers:"Alıcılar",suppliers:"Tedarikçiler",pricing:"Fiyat / Marj",logistics:"Lojistik",report:"CEO Raporu",requests:"Geliştirme / İsteklerim"};
+function home(){panel.classList.add("hidden");document.getElementById("home").classList.remove("hidden")}
+async function openPanel(k){document.getElementById("home").classList.add("hidden");panel.classList.remove("hidden");title.textContent=names[k];content.innerHTML="<p>Yükleniyor…</p>";
+ if(k==="opps"||k==="report"){try{let r=await fetch("../data/latest-opportunities.json?"+Date.now());if(!r.ok)throw 0;let d=await r.json();let a=d.opportunities||[];content.innerHTML="<p>"+a.length+" fırsat bulundu.</p>"+a.slice(0,20).map(x=>"<div class='card'><b>"+(x["notice-title"]||x.title||"Fırsat")+"</b><p>Deal Score: "+(x.deal_score??"-")+" · "+(x["buyer-country"]||x.buyer_country||"")+"</p></div>").join("")}catch(e){content.innerHTML="<p>Henüz canlı tarama çıktısı oluşmadı. İlk başarılı Shadow Scan sonrası burada görünecek.</p>"}}
+ else if(k==="agents") content.innerHTML="<p>Opportunity Agent: aktif</p><p>Buyer, Supplier, Price, Logistics, Compliance ve Risk ajanları: sırada</p>";
+ else if(k==="requests"){let saved=JSON.parse(localStorage.getItem("gb_requests")||"[]");content.innerHTML='<input id="req" placeholder="Yeni özellik isteği" style="width:70%;padding:10px"><button onclick="saveReq()">Ekle</button><div id="reqs"></div>';showReq(saved)}
+ else content.innerHTML="<p>Bu modül ajan verileri bağlandıkça otomatik dolacak.</p>";
+}
+function showReq(a){reqs.innerHTML=a.map((x,i)=>"<p>• "+x+"</p>").join("")}
+function saveReq(){let a=JSON.parse(localStorage.getItem("gb_requests")||"[]");if(req.value.trim()){a.push(req.value.trim());localStorage.setItem("gb_requests",JSON.stringify(a));req.value="";showReq(a)}}
+if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js");
+</script></body></html>
