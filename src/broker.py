@@ -106,7 +106,7 @@ def score(row):
 
 def world_bank_search(limit: int = 200):
     """Public World Bank procurement notices. Fail closed: no synthetic rows."""
-    params=urllib.parse.urlencode({"format":"json","rows":limit,"os":0,"srce":"both","srt":"submission_deadline_date","order":"desc","apilang":"en","fl":"id,notice_type,publication_date,submission_deadline_date,project_ctry_name,project_id,project_name,notice_text,notice_title,description"})
+    params=urllib.parse.urlencode({"format":"json","rows":limit,"os":0,"srce":"both","srt":"submission_deadline_date","order":"desc","apilang":"en","fl":"id,url,notice_type,publication_date,project_id,bid_description,procurement_category,procurement_method,deadline_date,country_code,country_name,sector,project_name"})
     req=urllib.request.Request(WORLD_BANK_URL+"?"+params,headers={"User-Agent":"GlobalBrokerAI/1.0","Accept":"application/json"})
     try:
         with urllib.request.urlopen(req,timeout=40) as r:
@@ -118,19 +118,19 @@ def world_bank_search(limit: int = 200):
         return []
 
 def normalize_world_bank(n):
-    title=text_of(n.get("notice_title") or n.get("description") or n.get("title"))
-    country=text_of(n.get("project_ctry_name") or n.get("country_name") or n.get("country") or n.get("regionname"))
-    deadline=text_of(n.get("submission_deadline_date") or n.get("deadline") or n.get("closing_date"))
+    title=text_of(n.get("bid_description") or n.get("notice_title") or n.get("description") or n.get("title"))
+    country=text_of(n.get("country_name") or n.get("project_ctry_name") or n.get("country") or n.get("regionname"))
+    deadline=text_of(n.get("deadline_date") or n.get("submission_deadline_date") or n.get("deadline") or n.get("closing_date"))
     buyer=text_of(n.get("borrower") or n.get("agency") or n.get("project_name"))
     item=dict(n)
     item["title_original"]=title
     item["title_tr"]=auto_translate_tr(title) or title
-    item["detail_original"]=text_of(n.get("notice_text") or n.get("description") or title)
+    item["detail_original"]=text_of(n.get("bid_description") or n.get("notice_text") or n.get("description") or title)
     item["detail_tr"]=auto_translate_tr(item["detail_original"]) or item["title_tr"]
     item["buyer-country"]=country
     item["buyer-name"]=buyer
     item["deadline-receipt-tender-date-lot"]=deadline
-    item["categories"]=categories(item["detail_original"])
+    item["categories"]=categories(item["detail_original"])\n    item["classification-cpv"]=text_of(n.get("procurement_category") or n.get("sector"))\n    item["procedure-type"]=text_of(n.get("procurement_method") or n.get("notice_type"))\n    item["source_url"]=text_of(n.get("url"))
     item["source"]="WORLD_BANK"
     item["mode"]="shadow"
     item["buyer_verified"]=bool(buyer)
