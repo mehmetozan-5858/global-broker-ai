@@ -103,9 +103,14 @@ def score(row):
     return min(100,s)
 
 def main():
-    today=date.today().strftime("%Y%m%d")
-    query=f"publication-date = {today}"
-    raw=ted_search(query,100)
+    # Scan a rolling window instead of only today's notices. This gives the
+    # regional agents a broader live pool while TED remains the first source.
+    # More official sources (UNGM, World Bank, SAM.gov) are added as separate
+    # adapters; never fabricate rows when a source cannot be queried.
+    end=date.today()
+    start=end-timedelta(days=14)
+    query=f"publication-date >= {start.strftime('%Y%m%d')} AND publication-date <= {end.strftime('%Y%m%d')}"
+    raw=ted_search(query,250)
     notices=raw.get("notices",raw.get("results",[]))
     out=[]
     for n in notices:
