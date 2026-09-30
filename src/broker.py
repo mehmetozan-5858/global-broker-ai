@@ -1,5 +1,5 @@
 from __future__ import annotations
-import json, urllib.request
+import json, urllib.request, urllib.parse
 from datetime import date, timedelta
 from urllib.error import HTTPError
 
@@ -64,6 +64,18 @@ def first_title(n):
     if isinstance(v,list): return str(v[0]) if v else ""
     return str(v or "")
 
+def auto_translate_tr(text):
+    text=(text or "").strip()
+    if not text: return ""
+    try:
+        q=urllib.parse.urlencode({"client":"gtx","sl":"auto","tl":"tr","dt":"t","q":text[:4500]})
+        req=urllib.request.Request("https://translate.googleapis.com/translate_a/single?"+q,headers={"User-Agent":"GlobalBrokerAI/1.0"})
+        with urllib.request.urlopen(req,timeout=20) as r:
+            data=json.load(r)
+        return "".join(p[0] for p in data[0] if p and p[0]).strip()
+    except Exception:
+        return ""
+
 def title_tr(n):
     original=first_title(n).strip()
     if not original: return "Uluslararası satın alma talebi"
@@ -103,9 +115,9 @@ def main():
         item["source"]="TED"
         item["mode"]="shadow"
         item["title_original"]=first_title(n)
-        item["title_tr"]=title_tr(n)
+        item["title_tr"]=auto_translate_tr(first_title(n)) or title_tr(n)
         item["detail_original"]=text_of(n.get("description-lot")) or first_title(n)
-        item["detail_tr"]=title_tr({"notice-title": n.get("description-lot")}) if n.get("description-lot") else title_tr(n)
+        item["detail_tr"]=auto_translate_tr(item["detail_original"]) or title_tr({"notice-title": n.get("description-lot")}) if n.get("description-lot") else (auto_translate_tr(item["detail_original"]) or title_tr(n))
         item["buyer_verified"]=bool(n.get("buyer-name"))
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
