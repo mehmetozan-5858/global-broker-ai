@@ -1,6 +1,7 @@
 from __future__ import annotations
 import json, urllib.request
-from datetime import date, timedelta\nfrom urllib.error import HTTPError
+from datetime import date, timedelta
+from urllib.error import HTTPError
 
 TED_URL = "https://api.ted.europa.eu/v3/notices/search"
 
