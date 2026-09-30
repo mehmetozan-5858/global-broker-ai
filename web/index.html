@@ -43,7 +43,7 @@ const cards=[
 ['report','CEO Raporu','Günlük / haftalık özet rapor','https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80'],
 ['requests','Geliştirme / İsteklerim','Yeni özellik talepleri ve notlar','']
 ];
-const cardsEl=document.getElementById('cards');cards.forEach(x=>{let d=document.createElement('div');d.className='card'+(x[3]?'':' plain');d.onclick=()=>openCard(x[0],x[1]);d.innerHTML=(x[3]?'<div class="pic" style="background-image:url('+x[3]+')"></div><div class="shade"></div>':'')+'<div class="ico">'+(icons[x[0]]||I.check)+'</div><div class="txt"><b>'+x[1]+'</b><p>'+x[2]+'</p></div><div class="arrow">›</div>';cardsEl.appendChild(d)});
+const cardsEl=document.getElementById('cards');for(const x of cards){const d=document.createElement('div');d.className='card'+(x[3]?'':' plain');d.addEventListener('click',function(){openCard(x[0],x[1])});d.innerHTML=(x[3]?'<div class="pic" style="background-image:url('+x[3]+')"></div><div class="shade"></div>':'')+'<div class="ico">'+(icons[x[0]]||I.check)+'</div><div class="txt"><b>'+x[1]+'</b><p>'+x[2]+'</p></div><div class="arrow">›</div>';cardsEl.appendChild(d)}
 let DATA={opportunities:[]};
 async function loadData(){try{const r=await fetch('./data/latest-opportunities.json?fresh='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('data '+r.status);DATA=await r.json()}catch(e){DATA={opportunities:[]}}const a=Array.isArray(DATA.opportunities)?DATA.opportunities:[];document.getElementById('sOpp').textContent=a.length;document.getElementById('sBuyer').textContent=a.filter(x=>x.buyer_verified===true).length;document.getElementById('sSupplier').textContent=a.filter(x=>x.supplier_status==='verified').length;document.getElementById('sOffer').textContent=a.filter(x=>x.offer_status==='active').length}
 function goHome(){panel.style.display='none';home.style.display='block'}
@@ -83,5 +83,5 @@ else if(k==='settings')pc.innerHTML='<div class="item"><b>Çalışma Modu: Shado
 else if(k==='requests'){let q=JSON.parse(localStorage.getItem('gb_requests')||'[]');pc.innerHTML='<div class="item"><input id="req" placeholder="Yeni özellik isteği" style="width:70%;padding:10px"><button onclick="saveReq()">Ekle</button><div id="rq"></div></div>';showReq(q)}
 else pc.innerHTML='<div class="item"><b>Durum</b><p class="muted">Shadow Mode. Veri bekleniyor.</p></div>'}
 function showReq(a){rq.innerHTML=a.map(x=>'<p>• '+x+'</p>').join('')}function saveReq(){let a=JSON.parse(localStorage.getItem('gb_requests')||'[]');if(req.value.trim()){a.push(req.value.trim());localStorage.setItem('gb_requests',JSON.stringify(a));req.value='';showReq(a)}}
-loadData();if('serviceWorker'in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));caches.keys().then(ks=>ks.forEach(k=>caches.delete(k)))}
+window.addEventListener('load',()=>{loadData()});
 </script></body></html>
