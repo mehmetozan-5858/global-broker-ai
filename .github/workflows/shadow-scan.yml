@@ -7,7 +7,8 @@ on:
   push:
     paths:
       - 'src/**'
-      - '.github/workflows/shadow-scan.yml'\n      - '.github/workflows/shadow-scan-trigger.txt'
+      - '.github/workflows/shadow-scan.yml'
+      - '.github/workflows/shadow-scan-trigger.txt'
 
 permissions:
   contents: write
@@ -22,6 +23,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Fetch, normalize and score live global opportunities
+        env:
+          SAM_API_KEY: ${{ secrets.SAM_API_KEY }}
         run: |
           mkdir -p data
           python src/broker.py > data/latest-opportunities.json
