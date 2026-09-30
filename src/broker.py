@@ -27,7 +27,7 @@ def ted_search(query: str, limit: int = 100):
         "fields":["publication-number","notice-title","buyer-name","buyer-country",
                   "publication-date","deadline-receipt-tender-date-lot",
                   "estimated-value-procurement","classification-cpv"],
-        "page":1,"limit":limit,"scope":"ACTIVE","checkQuerySyntax":True,"paginationMode":"PAGE_NUMBER"
+        "page":1,"limit":limit,"checkQuerySyntax":False,"paginationMode":"PAGE_NUMBER"
     }).encode()
     req=urllib.request.Request(TED_URL,data=body,headers={"Content-Type":"application/json","Accept":"application/json"})
     with urllib.request.urlopen(req,timeout=40) as r:
