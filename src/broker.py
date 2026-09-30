@@ -157,6 +157,34 @@ def commercial_signals(item):
       "commission_potential":"İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz"
     }
 
+def agent_pipeline(item):
+    detail=(" ".join([text_of(item.get("title_original")),text_of(item.get("detail_original")),text_of(item.get("classification-cpv"))])).strip()
+    country=text_of(item.get("buyer-country")).strip()
+    deadline=text_of(item.get("deadline-receipt-tender-date-lot")).strip()
+    supplier={
+      "status":"research_pending",
+      "query":("Turkey manufacturer exporter "+detail[:180]).strip(),
+      "requirement":"Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+    }
+    price={
+      "status":"quote_pending",
+      "basis":"Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+      "currency":"pending"
+    }
+    logistics={
+      "status":"route_pending",
+      "destination_country":country or "pending",
+      "incoterm":"pending",
+      "freight":"pending"
+    }
+    risk={
+      "status":"due_diligence_pending",
+      "buyer_source_verified":bool(item.get("buyer-name")),
+      "checks":["alıcı tüzel kişilik","ülke/yaptırım","ödeme şartı","ticaret ve teslimat riski"]
+    }
+    return {"supplier_agent":supplier,"price_agent":price,"logistics_agent":logistics,"risk_agent":risk,
+            "pipeline_stage":"SUPPLIER_RESEARCH","deadline_known":bool(deadline)}
+
 def score(row):
     # Product-neutral initial score. Later agents add supplier, landed-cost,
     # payment-risk, sanctions/compliance, margin and close-probability signals.
