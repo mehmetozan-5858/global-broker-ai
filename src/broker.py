@@ -25,7 +25,7 @@ CATEGORY_HINTS = {
 def ted_search(query: str, limit: int = 100):
     body=json.dumps({
         "query":query,
-        "fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","classification-cpv"],
+        "fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","classification-cpv","description-lot","quantity-lot","place-performance","procedure-type","contract-nature","duration-lot","award-criterion-type","selection-criterion","reserved-procurement","links"],
         "page":1,"limit":limit,"scope":"ACTIVE","checkQuerySyntax":False,"paginationMode":"PAGE_NUMBER","onlyLatestVersions":False
     }).encode()
     req=urllib.request.Request(TED_URL,data=body,headers={"Content-Type":"application/json","Accept":"*/*"})
@@ -103,7 +103,7 @@ def main():
         item["source"]="TED"
         item["mode"]="shadow"
         item["title_original"]=first_title(n)
-        item["title_tr"]=title_tr(n)
+        item["title_tr"]=title_tr(n)\n        item["detail_original"]=text_of(n.get("description-lot")) or first_title(n)\n        item["detail_tr"]=title_tr({"notice-title": n.get("description-lot")}) if n.get("description-lot") else title_tr(n)
         item["buyer_verified"]=bool(n.get("buyer-name"))
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
