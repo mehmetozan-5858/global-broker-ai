@@ -54,14 +54,24 @@ TR_TERMS = {
 "purchase":"satın alma","procurement":"tedarik","delivery":"teslimat","works":"yapım işleri","system":"sistem","systems":"sistemler"
 }
 
+def preferred_lang_text(v):
+    if isinstance(v,str): return v
+    if isinstance(v,dict):
+        for lang in ("eng","en"):
+            x=v.get(lang)
+            if isinstance(x,list) and x: return text_of(x[0])
+            if x: return text_of(x)
+        for x in v.values():
+            t=text_of(x)
+            if t: return t
+    if isinstance(v,list): return text_of(v[0]) if v else ""
+    return text_of(v)
+
 def first_title(n):
     v=n.get("notice-title","")
     if isinstance(v,str): return v
     if isinstance(v,dict):
-        vals=[]
-        for x in v.values():
-            vals += x if isinstance(x,list) else [x]
-        return next((str(x) for x in vals if x), "")
+        return preferred_lang_text(v)
     if isinstance(v,list): return str(v[0]) if v else ""
     return str(v or "")
 
@@ -162,9 +172,9 @@ def main():
         item["mode"]="shadow"
         item["title_original"]=first_title(n)
         item["title_tr"]=auto_translate_tr(first_title(n)) or title_tr(n)
-        item["detail_original"]=text_of(n.get("description-lot")) or first_title(n)
+        item["detail_original"]=preferred_lang_text(n.get("description-lot")) or first_title(n)
         item["detail_tr"]=auto_translate_tr(item["detail_original"]) or title_tr({"notice-title": n.get("description-lot")}) if n.get("description-lot") else (auto_translate_tr(item["detail_original"]) or title_tr(n))
-        item["buyer_verified"]=bool(n.get("buyer-name"))
+        item["buyer-name"]=preferred_lang_text(n.get("buyer-name"))\n        item["buyer-country"]=preferred_lang_text(n.get("buyer-country"))\n        item["buyer_verified"]=bool(item["buyer-name"])
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
         item["compliance_status"]="source_verified_buyer_pending_due_diligence" if n.get("buyer-name") else "pending"
