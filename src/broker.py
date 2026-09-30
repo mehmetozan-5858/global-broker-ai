@@ -24,9 +24,7 @@ CATEGORY_HINTS = {
 def ted_search(query: str, limit: int = 100):
     body=json.dumps({
         "query":query,
-        "fields":["publication-number","notice-title","buyer-name","buyer-country",
-                  "publication-date","deadline-receipt-tender-date-lot",
-                  "estimated-value-procurement","classification-cpv"],
+        "fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","estimated-value-procurement","classification-cpv"],
         "page":1,"limit":limit,"checkQuerySyntax":False,"paginationMode":"PAGE_NUMBER"
     }).encode()
     req=urllib.request.Request(TED_URL,data=body,headers={"Content-Type":"application/json","Accept":"application/json"})
@@ -57,7 +55,7 @@ def score(row):
 
 def main():
     start=(date.today()-timedelta(days=7)).isoformat()
-    query=f"publication-date >= {start}"
+    query=f"publication-date = [{start} TO *]"
     raw=ted_search(query,100)
     notices=raw.get("notices",raw.get("results",[]))
     out=[]
