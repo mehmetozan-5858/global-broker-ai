@@ -41,10 +41,26 @@ cards.forEach(x=>{cardsEl=document.getElementById('cards');let d=document.create
 let DATA={opportunities:[]};
 async function loadData(){try{let r=await fetch('data/latest-opportunities.json?'+Date.now(),{cache:'no-store'});if(r.ok)DATA=await r.json()}catch(e){}let a=DATA.opportunities||[];sOpp.textContent=a.length;sBuyer.textContent=a.filter(x=>x.buyer_verified===true).length;sSupplier.textContent=a.filter(x=>x.supplier_status==='verified').length;sOffer.textContent=a.filter(x=>x.offer_status==='active').length}
 function goHome(){panel.style.display='none';home.style.display='block'}
+function val(x,...ks){for(const k of ks){if(x&&x[k]!=null&&x[k]!=='')return Array.isArray(x[k])?x[k].join(', '):String(x[k])}return 'Bekleniyor'}
+function oppRows(a,mode){if(!a.length)return '<div class="item">Henüz gerçek tarama çıktısı yok. Veri bekleniyor.</div>';return a.slice(0,50).map(x=>{let title=val(x,'notice-title','title'),buyer=val(x,'buyer-name','buyer'),country=val(x,'buyer-country','buyer_country'),deadline=val(x,'deadline-receipt-tender-date-lot','deadline'),value=val(x,'estimated-value-procurement','estimated_value'),cat=val(x,'categories','product_category');let body=mode==='buyers'?'Alıcı: '+buyer+' · Ülke: '+country+' · Doğrulama: '+(x.buyer_verified===true?'Doğrulandı':'Bekleniyor'):mode==='suppliers'?'Kategori: '+cat+' · Tedarikçi eşleşmesi: '+val(x,'supplier_status'):mode==='pricing'?'Tahmini değer: '+value+' · Marj: '+val(x,'margin_status'):mode==='logistics'?'Ülke: '+country+' · Landed cost: '+val(x,'landed_cost_status'):mode==='risk'?'Compliance: '+val(x,'compliance_status')+' · Alıcı doğrulama: '+(x.buyer_verified===true?'Doğrulandı':'Bekleniyor'):mode==='trade'?'Son tarih: '+deadline+' · Ticari şartlar: Bekleniyor':mode==='communication'?'Teklif/yazışma taslağı: Shadow Mode — dışarı gönderilmez':mode==='negotiation'?'Pazarlık durumu: Bekleniyor — dış temas yok':mode==='contract'?'Sözleşme: Hazırlanmadı — insan onayı zorunlu':mode==='commission'?'Komisyon hakkı: Bekleniyor':mode==='audit'?'Audit: kaynak mevcut · doğrulanmamış alanlar beklemede':'Alıcı: '+buyer+' · '+country+' · Son tarih: '+deadline;return '<div class="item"><b>'+title+'</b><p class="muted">'+body+'</p><p class="muted">Deal Score: '+(x.deal_score??'-')+' · Kaynak: '+val(x,'source')+'</p></div>'}).join('')}
 function openCard(k,t){home.style.display='none';panel.style.display='block';pt.textContent=t;let a=DATA.opportunities||[];
-if(k==='opps'||k==='report')pc.innerHTML=a.length?a.slice(0,50).map(x=>'<div class="item"><b>'+(x['notice-title']||x.title||'Fırsat')+'</b><p class="muted">Deal Score: '+(x.deal_score??'-')+' · '+(x['buyer-country']||x.buyer_country||'')+'</p></div>').join(''):'<div class="item">Henüz gerçek tarama çıktısı yok. Veri bekleniyor.</div>';
+if(k==='opps')pc.innerHTML=oppRows(a,'opps');
+else if(k==='buyers')pc.innerHTML=oppRows(a,'buyers');
+else if(k==='suppliers')pc.innerHTML=oppRows(a,'suppliers');
+else if(k==='pricing')pc.innerHTML=oppRows(a,'pricing');
+else if(k==='logistics')pc.innerHTML=oppRows(a,'logistics');
+else if(k==='trade')pc.innerHTML=oppRows(a,'trade');
+else if(k==='risk')pc.innerHTML=oppRows(a,'risk');
+else if(k==='communication')pc.innerHTML=oppRows(a,'communication');
+else if(k==='negotiation')pc.innerHTML=oppRows(a,'negotiation');
+else if(k==='contract')pc.innerHTML=oppRows(a,'contract');
+else if(k==='commission')pc.innerHTML=oppRows(a,'commission');
+else if(k==='audit')pc.innerHTML=oppRows(a,'audit');
+else if(k==='ceo'||k==='report')pc.innerHTML='<div class="item"><b>CEO Özeti</b><p class="muted">Aktif fırsat: '+a.length+' · Doğrulanan alıcı: '+a.filter(x=>x.buyer_verified===true).length+' · Doğrulanan tedarikçi: '+a.filter(x=>x.supplier_status==="verified").length+' · Teklif aşaması: '+a.filter(x=>x.offer_status==="active").length+'</p></div>'+oppRows(a,'opps');
+else if(k==='agents')pc.innerHTML=cards.filter(x=>!['requests'].includes(x[0])).map(x=>'<div class="item" onclick="openCard(\''+x[0]+'\',\''+x[1]+'\')"><b>'+x[1]+'</b><p class="muted">'+x[2]+'</p></div>').join('');
+else if(k==='settings')pc.innerHTML='<div class="item"><b>Çalışma Modu: Shadow</b><p class="muted">Tarama ve analiz otomatik. Dış mesaj, teklif, sözleşme ve para hareketi insan onayı olmadan yapılmaz.</p></div><div class="item"><b>Veri İlkesi</b><p class="muted">Bilinmeyen fiyat, alıcı, tedarikçi veya marj uydurulmaz.</p></div>';
 else if(k==='requests'){let q=JSON.parse(localStorage.getItem('gb_requests')||'[]');pc.innerHTML='<div class="item"><input id="req" placeholder="Yeni özellik isteği" style="width:70%;padding:10px"><button onclick="saveReq()">Ekle</button><div id="rq"></div></div>';showReq(q)}
-else pc.innerHTML='<div class="item"><b>Durum</b><p class="muted">Shadow Mode. Bu modül gerçek ajan verisi bağlandıkça burada güncellenecek. Bilinmeyen değerler uydurulmaz.</p></div>'}
+else pc.innerHTML='<div class="item"><b>Durum</b><p class="muted">Shadow Mode. Veri bekleniyor.</p></div>'}
 function showReq(a){rq.innerHTML=a.map(x=>'<p>• '+x+'</p>').join('')}function saveReq(){let a=JSON.parse(localStorage.getItem('gb_requests')||'[]');if(req.value.trim()){a.push(req.value.trim());localStorage.setItem('gb_requests',JSON.stringify(a));req.value='';showReq(a)}}
 loadData();if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
 </script></body></html>
