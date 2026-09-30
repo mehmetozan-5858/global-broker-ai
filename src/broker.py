@@ -1,44 +1,62 @@
 from __future__ import annotations
-from dataclasses import dataclass, asdict
-from datetime import date
-import json
+import json, re, urllib.request
+from datetime import date, timedelta
 
-@dataclass
-class Opportunity:
-    source: str
-    buyer: str
-    country: str
-    product: str
-    quantity: str = ""
-    deadline: str = ""
-    estimated_value_usd: float = 0
-    buyer_verified: bool = False
-    supplier_signal: int = 0      # 0-100
-    margin_signal: int = 0        # 0-100
+TED_URL = "https://api.ted.europa.eu/v3/notices/search"
+KEYWORDS = {
+    "fertilizer": ["fertilizer","fertiliser","urea","ammonium","phosphate","potash"],
+    "mining": ["bauxite","ore","mineral","copper","aluminium","aluminum","iron ore"],
+    "industrial": ["industrial raw material","raw materials","chemical products"]
+}
 
-def clamp(v: float) -> int:
-    return max(0, min(100, round(v)))
+def ted_search(query: str, limit: int = 100):
+    body = json.dumps({
+        "query": query,
+        "fields": ["publication-number","notice-title","buyer-name","buyer-country",
+                   "publication-date","deadline-receipt-tender-date-lot",
+                   "estimated-value-procurement","classification-cpv"],
+        "page": 1, "limit": limit, "paginationMode": "PAGE_NUMBER"
+    }).encode()
+    req=urllib.request.Request(TED_URL,data=body,headers={"Content-Type":"application/json","Accept":"application/json"})
+    with urllib.request.urlopen(req,timeout=40) as r:
+        return json.load(r)
 
-def deal_score(o: Opportunity) -> int:
-    demand = 25 if o.product and o.buyer else 8
-    buyer = 20 if o.buyer_verified else 6
-    value = 15 if o.estimated_value_usd >= 500_000 else (10 if o.estimated_value_usd >= 100_000 else 5)
-    supply = 15 * clamp(o.supplier_signal) / 100
-    margin = 15 * clamp(o.margin_signal) / 100
-    timing = 10 if o.deadline else 5
-    return clamp(demand + buyer + value + supply + margin + timing)
+def text_of(x):
+    if isinstance(x,str): return x
+    if isinstance(x,list): return " ".join(text_of(v) for v in x)
+    if isinstance(x,dict): return " ".join(text_of(v) for v in x.values())
+    return "" if x is None else str(x)
 
-def rank(opportunities):
-    rows=[]
-    for o in opportunities:
-        row=asdict(o)
-        row["deal_score"]=deal_score(o)
-        rows.append(row)
-    return sorted(rows,key=lambda x:x["deal_score"],reverse=True)
+def sector(text):
+    t=text.lower()
+    hits=[name for name,words in KEYWORDS.items() if any(w in t for w in words)]
+    return hits[0] if hits else "other"
 
-if __name__ == "__main__":
-    demo=[
-        Opportunity("shadow-demo","Demo Buyer","GB","Urea 46%", "10,000 MT", "", 3_000_000, True, 75, 70),
-        Opportunity("shadow-demo","Demo Buyer 2","DE","Industrial raw material", "", "", 150_000, False, 60, 45),
-    ]
-    print(json.dumps(rank(demo),ensure_ascii=False,indent=2))
+def score(row):
+    txt=text_of(row)
+    s=20
+    if sector(txt)!="other": s+=25
+    if row.get("buyer-name"): s+=15
+    if row.get("estimated-value-procurement"): s+=15
+    if row.get("deadline-receipt-tender-date-lot"): s+=10
+    if row.get("classification-cpv"): s+=10
+    return min(100,s)
+
+def main():
+    start=(date.today()-timedelta(days=7)).isoformat()
+    # Broad supply-contract query first; sector relevance is scored locally.
+    query=f"publication-date >= {start} AND contract-nature = supplies"
+    raw=ted_search(query)
+    notices=raw.get("notices", raw.get("results", []))
+    out=[]
+    for n in notices:
+        item=dict(n)
+        item["sector"]=sector(text_of(n))
+        item["deal_score"]=score(n)
+        item["source"]="TED"
+        out.append(item)
+    out.sort(key=lambda x:x["deal_score"],reverse=True)
+    print(json.dumps({"generated":date.today().isoformat(),"mode":"shadow","count":len(out),"opportunities":out[:100]},ensure_ascii=False,indent=2))
+
+if __name__=="__main__":
+    main()
