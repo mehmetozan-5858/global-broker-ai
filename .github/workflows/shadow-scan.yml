@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   shadow-scan:
@@ -32,3 +33,9 @@ jobs:
           git diff --cached --quiet || git commit -m "chore: update live shadow opportunities"
           git pull --rebase origin main
           git push
+
+      - name: Trigger Pages deployment with translated data
+        run: |
+          gh workflow run deploy-mobile.yml
+        env:
+          GH_TOKEN: ${{ github.token }}
