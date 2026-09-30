@@ -103,7 +103,9 @@ def main():
         item["source"]="TED"
         item["mode"]="shadow"
         item["title_original"]=first_title(n)
-        item["title_tr"]=title_tr(n)\n        item["detail_original"]=text_of(n.get("description-lot")) or first_title(n)\n        item["detail_tr"]=title_tr({"notice-title": n.get("description-lot")}) if n.get("description-lot") else title_tr(n)
+        item["title_tr"]=title_tr(n)
+        item["detail_original"]=text_of(n.get("description-lot")) or first_title(n)
+        item["detail_tr"]=title_tr({"notice-title": n.get("description-lot")}) if n.get("description-lot") else title_tr(n)
         item["buyer_verified"]=bool(n.get("buyer-name"))
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
