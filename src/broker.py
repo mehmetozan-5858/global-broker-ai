@@ -1,4 +1,5 @@
 from __future__ import annotations
+# Shadow scan trigger: SAM-enabled validation.
 import json, os, urllib.request, urllib.parse
 from datetime import date, timedelta
 from urllib.error import HTTPError
