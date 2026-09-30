@@ -11,6 +11,9 @@
 <section id="panel" class="panel wrap"><button onclick="goHome()">← Ana Sayfa</button><h2 id="pt"></h2><div id="pc"></div></section>
 <nav><span class="navon" onclick="goHome()">⌂<br>Ana Sayfa</span><span onclick="openCard('agents','Tüm Ajanlar')">♟<br>Ajanlar</span><span onclick="openCard('opps','Fırsatlar')">◇<br>Fırsatlar</span><span onclick="openCard('report','CEO Raporu')">▤<br>Raporlar</span><span onclick="openCard('settings','Ayarlar')">⚙<br>Ayarlar</span></nav>
 <script>
+window.addEventListener('DOMContentLoaded',function(){
+try{
+
 const I={
 search:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 5 5"/></svg>',
 users:'<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 2-6 6-6s6 2 6 6"/><path d="M16 5c3 1 3 5 0 6M17 14c3 .5 4 2 4 5"/></svg>',
@@ -83,5 +86,11 @@ else if(k==='settings')pc.innerHTML='<div class="item"><b>Çalışma Modu: Shado
 else if(k==='requests'){let q=JSON.parse(localStorage.getItem('gb_requests')||'[]');pc.innerHTML='<div class="item"><input id="req" placeholder="Yeni özellik isteği" style="width:70%;padding:10px"><button onclick="saveReq()">Ekle</button><div id="rq"></div></div>';showReq(q)}
 else pc.innerHTML='<div class="item"><b>Durum</b><p class="muted">Shadow Mode. Veri bekleniyor.</p></div>'}
 function showReq(a){rq.innerHTML=a.map(x=>'<p>• '+x+'</p>').join('')}function saveReq(){let a=JSON.parse(localStorage.getItem('gb_requests')||'[]');if(req.value.trim()){a.push(req.value.trim());localStorage.setItem('gb_requests',JSON.stringify(a));req.value='';showReq(a)}}
-window.addEventListener('load',()=>{loadData()});
+loadData();
+
+}catch(e){
+ document.getElementById('cards').innerHTML='<div class="item" style="grid-column:1/-1"><b>Uygulama başlatma hatası</b><p id="jsError" class="muted"></p></div>';
+ document.getElementById('jsError').textContent=(e&&e.message)?e.message:String(e);
+}
+});
 </script></body></html>
