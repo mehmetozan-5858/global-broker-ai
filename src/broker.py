@@ -185,6 +185,23 @@ def agent_pipeline(item):
     return {"supplier_agent":supplier,"price_agent":price,"logistics_agent":logistics,"risk_agent":risk,
             "pipeline_stage":"SUPPLIER_RESEARCH","deadline_known":bool(deadline)}
 
+def supplier_research_plan(item):
+    product=text_of(item.get("classification-cpv") or item.get("categories") or item.get("title_tr")).strip()
+    title=text_of(item.get("title_tr") or item.get("title_original")).strip()
+    return {
+      "status":"source_search_ready",
+      "product_query":product or title,
+      "country_focus":"Türkiye",
+      "sources":[
+        {"name":"TOBB Sanayi Veritabanı","url":"https://sanayi.tobb.org.tr/","purpose":"ürün/GTİP/PRODCOM bazında üretici doğrulama"},
+        {"name":"TİM","url":"https://tim.org.tr/","purpose":"ihracatçı ve sektör doğrulama"},
+        {"name":"TOBB2B","url":"https://tobb2b.tobb.org.tr/teklifsorgula.php","purpose":"ticari teklif/talep eşleştirme"}
+      ],
+      "candidates":[],
+      "verified_count":0,
+      "next_action":"Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+    }
+
 def score(row):
     # Product-neutral initial score. Later agents add supplier, landed-cost,
     # payment-risk, sanctions/compliance, margin and close-probability signals.
