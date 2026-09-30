@@ -321,6 +321,46 @@ def commercial_scale(item):
         return {"scale_status":"currency_threshold_review","commercial_priority":"REVIEW","declared_value":val,"declared_currency":currency}
     return {"scale_status":"large_opportunity" if val>=floor else "small_excluded","commercial_priority":"HIGH" if val>=floor else "EXCLUDE","declared_value":val,"declared_currency":currency}
 
+
+def sam_search(limit: int = 100):
+    """US federal opportunities via the official SAM.gov public API when SAM_API_KEY is configured."""
+    key=os.environ.get("SAM_API_KEY","").strip()
+    if not key: return []
+    end=date.today(); start=end-timedelta(days=14)
+    params=urllib.parse.urlencode({
+      "api_key":key,"limit":limit,"offset":0,
+      "postedFrom":start.strftime("%m/%d/%Y"),"postedTo":end.strftime("%m/%d/%Y")
+    })
+    req=urllib.request.Request("https://api.sam.gov/opportunities/v2/search?"+params,headers={"User-Agent":"GlobalBrokerAI/1.0","Accept":"application/json"})
+    try:
+        with urllib.request.urlopen(req,timeout=40) as r: data=json.load(r)
+        return data.get("opportunitiesData",[]) if isinstance(data,dict) else []
+    except Exception:
+        return []
+
+def normalize_sam(n):
+    title=text_of(n.get("title"))
+    item=dict(n)
+    item["title_original"]=title
+    item["title_tr"]=auto_translate_tr(title) or title
+    item["detail_original"]=text_of(n.get("description") or title)
+    item["detail_tr"]=auto_translate_tr(item["detail_original"]) or item["title_tr"]
+    item["buyer-country"]="United States"
+    item["market_region"]="ABD / Kuzey Amerika"
+    item["buyer-name"]=text_of(n.get("department") or n.get("subTier") or n.get("office"))
+    item["deadline-receipt-tender-date-lot"]=text_of(n.get("responseDeadLine"))
+    item["classification-cpv"]=text_of(n.get("naicsCode") or n.get("classificationCode"))
+    item["procedure-type"]=text_of(n.get("type"))
+    item["source_url"]=text_of(n.get("uiLink"))
+    item["source"]="SAM_GOV"
+    item["mode"]="shadow"
+    item["buyer_verified"]=bool(item["buyer-name"])
+    item["supplier_status"]="pending"; item["landed_cost_status"]="pending"
+    item["margin_status"]="pending_supplier_quote"; item["offer_status"]="shadow_not_sent"
+    item["commission_status"]="pending_deal_value_and_agreement"
+    item["deal_score"]=score(item)
+    return item
+
 def main():
     # Scan a rolling window instead of only today's notices. This gives the
     # regional agents a broader live pool while TED remains the first source.
@@ -353,6 +393,14 @@ def main():
         item["offer_status"]="shadow_not_sent"
         item["commission_status"]="pending_deal_value_and_agreement"
         out.append(item)
+    # Add US federal opportunities when the official SAM.gov API key is available.
+    for n in sam_search(100):
+        try:
+            item=normalize_sam(n)
+            if item.get("title_original"): out.append(item)
+        except Exception:
+            continue
+
     # Add non-European/global opportunities from the World Bank public procurement feed.
     # Source failures simply add zero rows; they never create placeholder opportunities.
     for n in world_bank_search(200):
