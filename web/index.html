@@ -3,7 +3,20 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
 <header><div class="wrap"><div class="badge">SHADOW MODE</div><h1>Global Broker AI</h1><div>Dünya Ticaret Kontrol Merkezi</div></div></header>
 <main class="wrap"><section id="home"><div class="grid">
 <div class="card" onclick="openPanel('opps')"><b>Fırsatlar</b><p>Canlı radar çıktısı ve Deal Score</p></div>
-<div class="card" onclick="openPanel('agents')"><b>Ajanlar</b><p>Çalışma ve bekleme durumları</p></div>
+<div class="card" onclick="openPanel('ceo')"><b>CEO Agent</b><p>Tüm sistemi yönetir ve CEO raporu üretir</p></div>
+<div class="card" onclick="openPanel('opportunity')"><b>Opportunity Agent</b><p>Dünya çapında gerçek alım talepleri ve RFQ</p></div>
+<div class="card" onclick="openPanel('buyer')"><b>Buyer Agent</b><p>Alıcı ve talep doğrulama</p></div>
+<div class="card" onclick="openPanel('supplier')"><b>Supplier Agent</b><p>Üretici ve ihracatçı bulma</p></div>
+<div class="card" onclick="openPanel('price')"><b>Price Agent</b><p>Teklif ve piyasa fiyat karşılaştırması</p></div>
+<div class="card" onclick="openPanel('logisticsAgent')"><b>Logistics Agent</b><p>FOB/CIF/CFR, navlun, liman ve teslim maliyeti</p></div>
+<div class="card" onclick="openPanel('trade')"><b>Trade Agent</b><p>Incoterms, MOQ, ödeme ve teslim şartları</p></div>
+<div class="card" onclick="openPanel('risk')"><b>Risk Agent</b><p>Şirket, ülke ve ticari risk sinyalleri</p></div>
+<div class="card" onclick="openPanel('communication')"><b>Communication Agent</b><p>Teklif ve yazışma hazırlama</p></div>
+<div class="card" onclick="openPanel('negotiation')"><b>Negotiation Agent</b><p>Onaylı sınırlar içinde pazarlık</p></div>
+<div class="card" onclick="openPanel('contract')"><b>Contract Agent</b><p>Sözleşme ve anlaşma belgeleri</p></div>
+<div class="card" onclick="openPanel('commission')"><b>Commission Agent</b><p>Komisyon hakkı ve tahsilat takibi</p></div>
+<div class="card" onclick="openPanel('audit')"><b>Audit Agent</b><p>Diğer ajanların işlemlerini denetler</p></div>
+<div class="card" onclick="openPanel('agents')"><b>Tüm Ajanlar</b><p>Çalışma, bekleme ve hata durumları</p></div>
 <div class="card" onclick="openPanel('buyers')"><b>Alıcılar</b><p>Doğrulama ve güven sinyalleri</p></div>
 <div class="card" onclick="openPanel('suppliers')"><b>Tedarikçiler</b><p>Üretici ve teklif havuzu</p></div>
 <div class="card" onclick="openPanel('pricing')"><b>Fiyat / Marj</b><p>Landed cost ve komisyon</p></div>
@@ -13,11 +26,24 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
 </div></section><section id="panel" class="hidden"><div class="grid"><div class="card wide"><button class="back" onclick="home()">← Geri</button><h2 id="title"></h2><div id="content"></div></div></div></section></main>
 <nav><span onclick="home()">Ana Sayfa</span><span onclick="openPanel('opps')">Fırsatlar</span><span onclick="openPanel('agents')">Ajanlar</span><span onclick="openPanel('requests')">İstekler</span></nav>
 <script>
-const names={opps:"Fırsatlar",agents:"Ajanlar",buyers:"Alıcılar",suppliers:"Tedarikçiler",pricing:"Fiyat / Marj",logistics:"Lojistik",report:"CEO Raporu",requests:"Geliştirme / İsteklerim"};
+const names={opps:"Fırsatlar",agents:"Tüm Ajanlar",buyers:"Alıcılar",suppliers:"Tedarikçiler",pricing:"Fiyat / Marj",logistics:"Lojistik",report:"CEO Raporu",requests:"Geliştirme / İsteklerim",ceo:"CEO Agent",opportunity:"Opportunity Agent",buyer:"Buyer Agent",supplier:"Supplier Agent",price:"Price Agent",logisticsAgent:"Logistics Agent",trade:"Trade Agent",risk:"Risk Agent",communication:"Communication Agent",negotiation:"Negotiation Agent",contract:"Contract Agent",commission:"Commission Agent",audit:"Audit Agent"};
 function home(){panel.classList.add("hidden");document.getElementById("home").classList.remove("hidden")}
 async function openPanel(k){document.getElementById("home").classList.add("hidden");panel.classList.remove("hidden");title.textContent=names[k];content.innerHTML="<p>Yükleniyor…</p>";
  if(k==="opps"||k==="report"){try{let r=await fetch("../data/latest-opportunities.json?"+Date.now());if(!r.ok)throw 0;let d=await r.json();let a=d.opportunities||[];content.innerHTML="<p>"+a.length+" fırsat bulundu.</p>"+a.slice(0,20).map(x=>"<div class='card'><b>"+(x["notice-title"]||x.title||"Fırsat")+"</b><p>Deal Score: "+(x.deal_score??"-")+" · "+(x["buyer-country"]||x.buyer_country||"")+"</p></div>").join("")}catch(e){content.innerHTML="<p>Henüz canlı tarama çıktısı oluşmadı. İlk başarılı Shadow Scan sonrası burada görünecek.</p>"}}
- else if(k==="agents") content.innerHTML="<p>Opportunity Agent: aktif</p><p>Buyer, Supplier, Price, Logistics, Compliance ve Risk ajanları: sırada</p>";
+ else if(k==="agents") content.innerHTML="<p>CEO, Opportunity, Buyer, Supplier, Price, Logistics, Trade, Risk, Communication, Negotiation, Contract, Commission ve Audit ajanlarının durumları burada gösterilecek.</p>";
+ else if(k==="ceo") content.innerHTML="<p>Tüm uzman ajanların sonuçlarını birleştirir, önceliklendirir ve CEO raporu üretir.</p>";
+ else if(k==="opportunity") content.innerHTML="<p>Dünyadaki gerçek satın alma taleplerini, RFQ ve uygun ihale kaynaklarını tarar.</p>";
+ else if(k==="buyer") content.innerHTML="<p>Alıcı şirketi, talebin gerçekliğini ve güven sinyallerini doğrular.</p>";
+ else if(k==="supplier") content.innerHTML="<p>Talep edilen ürünü sağlayabilecek üretici ve ihracatçı adaylarını araştırır.</p>";
+ else if(k==="price") content.innerHTML="<p>Karşılaştırılabilir fiyat ve teklifleri toplar; bilinmeyen fiyatı uydurmaz.</p>";
+ else if(k==="logisticsAgent") content.innerHTML="<p>FOB, CIF, CFR; navlun, liman ve teslim maliyetlerini hesaplamak için veri toplar.</p>";
+ else if(k==="trade") content.innerHTML="<p>Incoterms, MOQ, ödeme ve teslim şartlarını karşılaştırır.</p>";
+ else if(k==="risk") content.innerHTML="<p>Şirket, ülke, ödeme, yaptırım ve uygulama risk sinyallerini kontrol eder.</p>";
+ else if(k==="communication") content.innerHTML="<p>Teklif ve yazışmaları hazırlar. Shadow Mode'da dışarı mesaj göndermez.</p>";
+ else if(k==="negotiation") content.innerHTML="<p>Tanımlanacak fiyat, marj ve ticari sınırlar içinde pazarlık akışını yönetir. Bağlayıcı adımlar insan onayındadır.</p>";
+ else if(k==="contract") content.innerHTML="<p>Anlaşma belgelerini hazırlar. Hukuki veya bağlayıcı belge insan onayı olmadan gönderilmez/imzalanmaz.</p>";
+ else if(k==="commission") content.innerHTML="<p>Komisyon oranı, hakediş, vade ve tahsilat durumunu takip eder.</p>";
+ else if(k==="audit") content.innerHTML="<p>Diğer ajanların kaynaklarını, hesaplarını ve karar izlerini kontrol eder; tutarsızlıkları işaretler.</p>";
  else if(k==="requests"){let saved=JSON.parse(localStorage.getItem("gb_requests")||"[]");content.innerHTML='<input id="req" placeholder="Yeni özellik isteği" style="width:70%;padding:10px"><button onclick="saveReq()">Ekle</button><div id="reqs"></div>';showReq(saved)}
  else content.innerHTML="<p>Bu modül ajan verileri bağlandıkça otomatik dolacak.</p>";
 }
