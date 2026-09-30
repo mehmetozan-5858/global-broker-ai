@@ -46,6 +46,39 @@ def categories(text):
     hits=[name for name,words in CATEGORY_HINTS.items() if any(w in t for w in words)]
     return hits or ["uncategorized_supply"]
 
+TR_TERMS = {
+"medical":"medikal","hospital":"hastane","equipment":"ekipman","vehicle":"araç","food":"gıda","construction":"inşaat",
+"machinery":"makine","electrical":"elektrik","electronic":"elektronik","chemical":"kimyasal","textile":"tekstil",
+"packaging":"ambalaj","supply":"tedarik","services":"hizmetler","service":"hizmet","maintenance":"bakım","repair":"onarım",
+"purchase":"satın alma","procurement":"tedarik","delivery":"teslimat","works":"yapım işleri","system":"sistem","systems":"sistemler"
+}
+
+def first_title(n):
+    v=n.get("notice-title","")
+    if isinstance(v,str): return v
+    if isinstance(v,dict):
+        vals=[]
+        for x in v.values():
+            vals += x if isinstance(x,list) else [x]
+        return next((str(x) for x in vals if x), "")
+    if isinstance(v,list): return str(v[0]) if v else ""
+    return str(v or "")
+
+def title_tr(n):
+    original=first_title(n).strip()
+    if not original: return "Uluslararası satın alma talebi"
+    words=original.replace("-"," - ").split()
+    translated=[TR_TERMS.get(w.lower().strip(".,:;()"),w) for w in words]
+    changed=sum(a!=b for a,b in zip(words,translated))
+    if changed>=2: return " ".join(translated)[:160]
+    cats=categories(text_of(n))
+    labels={"medical":"Medikal ürün alımı","machinery":"Makine / ekipman alımı","construction":"İnşaat malzemesi alımı",
+    "agriculture_food":"Gıda / tarım ürünü alımı","transport_parts":"Araç / yedek parça alımı","electrical_electronics":"Elektrik / elektronik alımı",
+    "chemicals":"Kimyasal ürün alımı","textiles":"Tekstil ürünü alımı","packaging":"Ambalaj ürünü alımı","metals_mining":"Metal / maden ürünü alımı"}
+    for k,v in labels.items():
+        if k in cats:return v
+    return "Uluslararası satın alma talebi"
+
 def score(row):
     # Product-neutral initial score. Later agents add supplier, landed-cost,
     # payment-risk, sanctions/compliance, margin and close-probability signals.
@@ -69,6 +102,8 @@ def main():
         item["deal_score"]=score(n)
         item["source"]="TED"
         item["mode"]="shadow"
+        item["title_original"]=first_title(n)
+        item["title_tr"]=title_tr(n)
         item["buyer_verified"]=bool(n.get("buyer-name"))
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
