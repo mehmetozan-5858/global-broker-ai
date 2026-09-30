@@ -109,6 +109,32 @@ def choose_detail_text(n):
     t=first_title(n).strip()
     return ("Talep: "+t+(". Miktar: "+q if q else "")).strip()
 
+def market_region(country):
+    c=(country or "").upper()
+    groups=[
+      ("Avrupa",["ALBANIA","AUSTRIA","BELGIUM","BULGARIA","CROATIA","CYPRUS","CZECH","DENMARK","ESTONIA","FINLAND","FRANCE","GERMANY","GREECE","HUNGARY","IRELAND","ITALY","LATVIA","LITHUANIA","LUXEMBOURG","MALTA","MOLDOVA","MONTENEGRO","NETHERLANDS","NORTH MACEDONIA","NORWAY","POLAND","PORTUGAL","ROMANIA","SERBIA","SLOVAK","SLOVENIA","SPAIN","SWEDEN","SWITZERLAND","UKRAINE","UNITED KINGDOM"]),
+      ("Orta Doğu",["TURKEY","TÜRKIYE","SAUDI","UNITED ARAB EMIRATES","QATAR","OMAN","KUWAIT","BAHRAIN","IRAQ","IRAN","ISRAEL","JORDAN","LEBANON","YEMEN","PALESTINE"]),
+      ("Çin / Doğu Asya",["CHINA","HONG KONG","JAPAN","SOUTH KOREA","KOREA","MONGOLIA","TAIWAN"]),
+      ("ABD / Kuzey Amerika",["UNITED STATES","CANADA","MEXICO"]),
+      ("Asya-Pasifik",["INDIA","PAKISTAN","BANGLADESH","SRI LANKA","NEPAL","SINGAPORE","MALAYSIA","INDONESIA","THAILAND","VIETNAM","PHILIPPINES","AUSTRALIA","NEW ZEALAND","CAMBODIA","LAO","MYANMAR","AFGHANISTAN","KAZAKHSTAN","UZBEKISTAN","KYRGYZ","TAJIKISTAN","TURKMENISTAN"]),
+      ("Afrika",["EGYPT","SOUTH AFRICA","MOROCCO","ALGERIA","NIGERIA","KENYA","GHANA","TUNISIA","ETHIOPIA","TANZANIA","UGANDA","RWANDA","SENEGAL","ZAMBIA","ZIMBABWE","MOZAMBIQUE","CAMEROON","COTE D","IVORY COAST","ANGOLA","BENIN","BOTSWANA","BURKINA","BURUNDI","CABO VERDE","CENTRAL AFRICAN","CHAD","COMOROS","CONGO","DJIBOUTI","EQUATORIAL GUINEA","ERITREA","ESWATINI","GABON","GAMBIA","GUINEA","LESOTHO","LIBERIA","LIBYA","MADAGASCAR","MALAWI","MALI","MAURITANIA","MAURITIUS","NAMIBIA","NIGER","SAO TOME","SEYCHELLES","SIERRA LEONE","SOMALIA","SOUTH SUDAN","SUDAN","TOGO"])
+    ]
+    for name,tokens in groups:
+        if any(t in c for t in tokens): return name
+    return "Diğer Pazarlar"
+
+def demand_summary_tr(item):
+    title=(item.get("title_tr") or item.get("title_original") or "").strip()
+    detail=(item.get("detail_tr") or "").strip()
+    cat=text_of(item.get("classification-cpv") or item.get("procurement_category") or item.get("sector")).strip()
+    qty=text_of(item.get("quantity-lot") or item.get("quantity")).strip()
+    parts=[]
+    if detail and detail.lower()!=title.lower(): parts.append(detail)
+    elif title: parts.append(title)
+    if qty: parts.append("Miktar: "+qty)
+    if cat: parts.append("Kategori / ürün grubu: "+cat)
+    return ". ".join(parts).strip() or "İlan kaynağında ayrıntılı talep açıklaması bulunmuyor."
+
 def score(row):
     # Product-neutral initial score. Later agents add supplier, landed-cost,
     # payment-risk, sanctions/compliance, margin and close-probability signals.
@@ -144,7 +170,7 @@ def normalize_world_bank(n):
     item["title_tr"]=auto_translate_tr(title) or title
     item["detail_original"]=text_of(n.get("bid_description") or n.get("notice_text") or n.get("description") or title)
     item["detail_tr"]=auto_translate_tr(item["detail_original"]) or item["title_tr"]
-    item["buyer-country"]=country
+    item["buyer-country"]=country\n    item["market_region"]=market_region(country)
     item["buyer-name"]=buyer
     item["deadline-receipt-tender-date-lot"]=deadline
     item["categories"]=categories(item["detail_original"])
@@ -186,7 +212,7 @@ def main():
         item["detail_original"]=preferred_lang_text(n.get("description-lot")) or first_title(n)
         item["detail_tr"]=auto_translate_tr(item["detail_original"]) or title_tr(n)
         item["buyer-name"]=preferred_lang_text(n.get("buyer-name"))
-        item["buyer-country"]=preferred_lang_text(n.get("buyer-country"))
+        item["buyer-country"]=preferred_lang_text(n.get("buyer-country"))\n        item["market_region"]=market_region(item["buyer-country"])
         item["buyer_verified"]=bool(item["buyer-name"])
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
