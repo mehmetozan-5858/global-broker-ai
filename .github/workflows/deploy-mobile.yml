@@ -32,6 +32,8 @@ jobs:
           fi
           sed -i 's#../data/latest-opportunities.json#data/latest-opportunities.json#g' public/index.html
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
