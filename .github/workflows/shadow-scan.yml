@@ -1,0 +1,29 @@
+name: Global Broker Shadow Scan
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  shadow-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run Shadow Mode engine
+        run: |
+          mkdir -p data
+          python src/broker.py > data/latest-opportunities.json
+      - name: Commit Shadow Mode output
+        run: |
+          git config user.name "global-broker-bot"
+          git config user.email "global-broker-bot@users.noreply.github.com"
+          git add data/latest-opportunities.json
+          git diff --cached --quiet || git commit -m "chore: update shadow opportunities"
+          git push
