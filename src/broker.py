@@ -79,7 +79,7 @@ def auto_translate_tr(text):
     text=(text or "").strip()
     if not text: return ""
     try:
-        q=urllib.parse.urlencode({"client":"gtx","sl":"auto","tl":"tr","dt":"t","q":text[:4500]})
+        q=urllib.parse.urlencode({"client":"gtx","sl":"auto","tl":"tr","dt":"t","q":text[:12000]})
         req=urllib.request.Request("https://translate.googleapis.com/translate_a/single?"+q,headers={"User-Agent":"GlobalBrokerAI/1.0"})
         with urllib.request.urlopen(req,timeout=20) as r:
             data=json.load(r)
@@ -122,6 +122,20 @@ def market_region(country):
     for name,tokens in groups:
         if any(t in c for t in tokens): return name
     return "Diğer Pazarlar"
+
+def tr_status(v):
+    m={"source_search_ready":"Kaynak taraması hazır","research_pending":"Tedarikçi araştırması bekliyor","quote_pending":"Gerçek fiyat teklifi bekleniyor","route_pending":"Lojistik rota araştırması bekleniyor","due_diligence_pending":"Risk incelemesi bekleniyor","SUPPLIER_RESEARCH":"Tedarikçi Araştırması"}
+    return m.get(v,v)
+
+def ensure_turkish_detail(item):
+    original=text_of(item.get("detail_original") or item.get("title_original")).strip()
+    current=text_of(item.get("detail_tr")).strip()
+    # Always retry translation from the original source text; never replace with invented detail.
+    translated=auto_translate_tr(original) if original else ""
+    if translated: item["detail_tr"]=translated
+    elif not current: item["detail_tr"]="Kaynak ilanda ayrıntılı açıklama bulunamadı."
+    item["title_tr"]=auto_translate_tr(text_of(item.get("title_original"))) or text_of(item.get("title_tr") or item.get("title_original"))
+    return item
 
 def demand_summary_tr(item):
     title=(item.get("title_tr") or item.get("title_original") or "").strip()
