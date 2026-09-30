@@ -4,6 +4,7 @@ from datetime import date, timedelta
 from urllib.error import HTTPError
 
 TED_URL = "https://api.ted.europa.eu/v3/notices/search"
+WORLD_BANK_URL = "https://search.worldbank.org/api/v2/procnotices"
 
 # Global Broker is product-agnostic: no sector is hard-coded as the business.
 # Categories are descriptive signals only; ALL supply opportunities remain eligible.
@@ -102,6 +103,46 @@ def score(row):
     if row.get("buyer-country"): s+=10
     return min(100,s)
 
+
+def world_bank_search(limit: int = 200):
+    """Public World Bank procurement notices. Fail closed: no synthetic rows."""
+    params=urllib.parse.urlencode({"format":"json","rows":limit,"os":0})
+    req=urllib.request.Request(WORLD_BANK_URL+"?"+params,headers={"User-Agent":"GlobalBrokerAI/1.0","Accept":"application/json"})
+    try:
+        with urllib.request.urlopen(req,timeout=40) as r:
+            data=json.load(r)
+        docs=data.get("procnotices",data.get("documents",data.get("results",[])))
+        if isinstance(docs,dict): docs=list(docs.values())
+        return docs if isinstance(docs,list) else []
+    except Exception:
+        return []
+
+def normalize_world_bank(n):
+    title=text_of(n.get("notice_title") or n.get("description") or n.get("title"))
+    country=text_of(n.get("country_name") or n.get("country") or n.get("regionname"))
+    deadline=text_of(n.get("submission_deadline_date") or n.get("deadline") or n.get("closing_date"))
+    buyer=text_of(n.get("borrower") or n.get("agency") or n.get("project_name"))
+    item=dict(n)
+    item["title_original"]=title
+    item["title_tr"]=auto_translate_tr(title) or title
+    item["detail_original"]=text_of(n.get("notice_text") or n.get("description") or title)
+    item["detail_tr"]=auto_translate_tr(item["detail_original"]) or item["title_tr"]
+    item["buyer-country"]=country
+    item["buyer-name"]=buyer
+    item["deadline-receipt-tender-date-lot"]=deadline
+    item["categories"]=categories(item["detail_original"])
+    item["source"]="WORLD_BANK"
+    item["mode"]="shadow"
+    item["buyer_verified"]=bool(buyer)
+    item["supplier_status"]="pending"
+    item["landed_cost_status"]="pending"
+    item["compliance_status"]="source_verified_buyer_pending_due_diligence" if buyer else "pending"
+    item["margin_status"]="pending_supplier_quote"
+    item["offer_status"]="shadow_not_sent"
+    item["commission_status"]="pending_deal_value_and_agreement"
+    item["deal_score"]=score(item)
+    return item
+
 def main():
     # Scan a rolling window instead of only today's notices. This gives the
     # regional agents a broader live pool while TED remains the first source.
@@ -131,6 +172,24 @@ def main():
         item["offer_status"]="shadow_not_sent"
         item["commission_status"]="pending_deal_value_and_agreement"
         out.append(item)
+    # Add non-European/global opportunities from the World Bank public procurement feed.
+    # Source failures simply add zero rows; they never create placeholder opportunities.
+    for n in world_bank_search(200):
+        try:
+            item=normalize_world_bank(n)
+            if item.get("title_original"):
+                out.append(item)
+        except Exception:
+            continue
+
+    # Deduplicate across sources by normalized title + buyer/country.
+    deduped=[]
+    seen=set()
+    for item in out:
+        key=(item.get("title_original","").strip().lower(), text_of(item.get("buyer-name")).strip().lower(), text_of(item.get("buyer-country")).strip().lower())
+        if key in seen: continue
+        seen.add(key); deduped.append(item)
+    out=deduped
     out.sort(key=lambda x:x["deal_score"],reverse=True)
     print(json.dumps({
         "generated":date.today().isoformat(),
