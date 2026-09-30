@@ -1,0 +1,38 @@
+name: Deploy Global Broker Mobile
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare mobile site
+        run: |
+          mkdir -p public/data
+          cp -r web/* public/
+          if [ -f data/latest-opportunities.json ]; then
+            cp data/latest-opportunities.json public/data/latest-opportunities.json
+          else
+            echo '{"mode":"shadow","opportunities":[]}' > public/data/latest-opportunities.json
+          fi
+          sed -i 's#../data/latest-opportunities.json#data/latest-opportunities.json#g' public/index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - uses: actions/deploy-pages@v4
