@@ -288,14 +288,38 @@ def normalize_world_bank(n):
 
 
 def public_market_feeds():
-    """Additional official/public market feeds. Fail closed: inaccessible sources add zero rows."""
-    feeds=[
-      {"region":"Orta Doğu","country":"Saudi Arabia","name":"Saudi Etimad Tenders","url":"https://tenders.etimad.sa/Tender","mode":"official_portal"},
-      {"region":"Orta Doğu","country":"United Arab Emirates","name":"UAE Federal Procurement","url":"https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/","mode":"official_portal"},
-      {"region":"Çin / Doğu Asya","country":"China","name":"China Government Procurement","url":"https://www.ccgp.gov.cn/","mode":"official_portal"},
-      {"region":"Çin / Doğu Asya","country":"China","name":"National Public Resources Trading Platform","url":"https://www.ggzy.gov.cn/","mode":"official_portal"}
+    """Official/public procurement sources prioritised for material commercial opportunities."""
+    return [
+      {"region":"Orta Doğu","country":"Saudi Arabia","name":"Saudi Etimad","url":"https://tenders.etimad.sa/Tender","mode":"official_portal","scale":"large_priority"},
+      {"region":"Orta Doğu","country":"United Arab Emirates","name":"UAE Federal Digital Procurement","url":"https://mof.gov.ae/en/public-finance/government-procurement/digital-procurement-platform/","mode":"official_portal","scale":"large_priority"},
+      {"region":"Çin / Doğu Asya","country":"China","name":"China Government Procurement","url":"https://www.ccgp.gov.cn/","mode":"official_portal","scale":"large_priority"},
+      {"region":"Çin / Doğu Asya","country":"China","name":"National Public Resources Trading Platform","url":"https://www.ggzy.gov.cn/","mode":"official_portal","scale":"large_priority"},
+      {"region":"ABD / Kuzey Amerika","country":"United States","name":"SAM.gov Contract Opportunities","url":"https://sam.gov/opportunities","mode":"official_portal","scale":"large_priority"},
+      {"region":"ABD / Kuzey Amerika","country":"Canada","name":"CanadaBuys","url":"https://canadabuys.canada.ca/","mode":"official_portal","scale":"large_priority"},
+      {"region":"Asya-Pasifik","country":"India","name":"India CPPP","url":"https://eprocure.gov.in/eprocure/app","mode":"official_portal","scale":"large_priority"},
+      {"region":"Asya-Pasifik","country":"Singapore","name":"GeBIZ","url":"https://www.gebiz.gov.sg/","mode":"official_portal","scale":"large_priority"},
+      {"region":"Afrika","country":"South Africa","name":"South Africa eTenders","url":"https://www.etenders.gov.za/","mode":"official_portal","scale":"large_priority"},
+      {"region":"Afrika","country":"Kenya","name":"Kenya PPIP","url":"https://tenders.go.ke/","mode":"official_portal","scale":"large_priority"},
+      {"region":"Afrika","country":"Morocco","name":"Morocco Public Procurement","url":"https://www.marchespublics.gov.ma/","mode":"official_portal","scale":"large_priority"}
     ]
-    return feeds
+
+def commercial_scale(item):
+    """Reject obvious small-value work; unknown values remain reviewable, never fabricated."""
+    raw=text_of(item.get("estimated-value-procurement") or item.get("estimated_value") or item.get("value") or item.get("amount")).replace(",","").strip()
+    currency=text_of(item.get("currency") or item.get("currency-lot") or item.get("currency_code")).upper().strip()
+    try:
+        val=float(raw)
+    except Exception:
+        val=None
+    # Conservative native-currency gates. Unknown-value opportunities can stay,
+    # but are marked for value verification before commercial action.
+    floors={"USD":100000,"EUR":100000,"GBP":85000,"CAD":140000,"AUD":150000,"SGD":135000,"SAR":375000,"AED":367000,"CNY":720000,"INR":8300000,"ZAR":1800000,"MAD":1000000}
+    if val is None:
+        return {"scale_status":"value_verification_pending","commercial_priority":"REVIEW"}
+    floor=floors.get(currency)
+    if floor is None:
+        return {"scale_status":"currency_threshold_review","commercial_priority":"REVIEW","declared_value":val,"declared_currency":currency}
+    return {"scale_status":"large_opportunity" if val>=floor else "small_excluded","commercial_priority":"HIGH" if val>=floor else "EXCLUDE","declared_value":val,"declared_currency":currency}
 
 def main():
     # Scan a rolling window instead of only today's notices. This gives the
@@ -348,6 +372,14 @@ def main():
             item["opportunity_type"]="SATILABİLİR_ÜRÜN"
             goods_out.append(item)
     out=goods_out
+
+    # Commercial scale gate: Global Broker focuses on material transactions, not small jobs.
+    scaled=[]
+    for item in out:
+        item.update(commercial_scale(item))
+        if item.get("commercial_priority")!="EXCLUDE":
+            scaled.append(item)
+    out=scaled
 
     # Deduplicate across sources by normalized title + buyer/country.
     deduped=[]
