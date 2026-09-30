@@ -286,6 +286,17 @@ def normalize_world_bank(n):
     item["deal_score"]=score(item)
     return item
 
+
+def public_market_feeds():
+    """Additional official/public market feeds. Fail closed: inaccessible sources add zero rows."""
+    feeds=[
+      {"region":"Orta Doğu","country":"Saudi Arabia","name":"Saudi Etimad Tenders","url":"https://tenders.etimad.sa/Tender","mode":"official_portal"},
+      {"region":"Orta Doğu","country":"United Arab Emirates","name":"UAE Federal Procurement","url":"https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/","mode":"official_portal"},
+      {"region":"Çin / Doğu Asya","country":"China","name":"China Government Procurement","url":"https://www.ccgp.gov.cn/","mode":"official_portal"},
+      {"region":"Çin / Doğu Asya","country":"China","name":"National Public Resources Trading Platform","url":"https://www.ggzy.gov.cn/","mode":"official_portal"}
+    ]
+    return feeds
+
 def main():
     # Scan a rolling window instead of only today's notices. This gives the
     # regional agents a broader live pool while TED remains the first source.
@@ -403,7 +414,8 @@ def main():
         "generated":date.today().isoformat(),
         "scope":"ALL_GLOBAL_PRODUCTS",
         "count":len(out),
-        "opportunities":out
+        "opportunities":out,
+        "market_sources":public_market_feeds()
     },ensure_ascii=False,indent=2))
 
 if __name__=="__main__":
