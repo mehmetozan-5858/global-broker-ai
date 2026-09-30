@@ -7,7 +7,7 @@ on:
   push:
     paths:
       - 'src/**'
-      - '.github/workflows/shadow-scan.yml'
+      - '.github/workflows/shadow-scan.yml'\n      - '.github/workflows/shadow-scan-trigger.txt'
 
 permissions:
   contents: write
