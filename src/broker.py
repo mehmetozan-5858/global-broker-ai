@@ -147,8 +147,12 @@ def normalize_world_bank(n):
     item["buyer-country"]=country
     item["buyer-name"]=buyer
     item["deadline-receipt-tender-date-lot"]=deadline
-    item["categories"]=categories(item["detail_original"])\n    item["classification-cpv"]=text_of(n.get("procurement_category") or n.get("sector"))\n    item["procedure-type"]=text_of(n.get("procurement_method") or n.get("notice_type"))\n    item["source_url"]=text_of(n.get("url"))
-    item["source"]="WORLD_BANK"\n    item["region_hint"]="GLOBAL_WORLD_BANK"
+    item["categories"]=categories(item["detail_original"])
+    item["classification-cpv"]=text_of(n.get("procurement_category") or n.get("sector"))
+    item["procedure-type"]=text_of(n.get("procurement_method") or n.get("notice_type"))
+    item["source_url"]=text_of(n.get("url"))
+    item["source"]="WORLD_BANK"
+    item["region_hint"]="GLOBAL_WORLD_BANK"
     item["mode"]="shadow"
     item["buyer_verified"]=bool(buyer)
     item["supplier_status"]="pending"
@@ -181,7 +185,9 @@ def main():
         item["title_tr"]=auto_translate_tr(first_title(n)) or title_tr(n)
         item["detail_original"]=preferred_lang_text(n.get("description-lot")) or first_title(n)
         item["detail_tr"]=auto_translate_tr(item["detail_original"]) or title_tr(n)
-        item["buyer-name"]=preferred_lang_text(n.get("buyer-name"))\n        item["buyer-country"]=preferred_lang_text(n.get("buyer-country"))\n        item["buyer_verified"]=bool(item["buyer-name"])
+        item["buyer-name"]=preferred_lang_text(n.get("buyer-name"))
+        item["buyer-country"]=preferred_lang_text(n.get("buyer-country"))
+        item["buyer_verified"]=bool(item["buyer-name"])
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
         item["compliance_status"]="source_verified_buyer_pending_due_diligence" if n.get("buyer-name") else "pending"
