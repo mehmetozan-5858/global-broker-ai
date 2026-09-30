@@ -346,6 +346,58 @@ def main():
         if key in seen: continue
         seen.add(key); deduped.append(item)
     out=deduped
+
+    # Activate the research chain for every real opportunity.
+    # These fields describe work/status only; they never invent suppliers,
+    # quotes, freight, margins, buyer verification or commercial terms.
+    for item in out:
+        item.update(commercial_signals(item))
+        item.update(agent_pipeline(item))
+        item["supplier_research"] = supplier_research_plan(item)
+        item["demand_summary_tr"] = demand_summary_tr(item)
+        item["workflow"] = {
+            "buyer": {
+                "status": "source_identified" if item.get("buyer-name") else "identity_pending",
+                "name": text_of(item.get("buyer-name")) or None,
+                "country": text_of(item.get("buyer-country")) or None,
+                "verified": False
+            },
+            "supplier": {
+                "status": "research_pending",
+                "verified_candidates": 0
+            },
+            "pricing_margin": {
+                "status": "quote_pending",
+                "supplier_quote": None,
+                "sell_price": None,
+                "gross_margin": None,
+                "commission": None
+            },
+            "logistics": {
+                "status": "route_pending",
+                "incoterm": None,
+                "freight": None,
+                "landed_cost": None
+            },
+            "risk": {
+                "status": "due_diligence_pending"
+            },
+            "offer": {
+                "status": "shadow_not_sent"
+            },
+            "contract": {
+                "status": "not_started"
+            },
+            "commission_protection": {
+                "status": "not_started",
+                "target_months": 12,
+                "starts_only_after_signed_agreement": True
+            },
+            "payment": {
+                "status": "not_started"
+            }
+        }
+
     out.sort(key=lambda x:x["deal_score"],reverse=True)
     print(json.dumps({
         "generated":date.today().isoformat(),
