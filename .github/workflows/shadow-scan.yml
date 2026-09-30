@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Fetch and score live TED opportunities
+      - name: Fetch, normalize and score live global opportunities
         run: |
           mkdir -p data
           python src/broker.py > data/latest-opportunities.json
