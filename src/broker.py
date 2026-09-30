@@ -58,8 +58,8 @@ def score(row):
     return min(100,s)
 
 def main():
-    start=(date.today()-timedelta(days=7)).isoformat()
-    query=f"publication-date = [{start} TO *]"
+    today=date.today().strftime("%Y%m%d")
+    query=f"publication-date = {today}"
     raw=ted_search(query,100)
     notices=raw.get("notices",raw.get("results",[]))
     out=[]
