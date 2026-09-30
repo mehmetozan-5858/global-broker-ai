@@ -135,6 +135,28 @@ def demand_summary_tr(item):
     if cat: parts.append("Kategori / ürün grubu: "+cat)
     return ". ".join(parts).strip() or "İlan kaynağında ayrıntılı talep açıklaması bulunmuyor."
 
+def commercial_signals(item):
+    text=(" ".join([text_of(item.get("title_original")),text_of(item.get("detail_original")),text_of(item.get("classification-cpv")),text_of(item.get("categories"))])).lower()
+    goods_words=["supply","purchase","procurement","equipment","material","goods","product","vehicle","machine","medical","food","chemical","textile","steel","cable","furniture"]
+    service_words=["consulting","consultancy","audit","training","software development","technical assistance","study","supervision"]
+    goods=sum(1 for w in goods_words if w in text)
+    services=sum(1 for w in service_words if w in text)
+    if goods>services:
+        fit="Ürün tedariği ağırlıklı — broker modeli için incelenecek"
+        turkey="Türkiye'den tedarikçi eşleştirmesi araştırılacak"
+    elif services>goods:
+        fit="Hizmet/uzmanlık ağırlıklı — ürün brokerlığı uygunluğu ayrıca kontrol edilecek"
+        turkey="Türkiye'den uygun hizmet sağlayıcı araştırılacak"
+    else:
+        fit="Ön değerlendirme gerekli"
+        turkey="Türkiye bağlantılı tedarik olasılığı araştırılacak"
+    return {
+      "broker_opportunity":fit,
+      "turkey_supply_status":turkey,
+      "supplier_search_status":"Ajan araştırması bekliyor",
+      "commission_potential":"İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz"
+    }
+
 def score(row):
     # Product-neutral initial score. Later agents add supplier, landed-cost,
     # payment-risk, sanctions/compliance, margin and close-probability signals.
