@@ -1,1 +1,1 @@
-{"name":"Global Broker AI","short_name":"Global Broker","start_url":"./","display":"standalone","background_color":"#f2f4f7","theme_color":"#101828","description":"Autonomous global B2B opportunity control center"}
+{"name":"Global Broker","short_name":"Global Broker","start_url":"./?app=v4","scope":"./","display":"standalone","background_color":"#071827","theme_color":"#071827","description":"Global trade, sourcing, markets and opportunities control center"}
