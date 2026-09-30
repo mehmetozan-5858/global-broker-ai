@@ -57,7 +57,7 @@ def score(row):
 
 def main():
     start=(date.today()-timedelta(days=7)).isoformat()
-    query=f"publication-date >= {start} AND contract-nature = supplies"
+    query=f"publication-date >= {start}"
     raw=ted_search(query,100)
     notices=raw.get("notices",raw.get("results",[]))
     out=[]
