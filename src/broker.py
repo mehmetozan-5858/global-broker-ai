@@ -170,7 +170,8 @@ def normalize_world_bank(n):
     item["title_tr"]=auto_translate_tr(title) or title
     item["detail_original"]=text_of(n.get("bid_description") or n.get("notice_text") or n.get("description") or title)
     item["detail_tr"]=auto_translate_tr(item["detail_original"]) or item["title_tr"]
-    item["buyer-country"]=country\n    item["market_region"]=market_region(country)
+    item["buyer-country"]=country
+    item["market_region"]=market_region(country)
     item["buyer-name"]=buyer
     item["deadline-receipt-tender-date-lot"]=deadline
     item["categories"]=categories(item["detail_original"])
@@ -212,7 +213,8 @@ def main():
         item["detail_original"]=preferred_lang_text(n.get("description-lot")) or first_title(n)
         item["detail_tr"]=auto_translate_tr(item["detail_original"]) or title_tr(n)
         item["buyer-name"]=preferred_lang_text(n.get("buyer-name"))
-        item["buyer-country"]=preferred_lang_text(n.get("buyer-country"))\n        item["market_region"]=market_region(item["buyer-country"])
+        item["buyer-country"]=preferred_lang_text(n.get("buyer-country"))
+        item["market_region"]=market_region(item["buyer-country"])
         item["buyer_verified"]=bool(item["buyer-name"])
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
