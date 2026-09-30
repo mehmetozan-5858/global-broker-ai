@@ -31,4 +31,4 @@ jobs:
           git add data/latest-opportunities.json
           git diff --cached --quiet || git commit -m "chore: update live shadow opportunities"
           git pull --rebase origin main
-git push
+          git push
