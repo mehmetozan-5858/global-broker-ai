@@ -26933,6 +26933,201 @@
     {
       "active": "Yes",
       "additionalInfoLink": null,
+      "archiveDate": "2026-11-16",
+      "archiveType": "auto15",
+      "award": null,
+      "baseType": "Solicitation",
+      "classificationCode": "5660",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5b316d559204b589c458d2f706ecdb2",
+      "fullParentPathCode": "019.1900.191Z25",
+      "fullParentPathName": "STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.AMERICAN CONSULATE ERBIL",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=d5b316d559204b589c458d2f706ecdb2&limit=1"
+        }
+      ],
+      "naicsCode": "423690",
+      "naicsCodes": [
+        "423690"
+      ],
+      "noticeId": "d5b316d559204b589c458d2f706ecdb2",
+      "officeAddress": {
+        "zipcode": "20520",
+        "city": "WASHINGTON",
+        "countryCode": "USA",
+        "state": "DC"
+      },
+      "organizationType": "OFFICE",
+      "placeOfPerformance": {
+        "city": {
+          "code": "Erbil",
+          "name": "Erbil"
+        },
+        "state": {
+          "code": "IQ-AR",
+          "name": "Arbīl"
+        },
+        "zip": "44001",
+        "country": {
+          "code": "IRQ",
+          "name": "IRAQ"
+        }
+      },
+      "pointOfContact": [
+        {
+          "fax": "",
+          "type": "primary",
+          "email": "erbilprobid@state.gov",
+          "phone": "",
+          "fullName": "Arriola Roinel"
+        },
+        {
+          "fax": "",
+          "type": "secondary",
+          "email": "erbilprobid@state.gov",
+          "phone": "",
+          "fullName": "Arriola Roinel"
+        }
+      ],
+      "postedDate": "2026-10-04",
+      "resourceLinks": [
+        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/f8bfa419da3c4b4d858222d3b756192e/download"
+      ],
+      "responseDeadLine": "2026-11-01T17:00:00-04:00",
+      "solicitationNumber": "191Z2526P0153",
+      "title": "Award 191Z2526P0153 - ERB-FAC- 7112- Gate Spare Part for FAC Shop.",
+      "type": "Special Notice",
+      "typeOfSetAside": "NONE",
+      "typeOfSetAsideDescription": "No Set aside used",
+      "uiLink": "https://sam.gov/workspace/contract/opp/d5b316d559204b589c458d2f706ecdb2/view",
+      "title_original": "Award 191Z2526P0153 - ERB-FAC- 7112- Gate Spare Part for FAC Shop.",
+      "title_tr": "Ödül 191Z2526P0153 - ERB-FAC- 7112- FAC Mağazası için Kapı Yedek Parçası.",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5b316d559204b589c458d2f706ecdb2",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5b316d559204b589c458d2f706ecdb2",
+      "buyer-country": "United States",
+      "market_region": "ABD / Kuzey Amerika",
+      "buyer-name": "",
+      "deadline-receipt-tender-date-lot": "2026-11-01T17:00:00-04:00",
+      "classification-cpv": "423690",
+      "procedure-type": "Special Notice",
+      "source_url": "https://sam.gov/workspace/contract/opp/d5b316d559204b589c458d2f706ecdb2/view",
+      "source": "SAM_GOV",
+      "mode": "shadow",
+      "buyer_verified": false,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "deal_score": 60,
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ön değerlendirme gerekli",
+      "turkey_supply_status": "Türkiye bağlantılı tedarik olasılığı araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter Award 191Z2526P0153 - ERB-FAC- 7112- Gate Spare Part for FAC Shop. https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5b316d559204b589c458d2f706ecdb2 423690",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "United States",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": false,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": true,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "423690",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d5b316d559204b589c458d2f706ecdb2. Kategori / ürün grubu: 423690",
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "name": null,
+          "country": "United States",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
+      "active": "Yes",
+      "additionalInfoLink": null,
       "archiveDate": "2026-11-12",
       "archiveType": "autocustom",
       "award": null,
@@ -27227,176 +27422,6 @@
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
       "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cc65376c1212451bb9d8481a75bac1f9. Kategori / ürün grubu: 333241",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      }
-    },
-    {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-11-12",
-      "archiveType": "autocustom",
-      "award": null,
-      "baseType": "Combined Synopsis/Solicitation",
-      "classificationCode": "61",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=56f365eaa7804a0f9f1c6c0463cc8c4a",
-      "fullParentPathCode": "097.97AS.DLA AVIATION.DLA AV RICHMOND.SPE4A6",
-      "fullParentPathName": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA AVIATION.DLA AV RICHMOND.DLA AVIATION",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=56f365eaa7804a0f9f1c6c0463cc8c4a&limit=1"
-        }
-      ],
-      "naicsCode": "334419",
-      "naicsCodes": [
-        "334419"
-      ],
-      "noticeId": "56f365eaa7804a0f9f1c6c0463cc8c4a",
-      "officeAddress": {
-        "zipcode": "23237",
-        "city": "RICHMOND",
-        "countryCode": "USA",
-        "state": "VA"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": null,
-      "pointOfContact": [
-        {
-          "type": "primary",
-          "email": "DibbsBSM@dla.mil",
-          "fullName": "Questions regarding this solicitation should be emailed to the buyer listed in block 5 of the solicitation document which can be found under the Additional Information link.\nIf the Additional Information link does not work, please go to https://www.dibbs.bsm.dla.mil/Solicitations/ and type the solicitation number in the Global Search box.\n"
-        }
-      ],
-      "postedDate": "2026-10-04",
-      "resourceLinks": null,
-      "responseDeadLine": "2026-10-13",
-      "solicitationNumber": "SPE4A627T0242",
-      "title": "61--CABLE ASSEMBLY,SPECIAL",
-      "type": "Combined Synopsis/Solicitation",
-      "typeOfSetAside": null,
-      "typeOfSetAsideDescription": null,
-      "uiLink": "https://sam.gov/workspace/contract/opp/56f365eaa7804a0f9f1c6c0463cc8c4a/view",
-      "title_original": "61--CABLE ASSEMBLY,SPECIAL",
-      "title_tr": "61--KABLO MONTAJI,ÖZEL",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=56f365eaa7804a0f9f1c6c0463cc8c4a",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=56f365eaa7804a0f9f1c6c0463cc8c4a",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "2026-10-13",
-      "classification-cpv": "334419",
-      "procedure-type": "Combined Synopsis/Solicitation",
-      "source_url": "https://sam.gov/workspace/contract/opp/56f365eaa7804a0f9f1c6c0463cc8c4a/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 60,
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter 61--CABLE ASSEMBLY,SPECIAL https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=56f365eaa7804a0f9f1c6c0463cc8c4a 334419",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "buyer_source_verified": false,
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ]
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "334419",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=56f365eaa7804a0f9f1c6c0463cc8c4a. Kategori / ürün grubu: 334419",
       "workflow": {
         "buyer": {
           "status": "identity_pending",
