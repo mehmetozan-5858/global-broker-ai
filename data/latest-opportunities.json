@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-04",
+  "generated": "2026-10-05",
   "scope": "ALL_GLOBAL_PRODUCTS",
-  "count": 127,
+  "count": 126,
   "opportunities": [
     {
       "deadline-receipt-tender-date-lot": [
@@ -5046,262 +5046,6 @@
     },
     {
       "deadline-receipt-tender-date-lot": [
-        "2026-10-02+02:00"
-      ],
-      "description-lot": {
-        "pol": [
-          "Szczegółowy opis przedmiotu zamówienia stanowi Rozdz. XIX/XIXa SWZ oraz załącznik nr 5."
-        ]
-      },
-      "procedure-type": "open",
-      "publication-number": "646445-2026",
-      "classification-cpv": [
-        "32420000",
-        "32420000"
-      ],
-      "contract-nature": [
-        "supplies",
-        "supplies"
-      ],
-      "buyer-name": "Komenda Stołeczna Policji",
-      "publication-date": "2026-09-21+02:00",
-      "links": {
-        "xml": {
-          "MUL": "https://ted.europa.eu/en/notice/646445-2026/xml"
-        },
-        "pdf": {
-          "BUL": "https://ted.europa.eu/bg/notice/646445-2026/pdf",
-          "SPA": "https://ted.europa.eu/es/notice/646445-2026/pdf",
-          "CES": "https://ted.europa.eu/cs/notice/646445-2026/pdf",
-          "DAN": "https://ted.europa.eu/da/notice/646445-2026/pdf",
-          "DEU": "https://ted.europa.eu/de/notice/646445-2026/pdf",
-          "EST": "https://ted.europa.eu/et/notice/646445-2026/pdf",
-          "ELL": "https://ted.europa.eu/el/notice/646445-2026/pdf",
-          "ENG": "https://ted.europa.eu/en/notice/646445-2026/pdf",
-          "FRA": "https://ted.europa.eu/fr/notice/646445-2026/pdf",
-          "GLE": "https://ted.europa.eu/ga/notice/646445-2026/pdf",
-          "HRV": "https://ted.europa.eu/hr/notice/646445-2026/pdf",
-          "ITA": "https://ted.europa.eu/it/notice/646445-2026/pdf",
-          "LAV": "https://ted.europa.eu/lv/notice/646445-2026/pdf",
-          "LIT": "https://ted.europa.eu/lt/notice/646445-2026/pdf",
-          "HUN": "https://ted.europa.eu/hu/notice/646445-2026/pdf",
-          "MLT": "https://ted.europa.eu/mt/notice/646445-2026/pdf",
-          "NLD": "https://ted.europa.eu/nl/notice/646445-2026/pdf",
-          "POL": "https://ted.europa.eu/pl/notice/646445-2026/pdf",
-          "POR": "https://ted.europa.eu/pt/notice/646445-2026/pdf",
-          "RON": "https://ted.europa.eu/ro/notice/646445-2026/pdf",
-          "SLK": "https://ted.europa.eu/sk/notice/646445-2026/pdf",
-          "SLV": "https://ted.europa.eu/sl/notice/646445-2026/pdf",
-          "FIN": "https://ted.europa.eu/fi/notice/646445-2026/pdf",
-          "SWE": "https://ted.europa.eu/sv/notice/646445-2026/pdf"
-        },
-        "pdfs": {
-          "POL": "https://ted.europa.eu/pl/notice/646445-2026/pdfs"
-        },
-        "html": {
-          "BUL": "https://ted.europa.eu/bg/notice/-/detail/646445-2026",
-          "SPA": "https://ted.europa.eu/es/notice/-/detail/646445-2026",
-          "CES": "https://ted.europa.eu/cs/notice/-/detail/646445-2026",
-          "DAN": "https://ted.europa.eu/da/notice/-/detail/646445-2026",
-          "DEU": "https://ted.europa.eu/de/notice/-/detail/646445-2026",
-          "EST": "https://ted.europa.eu/et/notice/-/detail/646445-2026",
-          "ELL": "https://ted.europa.eu/el/notice/-/detail/646445-2026",
-          "ENG": "https://ted.europa.eu/en/notice/-/detail/646445-2026",
-          "FRA": "https://ted.europa.eu/fr/notice/-/detail/646445-2026",
-          "GLE": "https://ted.europa.eu/ga/notice/-/detail/646445-2026",
-          "HRV": "https://ted.europa.eu/hr/notice/-/detail/646445-2026",
-          "ITA": "https://ted.europa.eu/it/notice/-/detail/646445-2026",
-          "LAV": "https://ted.europa.eu/lv/notice/-/detail/646445-2026",
-          "LIT": "https://ted.europa.eu/lt/notice/-/detail/646445-2026",
-          "HUN": "https://ted.europa.eu/hu/notice/-/detail/646445-2026",
-          "MLT": "https://ted.europa.eu/mt/notice/-/detail/646445-2026",
-          "NLD": "https://ted.europa.eu/nl/notice/-/detail/646445-2026",
-          "POL": "https://ted.europa.eu/pl/notice/-/detail/646445-2026",
-          "POR": "https://ted.europa.eu/pt/notice/-/detail/646445-2026",
-          "RON": "https://ted.europa.eu/ro/notice/-/detail/646445-2026",
-          "SLK": "https://ted.europa.eu/sk/notice/-/detail/646445-2026",
-          "SLV": "https://ted.europa.eu/sl/notice/-/detail/646445-2026",
-          "FIN": "https://ted.europa.eu/fi/notice/-/detail/646445-2026",
-          "SWE": "https://ted.europa.eu/sv/notice/-/detail/646445-2026"
-        },
-        "htmlDirect": {
-          "BUL": "https://ted.europa.eu/bg/notice/646445-2026/html",
-          "SPA": "https://ted.europa.eu/es/notice/646445-2026/html",
-          "CES": "https://ted.europa.eu/cs/notice/646445-2026/html",
-          "DAN": "https://ted.europa.eu/da/notice/646445-2026/html",
-          "DEU": "https://ted.europa.eu/de/notice/646445-2026/html",
-          "EST": "https://ted.europa.eu/et/notice/646445-2026/html",
-          "ELL": "https://ted.europa.eu/el/notice/646445-2026/html",
-          "ENG": "https://ted.europa.eu/en/notice/646445-2026/html",
-          "FRA": "https://ted.europa.eu/fr/notice/646445-2026/html",
-          "GLE": "https://ted.europa.eu/ga/notice/646445-2026/html",
-          "HRV": "https://ted.europa.eu/hr/notice/646445-2026/html",
-          "ITA": "https://ted.europa.eu/it/notice/646445-2026/html",
-          "LAV": "https://ted.europa.eu/lv/notice/646445-2026/html",
-          "LIT": "https://ted.europa.eu/lt/notice/646445-2026/html",
-          "HUN": "https://ted.europa.eu/hu/notice/646445-2026/html",
-          "MLT": "https://ted.europa.eu/mt/notice/646445-2026/html",
-          "NLD": "https://ted.europa.eu/nl/notice/646445-2026/html",
-          "POL": "https://ted.europa.eu/pl/notice/646445-2026/html",
-          "POR": "https://ted.europa.eu/pt/notice/646445-2026/html",
-          "RON": "https://ted.europa.eu/ro/notice/646445-2026/html",
-          "SLK": "https://ted.europa.eu/sk/notice/646445-2026/html",
-          "SLV": "https://ted.europa.eu/sl/notice/646445-2026/html",
-          "FIN": "https://ted.europa.eu/fi/notice/646445-2026/html",
-          "SWE": "https://ted.europa.eu/sv/notice/646445-2026/html"
-        }
-      },
-      "notice-title": {
-        "hun": "Lengyelország – Hálózati berendezések – Dostawy przełączników sieciowych",
-        "lav": "Polija – Tīkla iekārtas – Dostawy przełączników sieciowych",
-        "swe": "Polen – Nätutrustning – Dostawy przełączników sieciowych",
-        "gle": "An Pholainn – Network equipment – Dostawy przełączników sieciowych",
-        "ell": "Πολωνία – Εξοπλισμός δικτύου – Dostawy przełączników sieciowych",
-        "spa": "Polonia – Equipo de red – Dostawy przełączników sieciowych",
-        "est": "Poola – Võrguseadmed – Dostawy przełączników sieciowych",
-        "nld": "Polen – Netwerkuitrusting – Dostawy przełączników sieciowych",
-        "fin": "Puola – Verkkolaitteisto – Dostawy przełączników sieciowych",
-        "pol": "Polska – Urządzenia sieciowe – Dostawy przełączników sieciowych",
-        "hrv": "Poljska – Mrežna oprema – Dostawy przełączników sieciowych",
-        "ces": "Polsko – Síťová zařízení – Dostawy przełączników sieciowych",
-        "dan": "Polen – Netudstyr – Dostawy przełączników sieciowych",
-        "ron": "Polonia – Echipament de reţea – Dostawy przełączników sieciowych",
-        "por": "Polónia – Equipamento de rede – Dostawy przełączników sieciowych",
-        "slk": "Poľsko – Sieťové zariadenia – Dostawy przełączników sieciowych",
-        "fra": "Pologne – Matériel de réseau – Dostawy przełączników sieciowych",
-        "mlt": "Il-Polonja – Apparat tan-network – Dostawy przełączników sieciowych",
-        "deu": "Polen – Netzausrüstung – Dostawy przełączników sieciowych",
-        "lit": "Lenkija – Tinklo įranga – Dostawy przełączników sieciowych",
-        "ita": "Polonia – Apparecchiature di rete – Dostawy przełączników sieciowych",
-        "bul": "Полша – Мрежово оборудване – Dostawy przełączników sieciowych",
-        "slv": "Poljska – Oprema za omrežje – Dostawy przełączników sieciowych",
-        "eng": "Poland – Network equipment – Dostawy przełączników sieciowych"
-      },
-      "buyer-country": "POL",
-      "categories": [
-        "machinery"
-      ],
-      "deal_score": 80,
-      "source": "TED",
-      "mode": "shadow",
-      "title_original": "Poland – Network equipment – Dostawy przełączników sieciowych",
-      "title_tr": "Polonya – Ağ ekipmanı – Ağ anahtarlarının tedariği",
-      "detail_original": "Szczegółowy opis przedmiotu zamówienia stanowi Rozdz. XIX/XIXa SWZ oraz załącznik nr 5.",
-      "detail_tr": "Emrin konusuna ilişkin ayrıntılı bir açıklama Bölüm'de verilmektedir. XIX/XIXa SWZ ve Ek No. 5.",
-      "market_region": "Diğer Pazarlar",
-      "buyer_verified": true,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "compliance_status": "source_verified_buyer_pending_due_diligence",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Poland – Network equipment – Dostawy przełączników sieciowych Szczegółowy opis przedmiotu zamówienia stanowi Rozdz. XIX/XIXa SWZ oraz załącznik nr 5. 32420000 32420000",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "POL",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "buyer_source_verified": true,
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ]
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "32420000 32420000",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "Emrin konusuna ilişkin ayrıntılı bir açıklama Bölüm'de verilmektedir. XIX/XIXa SWZ ve Ek No. 5.. Kategori / ürün grubu: 32420000 32420000",
-      "workflow": {
-        "buyer": {
-          "status": "source_identified",
-          "name": "Komenda Stołeczna Policji",
-          "country": "POL",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      }
-    },
-    {
-      "deadline-receipt-tender-date-lot": [
         "2026-11-09+02:00",
         "2026-11-09+02:00"
       ],
@@ -8939,570 +8683,6 @@
     },
     {
       "deadline-receipt-tender-date-lot": [
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00",
-        "2026-10-02+02:00"
-      ],
-      "description-lot": {
-        "pol": [
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-          "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ."
-        ]
-      },
-      "procedure-type": "open",
-      "publication-number": "646511-2026",
-      "classification-cpv": [
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000",
-        "33600000"
-      ],
-      "contract-nature": [
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies",
-        "supplies"
-      ],
-      "buyer-name": "Uniwersyteckie Centrum Kliniczne",
-      "publication-date": "2026-09-21+02:00",
-      "links": {
-        "xml": {
-          "MUL": "https://ted.europa.eu/en/notice/646511-2026/xml"
-        },
-        "pdf": {
-          "BUL": "https://ted.europa.eu/bg/notice/646511-2026/pdf",
-          "SPA": "https://ted.europa.eu/es/notice/646511-2026/pdf",
-          "CES": "https://ted.europa.eu/cs/notice/646511-2026/pdf",
-          "DAN": "https://ted.europa.eu/da/notice/646511-2026/pdf",
-          "DEU": "https://ted.europa.eu/de/notice/646511-2026/pdf",
-          "EST": "https://ted.europa.eu/et/notice/646511-2026/pdf",
-          "ELL": "https://ted.europa.eu/el/notice/646511-2026/pdf",
-          "ENG": "https://ted.europa.eu/en/notice/646511-2026/pdf",
-          "FRA": "https://ted.europa.eu/fr/notice/646511-2026/pdf",
-          "GLE": "https://ted.europa.eu/ga/notice/646511-2026/pdf",
-          "HRV": "https://ted.europa.eu/hr/notice/646511-2026/pdf",
-          "ITA": "https://ted.europa.eu/it/notice/646511-2026/pdf",
-          "LAV": "https://ted.europa.eu/lv/notice/646511-2026/pdf",
-          "LIT": "https://ted.europa.eu/lt/notice/646511-2026/pdf",
-          "HUN": "https://ted.europa.eu/hu/notice/646511-2026/pdf",
-          "MLT": "https://ted.europa.eu/mt/notice/646511-2026/pdf",
-          "NLD": "https://ted.europa.eu/nl/notice/646511-2026/pdf",
-          "POL": "https://ted.europa.eu/pl/notice/646511-2026/pdf",
-          "POR": "https://ted.europa.eu/pt/notice/646511-2026/pdf",
-          "RON": "https://ted.europa.eu/ro/notice/646511-2026/pdf",
-          "SLK": "https://ted.europa.eu/sk/notice/646511-2026/pdf",
-          "SLV": "https://ted.europa.eu/sl/notice/646511-2026/pdf",
-          "FIN": "https://ted.europa.eu/fi/notice/646511-2026/pdf",
-          "SWE": "https://ted.europa.eu/sv/notice/646511-2026/pdf"
-        },
-        "pdfs": {
-          "POL": "https://ted.europa.eu/pl/notice/646511-2026/pdfs"
-        },
-        "html": {
-          "BUL": "https://ted.europa.eu/bg/notice/-/detail/646511-2026",
-          "SPA": "https://ted.europa.eu/es/notice/-/detail/646511-2026",
-          "CES": "https://ted.europa.eu/cs/notice/-/detail/646511-2026",
-          "DAN": "https://ted.europa.eu/da/notice/-/detail/646511-2026",
-          "DEU": "https://ted.europa.eu/de/notice/-/detail/646511-2026",
-          "EST": "https://ted.europa.eu/et/notice/-/detail/646511-2026",
-          "ELL": "https://ted.europa.eu/el/notice/-/detail/646511-2026",
-          "ENG": "https://ted.europa.eu/en/notice/-/detail/646511-2026",
-          "FRA": "https://ted.europa.eu/fr/notice/-/detail/646511-2026",
-          "GLE": "https://ted.europa.eu/ga/notice/-/detail/646511-2026",
-          "HRV": "https://ted.europa.eu/hr/notice/-/detail/646511-2026",
-          "ITA": "https://ted.europa.eu/it/notice/-/detail/646511-2026",
-          "LAV": "https://ted.europa.eu/lv/notice/-/detail/646511-2026",
-          "LIT": "https://ted.europa.eu/lt/notice/-/detail/646511-2026",
-          "HUN": "https://ted.europa.eu/hu/notice/-/detail/646511-2026",
-          "MLT": "https://ted.europa.eu/mt/notice/-/detail/646511-2026",
-          "NLD": "https://ted.europa.eu/nl/notice/-/detail/646511-2026",
-          "POL": "https://ted.europa.eu/pl/notice/-/detail/646511-2026",
-          "POR": "https://ted.europa.eu/pt/notice/-/detail/646511-2026",
-          "RON": "https://ted.europa.eu/ro/notice/-/detail/646511-2026",
-          "SLK": "https://ted.europa.eu/sk/notice/-/detail/646511-2026",
-          "SLV": "https://ted.europa.eu/sl/notice/-/detail/646511-2026",
-          "FIN": "https://ted.europa.eu/fi/notice/-/detail/646511-2026",
-          "SWE": "https://ted.europa.eu/sv/notice/-/detail/646511-2026"
-        },
-        "htmlDirect": {
-          "BUL": "https://ted.europa.eu/bg/notice/646511-2026/html",
-          "SPA": "https://ted.europa.eu/es/notice/646511-2026/html",
-          "CES": "https://ted.europa.eu/cs/notice/646511-2026/html",
-          "DAN": "https://ted.europa.eu/da/notice/646511-2026/html",
-          "DEU": "https://ted.europa.eu/de/notice/646511-2026/html",
-          "EST": "https://ted.europa.eu/et/notice/646511-2026/html",
-          "ELL": "https://ted.europa.eu/el/notice/646511-2026/html",
-          "ENG": "https://ted.europa.eu/en/notice/646511-2026/html",
-          "FRA": "https://ted.europa.eu/fr/notice/646511-2026/html",
-          "GLE": "https://ted.europa.eu/ga/notice/646511-2026/html",
-          "HRV": "https://ted.europa.eu/hr/notice/646511-2026/html",
-          "ITA": "https://ted.europa.eu/it/notice/646511-2026/html",
-          "LAV": "https://ted.europa.eu/lv/notice/646511-2026/html",
-          "LIT": "https://ted.europa.eu/lt/notice/646511-2026/html",
-          "HUN": "https://ted.europa.eu/hu/notice/646511-2026/html",
-          "MLT": "https://ted.europa.eu/mt/notice/646511-2026/html",
-          "NLD": "https://ted.europa.eu/nl/notice/646511-2026/html",
-          "POL": "https://ted.europa.eu/pl/notice/646511-2026/html",
-          "POR": "https://ted.europa.eu/pt/notice/646511-2026/html",
-          "RON": "https://ted.europa.eu/ro/notice/646511-2026/html",
-          "SLK": "https://ted.europa.eu/sk/notice/646511-2026/html",
-          "SLV": "https://ted.europa.eu/sl/notice/646511-2026/html",
-          "FIN": "https://ted.europa.eu/fi/notice/646511-2026/html",
-          "SWE": "https://ted.europa.eu/sv/notice/646511-2026/html"
-        }
-      },
-      "notice-title": {
-        "hun": "Lengyelország – Gyógyszerészeti termékek – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "lav": "Polija – Farmācijas izstrādājumi – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "swe": "Polen – Läkemedel – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "gle": "An Pholainn – Pharmaceutical products – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "ell": "Πολωνία – Φαρμακευτικά προϊόντα – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "spa": "Polonia – Productos farmacéuticos – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "est": "Poola – Ravimid – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "nld": "Polen – Farmaceutische producten – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "fin": "Puola – Farmaseuttiset tuotteet – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "pol": "Polska – Produkty farmaceutyczne – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "hrv": "Poljska – Farmaceutski proizvodi – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "ces": "Polsko – Léčivé přípravky a zdravotnické prostředky – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "dan": "Polen – Lægemidler – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "ron": "Polonia – Produse farmaceutice – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "por": "Polónia – Produtos farmacêuticos – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "slk": "Poľsko – Farmaceutické výrobky – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "fra": "Pologne – Produits pharmaceutiques – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "mlt": "Il-Polonja – Prodotti farmaċewtiċi – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "deu": "Polen – Arzneimittel – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "lit": "Lenkija – Farmacijos produktai – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "ita": "Polonia – Prodotti farmaceutici – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "bul": "Полша – Фармацевтични продукти – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "slv": "Poljska – Farmacevtski proizvodi – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-        "eng": "Poland – Pharmaceutical products – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK"
-      },
-      "buyer-country": "POL",
-      "categories": [
-        "medical"
-      ],
-      "deal_score": 80,
-      "source": "TED",
-      "mode": "shadow",
-      "title_original": "Poland – Pharmaceutical products – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK",
-      "title_tr": "Polonya – Eczacılık ürünleri – 244/PN/2026 - UCK için hedef ithalatın bir parçası olarak tıbbi ürünlerin teslimi",
-      "detail_original": "Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ. Przedmiotem zamówienia jest dostawa pproduktów leczniczych w ramach importu docelowego dla UCK w asortymencie, szacunkowej ilości oraz wymaganiach określonych w załączniku nr 3 do SWZ.",
-      "detail_tr": "Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak, ürün çeşitliliği, tahmini miktar ve gerekliliklerde belirtilen tıbbi ürünlerin tedarikidir.",
-      "market_region": "Diğer Pazarlar",
-      "buyer_verified": true,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "compliance_status": "source_verified_buyer_pending_due_diligence",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Poland – Pharmaceutical products – 244/PN/2026 - Dostawa produktów leczniczych w ramach importu docelowego dla UCK Przedmiotem zamówienia jest dostawa pproduktów leczniczych w rama",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "POL",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "buyer_source_verified": true,
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ]
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak SWZ Ek 3'te belirtilen ürün çeşitliliği, tahmini miktar ve gerekliliklerdeki tıbbi ürünlerin tedarikidir. Siparişin konusu, UCK için hedef ithalatın bir parçası olarak, ürün çeşitliliği, tahmini miktar ve gerekliliklerde belirtilen tıbbi ürünlerin tedarikidir.. Kategori / ürün grubu: 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000",
-      "workflow": {
-        "buyer": {
-          "status": "source_identified",
-          "name": "Uniwersyteckie Centrum Kliniczne",
-          "country": "POL",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      }
-    },
-    {
-      "deadline-receipt-tender-date-lot": [
         "2026-10-19Z",
         "2026-10-19Z",
         "2026-10-19Z",
@@ -11881,270 +11061,6 @@
           "status": "source_identified",
           "name": "Intercommunale Ontwikkelingsorganisatie voor de Kempen",
           "country": "BEL",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      }
-    },
-    {
-      "deadline-receipt-tender-date-lot": [
-        "2026-10-02+03:00"
-      ],
-      "description-lot": {
-        "ell": [
-          "Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού."
-        ]
-      },
-      "procedure-type": "open",
-      "publication-number": "646597-2026",
-      "classification-cpv": [
-        "34144000",
-        "35111000",
-        "34144200",
-        "50100000",
-        "50110000",
-        "34144000",
-        "35111000",
-        "34144200",
-        "50100000",
-        "50110000"
-      ],
-      "contract-nature": [
-        "supplies",
-        "supplies"
-      ],
-      "buyer-name": "ΚΟΙΝΟΤΙΚΟ ΣΥΜΒΟΥΛΙΟ ΑΓΡΟΥ",
-      "publication-date": "2026-09-21+02:00",
-      "links": {
-        "xml": {
-          "MUL": "https://ted.europa.eu/en/notice/646597-2026/xml"
-        },
-        "pdf": {
-          "BUL": "https://ted.europa.eu/bg/notice/646597-2026/pdf",
-          "SPA": "https://ted.europa.eu/es/notice/646597-2026/pdf",
-          "CES": "https://ted.europa.eu/cs/notice/646597-2026/pdf",
-          "DAN": "https://ted.europa.eu/da/notice/646597-2026/pdf",
-          "DEU": "https://ted.europa.eu/de/notice/646597-2026/pdf",
-          "EST": "https://ted.europa.eu/et/notice/646597-2026/pdf",
-          "ELL": "https://ted.europa.eu/el/notice/646597-2026/pdf",
-          "ENG": "https://ted.europa.eu/en/notice/646597-2026/pdf",
-          "FRA": "https://ted.europa.eu/fr/notice/646597-2026/pdf",
-          "GLE": "https://ted.europa.eu/ga/notice/646597-2026/pdf",
-          "HRV": "https://ted.europa.eu/hr/notice/646597-2026/pdf",
-          "ITA": "https://ted.europa.eu/it/notice/646597-2026/pdf",
-          "LAV": "https://ted.europa.eu/lv/notice/646597-2026/pdf",
-          "LIT": "https://ted.europa.eu/lt/notice/646597-2026/pdf",
-          "HUN": "https://ted.europa.eu/hu/notice/646597-2026/pdf",
-          "MLT": "https://ted.europa.eu/mt/notice/646597-2026/pdf",
-          "NLD": "https://ted.europa.eu/nl/notice/646597-2026/pdf",
-          "POL": "https://ted.europa.eu/pl/notice/646597-2026/pdf",
-          "POR": "https://ted.europa.eu/pt/notice/646597-2026/pdf",
-          "RON": "https://ted.europa.eu/ro/notice/646597-2026/pdf",
-          "SLK": "https://ted.europa.eu/sk/notice/646597-2026/pdf",
-          "SLV": "https://ted.europa.eu/sl/notice/646597-2026/pdf",
-          "FIN": "https://ted.europa.eu/fi/notice/646597-2026/pdf",
-          "SWE": "https://ted.europa.eu/sv/notice/646597-2026/pdf"
-        },
-        "pdfs": {
-          "ELL": "https://ted.europa.eu/el/notice/646597-2026/pdfs"
-        },
-        "html": {
-          "BUL": "https://ted.europa.eu/bg/notice/-/detail/646597-2026",
-          "SPA": "https://ted.europa.eu/es/notice/-/detail/646597-2026",
-          "CES": "https://ted.europa.eu/cs/notice/-/detail/646597-2026",
-          "DAN": "https://ted.europa.eu/da/notice/-/detail/646597-2026",
-          "DEU": "https://ted.europa.eu/de/notice/-/detail/646597-2026",
-          "EST": "https://ted.europa.eu/et/notice/-/detail/646597-2026",
-          "ELL": "https://ted.europa.eu/el/notice/-/detail/646597-2026",
-          "ENG": "https://ted.europa.eu/en/notice/-/detail/646597-2026",
-          "FRA": "https://ted.europa.eu/fr/notice/-/detail/646597-2026",
-          "GLE": "https://ted.europa.eu/ga/notice/-/detail/646597-2026",
-          "HRV": "https://ted.europa.eu/hr/notice/-/detail/646597-2026",
-          "ITA": "https://ted.europa.eu/it/notice/-/detail/646597-2026",
-          "LAV": "https://ted.europa.eu/lv/notice/-/detail/646597-2026",
-          "LIT": "https://ted.europa.eu/lt/notice/-/detail/646597-2026",
-          "HUN": "https://ted.europa.eu/hu/notice/-/detail/646597-2026",
-          "MLT": "https://ted.europa.eu/mt/notice/-/detail/646597-2026",
-          "NLD": "https://ted.europa.eu/nl/notice/-/detail/646597-2026",
-          "POL": "https://ted.europa.eu/pl/notice/-/detail/646597-2026",
-          "POR": "https://ted.europa.eu/pt/notice/-/detail/646597-2026",
-          "RON": "https://ted.europa.eu/ro/notice/-/detail/646597-2026",
-          "SLK": "https://ted.europa.eu/sk/notice/-/detail/646597-2026",
-          "SLV": "https://ted.europa.eu/sl/notice/-/detail/646597-2026",
-          "FIN": "https://ted.europa.eu/fi/notice/-/detail/646597-2026",
-          "SWE": "https://ted.europa.eu/sv/notice/-/detail/646597-2026"
-        },
-        "htmlDirect": {
-          "BUL": "https://ted.europa.eu/bg/notice/646597-2026/html",
-          "SPA": "https://ted.europa.eu/es/notice/646597-2026/html",
-          "CES": "https://ted.europa.eu/cs/notice/646597-2026/html",
-          "DAN": "https://ted.europa.eu/da/notice/646597-2026/html",
-          "DEU": "https://ted.europa.eu/de/notice/646597-2026/html",
-          "EST": "https://ted.europa.eu/et/notice/646597-2026/html",
-          "ELL": "https://ted.europa.eu/el/notice/646597-2026/html",
-          "ENG": "https://ted.europa.eu/en/notice/646597-2026/html",
-          "FRA": "https://ted.europa.eu/fr/notice/646597-2026/html",
-          "GLE": "https://ted.europa.eu/ga/notice/646597-2026/html",
-          "HRV": "https://ted.europa.eu/hr/notice/646597-2026/html",
-          "ITA": "https://ted.europa.eu/it/notice/646597-2026/html",
-          "LAV": "https://ted.europa.eu/lv/notice/646597-2026/html",
-          "LIT": "https://ted.europa.eu/lt/notice/646597-2026/html",
-          "HUN": "https://ted.europa.eu/hu/notice/646597-2026/html",
-          "MLT": "https://ted.europa.eu/mt/notice/646597-2026/html",
-          "NLD": "https://ted.europa.eu/nl/notice/646597-2026/html",
-          "POL": "https://ted.europa.eu/pl/notice/646597-2026/html",
-          "POR": "https://ted.europa.eu/pt/notice/646597-2026/html",
-          "RON": "https://ted.europa.eu/ro/notice/646597-2026/html",
-          "SLK": "https://ted.europa.eu/sk/notice/646597-2026/html",
-          "SLV": "https://ted.europa.eu/sl/notice/646597-2026/html",
-          "FIN": "https://ted.europa.eu/fi/notice/646597-2026/html",
-          "SWE": "https://ted.europa.eu/sv/notice/646597-2026/html"
-        }
-      },
-      "notice-title": {
-        "hun": "Ciprus – Különleges célú gépjárművek – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "lav": "Kipra – Īpaša lietojuma mehāniskie transportlīdzekļi – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "swe": "Cypern – Motorfordon för särskilda syften – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "gle": "An Chipir – Special-purpose motor vehicles – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "ell": "Κύπρος – Αυτοκίνητα οχήματα ειδικής χρήσης – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "spa": "Chipre – Vehículos de motor para usos especiales – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "est": "Küpros – Eriotstarbelised mootorsõidukid – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "nld": "Cyprus – Motorvoertuigen voor speciale doeleinden – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "fin": "Kypros – Erikoismoottoriajoneuvot – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "pol": "Cypr – Pojazdy silnikowe specjalnego zastosowania – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "hrv": "Cipar – Motorna vozila za posebne namjene – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "ces": "Kypr – Motorová vozidla pro zvláštní účely – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "dan": "Cypern – Motorkøretøjer til specielle formål – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "ron": "Cipru – Autovehicule cu utilizare specială – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "por": "Chipre – Veículos a motor para usos especiais – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "slk": "Cyprus – Motorové vozidlá na špeciálne účely – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "fra": "Chypre – Véhicules automobiles à usage spécifique – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "mlt": "Ċipru – Vetturi bil-magna għal skopijiet speċjali – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "deu": "Zypern – Kraftfahrzeuge für besondere Zwecke – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "lit": "Kipras – Specialios paskirties motorinės transporto priemonės – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "ita": "Cipro – Autoveicoli per usi speciali – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "bul": "Кипъp – Автомобилни превозни средства със специална употреба – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "slv": "Ciper – Motorna vozila za posebne namene – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-        "eng": "Cyprus – Special-purpose motor vehicles – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού"
-      },
-      "buyer-country": "CYP",
-      "categories": [
-        "transport_parts"
-      ],
-      "deal_score": 80,
-      "source": "TED",
-      "mode": "shadow",
-      "title_original": "Cyprus – Special-purpose motor vehicles – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού",
-      "title_tr": "Kıbrıs – Özel amaçlı motorlu araçlar – Limasol Bölgesi Kırsal Toplumuna Yönelik Otonom Yangın Söndürme Sistemli Tek Kabinli Araç Temini ve Bakımı İhalesi",
-      "detail_original": "Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού.",
-      "detail_tr": "Limasol Bölgesi Kırsal Topluluğu için Otonom Yangın Söndürme Sistemli Tek Kabinli Araç Temini ve Bakımı Teklifi.",
-      "market_region": "Diğer Pazarlar",
-      "buyer_verified": true,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "compliance_status": "source_verified_buyer_pending_due_diligence",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Cyprus – Special-purpose motor vehicles – Προσφορά για Προμήθεια και Συντήρηση Μονοκάμπινου Οχήματος με Αυτόνομο Σύστημα Πυρόσβεσης για τη Κοινότητα Αγρού της Επαρχίας Λεμεσού Προσ",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "CYP",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "buyer_source_verified": true,
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ]
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "34144000 35111000 34144200 50100000 50110000 34144000 35111000 34144200 50100000 50110000",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "Limasol Bölgesi Kırsal Topluluğu için Otonom Yangın Söndürme Sistemli Tek Kabinli Araç Temini ve Bakımı Teklifi.. Kategori / ürün grubu: 34144000 35111000 34144200 50100000 50110000 34144000 35111000 34144200 50100000 50110000",
-      "workflow": {
-        "buyer": {
-          "status": "source_identified",
-          "name": "ΚΟΙΝΟΤΙΚΟ ΣΥΜΒΟΥΛΙΟ ΑΓΡΟΥ",
-          "country": "CYP",
           "verified": false
         },
         "supplier": {
@@ -26892,6 +25808,539 @@
           "status": "source_identified",
           "name": "Tomaszowskie Centrum Zdrowia Sp.zo.o. ul. Jana Pawła II 35 97-200 Tomaszów Mazowiecki",
           "country": "POL",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
+      "description-lot": {
+        "ces": [
+          "Předmětem plnění zakázky je uzavření smlouvy s jedním vybraným dodavatelem na dobu 4 let, na dodávky veškerého spotřebního materiálu pro imunochemický analyzátor včetně bezplatné výpůjčky imunochemického analyzátoru pro oddělení klinické biochemie a hematologie Karlovarské krajské nemocnice a.s., nemocnice v Karlových Varech."
+        ]
+      },
+      "procedure-type": "open",
+      "publication-number": "646613-2026",
+      "classification-cpv": [
+        "33696200",
+        "33124110",
+        "33124100",
+        "33696200",
+        "33124110",
+        "33124100"
+      ],
+      "contract-nature": [
+        "supplies",
+        "supplies"
+      ],
+      "buyer-name": "Karlovarská krajská nemocnice a.s.",
+      "publication-date": "2026-09-21+02:00",
+      "links": {
+        "xml": {
+          "MUL": "https://ted.europa.eu/en/notice/646613-2026/xml"
+        },
+        "pdf": {
+          "BUL": "https://ted.europa.eu/bg/notice/646613-2026/pdf",
+          "SPA": "https://ted.europa.eu/es/notice/646613-2026/pdf",
+          "CES": "https://ted.europa.eu/cs/notice/646613-2026/pdf",
+          "DAN": "https://ted.europa.eu/da/notice/646613-2026/pdf",
+          "DEU": "https://ted.europa.eu/de/notice/646613-2026/pdf",
+          "EST": "https://ted.europa.eu/et/notice/646613-2026/pdf",
+          "ELL": "https://ted.europa.eu/el/notice/646613-2026/pdf",
+          "ENG": "https://ted.europa.eu/en/notice/646613-2026/pdf",
+          "FRA": "https://ted.europa.eu/fr/notice/646613-2026/pdf",
+          "GLE": "https://ted.europa.eu/ga/notice/646613-2026/pdf",
+          "HRV": "https://ted.europa.eu/hr/notice/646613-2026/pdf",
+          "ITA": "https://ted.europa.eu/it/notice/646613-2026/pdf",
+          "LAV": "https://ted.europa.eu/lv/notice/646613-2026/pdf",
+          "LIT": "https://ted.europa.eu/lt/notice/646613-2026/pdf",
+          "HUN": "https://ted.europa.eu/hu/notice/646613-2026/pdf",
+          "MLT": "https://ted.europa.eu/mt/notice/646613-2026/pdf",
+          "NLD": "https://ted.europa.eu/nl/notice/646613-2026/pdf",
+          "POL": "https://ted.europa.eu/pl/notice/646613-2026/pdf",
+          "POR": "https://ted.europa.eu/pt/notice/646613-2026/pdf",
+          "RON": "https://ted.europa.eu/ro/notice/646613-2026/pdf",
+          "SLK": "https://ted.europa.eu/sk/notice/646613-2026/pdf",
+          "SLV": "https://ted.europa.eu/sl/notice/646613-2026/pdf",
+          "FIN": "https://ted.europa.eu/fi/notice/646613-2026/pdf",
+          "SWE": "https://ted.europa.eu/sv/notice/646613-2026/pdf"
+        },
+        "pdfs": {
+          "CES": "https://ted.europa.eu/cs/notice/646613-2026/pdfs"
+        },
+        "html": {
+          "BUL": "https://ted.europa.eu/bg/notice/-/detail/646613-2026",
+          "SPA": "https://ted.europa.eu/es/notice/-/detail/646613-2026",
+          "CES": "https://ted.europa.eu/cs/notice/-/detail/646613-2026",
+          "DAN": "https://ted.europa.eu/da/notice/-/detail/646613-2026",
+          "DEU": "https://ted.europa.eu/de/notice/-/detail/646613-2026",
+          "EST": "https://ted.europa.eu/et/notice/-/detail/646613-2026",
+          "ELL": "https://ted.europa.eu/el/notice/-/detail/646613-2026",
+          "ENG": "https://ted.europa.eu/en/notice/-/detail/646613-2026",
+          "FRA": "https://ted.europa.eu/fr/notice/-/detail/646613-2026",
+          "GLE": "https://ted.europa.eu/ga/notice/-/detail/646613-2026",
+          "HRV": "https://ted.europa.eu/hr/notice/-/detail/646613-2026",
+          "ITA": "https://ted.europa.eu/it/notice/-/detail/646613-2026",
+          "LAV": "https://ted.europa.eu/lv/notice/-/detail/646613-2026",
+          "LIT": "https://ted.europa.eu/lt/notice/-/detail/646613-2026",
+          "HUN": "https://ted.europa.eu/hu/notice/-/detail/646613-2026",
+          "MLT": "https://ted.europa.eu/mt/notice/-/detail/646613-2026",
+          "NLD": "https://ted.europa.eu/nl/notice/-/detail/646613-2026",
+          "POL": "https://ted.europa.eu/pl/notice/-/detail/646613-2026",
+          "POR": "https://ted.europa.eu/pt/notice/-/detail/646613-2026",
+          "RON": "https://ted.europa.eu/ro/notice/-/detail/646613-2026",
+          "SLK": "https://ted.europa.eu/sk/notice/-/detail/646613-2026",
+          "SLV": "https://ted.europa.eu/sl/notice/-/detail/646613-2026",
+          "FIN": "https://ted.europa.eu/fi/notice/-/detail/646613-2026",
+          "SWE": "https://ted.europa.eu/sv/notice/-/detail/646613-2026"
+        },
+        "htmlDirect": {
+          "BUL": "https://ted.europa.eu/bg/notice/646613-2026/html",
+          "SPA": "https://ted.europa.eu/es/notice/646613-2026/html",
+          "CES": "https://ted.europa.eu/cs/notice/646613-2026/html",
+          "DAN": "https://ted.europa.eu/da/notice/646613-2026/html",
+          "DEU": "https://ted.europa.eu/de/notice/646613-2026/html",
+          "EST": "https://ted.europa.eu/et/notice/646613-2026/html",
+          "ELL": "https://ted.europa.eu/el/notice/646613-2026/html",
+          "ENG": "https://ted.europa.eu/en/notice/646613-2026/html",
+          "FRA": "https://ted.europa.eu/fr/notice/646613-2026/html",
+          "GLE": "https://ted.europa.eu/ga/notice/646613-2026/html",
+          "HRV": "https://ted.europa.eu/hr/notice/646613-2026/html",
+          "ITA": "https://ted.europa.eu/it/notice/646613-2026/html",
+          "LAV": "https://ted.europa.eu/lv/notice/646613-2026/html",
+          "LIT": "https://ted.europa.eu/lt/notice/646613-2026/html",
+          "HUN": "https://ted.europa.eu/hu/notice/646613-2026/html",
+          "MLT": "https://ted.europa.eu/mt/notice/646613-2026/html",
+          "NLD": "https://ted.europa.eu/nl/notice/646613-2026/html",
+          "POL": "https://ted.europa.eu/pl/notice/646613-2026/html",
+          "POR": "https://ted.europa.eu/pt/notice/646613-2026/html",
+          "RON": "https://ted.europa.eu/ro/notice/646613-2026/html",
+          "SLK": "https://ted.europa.eu/sk/notice/646613-2026/html",
+          "SLV": "https://ted.europa.eu/sl/notice/646613-2026/html",
+          "FIN": "https://ted.europa.eu/fi/notice/646613-2026/html",
+          "SWE": "https://ted.europa.eu/sv/notice/646613-2026/html"
+        }
+      },
+      "notice-title": {
+        "hun": "Csehország – Vérvizsgálati reagensek – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "lav": "Čehija – Reaģenti asins analīžu veikšanai – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "swe": "Tjeckien – Blodprovsreagenser – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "gle": "An tSeicia – Blood-testing reagents – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "ell": "Τσεχία – Αντιδραστήρια αιματολογικών τεστ – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "spa": "Chequia – Reactivos para análisis de sangre – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "est": "Tšehhi – Vereanalüüsi reaktiivid – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "nld": "Tsjechië – Reagentia voor bloedanalyse – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "fin": "Tšekki – Verikoereagenssit – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "pol": "Czechy – Odczynniki do badania krwi – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "hrv": "Češka – Reagensi za ispitivanje krvi – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "ces": "Česko – Činidla pro krevní testy – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "dan": "Tjekkiet – Reagensmidler til blodprøver – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "ron": "Cehia – Reactivi pentru analize de sânge – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "por": "Chéquia – Reagentes para análises ao sangue – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "slk": "Česko – Činidlá na zisťovanie krvných faktorov – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "fra": "Tchéquie – Réactifs pour analyses de sang – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "mlt": "Iċ-Ċekja – Reaġenti tat-testijiet tad-demm – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "deu": "Tschechien – Reagenzien für Bluttests – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "lit": "Čekija – Kraujui tirti skirti reagentai – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "ita": "Cechia – Reattivi per l'analisi del sangue – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "bul": "Чехия – Реактиви за кръвен анализ – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "slv": "Češka – Reagenti za testiranje krvi – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+        "eng": "Czechia – Blood-testing reagents – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru"
+      },
+      "buyer-country": "CZE",
+      "categories": [
+        "uncategorized_supply"
+      ],
+      "deal_score": 65,
+      "source": "TED",
+      "mode": "shadow",
+      "title_original": "Czechia – Blood-testing reagents – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru",
+      "title_tr": "Çekya – Kan testi reaktifleri – İmmünokimyasal analizör ödünç alınarak sarf malzemelerinin temini",
+      "detail_original": "Předmětem plnění zakázky je uzavření smlouvy s jedním vybraným dodavatelem na dobu 4 let, na dodávky veškerého spotřebního materiálu pro imunochemický analyzátor včetně bezplatné výpůjčky imunochemického analyzátoru pro oddělení klinické biochemie a hematologie Karlovarské krajské nemocnice a.s., nemocnice v Karlových Varech.",
+      "detail_tr": "Sözleşmenin konusu, Karlovy Vary'deki bir hastane olan Karlovy Vary Bölge Hastanesi a.s.'nin klinik biyokimya ve hematoloji bölümü için immünokimyasal analiz cihazının ücretsiz ödünç verilmesi de dahil olmak üzere, immünokimyasal analizör için tüm sarf malzemelerinin tedariki için seçilen bir tedarikçi ile 4 yıllık bir süre için bir sözleşmenin imzalanmasıdır.",
+      "market_region": "Diğer Pazarlar",
+      "buyer_verified": true,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "compliance_status": "source_verified_buyer_pending_due_diligence",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
+      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter Czechia – Blood-testing reagents – Dodávky spotřebního materiálu s výpůjčkou imunochemického analyzátoru Předmětem plnění zakázky je uzavření smlouvy s jedním vybraným dodavatelem",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "CZE",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": true,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": false,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "33696200 33124110 33124100 33696200 33124110 33124100",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "Sözleşmenin konusu, Karlovy Vary'deki bir hastane olan Karlovy Vary Bölge Hastanesi a.s.'nin klinik biyokimya ve hematoloji bölümü için immünokimyasal analiz cihazının ücretsiz ödünç verilmesi de dahil olmak üzere, immünokimyasal analizör için tüm sarf malzemelerinin tedariki için seçilen bir tedarikçi ile 4 yıllık bir süre için bir sözleşmenin imzalanmasıdır.. Kategori / ürün grubu: 33696200 33124110 33124100 33696200 33124110 33124100",
+      "workflow": {
+        "buyer": {
+          "status": "source_identified",
+          "name": "Karlovarská krajská nemocnice a.s.",
+          "country": "CZE",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        }
+      }
+    },
+    {
+      "description-lot": {
+        "slk": [
+          "Časť 01 – Cefoperazón/sulbaktám • Typ položky: Humánny liek • Liečivo + koncentrácia: Jedna injekčná liekovka obsahuje 1 g cefoperazónu (ako cefoperazón, sodná soľ) a 1 g sulbaktámu (ako sulbaktám, sodná soľ). • ATC skupina: J01DD62 • Lieková forma: prášok na injekčný/infúzny roztok • Požadovaný počet: 7 600 ks",
+          "Časť 02 - Meropeném a) meropeném 500mg • Typ položky: Humánny liek • Liečivo + koncentrácia: Jedna injekčná liekovka obsahuje trihydrát meropenému v množstve zodpovedajúcom 500 mg bezvodého meropenému. • ATC skupina: J01DH02 • Lieková forma: prášok na injekčný/infúzny roztok • Požadovaný počet: 14 500 ks b) meropeném 1000mg • Typ položky: Humánny liek • Liečivo + koncentrácia: Jedna injekčná liekovka obsahuje trihydrát meropenému v množstve zodpovedajúcom 1 g bezvodého meropenému. • ATC skupina: J01DH02 • Lieková forma: prášok na injekčný/infúzny roztok • Požadovaný počet: 7 100 ks",
+          "Časť 03 – Flukonazol a) flukonazol 2mg/ml (100ml) • Typ položky: Humánny liek • Liečivo + koncentrácia: Každý 1 ml obsahuje 2 mg flukonazolu. Každý 100 ml infúzneho roztoku obsahuje 200 mg flukonazolu. • ATC skupina: J02AC01 • Lieková forma: infúzny roztok • Požadovaný počet: 1 550 ks b) flukonazol 2mg/ml (200ml) • Typ položky: Humánny liek • Liečivo + koncentrácia: Každý 1 ml obsahuje 2 mg flukonazolu. Každý 200 ml infúzneho roztoku obsahuje 400 mg flukonazolu. • ATC skupina: J02AC01 • Lieková forma: infúzny roztok • Požadovaný počet: 4 800 ks",
+          "Časť 04 – Piperacilín/tazobaktám 4g/0,5g • Typ položky: Humánny liek • Liečivo + koncentrácia: Každá injekčná liekovka obsahuje 4 g piperacilínu (vo forme sodnej soli) a 0,5 g tazobaktámu (vo forme sodnej soli). • ATC skupina: J01CR05 • Lieková forma: prášok na infúzny roztok • Požadovaný počet: 11 100 ks",
+          "Časť 05 – Cefiderokol • Typ položky: Humánny liek • Liečivo + koncentrácia: Každá injekčná liekovka obsahuje cefiderokol, sulfátovo-tozylátovú soľ, čo zodpovedá 1 g cefiderokolu. • ATC skupina: J01DI04 • Lieková forma: prášok na koncentrát na infúzny roztok • Požadovaný počet: 1 700 ks"
+        ]
+      },
+      "procedure-type": "open",
+      "publication-number": "646614-2026",
+      "classification-cpv": [
+        "33651100",
+        "33651200",
+        "33651100",
+        "33651100",
+        "33651100",
+        "33651100",
+        "33651100",
+        "33651200",
+        "33651200",
+        "33651200",
+        "33651200",
+        "33651200"
+      ],
+      "contract-nature": [
+        "supplies",
+        "supplies",
+        "supplies",
+        "supplies",
+        "supplies",
+        "supplies"
+      ],
+      "buyer-name": "Národný ústav srdcových a cievnych chorôb, a.s.",
+      "publication-date": "2026-09-21+02:00",
+      "links": {
+        "xml": {
+          "MUL": "https://ted.europa.eu/en/notice/646614-2026/xml"
+        },
+        "pdf": {
+          "BUL": "https://ted.europa.eu/bg/notice/646614-2026/pdf",
+          "SPA": "https://ted.europa.eu/es/notice/646614-2026/pdf",
+          "CES": "https://ted.europa.eu/cs/notice/646614-2026/pdf",
+          "DAN": "https://ted.europa.eu/da/notice/646614-2026/pdf",
+          "DEU": "https://ted.europa.eu/de/notice/646614-2026/pdf",
+          "EST": "https://ted.europa.eu/et/notice/646614-2026/pdf",
+          "ELL": "https://ted.europa.eu/el/notice/646614-2026/pdf",
+          "ENG": "https://ted.europa.eu/en/notice/646614-2026/pdf",
+          "FRA": "https://ted.europa.eu/fr/notice/646614-2026/pdf",
+          "GLE": "https://ted.europa.eu/ga/notice/646614-2026/pdf",
+          "HRV": "https://ted.europa.eu/hr/notice/646614-2026/pdf",
+          "ITA": "https://ted.europa.eu/it/notice/646614-2026/pdf",
+          "LAV": "https://ted.europa.eu/lv/notice/646614-2026/pdf",
+          "LIT": "https://ted.europa.eu/lt/notice/646614-2026/pdf",
+          "HUN": "https://ted.europa.eu/hu/notice/646614-2026/pdf",
+          "MLT": "https://ted.europa.eu/mt/notice/646614-2026/pdf",
+          "NLD": "https://ted.europa.eu/nl/notice/646614-2026/pdf",
+          "POL": "https://ted.europa.eu/pl/notice/646614-2026/pdf",
+          "POR": "https://ted.europa.eu/pt/notice/646614-2026/pdf",
+          "RON": "https://ted.europa.eu/ro/notice/646614-2026/pdf",
+          "SLK": "https://ted.europa.eu/sk/notice/646614-2026/pdf",
+          "SLV": "https://ted.europa.eu/sl/notice/646614-2026/pdf",
+          "FIN": "https://ted.europa.eu/fi/notice/646614-2026/pdf",
+          "SWE": "https://ted.europa.eu/sv/notice/646614-2026/pdf"
+        },
+        "pdfs": {
+          "SLK": "https://ted.europa.eu/sk/notice/646614-2026/pdfs"
+        },
+        "html": {
+          "BUL": "https://ted.europa.eu/bg/notice/-/detail/646614-2026",
+          "SPA": "https://ted.europa.eu/es/notice/-/detail/646614-2026",
+          "CES": "https://ted.europa.eu/cs/notice/-/detail/646614-2026",
+          "DAN": "https://ted.europa.eu/da/notice/-/detail/646614-2026",
+          "DEU": "https://ted.europa.eu/de/notice/-/detail/646614-2026",
+          "EST": "https://ted.europa.eu/et/notice/-/detail/646614-2026",
+          "ELL": "https://ted.europa.eu/el/notice/-/detail/646614-2026",
+          "ENG": "https://ted.europa.eu/en/notice/-/detail/646614-2026",
+          "FRA": "https://ted.europa.eu/fr/notice/-/detail/646614-2026",
+          "GLE": "https://ted.europa.eu/ga/notice/-/detail/646614-2026",
+          "HRV": "https://ted.europa.eu/hr/notice/-/detail/646614-2026",
+          "ITA": "https://ted.europa.eu/it/notice/-/detail/646614-2026",
+          "LAV": "https://ted.europa.eu/lv/notice/-/detail/646614-2026",
+          "LIT": "https://ted.europa.eu/lt/notice/-/detail/646614-2026",
+          "HUN": "https://ted.europa.eu/hu/notice/-/detail/646614-2026",
+          "MLT": "https://ted.europa.eu/mt/notice/-/detail/646614-2026",
+          "NLD": "https://ted.europa.eu/nl/notice/-/detail/646614-2026",
+          "POL": "https://ted.europa.eu/pl/notice/-/detail/646614-2026",
+          "POR": "https://ted.europa.eu/pt/notice/-/detail/646614-2026",
+          "RON": "https://ted.europa.eu/ro/notice/-/detail/646614-2026",
+          "SLK": "https://ted.europa.eu/sk/notice/-/detail/646614-2026",
+          "SLV": "https://ted.europa.eu/sl/notice/-/detail/646614-2026",
+          "FIN": "https://ted.europa.eu/fi/notice/-/detail/646614-2026",
+          "SWE": "https://ted.europa.eu/sv/notice/-/detail/646614-2026"
+        },
+        "htmlDirect": {
+          "BUL": "https://ted.europa.eu/bg/notice/646614-2026/html",
+          "SPA": "https://ted.europa.eu/es/notice/646614-2026/html",
+          "CES": "https://ted.europa.eu/cs/notice/646614-2026/html",
+          "DAN": "https://ted.europa.eu/da/notice/646614-2026/html",
+          "DEU": "https://ted.europa.eu/de/notice/646614-2026/html",
+          "EST": "https://ted.europa.eu/et/notice/646614-2026/html",
+          "ELL": "https://ted.europa.eu/el/notice/646614-2026/html",
+          "ENG": "https://ted.europa.eu/en/notice/646614-2026/html",
+          "FRA": "https://ted.europa.eu/fr/notice/646614-2026/html",
+          "GLE": "https://ted.europa.eu/ga/notice/646614-2026/html",
+          "HRV": "https://ted.europa.eu/hr/notice/646614-2026/html",
+          "ITA": "https://ted.europa.eu/it/notice/646614-2026/html",
+          "LAV": "https://ted.europa.eu/lv/notice/646614-2026/html",
+          "LIT": "https://ted.europa.eu/lt/notice/646614-2026/html",
+          "HUN": "https://ted.europa.eu/hu/notice/646614-2026/html",
+          "MLT": "https://ted.europa.eu/mt/notice/646614-2026/html",
+          "NLD": "https://ted.europa.eu/nl/notice/646614-2026/html",
+          "POL": "https://ted.europa.eu/pl/notice/646614-2026/html",
+          "POR": "https://ted.europa.eu/pt/notice/646614-2026/html",
+          "RON": "https://ted.europa.eu/ro/notice/646614-2026/html",
+          "SLK": "https://ted.europa.eu/sk/notice/646614-2026/html",
+          "SLV": "https://ted.europa.eu/sl/notice/646614-2026/html",
+          "FIN": "https://ted.europa.eu/fi/notice/646614-2026/html",
+          "SWE": "https://ted.europa.eu/sv/notice/646614-2026/html"
+        }
+      },
+      "notice-title": {
+        "hun": "Szlovákia – Baktériumellenes szerek szisztémás használatra – Antiinfektíva III",
+        "lav": "Slovākija – Antibakteriālie līdzekļi sistēmiskai lietošanai – Antiinfektíva III",
+        "swe": "Slovakien – Antibakteriella medel för systemiskt bruk – Antiinfektíva III",
+        "gle": "An tSlóvaic – Antibacterials for systemic use – Antiinfektíva III",
+        "ell": "Σλοβακία – Αντιμικροβιακά συστηματικής χρήσης – Antiinfektíva III",
+        "spa": "Eslovaquia – Antibacterianos para uso sistémico – Antiinfektíva III",
+        "est": "Slovakkia – Antibakteriaalsed ained süsteemseks kasutamiseks – Antiinfektíva III",
+        "nld": "Slowakije – Antibacteriële middelen voor systemisch gebruik – Antiinfektíva III",
+        "fin": "Slovakia – Systeemiset bakteerilääkkeet – Antiinfektíva III",
+        "pol": "Słowacja – Środki antybakteryjne do użytku ogólnoustrojowego – Antiinfektíva III",
+        "hrv": "Slovačka – Antibakterijski lijekovi za sustavnu primjenu – Antiinfektíva III",
+        "ces": "Slovensko – Antibakteriální látky pro systémové použití – Antiinfektíva III",
+        "dan": "Slovakiet – Antibakterielle midler til systemisk brug – Antiinfektíva III",
+        "ron": "Slovacia – Antibacterieni pentru uz sistemic – Antiinfektíva III",
+        "por": "Eslováquia – Antibacterianos de uso sistémico – Antiinfektíva III",
+        "slk": "Slovensko – Látky ničiace baktérie na systémové použitie – Antiinfektíva III",
+        "fra": "Slovaquie – Antibactériens à usage systémique – Antiinfektíva III",
+        "mlt": "Is-Slovakkja – Anti batterjali għall-użu sistematiku – Antiinfektíva III",
+        "deu": "Slowakei – Antibiotika zur systemischen Anwendung – Antiinfektíva III",
+        "lit": "Slovakija – Sistemiškai veikiantys antibakteriniai vaistai – Antiinfektíva III",
+        "ita": "Slovacchia – Antibatterici per uso sistemico – Antiinfektíva III",
+        "bul": "Словакия – Антибактериални средства за системна употреба – Antiinfektíva III",
+        "slv": "Slovaška – Zdravila za sistemsko zdravljenje bakterijskih infekcij – Antiinfektíva III",
+        "eng": "Slovakia – Antibacterials for systemic use – Antiinfektíva III"
+      },
+      "buyer-country": "SVK",
+      "quantity-lot": [
+        "7600",
+        "11000",
+        "1700"
+      ],
+      "categories": [
+        "uncategorized_supply"
+      ],
+      "deal_score": 65,
+      "source": "TED",
+      "mode": "shadow",
+      "title_original": "Slovakia – Antibacterials for systemic use – Antiinfektíva III",
+      "title_tr": "Slovakya – Sistemik kullanıma yönelik antibakteriyeller – Antiinfektíva III",
+      "detail_original": "Časť 01 – Cefoperazón/sulbaktám • Typ položky: Humánny liek • Liečivo + koncentrácia: Jedna injekčná liekovka obsahuje 1 g cefoperazónu (ako cefoperazón, sodná soľ) a 1 g sulbaktámu (ako sulbaktám, sodná soľ). • ATC skupina: J01DD62 • Lieková forma: prášok na injekčný/infúzny roztok • Požadovaný počet: 7 600 ks Časť 02 - Meropeném a) meropeném 500mg • Typ položky: Humánny liek • Liečivo + koncentrácia: Jedna injekčná liekovka obsahuje trihydrát meropenému v množstve zodpovedajúcom 500 mg bezvodého meropenému. • ATC skupina: J01DH02 • Lieková forma: prášok na injekčný/infúzny roztok • Požadovaný počet: 14 500 ks b) meropeném 1000mg • Typ položky: Humánny liek • Liečivo + koncentrácia: Jedna injekčná liekovka obsahuje trihydrát meropenému v množstve zodpovedajúcom 1 g bezvodého meropenému. • ATC skupina: J01DH02 • Lieková forma: prášok na injekčný/infúzny roztok • Požadovaný počet: 7 100 ks Časť 03 – Flukonazol a) flukonazol 2mg/ml (100ml) • Typ položky: Humánny liek • Liečivo + koncentrácia: Každý 1 ml obsahuje 2 mg flukonazolu. Každý 100 ml infúzneho roztoku obsahuje 200 mg flukonazolu. • ATC skupina: J02AC01 • Lieková forma: infúzny roztok • Požadovaný počet: 1 550 ks b) flukonazol 2mg/ml (200ml) • Typ položky: Humánny liek • Liečivo + koncentrácia: Každý 1 ml obsahuje 2 mg flukonazolu. Každý 200 ml infúzneho roztoku obsahuje 400 mg flukonazolu. • ATC skupina: J02AC01 • Lieková forma: infúzny roztok • Požadovaný počet: 4 800 ks Časť 04 – Piperacilín/tazobaktám 4g/0,5g • Typ položky: Humánny liek • Liečivo + koncentrácia: Každá injekčná liekovka obsahuje 4 g piperacilínu (vo forme sodnej soli) a 0,5 g tazobaktámu (vo forme sodnej soli). • ATC skupina: J01CR05 • Lieková forma: prášok na infúzny roztok • Požadovaný počet: 11 100 ks Časť 05 – Cefiderokol • Typ položky: Humánny liek • Liečivo + koncentrácia: Každá injekčná liekovka obsahuje cefiderokol, sulfátovo-tozylátovú soľ, čo zodpovedá 1 g cefiderokolu. • ATC skupina: J01DI04 • Lieková forma: prášok na koncentrát na infúzny roztok • Požadovaný počet: 1 700 ks",
+      "detail_tr": "Bölüm 01 - Sefoperazon/Sulbaktam • Madde türü: Beşeri tıbbi ürün • Etkin madde + doz: Her flakon 1 g sefoperazon (sefoperazon sodyum olarak) ve 1 g sulbaktam (sulbaktam sodyum olarak) içerir. • ATC grubu: J01DD62 • Farmasötik form: enjeksiyon/infüzyon solüsyonu için toz • Gerekli sayı: 7.600 adet Bölüm 02 - Meropenem a) meropenem 500 mg • Öğe türü: Beşeri ilaç • Tıbbi ürün + konsantrasyon: Bir flakon, 500 mg susuz meropeneme karşılık gelen miktarda meropenem trihidrat içerir. • ATC grubu: J01DH02 • Farmasötik form: enjeksiyon/infüzyon solüsyonu için toz • Gerekli sayı: 14.500 adet b) meropenem 1000 mg • Öğe türü: İnsan ilacı • Tıbbi ürün + konsantrasyon: Bir flakon, 1 g susuz meropeneme karşılık gelen miktarda meropenem trihidrat içerir. • ATC grubu: J01DH02 • Farmasötik form: enjeksiyon/infüzyon solüsyonu için toz • Gerekli miktar: 7.100 adet Bölüm 03 – Flukonazol a) flukonazol 2mg/ml (100ml) • Öğe türü: Beşeri ilaç • İlaç + konsantrasyon: Her 1 ml'de 2 mg flukonazol bulunur. Her 100 ml infüzyon çözeltisi 200 mg flukonazol içerir. • ATC grubu: J02AC01 • Farmasötik form: infüzyon solüsyonu • Gerekli sayı: 1.550 adet b) flukonazol 2mg/ml (200ml) • Madde türü: İnsan ilacı • İlaç + konsantrasyon: Her 1 ml'de 2 mg flukonazol bulunur. Her 200 ml infüzyon çözeltisi 400 mg flukonazol içerir. • ATC grubu: J02AC01 • Farmasötik form: infüzyon çözeltisi • Gerekli miktar: 4.800 adet Bölüm 04 – Piperasilin/Tazobaktam 4g/0,5g • Öğe türü: İnsan ilacı • İlaç + konsantrasyon: Her flakon 4 g piperasilin (sodyum tuzu olarak) ve 0,5 g tazobaktam (sodyum tuzu olarak) içerir. • ATC grubu: J01CR05 • Farmasötik form: infüzyon solüsyonu tozu • Gerekli sayı: 11.100 adet Bölüm 05 – Sefiderokol • Öğe türü: Beşeri ilaç • İlaç + konsantrasyon: Her flakon, 1 g sefiderokol'e karşılık gelen sefiderokol, sülfat-tosilat tuzu içerir. • ATC grubu: J01DI04 • Farmasötik form: infüzyon solüsyonu konsantresi tozu • Gerekli miktar: 1.700 adet",
+      "market_region": "Diğer Pazarlar",
+      "buyer_verified": true,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "compliance_status": "source_verified_buyer_pending_due_diligence",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "opportunity_type": "SATILABİLİR_ÜRÜN",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
+      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter Slovakia – Antibacterials for systemic use – Antiinfektíva III Časť 01 – Cefoperazón/sulbaktám • Typ položky: Humánny liek • Liečivo + koncentrácia: Jedna injekčná liekovka obsahuj",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "SVK",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "buyer_source_verified": true,
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ]
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": false,
+      "supplier_research": {
+        "status": "source_search_ready",
+        "product_query": "33651100 33651200 33651100 33651100 33651100 33651100 33651100 33651200 33651200 33651200 33651200 33651200",
+        "country_focus": "Türkiye",
+        "sources": [
+          {
+            "name": "TOBB Sanayi Veritabanı",
+            "url": "https://sanayi.tobb.org.tr/",
+            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
+          },
+          {
+            "name": "TİM",
+            "url": "https://tim.org.tr/",
+            "purpose": "ihracatçı ve sektör doğrulama"
+          },
+          {
+            "name": "TOBB2B",
+            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
+            "purpose": "ticari teklif/talep eşleştirme"
+          }
+        ],
+        "candidates": [],
+        "verified_count": 0,
+        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
+      },
+      "demand_summary_tr": "Bölüm 01 - Sefoperazon/Sulbaktam • Madde türü: Beşeri tıbbi ürün • Etkin madde + doz: Her flakon 1 g sefoperazon (sefoperazon sodyum olarak) ve 1 g sulbaktam (sulbaktam sodyum olarak) içerir. • ATC grubu: J01DD62 • Farmasötik form: enjeksiyon/infüzyon solüsyonu için toz • Gerekli sayı: 7.600 adet Bölüm 02 - Meropenem a) meropenem 500 mg • Öğe türü: Beşeri ilaç • Tıbbi ürün + konsantrasyon: Bir flakon, 500 mg susuz meropeneme karşılık gelen miktarda meropenem trihidrat içerir. • ATC grubu: J01DH02 • Farmasötik form: enjeksiyon/infüzyon solüsyonu için toz • Gerekli sayı: 14.500 adet b) meropenem 1000 mg • Öğe türü: İnsan ilacı • Tıbbi ürün + konsantrasyon: Bir flakon, 1 g susuz meropeneme karşılık gelen miktarda meropenem trihidrat içerir. • ATC grubu: J01DH02 • Farmasötik form: enjeksiyon/infüzyon solüsyonu için toz • Gerekli miktar: 7.100 adet Bölüm 03 – Flukonazol a) flukonazol 2mg/ml (100ml) • Öğe türü: Beşeri ilaç • İlaç + konsantrasyon: Her 1 ml'de 2 mg flukonazol bulunur. Her 100 ml infüzyon çözeltisi 200 mg flukonazol içerir. • ATC grubu: J02AC01 • Farmasötik form: infüzyon solüsyonu • Gerekli sayı: 1.550 adet b) flukonazol 2mg/ml (200ml) • Madde türü: İnsan ilacı • İlaç + konsantrasyon: Her 1 ml'de 2 mg flukonazol bulunur. Her 200 ml infüzyon çözeltisi 400 mg flukonazol içerir. • ATC grubu: J02AC01 • Farmasötik form: infüzyon çözeltisi • Gerekli miktar: 4.800 adet Bölüm 04 – Piperasilin/Tazobaktam 4g/0,5g • Öğe türü: İnsan ilacı • İlaç + konsantrasyon: Her flakon 4 g piperasilin (sodyum tuzu olarak) ve 0,5 g tazobaktam (sodyum tuzu olarak) içerir. • ATC grubu: J01CR05 • Farmasötik form: infüzyon solüsyonu tozu • Gerekli sayı: 11.100 adet Bölüm 05 – Sefiderokol • Öğe türü: Beşeri ilaç • İlaç + konsantrasyon: Her flakon, 1 g sefiderokol'e karşılık gelen sefiderokol, sülfat-tosilat tuzu içerir. • ATC grubu: J01DI04 • Farmasötik form: infüzyon solüsyonu konsantresi tozu • Gerekli miktar: 1.700 adet. Miktar: 7600 11000 1700. Kategori / ürün grubu: 33651100 33651200 33651100 33651100 33651100 33651100 33651100 33651200 33651200 33651200 33651200 33651200",
+      "workflow": {
+        "buyer": {
+          "status": "source_identified",
+          "name": "Národný ústav srdcových a cievnych chorôb, a.s.",
+          "country": "SVK",
           "verified": false
         },
         "supplier": {
