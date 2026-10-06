@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-06",
   "scope": "ALL_GLOBAL_PRODUCTS",
-  "count": 112,
+  "count": 109,
   "opportunities": [
     {
       "deadline-receipt-tender-date-lot": [
@@ -22273,60 +22273,60 @@
     {
       "active": "Yes",
       "additionalInfoLink": null,
-      "archiveDate": "2026-11-05",
-      "archiveType": "auto15",
+      "archiveDate": "2026-11-20",
+      "archiveType": "autocustom",
       "award": null,
-      "baseType": "Solicitation",
-      "classificationCode": "6150",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d29183b8290447c69016c51f44608970",
-      "fullParentPathCode": "017.1700.NAVSUP.NAVSUP WSS.NAVSUP WSS MECH.N00104",
-      "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSUP.NAVSUP WEAPON SYSTEMS SUPPORT.NAVSUP WSS MECHANICSBURG.NAVSUP WEAPON SYSTEMS SUPPORT MECH",
+      "baseType": "Combined Synopsis/Solicitation",
+      "classificationCode": "61",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f501be973c0c4d3f9395bd72d0110dbd",
+      "fullParentPathCode": "097.97AS.DLA LAND.DLA LAND COLUMBUS.SPE7LX",
+      "fullParentPathName": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA LAND.DLA LAND COLUMBUS.DLA LAND AND MARITIME",
       "links": [
         {
           "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=d29183b8290447c69016c51f44608970&limit=1"
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=f501be973c0c4d3f9395bd72d0110dbd&limit=1"
         }
       ],
-      "naicsCode": "335311",
+      "naicsCode": "334419",
       "naicsCodes": [
-        "335311"
+        "334419"
       ],
-      "noticeId": "d29183b8290447c69016c51f44608970",
+      "noticeId": "f501be973c0c4d3f9395bd72d0110dbd",
       "officeAddress": {
-        "zipcode": "17050-0788",
-        "city": "MECHANICSBURG",
+        "zipcode": "43218-3990",
+        "city": "COLUMBUS",
         "countryCode": "USA",
-        "state": "PA"
+        "state": "OH"
       },
       "organizationType": "OFFICE",
       "placeOfPerformance": null,
       "pointOfContact": [
         {
           "type": "primary",
-          "email": "ABIGAIL.R.HURLBUT.CIV@US.NAVY.MIL",
-          "fullName": "Telephone: 7176056805"
+          "email": "DibbsBSM@dla.mil",
+          "fullName": "Questions regarding this solicitation should be emailed to the buyer listed in block 5 of the solicitation document which can be found under the Additional Information link.\nIf the Additional Information link does not work, please go to https://www.dibbs.bsm.dla.mil/Solicitations/ and type the solicitation number in the Global Search box.\n"
         }
       ],
       "postedDate": "2026-10-06",
       "resourceLinks": null,
-      "responseDeadLine": "2026-10-21T16:30:00-04:00",
-      "solicitationNumber": "N0010426QYA9T",
-      "title": "CABLE ASSEMBLY,SPEC",
-      "type": "Solicitation",
-      "typeOfSetAside": "",
+      "responseDeadLine": "2026-10-21",
+      "solicitationNumber": "SPE7LX27U0143",
+      "title": "61--CABLE ASSEMBLY,SPECIAL",
+      "type": "Combined Synopsis/Solicitation",
+      "typeOfSetAside": null,
       "typeOfSetAsideDescription": null,
-      "uiLink": "https://sam.gov/workspace/contract/opp/d29183b8290447c69016c51f44608970/view",
-      "title_original": "CABLE ASSEMBLY,SPEC",
-      "title_tr": "KABLO MONTAJI, ÖZELLİKLER",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d29183b8290447c69016c51f44608970",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d29183b8290447c69016c51f44608970",
+      "uiLink": "https://sam.gov/workspace/contract/opp/f501be973c0c4d3f9395bd72d0110dbd/view",
+      "title_original": "61--CABLE ASSEMBLY,SPECIAL",
+      "title_tr": "61--KABLO MONTAJI,ÖZEL",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f501be973c0c4d3f9395bd72d0110dbd",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f501be973c0c4d3f9395bd72d0110dbd",
       "buyer-country": "United States",
       "market_region": "ABD / Kuzey Amerika",
       "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "2026-10-21T16:30:00-04:00",
-      "classification-cpv": "335311",
-      "procedure-type": "Solicitation",
-      "source_url": "https://sam.gov/workspace/contract/opp/d29183b8290447c69016c51f44608970/view",
+      "deadline-receipt-tender-date-lot": "2026-10-21",
+      "classification-cpv": "334419",
+      "procedure-type": "Combined Synopsis/Solicitation",
+      "source_url": "https://sam.gov/workspace/contract/opp/f501be973c0c4d3f9395bd72d0110dbd/view",
       "source": "SAM_GOV",
       "mode": "shadow",
       "buyer_verified": false,
@@ -22345,7 +22345,7 @@
       "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
       "supplier_agent": {
         "status": "research_pending",
-        "query": "Turkey manufacturer exporter CABLE ASSEMBLY,SPEC https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d29183b8290447c69016c51f44608970 335311",
+        "query": "Turkey manufacturer exporter 61--CABLE ASSEMBLY,SPECIAL https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f501be973c0c4d3f9395bd72d0110dbd 334419",
         "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
       },
       "price_agent": {
@@ -22373,7 +22373,7 @@
       "deadline_known": true,
       "supplier_research": {
         "status": "source_search_ready",
-        "product_query": "335311",
+        "product_query": "334419",
         "country_focus": "Türkiye",
         "sources": [
           {
@@ -22396,7 +22396,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=d29183b8290447c69016c51f44608970. Kategori / ürün grubu: 335311",
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f501be973c0c4d3f9395bd72d0110dbd. Kategori / ürün grubu: 334419",
       "workflow": {
         "buyer": {
           "status": "identity_pending",
@@ -22443,60 +22443,65 @@
     {
       "active": "Yes",
       "additionalInfoLink": null,
-      "archiveDate": "2026-11-13",
+      "archiveDate": "2027-10-06",
       "archiveType": "autocustom",
       "award": null,
       "baseType": "Combined Synopsis/Solicitation",
-      "classificationCode": "53",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=9ebad33192b641f88323edb859424a3a",
-      "fullParentPathCode": "097.97AS.DLA AVIATION.DLA AV RICHMOND.SPE4A6",
-      "fullParentPathName": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA AVIATION.DLA AV RICHMOND.DLA AVIATION",
+      "classificationCode": "6625",
+      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f4bb32b50373400692d7b75dce168ffb",
+      "fullParentPathCode": "017.1700.NAVAIR.NAVAIR NAWC AD.N68335",
+      "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVAIR.NAVAIR NAWC AD.NAVAIR WARFARE CTR AIRCRAFT DIV",
       "links": [
         {
           "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=9ebad33192b641f88323edb859424a3a&limit=1"
+          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=f4bb32b50373400692d7b75dce168ffb&limit=1"
         }
       ],
-      "naicsCode": "339993",
+      "naicsCode": "334515",
       "naicsCodes": [
-        "339993"
+        "334515"
       ],
-      "noticeId": "9ebad33192b641f88323edb859424a3a",
+      "noticeId": "f4bb32b50373400692d7b75dce168ffb",
       "officeAddress": {
-        "zipcode": "23237",
-        "city": "RICHMOND",
+        "zipcode": "08733",
+        "city": "JOINT BASE MDL",
         "countryCode": "USA",
-        "state": "VA"
+        "state": "NJ"
       },
       "organizationType": "OFFICE",
-      "placeOfPerformance": null,
+      "placeOfPerformance": {
+        "streetAddress": "",
+        "zip": ""
+      },
       "pointOfContact": [
         {
+          "fax": "",
           "type": "primary",
-          "email": "DibbsBSM@dla.mil",
-          "fullName": "Questions regarding this solicitation should be emailed to the buyer listed in block 5 of the solicitation document which can be found under the Additional Information link.\nIf the Additional Information link does not work, please go to https://www.dibbs.bsm.dla.mil/Solicitations/ and type the solicitation number in the Global Search box.\n"
+          "email": "daniel.g.webster2.civ@us.navy.mil",
+          "phone": "7326729186",
+          "fullName": "Daniel Webster"
         }
       ],
       "postedDate": "2026-10-06",
       "resourceLinks": null,
-      "responseDeadLine": "2026-10-14",
-      "solicitationNumber": "SPE4A627T0542",
-      "title": "53--KEY,MACHINE",
+      "responseDeadLine": "2026-11-05T16:00:00-05:00",
+      "solicitationNumber": "N6833527R1006",
+      "title": "Peak Power Analyzer, Peak Power Sensors, and Power Sensor Cables",
       "type": "Combined Synopsis/Solicitation",
-      "typeOfSetAside": "SDVOSBC",
-      "typeOfSetAsideDescription": "Service-Disabled Veteran-Owned Small Business (SDVOSB) Set-Aside (FAR 19.14)",
-      "uiLink": "https://sam.gov/workspace/contract/opp/9ebad33192b641f88323edb859424a3a/view",
-      "title_original": "53--KEY,MACHINE",
-      "title_tr": "53--ANAHTAR,MAKİNE",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=9ebad33192b641f88323edb859424a3a",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=9ebad33192b641f88323edb859424a3a",
+      "typeOfSetAside": null,
+      "typeOfSetAsideDescription": null,
+      "uiLink": "https://sam.gov/workspace/contract/opp/f4bb32b50373400692d7b75dce168ffb/view",
+      "title_original": "Peak Power Analyzer, Peak Power Sensors, and Power Sensor Cables",
+      "title_tr": "Tepe Güç Analizörü, Tepe Güç Sensörleri ve Güç Sensörü Kabloları",
+      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f4bb32b50373400692d7b75dce168ffb",
+      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f4bb32b50373400692d7b75dce168ffb",
       "buyer-country": "United States",
       "market_region": "ABD / Kuzey Amerika",
       "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "2026-10-14",
-      "classification-cpv": "339993",
+      "deadline-receipt-tender-date-lot": "2026-11-05T16:00:00-05:00",
+      "classification-cpv": "334515",
       "procedure-type": "Combined Synopsis/Solicitation",
-      "source_url": "https://sam.gov/workspace/contract/opp/9ebad33192b641f88323edb859424a3a/view",
+      "source_url": "https://sam.gov/workspace/contract/opp/f4bb32b50373400692d7b75dce168ffb/view",
       "source": "SAM_GOV",
       "mode": "shadow",
       "buyer_verified": false,
@@ -22515,7 +22520,7 @@
       "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
       "supplier_agent": {
         "status": "research_pending",
-        "query": "Turkey manufacturer exporter 53--KEY,MACHINE https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=9ebad33192b641f88323edb859424a3a 339993",
+        "query": "Turkey manufacturer exporter Peak Power Analyzer, Peak Power Sensors, and Power Sensor Cables https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f4bb32b50373400692d7b75dce168ffb 334515",
         "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
       },
       "price_agent": {
@@ -22543,7 +22548,7 @@
       "deadline_known": true,
       "supplier_research": {
         "status": "source_search_ready",
-        "product_query": "339993",
+        "product_query": "334515",
         "country_focus": "Türkiye",
         "sources": [
           {
@@ -22566,7 +22571,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=9ebad33192b641f88323edb859424a3a. Kategori / ürün grubu: 339993",
+      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f4bb32b50373400692d7b75dce168ffb. Kategori / ürün grubu: 334515",
       "workflow": {
         "buyer": {
           "status": "identity_pending",
@@ -24354,607 +24359,6 @@
           "status": "source_identified",
           "name": "Institutional Foundations to Improve Services For Health",
           "country": null,
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      }
-    },
-    {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-10-16",
-      "archiveType": "auto15",
-      "award": {
-        "date": "2026-10-01",
-        "number": "FA282327P0002",
-        "amount": "1471908.76",
-        "awardee": {
-          "name": "DIVERSIFIED ELEVATOR SERVICE AND EQUIPMENT CO, INC",
-          "location": {
-            "city": {
-              "code": "48712",
-              "name": "Millbrook"
-            },
-            "state": {
-              "code": "AL",
-              "name": "Alabama"
-            },
-            "zip": "36054",
-            "country": {
-              "code": "USA",
-              "name": "UNITED STATES"
-            }
-          }
-        }
-      },
-      "baseType": "Award Notice",
-      "classificationCode": "J039",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a4caddd652fd4a3e911333b253000c54",
-      "fullParentPathCode": "057.5700.AFMC.AFTC.FA2823",
-      "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE MATERIEL COMMAND.AIR FORCE TEST CENTER.FA2823  AFTC PZIO",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=a4caddd652fd4a3e911333b253000c54&limit=1"
-        }
-      ],
-      "naicsCode": "238290",
-      "naicsCodes": [
-        "238290"
-      ],
-      "noticeId": "a4caddd652fd4a3e911333b253000c54",
-      "officeAddress": {
-        "zipcode": "32542-5418",
-        "city": "EGLIN AFB",
-        "countryCode": "USA",
-        "state": "FL"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": {
-        "city": {
-          "code": "0",
-          "name": "0"
-        },
-        "state": {
-          "code": "FL",
-          "name": "Florida"
-        },
-        "zip": "32542",
-        "country": {
-          "code": "USA",
-          "name": "UNITED STATES"
-        }
-      },
-      "pointOfContact": [
-        {
-          "fax": "",
-          "type": "primary",
-          "email": "lindsay.holdsworth@us.af.mil",
-          "phone": "882-0000",
-          "fullName": "Lindsay HARTZOG"
-        },
-        {
-          "fax": "",
-          "type": "secondary",
-          "email": "jared.dunn.6@us.af.mil",
-          "phone": "",
-          "fullName": "Jared Dunn"
-        }
-      ],
-      "postedDate": "2026-10-06",
-      "resourceLinks": null,
-      "responseDeadLine": null,
-      "solicitationNumber": "FA282327P0002",
-      "title": "Vertical Transportation Equipment Maintenance Repair and Inspection Service (VTE) 2.0",
-      "type": "Award Notice",
-      "typeOfSetAside": "SBA",
-      "typeOfSetAsideDescription": "Small Business Set Aside - Total",
-      "uiLink": "https://sam.gov/workspace/contract/opp/a4caddd652fd4a3e911333b253000c54/view",
-      "title_original": "Vertical Transportation Equipment Maintenance Repair and Inspection Service (VTE) 2.0",
-      "title_tr": "Dikey Taşıma Ekipmanı Bakım Onarım ve Muayene Hizmeti (VTE) 2.0",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a4caddd652fd4a3e911333b253000c54",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a4caddd652fd4a3e911333b253000c54",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "",
-      "classification-cpv": "238290",
-      "procedure-type": "Award Notice",
-      "source_url": "https://sam.gov/workspace/contract/opp/a4caddd652fd4a3e911333b253000c54/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 45,
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Vertical Transportation Equipment Maintenance Repair and Inspection Service (VTE) 2.0 https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a4caddd652fd4a3e911333b253000c54",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "buyer_source_verified": false,
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ]
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": false,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "238290",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=a4caddd652fd4a3e911333b253000c54. Kategori / ürün grubu: 238290",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      }
-    },
-    {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-10-10",
-      "archiveType": "auto15",
-      "award": {
-        "date": "2026-09-25",
-        "number": "19NZ9526P0311",
-        "amount": "32681.07",
-        "awardee": {
-          "name": "BAVAK BEVEILIGINGSGROEP B.V.",
-          "location": {
-            "city": {
-              "name": "Noordwijk Zh"
-            },
-            "state": {},
-            "zip": "2201 AA",
-            "country": {
-              "code": "NLD",
-              "name": "NETHERLANDS"
-            }
-          }
-        }
-      },
-      "baseType": "Special Notice",
-      "classificationCode": "5660",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=8eab3756f65445f0969a4445d7aa854b",
-      "fullParentPathCode": "019.1900.19NZ95",
-      "fullParentPathName": "STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.US EMBASSY WELLINGTON",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=8eab3756f65445f0969a4445d7aa854b&limit=1"
-        }
-      ],
-      "naicsCode": "33399",
-      "naicsCodes": [
-        "33399"
-      ],
-      "noticeId": "8eab3756f65445f0969a4445d7aa854b",
-      "officeAddress": {
-        "zipcode": "20520",
-        "city": "WASHINGTON",
-        "countryCode": "USA",
-        "state": "DC"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": {
-        "city": {
-          "code": "Wellington",
-          "name": "Wellington"
-        },
-        "zip": "6011",
-        "country": {
-          "code": "NZL",
-          "name": "NEW ZEALAND"
-        }
-      },
-      "pointOfContact": [
-        {
-          "fax": "",
-          "type": "primary",
-          "email": "wellington.gsoprocurement@state.gov",
-          "phone": "644626000",
-          "fullName": "Narae Jo"
-        },
-        {
-          "fax": "",
-          "type": "secondary",
-          "email": "wellington.gsoprocurement@state.gov",
-          "phone": "644626000",
-          "fullName": "Melanie Sunseri"
-        }
-      ],
-      "postedDate": "2026-10-06",
-      "resourceLinks": [
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/57d61ef539f04a5d9ae24aa509ab47a1/download"
-      ],
-      "responseDeadLine": null,
-      "solicitationNumber": "19NZ9526P0311",
-      "title": "Notice of Intent - Replacement Spare Parts for Existing Vehicle Gate System (Bavak B-secure Speedgate)",
-      "type": "Award Notice",
-      "typeOfSetAside": "NONE",
-      "typeOfSetAsideDescription": "No Set aside used",
-      "uiLink": "https://sam.gov/workspace/contract/opp/8eab3756f65445f0969a4445d7aa854b/view",
-      "title_original": "Notice of Intent - Replacement Spare Parts for Existing Vehicle Gate System (Bavak B-secure Speedgate)",
-      "title_tr": "Niyet Bildirimi - Mevcut Araç Kapı Sistemi için Yedek Yedek Parçalar (Bavak B-secure Speedgate)",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=8eab3756f65445f0969a4445d7aa854b",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=8eab3756f65445f0969a4445d7aa854b",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "",
-      "classification-cpv": "33399",
-      "procedure-type": "Award Notice",
-      "source_url": "https://sam.gov/workspace/contract/opp/8eab3756f65445f0969a4445d7aa854b/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 45,
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Notice of Intent - Replacement Spare Parts for Existing Vehicle Gate System (Bavak B-secure Speedgate) https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=8eab3756f65445f",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "buyer_source_verified": false,
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ]
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": false,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "33399",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=8eab3756f65445f0969a4445d7aa854b. Kategori / ürün grubu: 33399",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      }
-    },
-    {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-10-21",
-      "archiveType": "auto15",
-      "award": {
-        "date": "2026-10-06",
-        "number": "SPE3SE27P0034",
-        "amount": "212351.86",
-        "awardee": {
-          "name": "GOVERNMENT SALES, LLC"
-        }
-      },
-      "baseType": "Award Notice",
-      "classificationCode": "73",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=7dd05600fc994979a998f1ca594a24f9",
-      "fullParentPathCode": "097.97AS.DLA TRP SUPT SUB.SPE3SE",
-      "fullParentPathName": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.TROOP SUPPORT SUBSISTENCE.DLA TROOP SUPPORT",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=7dd05600fc994979a998f1ca594a24f9&limit=1"
-        }
-      ],
-      "naicsCode": "333310",
-      "naicsCodes": [
-        "333310"
-      ],
-      "noticeId": "7dd05600fc994979a998f1ca594a24f9",
-      "officeAddress": {
-        "zipcode": "19111-5096",
-        "city": "PHILADELPHIA",
-        "countryCode": "USA",
-        "state": "PA"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": null,
-      "pointOfContact": [
-        {
-          "type": "primary",
-          "email": "William.Yocum@dla.mil",
-          "fullName": "William Yocum1-445-737-9016"
-        }
-      ],
-      "postedDate": "2026-10-06",
-      "resourceLinks": null,
-      "responseDeadLine": null,
-      "solicitationNumber": "SPE3SE26Q0496",
-      "title": "73--Equipment IST - FTRD",
-      "type": "Award Notice",
-      "typeOfSetAside": null,
-      "typeOfSetAsideDescription": null,
-      "uiLink": "https://sam.gov/workspace/contract/opp/7dd05600fc994979a998f1ca594a24f9/view",
-      "title_original": "73--Equipment IST - FTRD",
-      "title_tr": "73--Ekipman IS - FTRD",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=7dd05600fc994979a998f1ca594a24f9",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=7dd05600fc994979a998f1ca594a24f9",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "",
-      "classification-cpv": "333310",
-      "procedure-type": "Award Notice",
-      "source_url": "https://sam.gov/workspace/contract/opp/7dd05600fc994979a998f1ca594a24f9/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 45,
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter 73--Equipment IST - FTRD https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=7dd05600fc994979a998f1ca594a24f9 333310",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "buyer_source_verified": false,
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ]
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": false,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "333310",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=7dd05600fc994979a998f1ca594a24f9. Kategori / ürün grubu: 333310",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
           "verified": false
         },
         "supplier": {
