@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import sys
+import time
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -15,9 +16,8 @@ API = "https://comtradeapi.un.org/public/v1/preview/C/A/HS"
 CHINA = "156"
 WORLD = "0"
 TURKEY = "792"
+RETRY_DELAYS_SECONDS = (5.0, 15.0)
 
-# Focus basket for Turkey-linked export opportunities. The HS label is intentionally
-# broad; exact tariff/subheading eligibility still requires deal-level review.
 PRODUCTS = {
     "1206": "Ayçiçeği tohumu",
     "1512": "Ayçiçeği, aspir ve pamuk tohumu yağları",
@@ -40,12 +40,11 @@ PRODUCTS = {
 
 def _year_candidates(today: date | None = None) -> list[tuple[int, int]]:
     today = today or date.today()
-    # Annual trade data can lag. Try last complete calendar year first, then one year back.
     latest = today.year - 1
     return [(latest, latest - 1), (latest - 1, latest - 2)]
 
 
-def _fetch(period: int, partner: str, timeout: float = 20.0) -> dict[str, Any]:
+def _request_payload(period: int, partner: str, timeout: float) -> dict[str, Any]:
     params = {
         "reporterCode": CHINA,
         "period": str(period),
@@ -62,6 +61,36 @@ def _fetch(period: int, partner: str, timeout: float = 20.0) -> dict[str, Any]:
     with urlopen(req, timeout=timeout) as response:
         raw = response.read(5_000_000)
     return json.loads(raw.decode("utf-8"))
+
+
+def _retry_delay(exc: HTTPError, retry_index: int) -> float:
+    header = None
+    try:
+        header = exc.headers.get("Retry-After") if exc.headers else None
+    except Exception:
+        header = None
+    if header:
+        try:
+            return max(1.0, min(30.0, float(header)))
+        except (TypeError, ValueError):
+            pass
+    return RETRY_DELAYS_SECONDS[min(retry_index, len(RETRY_DELAYS_SECONDS) - 1)]
+
+
+def _fetch(period: int, partner: str, timeout: float = 20.0) -> dict[str, Any]:
+    last_error: HTTPError | None = None
+    attempts = len(RETRY_DELAYS_SECONDS) + 1
+    for attempt in range(attempts):
+        try:
+            return _request_payload(period, partner, timeout)
+        except HTTPError as exc:
+            last_error = exc
+            if exc.code != 429 or attempt >= attempts - 1:
+                raise
+            time.sleep(_retry_delay(exc, attempt))
+    if last_error is not None:
+        raise last_error
+    raise RuntimeError("unreachable_fetch_state")
 
 
 def _records(payload: dict[str, Any]) -> list[dict[str, Any]]:
@@ -84,7 +113,6 @@ def _map_records(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
         code = str(row.get("cmdCode") or row.get("cmdCodeAgg") or "").strip()
         if code not in PRODUCTS:
             continue
-        # When the preview endpoint returns duplicates, prefer the World/TOTAL customs/mode record.
         current = out.get(code)
         value = _num(row.get("primaryValue")) or 0.0
         if current is None or value > (_num(current.get("primaryValue")) or 0.0):
@@ -105,12 +133,10 @@ def _safe_ratio(part: float | None, total: float | None) -> float | None:
 
 
 def _signal_score(value_usd: float | None, growth_pct: float | None, turkey_share: float | None) -> int:
-    # Ranking signal only; it is not a probability of closing a trade.
     if not value_usd or value_usd <= 0:
         return 0
     value_component = min(60.0, max(0.0, math.log10(value_usd + 1) - 5.0) * 15.0)
     growth_component = 0.0 if growth_pct is None else max(-10.0, min(25.0, growth_pct / 4.0))
-    # Low-but-existing Turkey share can be attractive; a very high share is established rather than whitespace.
     share_component = 0.0
     if turkey_share is not None:
         if 0 < turkey_share < 1:
@@ -133,7 +159,6 @@ def build_radar_from_payloads(
     wp = _map_records(_records(world_previous))
     tc = _map_records(_records(turkey_current))
     items: list[dict[str, Any]] = []
-
     for code, label in PRODUCTS.items():
         a = wc.get(code, {})
         b = wp.get(code, {})
@@ -148,7 +173,6 @@ def build_radar_from_payloads(
         unit_value_per_kg = None
         if current_value is not None and net_weight not in (None, 0):
             unit_value_per_kg = round(current_value / net_weight, 4)
-
         items.append({
             "hs4": code,
             "product_tr": label,
@@ -169,7 +193,6 @@ def build_radar_from_payloads(
             "buyer_identified": False,
             "source": "UN Comtrade public preview API",
         })
-
     items.sort(key=lambda x: (x["signal_score"], x["china_import_value_usd"] or 0), reverse=True)
     return items
 
@@ -208,18 +231,54 @@ def collect_radar(today: date | None = None) -> tuple[list[dict[str, Any]], dict
     }
 
 
-def merge_payload(payload: dict[str, Any]) -> dict[str, Any]:
+def _fallback_radar(fallback_payload: dict[str, Any] | None) -> tuple[list[dict[str, Any]], dict[str, Any]] | None:
+    if not isinstance(fallback_payload, dict):
+        return None
+    radar = fallback_payload.get("china_import_radar")
+    if not isinstance(radar, dict):
+        return None
+    items = radar.get("items")
+    meta = radar.get("meta")
+    if not isinstance(items, list) or not items or not isinstance(meta, dict):
+        return None
+    if not any(isinstance(x, dict) and x.get("china_import_value_usd") not in (None, 0) for x in items):
+        return None
+    return items, meta
+
+
+def merge_payload(payload: dict[str, Any], fallback_payload: dict[str, Any] | None = None) -> dict[str, Any]:
     items, meta = collect_radar()
+    if not items:
+        fallback = _fallback_radar(fallback_payload)
+        if fallback:
+            old_items, old_meta = fallback
+            failure_meta = meta
+            meta = dict(old_meta)
+            meta.update({
+                "status": "stale_last_known_good",
+                "fresh_fetch_status": failure_meta.get("status"),
+                "fresh_fetch_errors": failure_meta.get("errors", []),
+                "buyer_data_inferred": False,
+            })
+            items = old_items
     payload["china_import_radar"] = {"meta": meta, "items": items}
     return payload
 
 
 def main() -> None:
-    if len(sys.argv) != 2:
-        raise SystemExit("usage: python -m src.china_import_radar <json-file>")
+    if len(sys.argv) not in {2, 3}:
+        raise SystemExit("usage: python -m src.china_import_radar <json-file> [last-known-good-json]")
     path = Path(sys.argv[1])
     payload = json.loads(path.read_text(encoding="utf-8"))
-    payload = merge_payload(payload)
+    fallback_payload = None
+    if len(sys.argv) == 3:
+        fallback_path = Path(sys.argv[2])
+        if fallback_path.exists() and fallback_path.stat().st_size:
+            try:
+                fallback_payload = json.loads(fallback_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                fallback_payload = None
+    payload = merge_payload(payload, fallback_payload)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print("CHINA_IMPORT_RADAR " + json.dumps(payload["china_import_radar"]["meta"], ensure_ascii=False, sort_keys=True), file=sys.stderr)
 
