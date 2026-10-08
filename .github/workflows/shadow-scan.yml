@@ -26,12 +26,13 @@ jobs:
           python-version: "3.12"
       - name: Run brokerage regression tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
-      - name: Fetch, normalize and score live global opportunities
+      - name: Fetch, enrich, normalize and score live global opportunities
         env:
           SAM_API_KEY: ${{ secrets.SAM_API_KEY }}
         run: |
           mkdir -p data
           python src/broker.py > data/latest-opportunities.json
+          python -m src.enrichment data/latest-opportunities.json
           python -m src.verification data/latest-opportunities.json
       - name: Commit Shadow Mode output
         run: |
