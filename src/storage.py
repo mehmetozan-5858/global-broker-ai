@@ -18,14 +18,19 @@ class StorageError(RuntimeError):
 
 
 class RecordStore(Protocol):
-    def get_opportunity_record(self, opportunity_id: str) -> dict[str, Any] | None: ...
+    def get_opportunity_record(
+        self, opportunity_id: str, *, bearer_token: str = ""
+    ) -> dict[str, Any] | None: ...
 
 
 @dataclass(frozen=True)
 class EnvJsonRecordStore:
     raw_json: str
 
-    def get_opportunity_record(self, opportunity_id: str) -> dict[str, Any] | None:
+    def get_opportunity_record(
+        self, opportunity_id: str, *, bearer_token: str = ""
+    ) -> dict[str, Any] | None:
+        del bearer_token
         try:
             payload = json.loads(self.raw_json or "{}")
         except json.JSONDecodeError as exc:
@@ -39,16 +44,32 @@ class EnvJsonRecordStore:
 @dataclass(frozen=True)
 class HttpJsonRecordStore:
     base_url: str
-    bearer_token: str
+    bearer_token: str = ""
     timeout_seconds: float = 4.0
 
-    def get_opportunity_record(self, opportunity_id: str) -> dict[str, Any] | None:
+    def get_opportunity_record(
+        self, opportunity_id: str, *, bearer_token: str = ""
+    ) -> dict[str, Any] | None:
         if not self.base_url.startswith("https://"):
             raise StorageError("durable_store_requires_https")
-        url = f"{self.base_url.rstrip('/')}/{parse.quote(opportunity_id, safe='')}"
-        headers = {"Accept": "application/json"}
-        if self.bearer_token:
-            headers["Authorization"] = f"Bearer {self.bearer_token}"
+
+        parsed = parse.urlsplit(self.base_url)
+        query = parse.parse_qsl(parsed.query, keep_blank_values=True)
+        query.append(("id", opportunity_id))
+        url = parse.urlunsplit(
+            (parsed.scheme, parsed.netloc, parsed.path, parse.urlencode(query), parsed.fragment)
+        )
+
+        runtime_token = bearer_token.strip()
+        configured_token = self.bearer_token.strip()
+        token = runtime_token or configured_token
+        if not token:
+            raise StorageError("durable_store_authentication_required")
+
+        headers = {
+            "Accept": "application/json",
+            "Authorization": f"Bearer {token}",
+        }
         req = request.Request(url, headers=headers, method="GET")
         try:
             with request.urlopen(req, timeout=self.timeout_seconds) as response:
