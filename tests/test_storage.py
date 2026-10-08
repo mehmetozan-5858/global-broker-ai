@@ -37,12 +37,42 @@ class TestStorageAdapters(unittest.TestCase):
     def test_http_store_rejects_plain_http(self):
         store = HttpJsonRecordStore("http://unsafe.example.test", "")
         with self.assertRaises(StorageError):
-            store.get_opportunity_record("opp-1")
+            store.get_opportunity_record("opp-1", bearer_token="oidc")
+
+    def test_http_store_requires_auth_before_network_call(self):
+        store = HttpJsonRecordStore("https://store.example.test/opportunities", "")
+        with patch("src.storage.request.urlopen") as urlopen:
+            with self.assertRaises(StorageError) as ctx:
+                store.get_opportunity_record("opp-1")
+        self.assertEqual(str(ctx.exception), "durable_store_authentication_required")
+        urlopen.assert_not_called()
 
     def test_env_store_invalid_json_raises(self):
         store = EnvJsonRecordStore("not-json")
         with self.assertRaises(StorageError):
             store.get_opportunity_record("opp-1")
+
+    @patch("src.storage.request.urlopen")
+    def test_http_store_uses_query_id_and_runtime_oidc(self, urlopen):
+        class Response:
+            status = 200
+            def __enter__(self): return self
+            def __exit__(self, *args): return False
+            def read(self): return b'{"record":{"opportunity":{"id":"opp 1"}}}'
+
+        urlopen.return_value = Response()
+        store = HttpJsonRecordStore(
+            "https://store.example.test/functions/v1/private-room-store", "configured-fallback"
+        )
+        result = store.get_opportunity_record("opp 1", bearer_token="runtime-oidc")
+        self.assertEqual(result["opportunity"]["id"], "opp 1")
+
+        req = urlopen.call_args.args[0]
+        self.assertEqual(
+            req.full_url,
+            "https://store.example.test/functions/v1/private-room-store?id=opp+1",
+        )
+        self.assertEqual(req.get_header("Authorization"), "Bearer runtime-oidc")
 
     @patch("src.storage.request.urlopen")
     def test_http_store_extracts_record_wrapper(self, urlopen):
@@ -51,6 +81,7 @@ class TestStorageAdapters(unittest.TestCase):
             def __enter__(self): return self
             def __exit__(self, *args): return False
             def read(self): return b'{"record":{"opportunity":{"id":"opp-1"}}}'
+
         urlopen.return_value = Response()
         store = HttpJsonRecordStore("https://store.example.test/opportunities", "secret")
         result = store.get_opportunity_record("opp-1")
