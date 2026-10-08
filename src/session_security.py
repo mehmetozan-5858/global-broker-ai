@@ -1,8 +1,9 @@
 """Signed, expiring sessions for the Global Broker private data room.
 
 The token format is intentionally small and dependency-free: base64url(JSON)
-plus an HMAC-SHA256 signature.  Tokens are accepted only when the signature is
-valid, the subject is present and the expiry is in the future.
+plus an HMAC-SHA256 signature. Tokens are accepted only when the encoding is
+canonical, the signature is valid, the subject is present and the expiry is in
+the future.
 """
 from __future__ import annotations
 
@@ -10,8 +11,12 @@ import base64
 import hashlib
 import hmac
 import json
+import re
 import time
 from typing import Any
+
+
+_BASE64URL_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 
 
 class SessionError(ValueError):
@@ -23,8 +28,19 @@ def _b64encode(data: bytes) -> str:
 
 
 def _b64decode(value: str) -> bytes:
+    if not value or not _BASE64URL_RE.fullmatch(value):
+        raise SessionError("invalid_base64url")
     padding = "=" * (-len(value) % 4)
-    return base64.urlsafe_b64decode((value + padding).encode("ascii"))
+    try:
+        decoded = base64.b64decode((value + padding).encode("ascii"), altchars=b"-_", validate=True)
+    except Exception as exc:
+        raise SessionError("invalid_base64url") from exc
+    # Base64url can otherwise admit multiple textual encodings for the same
+    # trailing bits. Re-encoding closes that ambiguity so a changed token
+    # string is always treated as tampering.
+    if _b64encode(decoded) != value:
+        raise SessionError("non_canonical_base64url")
+    return decoded
 
 
 def issue_session(subject: str, secret: str, *, ttl_seconds: int = 1800,
@@ -52,9 +68,12 @@ def verify_session(token: str, secret: str, *, now: int | None = None) -> dict[s
     if len(secret) < 32:
         raise SessionError("secret_too_short")
     try:
+        if token.count(".") != 1:
+            raise SessionError("invalid_token")
         encoded, supplied_sig = token.split(".", 1)
+        supplied_signature = _b64decode(supplied_sig)
         expected = hmac.new(secret.encode("utf-8"), encoded.encode("ascii"), hashlib.sha256).digest()
-        if not hmac.compare_digest(_b64decode(supplied_sig), expected):
+        if not hmac.compare_digest(supplied_signature, expected):
             raise SessionError("invalid_signature")
         payload = json.loads(_b64decode(encoded).decode("utf-8"))
     except SessionError:
