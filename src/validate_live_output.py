@@ -97,7 +97,8 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
             f"{raw_numeric_supplier_query_count} supplier queries are still numeric-only"
         )
 
-    china_feed = payload.get("china_feed") or {}
+    ccgp = payload.get("china_feed") or {}
+    ggzy = payload.get("china_ggzy_feed") or {}
     return {
         "opportunities": len(opportunities),
         "dossiers": dossier_count,
@@ -114,8 +115,11 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
         "specification_detail_missing": specification_detail_missing,
         "specification_attachment_pending": specification_attachment_pending,
         "china_research_queue": china_queue_count,
-        "china_feed_status": china_feed.get("status", "not_configured"),
-        "china_goods_added": int(china_feed.get("goods_opportunities_added") or 0),
+        "china_ccgp_status": ccgp.get("status", "not_configured"),
+        "china_ccgp_goods_added": int(ccgp.get("goods_opportunities_added") or 0),
+        "china_ggzy_status": ggzy.get("status", "not_configured"),
+        "china_ggzy_candidates": int(ggzy.get("candidate_goods_links") or 0),
+        "china_ggzy_goods_added": int(ggzy.get("goods_opportunities_added") or 0),
     }
 
 
