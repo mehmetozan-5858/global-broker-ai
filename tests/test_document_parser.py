@@ -41,7 +41,12 @@ class DocumentParserTests(unittest.TestCase):
 
     def test_source_page_discovers_and_parses_attachment(self):
         item = {"source_url": "https://example.com/tenders/123"}
-        page_html = b"<html><body><p>Buyer requests laboratory equipment, quantity 25 units, delivery within 60 days.</p><a href='/files/spec.pdf'>Technical specification</a></body></html>"
+        page_html = (
+            b"<html><body><p>Buyer requests laboratory equipment, quantity 25 units, delivery within 60 days. "
+            b"The equipment must meet defined accuracy, capacity and material requirements. The supplier must provide "
+            b"ISO 9001 certification, compatible accessories, installation documentation and warranty support.</p>"
+            b"<a href='/files/spec.pdf'>Technical specification</a></body></html>"
+        )
         pdf_text = (
             "Technical specification requires equipment capacity minimum 500 units. "
             "Quantity 25 pieces. Delivery destination Ankara. ISO 9001 certificate required."
