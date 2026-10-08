@@ -30,16 +30,35 @@ jobs:
         env:
           SAM_API_KEY: ${{ secrets.SAM_API_KEY }}
         run: |
+          set -euo pipefail
           mkdir -p data
-          python src/broker.py > data/latest-opportunities.json
-          python -m src.china_feed data/latest-opportunities.json
-          python -m src.china_ggzy_feed data/latest-opportunities.json
-          python -m src.china_import_radar data/latest-opportunities.json
-          python -m src.enrichment data/latest-opportunities.json
-          python -m src.specification data/latest-opportunities.json
-          python -m src.verification data/latest-opportunities.json
+          NEXT=data/latest-opportunities.next.json
+          rm -f "$NEXT"
+          python src/broker.py > "$NEXT"
+          test -s "$NEXT"
+          python -m src.china_feed "$NEXT"
+          python -m src.china_ggzy_feed "$NEXT"
+          python -m src.china_import_radar "$NEXT"
+          python -m src.enrichment "$NEXT"
+          python -m src.specification "$NEXT"
+          python -m src.verification "$NEXT"
       - name: Validate enriched live output
-        run: python -m src.validate_live_output data/latest-opportunities.json
+        run: |
+          set -euo pipefail
+          NEXT=data/latest-opportunities.next.json
+          python -m src.validate_live_output "$NEXT"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/latest-opportunities.next.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          opportunities=data.get('opportunities') or []
+          radar=((data.get('china_import_radar') or {}).get('items') or [])
+          if not opportunities and not radar:
+              raise SystemExit('refusing to replace live data: all live opportunity and China-demand feeds are empty')
+          print(f'ATOMIC_FEED_GATE opportunities={len(opportunities)} china_import_radar={len(radar)}')
+          PY
+          mv "$NEXT" data/latest-opportunities.json
       - name: Commit Shadow Mode output
         run: |
           git config user.name "global-broker-bot"
