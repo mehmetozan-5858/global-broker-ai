@@ -5,8 +5,10 @@ on:
   schedule:
     - cron: "17 */6 * * *"
   push:
+    branches: ["main"]
     paths:
       - 'src/**'
+      - 'tests/**'
       - '.github/workflows/shadow-scan.yml'
       - '.github/workflows/shadow-scan-trigger.txt'
 
@@ -22,12 +24,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Run brokerage regression tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Fetch, normalize and score live global opportunities
         env:
           SAM_API_KEY: ${{ secrets.SAM_API_KEY }}
         run: |
           mkdir -p data
           python src/broker.py > data/latest-opportunities.json
+          python -m src.verification data/latest-opportunities.json
       - name: Commit Shadow Mode output
         run: |
           git config user.name "global-broker-bot"
