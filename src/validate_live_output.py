@@ -99,6 +99,14 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
 
     ccgp = payload.get("china_feed") or {}
     ggzy = payload.get("china_ggzy_feed") or {}
+    radar = payload.get("china_import_radar") or {}
+    radar_meta = radar.get("meta") if isinstance(radar, dict) else {}
+    radar_items = radar.get("items") if isinstance(radar, dict) else []
+    if not isinstance(radar_meta, dict):
+        radar_meta = {}
+    if not isinstance(radar_items, list):
+        radar_items = []
+
     return {
         "opportunities": len(opportunities),
         "dossiers": dossier_count,
@@ -120,6 +128,11 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
         "china_ggzy_status": ggzy.get("status", "not_configured"),
         "china_ggzy_candidates": int(ggzy.get("candidate_goods_links") or 0),
         "china_ggzy_goods_added": int(ggzy.get("goods_opportunities_added") or 0),
+        "china_import_radar_status": radar_meta.get("status", "not_configured"),
+        "china_import_products_monitored": int(radar_meta.get("products_monitored") or 0),
+        "china_import_products_with_data": int(radar_meta.get("products_with_data") or 0),
+        "china_import_radar_items": len(radar_items),
+        "china_import_radar_year": radar_meta.get("current_year"),
     }
 
 
