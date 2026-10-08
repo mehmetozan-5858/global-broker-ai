@@ -70,6 +70,21 @@ class ChinaImportRadarTests(unittest.TestCase):
         self.assertEqual(len(out["opportunities"]), 1)
         self.assertEqual(out["china_import_radar"]["items"][0]["hs4"], "2515")
 
+    @patch("src.china_import_radar.collect_radar")
+    def test_rate_limit_keeps_last_known_good_radar(self, collect):
+        collect.return_value = ([], {"status": "source_unavailable", "errors": ["2025: HTTP 429"]})
+        current = {"opportunities": []}
+        previous = {
+            "china_import_radar": {
+                "meta": {"status": "ok", "current_year": 2025, "products_with_data": 1},
+                "items": [{"hs4": "2515", "china_import_value_usd": 500_000_000, "buyer_identified": False}],
+            }
+        }
+        out = merge_payload(current, previous)
+        self.assertEqual(out["china_import_radar"]["meta"]["status"], "stale_last_known_good")
+        self.assertEqual(out["china_import_radar"]["items"][0]["hs4"], "2515")
+        self.assertEqual(out["china_import_radar"]["meta"]["fresh_fetch_errors"], ["2025: HTTP 429"])
+
 
 if __name__ == "__main__":
     unittest.main()
