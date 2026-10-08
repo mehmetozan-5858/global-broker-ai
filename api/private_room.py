@@ -68,6 +68,17 @@ def _build_access(record, opportunity_id):
     )
 
 
+def _consent_command(session, payload):
+    if not isinstance(payload, dict):
+        raise ValueError("invalid_consent_request")
+    opportunity_id = str(payload.get("opportunity_id") or "").strip()
+    action = str(payload.get("action") or "").strip()
+    actor_id = str(session.get("sub") or "").strip()
+    if not opportunity_id or action not in {"grant", "revoke"} or not actor_id:
+        raise ValueError("invalid_consent_request")
+    return opportunity_id, actor_id, action
+
+
 class handler(BaseHTTPRequestHandler):
     def _json(self, status, payload):
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -150,14 +161,10 @@ class handler(BaseHTTPRequestHandler):
         except (UnicodeDecodeError, json.JSONDecodeError):
             self._json(400, {"status": "INVALID_JSON"})
             return
-        if not isinstance(payload, dict):
-            self._json(400, {"status": "INVALID_REQUEST"})
-            return
 
-        opportunity_id = str(payload.get("opportunity_id") or "").strip()
-        action = str(payload.get("action") or "").strip()
-        actor_id = str(session.get("sub") or "").strip()
-        if not opportunity_id or action not in {"grant", "revoke"} or not actor_id:
+        try:
+            opportunity_id, actor_id, action = _consent_command(session, payload)
+        except ValueError:
             self._json(400, {"status": "INVALID_CONSENT_REQUEST"})
             return
 
