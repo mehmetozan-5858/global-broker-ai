@@ -28,7 +28,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check pypdf==6.1.1
       - name: Run brokerage regression tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
-      - name: Fetch, enrich, read documents, analyze specifications and verify live global opportunities
+      - name: Fetch, enrich, read source pages and documents, analyze specifications and verify live global opportunities
         env:
           SAM_API_KEY: ${{ secrets.SAM_API_KEY }}
         run: |
@@ -42,7 +42,7 @@ jobs:
           python -m src.china_ggzy_feed "$NEXT"
           python -m src.china_import_radar "$NEXT"
           python -m src.enrichment "$NEXT"
-          python -m src.document_parser "$NEXT"
+          python -m src.document_parser "$NEXT" data/latest-opportunities.json
           python -m src.specification "$NEXT"
           python -m src.verification "$NEXT"
       - name: Validate enriched live output
