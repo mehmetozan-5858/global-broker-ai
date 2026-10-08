@@ -17,7 +17,8 @@ STRUCTURED_TECH_KEYS = [
     "specification",
 ]
 NARRATIVE_KEYS = ["description-lot", "detail_original", "detail_tr"]
-TECH_KEYS = STRUCTURED_TECH_KEYS + NARRATIVE_KEYS
+DOCUMENT_TEXT_KEYS = ["document_extracted_text"]
+TECH_KEYS = STRUCTURED_TECH_KEYS + NARRATIVE_KEYS + DOCUMENT_TEXT_KEYS
 ELIGIBILITY_KEYS = [
     "selection-criteria",
     "selection_criteria",
@@ -45,7 +46,7 @@ DOCUMENT_KEYS = [
 ]
 
 KEYWORDS = {
-    "technical": ["specification", "technical", "capacity", "dimension", "performance", "accuracy", "material", "model", "type", "equipment", "device", "requirement"],
+    "technical": ["specification", "technical", "capacity", "dimension", "performance", "accuracy", "material", "model", "type", "equipment", "device", "requirement", "minimum", "maximum", "tolerance"],
     "quantity": ["quantity", "units", "pieces", "pcs", "ton", "tonne", "kg", "litre", "liter", "adet", "miktar", "套", "台", "吨"],
     "delivery": ["delivery", "deliver", "place of performance", "destination", "teslim", "交付", "履行"],
     "eligibility": ["eligible", "qualification", "experience", "certificate", "license", "selection criteria", "yeterlilik", "资格"],
@@ -146,8 +147,8 @@ def standards(item: dict[str, Any], sentences: list[str]) -> list[str]:
     return unique_strings([m.group(0).upper() for m in STANDARD_RE.finditer(raw)])[:30]
 
 
-def _meaningful_narrative(narrative_fields: list[dict[str, str]], technical_hits: list[str]) -> bool:
-    longest = max((len(x["text"]) for x in narrative_fields), default=0)
+def _meaningful_narrative(fields: list[dict[str, str]], technical_hits: list[str]) -> bool:
+    longest = max((len(x["text"]) for x in fields), default=0)
     return longest >= 120 and bool(technical_hits)
 
 
@@ -162,6 +163,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     sentences = source_sentences(item)
     structured_technical = first_values(item, STRUCTURED_TECH_KEYS)
     narrative_fields = first_values(item, NARRATIVE_KEYS)
+    document_fields = first_values(item, DOCUMENT_TEXT_KEYS)
     eligibility_fields = first_values(item, ELIGIBILITY_KEYS)
     award_fields = first_values(item, AWARD_KEYS)
     delivery_fields = first_values(item, DELIVERY_KEYS)
@@ -184,14 +186,21 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     ]
 
     has_attachment = any(d["kind"] in {"pdf", "attachment"} for d in docs)
+    extraction = item.get("document_extraction") if isinstance(item.get("document_extraction"), dict) else {}
+    document_parsed = bool(document_fields) and extraction.get("parsed_count", 0) > 0
     structured_ready = bool(structured_technical)
     narrative_ready = _meaningful_narrative(narrative_fields, technical_hits) and bool(
         quantity_evidence or delivery_evidence or eligibility_evidence or detected_standards
     )
-    specification_ready = structured_ready or narrative_ready
+    document_ready = document_parsed and _meaningful_narrative(document_fields, technical_hits) and bool(
+        quantity_evidence or delivery_evidence or eligibility_evidence or detected_standards
+    )
+    specification_ready = structured_ready or narrative_ready or document_ready
 
     if structured_ready:
         status = "structured_specification_analyzed"
+    elif document_ready:
+        status = "source_document_analyzed"
     elif narrative_ready:
         status = "source_description_analyzed"
     elif docs:
@@ -204,15 +213,16 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     if structured_technical:
         technical_evidence = structured_technical[:10]
     else:
-        technical_evidence = [
-            {"field": "source_text_candidate", "text": s} for s in technical_hits
-        ][:10]
+        origin = "source_document_candidate" if document_parsed else "source_text_candidate"
+        technical_evidence = [{"field": origin, "text": s} for s in technical_hits][:10]
 
     analysis = {
         "status": status,
         "source_backed_only": True,
         "supplier_sourcing_ready": specification_ready,
         "structured_specification_present": structured_ready,
+        "document_text_present": bool(document_fields),
+        "document_parsed": document_parsed,
         "technical_evidence": technical_evidence,
         "quantity_evidence": quantity_evidence[:10],
         "delivery_evidence": delivery_evidence[:10],
@@ -220,7 +230,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         "award_evidence": award_fields[:10],
         "standards": detected_standards,
         "documents": docs,
-        "attachment_requires_parsing": has_attachment,
+        "attachment_requires_parsing": has_attachment and not document_parsed,
         "source_excerpt": "\n".join(sentences[:12])[:6000] or None,
     }
     item["specification_analysis"] = analysis
@@ -231,6 +241,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         dossier["specification_sourcing_ready"] = specification_ready
         dossier["standards"] = detected_standards
         dossier["document_links"] = docs
+        dossier["document_parsed"] = document_parsed
         dossier["technical_evidence_count"] = len(analysis["technical_evidence"])
         dossier["eligibility_evidence_count"] = len(analysis["eligibility_evidence"])
         if not specification_ready:
@@ -252,7 +263,8 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
             "supplier_sourcing_ready": specification_ready,
             "technical_evidence_count": len(analysis["technical_evidence"]),
             "document_count": len(docs),
-            "attachment_requires_parsing": has_attachment,
+            "document_parsed": document_parsed,
+            "attachment_requires_parsing": has_attachment and not document_parsed,
         }
         dossier_flow = workflow.get("opportunity_dossier")
         if isinstance(dossier_flow, dict) and not specification_ready:
@@ -272,6 +284,7 @@ def analyze_payload(payload: dict[str, Any]) -> dict[str, Any]:
     pending_documents = 0
     insufficient = 0
     attachments = 0
+    parsed_documents = 0
     for item in opportunities:
         if not isinstance(item, dict):
             continue
@@ -286,14 +299,17 @@ def analyze_payload(payload: dict[str, Any]) -> dict[str, Any]:
             insufficient += 1
         if spec.get("attachment_requires_parsing"):
             attachments += 1
+        if spec.get("document_parsed"):
+            parsed_documents += 1
     payload["specification_analysis"] = {
-        "version": 2,
-        "mode": "source_evidence_only",
+        "version": 3,
+        "mode": "source_evidence_plus_public_documents",
         "analyzed_count": analyzed,
         "supplier_sourcing_ready": ready,
         "document_analysis_pending": pending_documents,
         "insufficient_source_detail": insufficient,
         "attachments_requiring_parser": attachments,
+        "parsed_document_opportunities": parsed_documents,
     }
     return payload
 
