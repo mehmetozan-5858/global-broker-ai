@@ -119,7 +119,7 @@ class SpecificationEvidenceTests(unittest.TestCase):
             ]
         }
         out = analyze_payload(payload)
-        self.assertEqual(out["specification_analysis"]["mode"], "source_evidence_only")
+        self.assertEqual(out["specification_analysis"]["mode"], "source_evidence_plus_public_documents")
         self.assertEqual(out["specification_analysis"]["analyzed_count"], 2)
         self.assertEqual(out["specification_analysis"]["document_analysis_pending"], 1)
         self.assertEqual(out["specification_analysis"]["supplier_sourcing_ready"], 1)
