@@ -6,15 +6,7 @@ from urllib.parse import urlparse, parse_qs
 from src.access_control import AccessRecord, private_view
 from src.consent_records import ConsentEvent, current_consent
 from src.session_security import SessionError, verify_session
-
-
-def _load_records():
-    raw = os.environ.get("PRIVATE_ROOM_RECORDS_JSON", "{}")
-    try:
-        data = json.loads(raw)
-    except json.JSONDecodeError:
-        return {}
-    return data if isinstance(data, dict) else {}
+from src.storage import StorageError, build_record_store
 
 
 def _bearer(headers):
@@ -93,9 +85,17 @@ class handler(BaseHTTPRequestHandler):
 
         query = parse_qs(urlparse(self.path).query)
         opportunity_id = (query.get("id") or [""])[0].strip()
-        records = _load_records()
-        record = records.get(opportunity_id)
-        if not opportunity_id or not isinstance(record, dict):
+        if not opportunity_id:
+            self._json(404, {"status": "OPPORTUNITY_NOT_FOUND"})
+            return
+
+        try:
+            record = build_record_store().get_opportunity_record(opportunity_id)
+        except StorageError:
+            self._json(503, {"status": "PRIVATE_ROOM_STORAGE_UNAVAILABLE"})
+            return
+
+        if not isinstance(record, dict):
             self._json(404, {"status": "OPPORTUNITY_NOT_FOUND"})
             return
 
