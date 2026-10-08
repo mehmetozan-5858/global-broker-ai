@@ -118249,6 +118249,15 @@
     ],
     "foreign_supplier_eligibility_assumed": false
   },
+  "china_ggzy_feed": {
+    "source": "https://www.ggzy.gov.cn/",
+    "status": "no_tradeable_goods_found",
+    "candidate_goods_links": 0,
+    "goods_opportunities_added": 0,
+    "detail_failures": 0,
+    "errors": [],
+    "foreign_supplier_eligibility_assumed": false
+  },
   "enrichment": {
     "version": 1,
     "mode": "source_only_no_hallucination",
