@@ -25,12 +25,19 @@ jobs:
         run: |
           mkdir -p public/data
           cp -r web/* public/
+          if [ -f web/index.html ]; then
+            cp web/index.html public/customer.html
+          fi
+          if [ -f web/app.html ]; then
+            cp web/app.html public/index.html
+          fi
           if [ -f data/latest-opportunities.json ]; then
             cp data/latest-opportunities.json public/data/latest-opportunities.json
           else
             echo '{"mode":"shadow","opportunities":[]}' > public/data/latest-opportunities.json
           fi
-          sed -i 's#../data/latest-opportunities.json#data/latest-opportunities.json#g' public/index.html
+          sed -i 's#../data/latest-opportunities.json#data/latest-opportunities.json#g' public/index.html || true
+          sed -i 's#../data/latest-opportunities.json#data/latest-opportunities.json#g' public/customer.html || true
       - uses: actions/configure-pages@v5
         with:
           enablement: true
