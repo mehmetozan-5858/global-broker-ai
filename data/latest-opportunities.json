@@ -118759,6 +118759,17 @@
       "scale": "large_priority"
     }
   ],
+  "china_feed": {
+    "source": "https://www.ccgp.gov.cn/",
+    "status": "source_unavailable",
+    "discovered_notice_urls": 0,
+    "goods_opportunities_added": 0,
+    "errors": [
+      "https://www.ccgp.gov.cn/cggg/zygg/gkzb/index.htm: HTTPError",
+      "https://www.ccgp.gov.cn/cggg/dfgg/gkzb/index.htm: HTTPError"
+    ],
+    "foreign_supplier_eligibility_assumed": false
+  },
   "enrichment": {
     "version": 1,
     "mode": "source_only_no_hallucination",
