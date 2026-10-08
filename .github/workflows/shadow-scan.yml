@@ -33,6 +33,7 @@ jobs:
           mkdir -p data
           python src/broker.py > data/latest-opportunities.json
           python -m src.china_feed data/latest-opportunities.json
+          python -m src.china_ggzy_feed data/latest-opportunities.json
           python -m src.enrichment data/latest-opportunities.json
           python -m src.specification data/latest-opportunities.json
           python -m src.verification data/latest-opportunities.json
