@@ -15,7 +15,7 @@ def is_readable_product(value: Any) -> bool:
     return bool(text) and not bool(NUMERIC_ONLY.fullmatch(text))
 
 
-def validate(payload: dict[str, Any]) -> dict[str, int]:
+def validate(payload: dict[str, Any]) -> dict[str, Any]:
     opportunities = payload.get("opportunities")
     if not isinstance(opportunities, list):
         raise AssertionError("opportunities must be a list")
@@ -24,12 +24,21 @@ def validate(payload: dict[str, Any]) -> dict[str, int]:
     if enrichment.get("mode") != "source_only_no_hallucination":
         raise AssertionError("source-only enrichment marker missing")
 
+    specification_meta = payload.get("specification_analysis") or {}
+    if opportunities and specification_meta.get("mode") != "source_evidence_only":
+        raise AssertionError("source-backed specification analysis marker missing")
+
     dossier_count = 0
     readable_product_count = 0
     source_link_count = 0
     supplier_query_count = 0
     raw_numeric_supplier_query_count = 0
     china_queue_count = 0
+    specification_count = 0
+    specification_source_fields = 0
+    specification_document_pending = 0
+    specification_detail_missing = 0
+    specification_attachment_pending = 0
 
     for item in opportunities:
         if not isinstance(item, dict):
@@ -42,6 +51,19 @@ def validate(payload: dict[str, Any]) -> dict[str, int]:
             links = dossier.get("official_links")
             if isinstance(links, list) and links:
                 source_link_count += 1
+
+        spec = item.get("specification_analysis")
+        if isinstance(spec, dict):
+            specification_count += 1
+            status = spec.get("status")
+            if status == "source_fields_analyzed":
+                specification_source_fields += 1
+            elif status == "document_analysis_pending":
+                specification_document_pending += 1
+            elif status == "source_detail_missing":
+                specification_detail_missing += 1
+            if spec.get("attachment_requires_parsing"):
+                specification_attachment_pending += 1
 
         supplier = item.get("supplier_research")
         if isinstance(supplier, dict):
@@ -57,6 +79,8 @@ def validate(payload: dict[str, Any]) -> dict[str, int]:
 
     if opportunities and dossier_count != len(opportunities):
         raise AssertionError(f"dossier missing: {dossier_count}/{len(opportunities)}")
+    if opportunities and specification_count != len(opportunities):
+        raise AssertionError(f"specification analysis missing: {specification_count}/{len(opportunities)}")
     if opportunities and readable_product_count == 0:
         raise AssertionError("no readable product names were produced")
     if raw_numeric_supplier_query_count:
@@ -64,6 +88,7 @@ def validate(payload: dict[str, Any]) -> dict[str, int]:
             f"{raw_numeric_supplier_query_count} supplier queries are still numeric-only"
         )
 
+    china_feed = payload.get("china_feed") or {}
     return {
         "opportunities": len(opportunities),
         "dossiers": dossier_count,
@@ -71,7 +96,14 @@ def validate(payload: dict[str, Any]) -> dict[str, int]:
         "with_official_links": source_link_count,
         "supplier_queries": supplier_query_count,
         "numeric_only_supplier_queries": raw_numeric_supplier_query_count,
+        "specification_analyzed": specification_count,
+        "specification_source_fields": specification_source_fields,
+        "specification_document_pending": specification_document_pending,
+        "specification_detail_missing": specification_detail_missing,
+        "specification_attachment_pending": specification_attachment_pending,
         "china_research_queue": china_queue_count,
+        "china_feed_status": china_feed.get("status", "not_configured"),
+        "china_goods_added": int(china_feed.get("goods_opportunities_added") or 0),
     }
 
 
