@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-08",
   "scope": "ALL_GLOBAL_PRODUCTS",
-  "count": 132,
+  "count": 127,
   "opportunities": [
     {
       "deadline-receipt-tender-date-lot": [
@@ -493,7 +493,7 @@
       "title_original": "Italy – Miscellaneous special-purpose machinery – Fornitura di un triturato cingolato e di un vaglio rotante ad alta produttività per rifiuti urbani, da impiegare presso la piattaforma impiantistica di Bellolampo, con servizio quadriennale di manutenzione integrale",
       "title_tr": "İtalya - Çeşitli özel amaçlı makineler - Dört yıllık entegre bakım hizmetiyle Bellolampo tesis platformunda kullanılmak üzere paletli kıyılmış malzeme ve kentsel atıklar için yüksek verimli döner elek temini",
       "detail_original": "Fornitura di un triturato cingolato e di un vaglio rotante ad alta produttività per rifiuti urbani, da impiegare presso la piattaforma impiantistica di Bellolampo, con servizio quadriennale di manutenzione integrale",
-      "detail_tr": "Bellolampo tesis platformunda kullanılmak üzere kentsel atıklar için dört yıllık entegre bakım hizmetiyle birlikte paletli parçalayıcı ve yüksek verimli döner elek temini",
+      "detail_tr": "Bellolampo tesis platformunda kullanılmak üzere dört yıllık entegre bakım hizmetiyle birlikte kentsel atıklar için paletli parçalayıcı ve yüksek verimli döner elek temini",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -563,7 +563,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Bellolampo tesis platformunda kullanılmak üzere kentsel atıklar için dört yıllık entegre bakım hizmetiyle birlikte paletli parçalayıcı ve yüksek verimli döner elek temini. Kategori / ürün grubu: 42990000 50110000 42990000 50110000",
+      "demand_summary_tr": "Bellolampo tesis platformunda kullanılmak üzere dört yıllık entegre bakım hizmetiyle birlikte kentsel atıklar için paletli parçalayıcı ve yüksek verimli döner elek temini. Kategori / ürün grubu: 42990000 50110000 42990000 50110000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -1011,7 +1011,7 @@
       "title_original": "Poland – Flatbed and Tipper trucks – 39/AP/2029 Dostawa samochodu ciężarowego z zabudową samowyładowczą wyposażonego w żuraw samochodowy i pług odśnieżny",
       "title_tr": "Polonya – Düz kasa ve Damperli kamyonlar – 39/AP/2029 Kamyon vinci ve kar küreme makinesiyle donatılmış, kendinden boşaltmalı kasalı bir kamyonun teslimatı",
       "detail_original": "Dostawa jednostki transportowej na podwoziu dwuosiowym z nadwoziem samowyładowczym typu wywrotka z żurawiem samochodowym załadowczym oraz pługiem samochodowym do całorocznego utrzymania czystości na terenie Miasta Koszalin.",
-      "detail_tr": "Koszalin şehrinde yıl boyunca temizlik için kamyon yükleme vinci ve kamyon pulluğuyla birlikte kendiliğinden boşaltmalı damperli kasaya sahip iki dingilli bir şasi üzerinde bir taşıma ünitesinin teslimatı.",
+      "detail_tr": "Koszalin şehrinde yıl boyu temizlik için kamyon yükleme vinci ve kamyon pulluğuyla birlikte kendiliğinden boşaltmalı damperli kasaya sahip iki dingilli bir şasi üzerinde bir taşıma ünitesinin teslimatı.",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -1081,7 +1081,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Koszalin şehrinde yıl boyunca temizlik için kamyon yükleme vinci ve kamyon pulluğuyla birlikte kendiliğinden boşaltmalı damperli kasaya sahip iki dingilli bir şasi üzerinde bir taşıma ünitesinin teslimatı.. Kategori / ürün grubu: 34134000 34134000",
+      "demand_summary_tr": "Koszalin şehrinde yıl boyu temizlik için kamyon yükleme vinci ve kamyon pulluğuyla birlikte kendiliğinden boşaltmalı damperli kasaya sahip iki dingilli bir şasi üzerinde bir taşıma ünitesinin teslimatı.. Kategori / ürün grubu: 34134000 34134000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -1784,7 +1784,7 @@
       "title_original": "Germany – Portable computers – Nachhaltige Notebooks (produktneutral) der Kategorie Standard und Zusatzleistungen Los 2: Restliche Bundesverwaltung ohne ITZBund",
       "title_tr": "Almanya – Taşınabilir bilgisayarlar – Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından bağımsız) Lot 2: ITZBund'suz federal idarenin geri kalanı",
       "detail_original": "Die Gesamtleistung wird in fünf Fach- bzw. Mengenlose aufgeteilt, die aus technischen Gründen in fünf Verfahren abgebildet werden: 9915/24/VV : 1 - Nachhaltige Notebooks (produktneutral) der Kategorie Standard und Zusatzleistungen Los 1: ITZBund 9915/24/VV : 2 - Nachhaltige Notebooks (produktneutral) der Kategorie Standard und Zusatzleistungen Los 2: Restliche Bundesverwaltung ohne ITZBund (dieses Verfahren) 9915/24/VV : 3 - Nachhaltige Notebooks (produktneutral) der Kategorie Hohe Leistung und Zusatzleistungen Los 3: ITZBund 9915/24/VV : 4 - Nachhaltige Notebooks (produktneutral) der Kategorie Hohe Leistung und Zusatzleistungen Los 4: Restliche Bundesverwaltung ohne ITZBund 9915/24/VV : 5 - Nachhaltige Notebooks (produktneutral) der Kategorie Robust/Outdoor und Zusatzleistungen Los 5: Gesamte Bundesverwaltung Aus der Rahmenvereinbarung über \"Nachhaltige Notebooks (produktneutral) der Kategorie Standard und Zusatzleistungen Los 2: Restliche Bundesverwaltung ohne ITZBund\" kann bis zu einem Höchstwert von 30.200.000 € netto abgerufen werden. Zuschlagslimitierung: Es besteht die Möglichkeit, auf alle Lose zu bieten, jedoch kann der Bieter nur für ein Los den Zuschlag erhalten (Zuschlagslimitierung gem. § 30 Abs. 1 Satz 2 VgV). Die Bieter/die Bietergemeinschaften haben die Möglichkeit sich auf jedes der fünf ausgeschriebenen Lose dieses Vergabeverfahrens zu bewerben. Jedoch besteht die Restriktion, dass jeder Bieter/jede Bietergemeinschaft den Zuschlag nur für maximal ein Los bekommen kann. Der Zuschlag wird für jedes Los separat in aufsteigender Reihenfolge erteilt, beginnend beim Los 1. Dies wird in jedem Los anhand der in den Vergabeunterlagen angegebenen Kriterien ermittelt, siehe hierzu Dokument \"Besondere_Bewerbungsbedingungen_VV2\". Liegt für ein Los aufgrund der Zuschlagslimitierung kein weiteres zuschlagsfähiges Angebot vor, so entfällt die Zuschlagslimitierung für das bedingungsgemäß eingereichte Angebot in diesem Los. Dieses Angebot kann daher auch dann bezuschlagt werden, wenn der gleiche Bieter in einem Los bereits den Zuschlag erhalten hat.",
-      "detail_tr": "Toplam hizmet, teknik nedenlerden dolayı beş prosedürde temsil edilen beş konu veya miktar partisine bölünmüştür: 9915/24/VV: 1 - Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 1: ITZBund 9915/24/VV: 2 - Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 2: ITZBund'suz federal idarenin geri kalanı (bu prosedür) 9915/24/VV : 3 - Yüksek performans ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 3: ITZBund 9915/24/VV : 4 - Yüksek performans ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 4: ITZBund 9915/24/VV olmadan geri kalan federal yönetim: 5 - Sağlam/dış mekan ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 5: Federal idarenin tamamı \"Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 2: ITZBund olmadan federal yönetimin geri kalanı\" hakkındaki çerçeve anlaşmasından maksimum net 30.200.000 € değerine kadar erişilebilir. İhale sınırlaması: Tüm kısımlara teklif vermek mümkündür, ancak teklif sahibine yalnızca bir kısım için sözleşme verilebilir (Bölüm 30 Paragraf 1 Cümle 2 VgV uyarınca ihale sınırlaması). Teklif sahipleri/teklif veren konsorsiyum, bu satın alma sürecinde reklamı yapılan beş partinin her birine başvuru yapma olanağına sahiptir. Ancak, her teklif sahibinin/teklif veren konsorsiyumun en fazla bir lot kazanabilmesine ilişkin bir kısıtlama bulunmaktadır. Sözleşme, 1. partiden başlamak üzere her parti için artan sırada ayrı ayrı verilecektir. Bu, her partide ihale belgelerinde belirtilen kriterlere göre belirlenecektir, bkz. \"Özel_Bewerbung Koşulları_VV2\" belgesi. Kabul limiti nedeniyle bir lot için kabul edilebilecek başka bir teklif bulunmaması durumunda, bu lottaki şartlara uygun olarak verilen teklife kabul limiti uygulanmaz. Dolayısıyla bu teklif, aynı teklif verenin zaten çok fazla kazanmış olması durumunda bile verilebilir.",
+      "detail_tr": "Toplam hizmet, teknik nedenlerden dolayı beş prosedürde temsil edilen beş konu veya miktar partisine bölünmüştür: 9915/24/VV: 1 - Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 1: ITZBund 9915/24/VV: 2 - Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 2: ITZBund'suz federal idarenin geri kalanı (bu prosedür) 9915/24/VV : 3 - Yüksek performans ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 3: ITZBund 9915/24/VV : 4 - Yüksek performans ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 4: ITZBund 9915/24/VV olmadan geri kalan federal yönetim: 5 - Sağlam/dış mekan ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 5: Federal idarenin tamamı \"Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 2: ITZBund olmadan federal yönetimin geri kalanı\" hakkındaki çerçeve anlaşmasından maksimum net 30.200.000 € değerine kadar erişilebilir. İhale sınırlaması: Tüm kısımlara teklif vermek mümkündür, ancak teklif sahibine yalnızca bir kısım için sözleşme verilebilir (Bölüm 30 Paragraf 1 Cümle 2 VgV uyarınca ihale sınırlaması). Teklif sahipleri/teklif veren konsorsiyum, bu satın alma sürecinde reklamı yapılan beş partinin her birine başvuru yapma olanağına sahiptir. Ancak, her teklif sahibinin/teklif veren konsorsiyumun en fazla bir lot kazanabileceği yönünde bir kısıtlama bulunmaktadır. Sözleşme, 1. partiden başlamak üzere her parti için artan sırada ayrı ayrı verilecektir. Bu, her partide ihale belgelerinde belirtilen kriterlere göre belirlenecektir, bkz. \"Özel_Bewerbung Koşulları_VV2\" belgesi. Kabul limiti nedeniyle bir lot için kabul edilebilecek başka bir teklif bulunmaması durumunda, bu lottaki şartlara uygun olarak verilen teklife kabul limiti uygulanmaz. Bu nedenle bu teklif, aynı teklif verenin zaten çok şey kazanmış olması durumunda bile verilebilir.",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -1854,7 +1854,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Toplam hizmet, teknik nedenlerden dolayı beş prosedürde temsil edilen beş konu veya miktar partisine bölünmüştür: 9915/24/VV: 1 - Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 1: ITZBund 9915/24/VV: 2 - Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 2: ITZBund'suz federal idarenin geri kalanı (bu prosedür) 9915/24/VV : 3 - Yüksek performans ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 3: ITZBund 9915/24/VV : 4 - Yüksek performans ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 4: ITZBund 9915/24/VV olmadan geri kalan federal yönetim: 5 - Sağlam/dış mekan ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 5: Federal idarenin tamamı \"Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 2: ITZBund olmadan federal yönetimin geri kalanı\" hakkındaki çerçeve anlaşmasından maksimum net 30.200.000 € değerine kadar erişilebilir. İhale sınırlaması: Tüm kısımlara teklif vermek mümkündür, ancak teklif sahibine yalnızca bir kısım için sözleşme verilebilir (Bölüm 30 Paragraf 1 Cümle 2 VgV uyarınca ihale sınırlaması). Teklif sahipleri/teklif veren konsorsiyum, bu satın alma sürecinde reklamı yapılan beş partinin her birine başvuru yapma olanağına sahiptir. Ancak, her teklif sahibinin/teklif veren konsorsiyumun en fazla bir lot kazanabilmesine ilişkin bir kısıtlama bulunmaktadır. Sözleşme, 1. partiden başlamak üzere her parti için artan sırada ayrı ayrı verilecektir. Bu, her partide ihale belgelerinde belirtilen kriterlere göre belirlenecektir, bkz. \"Özel_Bewerbung Koşulları_VV2\" belgesi. Kabul limiti nedeniyle bir lot için kabul edilebilecek başka bir teklif bulunmaması durumunda, bu lottaki şartlara uygun olarak verilen teklife kabul limiti uygulanmaz. Dolayısıyla bu teklif, aynı teklif verenin zaten çok fazla kazanmış olması durumunda bile verilebilir.. Kategori / ürün grubu: 30213100 30213100",
+      "demand_summary_tr": "Toplam hizmet, teknik nedenlerden dolayı beş prosedürde temsil edilen beş konu veya miktar partisine bölünmüştür: 9915/24/VV: 1 - Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 1: ITZBund 9915/24/VV: 2 - Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 2: ITZBund'suz federal idarenin geri kalanı (bu prosedür) 9915/24/VV : 3 - Yüksek performans ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 3: ITZBund 9915/24/VV : 4 - Yüksek performans ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 4: ITZBund 9915/24/VV olmadan geri kalan federal yönetim: 5 - Sağlam/dış mekan ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 5: Federal idarenin tamamı \"Standart ve ek hizmetler kategorisinde sürdürülebilir dizüstü bilgisayarlar (ürün açısından nötr) Lot 2: ITZBund olmadan federal yönetimin geri kalanı\" hakkındaki çerçeve anlaşmasından maksimum net 30.200.000 € değerine kadar erişilebilir. İhale sınırlaması: Tüm kısımlara teklif vermek mümkündür, ancak teklif sahibine yalnızca bir kısım için sözleşme verilebilir (Bölüm 30 Paragraf 1 Cümle 2 VgV uyarınca ihale sınırlaması). Teklif sahipleri/teklif veren konsorsiyum, bu satın alma sürecinde reklamı yapılan beş partinin her birine başvuru yapma olanağına sahiptir. Ancak, her teklif sahibinin/teklif veren konsorsiyumun en fazla bir lot kazanabileceği yönünde bir kısıtlama bulunmaktadır. Sözleşme, 1. partiden başlamak üzere her parti için artan sırada ayrı ayrı verilecektir. Bu, her partide ihale belgelerinde belirtilen kriterlere göre belirlenecektir, bkz. \"Özel_Bewerbung Koşulları_VV2\" belgesi. Kabul limiti nedeniyle bir lot için kabul edilebilecek başka bir teklif bulunmaması durumunda, bu lottaki şartlara uygun olarak verilen teklife kabul limiti uygulanmaz. Bu nedenle bu teklif, aynı teklif verenin zaten çok şey kazanmış olması durumunda bile verilebilir.. Kategori / ürün grubu: 30213100 30213100",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -3344,7 +3344,7 @@
       "title_original": "Belgium – Food, beverages, tobacco and related products – Leveren van dranken op diverse locaties lokaal bestuur Diepenbeek (2027-2031)",
       "title_tr": "Belçika – Yiyecek, içecek, tütün ve ilgili ürünler – Çeşitli yerlerde içecek tedariği, yerel yönetim Diepenbeek (2027-2031)",
       "detail_original": "De uit te voeren levering betreft leveren van dranken en verbruiksgoederen voor volgende infrastructuur van lokaal bestuur Diepenbeek: * Gemeentehuis, Dorpsstraat 14 * Poortgebouw, Dorpsstraat 11 (te beleveren via Kogelstraat) * Huis Schoofs, Dorpsstraat 13 (te beleveren via Kogelstraat) * Openbare bibliotheek afdeling centrum, Marktplein 24/A * Technische dienst, Industrielaan 6 * Culturele infrastructuur: - Buurthuis zaal De Kei, Keistraat 26 - Gemeenschapscentrum De Plak, Servaasplein 14/15 - Ontmoetingscentrum Lutselus, Pastorijstraat 7 - Ontmoetingscentrum Rooierheide, Rooierheidestraat 100 - Ontmoetingshuis ’t Fonteintje, Stationsstraat 9 * WZC De Visserij, Onze-Lieve-Vrouwstraat 21 (te beleveren via Visserijstraat) * Gemeentelijke basisschool afdeling centrum, Kloosterstraat 34 te 3590 Diepenbeek Het zou kunnen dat het aantal locaties tijdens de looptijd van de opdracht wijzigen (vermeerderen of verminderen). De leverancier kan hiervoor geen schadevergoeding eisen.",
-      "detail_tr": "Gerçekleştirilecek teslimat, Diepenbeek yerel yönetiminin aşağıda belirtilen altyapısına yönelik içecek ve sarf malzemelerinin tedariğiyle ilgilidir: * Belediye binası, Dorpsstraat 14 * Poortgebouw, Dorpsstraat 11 (Kogelstraat üzerinden teslim edilecek) * Huis Schoofs, Dorpsstraat 13 (Kogelstraat üzerinden teslim edilecek) * Halk kütüphanesi departmanı merkezi, Marktplein 24/A * Teknik servis, Industrielaan 6 * Kültürel altyapı: - Toplum merkezi De Kei salonu, Keistraat 26 - De Plak toplum merkezi, Servaasplein 14/15 - Lutselus toplantı merkezi, Pastorijstraat 7 - Rooierheide toplantı merkezi, Rooierheidestraat 100 - 't Fonteintje toplantı evi, Stationsstraat 9 * WZC De Visserij, Onze-Lieve-Vrouwstraat 21 (mevcut) via Visserijstraat) * Belediye ilkokul merkezi departmanı, Kloosterstraat 34, 3590 Diepenbeek Görev süresi boyunca yer sayısı değişebilir (artabilir veya azalabilir). Tedarikçi bunun için tazminat talebinde bulunamaz.",
+      "detail_tr": "Gerçekleştirilecek teslimat, Diepenbeek yerel yönetiminin aşağıdaki altyapısına yönelik içecek ve sarf malzemelerinin tedariğiyle ilgilidir: * Belediye binası, Dorpsstraat 14 * Poortgebouw, Dorpsstraat 11 (Kogelstraat üzerinden teslim edilecek) * Huis Schoofs, Dorpsstraat 13 (Kogelstraat üzerinden teslim edilecek) * Halk kütüphanesi departmanı merkezi, Marktplein 24/A * Teknik servis, Industrielaan 6 * Kültürel altyapı: - Toplum merkezi De Kei salonu, Keistraat 26 - De Plak toplum merkezi, Servaasplein 14/15 - Lutselus toplantı merkezi, Pastorijstraat 7 - Rooierheide toplantı merkezi, Rooierheidestraat 100 - 't Fonteintje toplantı evi, Stationsstraat 9 * WZC De Visserij, Onze-Lieve-Vrouwstraat 21 (mevcut) via Visserijstraat) * Belediye ilkokul merkezi departmanı, Kloosterstraat 34, 3590 Diepenbeek Görev süresi boyunca yer sayısı değişebilir (artabilir veya azalabilir). Tedarikçi bunun için tazminat talebinde bulunamaz.",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -3414,7 +3414,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Gerçekleştirilecek teslimat, Diepenbeek yerel yönetiminin aşağıda belirtilen altyapısına yönelik içecek ve sarf malzemelerinin tedariğiyle ilgilidir: * Belediye binası, Dorpsstraat 14 * Poortgebouw, Dorpsstraat 11 (Kogelstraat üzerinden teslim edilecek) * Huis Schoofs, Dorpsstraat 13 (Kogelstraat üzerinden teslim edilecek) * Halk kütüphanesi departmanı merkezi, Marktplein 24/A * Teknik servis, Industrielaan 6 * Kültürel altyapı: - Toplum merkezi De Kei salonu, Keistraat 26 - De Plak toplum merkezi, Servaasplein 14/15 - Lutselus toplantı merkezi, Pastorijstraat 7 - Rooierheide toplantı merkezi, Rooierheidestraat 100 - 't Fonteintje toplantı evi, Stationsstraat 9 * WZC De Visserij, Onze-Lieve-Vrouwstraat 21 (mevcut) via Visserijstraat) * Belediye ilkokul merkezi departmanı, Kloosterstraat 34, 3590 Diepenbeek Görev süresi boyunca yer sayısı değişebilir (artabilir veya azalabilir). Tedarikçi bunun için tazminat talebinde bulunamaz.. Kategori / ürün grubu: 15000000 15000000 15900000",
+      "demand_summary_tr": "Gerçekleştirilecek teslimat, Diepenbeek yerel yönetiminin aşağıdaki altyapısına yönelik içecek ve sarf malzemelerinin tedariğiyle ilgilidir: * Belediye binası, Dorpsstraat 14 * Poortgebouw, Dorpsstraat 11 (Kogelstraat üzerinden teslim edilecek) * Huis Schoofs, Dorpsstraat 13 (Kogelstraat üzerinden teslim edilecek) * Halk kütüphanesi departmanı merkezi, Marktplein 24/A * Teknik servis, Industrielaan 6 * Kültürel altyapı: - Toplum merkezi De Kei salonu, Keistraat 26 - De Plak toplum merkezi, Servaasplein 14/15 - Lutselus toplantı merkezi, Pastorijstraat 7 - Rooierheide toplantı merkezi, Rooierheidestraat 100 - 't Fonteintje toplantı evi, Stationsstraat 9 * WZC De Visserij, Onze-Lieve-Vrouwstraat 21 (mevcut) via Visserijstraat) * Belediye ilkokul merkezi departmanı, Kloosterstraat 34, 3590 Diepenbeek Görev süresi boyunca yer sayısı değişebilir (artabilir veya azalabilir). Tedarikçi bunun için tazminat talebinde bulunamaz.. Kategori / ürün grubu: 15000000 15000000 15900000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -3610,7 +3610,7 @@
       "title_original": "Germany – Firefighting vehicles – VG leiningerland - TSF-W",
       "title_tr": "Almanya – İtfaiye araçları – VG leiningerland - TSF-W",
       "detail_original": "Lieferung von Fahrgestell mit Aufbau TSF-W Lieferung von Beladung für ein TSF-W Lieferung einer Tragkraftspritze TS",
-      "detail_tr": "TSF-W gövdeli şasinin teslimatı TSF-W için yüklemenin teslimatı Taşınabilir bir pompanın teslimatı TS",
+      "detail_tr": "TSF-W gövdeli şasi teslimatı TSF-W için yükleme teslimatı Portatif bir pompa TS teslimatı",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -3680,7 +3680,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "TSF-W gövdeli şasinin teslimatı TSF-W için yüklemenin teslimatı Taşınabilir bir pompanın teslimatı TS. Kategori / ürün grubu: 34144210 34144210 34144210 34144210",
+      "demand_summary_tr": "TSF-W gövdeli şasi teslimatı TSF-W için yükleme teslimatı Portatif bir pompa TS teslimatı. Kategori / ürün grubu: 34144210 34144210 34144210 34144210",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -4139,7 +4139,7 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Greece – Laboratory reagents – ΠΡΟΜΗΘΕΙΑ ΑΝΤΙΔΡΑΣΤΗΡΙΩΝ ΔΙΕΝΕΡΓΕΙΑΣ ΕΞΕΤΑΣΕΩΝ ΕΙΔΙΚΩΝ ΠΡΩΤΕΪΝΩΝ ΜΕ ΣΥΝΟΔΟ ΕΞΟΠΛΙΣΜΟ",
-      "title_tr": "Yunanistan – Laboratuvar reaktifleri – ÖZEL PROTEİN ANALİZİ İÇİN REAKTİFLERİN EKİPMANLA BİRLİKTE TEMİNİ",
+      "title_tr": "Yunanistan – Laboratuvar reaktifleri – EKİPMANLA BİRLİKTE ÖZEL PROTEİN ANALİZİ İÇİN REAKTİFLERİN TEMİNİ",
       "detail_original": "ΠΡΟΜΗΘΕΙΑ ΑΝΤΙΔΡΑΣΤΗΡΙΩΝ ΔΙΕΝΕΡΓΕΙΑΣ ΕΞΕΤΑΣΕΩΝ ΕΙΔΙΚΩΝ ΠΡΩΤΕΪΝΩΝ ΜΕ ΣΥΝΟΔΟ ΕΞΟΠΛΙΣΜΟ",
       "detail_tr": "BELİRTİLEN EKİPMAN İLE ÖZEL PROTEİN TESTLERİ İÇİN REAKTİFLERİN TEMİNİ",
       "market_region": "Diğer Pazarlar",
@@ -5975,7 +5975,7 @@
       "title_original": "Denmark – Lighting equipment and electric lamps – Orienteringsbelysning upper walkway och nödtrappor",
       "title_tr": "Danimarka – Aydınlatma ekipmanı ve elektrik lambaları – Orienteringsbelysning üst yürüyüş yolu ve nödtrappor",
       "detail_original": "Upphandlingen avser orienteringsbelysning för upper walkway och nödtrappor på Öresundsbron.",
-      "detail_tr": "İhale, Öresund Köprüsü'ndeki üst yürüyüş yolu ve acil durum merdivenleri için yönlendirme aydınlatmasıyla ilgilidir.",
+      "detail_tr": "İhale, Öresund Köprüsü'ndeki üst yürüyüş yolu ve acil durum merdivenleri için yönlendirme aydınlatmasıyla ilgili.",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -6045,7 +6045,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "İhale, Öresund Köprüsü'ndeki üst yürüyüş yolu ve acil durum merdivenleri için yönlendirme aydınlatmasıyla ilgilidir.. Kategori / ürün grubu: 31500000 31500000",
+      "demand_summary_tr": "İhale, Öresund Köprüsü'ndeki üst yürüyüş yolu ve acil durum merdivenleri için yönlendirme aydınlatmasıyla ilgili.. Kategori / ürün grubu: 31500000 31500000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -6494,7 +6494,7 @@
       "title_original": "Poland – Electricity – Dostawa energii elektrycznej do obiektów Centrum Sportowo Rehabilitacyjnego „Słowianka” Sp. z o.o. w Gorzowie Wielkopolskim przy ul. Słowiańskiej 12, 14 i 16 od 1 stycznia 2027 r. do 31 grudnia 2027 r.",
       "title_tr": "Polonya – Elektrik – Spor ve Rehabilitasyon Merkezi \"Słowianka\" Sp. z o. O. Gorzów Wielkopolski'de ul. Słowiańska 12, 14 ve 16, 1 Ocak 2027'den 31 Aralık 2027'ye kadar.",
       "detail_original": "Przedmiotem zamówienia jest dostawa energii elektrycznej dla obiektów CSR „Słowianka” Sp. z o.o. ul. Słowiańska 12, 14 i 16 w okresie 1 stycznia 2027 roku do 31 grudnia 2027 roku w następujących ilościach: 1. Baseny: Moc zamówiona 0,400 MW Zużycie: 1.960 MWh W tym: I strefa 370,00 MWh II strefa 290,00 MWh III strefa 1.300,00 MWh 2. Lodowisko: Moc zamówiona 0,140 MW Zużycie: 250 MWh W tym: I strefa 40,00 MWh II strefa 40,00 MWh III strefa 170,00 MWh 3. Hala sportowo-widowiskowa Moc zamówiona 0,600 MW Zużycie: 1.100 MWh W tym: I strefa 200 MWh II strefa 200 MWh III strefa 700 MWh Podane wyżej ilości są szacunkowe i zostały podane na podstawie zużycia energii z lat ubiegłych. Ostateczna ilość zamówionej energii może zatem ulec zmianie i być ostatecznie wyższa lub niższa. Zamawiający dokona zapłaty za faktycznie pobrane ilości. Zamawiający gwarantuje wykonawcy zapłatę za 2000 MWh. Wykonawca jest uprawniony do wskazania w ofercie cenowej innych niż dotychczas stosowane u Zamawiającego taryf energetycznych jeżeli uzna, że taryfy zaproponowane są korzystniejsze od dotychczasowych. Przy błędnym doborze taryf przez Wykonawcę, który w konsekwencji prowadziłby do większych opłat za energię niż przy taryfach obecnie stosowanych różnicą obciążany będzie Wykonawca. Obecna grupa taryfowa dla trzech obiektów – B 23. Obiekt Areny Gorzów wyposażony jest w instalację odnawialnego źródła energii o łącznej mocy nie większej niż 50 kW, przyłączoną do sieci elektroenergetycznej o napięciu znamionowym niższym niż 110 kV. Zamawiający posiada status prosumenta – jest odbiorcą końcowym wytwarzającym energię elektryczną wyłącznie z odnawialnych źródeł energii na własne potrzeby w mikroinstalacji. W sytuacji, gdy planowane jest oddanie do sieci OSD nadwyżki energii, zamawiający wyraża zgodę na zawarcie umowy na odkup i bilansowanie energii elektrycznej na wzorcu stosowanym przez wykonawcę, z następującym zastrzeżeniem: a) zamawiający (Odbiorca) nie zostanie obciążony przez wykonawcę dodatkowymi kosztami z tytułu zawarcia umowy na odkup (np. opłata handlowa / abonamentowa), b) cena odkupu (po uwzględnieniu marży i kosztów operacyjnych wykonawcy, w tym kosztów bilansowania) przyjmuje wartość dodatnią; w przypadku, gdy cena odkupu energii elektrycznej, przy zastosowanym przez wykonawcę wzorze, przyjmie wartość ujemną, do rozliczenia przyjmuje się wartość 0,00 zł 3) Zamawiający w PPE objętych postępowaniem nie posiadają innych instalacji OZE wytwarzających energię elektryczną. 4) Odbiorca nie jest wpisany do rejestru MIOZE 5) Odbiorca nie posiada magazynów energii (i nie planuje ich budowy w okresie trwania umowy) 6) Odbiorca nie posiada koncesji na obrót Zamawiający nie posiada statusu wytwórcy.",
-      "detail_tr": "Siparişin konusu, CSR \"Słowianka\" Sp. tesislerine elektrik tedarikidir. z o. O. cadde Słowiańska 12, 14 ve 16, 1 Ocak 2027 ile 31 Aralık 2027 arasındaki dönemde aşağıdaki miktarlarda olacaktır: 1. Yüzme havuzları: Sipariş edilen kapasite 0,400 MW Tüketim: 1.960 MWh Dahil olanlar: bölge I 370,00 MWh bölge II 290,00 MWh bölge III 1.300,00 MWh 2. Buz pateni pisti: Sipariş edilen güç 0,140 MW Tüketim: 250 MWh Dahil olanlar: Bölge I 40,00 MWh Bölge II 40,00 MWh Bölge III 170,00 MWh 3. Spor ve eğlence salonu Sipariş edilen güç 0,600 MW Tüketim: 1.100 MWh Dahil olanlar: Bölge I 200 MWh bölge II 200 MWh bölge III 700 MWh Yukarıda verilen miktarlar tahminidir ve önceki yıllara ait enerji tüketimine dayanmaktadır. Bu nedenle sipariş edilen nihai enerji miktarı değişebilir ve sonuçta daha yüksek veya daha düşük olabilir. Siparişi Veren Taraf, fiilen toplanan miktarların bedelini ödeyecektir. Siparişi veren taraf yükleniciye 2.000 MWh tutarında ödeme garantisi verir. Yüklenici, teklif edilen tarifelerin mevcut tarifelerden daha uygun olduğunu düşünmesi durumunda, Sipariş Veren Tarafın daha önce kullandığı enerji tarifeleri dışındaki enerji tarifelerini fiyat teklifinde belirtme hakkına sahiptir. Yüklenici tarafından, enerji ücretlerinin güncel geçerli tarifelerden daha yüksek olmasına yol açacak şekilde yanlış tarife seçimi yapılması durumunda aradaki fark Yükleniciye fatura edilecektir. Üç tesis için mevcut tarife grubu - B 23. Arena Gorzów tesisi, nominal voltajı 110 kV'tan düşük olan elektrik şebekesine bağlı, toplam gücü 50 kW'ı aşmayan yenilenebilir bir enerji kaynağı kurulumuyla donatılmıştır. Sipariş Veren Taraf, üreten tüketici statüsündedir; mikro kurulumda kendi ihtiyaçları için yalnızca yenilenebilir enerji kaynaklarından elektrik üreten bir son kullanıcıdır. Fazla enerjinin DSO ağına aktarılmasının planlandığı bir durumda, siparişi veren taraf, aşağıdaki çekinceyle yüklenici tarafından kullanılan şablona uygun olarak elektriğin geri alımı ve dengelenmesi için bir anlaşma yapılmasına izin verir: a) sipariş veren taraftan (Alıcı), bir geri alım sözleşmesinin imzalanması için yüklenici tarafından ek maliyetler (örneğin ticari/abonelik ücreti) talep edilmeyecektir, b) geri satın alma fiyatı (yüklenicinin marjı ve işletme maliyetleri dikkate alındıktan sonra, dengeleme maliyetleri dahil) olumlu; yüklenici tarafından kullanılan formül kullanılarak elektriğin geri satın alma fiyatı negatifse, uzlaşma için 0,00 PLN değeri varsayılır. 3) Dava kapsamındaki KKD'deki Emri Veren Tarafın elektrik üreten başka YEK tesisleri yoktur. 4) Alıcı, MIOZE kaydına kayıtlı değil 5) Alıcının enerji depolama tesisleri yok (ve sözleşme süresi boyunca bunları inşa etmeyi planlamıyor) 6) Alıcının ticaret lisansı yok. Siparişi veren taraf üretici statüsünde değildir.",
+      "detail_tr": "Siparişin konusu, CSR \"Słowianka\" Sp. tesislerine elektrik tedarikidir. z o. O. cadde Słowiańska 12, 14 ve 16, 1 Ocak 2027 ile 31 Aralık 2027 arasındaki dönemde aşağıdaki miktarlarda olacaktır: 1. Yüzme havuzları: Sipariş edilen kapasite 0,400 MW Tüketim: 1.960 MWh Dahil olanlar: bölge I 370,00 MWh bölge II 290,00 MWh bölge III 1.300,00 MWh 2. Buz pateni pisti: Sipariş edilen güç 0,140 MW Tüketim: 250 MWh Dahil olanlar: Bölge I 40,00 MWh Bölge II 40,00 MWh Bölge III 170,00 MWh 3. Spor ve eğlence salonu Sipariş edilen güç 0,600 MW Tüketim: 1.100 MWh Dahil olanlar: Bölge I 200 MWh bölge II 200 MWh bölge III 700 MWh Yukarıda verilen miktarlar tahminidir ve önceki yıllara ait enerji tüketimine dayanmaktadır. Bu nedenle sipariş edilen nihai enerji miktarı değişebilir ve sonuçta daha yüksek veya daha düşük olabilir. Siparişi Veren Taraf, fiilen toplanan miktarların bedelini ödeyecektir. Siparişi veren taraf yükleniciye 2.000 MWh tutarında ödeme garantisi verir. Yüklenici, teklif edilen tarifelerin mevcut tarifelerden daha uygun olduğunu düşünmesi durumunda, Sipariş Veren Tarafın daha önce kullandığı enerji tarifeleri dışındaki enerji tarifelerini fiyat teklifinde belirtme hakkına sahiptir. Yüklenici tarafından, enerji ücretlerinin güncel geçerli tarifelerden daha yüksek olmasına yol açacak şekilde yanlış tarife seçimi yapılması durumunda aradaki fark Yükleniciye fatura edilecektir. Üç tesis için mevcut tarife grubu - B 23. Arena Gorzów tesisi, nominal voltajı 110 kV'tan düşük olan elektrik şebekesine bağlı, toplam gücü 50 kW'ı aşmayan yenilenebilir bir enerji kaynağı kurulumuyla donatılmıştır. Sipariş Veren Taraf, üreten tüketici statüsündedir; mikro kurulumda kendi ihtiyaçları için yalnızca yenilenebilir enerji kaynaklarından elektrik üreten bir son kullanıcıdır. Fazla enerjinin DSO şebekesine aktarılmasının planlandığı bir durumda, siparişi veren taraf, yüklenicinin kullandığı şablona uygun olarak elektriğin geri alımı ve dengelenmesi için aşağıdaki çekinceyle bir anlaşma yapılmasına izin verir: a) sipariş veren taraftan (Alıcı), bir geri alım sözleşmesinin imzalanması için yüklenici tarafından ek maliyetlerle (örneğin ticari/abonelik ücreti) ücretlendirilmeyecektir, b) geri satın alma fiyatı (yüklenicinin marjı ve işletme maliyetleri dikkate alındıktan sonra, dengeleme maliyetleri dahil) olumlu; yüklenici tarafından kullanılan formül kullanılarak elektriğin geri satın alma fiyatı negatifse, uzlaşma için 0,00 PLN değeri varsayılır. 3) Dava kapsamındaki KKD'deki Emri Veren Tarafın elektrik üreten başka YEK tesisleri yoktur. 4) Alıcı, MIOZE kaydına kayıtlı değil 5) Alıcının enerji depolama tesisleri yok (ve sözleşme süresi boyunca bunları inşa etmeyi planlamıyor) 6) Alıcının ticaret lisansı yok. Siparişi veren taraf üretici statüsünde değildir.",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -6564,7 +6564,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Siparişin konusu, CSR \"Słowianka\" Sp. tesislerine elektrik tedarikidir. z o. O. cadde Słowiańska 12, 14 ve 16, 1 Ocak 2027 ile 31 Aralık 2027 arasındaki dönemde aşağıdaki miktarlarda olacaktır: 1. Yüzme havuzları: Sipariş edilen kapasite 0,400 MW Tüketim: 1.960 MWh Dahil olanlar: bölge I 370,00 MWh bölge II 290,00 MWh bölge III 1.300,00 MWh 2. Buz pateni pisti: Sipariş edilen güç 0,140 MW Tüketim: 250 MWh Dahil olanlar: Bölge I 40,00 MWh Bölge II 40,00 MWh Bölge III 170,00 MWh 3. Spor ve eğlence salonu Sipariş edilen güç 0,600 MW Tüketim: 1.100 MWh Dahil olanlar: Bölge I 200 MWh bölge II 200 MWh bölge III 700 MWh Yukarıda verilen miktarlar tahminidir ve önceki yıllara ait enerji tüketimine dayanmaktadır. Bu nedenle sipariş edilen nihai enerji miktarı değişebilir ve sonuçta daha yüksek veya daha düşük olabilir. Siparişi Veren Taraf, fiilen toplanan miktarların bedelini ödeyecektir. Siparişi veren taraf yükleniciye 2.000 MWh tutarında ödeme garantisi verir. Yüklenici, teklif edilen tarifelerin mevcut tarifelerden daha uygun olduğunu düşünmesi durumunda, Sipariş Veren Tarafın daha önce kullandığı enerji tarifeleri dışındaki enerji tarifelerini fiyat teklifinde belirtme hakkına sahiptir. Yüklenici tarafından, enerji ücretlerinin güncel geçerli tarifelerden daha yüksek olmasına yol açacak şekilde yanlış tarife seçimi yapılması durumunda aradaki fark Yükleniciye fatura edilecektir. Üç tesis için mevcut tarife grubu - B 23. Arena Gorzów tesisi, nominal voltajı 110 kV'tan düşük olan elektrik şebekesine bağlı, toplam gücü 50 kW'ı aşmayan yenilenebilir bir enerji kaynağı kurulumuyla donatılmıştır. Sipariş Veren Taraf, üreten tüketici statüsündedir; mikro kurulumda kendi ihtiyaçları için yalnızca yenilenebilir enerji kaynaklarından elektrik üreten bir son kullanıcıdır. Fazla enerjinin DSO ağına aktarılmasının planlandığı bir durumda, siparişi veren taraf, aşağıdaki çekinceyle yüklenici tarafından kullanılan şablona uygun olarak elektriğin geri alımı ve dengelenmesi için bir anlaşma yapılmasına izin verir: a) sipariş veren taraftan (Alıcı), bir geri alım sözleşmesinin imzalanması için yüklenici tarafından ek maliyetler (örneğin ticari/abonelik ücreti) talep edilmeyecektir, b) geri satın alma fiyatı (yüklenicinin marjı ve işletme maliyetleri dikkate alındıktan sonra, dengeleme maliyetleri dahil) olumlu; yüklenici tarafından kullanılan formül kullanılarak elektriğin geri satın alma fiyatı negatifse, uzlaşma için 0,00 PLN değeri varsayılır. 3) Dava kapsamındaki KKD'deki Emri Veren Tarafın elektrik üreten başka YEK tesisleri yoktur. 4) Alıcı, MIOZE kaydına kayıtlı değil 5) Alıcının enerji depolama tesisleri yok (ve sözleşme süresi boyunca bunları inşa etmeyi planlamıyor) 6) Alıcının ticaret lisansı yok. Siparişi veren taraf üretici statüsünde değildir.. Kategori / ürün grubu: 09310000 09310000",
+      "demand_summary_tr": "Siparişin konusu, CSR \"Słowianka\" Sp. tesislerine elektrik tedarikidir. z o. O. cadde Słowiańska 12, 14 ve 16, 1 Ocak 2027 ile 31 Aralık 2027 arasındaki dönemde aşağıdaki miktarlarda olacaktır: 1. Yüzme havuzları: Sipariş edilen kapasite 0,400 MW Tüketim: 1.960 MWh Dahil olanlar: bölge I 370,00 MWh bölge II 290,00 MWh bölge III 1.300,00 MWh 2. Buz pateni pisti: Sipariş edilen güç 0,140 MW Tüketim: 250 MWh Dahil olanlar: Bölge I 40,00 MWh Bölge II 40,00 MWh Bölge III 170,00 MWh 3. Spor ve eğlence salonu Sipariş edilen güç 0,600 MW Tüketim: 1.100 MWh Dahil olanlar: Bölge I 200 MWh bölge II 200 MWh bölge III 700 MWh Yukarıda verilen miktarlar tahminidir ve önceki yıllara ait enerji tüketimine dayanmaktadır. Bu nedenle sipariş edilen nihai enerji miktarı değişebilir ve sonuçta daha yüksek veya daha düşük olabilir. Siparişi Veren Taraf, fiilen toplanan miktarların bedelini ödeyecektir. Siparişi veren taraf yükleniciye 2.000 MWh tutarında ödeme garantisi verir. Yüklenici, teklif edilen tarifelerin mevcut tarifelerden daha uygun olduğunu düşünmesi durumunda, Sipariş Veren Tarafın daha önce kullandığı enerji tarifeleri dışındaki enerji tarifelerini fiyat teklifinde belirtme hakkına sahiptir. Yüklenici tarafından, enerji ücretlerinin güncel geçerli tarifelerden daha yüksek olmasına yol açacak şekilde yanlış tarife seçimi yapılması durumunda aradaki fark Yükleniciye fatura edilecektir. Üç tesis için mevcut tarife grubu - B 23. Arena Gorzów tesisi, nominal voltajı 110 kV'tan düşük olan elektrik şebekesine bağlı, toplam gücü 50 kW'ı aşmayan yenilenebilir bir enerji kaynağı kurulumuyla donatılmıştır. Sipariş Veren Taraf, üreten tüketici statüsündedir; mikro kurulumda kendi ihtiyaçları için yalnızca yenilenebilir enerji kaynaklarından elektrik üreten bir son kullanıcıdır. Fazla enerjinin DSO şebekesine aktarılmasının planlandığı bir durumda, siparişi veren taraf, yüklenicinin kullandığı şablona uygun olarak elektriğin geri alımı ve dengelenmesi için aşağıdaki çekinceyle bir anlaşma yapılmasına izin verir: a) sipariş veren taraftan (Alıcı), bir geri alım sözleşmesinin imzalanması için yüklenici tarafından ek maliyetlerle (örneğin ticari/abonelik ücreti) ücretlendirilmeyecektir, b) geri satın alma fiyatı (yüklenicinin marjı ve işletme maliyetleri dikkate alındıktan sonra, dengeleme maliyetleri dahil) olumlu; yüklenici tarafından kullanılan formül kullanılarak elektriğin geri satın alma fiyatı negatifse, uzlaşma için 0,00 PLN değeri varsayılır. 3) Dava kapsamındaki KKD'deki Emri Veren Tarafın elektrik üreten başka YEK tesisleri yoktur. 4) Alıcı, MIOZE kaydına kayıtlı değil 5) Alıcının enerji depolama tesisleri yok (ve sözleşme süresi boyunca bunları inşa etmeyi planlamıyor) 6) Alıcının ticaret lisansı yok. Siparişi veren taraf üretici statüsünde değildir.. Kategori / ürün grubu: 09310000 09310000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -7826,7 +7826,7 @@
       "title_original": "Germany – Tablet computer – Tablets und Zubehör sowie die administrative Vorbereitung",
       "title_tr": "Almanya – Tablet bilgisayar – tabletler ve aksesuarların yanı sıra idari hazırlıklar",
       "detail_original": "Landkreis Nordsachsen - 220 Tablets (Pos. 1) inklusive Zubehör; Bedarfs- und optionale Positionen Landkreis Görlitz - 258 Tablets (Pos. 1) inklusive Zubehör; Bedarfs- und optionale Positionen Landkreis Bautzen - 234 Tablets (Pos. 1) inklusive Zubehör; Bedarfs- und optionale Positionen",
-      "detail_tr": "Kuzey Saksonya bölgesi - aksesuarlar dahil 220 tablet (madde 1); Görlitz bölgesinde gerekli ve isteğe bağlı öğeler - aksesuarlar dahil 258 tablet (öğe 1); Gerekli ve isteğe bağlı öğeler Bautzen bölgesi - 234 tablet (parça 1) aksesuarlar dahil; Zorunlu ve isteğe bağlı pozisyonlar",
+      "detail_tr": "Kuzey Saksonya bölgesi - aksesuarlar dahil 220 tablet (madde 1); Görlitz bölgesinde zorunlu ve isteğe bağlı öğeler - aksesuarlar dahil 258 tablet (öğe 1); Gerekli ve isteğe bağlı öğeler Bautzen bölgesi - 234 tablet (parça 1) aksesuarlar dahil; Gerekli ve isteğe bağlı öğeler",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -7896,7 +7896,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Kuzey Saksonya bölgesi - aksesuarlar dahil 220 tablet (madde 1); Görlitz bölgesinde gerekli ve isteğe bağlı öğeler - aksesuarlar dahil 258 tablet (öğe 1); Gerekli ve isteğe bağlı öğeler Bautzen bölgesi - 234 tablet (parça 1) aksesuarlar dahil; Zorunlu ve isteğe bağlı pozisyonlar. Kategori / ürün grubu: 30213200 30210000 30230000 30213200 30213200 30213200 30210000 30230000 30210000 30230000 30210000 30230000",
+      "demand_summary_tr": "Kuzey Saksonya bölgesi - aksesuarlar dahil 220 tablet (madde 1); Görlitz bölgesinde zorunlu ve isteğe bağlı öğeler - aksesuarlar dahil 258 tablet (öğe 1); Gerekli ve isteğe bağlı öğeler Bautzen bölgesi - 234 tablet (parça 1) aksesuarlar dahil; Gerekli ve isteğe bağlı öğeler. Kategori / ürün grubu: 30213200 30210000 30230000 30213200 30213200 30213200 30210000 30230000 30210000 30230000 30210000 30230000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -8345,7 +8345,7 @@
       "title_original": "Ireland – Laboratory, optical and precision equipments (excl. glasses) – LA3881C - RFT - for the Supply, Delivery and Installation of a Functional Near-Infrared Spectroscopy (fNIRS) Hyperscanning System for Trinity College Dublin (TCD)",
       "title_tr": "İrlanda – Laboratuvar, optik ve hassas ekipmanlar (gözlükler hariç) – LA3881C - RFT – Trinity College Dublin (TCD) için Fonksiyonel Yakın Kızılötesi Spektroskopi (fNIRS) Hiper Tarama Sisteminin Temini, Teslimatı ve Kurulumu için",
       "detail_original": "Trinity College Dublin request the supply of a Functional Near-Infrared Spectroscopy (fNIRS) hyper scanning system for the measurement of changes in brain blood flow, offering insights into brain activity during thinking, socializing and making decisions. This wearable system should be light and support hyper-scanning of 4 participants simultaneously with 54 channels per person.",
-      "detail_tr": "Trinity College Dublin, düşünme, sosyalleşme ve karar verme sırasında beyin aktivitesine ilişkin bilgiler sunan, beyin kan akışındaki değişikliklerin ölçümü için bir Fonksiyonel Yakın Kızılötesi Spektroskopi (fNIRS) hiper tarama sisteminin tedarikini talep ediyor. Bu giyilebilir sistem hafif olmalı ve kişi başına 54 kanalla aynı anda 4 katılımcının hiper taramasını desteklemelidir.",
+      "detail_tr": "Trinity College Dublin, düşünme, sosyalleşme ve karar verme sırasında beyin aktivitesine dair içgörüler sunan, beyin kan akışındaki değişikliklerin ölçümü için bir Fonksiyonel Yakın Kızılötesi Spektroskopi (fNIRS) hiper tarama sisteminin tedarikini talep ediyor. Bu giyilebilir sistem hafif olmalı ve kişi başına 54 kanalla aynı anda 4 katılımcının hiper taramasını desteklemelidir.",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -8415,7 +8415,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Trinity College Dublin, düşünme, sosyalleşme ve karar verme sırasında beyin aktivitesine ilişkin bilgiler sunan, beyin kan akışındaki değişikliklerin ölçümü için bir Fonksiyonel Yakın Kızılötesi Spektroskopi (fNIRS) hiper tarama sisteminin tedarikini talep ediyor. Bu giyilebilir sistem hafif olmalı ve kişi başına 54 kanalla aynı anda 4 katılımcının hiper taramasını desteklemelidir.. Kategori / ürün grubu: 38000000 33114000 38000000 33114000",
+      "demand_summary_tr": "Trinity College Dublin, düşünme, sosyalleşme ve karar verme sırasında beyin aktivitesine dair içgörüler sunan, beyin kan akışındaki değişikliklerin ölçümü için bir Fonksiyonel Yakın Kızılötesi Spektroskopi (fNIRS) hiper tarama sisteminin tedarikini talep ediyor. Bu giyilebilir sistem hafif olmalı ve kişi başına 54 kanalla aynı anda 4 katılımcının hiper taramasını desteklemelidir.. Kategori / ürün grubu: 38000000 33114000 38000000 33114000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -9124,7 +9124,7 @@
       "title_original": "Bulgaria – Emergency vehicles – Доставка на оборудван мобилен медицински кабинет за нуждите на „МБАЛ – Хасково“ АД,",
       "title_tr": "Bulgaristan - Acil durum araçları - \"MBAL - Haskovo\" AD'nin ihtiyaçlarına yönelik donanımlı mobil sağlık ofisi teslimi,",
       "detail_original": "Доставка на оборудван мобилен медицински кабинет за нуждите на „МБАЛ – Хасково“ АД, в изпълнение на проект „Преодоляване на неравенствата в ЮЦР в периферни общини по направление Хасково-Харманли-Свиленград за преход към въглеродно неутрални, климатично устойчиви и социално-приобщаващи градове“, финансиран по процедура чрез директно предоставяне на безвъзмездна финансова помощ  BG16FFPR003-2.002 „Подкрепа за интегрирано градско развитие в 40 градски общини“ по Приоритет 2 „Интегрирано териториално развитие на регионите“  на Програма „Развитие на регионите“ 2021-2027 г. Автомобилът, представляващ мобилен медицински кабинет трябва да е фабрично нов и неупотребяван. Автомобилът трябва да отговаря на директивите на ЕС, отнасящи се до хомологацията на нови  МПС/медицински превозни средства/.",
-      "detail_tr": "BG16FFPR003-2.002 \"BG16FFPR003-2.002\" hibesinin doğrudan sağlanması yoluyla bir prosedüre göre finanse edilen \"Karbon nötr, iklim açısından sürdürülebilir ve sosyal açıdan kapsayıcı şehirlere geçiş için Haskovo-Harmanli-Svilengrad yönünde çevre belediyelerdeki UCR'deki eşitsizliklerin üstesinden gelinmesi\" projesinin uygulanmasında \"MBAL - Haskovo\" JSC'nin ihtiyaçları için donanımlı bir mobil sağlık ofisi teslimi. 2021-2027 \"Bölgelerin Kalkınması\" Programının 2. Öncelik \"Bölgelerin Entegre Bölgesel Kalkınması\" kapsamında 40 kentsel belediye. Mobil sağlık ofisini temsil eden araç fabrikadan yeni çıkmış ve kullanılmamış olmalıdır. Araç, yeni motorlu araçların/tıbbi araçların/ homologasyonuna ilişkin AB direktiflerine uygun olmalıdır.",
+      "detail_tr": "BG16FFPR003-2.002 \"BG16FFPR003-2.002\" hibesinin doğrudan sağlanması yoluyla bir prosedüre göre finanse edilen \"Karbon nötr, iklim açısından sürdürülebilir ve sosyal açıdan kapsayıcı şehirlere geçiş için Haskovo-Harmanli-Svilengrad yönünde çevre belediyelerdeki UCR'deki eşitsizliklerin üstesinden gelinmesi\" projesinin uygulanmasında \"MBAL - Haskovo\" JSC'nin ihtiyaçları için donanımlı bir mobil sağlık ofisi teslimi. 2021-2027 \"Bölgelerin Kalkınması\" Programının 2. Öncelik \"Bölgelerin Entegre Bölgesel Kalkınması\" kapsamında 40 kentsel belediye. Mobil sağlık ofisini temsil eden araç fabrikadan yeni çıkmış ve kullanılmamış olmalıdır. Araç, yeni motorlu araçların/tıbbi araçların homologasyonuna ilişkin AB direktiflerine uygun olmalıdır.",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -9194,7 +9194,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "BG16FFPR003-2.002 \"BG16FFPR003-2.002\" hibesinin doğrudan sağlanması yoluyla bir prosedüre göre finanse edilen \"Karbon nötr, iklim açısından sürdürülebilir ve sosyal açıdan kapsayıcı şehirlere geçiş için Haskovo-Harmanli-Svilengrad yönünde çevre belediyelerdeki UCR'deki eşitsizliklerin üstesinden gelinmesi\" projesinin uygulanmasında \"MBAL - Haskovo\" JSC'nin ihtiyaçları için donanımlı bir mobil sağlık ofisi teslimi. 2021-2027 \"Bölgelerin Kalkınması\" Programının 2. Öncelik \"Bölgelerin Entegre Bölgesel Kalkınması\" kapsamında 40 kentsel belediye. Mobil sağlık ofisini temsil eden araç fabrikadan yeni çıkmış ve kullanılmamış olmalıdır. Araç, yeni motorlu araçların/tıbbi araçların/ homologasyonuna ilişkin AB direktiflerine uygun olmalıdır.. Miktar: 1. Kategori / ürün grubu: 34114100 34114100",
+      "demand_summary_tr": "BG16FFPR003-2.002 \"BG16FFPR003-2.002\" hibesinin doğrudan sağlanması yoluyla bir prosedüre göre finanse edilen \"Karbon nötr, iklim açısından sürdürülebilir ve sosyal açıdan kapsayıcı şehirlere geçiş için Haskovo-Harmanli-Svilengrad yönünde çevre belediyelerdeki UCR'deki eşitsizliklerin üstesinden gelinmesi\" projesinin uygulanmasında \"MBAL - Haskovo\" JSC'nin ihtiyaçları için donanımlı bir mobil sağlık ofisi teslimi. 2021-2027 \"Bölgelerin Kalkınması\" Programının 2. Öncelik \"Bölgelerin Entegre Bölgesel Kalkınması\" kapsamında 40 kentsel belediye. Mobil sağlık ofisini temsil eden araç fabrikadan yeni çıkmış ve kullanılmamış olmalıdır. Araç, yeni motorlu araçların/tıbbi araçların homologasyonuna ilişkin AB direktiflerine uygun olmalıdır.. Miktar: 1. Kategori / ürün grubu: 34114100 34114100",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -9917,7 +9917,7 @@
       "title_original": "Hungary – Reagents and contrast media – Kontrasztanyagok beszerzése 3 részben",
       "title_tr": "Macaristan – Reaktifler ve kontrast maddeler – 3 parça halinde kontrast madde alımı",
       "detail_original": "Kontrasztanyagok beszerzése 3 részben az Országos Onkológiai Intézet részére az alábbiak szerint: 1. rész: ioxitalamate meglumine hatóanyagú kontrasztanyag beszerzése (ATC kód: V08AA05), 66,03 (0,6603g/ml) hatóanyag tartalommal, 2760 db mennyiségben Ajánlat csak az adott részben meghatározott teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlatkérő szakmai ajánlat benyújtását írja elő, amely tartalmazza a közbeszerzési dokumentum részét képező a műszaki és ártáblázatot (külön kiadott excel dokumentum). A műszaki- és ártáblázatban meg kell adni továbbá az alábbi adatokat: a megajánlott készítmény azonosítója (megnevezés gyártója, előállítója), kiszerelése (csak szám írható be, darab), a megajánlott készítmény kiszerelésének, hatóanyag tartalmának megfelelően ajánlott mennyiség, amellyel az alapmennyiség kielégíthető (doboz), a megajánlott termék megnevezése (márkanév), típusa, cikkszáma, gyártási vagy előállítási helyét, az NNGYK engedély számát, a nettó ajánlati egységárat (Ft/kiszerelés), a nettó ajánlati egységárat (nettó ajánlati egységár Ft/mennyiségi egység) és a nettó ajánlati összárat (Ft-ban). Ajánlatkérő rögzíti, hogy fenti dokumentumokat a Kbt. 71. § (8) bekezdése alapján szakmai ajánlatnak tekinti, amelyek hiánypótlás körében nem nyújthatóak be. A műszaki követelményeknek való megfelelés alátámasztására: - a gyártói dokumentációt és/vagy termékleírást és/vagy a forgalomba hozatali engedély mellékletét képező, az NNGYK hivatalos adatbáziásban (https://ogyei.gov.hu/gyogyszeradatbazis) elérhető alkalmazási dokumentumot, amiből Ajánlatkérő minden kétséget kizáróan meg tudja állapítani a jelen műszaki leírásban meghatározott műszaki követelményeknek való megfelelést. Ajánlatkérő gyártói dokumentációként és/vagy termékleírásként a www.ogyei.gov.hu weboldalon elérhető alkalmazási előiratot és betegtájékoztatót is elfogadja, amennyiben ezt az ajánlattevőkérő nyomtatva csatolja az ajánlatban (kizárólag linkre utalás nem lehetséges). Ajánlatkérő elfogadja az ennek megfelelő tartalmú ajánlattevői nyilatkozat ajánlat részeként történő benyújtását is (kizárólag linkre utalás nem lehetséges). - érvényes NNGYK engedély másolatát E dokumentumok nem képezik a szakmai ajánlat részét. Kontrasztanyagok beszerzése 3 részben az Országos Onkológiai Intézet részére az alábbiak szerint: 2. rész: iodine hatóanyagú kontrasztanyag beszerzése, ATC kód: V08AD01, 4 800 (480 mg I/ml) hatóanyag tartalommal, 20 db mennyiségben Ajánlat csak az adott részben meghatározott teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlatkérő szakmai ajánlat benyújtását írja elő, amely tartalmazza a közbeszerzési dokumentum részét képező a műszaki és ártáblázatot (külön kiadott excel dokumentum). A műszaki- és ártáblázatban meg kell adni továbbá az alábbi adatokat: a megajánlott készítmény azonosítója (megnevezés gyártója, előállítója), kiszerelése (csak szám írható be, darab), a megajánlott készítmény kiszerelésének, hatóanyag tartalmának megfelelően ajánlott mennyiség, amellyel az alapmennyiség kielégíthető (doboz), a megajánlott termék megnevezése (márkanév), típusa, cikkszáma, gyártási vagy előállítási helyét, az NNGYK engedély számát, a nettó ajánlati egységárat (Ft/kiszerelés), a nettó ajánlati egységárat (nettó ajánlati egységár Ft/mennyiségi egység) és a nettó ajánlati összárat (Ft-ban). Ajánlatkérő rögzíti, hogy fenti dokumentumokat a Kbt. 71. § (8) bekezdése alapján szakmai ajánlatnak tekinti, amelyek hiánypótlás körében nem nyújthatóak be. A műszaki követelményeknek való megfelelés alátámasztására: - a gyártói dokumentációt és/vagy termékleírást és/vagy a forgalomba hozatali engedély mellékletét képező, az NNGYK hivatalos adatbáziásban (https://ogyei.gov.hu/gyogyszeradatbazis) elérhető alkalmazási dokumentumot, amiből Ajánlatkérő minden kétséget kizáróan meg tudja állapítani a jelen műszaki leírásban meghatározott műszaki követelményeknek való megfelelést. Ajánlatkérő gyártói dokumentációként és/vagy termékleírásként a www.ogyei.gov.hu weboldalon elérhető alkalmazási előiratot és betegtájékoztatót is elfogadja, amennyiben ezt az ajánlattevőkérő nyomtatva csatolja az ajánlatban (kizárólag linkre utalás nem lehetséges). Ajánlatkérő elfogadja az ennek megfelelő tartalmú ajánlattevői nyilatkozat ajánlat részeként történő benyújtását is (kizárólag linkre utalás nem lehetséges). - érvényes NNGYK engedély másolatát E dokumentumok nem képezik a szakmai ajánlat részét. Kontrasztanyagok, laboratóriumi reagensek és izotópok beszerzése 3 részben az Országos Onkológiai Intézet részére az alábbiak szerint: 3. rész: iopamidol hatóanyagú kontrasztanyag beszerzése a.) ATC kód: V08AB04, 74 000 (370 mg I/ml) hatóanyag tartalommal, 20 db mennyiségben b.) ATC kód: V08AB04, 185 000 (370 mg I/ml) hatóanyag tartalommal, 50 db mennyiségben Ajánlat csak az adott részben meghatározott teljes mennyiségre tehető. Azon termékek vonatkozásában, ahol ajánlatkérő konkrét gyártmányra/típusra hivatkozik, ott a 321/2015.(X.30.) Korm. rendelet 46. § (3) bekezdése alapján azzal egyenértékű termék megajánlása is elfogadott. Ebben az esetben az egyenértékűség bizonyítása ajánlattevő kötelezettsége. Kizárólag új, előzőleg nem használt termék ajánlható meg. Ajánlatkérő a szerződés időtartama alatt a teljes mennyiség legalább 70%-ának megrendelésére vállal kötelezettséget. A részletes műszaki követelményeket az ajánlati dokumentáció tartalmazza. Ajánlatkérő szakmai ajánlat benyújtását írja elő, amely tartalmazza a közbeszerzési dokumentum részét képező a műszaki és ártáblázatot (külön kiadott excel dokumentum). A műszaki- és ártáblázatban meg kell adni továbbá az alábbi adatokat: a megajánlott készítmény azonosítója (megnevezés gyártója, előállítója), kiszerelése (csak szám írható be, darab), a megajánlott készítmény kiszerelésének, hatóanyag tartalmának megfelelően ajánlott mennyiség, amellyel az alapmennyiség kielégíthető (doboz), a megajánlott termék megnevezése (márkanév), típusa, cikkszáma, gyártási vagy előállítási helyét, az NNGYK engedély számát, a nettó ajánlati egységárat (Ft/kiszerelés), a nettó ajánlati egységárat (nettó ajánlati egységár Ft/mennyiségi egység) és a nettó ajánlati összárat (Ft-ban). Ajánlatkérő rögzíti, hogy fenti dokumentumokat a Kbt. 71. § (8) bekezdése alapján szakmai ajánlatnak tekinti, amelyek hiánypótlás körében nem nyújthatóak be. A műszaki követelményeknek való megfelelés alátámasztására: - a gyártói dokumentációt és/vagy termékleírást és/vagy a forgalomba hozatali engedély mellékletét képező, az NNGYK hivatalos adatbáziásban (https://ogyei.gov.hu/gyogyszeradatbazis) elérhető alkalmazási dokumentumot, amiből Ajánlatkérő minden kétséget kizáróan meg tudja állapítani a jelen műszaki leírásban meghatározott műszaki követelményeknek való megfelelést. Ajánlatkérő gyártói dokumentációként és/vagy termékleírásként a www.ogyei.gov.hu weboldalon elérhető alkalmazási előiratot és betegtájékoztatót is elfogadja, amennyiben ezt az ajánlattevőkérő nyomtatva csatolja az ajánlatban (kizárólag linkre utalás nem lehetséges). Ajánlatkérő elfogadja az ennek megfelelő tartalmú ajánlattevői nyilatkozat ajánlat részeként történő benyújtását is (kizárólag linkre utalás nem lehetséges). - érvényes NNGYK engedély másolatát E dokumentumok nem képezik a szakmai ajánlat részét.",
-      "detail_tr": "Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast madde alımı şu şekildedir: Bölüm 1: 2.760 adet miktarında 66,03 (0,6603g/ml) etken madde içeriğine sahip ioksitalamat meglumin (ATC kodu: V08AA05) etken maddeli kontrast madde alımı. Teklifler yalnızca belirtilen bölümde belirtilen toplam miktar için yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir. Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast madde alımı şu şekildedir: Bölüm 2: 20 adet miktarda 4.800 (480 mg I/ml) aktif madde içerikli, ATC kodu: V08AD01 iyot bazlı kontrast madde alımı. Teklifler yalnızca belirtilen bölümde belirtilen toplam miktar için yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir. Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast maddelerin, laboratuvar reaktiflerinin ve izotopların satın alınması: Bölüm 3: aktif madde iopamidol içeren kontrast madde alımı a.) ATC kodu: V08AB04, 74.000 (370 mg I/ml) aktif madde içeriği ile, 20 miktarında b.) ATC kodu: V08AB04, 185.000 (370 mg I/ml) aktif madde ile İçerik içeriği 50 adettir. Yalnızca belirtilen bölümde belirtilen toplam miktar için teklif yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir.",
+      "detail_tr": "Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast madde alımı şu şekildedir: Bölüm 1: 2.760 adet miktarında 66,03 (0,6603g/ml) etken madde içeriğine sahip ioksitalamat meglumin (ATC kodu: V08AA05) etken maddeli kontrast madde alımı. Teklifler yalnızca belirtilen bölümde belirtilen toplam miktar için yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir. Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast madde alımı şu şekildedir: Bölüm 2: 20 adet miktarda 4.800 (480 mg I/ml) aktif madde içerikli, ATC kodu: V08AD01 iyot bazlı kontrast madde alımı. Teklifler yalnızca belirtilen bölümde belirtilen toplam miktar için yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir. Ulusal Onkoloji Enstitüsü için kontrast maddelerin, laboratuvar reaktiflerinin ve izotopların 3 parça halinde satın alınması şu şekildedir: Bölüm 3: aktif madde iopamidol içeren kontrast madde alımı a.) ATC kodu: V08AB04, 74.000 (370 mg I/ml) aktif madde içeriği ile, 20 miktarında b.) ATC kodu: V08AB04, 185.000 (370 mg I/ml) aktif madde ile İçerik içeriği 50 adettir. Yalnızca belirtilen bölümde belirtilen toplam miktar için teklif yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir.",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -9987,7 +9987,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast madde alımı şu şekildedir: Bölüm 1: 2.760 adet miktarında 66,03 (0,6603g/ml) etken madde içeriğine sahip ioksitalamat meglumin (ATC kodu: V08AA05) etken maddeli kontrast madde alımı. Teklifler yalnızca belirtilen bölümde belirtilen toplam miktar için yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir. Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast madde alımı şu şekildedir: Bölüm 2: 20 adet miktarda 4.800 (480 mg I/ml) aktif madde içerikli, ATC kodu: V08AD01 iyot bazlı kontrast madde alımı. Teklifler yalnızca belirtilen bölümde belirtilen toplam miktar için yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir. Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast maddelerin, laboratuvar reaktiflerinin ve izotopların satın alınması: Bölüm 3: aktif madde iopamidol içeren kontrast madde alımı a.) ATC kodu: V08AB04, 74.000 (370 mg I/ml) aktif madde içeriği ile, 20 miktarında b.) ATC kodu: V08AB04, 185.000 (370 mg I/ml) aktif madde ile İçerik içeriği 50 adettir. Yalnızca belirtilen bölümde belirtilen toplam miktar için teklif yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir.. Kategori / ürün grubu: 33696000 33696000 33696000 33696000",
+      "demand_summary_tr": "Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast madde alımı şu şekildedir: Bölüm 1: 2.760 adet miktarında 66,03 (0,6603g/ml) etken madde içeriğine sahip ioksitalamat meglumin (ATC kodu: V08AA05) etken maddeli kontrast madde alımı. Teklifler yalnızca belirtilen bölümde belirtilen toplam miktar için yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir. Ulusal Onkoloji Enstitüsü için 3 parça halinde kontrast madde alımı şu şekildedir: Bölüm 2: 20 adet miktarda 4.800 (480 mg I/ml) aktif madde içerikli, ATC kodu: V08AD01 iyot bazlı kontrast madde alımı. Teklifler yalnızca belirtilen bölümde belirtilen toplam miktar için yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir. Ulusal Onkoloji Enstitüsü için kontrast maddelerin, laboratuvar reaktiflerinin ve izotopların 3 parça halinde satın alınması şu şekildedir: Bölüm 3: aktif madde iopamidol içeren kontrast madde alımı a.) ATC kodu: V08AB04, 74.000 (370 mg I/ml) aktif madde içeriği ile, 20 miktarında b.) ATC kodu: V08AB04, 185.000 (370 mg I/ml) aktif madde ile İçerik içeriği 50 adettir. Yalnızca belirtilen bölümde belirtilen toplam miktar için teklif yapılabilir. İhale makamının belirli bir marka/türe atıfta bulunduğu ürünlerle ilgili olarak, eşdeğer ürün teklifi de 321/2015 (X.30.) sayılı Hükümet Kararının 46 (3) Maddesi uyarınca kabul edilir. Bu durumda denkliği kanıtlamak isteklinin sorumluluğundadır. Yalnızca yeni, daha önce kullanılmamış ürünler önerilebilir. İstekli, sözleşme süresi boyunca toplam miktarın en az %70'ini sipariş etmeyi taahhüt eder. Ayrıntılı teknik gereksinimler ihale dokümanında yer almaktadır. İsteklinin, kamu ihale dokümanının (ayrı olarak yayınlanan excel dokümanı) bir parçası olan teknik ve fiyat tablosunu içeren profesyonel bir teklif sunması gerekmektedir. Teknik ve fiyat tablosunda ayrıca şu bilgilerin de sağlanması gerekmektedir: Önerilen ürünün tanımlayıcısı (isim, üretici, üretici), ambalajı (sadece bir sayı girilebilir, adet), önerilen ürünün ambalajına ve etken madde içeriğine göre temel miktarın karşılanabileceği önerilen miktar (kutu), tavsiye edilen ürünün adı (marka adı), türü, ürün numarası, üretim veya üretim yeri, NNGYK lisans numarası, net teklif tutarı birim fiyatı (HUF/paket), net teklif birim fiyatı. (net teklif birim fiyatı HUF/miktar birimi) ve toplam net teklif fiyatı (HUF cinsinden). İstekli yukarıdaki belgelerin Kbt tarafından sunulduğunu belirtmektedir. § 71, paragraf (8) uyarınca, boşluk doldurmanın bir parçası olarak sunulamayan profesyonel bir teklif olarak kabul edilir. Teknik gerekliliklere uygunluğu desteklemek için: - NNGYK resmi veri tabanında (https://ogyei.gov.hu/gyogyszeradatbazis) bulunan, teklif sahibinin bu teknik spesifikasyonda belirtilen teknik gerekliliklerin karşılandığını hiçbir şüpheye yer bırakmayacak şekilde kanıtlayabileceği, pazarlama izninin ekini oluşturan üreticinin dokümantasyonu ve/veya ürün açıklaması ve/veya başvuru dokümanı. İstekli, www.ogyei.gov.hu ​​web sitesinde mevcut olan kullanım talimatlarını ve hasta bilgilerini, üreticinin dokümantasyonu ve/veya ürün açıklaması olarak, eğer istekli bunu basılı olarak teklifine eklerse (yalnızca bağlantı mümkün değildir) kabul eder. İstekli ayrıca ihale kapsamında ilgili içerikle birlikte istekli beyanının sunulmasını da kabul eder (yalnızca bağlantıya atıfta bulunulması mümkün değildir). - geçerli bir NNGYK lisansının bir kopyası Bu belgeler profesyonel teklifin parçası değildir.. Kategori / ürün grubu: 33696000 33696000 33696000 33696000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -10194,7 +10194,7 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Czechia – Intraocular lenses – Různé druhy nitroočních čoček pro korekci afakie při operaci katarakty (nebo po refrakční operaci na čiré čočce) včetně viskomateriálu",
-      "title_tr": "Çekya - Göz içi lensler - Katarakt ameliyatı sırasında (veya şeffaf bir lens üzerinde refraktif cerrahi sonrasında) afakinin düzeltilmesi için viskomateryal dahil çeşitli tipte göz içi lensler",
+      "title_tr": "Çekya - Göz içi lensler - Katarakt ameliyatı sırasında (veya şeffaf bir lens üzerinde yapılan refraktif cerrahi sonrasında) afakinin düzeltilmesi için viskomateryal dahil çeşitli tipte göz içi lensler",
       "detail_original": "Předmětem plnění veřejné zakázky jsou průběžné dodávky sférických monofokálních čoček vyrobených z hydrofobního akrylátu, pro potřeby Fakultní nemocnice Hradec Králové na období 4 let. Předmětem plnění veřejné zakázky jsou průběžné dodávky disperzního viskomateriálu – standard, pro potřeby Fakultní nemocnice Hradec Králové na období 4 let. Předmětem plnění veřejné zakázky jsou průběžné dodávky nitroočních čoček s trifokální optikou včetně torické varianty a viskomateriálu, pro potřeby Fakultní nemocnice Hradec Králové na období 4 let. Předmětem plnění veřejné zakázky jsou průběžné dodávky nitroočních čoček s rozšířenou hloubkou ostrosti (EDOF) včetně torické varianty a viskomateriálu, pro potřeby Fakultní nemocnice Hradec Králové na období 4 let. Předmětem plnění veřejné zakázky jsou průběžné dodávky asférických monofokálních čoček včetně torické varianty a viskomateriálu, pro potřeby Fakultní nemocnice Hradec Králové na období 4 let.",
       "detail_tr": "Kamu sözleşmesinin konusu, Hradec Králové Üniversite Hastanesi'nin ihtiyaçları için 4 yıl süreyle hidrofobik akrilikten yapılmış küresel monofokal lenslerin tedarikinin devam etmesidir. Kamu düzeninin konusu, Hradec Králové Fakülte Hastanesi'nin ihtiyaçları için 4 yıllık bir süre boyunca sürekli olarak dispersiyon viskomateryal standardının teminidir. Kamu düzeninin konusu, Hradec Králové Üniversite Hastanesi'nin ihtiyaçları için 4 yıl süreyle torik varyant ve viskomateryal dahil olmak üzere trifokal optikli göz içi lenslerin sürekli teminidir. Kamu düzeninin konusu, Hradec Králové Üniversite Hastanesi'nin ihtiyaçları için 4 yıl süreyle torik varyantı ve viskomateryal dahil olmak üzere genişletilmiş alan derinliğine (EDOF) sahip göz içi lenslerin sürekli teminidir. Kamu düzeninin konusu, Hradec Králové Üniversite Hastanesi'nin ihtiyaçları için 4 yıl süreyle torik varyant ve viskomateryal dahil olmak üzere asferik monofokal lenslerin sürekli teminidir.",
       "market_region": "Diğer Pazarlar",
@@ -11743,7 +11743,7 @@
       "title_original": "Poland – Microscopes – Dostawa 6 sztuk mikroskopów do pracowni dydaktycznych",
       "title_tr": "Polonya – Mikroskoplar – Eğitim laboratuvarlarına 6 adet mikroskop teslimatı",
       "detail_original": "1. Przedmiotem zamówienia jest dostawa 6 sztuk mikroskopów do pracowni dydaktycznej, szczegółowo opisanego w Zał. nr 3 do SWZ - Opis przedmiotu zamówienia. 2. W celu potwierdzenia zgodności oferowanego przedmiotu zamówienia z wymaganiami Zamawiającego, Wykonawca jest zobowiązany do wskazania w Zał. nr 1 do SWZ – Formularz ofertowy podstawowych parametrów technicznych oferowanych urządzeń, obejmujących co najmniej producenta, markę, model oraz wskazania linku do szczegółowej specyfikacji urządzenia na stronie internetowej Producenta/Dystrybutora lub Wykonawcy. 3. Podane informacje muszą umożliwić jednoznaczną identyfikację oferowanego urządzenia oraz weryfikację jego parametrów technicznych. 4. Wykonawca zobowiązany jest zrealizować zamówienie na zasadach i warunkach opisanych w SWZ oraz w załącznikach stanowiących integralną część SWZ, w tym w szczególności zgodnie z Zał. nr 3 do SWZ - Opis przedmiotu zamówienia oraz Zał. nr 4 do SWZ - Projektowane postanowienia umowy określających zakres i warunki świadczenia dostawy.",
-      "detail_tr": "1. Siparişin konusu, Ek'te ayrıntılı olarak açıklanan 6 adet mikroskobun bir eğitim laboratuvarına teslim edilmesidir. No. 3 - SWZ - Siparişin konusunun açıklaması. 2. Teklif edilen sipariş konusunun Siparişi Veren Tarafın gereksinimlerine uygunluğunu teyit etmek amacıyla Yüklenici Ek'te belirtmekle yükümlüdür. No. 1 - SWZ - En azından üretici, marka, model ve Üretici/Distribütör veya Yüklenicinin web sitesindeki cihazın ayrıntılı özelliklerine bir bağlantı dahil olmak üzere, sunulan cihazların temel teknik parametrelerinin teklif formu. 3. Sağlanan bilgiler, teklif edilen cihazın net bir şekilde tanımlanmasına ve teknik parametrelerinin doğrulanmasına olanak sağlamalıdır. 4. Yüklenici, siparişi SWZ'de ve SWZ'nin ayrılmaz bir parçasını oluşturan eklerde açıklanan şartlar ve koşullar doğrultusunda, özellikle Ek'e uygun olarak tamamlamakla yükümlüdür. No. 3 - SWZ - Emrin konusunun açıklaması ve Ek. No. 4, SWZ - Teslimat kapsamını ve koşullarını belirten sözleşme hükümleri taslağı.",
+      "detail_tr": "1. Siparişin konusu, Ek'te ayrıntılı olarak açıklanan 6 adet mikroskobun bir eğitim laboratuvarına teslim edilmesidir. No. 3 - SWZ - Siparişin konusunun açıklaması. 2. Teklif edilen sipariş konusunun Siparişi Veren Tarafın gereksinimlerine uygunluğunu teyit etmek amacıyla Yüklenici Ek'te belirtmekle yükümlüdür. No. 1 - SWZ - En azından üretici, marka, model ve Üretici/Distribütör veya Yüklenicinin web sitesindeki cihazın ayrıntılı özelliklerine bir bağlantı dahil olmak üzere, sunulan cihazların temel teknik parametrelerinin teklif formu. 3. Sağlanan bilgiler, teklif edilen cihazın net bir şekilde tanımlanmasına ve teknik parametrelerinin doğrulanmasına olanak sağlamalıdır. 4. Yüklenici, siparişi SWZ'de ve SWZ'nin ayrılmaz bir parçasını oluşturan eklerde açıklanan şartlar ve koşullar doğrultusunda, özellikle Ek'e uygun olarak tamamlamakla yükümlüdür. No. 3 - SWZ - Emrin konusunun açıklaması ve Ek. No. 4, SWZ - Teslimatın kapsamını ve koşullarını belirten sözleşme hükümleri taslağı.",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -11813,7 +11813,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "1. Siparişin konusu, Ek'te ayrıntılı olarak açıklanan 6 adet mikroskobun bir eğitim laboratuvarına teslim edilmesidir. No. 3 - SWZ - Siparişin konusunun açıklaması. 2. Teklif edilen sipariş konusunun Siparişi Veren Tarafın gereksinimlerine uygunluğunu teyit etmek amacıyla Yüklenici Ek'te belirtmekle yükümlüdür. No. 1 - SWZ - En azından üretici, marka, model ve Üretici/Distribütör veya Yüklenicinin web sitesindeki cihazın ayrıntılı özelliklerine bir bağlantı dahil olmak üzere, sunulan cihazların temel teknik parametrelerinin teklif formu. 3. Sağlanan bilgiler, teklif edilen cihazın net bir şekilde tanımlanmasına ve teknik parametrelerinin doğrulanmasına olanak sağlamalıdır. 4. Yüklenici, siparişi SWZ'de ve SWZ'nin ayrılmaz bir parçasını oluşturan eklerde açıklanan şartlar ve koşullar doğrultusunda, özellikle Ek'e uygun olarak tamamlamakla yükümlüdür. No. 3 - SWZ - Emrin konusunun açıklaması ve Ek. No. 4, SWZ - Teslimat kapsamını ve koşullarını belirten sözleşme hükümleri taslağı.. Kategori / ürün grubu: 38510000 38634000 38510000 38634000",
+      "demand_summary_tr": "1. Siparişin konusu, Ek'te ayrıntılı olarak açıklanan 6 adet mikroskobun bir eğitim laboratuvarına teslim edilmesidir. No. 3 - SWZ - Siparişin konusunun açıklaması. 2. Teklif edilen sipariş konusunun Siparişi Veren Tarafın gereksinimlerine uygunluğunu teyit etmek amacıyla Yüklenici Ek'te belirtmekle yükümlüdür. No. 1 - SWZ - En azından üretici, marka, model ve Üretici/Distribütör veya Yüklenicinin web sitesindeki cihazın ayrıntılı özelliklerine bir bağlantı dahil olmak üzere, sunulan cihazların temel teknik parametrelerinin teklif formu. 3. Sağlanan bilgiler, teklif edilen cihazın net bir şekilde tanımlanmasına ve teknik parametrelerinin doğrulanmasına olanak sağlamalıdır. 4. Yüklenici, siparişi SWZ'de ve SWZ'nin ayrılmaz bir parçasını oluşturan eklerde açıklanan şartlar ve koşullar doğrultusunda, özellikle Ek'e uygun olarak tamamlamakla yükümlüdür. No. 3 - SWZ - Emrin konusunun açıklaması ve Ek. No. 4, SWZ - Teslimatın kapsamını ve koşullarını belirten sözleşme hükümleri taslağı.. Kategori / ürün grubu: 38510000 38634000 38510000 38634000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -13524,9 +13524,9 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Italy – Furniture – Proc. n. 4302/AP/2026 - Accordo Quadro fornitura arredi",
-      "title_tr": "İtalya – Mobilya – Proc. N. 4302/AP/2026 - Mobilya Temini Çerçeve Anlaşması",
+      "title_tr": "İtalya – Mobilya – Proc. N. 4302/AP/2026 - Mobilya Temini Çerçeve Sözleşmesi",
       "detail_original": "Affidamento della fornitura di arredi, complementi e accessori per le sedi della Giunta Regionale della Campania, mediante la stipula di un Accordo Quadro con un unico operatore economico, ex art. 59 comma 3 del D.Lgs. n. 36/2023.",
-      "detail_tr": "Madde uyarınca, tek bir ekonomik operatörle Çerçeve Anlaşması imzalanarak, Campania Bölge Konseyi genel merkezi için mobilya, aksesuar ve aksesuar tedarikinin tahsisi. 59 sayılı Kanun Hükmünde Kararnamenin 3. fıkrası. 36/2023.",
+      "detail_tr": "Madde uyarınca, tek bir ekonomik operatörle Çerçeve Anlaşması imzalanarak, Campania Bölge Konseyi genel merkezi için mobilya, aksesuar ve aksesuar tedarikinin tahsisi. 59 Sayılı Kanun Hükmünde Kararnamenin 3. fıkrası. 36/2023.",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -13596,7 +13596,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Madde uyarınca, tek bir ekonomik operatörle Çerçeve Anlaşması imzalanarak, Campania Bölge Konseyi genel merkezi için mobilya, aksesuar ve aksesuar tedarikinin tahsisi. 59 sayılı Kanun Hükmünde Kararnamenin 3. fıkrası. 36/2023.. Kategori / ürün grubu: 39100000 39100000",
+      "demand_summary_tr": "Madde uyarınca, tek bir ekonomik operatörle Çerçeve Anlaşması imzalanarak, Campania Bölge Konseyi genel merkezi için mobilya, aksesuar ve aksesuar tedarikinin tahsisi. 59 Sayılı Kanun Hükmünde Kararnamenin 3. fıkrası. 36/2023.. Kategori / ürün grubu: 39100000 39100000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -14288,7 +14288,7 @@
       "title_original": "Germany – Insulated wire and cable – HS Kabelbeschaffung mit Montage 9664 zwischen den Umspannwerken Hafen (HAFEN) und Gaisburg (GAAUW)",
       "title_tr": "Almanya – Yalıtımlı tel ve kablo – Hafen (HAFEN) ve Gaisburg (GAAUW) trafo merkezleri arasında montaj 9664 ile HS kablo alımı",
       "detail_original": "Die Stuttgart Netze GmbH beabsichtigt, verschiedene Bau- und Montagearbeiten in Umspann- und Schaltwerken oder Kabel- und Freileitungsanlagen in ihrem Netzgebiet zu beauftragen. Materialbeschaffung und Montage von 110kV-VPE-Einleiter-Kabel inkl. Garnituren und Zubehör für den Neubau der Leitungsanlage 9664 vom Umspannwerk (UW) HAFEN nach UW GAAUW in Stuttgart-Hedelfingen bzw. Stuttgart-Wangen. Der Anschluss der Hochspannungskabel erfolgt an Reservefeldern der GIS-Schaltanlagen in den Umspannwerken. Hierfür stehen Reservefelder zur Verfügung. Die Kabellegung erfolgt in PE-HD-Leerrohren, welche zum Zeitpunkt des Kabelzugs verbaut und kalibriert sind. Die Muffenpositionen sind im Voraus zwischen AN und AG abzustimmen. In den Umspannwerken HAFEN und GAAUW wird am Schaltanlagentyp F35 CB4 von Alstom angeschlossen. Das komplette Kabelsystem bestehend aus Stecker-Buchse-System und zugehöriger Garnituren ist als typgeprüftes Kabelsystem gemäß den einschlägigen Normen DIN EN IEC 62271-209 und DIN VDE 0276-632 zu liefern und zu montieren. Der Auftragnehmer hat die Typprüfung und Systemkompatibilität des gelieferten Kabelsystems gegenüber dem Auftraggeber nachzuweisen und schriftlich zu bestätigen. Der Auftragnehmer übernimmt die Gewährleistung für das gesamte System einschließlich aller Komponenten und deren Schnittstellen. Die für die Montage benötigten Kabelschellen, Befestigungsmaterial, Erdungsmaterial und Stahlkonstruktionen sind Teil dieser Ausschreibung und sind durch den Auftragnehmer zu liefern und zu montieren.",
-      "detail_tr": "Stuttgart Netze GmbH, ağ bölgesindeki trafo merkezleri ve anahtarlama istasyonlarında veya kablo ve havai hat sistemlerinde çeşitli inşaat ve montaj işlerini devreye almayı planlıyor. Stuttgart-Hedelfingen ve Stuttgart-Wangen'deki trafo merkezinden (UW) HAFEN'den UW GAAUW'ya kadar 9664 numaralı hat sisteminin yeni inşası için bağlantı parçaları ve aksesuarlar dahil 110kV XLPE tek damarlı kabloların malzeme tedariki ve montajı. Yüksek gerilim kabloları trafo merkezlerindeki GIS şalt sisteminin yedek alanlarına bağlanır. Bunun için rezerve alanlar mevcuttur. Kablo, kablo çekildiğinde takılıp kalibre edilen PE-HD boş kanallara döşenir. Manşon pozisyonları yüklenici ve müşteri arasında önceden kararlaştırılmalıdır. HAFEN ve GAAUW trafo merkezlerinde Alstom'un F35 CB4 şalt sistemi bağlıdır. Fiş priz sistemi ve ilgili bağlantı parçalarından oluşan komple kablo sistemi, ilgili DIN EN IEC 62271-209 ve DIN VDE 0276-632 standartlarına uygun olarak tip testi yapılmış kablo sistemi olarak teslim edilmeli ve kurulmalıdır. Yüklenici, müşteriye teslim edilen kablo sisteminin tip testi ve sistem uyumluluğuna dair kanıt sağlamalı ve bunu yazılı olarak onaylamalıdır. Yüklenici, tüm bileşenler ve bunların arayüzleri dahil olmak üzere tüm sistemin garantisini üstlenir. Montaj için gerekli olan kablo kelepçeleri, sabitleme malzemesi, topraklama malzemesi ve çelik yapılar bu ihalenin bir parçası olup yüklenici tarafından teslim edilip montajının yapılması gerekmektedir.",
+      "detail_tr": "Stuttgart Netze GmbH, ağ bölgesindeki trafo merkezleri ve anahtarlama istasyonlarında veya kablo ve havai hat sistemlerinde çeşitli inşaat ve montaj işlerini devreye almayı planlıyor. Stuttgart-Hedelfingen ve Stuttgart-Wangen'deki trafo merkezinden (UW) HAFEN'den UW GAAUW'ya kadar 9664 numaralı hat sisteminin yeni inşası için bağlantı parçaları ve aksesuarlar dahil 110kV XLPE tek damarlı kabloların malzeme tedariki ve montajı. Yüksek gerilim kabloları trafo merkezlerindeki GIS şalt sisteminin yedek alanlarına bağlanır. Bunun için rezerve alanlar mevcuttur. Kablo, kablo çekildiğinde takılıp kalibre edilen PE-HD boş kanallara döşenir. Manşon pozisyonları yüklenici ve müşteri arasında önceden kararlaştırılmalıdır. HAFEN ve GAAUW trafo merkezlerinde Alstom'un F35 CB4 şalt sistemi bağlı. Fiş priz sistemi ve ilgili bağlantı parçalarından oluşan komple kablo sistemi, ilgili DIN EN IEC 62271-209 ve DIN VDE 0276-632 standartlarına uygun olarak tip testi yapılmış kablo sistemi olarak teslim edilmeli ve kurulmalıdır. Yüklenici, müşteriye teslim edilen kablo sisteminin tip testi ve sistem uyumluluğuna dair kanıt sağlamalı ve bunu yazılı olarak onaylamalıdır. Yüklenici, tüm bileşenler ve bunların arayüzleri dahil olmak üzere tüm sistemin garantisini üstlenir. Montaj için gerekli olan kablo kelepçeleri, sabitleme malzemesi, topraklama malzemesi ve çelik yapılar bu ihalenin bir parçası olup yüklenici tarafından teslim edilip montajının yapılması gerekmektedir.",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -14358,7 +14358,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Stuttgart Netze GmbH, ağ bölgesindeki trafo merkezleri ve anahtarlama istasyonlarında veya kablo ve havai hat sistemlerinde çeşitli inşaat ve montaj işlerini devreye almayı planlıyor. Stuttgart-Hedelfingen ve Stuttgart-Wangen'deki trafo merkezinden (UW) HAFEN'den UW GAAUW'ya kadar 9664 numaralı hat sisteminin yeni inşası için bağlantı parçaları ve aksesuarlar dahil 110kV XLPE tek damarlı kabloların malzeme tedariki ve montajı. Yüksek gerilim kabloları trafo merkezlerindeki GIS şalt sisteminin yedek alanlarına bağlanır. Bunun için rezerve alanlar mevcuttur. Kablo, kablo çekildiğinde takılıp kalibre edilen PE-HD boş kanallara döşenir. Manşon pozisyonları yüklenici ve müşteri arasında önceden kararlaştırılmalıdır. HAFEN ve GAAUW trafo merkezlerinde Alstom'un F35 CB4 şalt sistemi bağlıdır. Fiş priz sistemi ve ilgili bağlantı parçalarından oluşan komple kablo sistemi, ilgili DIN EN IEC 62271-209 ve DIN VDE 0276-632 standartlarına uygun olarak tip testi yapılmış kablo sistemi olarak teslim edilmeli ve kurulmalıdır. Yüklenici, müşteriye teslim edilen kablo sisteminin tip testi ve sistem uyumluluğuna dair kanıt sağlamalı ve bunu yazılı olarak onaylamalıdır. Yüklenici, tüm bileşenler ve bunların arayüzleri dahil olmak üzere tüm sistemin garantisini üstlenir. Montaj için gerekli olan kablo kelepçeleri, sabitleme malzemesi, topraklama malzemesi ve çelik yapılar bu ihalenin bir parçası olup yüklenici tarafından teslim edilip montajının yapılması gerekmektedir.. Kategori / ürün grubu: 31300000 31300000",
+      "demand_summary_tr": "Stuttgart Netze GmbH, ağ bölgesindeki trafo merkezleri ve anahtarlama istasyonlarında veya kablo ve havai hat sistemlerinde çeşitli inşaat ve montaj işlerini devreye almayı planlıyor. Stuttgart-Hedelfingen ve Stuttgart-Wangen'deki trafo merkezinden (UW) HAFEN'den UW GAAUW'ya kadar 9664 numaralı hat sisteminin yeni inşası için bağlantı parçaları ve aksesuarlar dahil 110kV XLPE tek damarlı kabloların malzeme tedariki ve montajı. Yüksek gerilim kabloları trafo merkezlerindeki GIS şalt sisteminin yedek alanlarına bağlanır. Bunun için rezerve alanlar mevcuttur. Kablo, kablo çekildiğinde takılıp kalibre edilen PE-HD boş kanallara döşenir. Manşon pozisyonları yüklenici ve müşteri arasında önceden kararlaştırılmalıdır. HAFEN ve GAAUW trafo merkezlerinde Alstom'un F35 CB4 şalt sistemi bağlı. Fiş priz sistemi ve ilgili bağlantı parçalarından oluşan komple kablo sistemi, ilgili DIN EN IEC 62271-209 ve DIN VDE 0276-632 standartlarına uygun olarak tip testi yapılmış kablo sistemi olarak teslim edilmeli ve kurulmalıdır. Yüklenici, müşteriye teslim edilen kablo sisteminin tip testi ve sistem uyumluluğuna dair kanıt sağlamalı ve bunu yazılı olarak onaylamalıdır. Yüklenici, tüm bileşenler ve bunların arayüzleri dahil olmak üzere tüm sistemin garantisini üstlenir. Montaj için gerekli olan kablo kelepçeleri, sabitleme malzemesi, topraklama malzemesi ve çelik yapılar bu ihalenin bir parçası olup yüklenici tarafından teslim edilip montajının yapılması gerekmektedir.. Kategori / ürün grubu: 31300000 31300000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -14803,7 +14803,7 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Portugal – Computer equipment and supplies – [DAG] Aquisição de solução tecnológica, que permita o armazenamento, processamento e partilha de dados produzidos no âmbito do Sistema Nacional de Saúde, independentemente da sua natureza, doravante designado por “Data Lake” (PRR) [20240268]",
-      "title_tr": "Portekiz – Bilgisayar ekipman ve malzemeleri – [DAG] Ulusal Sağlık Sistemi kapsamında üretilen verilerin niteliğine bakılmaksızın depolanmasına, işlenmesine ve paylaşılmasına olanak tanıyan, bundan sonra “Veri Gölü” (PRR) olarak anılacak teknolojik bir çözümün edinilmesi [20240268]",
+      "title_tr": "Portekiz – Bilgisayar ekipman ve malzemeleri – [DAG] Ulusal Sağlık Sistemi kapsamında üretilen verilerin niteliği ne olursa olsun depolanmasına, işlenmesine ve paylaşılmasına imkan veren, bundan sonra “Veri Gölü” (PRR) olarak anılacak teknolojik bir çözümün edinilmesi [20240268]",
       "detail_original": "[DAG] Aquisição de solução tecnológica, que permita o armazenamento, processamento e partilha de dados produzidos no âmbito do Sistema Nacional de Saúde, independentemente da sua natureza, doravante designado por “Data Lake” (PRR) [20240268]",
       "detail_tr": "[DAG] Ulusal Sağlık Sistemi kapsamında üretilen verilerin mahiyeti ne olursa olsun saklanmasını, işlenmesini ve paylaşılmasını sağlayan (bundan sonra “Veri Gölü” (PRR) olarak anılacak) teknolojik bir çözümün edinilmesi [20240268]",
       "market_region": "Diğer Pazarlar",
@@ -15067,9 +15067,9 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Ireland – Civil engineering machinery – ​​The Supply and Delivery of Engineering Equipment to Laois and Offaly Education and Training Board on behalf of Ard Scoil Chiaráin Naofa, Frederick Street, Clara, Offaly, RN 72530L.​",
-      "title_tr": "İrlanda – İnşaat mühendisliği makineleri – Ard Scoil Chiaráin Naofa, Frederick Street, Clara, Offaly, RN 72530L adına Laois ve Offaly Eğitim ve Öğretim Kuruluna Mühendislik Ekipmanlarının Temini ve Teslimatı.​",
+      "title_tr": "İrlanda – İnşaat mühendisliği makineleri – Ard Scoil Chiaráin Naofa, Frederick Street, Clara, Offaly, RN 72530L adına Laois ve Offaly Eğitim ve Öğretim Kuruluna Mühendislik Ekipmanlarının Tedarik ve Teslimatı.​",
       "detail_original": "​​The Supply and Delivery of Engineering Equipment to Laois and Offaly Education and Training Board on behalf of Ard Scoil Chiaráin Naofa, Frederick Street, Clara, Offaly, RN 72530L.​",
-      "detail_tr": "​Ard Scoil Chiaráin Naofa, Frederick Street, Clara, Offaly, RN 72530L adına Laois ve Offaly Eğitim ve Öğretim Kuruluna Mühendislik Ekipmanlarının Temini ve Teslimatı.​",
+      "detail_tr": "​​Ard Scoil Chiaráin Naofa, Frederick Street, Clara, Offaly, RN 72530L adına Laois ve Offaly Eğitim ve Öğretim Kuruluna Mühendislik Ekipmanlarının Temini ve Teslimatı.​",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -15139,7 +15139,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "​Ard Scoil Chiaráin Naofa, Frederick Street, Clara, Offaly, RN 72530L adına Laois ve Offaly Eğitim ve Öğretim Kuruluna Mühendislik Ekipmanlarının Temini ve Teslimatı.​. Kategori / ürün grubu: 43310000 71300000 71330000 44111000 80210000 71335000 43310000 71300000 71330000 44111000 80210000 71335000",
+      "demand_summary_tr": "​​Ard Scoil Chiaráin Naofa, Frederick Street, Clara, Offaly, RN 72530L adına Laois ve Offaly Eğitim ve Öğretim Kuruluna Mühendislik Ekipmanlarının Temini ve Teslimatı.​. Kategori / ürün grubu: 43310000 71300000 71330000 44111000 80210000 71335000 43310000 71300000 71330000 44111000 80210000 71335000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -15869,7 +15869,7 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Croatia – Furniture (incl. office furniture), furnishings, domestic appliances (excl. lighting) and cleaning products – Opremanje poduzetničkih inkubatora Sisak Smart Silver i Glina Smart",
-      "title_tr": "Hırvatistan – Mobilya (ofis mobilyaları dahil), mobilyalar, ev aletleri (aydınlatma hariç) ve temizlik ürünleri – Opremanje poduzetničkih inkubatora Sisak Smart Silver i Glina Smart",
+      "title_tr": "Hırvatistan – Mobilya (ofis mobilyaları dahil), mobilyalar, ev aletleri (aydınlatma hariç) ve temizlik ürünleri – Sisak Smart Silver i Glina Smart'ın satın alınması",
       "detail_original": "Opremanje namještajem i osnovnom opremom poduzetničkog inkubatora Sisak Smart Silver Opremanje namještajem i osnovnom opremom poduzetničkog inkubatora Glina Smart Opremanje računalima i uređajima za kopiranje poduzetničkog inkubatora Sisak Smart Silver Opremanje računalima i uređajima za kopiranje poduzetničkog inkubatora Glina Smart Opremanje multimedijskom opremom poduzetničkog inkubatora Sisak Smart Silver Opremanje interaktivnim stolom poduzetničkog inkubatora Glina Smart Nabava i instaliranje opreme video nadzora i kontrole ulaza poduzetničkog inkubatora Sisak Smart Silver Nabava i instaliranje opreme video nadzora i kontrole ulaza poduzetničkog inkubatora Glina Smart Prilagodba ureda za rad osoba s motoričkim poteškoćama u Poduzetničkom inkubatoru Sisak Smart Silver Prilagodba ureda za rad osoba s motoričkim poteškoćama u Poduzetničkom inkubatoru Glina Smart",
       "detail_tr": "İş kuluçka makinesi için mobilya ve temel ekipmanlarla tefriş Sisak Smart Silver İş kuluçka makinesi için mobilya ve temel ekipmanlar ile tefriş Glina Smart İş kuluçka makinesi için bilgisayar ve kopyalama cihazları ile tefriş Sisak Smart Silver İş kuluçka makinesi için bilgisayarlar ve kopyalama cihazları ile tefriş Glina Smart İş kuluçka makinesi için multimedya ekipmanları ile tefriş Sisak Smart Silver İş kuluçka makinesi için interaktif bir masa ile tefriş Glina Smart Video gözetim ve giriş temini ve kurulumu iş kuluçka makinesi için kontrol ekipmanları Sisak Smart Silver Video gözetim ekipmanının temini ve kurulumu ve iş kuluçka makinesinin giriş kontrolü Glina Smart İş Kuluçka Merkezinde ofisin motor engelli kişilerin çalışmalarına göre uyarlanması Sisak Smart Silver İş Kuluçka Merkezinde ofisin motor engelli kişilerin çalışmalarına göre uyarlanması Glina Smart",
       "market_region": "Diğer Pazarlar",
@@ -17421,7 +17421,7 @@
       "title_original": "Cyprus – Antineoplastic agents – Προσφορά για την προμήθεια σκευάσματος Momelotinib",
       "title_tr": "Kıbrıs – Antineoplastik ajanlar – Momelotinib formülasyonunun temini için ihale",
       "detail_original": "Προμήθεια σκευάσματος Momelotinib, Φ .Υ.Υ.13.25.02.08.299, Φ.Υ.Υ. 92/2026 (YY)",
-      "detail_tr": "Momelotinib formülasyonunun temini, MY 13.25.02.08.299, MY. 92/2026 (YY)",
+      "detail_tr": "Momelotinib formülasyonunun temini, MY13.25.02.08.299, MY. 92/2026 (YY)",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -17491,7 +17491,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Momelotinib formülasyonunun temini, MY 13.25.02.08.299, MY. 92/2026 (YY). Kategori / ürün grubu: 33652100 33652100",
+      "demand_summary_tr": "Momelotinib formülasyonunun temini, MY13.25.02.08.299, MY. 92/2026 (YY). Kategori / ürün grubu: 33652100 33652100",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -17678,7 +17678,7 @@
       "title_original": "Spain – Disposable non-chemical medical consumables and haematological consumables – ALMERIA 1º CBAM CONTR 2026 0000323994",
       "title_tr": "İspanya – Tek kullanımlık kimyasal olmayan tıbbi sarf malzemeleri ve hematolojik sarf malzemeleri – ALMERIA 1° CBAM CONTR 2026 0000323994",
       "detail_original": "1ºCBAM PRIM S.A EXPTE 270/2025 ACUERDO MARCO CON UNA ÚNICA EMPRESA PARA EL SUMINISTRO DE MATERIAL ESPECÍFICO PARA QUIRÓFANO: (SU.PC.SANI.01.11) CORTE E INCISIÓN Y COAGULACIÓN MECÁNICA, CON DISPONIBILIDAD DE USO DEL EQUIPAMIENTO NECESARIO PARA SU UTILIZACIÓN DEL MATERIAL PARA LOS CENTROS INTEGRANTES DE LA CENTRAL PROVINCIAL DE COMPRAS DE ALMERÍA",
-      "detail_tr": "1ºCBAM PRIM S.A EXPTE 270/2025 AMELİYATHANE İÇİN ÖZEL MALZEME TEMİNİ İÇİN TEK BİR FİRMA İLE ÇERÇEVE SÖZLEŞMESİ: (SU.PC.SANI.01.11) KESME VE KESİZ VE MEKANİK Pıhtılaşma, KULLANIMI İÇİN GEREKLİ EKİPMANIN KULLANIM MEVCUTLUĞU ALMERÍA İL SATIN ALMA MERKEZİ MERKEZLERİ ÜYELERİ İÇİN MALZEME",
+      "detail_tr": "1°CBAM PRIM S.A EXPTE 270/2025 AMELİYATHANE İÇİN ÖZEL MALZEME TEMİNİ İÇİN TEK BİR FİRMA İLE ÇERÇEVE SÖZLEŞMESİ: (SU.PC.SANI.01.11) KESME VE KESİM VE MEKANİK KOAGÜLASYON, KULLANIMI İÇİN GEREKLİ EKİPMANIN KULLANIM MEVCUTLUĞU ALMERÍA İL SATIN ALMA MERKEZİ MERKEZLERİ ÜYELERİ İÇİN MALZEME",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -17748,7 +17748,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "1ºCBAM PRIM S.A EXPTE 270/2025 AMELİYATHANE İÇİN ÖZEL MALZEME TEMİNİ İÇİN TEK BİR FİRMA İLE ÇERÇEVE SÖZLEŞMESİ: (SU.PC.SANI.01.11) KESME VE KESİZ VE MEKANİK Pıhtılaşma, KULLANIMI İÇİN GEREKLİ EKİPMANIN KULLANIM MEVCUTLUĞU ALMERÍA İL SATIN ALMA MERKEZİ MERKEZLERİ ÜYELERİ İÇİN MALZEME. Kategori / ürün grubu: 33141000 39224200 33141000",
+      "demand_summary_tr": "1°CBAM PRIM S.A EXPTE 270/2025 AMELİYATHANE İÇİN ÖZEL MALZEME TEMİNİ İÇİN TEK BİR FİRMA İLE ÇERÇEVE SÖZLEŞMESİ: (SU.PC.SANI.01.11) KESME VE KESİM VE MEKANİK KOAGÜLASYON, KULLANIMI İÇİN GEREKLİ EKİPMANIN KULLANIM MEVCUTLUĞU ALMERÍA İL SATIN ALMA MERKEZİ MERKEZLERİ ÜYELERİ İÇİN MALZEME. Kategori / ürün grubu: 33141000 39224200 33141000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -17932,7 +17932,7 @@
       "title_original": "Germany – Analysis apparatus – PM SNSPD Systeme",
       "title_tr": "Almanya – Analiz cihazı – PM SNSPD Systeme",
       "detail_original": "Für das Projekt EAGLE-1 sollen zur Entwicklung von QKD-Bodenstationen zwei Einzelphotonendetektoren mit jeweils 4 Kanälen beschafft werden. Da eine niedrige Dunkelzählrate bei hoher Effizienz für dieses Projekt essentiell ist, werden supraleitende Systeme (SNSPDs) benötigt",
-      "detail_tr": "EAGLE-1 projesi için QKD yer istasyonlarını geliştirmek amacıyla her biri 4 kanallı iki adet tek foton dedektörü satın alınacak. Bu proje için yüksek verimliliğe sahip düşük karanlık sayım oranı gerekli olduğundan, süper iletken sistemler (SNSPD'ler) gereklidir",
+      "detail_tr": "EAGLE-1 projesi için QKD yer istasyonlarını geliştirmek amacıyla her biri 4 kanallı iki adet tek foton dedektörü satın alınacak. Bu proje için yüksek verimliliğe sahip düşük karanlık sayımı oranı gerekli olduğundan, süper iletken sistemler (SNSPD'ler) gereklidir",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -18002,7 +18002,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "EAGLE-1 projesi için QKD yer istasyonlarını geliştirmek amacıyla her biri 4 kanallı iki adet tek foton dedektörü satın alınacak. Bu proje için yüksek verimliliğe sahip düşük karanlık sayım oranı gerekli olduğundan, süper iletken sistemler (SNSPD'ler) gereklidir. Kategori / ürün grubu: 38432000 38432000",
+      "demand_summary_tr": "EAGLE-1 projesi için QKD yer istasyonlarını geliştirmek amacıyla her biri 4 kanallı iki adet tek foton dedektörü satın alınacak. Bu proje için yüksek verimliliğe sahip düşük karanlık sayımı oranı gerekli olduğundan, süper iletken sistemler (SNSPD'ler) gereklidir. Kategori / ürün grubu: 38432000 38432000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -18263,7 +18263,7 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Slovenia – Food, beverages, tobacco and related products – Sukcesivna dobava prehrambnega blaga za leto 2027",
-      "title_tr": "Slovenya – Yiyecek, içecek, tütün ve ilgili ürünler – 2027 yılı için gıda ürünlerinin ardışık teslimatı",
+      "title_tr": "Slovenya – Yiyecek, içecek, tütün ve ilgili ürünler – 2027 yılı için ardı ardına gıda ürünleri tedariki",
       "detail_original": "Sklop 1 – mleko in mlečni izdelki Sklop 2 – siri, jogurti in maslo Sklop 3- proteinski izdelki Sklop 4 – mesni izdelki, klobase, salame trajne in poltrajne Sklop 5 – meso svinjine in izdelki Sklop 6 – meso drobnice Sklop 7 – izdelki krškopoljca, salame Sklop 8 – meso junjetine in teletine Sklop 9 – meso perutnine in izdelki Sklop 10 – sveže ribe in zamrznjene, sladkovodne, morske, školjke in raki Sklop 11 – zamrznjeno sadje, zelenjava in izdelki Sklop 12 – slaščice Sklop 13 – predpripravljeni izdelki Sklop 14–omake Sklop 15 – olje, kis, sol Sklop 16 – gazirane pijače Sklop 17 – sladko, slani program Sklop 18 – splošno prehransko blago Sklop 19 – suho sadje, orehi in oreščki Sklop 20 – sokovi in nektarji Sklop 21 – brezalkoholne pijače in pivo Sklop 22 – kava in kavni napitki Sklop 23 – naravna voda, voda z okusi in mineralna voda Sklop 25 – ekološko sadje in zelenjava Sklop 26 – agrumi in koščično sadje Sklop 29 – sladoled Sklop 31 – koncentrati in začimbe",
       "detail_tr": "Lot 1 - süt ve süt ürünleri Lot 2 - peynirler, yoğurtlar ve tereyağı Lot 3 - protein ürünleri Lot 4 - et ürünleri, sosisler, salam kalıcı ve yarı kalıcı Lot 5 - domuz eti ve ürünleri Lot 6 - küçük hayvanların etleri Lot 7 - Karskopolj, salam ürünleri Lot 8 - sığır eti ve dana eti Lot 9 - kümes hayvanları eti ve ürünleri Lot 10 - taze balık ve dondurulmuş, tatlı su, deniz ürünleri, kabuklu deniz ürünleri ve kabuklular Lot 11 – dondurulmuş meyve, sebze ve ürünler Lot 12 – şekerleme Lot 13 – önceden hazırlanmış ürünler Lot 14 – soslar Lot 15 – yağ, sirke, tuz Lot 16 – gazlı içecekler Lot 17 – tatlı, tuzlu program Lot 18 – genel gıda ürünleri Lot 19 – kurutulmuş meyveler, kuruyemişler ve sert kabuklu yemişler Lot 20 – meyve suları ve nektarlar Parti 21 – alkolsüz içecekler ve bira Grup 22 - kahve ve kahve içecekleri Grup 23 - doğal su, aromalı su ve maden suyu Grup 25 - organik meyve ve sebzeler Grup 26 - turunçgiller ve çekirdekli meyveler Grup 29 - dondurma Grup 31 - konsantreler ve baharatlar",
       "market_region": "Diğer Pazarlar",
@@ -18773,7 +18773,7 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Poland – Electricity, heating, solar and nuclear energy – Dostarczenie energii cieplnej do kompleksów wojskowych administrowanych przez Jednostkę Wojskową Nr 2063",
-      "title_tr": "Polonya – Elektrik, ısıtma, güneş ve nükleer enerji – 2063 No'lu Askeri Birim tarafından idare edilen askeri komplekslere termal enerji sağlanması",
+      "title_tr": "Polonya – Elektrik, ısıtma, güneş ve nükleer enerji – 2063 Nolu Askeri Birim tarafından idare edilen askeri komplekslere termal enerji sağlanması",
       "detail_original": "Zgodnie z dokumentami zamówienia.",
       "detail_tr": "İhale dokümanlarına uygun olarak.",
       "market_region": "Diğer Pazarlar",
@@ -19795,7 +19795,7 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Austria – Electrical apparatus for switching or protecting electrical circuits – Rahmenvereinbarung - Lieferung und Inbetriebsetzung elektrische Schutzeinrichtungen bis 2034 -3 Lose",
-      "title_tr": "Avusturya - Elektrik devrelerini anahtarlamaya veya korumaya yönelik elektrikli cihazlar - Çerçeve anlaşması - elektrikli koruyucu cihazların 2034'e kadar teslimi ve devreye alınması -3 grup",
+      "title_tr": "Avusturya – Elektrik devrelerini anahtarlamaya veya korumaya yönelik elektrikli cihazlar – Çerçeve anlaşması – elektrikli koruyucu cihazların 2034 yılına kadar teslimi ve devreye alınması -3 grup",
       "detail_original": "Los 1: Neuerrichtungen von Schutzeinrichtungen – umfasst auch den kompletten Austausch von alten Schutzsystemen (zB.: Schneider, Sprecher) Los 2: Erweiterung von bestehenden Schneider Schutzsystemen",
       "detail_tr": "Lot 1: Koruyucu cihazların yeni yapısı - aynı zamanda eski koruyucu sistemlerin tamamen değiştirilmesini de içerir (örn.: Schneider, hoparlör) Lot 2: Mevcut Schneider koruma sistemlerinin genişletilmesi",
       "market_region": "Diğer Pazarlar",
@@ -20313,7 +20313,7 @@
       "title_original": "Czechia – Medical software package – Rozvoj služeb eHealth ve Fakultní nemocnici u sv. Anny v Brně",
       "title_tr": "Çekya – Tıbbi yazılım paketi – Brno'daki St. Anna Üniversite Hastanesinde e-Sağlık hizmetlerinin geliştirilmesi",
       "detail_original": "Předmětem plnění je Hlavním předmětem VZ je modernizace stávajících systémů za účelem rozšíření služeb poskytovaných v oblasti eHealth. Modernizace bude vycházet z podporovaných aktivit stanovených Výzvou č. 22 NPO: • Pořízení nových nebo úprava stávajících informačních systémů nebo jejich částí tak, aby došlo ke zlepšení způsobu vedení zdravotnické dokumentace umožňující její interoperabilní výměnu, sdílení, bezpečné uložení a interpretaci; • Implementace datových rozhraní umožňující standardizovanou a interoperabilní výměnu zdravotnické dokumentace mezi poskytovateli prostřednictví národní či regionální infrastruktury propojené na infrastrukturu národní a evropskou; • Implementace datových rozhraní na služby elektronického zdravotnictví, registry nebo centrální služby eGovernmentu; • Zajištění on-line přístupu oprávněným osobám ke zdravotnické dokumentaci prostřednictvím standardních elektronických rozhraní, portálů, mobilních a webových aplikací; • Implementace identifikátorů subjektů dle zákona o elektronizaci zdravotnictví.",
-      "detail_tr": "Performans konusu VZ'nin ana konusu, eSağlık alanında sunulan hizmetlerin genişletilmesi amacıyla mevcut sistemlerin modernizasyonudur. Modernizasyon, NPO'nun 22 No'lu Çağrısında belirtilen desteklenen faaliyetlere dayanacaktır: • Tıbbi dokümantasyonun sürdürülme şeklini iyileştirmek, birlikte çalışabilir değişimini, paylaşımı, güvenli bir şekilde saklanmasını ve yorumlanmasını sağlamak amacıyla yeni bilgi sistemlerinin veya mevcut bilgi sistemlerinin veya bunların parçalarının değiştirilmesinin satın alınması; • Ulusal ve Avrupa altyapısına bağlı ulusal veya bölgesel altyapı aracılığıyla sağlayıcılar arasında standartlaştırılmış ve birlikte çalışabilir tıbbi belge alışverişini mümkün kılan veri arayüzlerinin uygulanması; • Elektronik sağlık hizmetleri, kayıtlar veya merkezi e-Devlet hizmetleri için veri arayüzlerinin uygulanması; • Yetkili kişilerin tıbbi dokümantasyona standart elektronik arayüzler, portallar, mobil ve web uygulamaları aracılığıyla çevrimiçi erişiminin sağlanması; • Elektronik Sağlık Hizmetleri Kanunu'na göre tüzel kişi tanımlayıcılarının uygulanması.",
+      "detail_tr": "Performans konusu VZ'nin ana konusu, eSağlık alanında sunulan hizmetlerin genişletilmesi amacıyla mevcut sistemlerin modernizasyonudur. Modernizasyon, NPO'nun 22 No'lu Çağrısında belirtilen desteklenen faaliyetlere dayanacaktır: • Tıbbi dokümantasyonun sürdürülme şeklini iyileştirmek, birlikte çalışabilir değişimini, paylaşımı, güvenli bir şekilde saklanmasını ve yorumlanmasını sağlamak amacıyla yeni bilgi sistemlerinin veya mevcut bilgi sistemlerinin veya bunların parçalarının değiştirilmesinin satın alınması; • Ulusal ve Avrupa altyapısına bağlı ulusal veya bölgesel altyapı aracılığıyla sağlayıcılar arasında tıbbi belgelerin standartlaştırılmış ve birlikte çalışabilir şekilde alışverişini sağlayan veri arayüzlerinin uygulanması; • Elektronik sağlık hizmetleri, kayıtlar veya merkezi e-Devlet hizmetleri için veri arayüzlerinin uygulanması; • Yetkili kişilerin tıbbi dokümantasyona standart elektronik arayüzler, portallar, mobil ve web uygulamaları aracılığıyla çevrimiçi erişiminin sağlanması; • Elektronik Sağlık Hizmetleri Kanunu'na göre tüzel kişi tanımlayıcılarının uygulanması.",
       "market_region": "Diğer Pazarlar",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -20383,7 +20383,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Performans konusu VZ'nin ana konusu, eSağlık alanında sunulan hizmetlerin genişletilmesi amacıyla mevcut sistemlerin modernizasyonudur. Modernizasyon, NPO'nun 22 No'lu Çağrısında belirtilen desteklenen faaliyetlere dayanacaktır: • Tıbbi dokümantasyonun sürdürülme şeklini iyileştirmek, birlikte çalışabilir değişimini, paylaşımı, güvenli bir şekilde saklanmasını ve yorumlanmasını sağlamak amacıyla yeni bilgi sistemlerinin veya mevcut bilgi sistemlerinin veya bunların parçalarının değiştirilmesinin satın alınması; • Ulusal ve Avrupa altyapısına bağlı ulusal veya bölgesel altyapı aracılığıyla sağlayıcılar arasında standartlaştırılmış ve birlikte çalışabilir tıbbi belge alışverişini mümkün kılan veri arayüzlerinin uygulanması; • Elektronik sağlık hizmetleri, kayıtlar veya merkezi e-Devlet hizmetleri için veri arayüzlerinin uygulanması; • Yetkili kişilerin tıbbi dokümantasyona standart elektronik arayüzler, portallar, mobil ve web uygulamaları aracılığıyla çevrimiçi erişiminin sağlanması; • Elektronik Sağlık Hizmetleri Kanunu'na göre tüzel kişi tanımlayıcılarının uygulanması.. Kategori / ürün grubu: 48180000 48800000 72263000 72261000 72267000 48180000 48800000 72263000 72261000 72267000",
+      "demand_summary_tr": "Performans konusu VZ'nin ana konusu, eSağlık alanında sunulan hizmetlerin genişletilmesi amacıyla mevcut sistemlerin modernizasyonudur. Modernizasyon, NPO'nun 22 No'lu Çağrısında belirtilen desteklenen faaliyetlere dayanacaktır: • Tıbbi dokümantasyonun sürdürülme şeklini iyileştirmek, birlikte çalışabilir değişimini, paylaşımı, güvenli bir şekilde saklanmasını ve yorumlanmasını sağlamak amacıyla yeni bilgi sistemlerinin veya mevcut bilgi sistemlerinin veya bunların parçalarının değiştirilmesinin satın alınması; • Ulusal ve Avrupa altyapısına bağlı ulusal veya bölgesel altyapı aracılığıyla sağlayıcılar arasında tıbbi belgelerin standartlaştırılmış ve birlikte çalışabilir şekilde alışverişini sağlayan veri arayüzlerinin uygulanması; • Elektronik sağlık hizmetleri, kayıtlar veya merkezi e-Devlet hizmetleri için veri arayüzlerinin uygulanması; • Yetkili kişilerin tıbbi dokümantasyona standart elektronik arayüzler, portallar, mobil ve web uygulamaları aracılığıyla çevrimiçi erişiminin sağlanması; • Elektronik Sağlık Hizmetleri Kanunu'na göre tüzel kişi tanımlayıcılarının uygulanması.. Kategori / ürün grubu: 48180000 48800000 72263000 72261000 72267000 48180000 48800000 72263000 72261000 72267000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -23683,7 +23683,7 @@
       "source": "TED",
       "mode": "shadow",
       "title_original": "Italy – License management software package – ARIA_2025_297F – Gara multilotto a procedura aperta,Procedura aperta multilotto ai sensi dell’art. 71 del D.Lgs. 36/2023 per la fornitura di licenze software mediante sottoscrizione per Aria S.p.A.” finalizzata alla stipula di un AQ.",
-      "title_tr": "İtalya – Lisans yönetimi yazılım paketi – ARIA_2025_297F – Çok partili açık prosedür ihalesi, Sanat uyarınca çok partili açık prosedür. Aria S.p.A aboneliği yoluyla yazılım lisanslarının teminine ilişkin 36/2023 sayılı Kanun Hükmünde Kararnamenin 71. Maddesi.” bir kalite güvencesi sağlamayı amaçlamaktadır.",
+      "title_tr": "İtalya – Lisans yönetimi yazılım paketi – ARIA_2025_297F – Çok partili açık prosedür ihalesi, Sanat. Aria S.p.A aboneliği yoluyla yazılım lisanslarının teminine ilişkin 36/2023 sayılı Kanun Hükmünde Kararnamenin 71. Maddesi.” bir kalite güvencesi sağlamayı amaçlamaktadır.",
       "detail_original": "Talend Big Data Platform Travel planner HAFAS e interfaccia OJP MEGA International - MEGA HOPEX Broadcom - Siteminder e CA Identity Suite Data Processing Organizzation - SFERA Salesforce - Tableau Dataiku S.a.S. - Dataiku Tyler Technologies - Tyler Technologies Enterprise Data Platfom Denodo Technologies - Denodo Enterprise Plus Subscription License SAS Institute Inc. - PIATTAFORME SAS CLOUDERA Inc - CDP - CLOUDERA DATA PLATFORM",
       "detail_tr": "Talend Büyük Veri Platformu Seyahat planlayıcısı HAFAS ve arayüz OJP MEGA International - MEGA HOPEX Broadcom - Siteminder ve CA Identity Suite Veri İşleme Organizasyonu - SFERA Salesforce - Tableau Dataiku S.a.S. - Dataiku Tyler Technologies - Tyler Technologies Kurumsal Veri Platformu Denodo Technologies - Denodo Enterprise Plus Abonelik Lisansı SAS Institute Inc. - PIATTAFORME SAS CLOUDERA Inc - CDP - CLOUDERA DATA PLATFORM",
       "market_region": "Avrupa",
@@ -24459,7 +24459,7 @@
       "title_original": "Germany – Accumulators, primary cells and primary batteries – Batteriespeicherprojekt BESSLA",
       "title_tr": "Almanya – Akümülatörler, birincil hücreler ve birincil piller – Batteriespeicherprojekt BESSLA",
       "detail_original": "Durchführung der schlüsselfertigen Planung, Lieferung, Errichtung und Inbetriebnahme eines Batteriespeichers.",
-      "detail_tr": "Akü depolama sisteminin anahtar teslimi planlaması, teslimatı, inşaatı ve devreye alınması.",
+      "detail_tr": "Akü depolama sisteminin anahtar teslimi planlaması, teslimatı, inşaatı ve devreye alınmasının gerçekleştirilmesi.",
       "market_region": "Avrupa",
       "buyer_verified": false,
       "supplier_status": "pending",
@@ -24529,7 +24529,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Akü depolama sisteminin anahtar teslimi planlaması, teslimatı, inşaatı ve devreye alınması.. Kategori / ürün grubu: 31400000 31155000 31170000 31400000 31155000 31170000",
+      "demand_summary_tr": "Akü depolama sisteminin anahtar teslimi planlaması, teslimatı, inşaatı ve devreye alınmasının gerçekleştirilmesi.. Kategori / ürün grubu: 31400000 31155000 31170000 31400000 31155000 31170000",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -27400,978 +27400,6 @@
       }
     },
     {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-11-24",
-      "archiveType": "auto15",
-      "award": null,
-      "baseType": "Combined Synopsis/Solicitation",
-      "classificationCode": "6145",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f5187dd89d4f41588570b47c98c75637",
-      "fullParentPathCode": "057.5700.ACC.FA4887",
-      "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR COMBAT COMMAND.FA4887  56 CONS CC",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=f5187dd89d4f41588570b47c98c75637&limit=1"
-        }
-      ],
-      "naicsCode": "335921",
-      "naicsCodes": [
-        "335921"
-      ],
-      "noticeId": "f5187dd89d4f41588570b47c98c75637",
-      "officeAddress": {
-        "zipcode": "85309-1217",
-        "city": "LUKE AFB",
-        "countryCode": "USA",
-        "state": "AZ"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": {
-        "city": {
-          "code": "42800",
-          "name": "Luke Air Force Base"
-        },
-        "state": {
-          "code": "AZ",
-          "name": "Arizona"
-        },
-        "zip": "85309",
-        "country": {
-          "code": "USA",
-          "name": "UNITED STATES"
-        }
-      },
-      "pointOfContact": [
-        {
-          "fax": "",
-          "type": "primary",
-          "email": "rachel.tilley.1@us.af.mil",
-          "phone": "",
-          "fullName": "Rachel Tilley"
-        },
-        {
-          "fax": "",
-          "type": "secondary",
-          "email": "jacqueline.aranda.1@us.af.mil",
-          "phone": "",
-          "fullName": "Jacqueline C. Aranda"
-        }
-      ],
-      "postedDate": "2026-10-08",
-      "resourceLinks": [
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/62f97c4352da4538b8ccc1b10a37dd0e/download",
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/6aba4a12b9ca4104b1f29b51f0a946a6/download",
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/d4ebf13189a249c5a8215b3cce05c811/download",
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/db606b70f9e44b388e8e78c3e8e0a426/download",
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/ec3bab4b3114478da427cdbbd08d93be/download",
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/ef4f63c397f14719834ad78b0bd84672/download"
-      ],
-      "responseDeadLine": "2026-11-09T13:00:00-08:00",
-      "solicitationNumber": "F3YCFA6173AC01",
-      "title": "56 CS FOC to Flightline and Wx Equipment, Luke AFB",
-      "type": "Combined Synopsis/Solicitation",
-      "typeOfSetAside": "WOSB",
-      "typeOfSetAsideDescription": "SBA Certified Women-Owned Small Business (WOSB) Program Set-Aside (FAR 19.15)",
-      "uiLink": "https://sam.gov/workspace/contract/opp/f5187dd89d4f41588570b47c98c75637/view",
-      "title_original": "56 CS FOC to Flightline and Wx Equipment, Luke AFB",
-      "title_tr": "56 CS FOC'dan Flightline ve Wx Ekipmanına, Luke AFB",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f5187dd89d4f41588570b47c98c75637",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f5187dd89d4f41588570b47c98c75637",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "2026-11-09T13:00:00-08:00",
-      "classification-cpv": "335921",
-      "procedure-type": "Combined Synopsis/Solicitation",
-      "source_url": "https://sam.gov/workspace/contract/opp/f5187dd89d4f41588570b47c98c75637/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 60,
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter 56 CS FOC to Flightline and Wx Equipment, Luke AFB https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f5187dd89d4f41588570b47c98c75637 335921",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ],
-        "buyer_source_identified": false,
-        "buyer_verified": false
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "335921",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f5187dd89d4f41588570b47c98c75637. Kategori / ürün grubu: 335921",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      },
-      "compliance_status": "buyer_identity_pending"
-    },
-    {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-11-24",
-      "archiveType": "auto15",
-      "award": null,
-      "baseType": "Combined Synopsis/Solicitation",
-      "classificationCode": "6632",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f1a7b97198734f04b9c308f3aba99fcd",
-      "fullParentPathCode": "075.7527.75H706",
-      "fullParentPathName": "HEALTH AND HUMAN SERVICES, DEPARTMENT OF.INDIAN HEALTH SERVICE.GREAT PLAINS AREA INDIAN HEALTH SVC",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=f1a7b97198734f04b9c308f3aba99fcd&limit=1"
-        }
-      ],
-      "naicsCode": "334516",
-      "naicsCodes": [
-        "334516"
-      ],
-      "noticeId": "f1a7b97198734f04b9c308f3aba99fcd",
-      "officeAddress": {
-        "zipcode": "57401",
-        "city": "ABERDEEN",
-        "countryCode": "USA",
-        "state": "SD"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": {
-        "city": {
-          "code": "100",
-          "name": "Aberdeen"
-        },
-        "state": {
-          "code": "SD",
-          "name": "South Dakota"
-        },
-        "zip": "57401",
-        "country": {
-          "code": "USA",
-          "name": "UNITED STATES"
-        }
-      },
-      "pointOfContact": [
-        {
-          "fax": "",
-          "type": "primary",
-          "email": "ursula.maslonka@ihs.gov",
-          "phone": "",
-          "fullName": "Ursula Maslonka"
-        },
-        {
-          "fax": "",
-          "type": "secondary",
-          "email": "nichole.lerew@ihs.gov",
-          "phone": "",
-          "fullName": "Nichole Lerew"
-        }
-      ],
-      "postedDate": "2026-10-08",
-      "resourceLinks": [
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/467b5f0f6b2445c6a84374b1ced4d797/download"
-      ],
-      "responseDeadLine": "2026-11-09T10:00:00-06:00",
-      "solicitationNumber": "75H70627Q00001",
-      "title": "Firm Fixed-Price Commercial Item, Area Wide IDIQ Contract for Clinical Laboratory Coagulation Equipment/Supply on a Cost-Per-Reportable-Results for the Great Plains Area  OHP Department located in Aberdeen SD.",
-      "type": "Combined Synopsis/Solicitation",
-      "typeOfSetAside": "SBA",
-      "typeOfSetAsideDescription": "Small Business Set Aside - Total",
-      "uiLink": "https://sam.gov/workspace/contract/opp/f1a7b97198734f04b9c308f3aba99fcd/view",
-      "title_original": "Firm Fixed-Price Commercial Item, Area Wide IDIQ Contract for Clinical Laboratory Coagulation Equipment/Supply on a Cost-Per-Reportable-Results for the Great Plains Area  OHP Department located in Aberdeen SD.",
-      "title_tr": "Aberdeen SD'de bulunan Great Plains Bölgesi OHP Departmanı için Raporlanabilir Sonuçlar Başına Maliyet üzerinden Klinik Laboratuvar Pıhtılaşma Ekipmanı/Tedarikine yönelik Firma Sabit Fiyatlı Ticari Ürün, Bölge Genelinde IDIQ Sözleşmesi.",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f1a7b97198734f04b9c308f3aba99fcd",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f1a7b97198734f04b9c308f3aba99fcd",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "2026-11-09T10:00:00-06:00",
-      "classification-cpv": "334516",
-      "procedure-type": "Combined Synopsis/Solicitation",
-      "source_url": "https://sam.gov/workspace/contract/opp/f1a7b97198734f04b9c308f3aba99fcd/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 60,
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Firm Fixed-Price Commercial Item, Area Wide IDIQ Contract for Clinical Laboratory Coagulation Equipment/Supply on a Cost-Per-Reportable-Results for the Great Plains Area  OHP Depar",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ],
-        "buyer_source_identified": false,
-        "buyer_verified": false
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "334516",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=f1a7b97198734f04b9c308f3aba99fcd. Kategori / ürün grubu: 334516",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      },
-      "compliance_status": "buyer_identity_pending"
-    },
-    {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-11-10",
-      "archiveType": "auto15",
-      "award": null,
-      "baseType": "Solicitation",
-      "classificationCode": "2310",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=eea599b510324b9db56aaa5d3f876be5",
-      "fullParentPathCode": "019.1900.19ES60",
-      "fullParentPathName": "STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.US EMBASSY SAN SALVADOR",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=eea599b510324b9db56aaa5d3f876be5&limit=1"
-        }
-      ],
-      "naicsCode": "33611",
-      "naicsCodes": [
-        "33611"
-      ],
-      "noticeId": "eea599b510324b9db56aaa5d3f876be5",
-      "officeAddress": {
-        "zipcode": "20520",
-        "city": "WASHINGTON",
-        "countryCode": "USA",
-        "state": "DC"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": {
-        "city": {
-          "code": "ANTIGUO CUSCATLAN",
-          "name": "ANTIGUO CUSCATLAN"
-        },
-        "state": {
-          "code": "SV-LI",
-          "name": "La Libertad"
-        },
-        "country": {
-          "code": "SLV",
-          "name": "EL SALVADOR"
-        }
-      },
-      "pointOfContact": [
-        {
-          "fax": "",
-          "type": "primary",
-          "email": "CotoAB@state.gov",
-          "phone": "50325012808",
-          "fullName": "Ana Beatriz Coto"
-        }
-      ],
-      "postedDate": "2026-10-08",
-      "resourceLinks": [
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/1a24019768464ceb9e86f353758f2eb9/download"
-      ],
-      "responseDeadLine": "2026-10-26T16:00:00-04:00",
-      "solicitationNumber": "PR15834280",
-      "title": "Utility All-Terrain vehicles",
-      "type": "Solicitation",
-      "typeOfSetAside": null,
-      "typeOfSetAsideDescription": null,
-      "uiLink": "https://sam.gov/workspace/contract/opp/eea599b510324b9db56aaa5d3f876be5/view",
-      "title_original": "Utility All-Terrain vehicles",
-      "title_tr": "Yardımcı Arazi Araçları",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=eea599b510324b9db56aaa5d3f876be5",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=eea599b510324b9db56aaa5d3f876be5",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "2026-10-26T16:00:00-04:00",
-      "classification-cpv": "33611",
-      "procedure-type": "Solicitation",
-      "source_url": "https://sam.gov/workspace/contract/opp/eea599b510324b9db56aaa5d3f876be5/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 60,
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Utility All-Terrain vehicles https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=eea599b510324b9db56aaa5d3f876be5 33611",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ],
-        "buyer_source_identified": false,
-        "buyer_verified": false
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "33611",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=eea599b510324b9db56aaa5d3f876be5. Kategori / ürün grubu: 33611",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      },
-      "compliance_status": "buyer_identity_pending"
-    },
-    {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-11-24",
-      "archiveType": "auto15",
-      "award": null,
-      "baseType": "Presolicitation",
-      "classificationCode": "1680",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e07a97aa25cf4c98a2cf618836f14c38",
-      "fullParentPathCode": "017.1700.NAVSUP.NAVSUP WSS.NAVSUP WSS PHIL.N00383",
-      "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSUP.NAVSUP WEAPON SYSTEMS SUPPORT.NAVSUP WSS PHILADELPHIA.NAVSUP WEAPON SYSTEMS SUPPORT",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=e07a97aa25cf4c98a2cf618836f14c38&limit=1"
-        }
-      ],
-      "naicsCode": null,
-      "naicsCodes": [],
-      "noticeId": "e07a97aa25cf4c98a2cf618836f14c38",
-      "officeAddress": {
-        "zipcode": "19111-5098",
-        "city": "PHILADELPHIA",
-        "countryCode": "USA",
-        "state": "PA"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": {
-        "city": {
-          "code": "60000",
-          "name": "Philadelphia"
-        },
-        "state": {
-          "code": "PA",
-          "name": "Pennsylvania"
-        },
-        "zip": "19111",
-        "country": {
-          "code": "USA",
-          "name": "UNITED STATES"
-        }
-      },
-      "pointOfContact": [
-        {
-          "fax": "",
-          "type": "primary",
-          "email": "brian.c.furness.civ@us.navy.mil",
-          "phone": "",
-          "fullName": "Brian Furness"
-        }
-      ],
-      "postedDate": "2026-10-08",
-      "resourceLinks": null,
-      "responseDeadLine": "2026-11-09T16:00:00-05:00",
-      "solicitationNumber": "N0038326PR0R908",
-      "title": "Reeling Machine",
-      "type": "Presolicitation",
-      "typeOfSetAside": null,
-      "typeOfSetAsideDescription": null,
-      "uiLink": "https://sam.gov/workspace/contract/opp/e07a97aa25cf4c98a2cf618836f14c38/view",
-      "title_original": "Reeling Machine",
-      "title_tr": "Sarma Makinesi",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e07a97aa25cf4c98a2cf618836f14c38",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e07a97aa25cf4c98a2cf618836f14c38",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "2026-11-09T16:00:00-05:00",
-      "classification-cpv": "1680",
-      "procedure-type": "Presolicitation",
-      "source_url": "https://sam.gov/workspace/contract/opp/e07a97aa25cf4c98a2cf618836f14c38/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 60,
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Reeling Machine https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e07a97aa25cf4c98a2cf618836f14c38 1680",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ],
-        "buyer_source_identified": false,
-        "buyer_verified": false
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "1680",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=e07a97aa25cf4c98a2cf618836f14c38. Kategori / ürün grubu: 1680",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      },
-      "compliance_status": "buyer_identity_pending"
-    },
-    {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-11-27",
-      "archiveType": "auto15",
-      "award": null,
-      "baseType": "Sources Sought",
-      "classificationCode": "4610",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db1cb44b650f4cdc892299917c04adf9",
-      "fullParentPathCode": "021.2100.AMC.ACC.ACC-CTRS.ACC-APG.W91CRB",
-      "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC-APG.W6QK ACC-APG",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=db1cb44b650f4cdc892299917c04adf9&limit=1"
-        }
-      ],
-      "naicsCode": "2213",
-      "naicsCodes": [
-        "2213"
-      ],
-      "noticeId": "db1cb44b650f4cdc892299917c04adf9",
-      "officeAddress": {
-        "zipcode": "21005-5001",
-        "city": "ABERDEEN PROVING GROU",
-        "countryCode": "USA",
-        "state": "MD"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": {
-        "city": {
-          "code": "43895",
-          "name": "Natick"
-        },
-        "state": {
-          "code": "MA",
-          "name": "Massachusetts"
-        },
-        "country": {
-          "code": "USA",
-          "name": "UNITED STATES"
-        }
-      },
-      "pointOfContact": [
-        {
-          "fax": "",
-          "type": "primary",
-          "email": "christine.n.chase2.civ@army.mil",
-          "phone": "",
-          "fullName": "Ms. Christine Chase"
-        },
-        {
-          "fax": "",
-          "type": "secondary",
-          "email": "alexander.s.obriwin.civ@mail.mil",
-          "phone": "",
-          "fullName": "Alexander S. Obriwin"
-        }
-      ],
-      "postedDate": "2026-10-08",
-      "resourceLinks": [
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/9a414e3f08044300b507405ab61a13d4/download",
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/ad8f7e403f7f411a9ef3e60c70ddde76/download",
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/e07fc021a81b45899e1e1b3e0f7f7915/download"
-      ],
-      "responseDeadLine": "2026-11-12T17:00:00-05:00",
-      "solicitationNumber": "IWTD_Reduction_TICs_TIMs",
-      "title": "Individual Water Treatment Device (IWTD) for Reduction/Removal of Toxic Industrial Chemicals and Materials",
-      "type": "Sources Sought",
-      "typeOfSetAside": "NONE",
-      "typeOfSetAsideDescription": "No Set aside used",
-      "uiLink": "https://sam.gov/workspace/contract/opp/db1cb44b650f4cdc892299917c04adf9/view",
-      "title_original": "Individual Water Treatment Device (IWTD) for Reduction/Removal of Toxic Industrial Chemicals and Materials",
-      "title_tr": "Toksik Endüstriyel Kimyasalların ve Malzemelerin Azaltılması/Ortadan Kaldırılması için Bireysel Su Arıtma Cihazı (IWTD)",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db1cb44b650f4cdc892299917c04adf9",
-      "detail_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db1cb44b650f4cdc892299917c04adf9",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "2026-11-12T17:00:00-05:00",
-      "classification-cpv": "2213",
-      "procedure-type": "Sources Sought",
-      "source_url": "https://sam.gov/workspace/contract/opp/db1cb44b650f4cdc892299917c04adf9/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 60,
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Individual Water Treatment Device (IWTD) for Reduction/Removal of Toxic Industrial Chemicals and Materials https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db1cb44b650",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ],
-        "buyer_source_identified": false,
-        "buyer_verified": false
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "2213",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=db1cb44b650f4cdc892299917c04adf9. Kategori / ürün grubu: 2213",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      },
-      "compliance_status": "buyer_identity_pending"
-    },
-    {
       "id": "OP00473154",
       "notice_type": "Invitation for Bids",
       "project_id": "P176608",
@@ -28984,9 +28012,9 @@
       ],
       "bid_description": "Procurement of medical Equipment such as stethoscopes, thermometers, Blood pressure apparatus, adult scales, Hospital beds, Pillows, and others as specified in the SOR for spokes and hospitals in Faalaba, Western Rural, Bonthe and Tonkolili Districts",
       "title_original": "Procurement of medical Equipment such as stethoscopes, thermometers, Blood pressure apparatus, adult scales, Hospital beds, Pillows, and others as specified in the SOR for spokes and hospitals in Faalaba, Western Rural, Bonthe and Tonkolili Districts",
-      "title_tr": "Faalaba, Batı Kırsal, Bonthe ve Tonkolili Bölgelerindeki jant telleri ve hastaneler için SOR'da belirtildiği şekilde stetoskoplar, termometreler, Kan basıncı cihazları, yetişkin tartıları, Hastane yatakları, Yastıklar ve diğerleri gibi tıbbi Ekipmanların tedariki",
+      "title_tr": "Faalaba, Batı Kırsal, Bonthe ve Tonkolili Bölgelerindeki jant telleri ve hastaneler için SOR'da belirtildiği şekilde stetoskoplar, termometreler, Tansiyon aletleri, yetişkin tartıları, Hastane yatakları, Yastıklar ve diğerleri gibi tıbbi Ekipmanların tedariki",
       "detail_original": "Procurement of medical Equipment such as stethoscopes, thermometers, Blood pressure apparatus, adult scales, Hospital beds, Pillows, and others as specified in the SOR for spokes and hospitals in Faalaba, Western Rural, Bonthe and Tonkolili Districts",
-      "detail_tr": "Faalaba, Batı Kırsal, Bonthe ve Tonkolili Bölgelerindeki jant telleri ve hastaneler için SOR'da belirtildiği şekilde stetoskoplar, termometreler, Kan basıncı cihazları, yetişkin tartıları, Hastane yatakları, Yastıklar ve diğerleri gibi tıbbi Ekipmanların tedariki",
+      "detail_tr": "Faalaba, Batı Kırsal, Bonthe ve Tonkolili Bölgelerindeki jant telleri ve hastaneler için SOR'da belirtildiği şekilde stetoskoplar, termometreler, Tansiyon aletleri, yetişkin tartıları, Hastane yatakları, Yastıklar ve diğerleri gibi tıbbi Ekipmanların tedariki",
       "buyer-country": "",
       "market_region": "Diğer Pazarlar",
       "buyer-name": "Sierra Leone - Quality Essential Health Services and Systems Support Project",
@@ -29070,7 +28098,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Faalaba, Batı Kırsal, Bonthe ve Tonkolili Bölgelerindeki jant telleri ve hastaneler için SOR'da belirtildiği şekilde stetoskoplar, termometreler, Kan basıncı cihazları, yetişkin tartıları, Hastane yatakları, Yastıklar ve diğerleri gibi tıbbi Ekipmanların tedariki. Kategori / ürün grubu: HQ Health Facilities and Construction HF Public Administration - Health HG Health",
+      "demand_summary_tr": "Faalaba, Batı Kırsal, Bonthe ve Tonkolili Bölgelerindeki jant telleri ve hastaneler için SOR'da belirtildiği şekilde stetoskoplar, termometreler, Tansiyon aletleri, yetişkin tartıları, Hastane yatakları, Yastıklar ve diğerleri gibi tıbbi Ekipmanların tedariki. Kategori / ürün grubu: HQ Health Facilities and Construction HF Public Administration - Health HG Health",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -31031,9 +30059,9 @@
       "project_name": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
       "bid_description": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
       "title_original": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
-      "title_tr": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
+      "title_tr": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
       "detail_original": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
-      "detail_tr": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
+      "detail_tr": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
       "buyer-country": "",
       "market_region": "Diğer Pazarlar",
       "buyer-name": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
@@ -31117,7 +30145,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
+      "demand_summary_tr": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -31305,9 +30333,9 @@
       "project_name": "Lebanon Emergency Assistance Project",
       "bid_description": "Supply and Installation of Radio Therapy Machine (linear Accelerator) for the Ministry of Public Health (Rafik Hariri University Hospital (RHUH)",
       "title_original": "Supply and Installation of Radio Therapy Machine (linear Accelerator) for the Ministry of Public Health (Rafik Hariri University Hospital (RHUH)",
-      "title_tr": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+      "title_tr": "Sağlık Bakanlığı (Rafik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
       "detail_original": "Supply and Installation of Radio Therapy Machine (linear Accelerator) for the Ministry of Public Health (Rafik Hariri University Hospital (RHUH)",
-      "detail_tr": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+      "detail_tr": "Sağlık Bakanlığı (Rafik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
       "buyer-country": "",
       "market_region": "Diğer Pazarlar",
       "buyer-name": "Lebanon Emergency Assistance Project",
@@ -31391,7 +30419,7 @@
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
       },
-      "demand_summary_tr": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+      "demand_summary_tr": "Sağlık Bakanlığı (Rafik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
