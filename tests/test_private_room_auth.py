@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from api.private_room import _build_access, _session_from_headers
+from api.private_room import _build_access, _consent_command, _session_from_headers
 from src.session_security import SessionError, issue_session
 
 
@@ -38,6 +38,25 @@ class TestPrivateRoomAuth(unittest.TestCase):
         token = token[:-1] + ("A" if token[-1] != "A" else "B")
         with self.assertRaises(SessionError):
             _session_from_headers(Headers(Authorization="Bearer " + token))
+
+    def test_consent_actor_is_always_session_subject(self):
+        session = {"sub": "buyer-user"}
+        opportunity_id, actor_id, action = _consent_command(
+            session,
+            {
+                "opportunity_id": "opp-1",
+                "action": "grant",
+                "actor_id": "forged-other-user",
+                "party": "seller",
+            },
+        )
+        self.assertEqual(opportunity_id, "opp-1")
+        self.assertEqual(actor_id, "buyer-user")
+        self.assertEqual(action, "grant")
+
+    def test_consent_command_rejects_unknown_action(self):
+        with self.assertRaises(ValueError):
+            _consent_command({"sub": "buyer-user"}, {"opportunity_id": "opp-1", "action": "approve"})
 
     def test_consent_events_control_access(self):
         record = {

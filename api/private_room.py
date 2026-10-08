@@ -68,6 +68,17 @@ def _build_access(record, opportunity_id):
     )
 
 
+def _consent_command(session, payload):
+    if not isinstance(payload, dict):
+        raise ValueError("invalid_consent_request")
+    opportunity_id = str(payload.get("opportunity_id") or "").strip()
+    action = str(payload.get("action") or "").strip()
+    actor_id = str(session.get("sub") or "").strip()
+    if not opportunity_id or action not in {"grant", "revoke"} or not actor_id:
+        raise ValueError("invalid_consent_request")
+    return opportunity_id, actor_id, action
+
+
 class handler(BaseHTTPRequestHandler):
     def _json(self, status, payload):
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -80,11 +91,16 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
-    def do_GET(self):
+    def _authenticated_session(self):
         try:
-            session = _session_from_headers(self.headers)
+            return _session_from_headers(self.headers)
         except SessionError:
             self._json(401, {"status": "AUTHENTICATION_REQUIRED"})
+            return None
+
+    def do_GET(self):
+        session = self._authenticated_session()
+        if session is None:
             return
 
         query = parse_qs(urlparse(self.path).query)
@@ -125,3 +141,47 @@ class handler(BaseHTTPRequestHandler):
             return
 
         self._json(200, private_view(opportunity, access))
+
+    def do_POST(self):
+        session = self._authenticated_session()
+        if session is None:
+            return
+
+        try:
+            content_length = int(self.headers.get("Content-Length", "0"))
+        except ValueError:
+            self._json(400, {"status": "INVALID_REQUEST"})
+            return
+        if content_length <= 0 or content_length > 4096:
+            self._json(400, {"status": "INVALID_REQUEST"})
+            return
+
+        try:
+            payload = json.loads(self.rfile.read(content_length).decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            self._json(400, {"status": "INVALID_JSON"})
+            return
+
+        try:
+            opportunity_id, actor_id, action = _consent_command(session, payload)
+        except ValueError:
+            self._json(400, {"status": "INVALID_CONSENT_REQUEST"})
+            return
+
+        try:
+            result = build_record_store().record_consent(
+                opportunity_id,
+                actor_id,
+                action,
+                bearer_token=_runtime_store_token(self.headers),
+            )
+        except StorageError as exc:
+            if str(exc) == "consent_subject_not_authorized":
+                self._json(403, {"status": "SUBJECT_NOT_AUTHORIZED"})
+            elif str(exc) in {"invalid_consent_action", "invalid_consent_request"}:
+                self._json(400, {"status": "INVALID_CONSENT_REQUEST"})
+            else:
+                self._json(503, {"status": "PRIVATE_ROOM_STORAGE_UNAVAILABLE"})
+            return
+
+        self._json(200, result)

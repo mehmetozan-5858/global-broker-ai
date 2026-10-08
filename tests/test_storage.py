@@ -1,4 +1,6 @@
+import json
 import unittest
+from urllib import error
 from unittest.mock import patch
 
 from src.storage import (
@@ -22,6 +24,12 @@ class TestStorageAdapters(unittest.TestCase):
         store = build_record_store(env)
         self.assertIsInstance(store, EnvJsonRecordStore)
         self.assertEqual(store.get_opportunity_record("opp-1")["opportunity"]["id"], "opp-1")
+
+    def test_env_store_cannot_write_consent(self):
+        store = EnvJsonRecordStore("{}")
+        with self.assertRaises(StorageError) as ctx:
+            store.record_consent("opp-1", "buyer-1", "grant")
+        self.assertEqual(str(ctx.exception), "env_store_is_read_only")
 
     def test_durable_store_has_priority_over_env_fallback(self):
         env = {
@@ -86,6 +94,45 @@ class TestStorageAdapters(unittest.TestCase):
         store = HttpJsonRecordStore("https://store.example.test/opportunities", "secret")
         result = store.get_opportunity_record("opp-1")
         self.assertEqual(result["opportunity"]["id"], "opp-1")
+
+    @patch("src.storage.request.urlopen")
+    def test_record_consent_posts_actor_from_backend(self, urlopen):
+        class Response:
+            status = 200
+            def __enter__(self): return self
+            def __exit__(self, *args): return False
+            def read(self):
+                return b'{"status":"CONSENT_RECORDED","party":"buyer","action":"grant","occurred_at":"2026-10-08T19:00:00Z"}'
+
+        urlopen.return_value = Response()
+        store = HttpJsonRecordStore("https://store.example.test/functions/v1/private-room-store", "")
+        result = store.record_consent("opp-1", "buyer-user", "grant", bearer_token="runtime-oidc")
+        self.assertEqual(result["party"], "buyer")
+
+        req = urlopen.call_args.args[0]
+        self.assertEqual(req.method, "POST")
+        self.assertEqual(req.get_header("Authorization"), "Bearer runtime-oidc")
+        self.assertEqual(req.get_header("Content-type"), "application/json")
+        body = json.loads(req.data.decode("utf-8"))
+        self.assertEqual(body, {"opportunity_id": "opp-1", "actor_id": "buyer-user", "action": "grant"})
+
+    @patch("src.storage.request.urlopen")
+    def test_record_consent_maps_403_to_authorization_error(self, urlopen):
+        urlopen.side_effect = error.HTTPError(
+            "https://store.example.test", 403, "Forbidden", {}, None
+        )
+        store = HttpJsonRecordStore("https://store.example.test/functions/v1/private-room-store", "")
+        with self.assertRaises(StorageError) as ctx:
+            store.record_consent("opp-1", "intruder", "grant", bearer_token="runtime-oidc")
+        self.assertEqual(str(ctx.exception), "consent_subject_not_authorized")
+
+    def test_record_consent_rejects_unknown_action_without_network(self):
+        store = HttpJsonRecordStore("https://store.example.test/functions/v1/private-room-store", "")
+        with patch("src.storage.request.urlopen") as urlopen:
+            with self.assertRaises(StorageError) as ctx:
+                store.record_consent("opp-1", "buyer-user", "approve", bearer_token="runtime-oidc")
+        self.assertEqual(str(ctx.exception), "invalid_consent_action")
+        urlopen.assert_not_called()
 
 
 if __name__ == "__main__":
