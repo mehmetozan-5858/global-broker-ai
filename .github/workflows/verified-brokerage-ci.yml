@@ -1,0 +1,31 @@
+name: Verified Brokerage CI
+
+on:
+  push:
+    branches:
+      - feat/verified-brokerage-pipeline
+      - main
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - '.github/workflows/verified-brokerage-ci.yml'
+  pull_request:
+    branches: ["main"]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - '.github/workflows/verified-brokerage-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run brokerage test suite
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
