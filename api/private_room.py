@@ -24,6 +24,10 @@ def _session_from_headers(headers):
     return verify_session(token, secret)
 
 
+def _runtime_store_token(headers):
+    return (headers.get("x-vercel-oidc-token", "") or "").strip()
+
+
 def _consent_events(record):
     raw_events = record.get("consent_events")
     if not isinstance(raw_events, list):
@@ -90,7 +94,11 @@ class handler(BaseHTTPRequestHandler):
             return
 
         try:
-            record = build_record_store().get_opportunity_record(opportunity_id)
+            store = build_record_store()
+            runtime_token = _runtime_store_token(self.headers)
+            record = store.get_opportunity_record(
+                opportunity_id, bearer_token=runtime_token
+            )
         except StorageError:
             self._json(503, {"status": "PRIVATE_ROOM_STORAGE_UNAVAILABLE"})
             return
