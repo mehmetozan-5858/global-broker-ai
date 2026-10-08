@@ -362,6 +362,7 @@
           "supplier_sourcing_ready": true,
           "technical_evidence_count": 8,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -826,6 +827,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 8,
         "eligibility_evidence_count": 0
       },
@@ -908,11 +910,21 @@
         "https://ted.europa.eu/sv/notice/657062-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657062-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_analyzed",
         "source_backed_only": true,
         "supplier_sourcing_ready": true,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -921,6 +933,10 @@
           {
             "field": "source_text_candidate",
             "text": "Materialul este antrenat de rotor către sita de măcinare, rezultând o granulație uniformă și reproductibilă."
+          },
+          {
+            "field": "source_text_candidate",
+            "text": "Caracteristici tehnice minime propuse: Capacitate de procesare: minim 300 ml Granulația finală: < 40 µm Viteza rotorului: variabilă între minimum 6000 și 23000 RPM (selectabil) | Denumire echipament: Centrifugă filtrantă, cantitate: 1 bucata Tip echipament: echipament de laborator care utilizează forța centrifugă pentru separarea componentelor unei probe în funcție de densitate, fiind compatibilă cu dispozitive de filtrare centrifugale și membrane filtrante pentru clarificarea și purificarea probelor."
           },
           {
             "field": "source_text_candidate",
@@ -941,10 +957,6 @@
           {
             "field": "source_text_candidate",
             "text": "Acesta permite evaluarea proprietăților reologice ale materialelor în diferite condiții de solicitare mecanică."
-          },
-          {
-            "field": "source_text_candidate",
-            "text": "Necesitate: Determinarea vâscozității reprezintă un parametru esențial pentru evaluarea calității și comportamentului materialelor în numeroase domenii."
           }
         ],
         "quantity_evidence": [
@@ -1559,6 +1571,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -1968,6 +1981,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -2050,11 +2064,21 @@
         "https://ted.europa.eu/sv/notice/657065-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657065-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -2645,6 +2669,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -3058,6 +3083,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -3140,11 +3166,21 @@
         "https://ted.europa.eu/sv/notice/657066-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657066-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -3731,6 +3767,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -4136,6 +4173,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -4218,11 +4256,21 @@
         "https://ted.europa.eu/sv/notice/657072-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657072-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -4809,6 +4857,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -5214,6 +5263,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -5296,11 +5346,21 @@
         "https://ted.europa.eu/sv/notice/657073-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657073-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -5889,6 +5949,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -6298,6 +6359,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -6380,11 +6442,21 @@
         "https://ted.europa.eu/sv/notice/657081-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657081-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -6971,6 +7043,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -7376,6 +7449,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -7458,11 +7532,21 @@
         "https://ted.europa.eu/sv/notice/657082-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657082-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -8060,6 +8144,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -8473,6 +8558,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -8555,11 +8641,21 @@
         "https://ted.europa.eu/sv/notice/657098-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657098-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -9153,6 +9249,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -9562,6 +9659,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -9644,11 +9742,21 @@
         "https://ted.europa.eu/sv/notice/657100-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657100-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -10235,6 +10343,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -10640,6 +10749,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -10722,11 +10832,21 @@
         "https://ted.europa.eu/sv/notice/657105-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657105-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -11321,6 +11441,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -11726,6 +11847,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -11808,11 +11930,21 @@
         "https://ted.europa.eu/sv/notice/657109-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657109-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -12400,6 +12532,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -12805,6 +12938,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -12887,11 +13021,21 @@
         "https://ted.europa.eu/sv/notice/657111-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657111-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -13479,6 +13623,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -13888,6 +14033,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -13970,11 +14116,21 @@
         "https://ted.europa.eu/sv/notice/657114-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657114-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -14570,6 +14726,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -14975,6 +15132,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -15057,11 +15215,21 @@
         "https://ted.europa.eu/sv/notice/657115-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657115-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -15661,6 +15829,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -16082,6 +16251,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -16164,11 +16334,21 @@
         "https://ted.europa.eu/sv/notice/657124-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657124-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -16762,6 +16942,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -17166,6 +17347,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -17249,11 +17431,21 @@
         "https://ted.europa.eu/sv/notice/657125-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657125-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -17857,6 +18049,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -18262,6 +18455,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -18344,11 +18538,21 @@
         "https://ted.europa.eu/sv/notice/657145-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657145-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -18937,6 +19141,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -19342,6 +19547,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -19424,11 +19630,21 @@
         "https://ted.europa.eu/sv/notice/657151-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657151-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -20026,8 +20242,9 @@
         "specification_analysis": {
           "status": "source_description_analyzed",
           "supplier_sourcing_ready": true,
-          "technical_evidence_count": 1,
+          "technical_evidence_count": 2,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -20456,7 +20673,8 @@
             "kind": "source_page"
           }
         ],
-        "technical_evidence_count": 1,
+        "document_parsed": false,
+        "technical_evidence_count": 2,
         "eligibility_evidence_count": 0
       },
       "product_name": "Norveç – Taşıma ekipmanı ve taşımaya yardımcı ürünler – 26222 Araç alımı, çerçeve anlaşması",
@@ -20538,12 +20756,26 @@
         "https://ted.europa.eu/sv/notice/657155-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657155-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_analyzed",
         "source_backed_only": true,
         "supplier_sourcing_ready": true,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
+          {
+            "field": "source_text_candidate",
+            "text": "Maximum value for the entire contract period, including any options and expected price rise: NOK 25,000,000 excluding VAT."
+          },
           {
             "field": "source_text_candidate",
             "text": "The contracting authority has assessed the procurement against the Public Procurement Act § 5h, and concluded that there is no requirement for apprentices in this procurement as the procurement is an procurement, cf."
@@ -21138,6 +21370,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -21543,6 +21776,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -21625,11 +21859,21 @@
         "https://ted.europa.eu/sv/notice/657156-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657156-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -22218,6 +22462,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -22623,6 +22868,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -22705,11 +22951,21 @@
         "https://ted.europa.eu/sv/notice/657167-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657167-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -23299,6 +23555,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -23708,6 +23965,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -23790,11 +24048,21 @@
         "https://ted.europa.eu/sv/notice/657168-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657168-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -24382,6 +24650,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -24787,6 +25056,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -24869,11 +25139,21 @@
         "https://ted.europa.eu/sv/notice/657184-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657184-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -25465,6 +25745,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -25878,6 +26159,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -25960,11 +26242,21 @@
         "https://ted.europa.eu/sv/notice/657189-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657189-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -26551,6 +26843,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -26956,6 +27249,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -27038,11 +27332,21 @@
         "https://ted.europa.eu/sv/notice/657193-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657193-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -27647,6 +27951,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -28056,6 +28361,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -28138,11 +28444,21 @@
         "https://ted.europa.eu/sv/notice/657198-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657198-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -28754,6 +29070,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -29163,6 +29480,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -29245,11 +29563,21 @@
         "https://ted.europa.eu/sv/notice/657201-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657201-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -29757,7 +30085,7 @@
       "pipeline_stage": "SUPPLIER_RESEARCH",
       "deadline_known": true,
       "supplier_research": {
-        "status": "specification_review_pending",
+        "status": "source_search_ready",
         "product_query": "Fransa – Ağır hizmet motorlu araçlar – Bac Pro CRM'de eğitim için taşıyıcı ve römork tipi okul araçlarının temini, CAP CRM uzun mesafe seçeneği",
         "country_focus": "Türkiye",
         "sources": [
@@ -29780,10 +30108,8 @@
         "candidates": [],
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme",
-        "dossier_ready": false,
-        "blocked_by_missing_fields": [
-          "specification_evidence"
-        ]
+        "dossier_ready": true,
+        "blocked_by_missing_fields": []
       },
       "demand_summary_tr": "Minimum toplam uzunluğu 18,75 metre olan bir taşıyıcı ve römorkunun temini. Taşıyıcı eğitim aracı olarak uyarlanacak, bu uyarlama gerekli ekipmanların yanı sıra aracın serigrafi baskısını da içerecek. Sürüş aracı, karayolu sürüş eğitimine yönelik olacak ve yıllık kilometresi 20.000 kilometreyi geçmeyecek.. Miktar: 1. Kategori / ürün grubu: 34140000 34223000 34140000 34223000",
       "workflow": {
@@ -29828,17 +30154,16 @@
           "status": "not_started"
         },
         "opportunity_dossier": {
-          "status": "specification_review_pending",
+          "status": "ready_for_supplier_research",
           "completeness_percent": 100,
-          "missing_fields": [
-            "specification_evidence"
-          ]
+          "missing_fields": []
         },
         "specification_analysis": {
-          "status": "document_analysis_pending",
-          "supplier_sourcing_ready": false,
-          "technical_evidence_count": 0,
+          "status": "source_description_analyzed",
+          "supplier_sourcing_ready": true,
+          "technical_evidence_count": 1,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -29941,13 +30266,11 @@
           "https://ted.europa.eu/sv/notice/657203-2026/html"
         ],
         "source": "TED",
-        "missing_fields": [
-          "specification_evidence"
-        ],
+        "missing_fields": [],
         "completeness_percent": 100,
-        "supplier_sourcing_ready": false,
-        "specification_status": "document_analysis_pending",
-        "specification_sourcing_ready": false,
+        "supplier_sourcing_ready": true,
+        "specification_status": "source_description_analyzed",
+        "specification_sourcing_ready": true,
         "standards": [],
         "document_links": [
           {
@@ -30247,7 +30570,8 @@
             "kind": "source_page"
           }
         ],
-        "technical_evidence_count": 0,
+        "document_parsed": false,
+        "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "Fransa – Ağır hizmet motorlu araçlar – Bac Pro CRM'de eğitim için taşıyıcı ve römork tipi okul araçlarının temini, CAP CRM uzun mesafe seçeneği",
@@ -30330,12 +30654,27 @@
         "https://ted.europa.eu/sv/notice/657203-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657203-2026/xml",
-      "specification_analysis": {
-        "status": "document_analysis_pending",
+      "document_extraction": {
+        "status": "no_supported_document",
         "source_backed_only": true,
-        "supplier_sourcing_ready": false,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
+      "specification_analysis": {
+        "status": "source_description_analyzed",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": true,
         "structured_specification_present": false,
-        "technical_evidence": [],
+        "document_text_present": false,
+        "document_parsed": false,
+        "technical_evidence": [
+          {
+            "field": "source_text_candidate",
+            "text": "Minimum toplam uzunluğu 18,75 metre olan bir taşıyıcı ve römorkunun temini."
+          }
+        ],
         "quantity_evidence": [
           {
             "field": "quantity-lot",
@@ -30930,6 +31269,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -31335,6 +31675,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -31417,11 +31758,21 @@
         "https://ted.europa.eu/sv/notice/657208-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657208-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -32024,6 +32375,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -32437,6 +32789,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -32519,11 +32872,21 @@
         "https://ted.europa.eu/sv/notice/657210-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657210-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -33111,6 +33474,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -33520,6 +33884,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -33602,11 +33967,21 @@
         "https://ted.europa.eu/sv/notice/657226-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657226-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -34197,6 +34572,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -34606,6 +34982,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -34688,11 +35065,21 @@
         "https://ted.europa.eu/sv/notice/657242-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657242-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -35280,6 +35667,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -35684,6 +36072,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -35767,11 +36156,21 @@
         "https://ted.europa.eu/sv/notice/657247-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657247-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -36367,6 +36766,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -36772,6 +37172,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -36854,11 +37255,21 @@
         "https://ted.europa.eu/sv/notice/657250-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657250-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -37448,6 +37859,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -37852,6 +38264,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -37935,11 +38348,21 @@
         "https://ted.europa.eu/sv/notice/657257-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657257-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -38537,6 +38960,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -38942,6 +39366,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -39024,11 +39449,21 @@
         "https://ted.europa.eu/sv/notice/657265-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657265-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -39627,6 +40062,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -40032,6 +40468,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -40114,11 +40551,21 @@
         "https://ted.europa.eu/sv/notice/657266-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657266-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -40713,6 +41160,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -41118,6 +41566,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -41200,11 +41649,21 @@
         "https://ted.europa.eu/sv/notice/657268-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657268-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -41838,6 +42297,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -42247,6 +42707,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -42329,11 +42790,21 @@
         "https://ted.europa.eu/sv/notice/657295-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657295-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -42984,6 +43455,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -43389,6 +43861,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -43471,11 +43944,21 @@
         "https://ted.europa.eu/sv/notice/657298-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657298-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -44062,6 +44545,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -44467,6 +44951,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -44549,11 +45034,21 @@
         "https://ted.europa.eu/sv/notice/657311-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657311-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -45166,6 +45661,7 @@
           "supplier_sourcing_ready": true,
           "technical_evidence_count": 6,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -45578,6 +46074,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 6,
         "eligibility_evidence_count": 0
       },
@@ -45660,11 +46157,21 @@
         "https://ted.europa.eu/sv/notice/657315-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657315-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_analyzed",
         "source_backed_only": true,
         "supplier_sourcing_ready": true,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -46444,6 +46951,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -46849,6 +47357,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -46931,11 +47440,21 @@
         "https://ted.europa.eu/sv/notice/657316-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657316-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -47522,6 +48041,7 @@
           "supplier_sourcing_ready": true,
           "technical_evidence_count": 2,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -47930,6 +48450,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 2,
         "eligibility_evidence_count": 0
       },
@@ -48012,11 +48533,21 @@
         "https://ted.europa.eu/sv/notice/657322-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657322-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_analyzed",
         "source_backed_only": true,
         "supplier_sourcing_ready": true,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -48617,6 +49148,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -49023,6 +49555,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -49105,11 +49638,21 @@
         "https://ted.europa.eu/sv/notice/657070-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657070-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -49695,6 +50238,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -50105,6 +50649,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -50187,11 +50732,21 @@
         "https://ted.europa.eu/sv/notice/657079-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657079-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -50781,6 +51336,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -51195,6 +51751,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -51277,11 +51834,21 @@
         "https://ted.europa.eu/sv/notice/657083-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657083-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -51868,6 +52435,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -52278,6 +52846,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -52360,11 +52929,21 @@
         "https://ted.europa.eu/sv/notice/657085-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657085-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -52955,6 +53534,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -53361,6 +53941,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -53443,11 +54024,21 @@
         "https://ted.europa.eu/sv/notice/657088-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657088-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -54032,6 +54623,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -54438,6 +55030,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -54520,11 +55113,21 @@
         "https://ted.europa.eu/sv/notice/657089-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657089-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -55110,6 +55713,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -55516,6 +56120,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -55598,11 +56203,21 @@
         "https://ted.europa.eu/sv/notice/657092-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657092-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -56188,6 +56803,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -56594,6 +57210,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -56676,11 +57293,21 @@
         "https://ted.europa.eu/sv/notice/657103-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657103-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -57271,6 +57898,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -57677,6 +58305,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -57759,11 +58388,21 @@
         "https://ted.europa.eu/sv/notice/657112-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657112-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -58347,6 +58986,7 @@
           "supplier_sourcing_ready": true,
           "technical_evidence_count": 2,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -58754,6 +59394,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 2,
         "eligibility_evidence_count": 0
       },
@@ -58836,11 +59477,21 @@
         "https://ted.europa.eu/sv/notice/657113-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657113-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_analyzed",
         "source_backed_only": true,
         "supplier_sourcing_ready": true,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -59440,6 +60091,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -59846,6 +60498,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -59928,11 +60581,21 @@
         "https://ted.europa.eu/sv/notice/657118-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657118-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -60524,6 +61187,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -60946,6 +61610,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -61028,11 +61693,21 @@
         "https://ted.europa.eu/sv/notice/657121-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657121-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -61626,6 +62301,7 @@
           "supplier_sourcing_ready": true,
           "technical_evidence_count": 1,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -62051,6 +62727,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
@@ -62133,11 +62810,21 @@
         "https://ted.europa.eu/sv/notice/657128-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657128-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_analyzed",
         "source_backed_only": true,
         "supplier_sourcing_ready": true,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -62732,6 +63419,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -63138,6 +63826,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -63220,11 +63909,21 @@
         "https://ted.europa.eu/sv/notice/657131-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657131-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -63816,6 +64515,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -64222,6 +64922,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -64304,11 +65005,21 @@
         "https://ted.europa.eu/sv/notice/657136-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657136-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -64929,6 +65640,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -65355,6 +66067,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -65437,11 +66150,21 @@
         "https://ted.europa.eu/sv/notice/657138-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657138-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -65956,7 +66679,7 @@
       "pipeline_stage": "SUPPLIER_RESEARCH",
       "deadline_known": false,
       "supplier_research": {
-        "status": "specification_review_pending",
+        "status": "source_search_ready",
         "product_query": "Romanya – Otomatik ücret toplama – “BRAŞOV BÜYÜKŞEHİR BÖLGESİNDE VERGİLENDİRME VE ULAŞIM FAALİYETLERİNİN YÖNETİMİ İÇİN ENTEGRE BİLGİ SİSTEMİ” projesinin uygulanmasına yönelik tamamlayıcı ürün ve hizmetlerin sağlanması",
         "country_focus": "Türkiye",
         "sources": [
@@ -65979,11 +66702,10 @@
         "candidates": [],
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme",
-        "dossier_ready": false,
+        "dossier_ready": true,
         "blocked_by_missing_fields": [
           "quantity",
-          "deadline",
-          "specification_evidence"
+          "deadline"
         ]
       },
       "demand_summary_tr": "c.1. Lot 1 CPV kodları: - 30123100-8 Bilet doğrulama makineleri (Rev.2); - 30213300-8 Masaüstü bilgisayar (Rev.2) - 32570000-9 İletişim ekipmanı (Rev.2) - 48820000-2 Sunucular (Rev.2) Bu partinin spesifik hedefleri şunları içerir: • Gelecekteki sistemin tüm merkezi yazılım bileşenlerinin kurulumuna olanak sağlayacak olan RATBv veri merkezi için ekipman altyapısının temini ve devreye alınması • RATBv operatörleri için iş istasyonlarının temini ve devreye alınması • Kablolama 165 araç için çalışmalar • 165 araç için araç içi bilgisayar temini ve montajı • 95 araç GPS+GSM anteni temini ve montajı • 240 adet validatör temini ve 237 validatör montajı • 100 adet araç içi switch temini ve montajı • Metropol güzergahlarında 82 adet istasyona validatörlerin temini ve montajı ile bunların operasyonel hale getirilmesi için gerekli tüm elektrik ve kablolama işleri yapılmaktadır. Bu grubun spesifik hedefleri arasında şunlar yer almaktadır: • Entegre metropol ulaşım yönetim sistemi içindeki diğer uygulamalar ve ekipmanlarla API iletişim modu da dahil olmak üzere, metropol rotaları için ulaşım başlıklarının yönetimi (tanım, satış, kontrol) için merkezi bir yazılım platformunun sağlanması ve devreye alınması • Otomatik ücretlendirme sisteminin kullanıcı hesabı yönetimi ve ulaşım biletlerinin satın alınması için müşteriler için bir web uygulaması portalının sağlanması ve yapılandırılması • Otomatik ücretlendirme sisteminin kullanıcı hesabı yönetimi ve ulaşım biletlerinin satın alınması için ulaşım hizmetleri müşterilerinin mobil cihazları için bir yazılım uygulamasının sağlanması ve yapılandırılması • RATBv'nin satış anlaşmaları yaptığı üçüncü taraf şirketler tarafından ulaşım biletlerinin satışı için çok işlevli mobil cihazların sağlanması ve yapılandırılması, bu cihazlar için bir satış yazılımı uygulaması da dahil olmak üzere • Kontrol faaliyetleri için çok işlevli mobil cihazların ve çok işlevli cihazlar için bir yazılım uygulamasının sağlanması ve yapılandırılması • Taşıma filosunun ve gemideki ve istasyonlardaki bilgi panellerinin yönetimi için bir yazılım uygulamasının sağlanması ve yapılandırılması • Entegre büyükşehir ulaşım yönetim sistemi içindeki ekipman altyapısı kusurlarının yönetimi için bir yazılım uygulamasının sağlanması ve yapılandırılması • Biletleme alt sistemlerine ve sırasıyla filo yönetimi ve bilgi panellerine ilişkin verilere erişim için bazı API tipi arayüzlerin geliştirilmesi/yapılandırılması ve yapılandırılması. • Güzergahı ve yönü tanımlamak için üç yerleşik (yan) LED bilgi panelinden oluşan 70 setlik bir dizi tedarik: ön, yan ve arka panel. Teklif sahipleri, sözleşmenin, tüm partiler için gerekli tüm donanım bileşenlerini, standart sistem yazılımını ve spesifikasyondaki minimum gerekliliklere uyacak ve her bir partinin spesifikasyonlarına göre proje hedeflerinin tam olarak gerçekleştirilmesine olanak sağlayacak özel uygulama yazılımını içerecek entegre bir BT sisteminin teklifini gerektirdiği gerçeğini dikkate alacaklardır. Ayrıca, her partide tedarik edilen tüm bileşenlerin üniter bir sistem içerisinde entegrasyonunun zorunlu gerekliliği de dikkate alınacaktır. Sözleşme makamı, sözleşmenin imzalandığı tarihten itibaren en fazla 6 ay içinde işlevleri yapılandırılıp uygulamaya konulabilecek mevcut uygulamalar ve özel uygulama yazılım platformlarının teklifini talep etmektedir. Bu nedenle, lisanslama yoluyla satın alınabilecek mevcut yazılım sistemlerinin sunulması ve uygulama çalışmasının (hizmetlerinin), temel yazılım ürünleri veya işlevlerinin geliştirilmesine değil, uygulamanın yapılandırılmasına ve mevcut sistemlerle entegrasyonuna odaklanılması talep edilmektedir. Bir veya daha fazla uygulamanın sıfırdan geliştirilmesini öneren ve önerilen yazılım ürünlerini açıkça sunmayan teklifler kabul edilmeyecektir; bu bir tedarik sözleşmesi olup, özel yazılım geliştirme hizmetlerinden biri değildir. c.3. Lot 3 CPV kodları: 48813200-2 Gerçek zamanlı yolcu bilgi sistemi (Rev.2) Bu partinin özel hedefleri şunları içerir: • Temelli metal montaj yapısının gerçekleştirilmesi de dahil olmak üzere istasyonlarda 42 adet bilgi panosunun tedariki ve kurulumu • İstasyonlarda bir takım 4 adet bilet satış makinesinin tedariki ve kurulumu • Araç salonunda 158 adet panolu yolcu bilgi panosunun tedariki ve kurulumu c.4. Lot 4 CPV Kodları: 32570000-9 İletişim ekipmanı (Rev.2) 48813200-2 Gerçek zamanlı yolcu bilgi sistemi (Rev.2) Bu partinin özel hedefleri arasında şunlar yer almaktadır: • 201 araç için araç bilgisayarlarının temini ve kurulumu • Güzergah tanımlama ve yön için 88 set üç araç içi (yan) LED bilgi panelinin tedariki: ön, yan ve arka panel • Ekipman ve donanım temini 9 RATBv satış noktası sayısı. Kategori / ürün grubu: 30144400 30123100 48820000 30192170 34152000 30213300 32570000 48820000 48813200 48813200",
@@ -66029,19 +66751,19 @@
           "status": "not_started"
         },
         "opportunity_dossier": {
-          "status": "specification_review_pending",
+          "status": "ready_for_supplier_research",
           "completeness_percent": 67,
           "missing_fields": [
             "quantity",
-            "deadline",
-            "specification_evidence"
+            "deadline"
           ]
         },
         "specification_analysis": {
-          "status": "document_analysis_pending",
-          "supplier_sourcing_ready": false,
-          "technical_evidence_count": 0,
+          "status": "source_description_analyzed",
+          "supplier_sourcing_ready": true,
+          "technical_evidence_count": 1,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -66170,13 +66892,12 @@
         "source": "TED",
         "missing_fields": [
           "quantity",
-          "deadline",
-          "specification_evidence"
+          "deadline"
         ],
         "completeness_percent": 67,
-        "supplier_sourcing_ready": false,
-        "specification_status": "document_analysis_pending",
-        "specification_sourcing_ready": false,
+        "supplier_sourcing_ready": true,
+        "specification_status": "source_description_analyzed",
+        "specification_sourcing_ready": true,
         "standards": [],
         "document_links": [
           {
@@ -66476,7 +67197,8 @@
             "kind": "source_page"
           }
         ],
-        "technical_evidence_count": 0,
+        "document_parsed": false,
+        "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "Romanya – Otomatik ücret toplama – “BRAŞOV BÜYÜKŞEHİR BÖLGESİNDE VERGİLENDİRME VE ULAŞIM FAALİYETLERİNİN YÖNETİMİ İÇİN ENTEGRE BİLGİ SİSTEMİ” projesinin uygulanmasına yönelik tamamlayıcı ürün ve hizmetlerin sağlanması",
@@ -66558,12 +67280,27 @@
         "https://ted.europa.eu/sv/notice/657141-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657141-2026/xml",
-      "specification_analysis": {
-        "status": "document_analysis_pending",
+      "document_extraction": {
+        "status": "no_supported_document",
         "source_backed_only": true,
-        "supplier_sourcing_ready": false,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
+      "specification_analysis": {
+        "status": "source_description_analyzed",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": true,
         "structured_specification_present": false,
-        "technical_evidence": [],
+        "document_text_present": false,
+        "document_parsed": false,
+        "technical_evidence": [
+          {
+            "field": "source_text_candidate",
+            "text": "Teklif sahipleri, sözleşmenin, tüm partiler için gerekli tüm donanım bileşenlerini, standart sistem yazılımını ve spesifikasyondaki minimum gerekliliklere uyacak ve her bir partinin spesifikasyonlarına göre proje hedeflerinin tam olarak gerçekleştirilmesine olanak sağlayacak özel uygulama yazılımını içerecek entegre bir BT sisteminin teklifini gerektirdiği gerçeğini dikkate alacaklardır."
+          }
+        ],
         "quantity_evidence": [
           {
             "field": "source_text_candidate",
@@ -67163,6 +67900,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -67569,6 +68307,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -67651,11 +68390,21 @@
         "https://ted.europa.eu/sv/notice/657149-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657149-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -68243,6 +68992,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -68653,6 +69403,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -68735,11 +69486,21 @@
         "https://ted.europa.eu/sv/notice/657152-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657152-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -69325,6 +70086,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -69731,6 +70493,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -69813,11 +70576,21 @@
         "https://ted.europa.eu/sv/notice/657154-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657154-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -70406,6 +71179,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -70812,6 +71586,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -70894,11 +71669,21 @@
         "https://ted.europa.eu/sv/notice/657158-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657158-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -71484,6 +72269,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -71890,6 +72676,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -71972,11 +72759,21 @@
         "https://ted.europa.eu/sv/notice/657160-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657160-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -72563,6 +73360,7 @@
           "supplier_sourcing_ready": true,
           "technical_evidence_count": 1,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -72972,6 +73770,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
@@ -73054,11 +73853,21 @@
         "https://ted.europa.eu/sv/notice/657162-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657162-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_analyzed",
         "source_backed_only": true,
         "supplier_sourcing_ready": true,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -73649,6 +74458,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -74055,6 +74865,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -74137,11 +74948,21 @@
         "https://ted.europa.eu/sv/notice/657164-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657164-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -74815,6 +75636,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -75269,6 +76091,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -75351,11 +76174,21 @@
         "https://ted.europa.eu/sv/notice/657169-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657169-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -75943,6 +76776,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -76353,6 +77187,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -76435,11 +77270,21 @@
         "https://ted.europa.eu/sv/notice/657174-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657174-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -77025,6 +77870,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -77431,6 +78277,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -77513,11 +78360,21 @@
         "https://ted.europa.eu/sv/notice/657177-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657177-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -78105,6 +78962,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -78515,6 +79373,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -78597,11 +79456,21 @@
         "https://ted.europa.eu/sv/notice/657179-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657179-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -79192,6 +80061,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -79598,6 +80468,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -79680,11 +80551,21 @@
         "https://ted.europa.eu/sv/notice/657183-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657183-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -80270,6 +81151,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -80676,6 +81558,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -80758,11 +81641,21 @@
         "https://ted.europa.eu/sv/notice/657185-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657185-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -81352,6 +82245,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -81758,6 +82652,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -81840,11 +82735,21 @@
         "https://ted.europa.eu/sv/notice/657190-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657190-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -82345,7 +83250,7 @@
       "pipeline_stage": "SUPPLIER_RESEARCH",
       "deadline_known": false,
       "supplier_research": {
-        "status": "specification_review_pending",
+        "status": "source_search_ready",
         "product_query": "Romanya – Modüler ve portatif binalar – Spesifikasyonlara göre yararlanıcının yerinde kurulumu ve devreye alınması da dahil olmak üzere birden fazla varış noktasına sahip konteyner tipi metal yapıların satın alınması.",
         "country_focus": "Türkiye",
         "sources": [
@@ -82368,11 +83273,10 @@
         "candidates": [],
         "verified_count": 0,
         "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme",
-        "dossier_ready": false,
+        "dossier_ready": true,
         "blocked_by_missing_fields": [
           "quantity",
-          "deadline",
-          "specification_evidence"
+          "deadline"
         ]
       },
       "demand_summary_tr": "Çok amaçlı konteyner tipi metal yapıların, şartnamelere uygun olarak faydalanıcının yerinde kurulumu ve devreye alınması dahil olmak üzere temini. - sonraki bir sözleşmenin minimum miktarı - 1 konteyner - sonraki bir sözleşmenin maksimum miktarı - 350 konteyner - 2022-2027 dönemi için - 5.000 konteyner. Kategori / ürün grubu: 44211100 44211100",
@@ -82418,19 +83322,19 @@
           "status": "not_started"
         },
         "opportunity_dossier": {
-          "status": "specification_review_pending",
+          "status": "ready_for_supplier_research",
           "completeness_percent": 67,
           "missing_fields": [
             "quantity",
-            "deadline",
-            "specification_evidence"
+            "deadline"
           ]
         },
         "specification_analysis": {
-          "status": "document_analysis_pending",
-          "supplier_sourcing_ready": false,
-          "technical_evidence_count": 0,
+          "status": "source_description_analyzed",
+          "supplier_sourcing_ready": true,
+          "technical_evidence_count": 1,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -82531,13 +83435,12 @@
         "source": "TED",
         "missing_fields": [
           "quantity",
-          "deadline",
-          "specification_evidence"
+          "deadline"
         ],
         "completeness_percent": 67,
-        "supplier_sourcing_ready": false,
-        "specification_status": "document_analysis_pending",
-        "specification_sourcing_ready": false,
+        "supplier_sourcing_ready": true,
+        "specification_status": "source_description_analyzed",
+        "specification_sourcing_ready": true,
         "standards": [],
         "document_links": [
           {
@@ -82837,7 +83740,8 @@
             "kind": "source_page"
           }
         ],
-        "technical_evidence_count": 0,
+        "document_parsed": false,
+        "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "Romanya – Modüler ve portatif binalar – Spesifikasyonlara göre yararlanıcının yerinde kurulumu ve devreye alınması da dahil olmak üzere birden fazla varış noktasına sahip konteyner tipi metal yapıların satın alınması.",
@@ -82919,12 +83823,27 @@
         "https://ted.europa.eu/sv/notice/657196-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657196-2026/xml",
-      "specification_analysis": {
-        "status": "document_analysis_pending",
+      "document_extraction": {
+        "status": "no_supported_document",
         "source_backed_only": true,
-        "supplier_sourcing_ready": false,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
+      "specification_analysis": {
+        "status": "source_description_analyzed",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": true,
         "structured_specification_present": false,
-        "technical_evidence": [],
+        "document_text_present": false,
+        "document_parsed": false,
+        "technical_evidence": [
+          {
+            "field": "source_text_candidate",
+            "text": "- sonraki bir sözleşmenin minimum miktarı - 1 konteyner - sonraki bir sözleşmenin maksimum miktarı - 350 konteyner - 2022-2027 dönemi için - 5.000 konteyner"
+          }
+        ],
         "quantity_evidence": [
           {
             "field": "source_text_candidate",
@@ -83521,6 +84440,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -83943,6 +84863,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -84025,11 +84946,21 @@
         "https://ted.europa.eu/sv/notice/657199-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657199-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -84623,6 +85554,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -85029,6 +85961,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -85111,11 +86044,21 @@
         "https://ted.europa.eu/sv/notice/657200-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657200-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -85720,6 +86663,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -86138,6 +87082,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -86220,11 +87165,21 @@
         "https://ted.europa.eu/sv/notice/657206-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657206-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -86811,6 +87766,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -87217,6 +88173,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -87299,11 +88256,21 @@
         "https://ted.europa.eu/sv/notice/657214-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657214-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -87890,6 +88857,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -88296,6 +89264,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -88378,11 +89347,21 @@
         "https://ted.europa.eu/sv/notice/657217-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657217-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -88969,6 +89948,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -89379,6 +90359,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -89461,11 +90442,21 @@
         "https://ted.europa.eu/sv/notice/657227-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657227-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -90055,6 +91046,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -90477,6 +91469,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -90559,11 +91552,21 @@
         "https://ted.europa.eu/sv/notice/657228-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657228-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -91158,6 +92161,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -91564,6 +92568,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -91646,11 +92651,21 @@
         "https://ted.europa.eu/sv/notice/657232-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657232-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -92257,6 +93272,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -92663,6 +93679,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -92745,11 +93762,21 @@
         "https://ted.europa.eu/sv/notice/657236-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657236-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -93330,6 +94357,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -93736,6 +94764,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
@@ -93818,11 +94847,21 @@
         "https://ted.europa.eu/sv/notice/657239-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657239-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -94413,6 +95452,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -94819,6 +95859,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -94901,11 +95942,21 @@
         "https://ted.europa.eu/sv/notice/657240-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657240-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -95515,6 +96566,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -95921,6 +96973,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -96003,11 +97056,21 @@
         "https://ted.europa.eu/sv/notice/657243-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657243-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -96593,6 +97656,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -96999,6 +98063,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -97081,11 +98146,21 @@
         "https://ted.europa.eu/sv/notice/657246-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657246-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -97701,6 +98776,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -98107,6 +99183,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 2
       },
@@ -98189,11 +99266,21 @@
         "https://ted.europa.eu/sv/notice/657249-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657249-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -98790,6 +99877,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -99200,6 +100288,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -99282,11 +100371,21 @@
         "https://ted.europa.eu/sv/notice/657260-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657260-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -99878,6 +100977,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -100304,6 +101404,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -100386,11 +101487,21 @@
         "https://ted.europa.eu/sv/notice/657264-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657264-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -100980,6 +102091,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -101394,6 +102506,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -101476,11 +102589,21 @@
         "https://ted.europa.eu/sv/notice/657267-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657267-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -102084,6 +103207,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -102490,6 +103614,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -102572,11 +103697,21 @@
         "https://ted.europa.eu/sv/notice/657279-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657279-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -103339,6 +104474,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -103745,6 +104881,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -103827,11 +104964,21 @@
         "https://ted.europa.eu/sv/notice/657283-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657283-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -104454,6 +105601,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -104864,6 +106012,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -104946,11 +106095,21 @@
         "https://ted.europa.eu/sv/notice/657284-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657284-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -105545,6 +106704,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -105955,6 +107115,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -106037,11 +107198,21 @@
         "https://ted.europa.eu/sv/notice/657288-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657288-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -106627,6 +107798,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -107033,6 +108205,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -107115,11 +108288,21 @@
         "https://ted.europa.eu/sv/notice/657291-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657291-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -107705,6 +108888,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -108111,6 +109295,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -108193,11 +109378,21 @@
         "https://ted.europa.eu/sv/notice/657293-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657293-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -108792,6 +109987,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -109198,6 +110394,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -109280,11 +110477,21 @@
         "https://ted.europa.eu/sv/notice/657305-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657305-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -109873,6 +111080,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -110279,6 +111487,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -110361,11 +111570,21 @@
         "https://ted.europa.eu/sv/notice/657306-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657306-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -110957,6 +112176,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -111363,6 +112583,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -111445,11 +112666,21 @@
         "https://ted.europa.eu/sv/notice/657318-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657318-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -112080,6 +113311,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 74,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -112486,6 +113718,7 @@
             "kind": "source_page"
           }
         ],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
@@ -112568,11 +113801,21 @@
         "https://ted.europa.eu/sv/notice/657321-2026/html"
       ],
       "document_url": "https://ted.europa.eu/en/notice/657321-2026/xml",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [
           {
@@ -113065,6 +114308,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -113095,15 +114339,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "Balıkesir İtfaiye Afet Yönetim Araçları Alımı Alt Projesi",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [],
@@ -113281,6 +114536,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -113311,15 +114567,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "USEEP kapsamındaki 72 Yeni Ortaokul için çeşitli sınıf mobilyaları (3 kişilik sıralar, Öğretmen sandalyeleri ve Masaları), BİT ve Bilim Laboratuvarları (masalar, sandalyeler ve raflar), Çok Amaçlı Salon mobilyaları ve Yönetim Bloklarının Temini ve Teslimatı",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -113506,6 +114773,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -113536,15 +114804,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "BdREN Yükseltmesi için Ekipman Temini (CoU, SBAU, JnU ve BAU için Kampüs Ağ Ekipmanlarının Temini, Kurulumu, Test Edilmesi ve Devreye Alınması)",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -113727,6 +115006,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -113757,15 +115037,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "BdREN Yükseltmesi Ekipman Temini (KU, KUET, BMU, CVASU ve JUST Kampüs Ağ Ekipmanlarının Temini, Kurulumu, Testi ve Devreye Alınması)",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -113951,6 +115242,7 @@
           "supplier_sourcing_ready": true,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -113980,15 +115272,26 @@
         "specification_sourcing_ready": true,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "Faalaba, Batı Kırsal, Bonthe ve Tonkolili Bölgelerindeki jant telleri ve hastaneler için SOR'da belirtildiği şekilde stetoskoplar, termometreler, Kan basıncı cihazları, yetişkin tartıları, Hastane yatakları, Yastıklar ve diğerleri gibi tıbbi Ekipmanların tedariki",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_analyzed",
         "source_backed_only": true,
         "supplier_sourcing_ready": true,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -114180,6 +115483,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -114210,15 +115514,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "Dolusavak, Dolgu Barajı ve Baraj Enstrümantasyon Ekipmanlarının Rehabilitasyonu İşleri",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -114414,6 +115729,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -114444,15 +115760,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "NPCU, RPCU ve Weara için Woreda bilgi merkezi ICT ekipmanı, tablet ve dizüstü bilgisayarlarının tedariki",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -114639,6 +115966,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -114669,15 +115997,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "Ormancılık Faaliyetlerine Yönelik Kargo Kamyonu (Düz Yataklı) Temini",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [],
@@ -114863,6 +116202,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -114893,15 +116233,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "Çok Katlı Kantar Temini ve Teslimatı",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -115097,6 +116448,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -115127,15 +116479,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "MHCPP Kamp Rehabilitasyonu Alım Paketi (2); Tedarik (Elektrikli Ev Aletleri, Mobilya, Mutfak Gereçleri, Spor Salonu Ekipmanları ve İlgili Ürünler)",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -115326,6 +116689,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -115356,15 +116720,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "Benapole Kara Limanı-İnşaat Otoparkı, Hangarlar ve Modem Kimyasal Tabanlarının diğer yardımcı tesislerle genişletilmesi",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [],
@@ -115554,6 +116929,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -115584,15 +116960,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "Veteriner Mobil Klinik Araçları için Jubaland Eyalet Alımı",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [],
@@ -115770,6 +117157,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -115800,15 +117188,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "Uluslararası Malzeme Mühendisi",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -115987,6 +117386,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -116017,15 +117417,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "Katı Atık Ekipman Temini",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -116199,6 +117610,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -116229,15 +117641,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "PUB Ofisine BİT ve elektronik ekipman temini",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -116410,6 +117833,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -116440,15 +117864,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "Chinameca jeotermal sahasında 8'e kadar jeotermal kuyunun sondajı için sondaj hizmetleri ve malzeme, aksesuar, boru ve tamamlayıcı hizmetler tedariği",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -116621,6 +118056,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -116651,15 +118087,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "Toliara havaalanında güvenlik malzemeleri ve ekipmanlarının temini: çizici makinesi (pist işaretlemeleri)",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [],
@@ -116828,6 +118275,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -116858,15 +118306,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimi (Çerçeve Sözleşmesi)",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -116894,9 +118353,9 @@
       "project_name": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
       "bid_description": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
       "title_original": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
-      "title_tr": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
+      "title_tr": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
       "detail_original": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
-      "detail_tr": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
+      "detail_tr": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
       "buyer-country": "",
       "market_region": "Diğer Pazarlar",
       "buyer-name": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
@@ -116957,7 +118416,7 @@
       "deadline_known": false,
       "supplier_research": {
         "status": "specification_review_pending",
-        "product_query": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
+        "product_query": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
         "country_focus": "Türkiye",
         "sources": [
           {
@@ -116987,7 +118446,7 @@
           "specification_evidence"
         ]
       },
-      "demand_summary_tr": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
+      "demand_summary_tr": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -117044,14 +118503,15 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
       "dossier": {
         "buyer_name": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
         "buyer_country": null,
-        "product_name": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
-        "demand_description": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
+        "product_name": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
+        "demand_description": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
         "quantity": null,
         "budget_value": null,
         "budget_currency": null,
@@ -117074,15 +118534,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
-      "product_name": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı",
+      "product_name": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [
@@ -117092,7 +118563,7 @@
           },
           {
             "field": "source_text_candidate",
-            "text": "Kablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı"
+            "text": "Kablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı"
           }
         ],
         "eligibility_evidence": [],
@@ -117100,7 +118571,7 @@
         "standards": [],
         "documents": [],
         "attachment_requires_parsing": false,
-        "source_excerpt": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor\nKablo ve İletken ile 10mm2 Tek Damarlı Bakır İletken Temini ve Teslimatı"
+        "source_excerpt": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor\nKablo ve İletken ile 10mm2 tek damarlı bakır iletken Temini ve Teslimatı"
       }
     },
     {
@@ -117260,6 +118731,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -117290,15 +118762,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "Tıbbi atık taşıma araçlarının temini (MW)",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [],
@@ -117317,9 +118800,9 @@
       "project_name": "Lebanon Emergency Assistance Project",
       "bid_description": "Supply and Installation of Radio Therapy Machine (linear Accelerator) for the Ministry of Public Health (Rafik Hariri University Hospital (RHUH)",
       "title_original": "Supply and Installation of Radio Therapy Machine (linear Accelerator) for the Ministry of Public Health (Rafik Hariri University Hospital (RHUH)",
-      "title_tr": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+      "title_tr": "Halk Sağlığı Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
       "detail_original": "Supply and Installation of Radio Therapy Machine (linear Accelerator) for the Ministry of Public Health (Rafik Hariri University Hospital (RHUH)",
-      "detail_tr": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+      "detail_tr": "Halk Sağlığı Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
       "buyer-country": "",
       "market_region": "Diğer Pazarlar",
       "buyer-name": "Lebanon Emergency Assistance Project",
@@ -117380,7 +118863,7 @@
       "deadline_known": false,
       "supplier_research": {
         "status": "specification_review_pending",
-        "product_query": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+        "product_query": "Halk Sağlığı Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
         "country_focus": "Türkiye",
         "sources": [
           {
@@ -117410,7 +118893,7 @@
           "specification_evidence"
         ]
       },
-      "demand_summary_tr": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+      "demand_summary_tr": "Halk Sağlığı Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
       "workflow": {
         "buyer": {
           "status": "source_identified_due_diligence_pending",
@@ -117467,14 +118950,15 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
       "dossier": {
         "buyer_name": "Lebanon Emergency Assistance Project",
         "buyer_country": null,
-        "product_name": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
-        "demand_description": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+        "product_name": "Halk Sağlığı Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+        "demand_description": "Halk Sağlığı Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
         "quantity": null,
         "budget_value": null,
         "budget_currency": null,
@@ -117497,15 +118981,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
-      "product_name": "Sağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+      "product_name": "Halk Sağlığı Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [],
@@ -117514,7 +119009,7 @@
         "standards": [],
         "documents": [],
         "attachment_requires_parsing": false,
-        "source_excerpt": "Supply and Installation of Radio Therapy Machine (linear Accelerator) for the Ministry of Public Health (Rafik Hariri University Hospital (RHUH)\nSağlık Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH)) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı"
+        "source_excerpt": "Supply and Installation of Radio Therapy Machine (linear Accelerator) for the Ministry of Public Health (Rafik Hariri University Hospital (RHUH)\nHalk Sağlığı Bakanlığı (Refik Hariri Üniversite Hastanesi (RHUH) Radyo Terapi Makinesi (Lineer Hızlandırıcı) Temini ve Montajı"
       }
     },
     {
@@ -117671,6 +119166,7 @@
           "supplier_sourcing_ready": true,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -117700,15 +119196,26 @@
         "specification_sourcing_ready": true,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "Çeşitli navigasyon yardımcı ekipmanlarının temini, teslimatı, kurulumu ve kalibrasyonu: DME (Mesafe Ölçme Ekipmanı) ve NDB (Yönsüz İşaret)",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_analyzed",
         "source_backed_only": true,
         "supplier_sourcing_ready": true,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -117886,6 +119393,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 0,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -117916,15 +119424,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 0,
         "eligibility_evidence_count": 0
       },
       "product_name": "BPNS ürününün tedariki - Kullanıma Hazır Tedavi Edici Gıda (RUTF)",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [],
         "quantity_evidence": [],
         "delivery_evidence": [],
@@ -118092,6 +119611,7 @@
           "supplier_sourcing_ready": false,
           "technical_evidence_count": 1,
           "document_count": 0,
+          "document_parsed": false,
           "attachment_requires_parsing": false
         }
       },
@@ -118122,15 +119642,26 @@
         "specification_sourcing_ready": false,
         "standards": [],
         "document_links": [],
+        "document_parsed": false,
         "technical_evidence_count": 1,
         "eligibility_evidence_count": 0
       },
       "product_name": "8-9. Sınıflar İçin Derslik ve STEM Laboratuvarlarına Eğitim Malzemesi ve Ekipman Alımı",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
       "specification_analysis": {
         "status": "source_description_insufficient",
         "source_backed_only": true,
         "supplier_sourcing_ready": false,
         "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
         "technical_evidence": [
           {
             "field": "source_text_candidate",
@@ -118277,13 +119808,20 @@
     "mode": "source_only_no_hallucination",
     "enriched_count": 127
   },
+  "document_extraction": {
+    "version": 1,
+    "mode": "public_source_documents_only",
+    "attempted_opportunities": 0,
+    "parsed_opportunities": 0
+  },
   "specification_analysis": {
-    "version": 2,
-    "mode": "source_evidence_only",
+    "version": 3,
+    "mode": "source_evidence_plus_public_documents",
     "analyzed_count": 127,
-    "supplier_sourcing_ready": 9,
-    "document_analysis_pending": 96,
+    "supplier_sourcing_ready": 12,
+    "document_analysis_pending": 93,
     "insufficient_source_detail": 22,
-    "attachments_requiring_parser": 0
+    "attachments_requiring_parser": 0,
+    "parsed_document_opportunities": 0
   }
 }
