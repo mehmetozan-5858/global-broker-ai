@@ -8,6 +8,7 @@ from typing import Any
 
 
 NUMERIC_ONLY = re.compile(r"^[\d\s,;/.-]+$")
+SUPPORTED_SPEC_MODES = {"source_evidence_only", "source_evidence_plus_public_documents"}
 
 
 def is_readable_product(value: Any) -> bool:
@@ -25,7 +26,7 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
         raise AssertionError("source-only enrichment marker missing")
 
     specification_meta = payload.get("specification_analysis") or {}
-    if opportunities and specification_meta.get("mode") != "source_evidence_only":
+    if opportunities and specification_meta.get("mode") not in SUPPORTED_SPEC_MODES:
         raise AssertionError("source-backed specification analysis marker missing")
 
     dossier_count = 0
@@ -37,6 +38,7 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
     specification_count = 0
     specification_structured = 0
     specification_narrative_ready = 0
+    specification_document_ready = 0
     specification_document_pending = 0
     specification_insufficient = 0
     specification_detail_missing = 0
@@ -63,6 +65,8 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
                 specification_structured += 1
             elif status == "source_description_analyzed":
                 specification_narrative_ready += 1
+            elif status == "source_document_analyzed":
+                specification_document_ready += 1
             elif status == "document_analysis_pending":
                 specification_document_pending += 1
             elif status == "source_description_insufficient":
@@ -118,6 +122,7 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
         "specification_sourcing_ready": specification_sourcing_ready,
         "specification_structured": specification_structured,
         "specification_narrative_ready": specification_narrative_ready,
+        "specification_document_ready": specification_document_ready,
         "specification_document_pending": specification_document_pending,
         "specification_insufficient": specification_insufficient,
         "specification_detail_missing": specification_detail_missing,
