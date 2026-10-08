@@ -35,10 +35,13 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
     raw_numeric_supplier_query_count = 0
     china_queue_count = 0
     specification_count = 0
-    specification_source_fields = 0
+    specification_structured = 0
+    specification_narrative_ready = 0
     specification_document_pending = 0
+    specification_insufficient = 0
     specification_detail_missing = 0
     specification_attachment_pending = 0
+    specification_sourcing_ready = 0
 
     for item in opportunities:
         if not isinstance(item, dict):
@@ -56,14 +59,20 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
         if isinstance(spec, dict):
             specification_count += 1
             status = spec.get("status")
-            if status == "source_fields_analyzed":
-                specification_source_fields += 1
+            if status == "structured_specification_analyzed":
+                specification_structured += 1
+            elif status == "source_description_analyzed":
+                specification_narrative_ready += 1
             elif status == "document_analysis_pending":
                 specification_document_pending += 1
+            elif status == "source_description_insufficient":
+                specification_insufficient += 1
             elif status == "source_detail_missing":
                 specification_detail_missing += 1
             if spec.get("attachment_requires_parsing"):
                 specification_attachment_pending += 1
+            if spec.get("supplier_sourcing_ready"):
+                specification_sourcing_ready += 1
 
         supplier = item.get("supplier_research")
         if isinstance(supplier, dict):
@@ -97,8 +106,11 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
         "supplier_queries": supplier_query_count,
         "numeric_only_supplier_queries": raw_numeric_supplier_query_count,
         "specification_analyzed": specification_count,
-        "specification_source_fields": specification_source_fields,
+        "specification_sourcing_ready": specification_sourcing_ready,
+        "specification_structured": specification_structured,
+        "specification_narrative_ready": specification_narrative_ready,
         "specification_document_pending": specification_document_pending,
+        "specification_insufficient": specification_insufficient,
         "specification_detail_missing": specification_detail_missing,
         "specification_attachment_pending": specification_attachment_pending,
         "china_research_queue": china_queue_count,
