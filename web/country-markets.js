@@ -17,6 +17,7 @@ var aliases={
 function normalized(c){var v=String(c||"").trim();return aliases[v]||aliases[v.toUpperCase()]||v||"Bilinmiyor";}
 function resolvedCountry(o){
  var raw=country(o),c=normalized(raw);
+ if(c==="Bilinmiyor"||c==="Unknown"||c==="N/A"){var code=txt(pick(o,["country_code","project_ctry_code","buyer_country_code"])).trim();if(code&&aliases[code.toUpperCase()])return {name:aliases[code.toUpperCase()],inferred:false};}
  if(c!=="Bilinmiyor"&&c!=="Unknown"&&c!=="N/A")return {name:c,inferred:false};
  // Infer only from an explicit country in the procurement headline, not from
  // supplier mentions or project names buried elsewhere in the record.
