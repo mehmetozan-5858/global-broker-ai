@@ -789,7 +789,7 @@
             "url": "https://ted.europa.eu/en/notice/660355-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660355-2026/xml",
@@ -1950,7 +1950,7 @@
             "url": "https://ted.europa.eu/en/notice/660357-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660357-2026/xml",
@@ -3084,7 +3084,7 @@
             "url": "https://ted.europa.eu/en/notice/660362-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660362-2026/xml",
@@ -4239,7 +4239,7 @@
             "url": "https://ted.europa.eu/en/notice/660368-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660368-2026/xml",
@@ -5376,7 +5376,7 @@
             "url": "https://ted.europa.eu/en/notice/660380-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660380-2026/xml",
@@ -6507,7 +6507,7 @@
             "url": "https://ted.europa.eu/en/notice/660384-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660384-2026/xml",
@@ -7655,7 +7655,7 @@
             "url": "https://ted.europa.eu/en/notice/660386-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660386-2026/xml",
@@ -8815,7 +8815,7 @@
             "url": "https://ted.europa.eu/en/notice/660393-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660393-2026/xml",
@@ -10363,7 +10363,7 @@
             "url": "https://ted.europa.eu/en/notice/660400-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660400-2026/xml",
@@ -11494,7 +11494,7 @@
             "url": "https://ted.europa.eu/en/notice/660407-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660407-2026/xml",
@@ -12639,7 +12639,7 @@
             "url": "https://ted.europa.eu/en/notice/660433-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660433-2026/xml",
@@ -13775,7 +13775,7 @@
             "url": "https://ted.europa.eu/en/notice/660439-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660439-2026/xml",
@@ -14939,7 +14939,7 @@
             "url": "https://ted.europa.eu/en/notice/660442-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660442-2026/xml",
@@ -16105,7 +16105,7 @@
             "url": "https://ted.europa.eu/en/notice/660444-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660444-2026/xml",
@@ -17246,7 +17246,7 @@
             "url": "https://ted.europa.eu/en/notice/660447-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660447-2026/xml",
@@ -18385,7 +18385,7 @@
             "url": "https://ted.europa.eu/en/notice/660452-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660452-2026/xml",
@@ -19521,7 +19521,7 @@
             "url": "https://ted.europa.eu/en/notice/660454-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660454-2026/xml",
@@ -20666,7 +20666,7 @@
             "url": "https://ted.europa.eu/en/notice/660455-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660455-2026/xml",
@@ -21816,7 +21816,7 @@
             "url": "https://ted.europa.eu/en/notice/660461-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660461-2026/xml",
@@ -22947,7 +22947,7 @@
             "url": "https://ted.europa.eu/en/notice/660491-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660491-2026/xml",
@@ -24154,7 +24154,7 @@
             "url": "https://ted.europa.eu/en/notice/660494-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660494-2026/xml",
@@ -25305,7 +25305,7 @@
             "url": "https://ted.europa.eu/en/notice/660495-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660495-2026/xml",
@@ -26537,7 +26537,7 @@
             "url": "https://ted.europa.eu/en/notice/660518-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660518-2026/xml",
@@ -27668,7 +27668,7 @@
             "url": "https://ted.europa.eu/en/notice/660537-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660537-2026/xml",
@@ -28810,7 +28810,7 @@
             "url": "https://ted.europa.eu/en/notice/660538-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "HTTPError:HTTP Error 429: Too Many Requests"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660538-2026/xml",
@@ -29941,7 +29941,7 @@
             "url": "https://ted.europa.eu/en/notice/660550-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660550-2026/xml",
@@ -31080,7 +31080,7 @@
             "url": "https://ted.europa.eu/en/notice/660552-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660552-2026/xml",
@@ -32211,7 +32211,7 @@
             "url": "https://ted.europa.eu/en/notice/660554-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660554-2026/xml",
@@ -33347,7 +33347,7 @@
             "url": "https://ted.europa.eu/en/notice/660561-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660561-2026/xml",
@@ -34509,7 +34509,7 @@
             "url": "https://ted.europa.eu/en/notice/660565-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660565-2026/xml",
@@ -35658,7 +35658,7 @@
             "url": "https://ted.europa.eu/en/notice/660571-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660571-2026/xml",
@@ -36881,7 +36881,7 @@
             "url": "https://ted.europa.eu/en/notice/660576-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660576-2026/xml",
@@ -38157,7 +38157,7 @@
             "url": "https://ted.europa.eu/en/notice/660585-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660585-2026/xml",
@@ -39347,7 +39347,7 @@
             "url": "https://ted.europa.eu/en/notice/660588-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660588-2026/xml",
@@ -40499,7 +40499,7 @@
             "url": "https://ted.europa.eu/en/notice/660589-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660589-2026/xml",
@@ -41643,7 +41643,7 @@
             "url": "https://ted.europa.eu/en/notice/660595-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660595-2026/xml",
@@ -42792,7 +42792,7 @@
             "url": "https://ted.europa.eu/en/notice/660609-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660609-2026/xml",
@@ -43928,7 +43928,7 @@
             "url": "https://ted.europa.eu/en/notice/660349-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660349-2026/xml",
@@ -45064,7 +45064,7 @@
             "url": "https://ted.europa.eu/en/notice/660351-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660351-2026/xml",
@@ -46208,7 +46208,7 @@
             "url": "https://ted.europa.eu/en/notice/660352-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660352-2026/xml",
@@ -47500,7 +47500,7 @@
             "url": "https://ted.europa.eu/en/notice/660360-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660360-2026/xml",
@@ -48640,7 +48640,7 @@
             "url": "https://ted.europa.eu/en/notice/660363-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660363-2026/xml",
@@ -49779,7 +49779,7 @@
             "url": "https://ted.europa.eu/en/notice/660365-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660365-2026/xml",
@@ -50912,7 +50912,7 @@
             "url": "https://ted.europa.eu/en/notice/660370-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660370-2026/xml",
@@ -52068,7 +52068,7 @@
             "url": "https://ted.europa.eu/en/notice/660373-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660373-2026/xml",
@@ -53210,7 +53210,7 @@
             "url": "https://ted.europa.eu/en/notice/660377-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660377-2026/xml",
@@ -54386,7 +54386,7 @@
             "url": "https://ted.europa.eu/en/notice/660379-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660379-2026/xml",
@@ -55546,7 +55546,7 @@
             "url": "https://ted.europa.eu/en/notice/660385-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660385-2026/xml",
@@ -56704,7 +56704,7 @@
             "url": "https://ted.europa.eu/en/notice/660387-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660387-2026/xml",
@@ -57882,7 +57882,7 @@
             "url": "https://ted.europa.eu/en/notice/660388-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660388-2026/xml",
@@ -59040,7 +59040,7 @@
             "url": "https://ted.europa.eu/en/notice/660389-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660389-2026/xml",
@@ -60168,7 +60168,7 @@
             "url": "https://ted.europa.eu/en/notice/660390-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660390-2026/xml",
@@ -61313,7 +61313,7 @@
             "url": "https://ted.europa.eu/en/notice/660402-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660402-2026/xml",
@@ -62709,7 +62709,7 @@
             "url": "https://ted.europa.eu/en/notice/660413-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660413-2026/xml",
@@ -63897,7 +63897,7 @@
             "url": "https://ted.europa.eu/en/notice/660418-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660418-2026/xml",
@@ -65088,7 +65088,7 @@
             "url": "https://ted.europa.eu/en/notice/660419-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660419-2026/xml",
@@ -66225,7 +66225,7 @@
             "url": "https://ted.europa.eu/en/notice/660432-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660432-2026/xml",
@@ -67373,7 +67373,7 @@
             "url": "https://ted.europa.eu/en/notice/660448-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660448-2026/xml",
@@ -68514,7 +68514,7 @@
             "url": "https://ted.europa.eu/en/notice/660449-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660449-2026/xml",
@@ -69646,7 +69646,7 @@
             "url": "https://ted.europa.eu/en/notice/660456-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660456-2026/xml",
@@ -70778,7 +70778,7 @@
             "url": "https://ted.europa.eu/en/notice/660460-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660460-2026/xml",
@@ -71906,7 +71906,7 @@
             "url": "https://ted.europa.eu/en/notice/660465-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660465-2026/xml",
@@ -73042,7 +73042,7 @@
             "url": "https://ted.europa.eu/en/notice/660469-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660469-2026/xml",
@@ -74257,7 +74257,7 @@
             "url": "https://ted.europa.eu/en/notice/660478-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660478-2026/xml",
@@ -75399,7 +75399,7 @@
             "url": "https://ted.europa.eu/en/notice/660484-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660484-2026/xml",
@@ -76539,7 +76539,7 @@
             "url": "https://ted.europa.eu/en/notice/660487-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660487-2026/xml",
@@ -77680,7 +77680,7 @@
             "url": "https://ted.europa.eu/en/notice/660489-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660489-2026/xml",
@@ -78822,7 +78822,7 @@
             "url": "https://ted.europa.eu/en/notice/660490-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660490-2026/xml",
@@ -80061,7 +80061,7 @@
             "url": "https://ted.europa.eu/en/notice/660500-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660500-2026/xml",
@@ -81242,7 +81242,7 @@
             "url": "https://ted.europa.eu/en/notice/660503-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660503-2026/xml",
@@ -82525,7 +82525,7 @@
             "url": "https://ted.europa.eu/en/notice/660504-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660504-2026/xml",
@@ -83657,7 +83657,7 @@
             "url": "https://ted.europa.eu/en/notice/660513-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660513-2026/xml",
@@ -84788,7 +84788,7 @@
             "url": "https://ted.europa.eu/en/notice/660516-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660516-2026/xml",
@@ -85964,7 +85964,7 @@
             "url": "https://ted.europa.eu/en/notice/660517-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660517-2026/xml",
@@ -87100,7 +87100,7 @@
             "url": "https://ted.europa.eu/en/notice/660520-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660520-2026/xml",
@@ -88292,7 +88292,7 @@
             "url": "https://ted.europa.eu/en/notice/660529-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660529-2026/xml",
@@ -89436,7 +89436,7 @@
             "url": "https://ted.europa.eu/en/notice/660531-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660531-2026/xml",
@@ -90587,7 +90587,7 @@
             "url": "https://ted.europa.eu/en/notice/660533-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660533-2026/xml",
@@ -91744,7 +91744,7 @@
             "url": "https://ted.europa.eu/en/notice/660534-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660534-2026/xml",
@@ -92891,7 +92891,7 @@
             "url": "https://ted.europa.eu/en/notice/660544-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660544-2026/xml",
@@ -94694,7 +94694,7 @@
             "url": "https://ted.europa.eu/en/notice/660545-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660545-2026/xml",
@@ -96075,7 +96075,7 @@
             "url": "https://ted.europa.eu/en/notice/660548-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660548-2026/xml",
@@ -97239,7 +97239,7 @@
             "url": "https://ted.europa.eu/en/notice/660567-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/660567-2026/xml",
@@ -120500,6 +120500,426 @@
         ],
         "source_backed_only": true
       }
+    },
+    {
+      "id": "ggzy:03bd7efe2d022e4c",
+      "source": "National Public Resources Trading Platform (China)",
+      "source_type": "official_national_public_resources_platform",
+      "source_url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html",
+      "official_url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html",
+      "official_links": [
+        "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html"
+      ],
+      "title_original": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告",
+      "title_tr": "Çin resmî alım ilanı — 文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告",
+      "detail_original": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a'; var mypppSid = '00536c16973a74fe4afb9f252198a66f778a'; var myds = '513'; var myplatformCode = '12532500067137175R'; var myareaId = '530000'; var mybasepath = '/information'; var mycl = '02'; var myst = '0201';\n政府网站工作年度报表\n服务号\n// 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin'); var ewm = document.getElementById('ewm'); var timeoutId = null; if (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } // 显示二维码（使用 slideDown 效果） slideDown(ewm); }); // 鼠标移出微信图标 weixin.addEventListener('mouseleave', function() { // 延迟隐藏，给用户时间移动到二维码区域 timeoutId = setTimeout(function() { slideUp(ewm); }, 100); }); // 鼠标移入二维码区域 ewm.addEventListener('mouseenter', function() { // 清除隐藏定时器，保持显示 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } }); // 鼠标移出二维码区域 ewm.addEventListener('mouseleave', function() { slideUp(ewm); }); } }); // 模拟 jQuery 的 slideDown 效果 function slideDown(element) { element.style.overflow = 'hidden'; element.style.display = 'block'; element.style.height = '0'; element.style.opacity = '0'; var targetHeight = element.scrollHeight; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-out） var easePercent = 1 - Math.pow(1 - percent, 3); element.style.height = (targetHeight * easePercent) + 'px'; element.style.opacity = easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.height = 'auto'; element.style.opacity = '1'; } } requestAnimationFrame(animate); } // 模拟 jQuery 的 slideUp 效果 function slideUp(element) { element.style.overflow = 'hidden'; var startHeight = element.offsetHeight; element.style.height = startHeight + 'px'; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-in） var easePercent = Math.pow(percent, 3); element.style.height = (startHeight * (1 - easePercent)) + 'px'; element.style.opacity = 1 - easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.display = 'none'; element.style.height = ''; element.style.opacity = ''; element.style.overflow = ''; } } requestAnimationFrame(animate); }\n首页\n机构职能\n交易公开\n工程建设\n政府采购\n土地使用权\n矿业权\n国有产权\n碳排放权\n排污权\n药品采购\n二类疫苗\n林权\n其他\n交易诚信\n违法违规\n奖励信息\n数据服务\n交易统计\n平台导航\n政策法规\n政策法规文件\n政策法规解读\n服务中心\n培训交流\n微信订阅\n意见建议\n调查征集\n关于我们\n首页 > 交易公开 > 政府采购\n文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告\n采购项目编号：Z131026260070 信息来源： 廊坊市公共资源交易中心\n采购/资审公告\n中标公告\n采购合同\n更正事项\n文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告 2026-10-09\n暂无数据\n暂无数据\n暂无数据\nvar firstLastUrl = '/information/deal/html/b/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html';\n网站地图 |\n网站声明 |\n添加收藏 |\n联系我们\n主办：国家信息中心 指导单位： 国家发展和改革委员会\n网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号\n地址：北京西城区三里河路58号 邮政编码：100045\nfunction linkto_jiucuo(site_code) { //获取该站点需要纠错页面的url地址 var url = \"\"; if (parent !== window) { try { url = window.top.location.href; } catch (e) { url = window.top.document.referrer; } } if (url.length == 0) url = document.location.href; //跳转至纠错系统填写页面 window.open(\"http://121.43.68.40/exposure/jiucuo.html?site_code=\" + site_code + \"&url=\" + encodeURIComponent(url)); } function addFavorite() { var url = window.location; var title = document.title; var ua = navigator.userAgent.toLowerCase(); if (ua.indexOf(\"360se\") > -1) { alert(\"由于360浏览器功能限制，请按 Ctrl+D 手动收藏！\"); } else if (ua.indexOf(\"msie 8\") > -1) { window.external.AddToFavoritesBar(url, title); //IE8 } else if (document.all) { try { window.external.addFavorite(url, title); } catch (e) { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } } else if (window.sidebar) { window.sidebar.addPanel(title, url, \"\"); } else { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } }",
+      "demand_summary_tr": "Çin Ulusal Kamu Kaynakları Ticaret Platformunda yayımlanan mal/ekipman alım kaydı. Teknik ve ticari koşullar resmî kaynak metni üzerinden doğrulanmalıdır.",
+      "buyer-name": "",
+      "buyer-country": "CHINA",
+      "country_name": "China",
+      "market_region": "Çin / Doğu Asya",
+      "regionname": "China",
+      "product_name": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告",
+      "estimated_value": "",
+      "deadline": "",
+      "project_code": "Z131026260070 信息来源： 廊坊市公共资源交易中心",
+      "contract-nature": "goods",
+      "opportunity_type": "china_public_resources_goods_procurement",
+      "translation_status": "pending_human_or_ai_translation",
+      "market_access_status": "foreign_supplier_eligibility_review_required",
+      "buyer_verified": false,
+      "buyer_source_identified": false,
+      "technical-specification": "",
+      "supplier_research": {
+        "status": "specification_review_pending",
+        "product_query": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告",
+        "verified_count": 0,
+        "dossier_ready": false,
+        "blocked_by_missing_fields": [
+          "buyer",
+          "quantity",
+          "deadline",
+          "specification_evidence"
+        ]
+      },
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "china_market_research": {
+          "status": "demand_validation_pending",
+          "product_query": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告",
+          "goal": "Çin ithalat talebi, hacim, alıcı ve resmi kaynaklarla doğrulanacak"
+        },
+        "opportunity_dossier": {
+          "status": "specification_review_pending",
+          "completeness_percent": 50,
+          "missing_fields": [
+            "buyer",
+            "quantity",
+            "deadline",
+            "specification_evidence"
+          ]
+        },
+        "specification_analysis": {
+          "status": "document_analysis_pending",
+          "supplier_sourcing_ready": false,
+          "technical_evidence_count": 0,
+          "document_count": 1,
+          "document_parsed": true,
+          "attachment_requires_parsing": false
+        }
+      },
+      "source_excerpt": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a'; var mypppSid = '00536c16973a74fe4afb9f252198a66f778a'; var myds = '513'; var myplatformCode = '12532500067137175R'; var myareaId = '530000'; var mybasepath = '/information'; var mycl = '02'; var myst = '0201';\n政府网站工作年度报表\n服务号\n// 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin'); var ewm = document.getElementById('ewm'); var timeoutId = null; if (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } // 显示二维码（使用 slideDown 效果） slideDown(ewm); }); // 鼠标移出微信图标 weixin.addEventListener('mouseleave', function() { // 延迟隐藏，给用户时间移动到二维码区域 timeoutId = setTimeout(function() { slideUp(ewm); }, 100); }); // 鼠标移入二维码区域 ewm.addEventListener('mouseenter', function() { // 清除隐藏定时器，保持显示 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } }); // 鼠标移出二维码区域 ewm.addEventListener('mouseleave', function() { slideUp(ewm); }); } }); // 模拟 jQuery 的 slideDown 效果 function slideDown(element) { element.style.overflow = 'hidden'; element.style.display = 'block'; element.style.height = '0'; element.style.opacity = '0'; var targetHeight = element.scrollHeight; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-out） var easePercent = 1 - Math.pow(1 - percent, 3); element.style.height = (targetHeight * easePercent) + 'px'; element.style.opacity = easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.height = 'auto'; element.style.opacity = '1'; } } requestAnimationFrame(animate); } // 模拟 jQuery 的 slideUp 效果 function slideUp(element) { element.style.overflow = 'hidden'; var startHeight = element.offsetHeight; element.style.height = startHeight + 'px'; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-in） var easePercent = Math.pow(percent, 3); element.style.height = (startHeight * (1 - easePercent)) + 'px'; element.style.opacity = 1 - easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.display = 'none'; element.style.height = ''; element.style.opacity = ''; element.style.overflow = ''; } } requestAnimationFrame(animate); }\n首页\n机构职能\n交易公开\n工程建设\n政府采购\n土地使用权\n矿业权\n国有产权\n碳排放权\n排污权\n药品采购\n二类疫苗\n林权\n其他\n交易诚信\n违法违规\n奖励信息\n数据服务\n交易统计\n平台导航\n政策法规\n政策法规文件\n政策法规解读\n服务中心\n培训交流\n微信订阅\n意见建议\n调查征集\n关于我们\n首页 > 交易公开 > 政府采购\n文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告\n采购项目编号：Z131026260070 信息来源： 廊坊市公共资源交易中心\n采购/资审公告\n中标公告\n采购合同\n更正事项\n文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告 2026-10-09\n暂无数据\n暂无数据\n暂无数据\nvar firstLastUrl = '/information/deal/html/b/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html';\n网站地图 |\n网站声明 |\n添加收藏 |\n联系我们\n主办：国家信息中心 指导单位： 国家发展和改革委员会\n网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号\n地址：北京西城区三里河路58号 邮政编码：100045\nfunction linkto_jiucuo(site_code) { //获取该站点需要纠错页面的url地址 var url = \"\"; if (parent !== window) { try { url = window.top.location.href; } catch (e) { url = window.top.document.referrer; } } if (url.length == 0) url = document.location.href; //跳转至纠错系统填写页面 window.open(\"http://121.43.68.40/exposure/jiucuo.html?site_code=\" + site_code + \"&url=\" + encodeURIComponent(url)); } function addFavorite() { var url = window.location; var title = document.title; var ua = navigator.userAgent.toLowerCase(); if (ua.indexOf(\"360se\") > -1) { alert(\"由于360浏览器功能限制，请按 Ctrl+D 手动收藏！\"); } else if (ua.indexOf(\"msie 8\") > -1) { window.external.AddToFavoritesBar(url, title); //IE8 } else if (document.all) { try { window.external.addFavorite(url, title); } catch (e) { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } } else if (window.sidebar) { window.sidebar.addPanel(title, url, \"\"); } else { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } }",
+      "dossier": {
+        "buyer_name": null,
+        "buyer_country": "CHINA",
+        "product_name": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告",
+        "demand_description": "Çin Ulusal Kamu Kaynakları Ticaret Platformunda yayımlanan mal/ekipman alım kaydı. Teknik ve ticari koşullar resmî kaynak metni üzerinden doğrulanmalıdır.",
+        "quantity": null,
+        "budget_value": null,
+        "budget_currency": null,
+        "delivery_location": "CHINA",
+        "deadline": null,
+        "procedure_type": null,
+        "contract_nature": "goods",
+        "cpv": [
+          {
+            "code": "20261009",
+            "label_tr": "CPV ürün/hizmet grubu"
+          },
+          {
+            "code": "04000008",
+            "label_tr": "CPV ürün/hizmet grubu"
+          },
+          {
+            "code": "05052393",
+            "label_tr": "CPV ürün/hizmet grubu"
+          }
+        ],
+        "official_links": [
+          "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html"
+        ],
+        "source": "National Public Resources Trading Platform (China)",
+        "missing_fields": [
+          "buyer",
+          "quantity",
+          "deadline",
+          "specification_evidence"
+        ],
+        "completeness_percent": 50,
+        "supplier_sourcing_ready": false,
+        "specification_status": "document_analysis_pending",
+        "specification_sourcing_ready": false,
+        "standards": [],
+        "document_links": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html",
+            "kind": "source_page"
+          }
+        ],
+        "document_parsed": true,
+        "technical_evidence_count": 0,
+        "eligibility_evidence_count": 0
+      },
+      "delivery_location": "CHINA",
+      "document_url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html",
+      "document_extraction": {
+        "status": "parsed",
+        "source_backed_only": true,
+        "candidate_count": 1,
+        "source_page_count": 1,
+        "discovered_attachment_count": 0,
+        "parsed_count": 1,
+        "attempts": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html",
+            "status": "parsed",
+            "source": "source_page",
+            "kind": "source_page",
+            "final_url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html",
+            "content_type": "text/html",
+            "bytes": 13908,
+            "extracted_chars": 494,
+            "discovered_attachments": 0
+          }
+        ],
+        "text_chars": 494
+      },
+      "document_extracted_text": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告_交易公开_国家公共资源交易平台 政府网站工作年度报表 服务号 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告 采购项目编号：Z131026260070 信息来源： 廊坊市公共资源交易中心 采购/资审公告 中标公告 采购合同 更正事项 文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告 2026-10-09 暂无数据 暂无数据 暂无数据 网站地图 | 网站声明 | 添加收藏 | 联系我们 主办：国家信息中心 指导单位： 国家发展和改革委员会 网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号 地址：北京西城区三里河路58号 邮政编码：100045",
+      "specification_analysis": {
+        "status": "document_analysis_pending",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": false,
+        "structured_specification_present": false,
+        "document_text_present": true,
+        "document_parsed": true,
+        "technical_evidence": [],
+        "quantity_evidence": [
+          {
+            "field": "source_text_candidate",
+            "text": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a';"
+          },
+          {
+            "field": "source_text_candidate",
+            "text": "} 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告 采购项目编号：Z131026260070 信息来源： 廊坊市公共资源交易中心 采购/资审公告 中标公告 采购合同 更正事项 文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告 2026-10-09 暂无数据 暂无数据 暂无数据 var firstLastUrl = '/information/deal/html/b/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html';"
+          },
+          {
+            "field": "source_text_candidate",
+            "text": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告_交易公开_国家公共资源交易平台 政府网站工作年度报表 服务号 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告 采购项目编号：Z131026260070 信息来源： 廊坊市公共资源交易中心 采购/资审公告 中标公告 采购合同 更正事项 文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告 2026-10-09 暂无数据 暂无数据 暂无数据 网站地图 | 网站声明 | 添加收藏 | 联系我们 主办：国家信息中心 指导单位： 国家发展和改革委员会 网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号 地址：北京西城区三里河路58号 邮政编码：100045"
+          }
+        ],
+        "delivery_evidence": [
+          {
+            "field": "delivery_location",
+            "text": "CHINA"
+          }
+        ],
+        "eligibility_evidence": [],
+        "award_evidence": [],
+        "standards": [],
+        "documents": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261009/00137f5a221784504468a8ca4cd631a0dc2e.html",
+            "kind": "source_page"
+          }
+        ],
+        "attachment_requires_parsing": false,
+        "source_excerpt": "文安县兴隆宫镇卫生院血液透析设备采购项目公开招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a';\nvar mypppSid = '00536c16973a74fe4afb9f252198a66f778a';\nvar myds = '513';\nvar myplatformCode = '12532500067137175R';\nvar myareaId = '530000';\nvar mybasepath = '/information';\nvar mycl = '02';\nvar myst = '0201';\n政府网站工作年度报表 服务号 // 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin');\nvar ewm = document.getElementById('ewm');\nvar timeoutId = null;\nif (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId);"
+      },
+      "compliance_status": "buyer_identity_pending",
+      "sales_priority": {
+        "score": 7,
+        "grade": "C",
+        "queue": "research_only",
+        "reasons": [
+          "source_document_parsed",
+          "source_link_present"
+        ],
+        "blockers": [
+          "buyer_verification",
+          "specification_readiness",
+          "supplier_verification",
+          "compliance_clearance",
+          "margin_confirmation"
+        ],
+        "source_backed_only": true
+      }
+    },
+    {
+      "id": "ggzy:a429d20fa4959e5f",
+      "source": "National Public Resources Trading Platform (China)",
+      "source_type": "official_national_public_resources_platform",
+      "source_url": "https://www.ggzy.gov.cn/information/deal/html/a/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html",
+      "official_url": "https://www.ggzy.gov.cn/information/deal/html/a/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html",
+      "official_links": [
+        "https://www.ggzy.gov.cn/information/deal/html/a/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html"
+      ],
+      "title_original": "2026年医用设备集中采购（三十五）公开招标招标公告",
+      "title_tr": "Çin resmî alım ilanı — 2026年医用设备集中采购（三十五）公开招标招标公告",
+      "detail_original": "2026年医用设备集中采购（三十五）公开招标招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a'; var mypppSid = '00536c16973a74fe4afb9f252198a66f778a'; var myds = '513'; var myplatformCode = '12532500067137175R'; var myareaId = '530000'; var mybasepath = '/information'; var mycl = '02'; var myst = '0201';\n政府网站工作年度报表\n服务号\n// 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin'); var ewm = document.getElementById('ewm'); var timeoutId = null; if (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } // 显示二维码（使用 slideDown 效果） slideDown(ewm); }); // 鼠标移出微信图标 weixin.addEventListener('mouseleave', function() { // 延迟隐藏，给用户时间移动到二维码区域 timeoutId = setTimeout(function() { slideUp(ewm); }, 100); }); // 鼠标移入二维码区域 ewm.addEventListener('mouseenter', function() { // 清除隐藏定时器，保持显示 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } }); // 鼠标移出二维码区域 ewm.addEventListener('mouseleave', function() { slideUp(ewm); }); } }); // 模拟 jQuery 的 slideDown 效果 function slideDown(element) { element.style.overflow = 'hidden'; element.style.display = 'block'; element.style.height = '0'; element.style.opacity = '0'; var targetHeight = element.scrollHeight; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-out） var easePercent = 1 - Math.pow(1 - percent, 3); element.style.height = (targetHeight * easePercent) + 'px'; element.style.opacity = easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.height = 'auto'; element.style.opacity = '1'; } } requestAnimationFrame(animate); } // 模拟 jQuery 的 slideUp 效果 function slideUp(element) { element.style.overflow = 'hidden'; var startHeight = element.offsetHeight; element.style.height = startHeight + 'px'; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-in） var easePercent = Math.pow(percent, 3); element.style.height = (startHeight * (1 - easePercent)) + 'px'; element.style.opacity = 1 - easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.display = 'none'; element.style.height = ''; element.style.opacity = ''; element.style.overflow = ''; } } requestAnimationFrame(animate); }\n首页\n机构职能\n交易公开\n工程建设\n政府采购\n土地使用权\n矿业权\n国有产权\n碳排放权\n排污权\n药品采购\n二类疫苗\n林权\n其他\n交易诚信\n违法违规\n奖励信息\n数据服务\n交易统计\n平台导航\n政策法规\n政策法规文件\n政策法规解读\n服务中心\n培训交流\n微信订阅\n意见建议\n调查征集\n关于我们\n首页 > 交易公开 > 政府采购\n2026年医用设备集中采购（三十五）公开招标招标公告\n采购项目编号：HNJY2026【123】 信息来源： 海南省\n采购/资审公告\n中标公告\n采购合同\n更正事项\n2026年医用设备集中采购（三十五）公开招标招标公告 2026-10-09\n暂无数据\n暂无数据\n暂无数据\nvar firstLastUrl = '/information/deal/html/b/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html';\n网站地图 |\n网站声明 |\n添加收藏 |\n联系我们\n主办：国家信息中心 指导单位： 国家发展和改革委员会\n网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号\n地址：北京西城区三里河路58号 邮政编码：100045\nfunction linkto_jiucuo(site_code) { //获取该站点需要纠错页面的url地址 var url = \"\"; if (parent !== window) { try { url = window.top.location.href; } catch (e) { url = window.top.document.referrer; } } if (url.length == 0) url = document.location.href; //跳转至纠错系统填写页面 window.open(\"http://121.43.68.40/exposure/jiucuo.html?site_code=\" + site_code + \"&url=\" + encodeURIComponent(url)); } function addFavorite() { var url = window.location; var title = document.title; var ua = navigator.userAgent.toLowerCase(); if (ua.indexOf(\"360se\") > -1) { alert(\"由于360浏览器功能限制，请按 Ctrl+D 手动收藏！\"); } else if (ua.indexOf(\"msie 8\") > -1) { window.external.AddToFavoritesBar(url, title); //IE8 } else if (document.all) { try { window.external.addFavorite(url, title); } catch (e) { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } } else if (window.sidebar) { window.sidebar.addPanel(title, url, \"\"); } else { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } }",
+      "demand_summary_tr": "Çin Ulusal Kamu Kaynakları Ticaret Platformunda yayımlanan mal/ekipman alım kaydı. Teknik ve ticari koşullar resmî kaynak metni üzerinden doğrulanmalıdır.",
+      "buyer-name": "",
+      "buyer-country": "CHINA",
+      "country_name": "China",
+      "market_region": "Çin / Doğu Asya",
+      "regionname": "China",
+      "product_name": "2026年医用设备集中采购（三十五）公开招标招标公告",
+      "estimated_value": "",
+      "deadline": "",
+      "project_code": "HNJY2026【123】 信息来源： 海南省",
+      "contract-nature": "goods",
+      "opportunity_type": "china_public_resources_goods_procurement",
+      "translation_status": "pending_human_or_ai_translation",
+      "market_access_status": "foreign_supplier_eligibility_review_required",
+      "buyer_verified": false,
+      "buyer_source_identified": false,
+      "technical-specification": "",
+      "supplier_research": {
+        "status": "specification_review_pending",
+        "product_query": "2026年医用设备集中采购（三十五）公开招标招标公告",
+        "verified_count": 0,
+        "dossier_ready": false,
+        "blocked_by_missing_fields": [
+          "buyer",
+          "quantity",
+          "deadline",
+          "specification_evidence"
+        ]
+      },
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "china_market_research": {
+          "status": "demand_validation_pending",
+          "product_query": "2026年医用设备集中采购（三十五）公开招标招标公告",
+          "goal": "Çin ithalat talebi, hacim, alıcı ve resmi kaynaklarla doğrulanacak"
+        },
+        "opportunity_dossier": {
+          "status": "specification_review_pending",
+          "completeness_percent": 50,
+          "missing_fields": [
+            "buyer",
+            "quantity",
+            "deadline",
+            "specification_evidence"
+          ]
+        },
+        "specification_analysis": {
+          "status": "document_analysis_pending",
+          "supplier_sourcing_ready": false,
+          "technical_evidence_count": 0,
+          "document_count": 1,
+          "document_parsed": true,
+          "attachment_requires_parsing": false
+        }
+      },
+      "source_excerpt": "2026年医用设备集中采购（三十五）公开招标招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a'; var mypppSid = '00536c16973a74fe4afb9f252198a66f778a'; var myds = '513'; var myplatformCode = '12532500067137175R'; var myareaId = '530000'; var mybasepath = '/information'; var mycl = '02'; var myst = '0201';\n政府网站工作年度报表\n服务号\n// 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin'); var ewm = document.getElementById('ewm'); var timeoutId = null; if (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } // 显示二维码（使用 slideDown 效果） slideDown(ewm); }); // 鼠标移出微信图标 weixin.addEventListener('mouseleave', function() { // 延迟隐藏，给用户时间移动到二维码区域 timeoutId = setTimeout(function() { slideUp(ewm); }, 100); }); // 鼠标移入二维码区域 ewm.addEventListener('mouseenter', function() { // 清除隐藏定时器，保持显示 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } }); // 鼠标移出二维码区域 ewm.addEventListener('mouseleave', function() { slideUp(ewm); }); } }); // 模拟 jQuery 的 slideDown 效果 function slideDown(element) { element.style.overflow = 'hidden'; element.style.display = 'block'; element.style.height = '0'; element.style.opacity = '0'; var targetHeight = element.scrollHeight; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-out） var easePercent = 1 - Math.pow(1 - percent, 3); element.style.height = (targetHeight * easePercent) + 'px'; element.style.opacity = easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.height = 'auto'; element.style.opacity = '1'; } } requestAnimationFrame(animate); } // 模拟 jQuery 的 slideUp 效果 function slideUp(element) { element.style.overflow = 'hidden'; var startHeight = element.offsetHeight; element.style.height = startHeight + 'px'; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-in） var easePercent = Math.pow(percent, 3); element.style.height = (startHeight * (1 - easePercent)) + 'px'; element.style.opacity = 1 - easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.display = 'none'; element.style.height = ''; element.style.opacity = ''; element.style.overflow = ''; } } requestAnimationFrame(animate); }\n首页\n机构职能\n交易公开\n工程建设\n政府采购\n土地使用权\n矿业权\n国有产权\n碳排放权\n排污权\n药品采购\n二类疫苗\n林权\n其他\n交易诚信\n违法违规\n奖励信息\n数据服务\n交易统计\n平台导航\n政策法规\n政策法规文件\n政策法规解读\n服务中心\n培训交流\n微信订阅\n意见建议\n调查征集\n关于我们\n首页 > 交易公开 > 政府采购\n2026年医用设备集中采购（三十五）公开招标招标公告\n采购项目编号：HNJY2026【123】 信息来源： 海南省\n采购/资审公告\n中标公告\n采购合同\n更正事项\n2026年医用设备集中采购（三十五）公开招标招标公告 2026-10-09\n暂无数据\n暂无数据\n暂无数据\nvar firstLastUrl = '/information/deal/html/b/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html';\n网站地图 |\n网站声明 |\n添加收藏 |\n联系我们\n主办：国家信息中心 指导单位： 国家发展和改革委员会\n网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号\n地址：北京西城区三里河路58号 邮政编码：100045\nfunction linkto_jiucuo(site_code) { //获取该站点需要纠错页面的url地址 var url = \"\"; if (parent !== window) { try { url = window.top.location.href; } catch (e) { url = window.top.document.referrer; } } if (url.length == 0) url = document.location.href; //跳转至纠错系统填写页面 window.open(\"http://121.43.68.40/exposure/jiucuo.html?site_code=\" + site_code + \"&url=\" + encodeURIComponent(url)); } function addFavorite() { var url = window.location; var title = document.title; var ua = navigator.userAgent.toLowerCase(); if (ua.indexOf(\"360se\") > -1) { alert(\"由于360浏览器功能限制，请按 Ctrl+D 手动收藏！\"); } else if (ua.indexOf(\"msie 8\") > -1) { window.external.AddToFavoritesBar(url, title); //IE8 } else if (document.all) { try { window.external.addFavorite(url, title); } catch (e) { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } } else if (window.sidebar) { window.sidebar.addPanel(title, url, \"\"); } else { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } }",
+      "dossier": {
+        "buyer_name": null,
+        "buyer_country": "CHINA",
+        "product_name": "2026年医用设备集中采购（三十五）公开招标招标公告",
+        "demand_description": "Çin Ulusal Kamu Kaynakları Ticaret Platformunda yayımlanan mal/ekipman alım kaydı. Teknik ve ticari koşullar resmî kaynak metni üzerinden doğrulanmalıdır.",
+        "quantity": null,
+        "budget_value": null,
+        "budget_currency": null,
+        "delivery_location": "CHINA",
+        "deadline": null,
+        "procedure_type": null,
+        "contract_nature": "goods",
+        "cpv": [
+          {
+            "code": "20261009",
+            "label_tr": "CPV ürün/hizmet grubu"
+          },
+          {
+            "code": "04000008",
+            "label_tr": "CPV ürün/hizmet grubu"
+          },
+          {
+            "code": "05052393",
+            "label_tr": "CPV ürün/hizmet grubu"
+          }
+        ],
+        "official_links": [
+          "https://www.ggzy.gov.cn/information/deal/html/a/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html"
+        ],
+        "source": "National Public Resources Trading Platform (China)",
+        "missing_fields": [
+          "buyer",
+          "quantity",
+          "deadline",
+          "specification_evidence"
+        ],
+        "completeness_percent": 50,
+        "supplier_sourcing_ready": false,
+        "specification_status": "document_analysis_pending",
+        "specification_sourcing_ready": false,
+        "standards": [],
+        "document_links": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html",
+            "kind": "source_page"
+          }
+        ],
+        "document_parsed": true,
+        "technical_evidence_count": 0,
+        "eligibility_evidence_count": 0
+      },
+      "delivery_location": "CHINA",
+      "document_url": "https://www.ggzy.gov.cn/information/deal/html/a/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html",
+      "document_extraction": {
+        "status": "parsed",
+        "source_backed_only": true,
+        "candidate_count": 1,
+        "source_page_count": 1,
+        "discovered_attachment_count": 0,
+        "parsed_count": 1,
+        "attempts": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html",
+            "status": "parsed",
+            "source": "source_page",
+            "kind": "source_page",
+            "final_url": "https://www.ggzy.gov.cn/information/deal/html/a/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html",
+            "content_type": "text/html",
+            "bytes": 13856,
+            "extracted_chars": 486,
+            "discovered_attachments": 0
+          }
+        ],
+        "text_chars": 486
+      },
+      "document_extracted_text": "2026年医用设备集中采购（三十五）公开招标招标公告_交易公开_国家公共资源交易平台 政府网站工作年度报表 服务号 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 2026年医用设备集中采购（三十五）公开招标招标公告 采购项目编号：HNJY2026【123】 信息来源： 海南省 采购/资审公告 中标公告 采购合同 更正事项 2026年医用设备集中采购（三十五）公开招标招标公告 2026-10-09 暂无数据 暂无数据 暂无数据 网站地图 | 网站声明 | 添加收藏 | 联系我们 主办：国家信息中心 指导单位： 国家发展和改革委员会 网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号 地址：北京西城区三里河路58号 邮政编码：100045",
+      "specification_analysis": {
+        "status": "document_analysis_pending",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": false,
+        "structured_specification_present": false,
+        "document_text_present": true,
+        "document_parsed": true,
+        "technical_evidence": [],
+        "quantity_evidence": [
+          {
+            "field": "source_text_candidate",
+            "text": "2026年医用设备集中采购（三十五）公开招标招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a';"
+          },
+          {
+            "field": "source_text_candidate",
+            "text": "} 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 2026年医用设备集中采购（三十五）公开招标招标公告 采购项目编号：HNJY2026【123】 信息来源： 海南省 采购/资审公告 中标公告 采购合同 更正事项 2026年医用设备集中采购（三十五）公开招标招标公告 2026-10-09 暂无数据 暂无数据 暂无数据 var firstLastUrl = '/information/deal/html/b/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html';"
+          },
+          {
+            "field": "source_text_candidate",
+            "text": "2026年医用设备集中采购（三十五）公开招标招标公告_交易公开_国家公共资源交易平台 政府网站工作年度报表 服务号 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 2026年医用设备集中采购（三十五）公开招标招标公告 采购项目编号：HNJY2026【123】 信息来源： 海南省 采购/资审公告 中标公告 采购合同 更正事项 2026年医用设备集中采购（三十五）公开招标招标公告 2026-10-09 暂无数据 暂无数据 暂无数据 网站地图 | 网站声明 | 添加收藏 | 联系我们 主办：国家信息中心 指导单位： 国家发展和改革委员会 网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号 地址：北京西城区三里河路58号 邮政编码：100045"
+          }
+        ],
+        "delivery_evidence": [
+          {
+            "field": "delivery_location",
+            "text": "CHINA"
+          }
+        ],
+        "eligibility_evidence": [],
+        "award_evidence": [],
+        "standards": [],
+        "documents": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/460000/0201/20261009/0046466b4a41198f419fa20d83b92696ad9f.html",
+            "kind": "source_page"
+          }
+        ],
+        "attachment_requires_parsing": false,
+        "source_excerpt": "2026年医用设备集中采购（三十五）公开招标招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a';\nvar mypppSid = '00536c16973a74fe4afb9f252198a66f778a';\nvar myds = '513';\nvar myplatformCode = '12532500067137175R';\nvar myareaId = '530000';\nvar mybasepath = '/information';\nvar mycl = '02';\nvar myst = '0201';\n政府网站工作年度报表 服务号 // 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin');\nvar ewm = document.getElementById('ewm');\nvar timeoutId = null;\nif (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId);"
+      },
+      "compliance_status": "buyer_identity_pending",
+      "sales_priority": {
+        "score": 7,
+        "grade": "C",
+        "queue": "research_only",
+        "reasons": [
+          "source_document_parsed",
+          "source_link_present"
+        ],
+        "blockers": [
+          "buyer_verification",
+          "specification_readiness",
+          "supplier_verification",
+          "compliance_clearance",
+          "margin_confirmation"
+        ],
+        "source_backed_only": true
+      }
     }
   ],
   "market_sources": [
@@ -120605,9 +121025,9 @@
   },
   "china_ggzy_feed": {
     "source": "https://www.ggzy.gov.cn/",
-    "status": "no_tradeable_goods_found",
-    "candidate_goods_links": 0,
-    "goods_opportunities_added": 0,
+    "status": "ok",
+    "candidate_goods_links": 2,
+    "goods_opportunities_added": 2,
     "detail_failures": 0,
     "errors": [],
     "foreign_supplier_eligibility_assumed": false
@@ -120948,14 +121368,14 @@
   "enrichment": {
     "version": 1,
     "mode": "source_only_no_hallucination",
-    "enriched_count": 126
+    "enriched_count": 128
   },
   "document_extraction": {
     "version": 3,
     "mode": "public_source_pages_documents_and_ted_xml",
-    "attempted_opportunities": 96,
-    "parsed_opportunities": 0,
-    "source_pages_parsed": 0,
+    "attempted_opportunities": 98,
+    "parsed_opportunities": 2,
+    "source_pages_parsed": 2,
     "discovered_attachments": 0,
     "reused_last_known_good": 0,
     "ted_xml_attempted": 96,
@@ -120964,12 +121384,12 @@
   "specification_analysis": {
     "version": 3,
     "mode": "source_evidence_plus_public_documents",
-    "analyzed_count": 126,
+    "analyzed_count": 128,
     "supplier_sourcing_ready": 16,
-    "document_analysis_pending": 82,
+    "document_analysis_pending": 84,
     "insufficient_source_detail": 28,
     "attachments_requiring_parser": 0,
-    "parsed_document_opportunities": 0
+    "parsed_document_opportunities": 2
   },
   "sales_priority_summary": {
     "version": 1,
@@ -120977,10 +121397,10 @@
     "grades": {
       "A": 0,
       "B": 0,
-      "C": 126
+      "C": 128
     },
     "close_first": 0,
     "develop_next": 0,
-    "research_only": 126
+    "research_only": 128
   }
 }
