@@ -46,6 +46,7 @@ jobs:
           python -m src.ted_xml_enricher "$NEXT"
           python -m src.specification "$NEXT"
           python -m src.verification "$NEXT"
+          python -m src.sales_priority "$NEXT"
       - name: Validate enriched live output
         run: |
           set -euo pipefail
