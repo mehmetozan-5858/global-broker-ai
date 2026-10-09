@@ -5,6 +5,7 @@ try:
     from src.opportunity_quality import assess
 except ModuleNotFoundError:
     from opportunity_quality import assess
+from src.exportable_goods import classify as classify_exportable_goods
 from datetime import date, timedelta
 from urllib.error import HTTPError
 
@@ -292,6 +293,7 @@ def normalize_world_bank(n):
     item["offer_status"]="shadow_not_sent"
     item["commission_status"]="pending_deal_value_and_agreement"
     item["deal_score"]=score(item)
+    item["export_goods_review"]=classify_exportable_goods(item)
     return item
 
 
@@ -367,6 +369,7 @@ def normalize_sam(n):
     item["margin_status"]="pending_supplier_quote"; item["offer_status"]="shadow_not_sent"
     item["commission_status"]="pending_deal_value_and_agreement"
     item["deal_score"]=score(item)
+    item["export_goods_review"]=classify_exportable_goods(item)
     return item
 
 def main():
@@ -400,6 +403,7 @@ def main():
         item["margin_status"]="pending_supplier_quote"
         item["offer_status"]="shadow_not_sent"
         item["commission_status"]="pending_deal_value_and_agreement"
+        item["export_goods_review"]=classify_exportable_goods(item)
         out.append(item)
     # Add US federal opportunities when the official SAM.gov API key is available.
     for n in sam_search(100):
