@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feat/verified-brokerage-pipeline
+      - feat/broker-ceo-sales-current-main
       - main
     paths:
       - 'src/**'
