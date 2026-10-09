@@ -44,6 +44,17 @@ function classification(o){
  if(/consultant|consultancy|engineer|mühendis|danışmanlık|personel|service|hizmet alımı|construction|inşaat işi/.test(t))return "Hizmet / yapım";
  return "Tür doğrulanmalı";
 }
+function exportReview(o){
+ var stored=o.export_goods_review;if(stored&&stored.status)return stored;
+ var typ=txt(pick(o,["contract-nature","procurement_category","procurement_type","contract_type"])).toLowerCase().trim();
+ var t=(title(o)+" "+productText(o)).toLowerCase();
+ var service=/consult|engineering services|staffing|recruitment|training|technical assistance|feasibility study|drilling services|maintenance services|repair services|construction works|civil works|hizmet|danışman|mühendis|personel|sondaj hizmet|inşaat işi|yapım işi/i.test(t);
+ var goods=/goods|suppl|equipment|machin|material|product|spare parts|vehicle|furniture|medical device|textile|chemical|food|steel|computer|network|temini|tedarik|mal alımı|ekipman|makine|malzeme|ürün|yedek parça|araç|mobilya|gıda|ranza|masa|sandalye/i.test(t);
+ if(/^(services?|works|consulting services|consultancy|hizmet|hizmet alımı|construction)$/.test(typ))return {status:"exclude_service"};
+ if(/^(goods|supplies|supply|mal alımı)$/.test(typ))return {status:service?"review_mixed":"goods_candidate"};
+ if(service)return {status:goods?"review_mixed":"exclude_service"};
+ return {status:goods?"goods_candidate":"review_unknown"};
+}
 function card(o){
  var idx=(DATA.opportunities||[]).indexOf(o),st=status(o),place=resolvedCountry(o);
  var p=productText(o)||title(o);
@@ -61,8 +72,8 @@ function countryBlock(c,rows,open){
  return '<details class="market-country" data-market-country="'+esc(c)+'" '+(open?'open':'')+'><summary>'+esc(c)+' <small>'+rows.length+' talep</small></summary>'+ (content||'<div class="market-empty">Bu ülkeden doğrulanmış yeni talep henüz bulunmadı.</div>')+'</details>';
 }
 function renderCountryList(){
- var rows=filtered(),box=document.getElementById("list");if(!box)return;
- document.getElementById("resultCount").textContent=rows.length+" fırsat · Ülke → şehir → alım talebi";
+ var all=filtered(),rows=all.filter(function(o){return exportReview(o).status==="goods_candidate"}),review=all.filter(function(o){return /^review_/.test(exportReview(o).status)}),excluded=all.length-rows.length-review.length,box=document.getElementById("list");if(!box)return;
+ document.getElementById("resultCount").textContent=rows.length+" mal alımı adayı · "+review.length+" inceleme bekliyor · "+excluded+" hizmet/yapım dışarıda";
  var previouslyOpen={};box.querySelectorAll("details.market-country[open]").forEach(function(d){previouslyOpen[d.getAttribute("data-market-country")]=true});
  var groups={};rows.forEach(function(o){var c=resolvedCountry(o).name;(groups[c]||(groups[c]=[])).push(o)});
  var hasActiveFilters=!!(document.getElementById("q").value||document.getElementById("country").value||document.getElementById("source").value||document.getElementById("quality").value||quick!=="all");
@@ -75,7 +86,7 @@ var gulfRows=gulf.map(function(c){var src=officialSources[c];return countryBlock
  var rest=Object.keys(groups).filter(function(c){return gulf.indexOf(c)<0}).sort(function(a,b){return a.localeCompare(b,"tr")});
  var other=rest.map(function(c){return countryBlock(c,groups[c],!!previouslyOpen[c])}).join("");
  box.innerHTML='<div class="market-region"><h3>Arap Yarımadası ve Körfez</h3><p>Ülkeyi, ardından şehri açarak gerçek talepleri incele.</p>'+gulfRows+'</div>'+
- '<div class="market-region"><h3>Diğer Ülkeler</h3>'+(other||'<div class="market-empty">'+(hasActiveFilters?"Filtreye uygun kayıt yok.":"Henüz kayıt yok.")+'</div>')+'</div>';
+ '<div class="market-region"><h3>Diğer Ülkeler</h3>'+(other||'<div class="market-empty">'+(hasActiveFilters?"Filtreye uygun kayıt yok.":"Henüz kayıt yok.")+'</div>')+'</div>'+'<details class="market-region"><summary><b>İnceleme bekleyen karma veya belirsiz ilanlar ('+review.length+')</b></summary><p>Bu kayıtlar fiziksel mal alımı olarak teyit edilmeden ihracat fırsatı sayılmaz.</p>'+review.map(card).join("")+'</details>';
 }
 var style=document.createElement("style");style.textContent=
 ".market-region{background:#0b2233;border:1px solid #31536a;border-radius:14px;padding:12px;margin-bottom:12px}"+
