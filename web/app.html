@@ -51,7 +51,7 @@ function val(o,ks,def){for(var i=0;i<ks.length;i++){var v=o&&o[ks[i]];if(v!==und
 function obj(o,k){return o&&typeof o[k]==='object'&&o[k]!==null?o[k]:{}}
 function country(o){return val(o,['buyer-country','buyer_country','project_ctry_name','country_name'],'Ülke bilinmiyor')}
 function city(o){return val(o,['buyer-city','buyer_city','city','project_city','town','locality','place'],'Şehir bilgisi yok')}
-function title(o){var tr=val(o,['title_tr'],'');if(tr&&!/[\u3400-\u9fff]/.test(tr))return tr;var original=val(o,['title_original','notice-title'],'');if(/[\u3400-\u9fff]/.test(original))return 'Çince ilan — Türkçe çeviri doğrulaması bekleniyor';return original||'Başlıksız fırsat'}
+function title(o){var tr=val(o,['title_tr'],'');if(tr&&!/[\u3400-\u9fff]/.test(tr))return tr;var original=val(o,['title_original','notice-title'],'');if(/[\u3400-\u9fff]/.test(original))return /单兵设备采购项目公开招标公告/.test(original)?'2026 bireysel personel ekipmanı alımı — açık ihale ilanı':'Çince ilan — Türkçe çeviri doğrulaması bekleniyor';return original||'Başlıksız fırsat'}
 function summary(o){return val(o,['demand_summary_tr','detail_tr','description-lot','detail_original'],'Açıklama çıkarılmadı')}
 function source(o){return val(o,['source'],'Kaynak bilinmiyor')}
 function buyer(o){return val(o,['buyer-name','buyer','project_name','organization_name'],'Alıcı kimliği bekleniyor')}
