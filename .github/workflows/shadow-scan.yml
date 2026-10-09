@@ -64,6 +64,9 @@ jobs:
           print(f'ATOMIC_FEED_GATE opportunities={len(opportunities)} china_import_radar={len(radar)}')
           PY
           mv "$NEXT" data/latest-opportunities.json
+      # Internal CEO analysis is deliberately NOT committed or deployed publicly.
+      - name: Generate ephemeral internal CEO review
+        run: python -m src.build_ceo_report data/latest-opportunities.json data/latest-ceo-report.json
       - name: Commit Shadow Mode output
         run: |
           git config user.name "global-broker-bot"
