@@ -49,6 +49,17 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
         existing = item.get("document_extracted_text")
         parts = [existing] if isinstance(existing, str) and existing.strip() else []
         parts.append(text)
+        # TED XML can contain direct links to tender attachments. Read the
+        # documents, not merely their URLs, while retaining source provenance.
+        existing_urls = {
+            a.get("url") for a in attempts if isinstance(a, dict) and a.get("status") == "parsed"
+        }
+        for attachment_url in attachments[:document_parser.MAX_DISCOVERED_ATTACHMENTS]:
+            if attachment_url in existing_urls:
+                continue
+            document_parser._try_attachment(
+                attachment_url, attempts, parts, discovered_from=final_url
+            )
         merged = "\n\n".join(parts)[:MAX_EXTRACTED_CHARS]
         item["document_extracted_text"] = merged
         attempt.update({
