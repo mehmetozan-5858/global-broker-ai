@@ -1,6 +1,10 @@
 from __future__ import annotations
 # Shadow scan trigger: SAM-enabled validation.
 import json, os, urllib.request, urllib.parse
+try:
+    from src.opportunity_quality import assess
+except ModuleNotFoundError:
+    from opportunity_quality import assess
 from datetime import date, timedelta
 from urllib.error import HTTPError
 
@@ -280,7 +284,7 @@ def normalize_world_bank(n):
     item["source"]="WORLD_BANK"
     item["region_hint"]="GLOBAL_WORLD_BANK"
     item["mode"]="shadow"
-    item["buyer_verified"]=bool(buyer)
+    item["buyer_verified"]=False
     item["supplier_status"]="pending"
     item["landed_cost_status"]="pending"
     item["compliance_status"]="source_verified_buyer_pending_due_diligence" if buyer else "pending"
@@ -358,7 +362,7 @@ def normalize_sam(n):
     item["source_url"]=text_of(n.get("uiLink"))
     item["source"]="SAM_GOV"
     item["mode"]="shadow"
-    item["buyer_verified"]=bool(item["buyer-name"])
+    item["buyer_verified"]=False
     item["supplier_status"]="pending"; item["landed_cost_status"]="pending"
     item["margin_status"]="pending_supplier_quote"; item["offer_status"]="shadow_not_sent"
     item["commission_status"]="pending_deal_value_and_agreement"
@@ -389,7 +393,7 @@ def main():
         item["buyer-name"]=preferred_lang_text(n.get("buyer-name"))
         item["buyer-country"]=preferred_lang_text(n.get("buyer-country"))
         item["market_region"]=market_region(item["buyer-country"])
-        item["buyer_verified"]=bool(item["buyer-name"])
+        item["buyer_verified"]=False
         item["supplier_status"]="pending"
         item["landed_cost_status"]="pending"
         item["compliance_status"]="source_verified_buyer_pending_due_diligence" if n.get("buyer-name") else "pending"
@@ -441,6 +445,14 @@ def main():
         if key in seen: continue
         seen.add(key); deduped.append(item)
     out=deduped
+
+    # Discard expired tenders; missing/ambiguous deadlines stay review-only.
+    fresh=[]
+    for item in out:
+        item.update(assess(item))
+        if item["freshness_status"] != "expired":
+            fresh.append(item)
+    out=fresh
 
     # Activate the research chain for every real opportunity.
     # These fields describe work/status only; they never invent suppliers,
