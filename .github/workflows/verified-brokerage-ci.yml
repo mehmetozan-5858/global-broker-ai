@@ -31,4 +31,6 @@ jobs:
       - name: Run brokerage test suite
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Check mobile dashboard JavaScript syntax
-        run: node --check web/ceo-dashboard.js
+        run: |
+          node --check web/ceo-dashboard.js
+          node --check web/tender-dossier.js

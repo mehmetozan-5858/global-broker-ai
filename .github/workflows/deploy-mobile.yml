@@ -32,6 +32,7 @@ jobs:
             cp web/app.html public/index.html
             # Add public-data-only CEO overview without rewriting the large app template.
             sed -i 's#</body>#<script src="ceo-dashboard.js" defer></script></body>#' public/index.html
+            sed -i 's#</body>#<script src="tender-dossier.js" defer></script></body>#' public/index.html
           fi
           if [ -f data/latest-opportunities.json ]; then
             cp data/latest-opportunities.json public/data/latest-opportunities.json
