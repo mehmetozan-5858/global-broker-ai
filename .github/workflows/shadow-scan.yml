@@ -43,6 +43,7 @@ jobs:
           python -m src.china_import_radar "$NEXT" data/latest-opportunities.json
           python -m src.enrichment "$NEXT"
           python -m src.document_parser "$NEXT" data/latest-opportunities.json
+          python -m src.ted_xml_enricher "$NEXT"
           python -m src.specification "$NEXT"
           python -m src.verification "$NEXT"
       - name: Validate enriched live output
