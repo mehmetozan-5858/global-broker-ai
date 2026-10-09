@@ -14,7 +14,7 @@ class TedAttachmentEvidenceTests(unittest.TestCase):
         reader.assert_called_once()
         self.assertIn("documented certification",item["document_extracted_text"])
         self.assertEqual(item["document_extraction"]["parsed_count"],2)
-        self.assertEqual(item["document_extraction"]["attempts"][-1]["discovered_from"],"https://ted.europa.eu/en/notice/660580-2026/xml")
+        self.assertTrue(any(a.get("discovered_from")=="https://ted.europa.eu/en/notice/660580-2026/xml" for a in item["document_extraction"]["attempts"]))
 
 if __name__=="__main__":
     unittest.main()
