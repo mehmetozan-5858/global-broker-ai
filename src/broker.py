@@ -1,6 +1,10 @@
 from __future__ import annotations
 # Shadow scan trigger: SAM-enabled validation.
 import json, os, urllib.request, urllib.parse
+try:
+    from src.opportunity_quality import assess
+except ModuleNotFoundError:
+    from opportunity_quality import assess
 from datetime import date, timedelta
 from urllib.error import HTTPError
 
@@ -441,6 +445,14 @@ def main():
         if key in seen: continue
         seen.add(key); deduped.append(item)
     out=deduped
+
+    # Fail closed on expired deadlines; unknown dates remain in manual review.
+    fresh=[]
+    for item in out:
+        item.update(assess(item))
+        if item["freshness_status"] != "expired":
+            fresh.append(item)
+    out=fresh
 
     # Activate the research chain for every real opportunity.
     # These fields describe work/status only; they never invent suppliers,
