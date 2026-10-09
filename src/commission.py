@@ -67,6 +67,8 @@ def assess_commission(
     in_scope = terms.repeat_transactions_in_scope if repeat_transaction else terms.first_transaction_in_scope
     if signed and transaction_date and transaction_date < terms.agreement_signed_on:
         in_scope = False
+    if repeat_transaction and (not signed or transaction_date is None):
+        in_scope = False  # Never assume protection without a dated qualifying repeat sale.
     if repeat_transaction and signed and transaction_date:
         months = (transaction_date.year - terms.agreement_signed_on.year) * 12 + transaction_date.month - terms.agreement_signed_on.month
         if months > terms.protection_months or (months == terms.protection_months and transaction_date.day > terms.agreement_signed_on.day):
