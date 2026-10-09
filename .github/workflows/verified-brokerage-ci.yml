@@ -34,3 +34,4 @@ jobs:
         run: |
           node --check web/ceo-dashboard.js
           node --check web/tender-dossier.js
+          node --check web/country-markets.js
