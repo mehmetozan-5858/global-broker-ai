@@ -11,9 +11,29 @@ var aliases={
 "TR":"Türkiye","TUR":"Türkiye","Turkey":"Türkiye","Türkiye":"Türkiye",
 "CN":"Çin","CHN":"Çin","China":"Çin","GH":"Gana","GHA":"Gana","Ghana":"Gana",
 "BE":"Belçika","BEL":"Belçika","Belgium":"Belçika",
-"MK":"Kuzey Makedonya","MKD":"Kuzey Makedonya","North Macedonia":"Kuzey Makedonya"
+"MK":"Kuzey Makedonya","MKD":"Kuzey Makedonya","North Macedonia":"Kuzey Makedonya",
+"BGR":"Bulgaristan","BG":"Bulgaristan","Bulgaria":"Bulgaristan","CHE":"İsviçre","CH":"İsviçre","Switzerland":"İsviçre","CZE":"Çekya","CZ":"Çekya","Czechia":"Çekya","Czech Republic":"Çekya","DEU":"Almanya","DE":"Almanya","Germany":"Almanya","FRA":"Fransa","FR":"Fransa","France":"Fransa","GBR":"Birleşik Krallık","GB":"Birleşik Krallık","United Kingdom":"Birleşik Krallık","USA":"ABD","US":"ABD","United States":"ABD","NLD":"Hollanda","NL":"Hollanda","Netherlands":"Hollanda","ESP":"İspanya","ES":"İspanya","Spain":"İspanya","ITA":"İtalya","IT":"İtalya","Italy":"İtalya","POL":"Polonya","PL":"Polonya","Poland":"Polonya","AUT":"Avusturya","AT":"Avusturya","Austria":"Avusturya","SWE":"İsveç","SE":"İsveç","Sweden":"İsveç","DNK":"Danimarka","DK":"Danimarka","Denmark":"Danimarka","NOR":"Norveç","NO":"Norveç","Norway":"Norveç","FIN":"Finlandiya","FI":"Finlandiya","Finland":"Finlandiya","GRC":"Yunanistan","GR":"Yunanistan","Greece":"Yunanistan"
 };
-function normalized(c){return aliases[String(c||"").trim()]||String(c||"Bilinmiyor").trim();}
+function normalized(c){var v=String(c||"").trim();return aliases[v]||aliases[v.toUpperCase()]||v||"Bilinmiyor";}
+function resolvedCountry(o){
+ var raw=country(o),c=normalized(raw);
+ if(c!=="Bilinmiyor"&&c!=="Unknown"&&c!=="N/A")return {name:c,inferred:false};
+ // Infer only from an explicit country in the procurement headline, not from
+ // supplier mentions or project names buried elsewhere in the record.
+ var headline=title(o).trim();
+ var patterns=[
+ [/^(?:Gana(?:'nın|'daki|’nın|’daki)?|Ghana)(?:\s|\s*[-–:,])/i,"Gana"],
+ [/^(?:Almanya|Germany)(?:\s|\s*[-–:,])/i,"Almanya"],
+ [/^(?:Türkiye|Turkey)(?:\s|\s*[-–:,])/i,"Türkiye"],
+ [/^(?:Çin|China)(?:\s|\s*[-–:,])/i,"Çin"],
+ [/^(?:Belçika|Belgium)(?:\s|\s*[-–:,])/i,"Belçika"],
+ [/^(?:Suudi Arabistan|Saudi Arabia)(?:\s|\s*[-–:,])/i,"Suudi Arabistan"],
+ [/^(?:Birleşik Arap Emirlikleri|United Arab Emirates)(?:\s|\s*[-–:,])/i,"Birleşik Arap Emirlikleri"],
+ [/^(?:Katar|Qatar)(?:\s|\s*[-–:,])/i,"Katar"]
+ ];
+ for(var i=0;i<patterns.length;i++)if(patterns[i][0].test(headline))return {name:patterns[i][1],inferred:true};
+ return {name:"Ülkesi tespit edilemeyenler",inferred:false};
+}
 function cityOf(o){var x=pick(o,["place-of-performance-city-lot","place_of_performance_city","buyer_city","delivery_city","city","project_city","delivery_location","region","project_location"]);return txt(x).trim()||"Şehir belirtilmemiş";}
 function classification(o){
  var x=txt(pick(o,["procurement_type","contract_type","notice-type","category","procurement_category","type"])).toLowerCase();
@@ -24,14 +44,14 @@ function classification(o){
  return "Tür doğrulanmalı";
 }
 function card(o){
- var idx=(DATA.opportunities||[]).indexOf(o),st=status(o);
+ var idx=(DATA.opportunities||[]).indexOf(o),st=status(o),place=resolvedCountry(o);
  var p=productText(o)||title(o);
  return '<button type="button" class="market-item" onclick="openOpp('+idx+')">'+
  '<span class="market-item-title">'+esc(p.slice(0,170))+'</span>'+
  '<span class="market-meta">'+esc(classification(o))+' · '+esc(source(o))+'</span>'+
  '<span class="market-facts"><b>Miktar:</b> '+esc(quantity(o)||"İlanda belirtilmemiş")+
  ' <b>Son tarih:</b> '+esc(deadline(o)||"Belirtilmemiş")+'</span>'+
- '<span class="market-meta">Dosya '+st.score+'/6 · '+(hasDocs(o)?"Kaynak bağlantısı var":"Belge bağlantısı yok")+'</span></button>';
+ '<span class="market-meta">Dosya '+st.score+'/6 · '+(hasDocs(o)?"Kaynak bağlantısı var":"Belge bağlantısı yok")+(place.inferred?' · Ülke başlıktan tahmin edildi, resmî teyit gerekli':'')+'</span></button>';
 }
 function countryBlock(c,rows,open){
  var cities={};rows.forEach(function(o){var name=cityOf(o);(cities[name]||(cities[name]=[])).push(o)});
@@ -43,9 +63,14 @@ function renderCountryList(){
  var rows=filtered(),box=document.getElementById("list");if(!box)return;
  document.getElementById("resultCount").textContent=rows.length+" fırsat · Ülke → şehir → alım talebi";
  var previouslyOpen={};box.querySelectorAll("details.market-country[open]").forEach(function(d){previouslyOpen[d.getAttribute("data-market-country")]=true});
- var groups={};rows.forEach(function(o){var c=normalized(country(o));(groups[c]||(groups[c]=[])).push(o)});
+ var groups={};rows.forEach(function(o){var c=resolvedCountry(o).name;(groups[c]||(groups[c]=[])).push(o)});
  var hasActiveFilters=!!(document.getElementById("q").value||document.getElementById("country").value||document.getElementById("source").value||document.getElementById("quality").value||quick!=="all");
- var gulfRows=gulf.map(function(c){return countryBlock(c,groups[c]||[],!!previouslyOpen[c])}).join("");
+ var officialSources={
+"Suudi Arabistan":{label:"Etimad — resmî ihale arama",url:"https://tenders.etimad.sa/"},
+"Birleşik Arap Emirlikleri":{label:"BAE Maliye Bakanlığı — dijital kamu alımları",url:"https://mof.gov.ae/en/public-finance/government-procurement/digital-procurement-platform/"},
+"Katar":{label:"Monaqasat — açık bakanlık ihaleleri",url:"https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"}
+};
+var gulfRows=gulf.map(function(c){var src=officialSources[c];return countryBlock(c,groups[c]||[],!!previouslyOpen[c])+(src?'<p class="market-source">Resmî kaynak: <a href="'+esc(src.url)+'" target="_blank" rel="noopener noreferrer">'+esc(src.label)+'</a> · Bu bağlantıdan henüz otomatik talep aktarılmıyor.</p>':'')}).join("");
  var rest=Object.keys(groups).filter(function(c){return gulf.indexOf(c)<0}).sort(function(a,b){return a.localeCompare(b,"tr")});
  var other=rest.map(function(c){return countryBlock(c,groups[c],!!previouslyOpen[c])}).join("");
  box.innerHTML='<div class="market-region"><h3>Arap Yarımadası ve Körfez</h3><p>Ülkeyi, ardından şehri açarak gerçek talepleri incele.</p>'+gulfRows+'</div>'+
@@ -53,6 +78,7 @@ function renderCountryList(){
 }
 var style=document.createElement("style");style.textContent=
 ".market-region{background:#0b2233;border:1px solid #31536a;border-radius:14px;padding:12px;margin-bottom:12px}"+
+".market-source{font-size:11px!important;margin:0 5px 12px!important;color:#b9cbd5}.market-source a{color:#85c6ff;word-break:break-word}"+
 ".market-region h3{font-size:16px;margin:2px 0 6px;color:#e6b45b}.market-region p{font-size:12px;color:#a9bfcc;margin:0 0 12px}"+
 ".market-country,.market-city{border:1px solid #31536a;border-radius:10px;margin:8px 0;overflow:hidden}"+
 ".market-country>summary,.market-city>summary{cursor:pointer;padding:12px;background:#123247;font-weight:750;list-style:none;display:flex;justify-content:space-between;gap:8px}"+
