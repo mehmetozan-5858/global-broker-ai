@@ -40,6 +40,11 @@ class CommissionTests(unittest.TestCase):
         self.assertFalse(x["transaction_in_scope"])
         self.assertEqual(x["status"], "proposal_only")
 
+    def test_repeat_without_date_remains_out_of_scope(self):
+        t = self.terms(signed_agreement_id="A1", agreement_signed_on=date(2026, 1, 15), human_legal_review_approved=True, repeat_transactions_in_scope=True)
+        x = assess_commission(t, repeat_transaction=True, transaction_evidence=True)
+        self.assertFalse(x["transaction_in_scope"])
+
     def test_repeat_expired_protection(self):
         t = self.terms(signed_agreement_id="A1", agreement_signed_on=date(2026, 1, 15), human_legal_review_approved=True, repeat_transactions_in_scope=True, protection_months=12)
         x = assess_commission(t, repeat_transaction=True, transaction_date=date(2027, 1, 16), transaction_evidence=True)
