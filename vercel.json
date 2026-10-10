@@ -7,7 +7,9 @@
   },
   "rewrites": [
     { "source": "/", "destination": "/web/website.html" },
+    { "source": "/website.html", "destination": "/web/website.html" },
     { "source": "/customer", "destination": "/web/index.html" },
+    { "source": "/customer.html", "destination": "/web/index.html" },
     { "source": "/account", "destination": "/web/account.html" },
     { "source": "/pricing", "destination": "/web/pricing.html" },
     { "source": "/privacy", "destination": "/web/privacy.html" },
