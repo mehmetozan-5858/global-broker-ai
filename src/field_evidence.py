@@ -14,7 +14,6 @@ def _text(value: Any) -> str:
     if isinstance(value, list):
         return " ".join(_text(v) for v in value if _text(v)).strip()
     if isinstance(value, dict):
-        # Prefer English/Turkish scalar/list entries before flattening arbitrary maps.
         for key in ("tr", "tur", "en", "eng"):
             if key in value and _text(value[key]):
                 return _text(value[key])
@@ -54,6 +53,13 @@ FIELDS: dict[str, tuple[str, ...]] = {
     "buyer": ("buyer-name", "buyer_name", "borrower", "agency", "department", "office"),
 }
 
+SOURCE_URL_KEYS = (
+    "source_url", "source-url", "notice_url", "detail_url", "tender_url", "url",
+)
+
+# Quantity and deadline are the most commercially blocking gaps after product/buyer are known.
+RESEARCH_PRIORITY = ("quantity", "deadline", "country", "city", "buyer", "product")
+
 
 def annotate(item: dict[str, Any]) -> dict[str, Any]:
     evidence: dict[str, dict[str, Any]] = {}
@@ -70,7 +76,6 @@ def annotate(item: dict[str, Any]) -> dict[str, Any]:
         if not value:
             missing.append(name)
 
-    # Do not promote title text to a verified quantity/city/country. A3 keeps unknowns explicit.
     item["field_evidence"] = evidence
     item["missing_core_fields"] = missing
     item["core_field_coverage"] = {
@@ -81,25 +86,65 @@ def annotate(item: dict[str, Any]) -> dict[str, Any]:
     return item
 
 
+def _research_queue_item(item: dict[str, Any]) -> dict[str, Any] | None:
+    missing = list(item.get("missing_core_fields") or [])
+    if not missing:
+        return None
+    source_url, _ = _pick(item, SOURCE_URL_KEYS)
+    product = ((item.get("field_evidence") or {}).get("product") or {}).get("value")
+    buyer = ((item.get("field_evidence") or {}).get("buyer") or {}).get("value")
+    ordered = [name for name in RESEARCH_PRIORITY if name in missing]
+    critical = [name for name in ("quantity", "deadline") if name in missing]
+    coverage = (item.get("core_field_coverage") or {}).get("verified_or_source_backed", 0)
+    return {
+        "opportunity_id": _text(item.get("id") or item.get("publication-number") or item.get("notice_id")) or None,
+        "product": product,
+        "buyer": buyer,
+        "source_url": source_url or None,
+        "missing_fields": ordered,
+        "critical_missing_fields": critical,
+        "coverage": int(coverage or 0),
+        "priority": "high" if critical and coverage >= 3 else "normal",
+        "rule": "research source/document only; do not infer missing facts",
+    }
+
+
 def process_payload(payload: dict[str, Any]) -> dict[str, Any]:
     rows = payload.get("opportunities") or []
     for item in rows:
         if isinstance(item, dict):
             annotate(item)
+
     counts = {name: 0 for name in FIELDS}
     complete = 0
+    queue: list[dict[str, Any]] = []
     for item in rows:
+        if not isinstance(item, dict):
+            continue
         ev = item.get("field_evidence") or {}
         for name in counts:
             if (ev.get(name) or {}).get("status") == "source_backed":
                 counts[name] += 1
         if (item.get("core_field_coverage") or {}).get("complete"):
             complete += 1
+        q = _research_queue_item(item)
+        if q:
+            queue.append(q)
+
+    queue.sort(key=lambda q: (
+        0 if q.get("priority") == "high" else 1,
+        -int(q.get("coverage") or 0),
+        str(q.get("product") or ""),
+    ))
+    payload["field_research_queue"] = queue
     payload["field_evidence_summary"] = {
         "opportunities": len(rows),
         "complete_core_records": complete,
         "source_backed_counts": counts,
-        "rule": "missing values remain unknown; no inferred value is promoted as source-backed",
+        "research_queue": len(queue),
+        "high_priority_research": sum(1 for q in queue if q.get("priority") == "high"),
+        "missing_counts": {name: len(rows) - counts[name] for name in counts},
+        "rule": "missing values remain unknown; research source documents only; no inferred value is promoted as source-backed",
     }
     return payload
 
