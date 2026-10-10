@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from src.browser_render import dump_dom
 from src.saudi_etimad_feed import _api_record, collect, discover_detail_links, parse_detail
-from src.uae_mof_feed import AR_SOURCE_URL
+from src.uae_mof_feed import AR_SOURCE_URL, BROWSER_USER_AGENT
 from src.uae_mof_feed import collect as collect_uae
 from src.uae_mof_feed import parse as parse_uae
 
@@ -55,6 +55,11 @@ class GulfLiveFeedTests(unittest.TestCase):
         self.assertEqual(rows[0]['rfq_number'], '12583')
         self.assertNotIn('contract-nature', rows[0])
         self.assertTrue(rows[0]['source_url'].startswith('https://procurement.gov.ae/'))
+
+    def test_uae_http_client_uses_normal_browser_identity(self):
+        self.assertTrue(BROWSER_USER_AGENT.startswith('Mozilla/5.0'))
+        self.assertIn('Chrome/', BROWSER_USER_AGENT)
+        self.assertNotIn('GlobalBrokerAI', BROWSER_USER_AGENT)
 
     def test_uae_uses_headless_dom_when_server_html_has_no_rows(self):
         with patch('src.uae_mof_feed._fetch_url', return_value='<html></html>'), patch(
