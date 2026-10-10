@@ -851,7 +851,7 @@
             "url": "https://ted.europa.eu/en/notice/663797-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663797-2026/xml",
@@ -2189,7 +2189,7 @@
             "url": "https://ted.europa.eu/en/notice/663822-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663822-2026/xml",
@@ -3519,7 +3519,7 @@
             "url": "https://ted.europa.eu/en/notice/663830-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663830-2026/xml",
@@ -4852,7 +4852,7 @@
             "url": "https://ted.europa.eu/en/notice/663837-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663837-2026/xml",
@@ -6211,7 +6211,7 @@
             "url": "https://ted.europa.eu/en/notice/663841-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663841-2026/xml",
@@ -7545,7 +7545,7 @@
             "url": "https://ted.europa.eu/en/notice/663847-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663847-2026/xml",
@@ -8873,7 +8873,7 @@
             "url": "https://ted.europa.eu/en/notice/663849-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663849-2026/xml",
@@ -10234,7 +10234,7 @@
             "url": "https://ted.europa.eu/en/notice/663853-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663853-2026/xml",
@@ -11569,7 +11569,7 @@
             "url": "https://ted.europa.eu/en/notice/663856-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663856-2026/xml",
@@ -12910,7 +12910,7 @@
             "url": "https://ted.europa.eu/en/notice/663865-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663865-2026/xml",
@@ -14310,7 +14310,7 @@
             "url": "https://ted.europa.eu/en/notice/663866-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663866-2026/xml",
@@ -15638,7 +15638,7 @@
             "url": "https://ted.europa.eu/en/notice/663871-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663871-2026/xml",
@@ -16984,7 +16984,7 @@
             "url": "https://ted.europa.eu/en/notice/663896-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663896-2026/xml",
@@ -18316,7 +18316,7 @@
             "url": "https://ted.europa.eu/en/notice/663931-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663931-2026/xml",
@@ -19754,7 +19754,7 @@
             "url": "https://ted.europa.eu/en/notice/663939-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663939-2026/xml",
@@ -21223,7 +21223,7 @@
             "url": "https://ted.europa.eu/en/notice/663958-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663958-2026/xml",
@@ -22557,7 +22557,7 @@
             "url": "https://ted.europa.eu/en/notice/663971-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663971-2026/xml",
@@ -23927,7 +23927,7 @@
             "url": "https://ted.europa.eu/en/notice/663991-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663991-2026/xml",
@@ -25317,7 +25317,7 @@
             "url": "https://ted.europa.eu/en/notice/664035-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664035-2026/xml",
@@ -26737,7 +26737,7 @@
             "url": "https://ted.europa.eu/en/notice/664039-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664039-2026/xml",
@@ -28090,7 +28090,7 @@
             "url": "https://ted.europa.eu/en/notice/664048-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664048-2026/xml",
@@ -29418,7 +29418,7 @@
             "url": "https://ted.europa.eu/en/notice/663819-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663819-2026/xml",
@@ -30767,7 +30767,7 @@
             "url": "https://ted.europa.eu/en/notice/663828-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663828-2026/xml",
@@ -32268,7 +32268,7 @@
             "url": "https://ted.europa.eu/en/notice/663833-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663833-2026/xml",
@@ -33598,7 +33598,7 @@
             "url": "https://ted.europa.eu/en/notice/663873-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663873-2026/xml",
@@ -35068,7 +35068,7 @@
             "url": "https://ted.europa.eu/en/notice/663880-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663880-2026/xml",
@@ -36413,7 +36413,7 @@
             "url": "https://ted.europa.eu/en/notice/663883-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663883-2026/xml",
@@ -37749,7 +37749,7 @@
             "url": "https://ted.europa.eu/en/notice/663886-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663886-2026/xml",
@@ -39102,7 +39102,7 @@
             "url": "https://ted.europa.eu/en/notice/663893-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663893-2026/xml",
@@ -40451,7 +40451,7 @@
             "url": "https://ted.europa.eu/en/notice/663897-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663897-2026/xml",
@@ -41791,7 +41791,7 @@
             "url": "https://ted.europa.eu/en/notice/663912-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663912-2026/xml",
@@ -43173,7 +43173,7 @@
             "url": "https://ted.europa.eu/en/notice/663917-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663917-2026/xml",
@@ -44519,7 +44519,7 @@
             "url": "https://ted.europa.eu/en/notice/663919-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663919-2026/xml",
@@ -45871,7 +45871,7 @@
             "url": "https://ted.europa.eu/en/notice/663941-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663941-2026/xml",
@@ -47320,7 +47320,7 @@
             "url": "https://ted.europa.eu/en/notice/663945-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663945-2026/xml",
@@ -48650,7 +48650,7 @@
             "url": "https://ted.europa.eu/en/notice/663963-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663963-2026/xml",
@@ -49988,7 +49988,7 @@
             "url": "https://ted.europa.eu/en/notice/663964-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663964-2026/xml",
@@ -51316,7 +51316,7 @@
             "url": "https://ted.europa.eu/en/notice/663993-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663993-2026/xml",
@@ -52648,7 +52648,7 @@
             "url": "https://ted.europa.eu/en/notice/664003-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664003-2026/xml",
@@ -54004,7 +54004,7 @@
             "url": "https://ted.europa.eu/en/notice/664036-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664036-2026/xml",
@@ -55570,7 +55570,7 @@
             "url": "https://ted.europa.eu/en/notice/664045-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664045-2026/xml",
@@ -66664,7 +66664,7 @@
             "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
             "status": "failed",
             "source": "source_page",
-            "error": "URLError:<urlopen error timed out>"
+            "error": "URLError:<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:1010)>"
           }
         ],
         "text_chars": 0
@@ -67016,7 +67016,7 @@
             "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904",
             "status": "failed",
             "source": "source_page",
-            "error": "URLError:<urlopen error timed out>"
+            "error": "URLError:<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:1010)>"
           }
         ],
         "text_chars": 0
@@ -67382,7 +67382,7 @@
     "filtered_routes_with_rows": [],
     "budget_seconds": 70,
     "budget_exhausted": false,
-    "elapsed_seconds": 6.35,
+    "elapsed_seconds": 6.5,
     "ssr_fallback_attempted": false
   },
   "qatar_monaqasat_feed": {
@@ -67403,7 +67403,7 @@
     "browser_routes": [
       "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"
     ],
-    "elapsed_seconds": 12.58,
+    "elapsed_seconds": 18.94,
     "budget_seconds": 55,
     "budget_exhausted": false
   },
@@ -85993,7 +85993,7 @@
   "watchdog": {
     "mode": "shadow",
     "stale_after_hours": 24,
-    "checked_at": "2026-10-10T19:02:25.774055+00:00",
+    "checked_at": "2026-10-10T19:08:25.110953+00:00",
     "counts": {
       "healthy": 0,
       "warning": 0,
