@@ -47,7 +47,7 @@ class RemainingRoadmapTests(unittest.TestCase):
         self.assertIn("freight",result["missing_inputs"])
 
     def test_a8_external_actions_always_fail_closed(self):
-        item={"export_goods_review":{"status":"goods_candidate"},"buyer_verification":{"verified":True},"specification_analysis":{"supplier_sourcing_ready":True},"supplier_research":{"verified_supplier_count":1},"commercial_feasibility":{"calculation_ready":True}}
+        item={"export_goods_review":{"status":"goods_candidate"},"buyer_verification":{"verified":True},"specification_analysis":{"supplier_sourcing_ready":True},"supplier_research":{"verified_supplier_count":1},"commercial_feasibility":{"calculation_ready":True,"facts":{"destination":{"value":"Riyadh"}}}}
         result=evaluate_offer(item)
         self.assertTrue(result["draft_offer_ready"])
         self.assertFalse(result["external_action_authorized"])
