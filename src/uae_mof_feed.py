@@ -12,6 +12,8 @@ from urllib.parse import urlencode, urljoin
 from .browser_render import dump_dom
 
 SOURCE_URL = "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/"
+AR_SOURCE_URL = "https://mof.gov.ae/ar/public-finance/government-procurement/current-business-opportunities/"
+SOURCE_URLS = (SOURCE_URL, AR_SOURCE_URL)
 
 
 class _TableParser(HTMLParser):
@@ -56,18 +58,18 @@ def _fetch_url(url: str) -> str:
         url,
         headers={
             "User-Agent": "Mozilla/5.0 (compatible; GlobalBrokerAI/1.0; +https://github.com/mehmetozan-5858/global-broker-ai)",
-            "Accept-Language": "en-US,en;q=0.9",
+            "Accept-Language": "en-US,en;q=0.9,ar;q=0.8",
         },
     )
     with urllib.request.urlopen(req, timeout=35) as response:
         return response.read().decode("utf-8", "replace")
 
 
-def page_url(page: int = 1) -> str:
-    return f"{SOURCE_URL}?{urlencode({'mof-dpp-page': page})}"
+def page_url(page: int = 1, source_url: str = SOURCE_URL) -> str:
+    return f"{source_url}?{urlencode({'mof-dpp-page': page})}"
 
 
-def parse(markup: str) -> list[dict[str, Any]]:
+def parse(markup: str, source_url: str = SOURCE_URL) -> list[dict[str, Any]]:
     parser = _TableParser()
     parser.feed(markup)
     results: list[dict[str, Any]] = []
@@ -85,15 +87,15 @@ def parse(markup: str) -> list[dict[str, Any]]:
         href = ""
         for cell in cells[5:]:
             if cell.get("href"):
-                href = urljoin(SOURCE_URL, html.unescape(cell["href"]))
+                href = urljoin(source_url, html.unescape(cell["href"]))
                 break
         if not title:
             continue
         results.append({
             "id": f"uae-mof-{rfq}",
             "source": "UAE Ministry of Finance - Current Business Opportunities",
-            "source_url": href or SOURCE_URL,
-            "official_links": [href or SOURCE_URL],
+            "source_url": href or source_url,
+            "official_links": [href or source_url],
             "title_original": title,
             "title_tr": title,
             "buyer-name": entity or None,
@@ -105,7 +107,7 @@ def parse(markup: str) -> list[dict[str, Any]]:
             "gulf_live_source": True,
             "foreign_supplier_eligibility_assumed": False,
             "source_provenance": {
-                "source": SOURCE_URL,
+                "source": source_url,
                 "rfq_number": rfq,
                 "parsed_from_public_listing": True,
             },
@@ -113,25 +115,37 @@ def parse(markup: str) -> list[dict[str, Any]]:
     return results
 
 
+def _collect_page(page: int, source_url: str, meta: dict[str, Any]) -> list[dict[str, Any]]:
+    url = page_url(page, source_url)
+    route = "ar" if source_url == AR_SOURCE_URL else "en"
+    try:
+        markup = _fetch_url(url)
+        rows = parse(markup, source_url)
+    except Exception as exc:
+        meta["errors"].append(f"route={route}:page={page}:http:{type(exc).__name__}")
+        rows = []
+    if not rows:
+        try:
+            rendered = dump_dom(url, virtual_time_ms=15000, timeout_seconds=40)
+            rows = parse(rendered, source_url)
+            meta["browser_fallback_pages"].append(f"{route}:{page}")
+        except Exception as exc:
+            meta["errors"].append(f"route={route}:page={page}:browser:{type(exc).__name__}:{exc}")
+    if rows:
+        meta["successful_route"] = route
+    return rows
+
+
 def collect(max_pages: int = 4) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     combined: list[dict[str, Any]] = []
     seen: set[str] = set()
-    meta: dict[str, Any] = {"errors": [], "browser_fallback_pages": []}
+    meta: dict[str, Any] = {"errors": [], "browser_fallback_pages": [], "successful_route": None}
     for page in range(1, max_pages + 1):
-        url = page_url(page)
-        try:
-            markup = _fetch_url(url)
-            rows = parse(markup)
-        except Exception as exc:
-            meta["errors"].append(f"page={page}:http:{type(exc).__name__}")
-            rows = []
-        if not rows:
-            try:
-                rendered = dump_dom(url, virtual_time_ms=15000, timeout_seconds=40)
-                rows = parse(rendered)
-                meta["browser_fallback_pages"].append(page)
-            except Exception as exc:
-                meta["errors"].append(f"page={page}:browser:{type(exc).__name__}:{exc}")
+        rows: list[dict[str, Any]] = []
+        for source_url in SOURCE_URLS:
+            rows = _collect_page(page, source_url, meta)
+            if rows:
+                break
         new_rows = [row for row in rows if row["id"] not in seen]
         if not new_rows and page > 1:
             break
@@ -158,12 +172,14 @@ def merge_payload(payload: dict[str, Any], rows: list[dict[str, Any]], meta: dic
             added += 1
     payload["uae_mof_feed"] = {
         "source": SOURCE_URL,
+        "alternate_official_source": AR_SOURCE_URL,
         "status": "ok" if rows else ("source_unavailable" if errors else "no_rows_found"),
         "parsed_opportunities": len(rows),
         "added": added,
         "live_ingestion": bool(rows),
         "foreign_supplier_eligibility_assumed": False,
         "errors": errors,
+        "successful_route": meta.get("successful_route"),
         "rendered_fallback_used": bool(meta.get("rendered_fallback_used")),
         "browser_fallback_pages": meta.get("browser_fallback_pages") or [],
     }
