@@ -27,23 +27,48 @@ jobs:
           cp -r web/* public/
           if [ -f web/index.html ]; then
             cp web/index.html public/customer.html
-            # W2 customer search and quality quick-views are separate progressive-enhancement scripts.
-            sed -i 's#</body>#<script src="customer-portal.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html
+            sed -i 's#</body>#<script src="pricing-policy.js" defer></script><script src="customer-portal.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html
           fi
           if [ -f web/app.html ]; then
             cp web/app.html public/dashboard.html
-            # Preserve the existing dashboard and its public-data-only scripts at a stable URL.
             sed -i 's#</body>#<script src="ceo-dashboard.js" defer></script></body>#' public/dashboard.html
             sed -i 's#</body>#<script src="tender-dossier.js" defer></script></body>#' public/dashboard.html
           fi
           if [ -f web/website.html ]; then
             cp web/website.html public/index.html
           fi
-          if [ -f data/latest-opportunities.json ]; then
-            cp data/latest-opportunities.json public/data/latest-opportunities.json
-          else
-            echo '{"mode":"shadow","opportunities":[]}' > public/data/latest-opportunities.json
-          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          src=Path('data/latest-opportunities.json')
+          out=Path('public/data/latest-opportunities.json')
+          blocked_exact={
+              'email','e-mail','phone','telephone','mobile','contact','contact_email','contact_phone','buyer_email','buyer_phone','supplier_email','supplier_phone',
+              'website','linkedin','address','street','postal_code','contact_person','representative','buyer-name','buyer_name','borrower','agency','department','office',
+              'contracting_authority','organization_name','source_url','source-url','url','notice_url','detail_url','document_url'
+          }
+          def scrub(row):
+              clean={}
+              for k,v in row.items():
+                  lk=str(k).lower()
+                  if lk in blocked_exact or any(x in lk for x in ('email','phone','telephone','mobile','linkedin','contact_person','address')):
+                      continue
+                  clean[k]=v
+              clean['buyer_masked']=True
+              clean['buyer_display']='Doğrulanmış alıcı — giriş yaparak erişim kurallarını inceleyin'
+              return clean
+          if src.exists():
+              data=json.loads(src.read_text(encoding='utf-8'))
+              rows=[]
+              for row in data.get('opportunities') or []:
+                  if isinstance(row,dict) and (row.get('export_goods_review') or {}).get('status')=='goods_candidate':
+                      rows.append(scrub(row))
+                  if len(rows)>=100:
+                      break
+              out.write_text(json.dumps({'mode':'public_preview_masked','opportunities':rows},ensure_ascii=False),encoding='utf-8')
+          else:
+              out.write_text('{"mode":"public_preview_masked","opportunities":[]}',encoding='utf-8')
+          PY
           sed -i 's#../data/latest-opportunities.json#data/latest-opportunities.json#g' public/dashboard.html || true
           sed -i 's#../data/latest-opportunities.json#data/latest-opportunities.json#g' public/customer.html || true
       - uses: actions/configure-pages@v5
@@ -84,10 +109,12 @@ jobs:
           import json
           from pathlib import Path
           data=json.loads(Path('/tmp/opportunities.json').read_text(encoding='utf-8'))
+          if data.get('mode')!='public_preview_masked':
+              raise SystemExit('public feed is not masked preview mode')
           rows=data.get('opportunities') or []
-          if not rows:
-              raise SystemExit('public customer feed is empty')
-          if any((row.get('export_goods_review') or {}).get('status') != 'goods_candidate' for row in rows):
-              raise SystemExit('public customer feed contains a non-goods record')
-          print(f'CUSTOMER_ACCEPTANCE_OK opportunities={len(rows)}')
+          for row in rows:
+              text=' '.join(map(str,row.keys())).lower()
+              if 'buyer_name' in text or 'buyer-name' in text or 'email' in text or 'phone' in text or 'source_url' in text:
+                  raise SystemExit('masked preview contains private fields')
+          print(f'CUSTOMER_ACCEPTANCE_OK masked_opportunities={len(rows)}')
           PY
