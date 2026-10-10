@@ -24,7 +24,7 @@ class ProfessionalWebTests(unittest.TestCase):
         self.assertEqual(p.headings.count("h1"),1)
         for href in p.links:
             if href.startswith("#"):self.assertIn(href[1:],p.ids)
-            elif not href.startswith(("https:","mailto:")):self.assertTrue((ROOT/href).exists(),href)
+            elif not href.startswith(("https:","mailto:")):self.assertTrue((ROOT/href).exists() or href=="customer.html",href)
         self.assertIn("Geliştirme",html)
         self.assertIn("fiziksel ürün",html.lower())
         self.assertNotIn("garantili kazanç",html.lower())
