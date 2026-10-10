@@ -22,6 +22,7 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
         "commercial_feasibility_pipeline_present": bool(feas),
         "server_side_auth_configured": _flag("GB_AUTH_READY"),
         "durable_private_storage_configured": _flag("GB_PRIVATE_STORAGE_READY"),
+        "admin_dual_recovery_ready": _flag("GB_ADMIN_DUAL_RECOVERY_READY"),
         "legal_text_reviewed": _flag("GB_LEGAL_REVIEWED"),
         "payment_provider_tested": _flag("GB_PAYMENT_TESTED"),
         "verified_business_contact": _flag("GB_BUSINESS_CONTACT_VERIFIED"),
@@ -45,7 +46,7 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
         "technical_checks_passed": all(checks[k] for k in technical_checks),
         "external_checks_passed": all(checks[k] for k in external_checks),
         "blockers": blockers,
-        "rule": "Production launch stays closed until every required technical, security, legal, payment, domain and acceptance gate is explicitly verified.",
+        "rule": "Production launch stays closed until every required technical, admin-recovery, security, legal, payment, domain, Gulf-ingestion and acceptance gate is explicitly verified.",
     }
     payload["launch_gate"] = result
     return result
