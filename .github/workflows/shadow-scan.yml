@@ -46,16 +46,16 @@ jobs:
           scan_step() {
             local label="$1" seconds="$2"
             shift 2
-            echo "::group::SCAN_STEP_START $label $(date -u +%FT%TZ) limit=${seconds}s"
+            echo "::group::SCAN_STEP_START $label $(date -u +%FT%TZ) limit=${seconds}s" >&2
             local started=$SECONDS
             if timeout --signal=TERM --kill-after=15s "${seconds}s" "$@"; then
-              echo "SCAN_STEP_OK $label duration=$((SECONDS-started))s"
+              echo "SCAN_STEP_OK $label duration=$((SECONDS-started))s" >&2
             else
               local status=$?
-              echo "::error::SCAN_STEP_FAILED $label status=$status duration=$((SECONDS-started))s"
+              echo "::error::SCAN_STEP_FAILED $label status=$status duration=$((SECONDS-started))s" >&2
               exit "$status"
             fi
-            echo "::endgroup::"
+            echo "::endgroup::" >&2
           }
           scan_step broker 360 python src/broker.py > "$NEXT"
           test -s "$NEXT"
