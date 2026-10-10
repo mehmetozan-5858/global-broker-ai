@@ -6,6 +6,7 @@ import urllib.request
 from pathlib import Path
 from urllib.parse import urlencode
 
+from .browser_render import dump_dom
 from .uae_mof_feed import BROWSER_USER_AGENT, SOURCE_URL, parse
 
 # The MOF page intermittently returns an empty shell for the default route on
@@ -15,6 +16,8 @@ from .uae_mof_feed import BROWSER_USER_AGENT, SOURCE_URL, parse
 BOOTSTRAP_MINISTRY = "The General Authority for Islamic Affairs and Endowments - (296/16880)"
 BOOTSTRAP_URL = f"{SOURCE_URL}?{urlencode({'mof-dpp-ministry': BOOTSTRAP_MINISTRY, 'mof-dpp-page': 1})}"
 TIMEOUT_SECONDS = 20
+BROWSER_TIMEOUT_SECONDS = 16
+BROWSER_VIRTUAL_TIME_MS = 4000
 
 
 def _fetch(url: str = BOOTSTRAP_URL) -> str:
@@ -39,18 +42,37 @@ def apply(payload: dict) -> dict:
         payload["uae_mof_feed"] = current
         return payload
 
+    # Try the official filtered route over HTTP first, then a bounded public
+    # browser render if the page is empty or the HTTP request fails.
+    # Neither path bypasses login, CAPTCHA, cookies or private APIs.
+    rows = []
+    errors = []
+    successful_transport = None
     try:
-        markup = _fetch()
-        rows = parse(markup, SOURCE_URL)
+        rows = parse(_fetch(), SOURCE_URL)
+        if rows:
+            successful_transport = "official_filtered_http"
     except Exception as exc:
-        current.update({
-            "ssr_fallback_attempted": True,
-            "ssr_fallback_status": "source_unavailable",
-            "ssr_fallback_error": type(exc).__name__,
-            "coverage_scope": "not_verified",
-        })
-        payload["uae_mof_feed"] = current
-        return payload
+        errors.append(f"http:{type(exc).__name__}")
+
+    if not rows:
+        try:
+            rendered = dump_dom(
+                BOOTSTRAP_URL,
+                virtual_time_ms=BROWSER_VIRTUAL_TIME_MS,
+                timeout_seconds=BROWSER_TIMEOUT_SECONDS,
+            )
+            rows = parse(rendered, SOURCE_URL)
+            if rows:
+                successful_transport = "official_filtered_browser"
+        except Exception as exc:
+            errors.append(f"browser:{type(exc).__name__}")
+
+    current["ssr_fallback_attempted"] = True
+    current["ssr_browser_fallback_attempted"] = successful_transport != "official_filtered_http"
+    current["ssr_fallback_transport"] = successful_transport
+    if errors:
+        current["ssr_fallback_errors"] = errors
 
     opportunities = payload.get("opportunities")
     if not isinstance(opportunities, list):
@@ -70,7 +92,7 @@ def apply(payload: dict) -> dict:
             "parsed_opportunities": len(rows),
             "added": int(current.get("added") or 0) + added,
             "live_ingestion": True,
-            "successful_route": "official_ssr_filtered_fallback",
+            "successful_route": successful_transport,
             "ssr_fallback_attempted": True,
             "ssr_fallback_status": "ok",
             "ssr_fallback_source": BOOTSTRAP_URL,
@@ -81,7 +103,7 @@ def apply(payload: dict) -> dict:
     else:
         current.update({
             "ssr_fallback_attempted": True,
-            "ssr_fallback_status": "no_rows_found",
+            "ssr_fallback_status": "source_unavailable" if len(errors) == 2 else "no_rows_found",
             "coverage_scope": "not_verified",
         })
     payload["uae_mof_feed"] = current
