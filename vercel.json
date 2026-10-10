@@ -12,6 +12,7 @@
     { "source": "/customer.html", "destination": "/web/customer-shell.html" },
     { "source": "/app", "destination": "/web/app-shell.html" },
     { "source": "/account", "destination": "/web/account.html" },
+    { "source": "/security", "destination": "/web/security.html" },
     { "source": "/pricing", "destination": "/web/pricing.html" },
     { "source": "/privacy", "destination": "/web/privacy.html" },
     { "source": "/terms", "destination": "/web/terms.html" },
