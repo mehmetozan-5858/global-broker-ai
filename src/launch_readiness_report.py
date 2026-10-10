@@ -54,9 +54,11 @@ def build(payload: dict[str, Any]) -> dict[str, Any]:
         for country, key in country_checks
     }
     report = {
-        "global_market_scope": True,
+        "intended_market_scope": "worldwide",
+        "worldwide_live_coverage_verified": False,
         "market_scope_note": (
-            "Global physical-goods B2B brokerage. Gulf priority checks are a launch "
+            "Global physical-goods B2B brokerage is the intended scope, not verified "
+            "worldwide live coverage. Gulf priority checks are a launch "
             "quality requirement, not a country restriction on worldwide discovery."
         ),
         "production_launch_ready": gate.get("launch_ready") is True,
