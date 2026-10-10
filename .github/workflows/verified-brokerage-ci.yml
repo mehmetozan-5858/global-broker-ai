@@ -38,3 +38,4 @@ jobs:
           node --check web/tender-dossier.js
           node --check web/country-markets.js
           node --check web/customer-portal.js
+          node --check web/customer-priority.js

@@ -27,8 +27,8 @@ jobs:
           cp -r web/* public/
           if [ -f web/index.html ]; then
             cp web/index.html public/customer.html
-            # W2 customer search is kept as a separate progressive-enhancement script.
-            sed -i 's#</body>#<script src="customer-portal.js" defer></script></body>#' public/customer.html
+            # W2 customer search and quality quick-views are separate progressive-enhancement scripts.
+            sed -i 's#</body>#<script src="customer-portal.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html
           fi
           if [ -f web/app.html ]; then
             cp web/app.html public/dashboard.html
