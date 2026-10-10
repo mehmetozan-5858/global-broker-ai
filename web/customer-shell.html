@@ -34,6 +34,7 @@ html,body{margin:0;width:100%;height:100%;background:#061725;overflow:hidden}
     var style=d.createElement('style');style.textContent='nav span{touch-action:manipulation;-webkit-tap-highlight-color:transparent} nav span:active{transform:scale(.97)} .panel{scroll-margin-top:8px}.brand{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;font-weight:900!important;letter-spacing:-.03em!important}.brand span{color:#f3923c!important}';d.head.appendChild(style);
     var live=d.createElement('script');live.src='/web/operational-panels.js';d.body.appendChild(live);
     var readiness=d.createElement('script');readiness.src='/web/opportunity-readiness.js';d.body.appendChild(readiness);
+    var dossier=d.createElement('script');dossier.src='/web/opportunity-dossier.js';d.body.appendChild(dossier);
   }
   frame.addEventListener('load',function(){setTimeout(enhance,0);});
 })();
