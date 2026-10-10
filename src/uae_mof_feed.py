@@ -3,6 +3,7 @@ from __future__ import annotations
 import html
 import json
 import sys
+import time
 import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
@@ -14,6 +15,10 @@ from .browser_render import dump_dom
 SOURCE_URL = "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/"
 AR_SOURCE_URL = "https://mof.gov.ae/ar/public-finance/government-procurement/current-business-opportunities/"
 SOURCE_URLS = (SOURCE_URL, AR_SOURCE_URL)
+HTTP_TIMEOUT_SECONDS = 12
+BROWSER_TIMEOUT_SECONDS = 18
+BROWSER_VIRTUAL_TIME_MS = 7000
+COLLECT_BUDGET_SECONDS = 70
 
 
 class _TableParser(HTMLParser):
@@ -61,7 +66,7 @@ def _fetch_url(url: str) -> str:
             "Accept-Language": "en-US,en;q=0.9,ar;q=0.8",
         },
     )
-    with urllib.request.urlopen(req, timeout=35) as response:
+    with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_SECONDS) as response:
         return response.read().decode("utf-8", "replace")
 
 
@@ -115,7 +120,7 @@ def parse(markup: str, source_url: str = SOURCE_URL) -> list[dict[str, Any]]:
     return results
 
 
-def _collect_page(page: int, source_url: str, meta: dict[str, Any]) -> list[dict[str, Any]]:
+def _collect_page(page: int, source_url: str, meta: dict[str, Any], *, allow_browser: bool) -> list[dict[str, Any]]:
     url = page_url(page, source_url)
     route = "ar" if source_url == AR_SOURCE_URL else "en"
     try:
@@ -124,9 +129,13 @@ def _collect_page(page: int, source_url: str, meta: dict[str, Any]) -> list[dict
     except Exception as exc:
         meta["errors"].append(f"route={route}:page={page}:http:{type(exc).__name__}")
         rows = []
-    if not rows:
+    if not rows and allow_browser:
         try:
-            rendered = dump_dom(url, virtual_time_ms=15000, timeout_seconds=40)
+            rendered = dump_dom(
+                url,
+                virtual_time_ms=BROWSER_VIRTUAL_TIME_MS,
+                timeout_seconds=BROWSER_TIMEOUT_SECONDS,
+            )
             rows = parse(rendered, source_url)
             meta["browser_fallback_pages"].append(f"{route}:{page}")
         except Exception as exc:
@@ -136,23 +145,38 @@ def _collect_page(page: int, source_url: str, meta: dict[str, Any]) -> list[dict
     return rows
 
 
-def collect(max_pages: int = 4) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+def collect(max_pages: int = 2) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     combined: list[dict[str, Any]] = []
     seen: set[str] = set()
-    meta: dict[str, Any] = {"errors": [], "browser_fallback_pages": [], "successful_route": None}
+    started = time.monotonic()
+    meta: dict[str, Any] = {
+        "errors": [],
+        "browser_fallback_pages": [],
+        "successful_route": None,
+        "budget_seconds": COLLECT_BUDGET_SECONDS,
+        "budget_exhausted": False,
+    }
     for page in range(1, max_pages + 1):
         rows: list[dict[str, Any]] = []
         for source_url in SOURCE_URLS:
-            rows = _collect_page(page, source_url, meta)
+            if time.monotonic() - started >= COLLECT_BUDGET_SECONDS:
+                meta["budget_exhausted"] = True
+                break
+            # Browser rendering is the expensive path. Use it only for the first page;
+            # later pages are attempted by plain HTTP so the adapter cannot starve the scan.
+            rows = _collect_page(page, source_url, meta, allow_browser=(page == 1))
             if rows:
                 break
         new_rows = [row for row in rows if row["id"] not in seen]
-        if not new_rows and page > 1:
+        if not new_rows:
             break
         for row in new_rows:
             seen.add(row["id"])
             combined.append(row)
+        if meta["budget_exhausted"]:
+            break
     meta["rendered_fallback_used"] = bool(meta["browser_fallback_pages"])
+    meta["elapsed_seconds"] = round(time.monotonic() - started, 2)
     return combined, meta
 
 
@@ -182,6 +206,9 @@ def merge_payload(payload: dict[str, Any], rows: list[dict[str, Any]], meta: dic
         "successful_route": meta.get("successful_route"),
         "rendered_fallback_used": bool(meta.get("rendered_fallback_used")),
         "browser_fallback_pages": meta.get("browser_fallback_pages") or [],
+        "budget_seconds": meta.get("budget_seconds"),
+        "budget_exhausted": bool(meta.get("budget_exhausted")),
+        "elapsed_seconds": meta.get("elapsed_seconds"),
     }
     return payload
 
