@@ -39,7 +39,8 @@ def main(path: str) -> None:
         "launch_ready": (payload.get("launch_gate") or {}).get("launch_ready"),
         "launch_blockers": (payload.get("launch_gate") or {}).get("blockers"),
         "launch_categories": (payload.get("launch_readiness_report") or {}).get("categories"),
-        "global_market_scope": True,
+        "intended_market_scope": (payload.get("launch_readiness_report") or {}).get("intended_market_scope"),
+        "worldwide_live_coverage_verified": False,
     }, ensure_ascii=False), file=sys.stderr)
 
 

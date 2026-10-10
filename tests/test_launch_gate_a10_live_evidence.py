@@ -15,6 +15,9 @@ class LaunchGateA10LiveEvidenceTests(unittest.TestCase):
             "gulf_sources": {
                 "priority_gulf_live_ingestion_verified": gulf_live,
                 "live_ingestion_verified": gulf_live,
+                "saudi_live_ingestion_verified": gulf_live,
+                "uae_live_ingestion_verified": gulf_live,
+                "qatar_live_ingestion_verified": gulf_live,
             },
         }
 
@@ -47,6 +50,14 @@ class LaunchGateA10LiveEvidenceTests(unittest.TestCase):
         self.assertFalse(result["launch_ready"])
         self.assertTrue(result["checks"]["gulf_current_scan_verified"])
         self.assertFalse(result["checks"]["gulf_live_ingestion_verified"])
+
+    def test_aggregate_gulf_flags_cannot_hide_missing_country(self):
+        payload = self._payload(True)
+        payload["gulf_sources"]["uae_live_ingestion_verified"] = False
+        with patch.dict(os.environ, self._all_external_flags(), clear=True):
+            result = evaluate(payload)
+        self.assertFalse(result["launch_ready"])
+        self.assertFalse(result["checks"]["gulf_current_scan_verified"])
 
     def test_all_gates_can_open_only_with_live_evidence_and_attestation(self):
         with patch.dict(os.environ, self._all_external_flags(), clear=True):
