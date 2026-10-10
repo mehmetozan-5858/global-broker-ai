@@ -31,10 +31,30 @@ class UaeMofSsrFallbackTests(unittest.TestCase):
 
     def test_network_failure_does_not_fake_live_status(self):
         payload={'uae_mof_feed':{'live_ingestion':False},'opportunities':[]}
-        with patch('src.uae_mof_ssr_fallback._fetch',side_effect=OSError('blocked')):
+        with patch('src.uae_mof_ssr_fallback._fetch',side_effect=OSError('blocked')), \
+             patch('src.uae_mof_ssr_fallback.dump_dom',side_effect=RuntimeError('timeout')):
             apply(payload)
         self.assertFalse(payload['uae_mof_feed']['live_ingestion'])
         self.assertEqual(payload['uae_mof_feed']['ssr_fallback_status'],'source_unavailable')
+
+    def test_official_filtered_browser_can_recover_public_rows(self):
+        payload={'uae_mof_feed':{'live_ingestion':False},'opportunities':[]}
+        with patch('src.uae_mof_ssr_fallback._fetch',return_value='<html>No rows</html>'), \
+             patch('src.uae_mof_ssr_fallback.dump_dom',return_value=HTML) as browser:
+            apply(payload)
+        browser.assert_called_once()
+        self.assertTrue(payload['uae_mof_feed']['live_ingestion'])
+        self.assertEqual(payload['uae_mof_feed']['ssr_fallback_transport'],'official_filtered_browser')
+        self.assertEqual(payload['uae_mof_feed']['coverage_scope'],'partial_official_listing')
+        self.assertFalse(payload['uae_mof_feed']['coverage_complete'])
+
+    def test_empty_http_and_browser_never_claim_live_ingestion(self):
+        payload={'uae_mof_feed':{'live_ingestion':False},'opportunities':[]}
+        with patch('src.uae_mof_ssr_fallback._fetch',return_value='<html></html>'), \
+             patch('src.uae_mof_ssr_fallback.dump_dom',return_value='<html></html>'):
+            apply(payload)
+        self.assertFalse(payload['uae_mof_feed']['live_ingestion'])
+        self.assertEqual(payload['uae_mof_feed']['ssr_fallback_status'],'no_rows_found')
 
 
 if __name__=='__main__':
