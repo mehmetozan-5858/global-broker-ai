@@ -68,6 +68,19 @@ def _build_access(record, opportunity_id):
     )
 
 
+def _subject_authorized(record, session):
+    """Fail closed if the server-side opportunity has no explicit subject allowlist."""
+    allowed = record.get("allowed_subjects")
+    subject = session.get("sub")
+    return (
+        isinstance(allowed, list)
+        and bool(allowed)
+        and isinstance(subject, str)
+        and bool(subject.strip())
+        and subject in allowed
+    )
+
+
 def _consent_command(session, payload):
     if not isinstance(payload, dict):
         raise ValueError("invalid_consent_request")
@@ -128,11 +141,9 @@ class handler(BaseHTTPRequestHandler):
             self._json(500, {"status": "SERVER_RECORD_INVALID"})
             return
 
-        allowed_subjects = record.get("allowed_subjects")
-        if isinstance(allowed_subjects, list) and allowed_subjects:
-            if session.get("sub") not in allowed_subjects:
-                self._json(403, {"status": "SESSION_NOT_AUTHORIZED_FOR_OPPORTUNITY"})
-                return
+        if not _subject_authorized(record, session):
+            self._json(403, {"status": "SESSION_NOT_AUTHORIZED_FOR_OPPORTUNITY"})
+            return
 
         try:
             access = _build_access(record, opportunity_id)
