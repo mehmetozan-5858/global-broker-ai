@@ -62320,6 +62320,7 @@
       "product_name": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
       "delivery_location": "Saudi Arabia",
       "document_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "document_extracted_text": "This question is for testing whether you are a human visitor and to prevent automated spam submission. Audio is not supported in your browser. What code is in the image? submit Your support ID is: 13157508242838637583.",
       "document_extraction": {
         "status": "parsed",
         "source_backed_only": true,
@@ -62340,9 +62341,9 @@
             "discovered_attachments": 0
           }
         ],
-        "text_chars": 218
+        "text_chars": 218,
+        "reused_from_last_known_good": true
       },
-      "document_extracted_text": "This question is for testing whether you are a human visitor and to prevent automated spam submission. Audio is not supported in your browser. What code is in the image? submit Your support ID is: 13157508242838637583.",
       "specification_analysis": {
         "status": "document_analysis_pending",
         "source_backed_only": true,
@@ -62637,31 +62638,38 @@
   "uae_mof_feed": {
     "source": "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/",
     "alternate_official_source": "https://mof.gov.ae/ar/public-finance/government-procurement/current-business-opportunities/",
-    "status": "source_unavailable",
+    "status": "no_rows_found",
     "parsed_opportunities": 0,
     "added": 0,
     "live_ingestion": false,
     "foreign_supplier_eligibility_assumed": false,
-    "errors": [
-      "route=en:page=1:browser:RuntimeError:headless_browser_timeout_without_dom"
-    ],
+    "errors": [],
     "successful_route": null,
     "rendered_fallback_used": true,
     "browser_fallback_pages": [
+      "en:1",
       "ar:1"
     ],
     "budget_seconds": 70,
     "budget_exhausted": false,
-    "elapsed_seconds": 37.66
+    "elapsed_seconds": 35.75
   },
   "qatar_monaqasat_feed": {
     "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
+    "alternate_official_source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1",
     "status": "source_unavailable",
     "parsed_goods": 0,
     "added": 0,
     "live_ingestion": false,
     "foreign_supplier_eligibility_assumed": false,
-    "error": "URLError"
+    "successful_route": null,
+    "attempts": 4,
+    "errors": [
+      "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2:URLError",
+      "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2:URLError",
+      "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1:URLError",
+      "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1:URLError"
+    ]
   },
   "goods_review_queue": [
     {
@@ -78609,7 +78617,7 @@
     "parsed_opportunities": 1,
     "source_pages_parsed": 1,
     "discovered_attachments": 0,
-    "reused_last_known_good": 0,
+    "reused_last_known_good": 1,
     "ted_xml_attempted": 41,
     "ted_xml_parsed": 0
   },
