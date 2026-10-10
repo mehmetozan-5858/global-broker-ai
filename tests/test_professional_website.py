@@ -1,6 +1,8 @@
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
+import subprocess
+import sys
 
 ROOT=Path(__file__).resolve().parents[1]/"web"
 class Tags(HTMLParser):
@@ -31,6 +33,12 @@ class ProfessionalWebTests(unittest.TestCase):
             html=(ROOT/name).read_text(encoding="utf-8")
             self.assertIn('name="robots" content="noindex,nofollow"',html)
         self.assertNotIn('href="admin.html"',(ROOT/"website.html").read_text(encoding="utf-8"))
+    def test_scheduled_broker_script_imports_without_pythonpath(self):
+        root=ROOT.parent
+        script="import runpy; runpy.run_path('src/broker.py', run_name='__scan_import_test__')"
+        result=subprocess.run([sys.executable,"-c",script],cwd=root,capture_output=True,text=True,timeout=20)
+        self.assertEqual(result.returncode,0,result.stderr)
+
     def test_mobile_and_accessibility(self):
         html=(ROOT/"website.html").read_text(encoding="utf-8")
         for needle in ("width=device-width","prefers-reduced-motion","focus-visible","Ana içeriğe geç","aria-label","@media"):
