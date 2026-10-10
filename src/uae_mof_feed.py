@@ -166,8 +166,6 @@ def collect(max_pages: int = 2) -> tuple[list[dict[str, Any]], dict[str, Any]]:
             if time.monotonic() - started >= COLLECT_BUDGET_SECONDS:
                 meta["budget_exhausted"] = True
                 break
-            # Browser rendering is the expensive path. Use it only for the first page;
-            # later pages are attempted by plain HTTP so the adapter cannot starve the scan.
             rows = _collect_page(page, source_url, meta, allow_browser=(page == 1))
             if rows:
                 break
@@ -229,3 +227,4 @@ def main(path: str) -> None:
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         raise SystemExit("usage: python -m src.uae_mof_feed <payload.json>")
+    main(sys.argv[1])
