@@ -19,6 +19,7 @@ HTTP_TIMEOUT_SECONDS = 12
 BROWSER_TIMEOUT_SECONDS = 18
 BROWSER_VIRTUAL_TIME_MS = 7000
 COLLECT_BUDGET_SECONDS = 70
+BROWSER_USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36"
 
 
 class _TableParser(HTMLParser):
@@ -62,8 +63,11 @@ def _fetch_url(url: str) -> str:
     req = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "Mozilla/5.0 (compatible; GlobalBrokerAI/1.0; +https://github.com/mehmetozan-5858/global-broker-ai)",
+            "User-Agent": BROWSER_USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.9,ar;q=0.8",
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
         },
     )
     with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_SECONDS) as response:
@@ -225,4 +229,3 @@ def main(path: str) -> None:
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         raise SystemExit("usage: python -m src.uae_mof_feed <payload.json>")
-    main(sys.argv[1])
