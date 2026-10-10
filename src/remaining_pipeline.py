@@ -8,6 +8,7 @@ from .agent_center import build as build_agent_center
 from .commercial_feasibility import process_payload as process_feasibility
 from .commercial_blocker_triage import build as build_commercial_blocker_triage
 from .commercial_terms import process_payload as process_commercial_terms
+from .deal_lifecycle import process_payload as process_deal_lifecycle
 from .gulf_sources import annotate_payload as annotate_gulf_sources
 from .launch_gate import evaluate as evaluate_launch
 from .launch_readiness_report import build as build_launch_readiness_report
@@ -22,7 +23,8 @@ def process(payload: dict) -> dict:
     process_feasibility(payload)                    # A7 calculation readiness
     build_commercial_blocker_triage(payload)        # source-backed commercial research queue
     process_offer_risk(payload)                     # A8 draft / risk gate
-    build_agent_center(payload)                     # A9 measurable agent center
+    build_agent_center(payload)                     # A9 measurable agent center + watchdog
+    process_deal_lifecycle(payload)                 # A12 evidence-gated deal/payment lifecycle
     evaluate_launch(payload)                        # A10 fail-closed production gate
     build_launch_readiness_report(payload)          # operator-visible launch blocker report
     return payload
@@ -39,6 +41,8 @@ def main(path: str) -> None:
         "commercial_ready": (payload.get("commercial_feasibility_summary") or {}).get("calculation_ready"),
         "commercial_blocker_counts": (payload.get("commercial_blocker_triage") or {}).get("blocker_counts"),
         "draft_ready": (payload.get("offer_risk_summary") or {}).get("internal_draft_ready"),
+        "deal_case_count": (payload.get("deal_lifecycle_summary") or {}).get("case_count"),
+        "deal_state_counts": (payload.get("deal_lifecycle_summary") or {}).get("state_counts"),
         "launch_ready": (payload.get("launch_gate") or {}).get("launch_ready"),
         "launch_blockers": (payload.get("launch_gate") or {}).get("blockers"),
         "launch_categories": (payload.get("launch_readiness_report") or {}).get("categories"),
