@@ -11,8 +11,12 @@ class ScanRuntimeGuardrailTests(unittest.TestCase):
         for name in ("broker","china_feed","china_ggzy_feed","china_import_radar","document_parser","ted_xml_enricher","verification"):
             self.assertIn("scan_step "+name+" ",WORKFLOW)
 
+    def test_core_broker_does_not_block_on_per_notice_translation(self):
+        self.assertIn("b.auto_translate_tr=lambda text:\"\"",WORKFLOW)
+        self.assertIn("scan_step broker 180",WORKFLOW)
+        self.assertNotIn('scan_step broker 360 python src/broker.py',WORKFLOW)
+
     def test_atomic_feed_and_diagnostics(self):
-        self.assertIn('scan_step broker 360 python src/broker.py > "$NEXT"',WORKFLOW)
         self.assertIn('echo "SCAN_STEP_OK $label duration=$((SECONDS-started))s" >&2',WORKFLOW)
         self.assertIn('mv "$NEXT" data/latest-opportunities.json',WORKFLOW)
         self.assertIn('refusing to replace live data',WORKFLOW)
