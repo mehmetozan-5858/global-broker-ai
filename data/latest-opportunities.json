@@ -324,6 +324,53 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Sukcesywne dostawy wyrobów jednorazowych",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-28+01:00 2026-10-28+01:00 2026-10-28+01:00 2026-10-28+01:00 2026-10-28+01:00 2026-10-28+01:00 2026-10-28+01:00 2026-10-28+01:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Szpital im. Ryszarda Rzepki w Sulechowie Sp. z o.o.,",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Szpital im. Ryszarda Rzepki w Sulechowie Sp. z o.o.,",
         "buyer_country": "POL",
@@ -1472,6 +1519,53 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Gıda / tarım ürünü alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-29+01:00 2026-10-29+01:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Narodowy Bank Polski",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Narodowy Bank Polski",
         "buyer_country": "POL",
@@ -2607,6 +2701,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "SWE",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Uluslararası satın alma talebi",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-27Z",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Region Gävleborg",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Region Gävleborg",
@@ -3752,6 +3893,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-11-02+01:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "SZPITAL UNIWERSYTECKI IMIENIA KAROLA MARCINKOWSKIEGO W ZIELONEJ GÓRZE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "SZPITAL UNIWERSYTECKI IMIENIA KAROLA MARCINKOWSKIEGO W ZIELONEJ GÓRZE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
@@ -4900,6 +5088,52 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "NLD",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": "32000",
+          "status": "source_backed",
+          "source_field": "quantity-lot",
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-11-05Z",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Politie",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 5,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Politie",
@@ -6066,6 +6300,53 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "DEU",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Araç / yedek parça alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-16+02:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Kasseler Verkehrs-Gesellschaft AG, , das Vergabeverfahren wird durchgeführt von, Städtische Werke Netz + Service GmbH, Eisenacher Straße 12, 34123 Kassel",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Kasseler Verkehrs-Gesellschaft AG, , das Vergabeverfahren wird durchgeführt von, Städtische Werke Netz + Service GmbH, Eisenacher Straße 12, 34123 Kassel",
         "buyer_country": "DEU",
@@ -7201,6 +7482,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "HRV",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Gıda / tarım ürünü alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-23+02:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Hrvatski Crveni križ Gradsko društvo Crvenog križa Osijek",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Hrvatski Crveni križ Gradsko društvo Crvenog križa Osijek",
@@ -8371,6 +8699,53 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "PRT",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Unidade Local de Saúde de São José, EPE",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Unidade Local de Saúde de São José, EPE",
         "buyer_country": "PRT",
@@ -9509,6 +9884,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "NOR",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-28Z",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "SYKEHUSINNKJØP HF",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "SYKEHUSINNKJØP HF",
@@ -10664,6 +11086,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "MKD",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "North Macedonia – medikal consumables – medikal consumables",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "PHI University Clinic for Otorhinolaryngology",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "PHI University Clinic for Otorhinolaryngology",
@@ -11869,6 +12338,53 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "NLD",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Araç / yedek parça alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-20+02:00 2026-10-20+02:00 2026-10-20+02:00 2026-10-20+02:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Gemeente Gorinchem",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Gemeente Gorinchem",
         "buyer_country": "NLD",
@@ -13008,6 +13524,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "FRA",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Metal / maden ürünü alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-30+01:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "ALLIANCE OFFICES HABITAT",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "ALLIANCE OFFICES HABITAT",
@@ -14154,6 +14717,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "CYP",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Metal / maden ürünü alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-30+03:00 2026-10-30+03:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Τμήμα Υπηρεσιών Πληροφορικής",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Τμήμα Υπηρεσιών Πληροφορικής",
@@ -15302,6 +15912,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "DEU",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Uluslararası satın alma talebi",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-26+01:00 2026-10-26+01:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Bundesrepublik Deutschland, vertreten durch das Bundesministerium des Innern, vertreten durch das Beschaffungsamt des BMI",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Bundesrepublik Deutschland, vertreten durch das Bundesministerium des Innern, vertreten durch das Beschaffungsamt des BMI",
@@ -16548,6 +17205,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00 2026-10-13+02:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Szpital Specjalistyczny im. Stefana Żeromskiego SPZOZ w Krakowie",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Szpital Specjalistyczny im. Stefana Żeromskiego SPZOZ w Krakowie",
@@ -17822,6 +18526,53 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "FRA",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00 2026-10-14+02:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "CHU BORDEAUX Centre Hospitalier Universitaire de Bordeaux Centre hospitalier de la Côte Basque CH PERIGUEUX CH MONT DE MARSAN Centre Hospitalier d'Agen-Nerac CH PAU CHU LIMOGES",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "CHU BORDEAUX Centre Hospitalier Universitaire de Bordeaux Centre hospitalier de la Côte Basque CH PERIGUEUX CH MONT DE MARSAN Centre Hospitalier d'Agen-Nerac CH PAU CHU LIMOGES",
         "buyer_country": "FRA",
@@ -18963,6 +19714,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "FRA",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Makine / ekipman alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-29+01:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Ville de Mulhouse",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Ville de Mulhouse",
@@ -20123,6 +20921,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "ROU",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-11-12+02:00 2026-11-12+02:00 2026-11-12+02:00 2026-11-12+02:00 2026-11-12+02:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "UNIVERSITATEA DE MEDICINA SI FARMACIE \"GRIGORE T.POPA\" DIN IASI",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "UNIVERSITATEA DE MEDICINA SI FARMACIE \"GRIGORE T.POPA\" DIN IASI",
@@ -21341,6 +22186,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "BEL",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Uluslararası satın alma talebi",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-29+01:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Woonhaven Antwerpen",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Woonhaven Antwerpen",
@@ -22570,6 +23462,53 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00 2026-10-26+01:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Uniwersyteckie Centrum Kliniczne",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Uniwersyteckie Centrum Kliniczne",
         "buyer_country": "POL",
@@ -23735,6 +24674,53 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "PRT",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z 2026-10-28Z",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Unidade Local de Saúde de São José, EPE",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Unidade Local de Saúde de São José, EPE",
         "buyer_country": "PRT",
@@ -24869,6 +25855,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "HRV",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "KLINIKA ZA INFEKTIVNE BOLESTI DR. FRAN MIHALJEVIĆ",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "KLINIKA ZA INFEKTIVNE BOLESTI DR. FRAN MIHALJEVIĆ",
@@ -26026,6 +27060,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "ROU",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "SPITALUL JUDETEAN DE URGENTA ZALAU",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "SPITALUL JUDETEAN DE URGENTA ZALAU",
@@ -27324,6 +28406,54 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Dostawa sprzętu medycznego jednorazowego użytku oraz asortymentu na blok",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Wojewódzki Szpital Podkarpacki im. Jana Pawła II w Krośnie",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Wojewódzki Szpital Podkarpacki im. Jana Pawła II w Krośnie",
         "buyer_country": "POL",
@@ -28475,6 +29605,53 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "HUN",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Makine / ekipman alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": "19 7",
+          "status": "source_backed",
+          "source_field": "quantity-lot",
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Tokaj-Hegyalja Egyetem",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Tokaj-Hegyalja Egyetem",
@@ -29670,6 +30847,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "NOR",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Norway, Sweden, Denmark, Finland, Germany, Iceland, Netherlands, Poland – elektrik makine apparatus, ekipman and consumables; lighting – Achilles Utilities NCE",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Achilles Information AS",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Achilles Information AS",
@@ -30910,6 +32135,54 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "NOR",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Norway – medikal equipments, pharmaceuticals and personal care products – Consumables MyoSure for Østfold hastane",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "SYKEHUSINNKJØP HF",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "SYKEHUSINNKJØP HF",
         "buyer_country": "NOR",
@@ -32057,6 +33330,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "BGR",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "УНИВЕРСИТЕТСКА МНОГОПРОФИЛНА БОЛНИЦА ЗА АКТИВНО ЛЕЧЕНИЕ - Д-Р ГЕОРГИ СТРАНСКИ ЕАД",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "УНИВЕРСИТЕТСКА МНОГОПРОФИЛНА БОЛНИЦА ЗА АКТИВНО ЛЕЧЕНИЕ - Д-Р ГЕОРГИ СТРАНСКИ ЕАД",
@@ -33206,6 +34527,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "CZE",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Gıda / tarım ürünü alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Fakultní nemocnice Motol a Homolka",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Fakultní nemocnice Motol a Homolka",
@@ -34359,6 +35728,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "LVA",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Valsts sabiedrība ar ierobežotu atbildību “Traumatoloģijas un ortopēdijas slimnīca”",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Valsts sabiedrība ar ierobežotu atbildību “Traumatoloģijas un ortopēdijas slimnīca”",
@@ -35515,6 +36932,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "ESP",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Metal / maden ürünü alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Consejería del Mar y del Ciclo del Agua de la Comunidad Autónoma de las Illes Balears",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Consejería del Mar y del Ciclo del Agua de la Comunidad Autónoma de las Illes Balears",
@@ -36677,6 +38142,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Araç / yedek parça alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Wojewódzki Inspektorat Transportu Drogowego w Radomiu",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Wojewódzki Inspektorat Transportu Drogowego w Radomiu",
@@ -37862,6 +39375,54 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "ITA",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Uluslararası satın alma talebi",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "AZIENDA REGIONALE PER IL DIRITTO ALLO STUDIO UNIVERSITARIO - SERVIZIO APPROVVIGIONAMENTI E CONTRATTI",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "AZIENDA REGIONALE PER IL DIRITTO ALLO STUDIO UNIVERSITARIO - SERVIZIO APPROVVIGIONAMENTI E CONTRATTI",
         "buyer_country": "ITA",
@@ -39025,6 +40586,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "SVN",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Araç / yedek parça alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "GORSKA REŠEVALNA ZVEZA SLOVENIJE",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "GORSKA REŠEVALNA ZVEZA SLOVENIJE",
@@ -40271,6 +41880,54 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Szpitale Zachodniopomorskie Samodzielny Publiczny Zakład Opieki Zdrowotnej",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Szpitale Zachodniopomorskie Samodzielny Publiczny Zakład Opieki Zdrowotnej",
         "buyer_country": "POL",
@@ -41425,6 +43082,53 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "DEU",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Uluslararası satın alma talebi",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": "1",
+          "status": "source_backed",
+          "source_field": "quantity-lot",
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Fraunhofer-lnstitut für Toxikologie und Experimentelle Medizin ITEM",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 4,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Fraunhofer-lnstitut für Toxikologie und Experimentelle Medizin ITEM",
         "buyer_country": "DEU",
@@ -42570,6 +44274,54 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "CZE",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Všeobecná fakultní nemocnice v Praze",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Všeobecná fakultní nemocnice v Praze",
         "buyer_country": "CZE",
@@ -43710,6 +45462,54 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "BGR",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Gıda / tarım ürünü alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "ОБЩИНА КАМЕНО",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "ОБЩИНА КАМЕНО",
         "buyer_country": "BGR",
@@ -44849,6 +46649,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "HRV",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Hrvatski zavod za transfuzijsku medicinu",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Hrvatski zavod za transfuzijsku medicinu",
@@ -45993,6 +47841,54 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": "EST",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Araç / yedek parça alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Sisekaitseakadeemia",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Sisekaitseakadeemia",
@@ -47388,6 +49284,54 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "ROU",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Medikal ürün alımı",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Spital Clinic Judetean de Urgenta Arad",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Spital Clinic Judetean de Urgenta Arad",
         "buyer_country": "ROU",
@@ -48453,6 +50397,54 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": "United States",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "TR-317D and TR-353A Transducers and Spare Parts Production.",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-11-10T14:00:00-05:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "city",
+        "quantity",
+        "buyer"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": null,
         "buyer_country": "United States",
@@ -48762,6 +50754,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Balıkesir Fire Brigade Disaster Management Vehicles Procurement Sub-Project",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Türkiye Earthquake, Floods, and Wildfires Emergency Reconstruction Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Türkiye Earthquake, Floods, and Wildfires Emergency Reconstruction Project",
         "buyer_country": null,
@@ -49021,6 +51062,55 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Supply and Delivery of assorted furniture for classrooms (3-seater desks, Teachers' chairs & Tables), ICT & Science Laboratories (tables, chairs & shelves), Multipurpose Halls furniture and Administration Blocks for 72 New Secondary Schools under USEEP",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Uganda Secondary Education Expansion Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Uganda Secondary Education Expansion Project",
@@ -49290,6 +51380,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Procurement of medical Equipment such as stethoscopes, thermometers, Blood pressure apparatus, adult scales, Hospital beds, Pillows, and others as specified in the SOR for spokes and hospitals in Faalaba, Western Rural, Bonthe and Tonkolili Districts",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Sierra Leone - Quality Essential Health Services and Systems Support Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Sierra Leone - Quality Essential Health Services and Systems Support Project",
         "buyer_country": null,
@@ -49558,6 +51697,55 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Rehabilitation Works for the Spillway, Embankment Dam, and Dam Instrumentation Equipment",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Emergency Power Restoration Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Emergency Power Restoration Project",
@@ -49837,6 +52025,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Procurement of Woreda information centre ICT equipment, tablets and laptops for NPCU, RPCU and woreda",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Second Ethiopia Resilient Landscapes and Livelihoods Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Second Ethiopia Resilient Landscapes and Livelihoods Project",
         "buyer_country": null,
@@ -50106,6 +52343,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Integrated Tourism Development, Infrastructure and Livelihood Improvement in Unguja,  (Nungwi village) - Construction of Village Square, Tourist Information Centre, Fish Market, Parking, Urban Furniture, Tide-Defence Embankment and Food Vending Stalls",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Boosting Inclusive Growth for Zanzibar: Integrated Development Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Boosting Inclusive Growth for Zanzibar: Integrated Development Project",
         "buyer_country": null,
@@ -50373,6 +52659,55 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Supply and Delivery of Multideck Weighbridge",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Southern Africa Trade and Connectivity Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Southern Africa Trade and Connectivity Project",
@@ -50648,6 +52983,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "MHCPP Camp Rehabilitation Procurement Package (2); Supply (Electrical Appliances, Furniture, Kitchen Utensils, Gym  Equipment, and Related Items)",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Regional Emergency Solar Power Intervention Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Regional Emergency Solar Power Intervention Project",
         "buyer_country": null,
@@ -50921,6 +53305,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Expansion of Benapole Land Port- Construction Parking Yard, Sheds and Modem Chemical Godowns with other ancillary facilities",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Accelerating Transport and Trade Connectivity in Eastern South Asia – Bangladesh Phase 1 Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Accelerating Transport and Trade Connectivity in Eastern South Asia – Bangladesh Phase 1 Project",
         "buyer_country": null,
@@ -51193,6 +53626,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Jubaland State Procurement for Veterinary Mobile Clinic Vehicles",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Food Systems Resilience Program for Eastern and Southern Africa (Phase 3) FSRP",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Food Systems Resilience Program for Eastern and Southern Africa (Phase 3) FSRP",
         "buyer_country": null,
@@ -51443,6 +53925,55 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Supply of ICT and electronic equipment for PIU Office",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Scaling-up Locally Led Climate Action Program",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Scaling-up Locally Led Climate Action Program",
@@ -51699,6 +54230,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Supply and Delivery of 25,406 Bunk Beds to Selected Secondary Schools in Various Regions in Ghana (3 Lots)",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Secondary Education Transformation for Access, Relevance, and Results for Jobs",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Secondary Education Transformation for Access, Relevance, and Results for Jobs",
         "buyer_country": null,
@@ -51953,6 +54533,55 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Supply and Delivery of Dining Hall Furniture (4,472 Tables and 8,944 Benches) to Selected Secondary Schools in Various Regions in Ghana (2 Lots)",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Secondary Education Transformation for Access, Relevance, and Results for Jobs",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Secondary Education Transformation for Access, Relevance, and Results for Jobs",
@@ -52209,6 +54838,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Supply and Delivery of 64,900 Mono Desks to Selected Secondary Schools in Various Regions in Ghana (5 Lots)",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Secondary Education Transformation for Access, Relevance, and Results for Jobs",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Secondary Education Transformation for Access, Relevance, and Results for Jobs",
         "buyer_country": null,
@@ -52464,6 +55142,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Fourniture de matériels et équipements de sécurité dans l'aéroport de Toliara :  machine traceur (marques de piste)",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Multimodal Transport and Logistics Project.",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Multimodal Transport and Logistics Project.",
         "buyer_country": null,
@@ -52714,6 +55441,55 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor (Framework Agreement)",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
@@ -52970,6 +55746,55 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Supply and Delivery of Laboratory Equipment for the Central Materials Laboratory",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Resilient and Strategic Transport Operational Enhancement Project in Malawi",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Resilient and Strategic Transport Operational Enhancement Project in Malawi",
@@ -53232,6 +56057,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
         "buyer_country": null,
@@ -53488,6 +56362,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Procurement of transport vehicles for medical waste (MW)",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "KOMPAS - Kosovo Comprehensive Approach to Health System Strengthening",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "KOMPAS - Kosovo Comprehensive Approach to Health System Strengthening",
         "buyer_country": null,
@@ -53738,6 +56661,55 @@
           "attachment_requires_parsing": false
         }
       },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Procurement of BPNS commodity- Ready to Use Therapeutic food (RUTF)",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Accelerating Nutrition Results in Nigeria 2.0",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
       "dossier": {
         "buyer_name": "Accelerating Nutrition Results in Nigeria 2.0",
         "buyer_country": null,
@@ -53987,6 +56959,55 @@
           "document_parsed": false,
           "attachment_requires_parsing": false
         }
+      },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Procurement of Educational Materials and Equipment for Classrooms and STEM Laboratories for Grades 8–9",
+          "status": "source_backed",
+          "source_field": "title_tr",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "Lifting Education Access and Resilience in times of Need in Ukraine Program",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
       },
       "dossier": {
         "buyer_name": "Lifting Education Access and Resilience in times of Need in Ukraine Program",
@@ -67392,6 +70413,19 @@
     "excluded_service_or_works": 0,
     "excluded_non_physical": 0,
     "research_pipeline_receives_only_goods_candidates": true
+  },
+  "field_evidence_summary": {
+    "opportunities": 63,
+    "complete_core_records": 0,
+    "source_backed_counts": {
+      "country": 42,
+      "city": 0,
+      "product": 63,
+      "quantity": 3,
+      "deadline": 22,
+      "buyer": 62
+    },
+    "rule": "missing values remain unknown; no inferred value is promoted as source-backed"
   },
   "china_import_radar": {
     "meta": {
