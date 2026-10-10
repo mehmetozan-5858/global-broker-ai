@@ -62,14 +62,16 @@ jobs:
           scan_step china_ggzy_feed 300 python -m src.china_ggzy_feed "$NEXT"
           # A2: only physical goods can enter the commercial research pipeline.
           scan_step physical_goods_gate 30 python -m src.physical_goods_gate "$NEXT"
-          # A3: label country/city/product/quantity/deadline/buyer strictly from source fields.
-          # Unknown fields remain explicitly missing; no inferred value is promoted as source-backed.
-          scan_step field_evidence 30 python -m src.field_evidence "$NEXT"
+          # A3 first pass: label immediately available source fields before research.
+          scan_step field_evidence_initial 30 python -m src.field_evidence "$NEXT"
           scan_step china_import_radar 240 python -m src.china_import_radar "$NEXT" data/latest-opportunities.json
           scan_step enrichment 90 python -m src.enrichment "$NEXT"
           scan_step document_parser 480 python -m src.document_parser "$NEXT" data/latest-opportunities.json
           scan_step ted_xml_enricher 480 python -m src.ted_xml_enricher "$NEXT"
           scan_step specification 90 python -m src.specification "$NEXT"
+          # A3 final pass: source documents/XML may have added direct fields after the initial pass.
+          # Recompute coverage only from explicit source-backed fields; missing values stay missing.
+          scan_step field_evidence_final 30 python -m src.field_evidence "$NEXT"
           scan_step verification 180 python -m src.verification "$NEXT"
           scan_step sales_priority 90 python -m src.sales_priority "$NEXT"
       - name: Validate enriched live output
