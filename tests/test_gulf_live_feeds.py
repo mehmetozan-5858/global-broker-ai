@@ -75,6 +75,19 @@ class GulfLiveFeedTests(unittest.TestCase):
         self.assertEqual(len(rows), 2)
         self.assertEqual(meta['successful_route'], 'ar')
 
+    def test_uae_empty_first_page_stops_before_second_page(self):
+        requested = []
+        def fake_fetch(url):
+            requested.append(url)
+            return '<html></html>'
+        with patch('src.uae_mof_feed._fetch_url', side_effect=fake_fetch), patch(
+            'src.uae_mof_feed.dump_dom', return_value='<html></html>'
+        ):
+            rows, meta = collect_uae(max_pages=4)
+        self.assertEqual(rows, [])
+        self.assertFalse(any('mof-dpp-page=2' in url for url in requested))
+        self.assertTrue(meta['rendered_fallback_used'])
+
     def test_browser_timeout_preserves_emitted_dom(self):
         timeout = subprocess.TimeoutExpired(['chrome'], 1, output='<html><body>ready</body></html>')
         with patch('src.browser_render.find_browser', return_value='/usr/bin/google-chrome'), patch(
