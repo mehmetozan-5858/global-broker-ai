@@ -91,7 +91,7 @@ class RemainingRoadmapTests(unittest.TestCase):
     def test_w5_vercel_has_clean_routes_and_security_headers(self):
         cfg=json.loads((ROOT/"vercel.json").read_text(encoding="utf-8"))
         routes={x["source"]:x["destination"] for x in cfg["rewrites"]}
-        self.assertEqual(routes["/"],"/web/website.html")
+        self.assertEqual(routes["/"],"/web/website-mobile.html")
         self.assertEqual(routes["/account"],"/web/account.html")
         all_headers={h["key"] for block in cfg["headers"] for h in block["headers"]}
         self.assertIn("X-Content-Type-Options",all_headers)
