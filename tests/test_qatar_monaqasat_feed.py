@@ -56,15 +56,28 @@ class QatarMonaqasatFeedTests(unittest.TestCase):
         self.assertEqual(rows[0]['source_provenance']['source'],ALT_SOURCE_URL)
 
     def test_collect_falls_back_to_alternate_public_route(self):
-        def fake_fetch(url, timeout=18):
+        def fake_fetch(url, timeout=14):
             if url == SOURCE_URL:
                 raise OSError('blocked')
             return AR_HTML
-        with patch('src.qatar_monaqasat_feed._fetch', side_effect=fake_fetch), patch('src.qatar_monaqasat_feed.time.sleep'):
+        with patch('src.qatar_monaqasat_feed._fetch', side_effect=fake_fetch), patch('src.qatar_monaqasat_feed.dump_dom') as browser:
             rows,meta=collect()
         self.assertEqual(len(rows),1)
         self.assertEqual(meta['successful_route'],ALT_SOURCE_URL)
-        self.assertGreaterEqual(meta['attempts'],3)
+        self.assertEqual(meta['attempts'],2)
+        self.assertFalse(meta['browser_fallback_used'])
+        browser.assert_not_called()
+
+    def test_collect_uses_browser_when_http_routes_are_blocked(self):
+        with patch('src.qatar_monaqasat_feed._fetch', side_effect=OSError('blocked')), patch(
+            'src.qatar_monaqasat_feed.dump_dom', return_value=HTML
+        ) as browser:
+            rows,meta=collect(budget_seconds=55)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(meta['successful_route'],SOURCE_URL)
+        self.assertTrue(meta['browser_fallback_used'])
+        self.assertEqual(meta['browser_routes'],[SOURCE_URL])
+        self.assertEqual(browser.call_count,1)
 
     def test_merge_is_deduplicated(self):
         rows=parse(HTML)

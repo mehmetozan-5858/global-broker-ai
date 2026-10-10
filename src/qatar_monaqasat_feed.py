@@ -11,6 +11,8 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urljoin
 
+from .browser_render import dump_dom
+
 SOURCE_URL = "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"
 ALT_SOURCE_URL = "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1"
 SOURCE_URLS = (SOURCE_URL, ALT_SOURCE_URL)
@@ -51,11 +53,12 @@ class _TextParser(HTMLParser):
             self._anchor_parts = []
 
 
-def _fetch(url: str, timeout: int = 18) -> str:
+def _fetch(url: str, timeout: int = 14) -> str:
     req = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "Mozilla/5.0 (compatible; GlobalBrokerAI/1.0)",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "ar,en;q=0.8",
         },
     )
@@ -143,27 +146,66 @@ def parse(markup: str, source_url: str = SOURCE_URL) -> list[dict[str, Any]]:
     return rows
 
 
-def collect() -> tuple[list[dict[str, Any]], dict[str, Any]]:
+def collect(budget_seconds: int = 55) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    started = time.monotonic()
     errors: list[str] = []
     attempts = 0
+    browser_routes: list[str] = []
+
+    # First try normal HTTPS against both official public routes.
     for source_url in SOURCE_URLS:
-        for retry in range(2):
-            attempts += 1
-            try:
-                markup = _fetch(source_url)
-                rows = parse(markup, source_url)
-                if rows:
-                    return rows, {
-                        "successful_route": source_url,
-                        "attempts": attempts,
-                        "errors": errors,
-                    }
-                errors.append(f"{source_url}:no_tradeable_goods_found")
-            except Exception as exc:
-                errors.append(f"{source_url}:{type(exc).__name__}")
-            if retry == 0:
-                time.sleep(1)
-    return [], {"successful_route": None, "attempts": attempts, "errors": errors}
+        attempts += 1
+        try:
+            markup = _fetch(source_url)
+            rows = parse(markup, source_url)
+            if rows:
+                return rows, {
+                    "successful_route": source_url,
+                    "attempts": attempts,
+                    "errors": errors,
+                    "browser_fallback_used": False,
+                    "browser_routes": browser_routes,
+                    "elapsed_seconds": round(time.monotonic() - started, 2),
+                    "budget_seconds": budget_seconds,
+                }
+            errors.append(f"{source_url}:no_tradeable_goods_found")
+        except Exception as exc:
+            errors.append(f"{source_url}:http:{type(exc).__name__}")
+
+    # Monaqasat can reject datacenter urllib traffic while still rendering in a real browser.
+    # Keep this fallback bounded so Qatar can never stall the whole Shadow Scan.
+    for source_url in SOURCE_URLS:
+        if time.monotonic() - started >= budget_seconds:
+            break
+        attempts += 1
+        try:
+            rendered = dump_dom(source_url, virtual_time_ms=9000, timeout_seconds=18)
+            browser_routes.append(source_url)
+            rows = parse(rendered, source_url)
+            if rows:
+                return rows, {
+                    "successful_route": source_url,
+                    "attempts": attempts,
+                    "errors": errors,
+                    "browser_fallback_used": True,
+                    "browser_routes": browser_routes,
+                    "elapsed_seconds": round(time.monotonic() - started, 2),
+                    "budget_seconds": budget_seconds,
+                }
+            errors.append(f"{source_url}:browser:no_tradeable_goods_found")
+        except Exception as exc:
+            errors.append(f"{source_url}:browser:{type(exc).__name__}:{exc}")
+
+    return [], {
+        "successful_route": None,
+        "attempts": attempts,
+        "errors": errors,
+        "browser_fallback_used": bool(browser_routes),
+        "browser_routes": browser_routes,
+        "elapsed_seconds": round(time.monotonic() - started, 2),
+        "budget_seconds": budget_seconds,
+        "budget_exhausted": time.monotonic() - started >= budget_seconds,
+    }
 
 
 def merge_payload(payload: dict[str, Any], rows: list[dict[str, Any]], meta: dict[str, Any] | None = None) -> dict[str, Any]:
@@ -191,6 +233,11 @@ def merge_payload(payload: dict[str, Any], rows: list[dict[str, Any]], meta: dic
         "successful_route": meta.get("successful_route"),
         "attempts": int(meta.get("attempts") or 0),
         "errors": errors,
+        "browser_fallback_used": bool(meta.get("browser_fallback_used")),
+        "browser_routes": meta.get("browser_routes") or [],
+        "elapsed_seconds": meta.get("elapsed_seconds"),
+        "budget_seconds": meta.get("budget_seconds"),
+        "budget_exhausted": bool(meta.get("budget_exhausted")),
     }
     return payload
 
