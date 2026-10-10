@@ -5,7 +5,10 @@ try:
     from src.opportunity_quality import assess
 except ModuleNotFoundError:
     from opportunity_quality import assess
-from src.exportable_goods import classify as classify_exportable_goods
+if __package__:
+    from .exportable_goods import classify as classify_exportable_goods
+else:
+    from exportable_goods import classify as classify_exportable_goods
 from datetime import date, timedelta
 from urllib.error import HTTPError
 
