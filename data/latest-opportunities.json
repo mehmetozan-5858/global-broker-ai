@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-10",
   "scope": "ALL_GLOBAL_PRODUCTS",
-  "count": 65,
+  "count": 66,
   "opportunities": [
     {
       "deadline-receipt-tender-date-lot": [
@@ -55542,6 +55542,410 @@
       }
     },
     {
+      "id": "OP00474355",
+      "notice_type": "Invitation for Bids",
+      "project_id": "P175731",
+      "project_name": "SADC Regional Statistics Project",
+      "sector": [
+        {
+          "sector_code": "BC",
+          "sector_description": "Central Government (Central Agencies)"
+        },
+        {
+          "sector_code": "CI",
+          "sector_description": "ICT Infrastructure"
+        }
+      ],
+      "bid_description": "Transport of Materials and Equipment",
+      "title_original": "Transport of Materials and Equipment",
+      "title_tr": "Transport of Materials and Equipment",
+      "detail_original": "Transport of Materials and Equipment",
+      "detail_tr": "Transport of Materials and Equipment",
+      "buyer-country": "",
+      "market_region": "Diğer Pazarlar",
+      "buyer-name": "SADC Regional Statistics Project",
+      "deadline-receipt-tender-date-lot": "",
+      "categories": [
+        "machinery"
+      ],
+      "classification-cpv": "BC Central Government (Central Agencies) CI ICT Infrastructure",
+      "procedure-type": "Invitation for Bids",
+      "source_url": "",
+      "source": "WORLD_BANK",
+      "region_hint": "GLOBAL_WORLD_BANK",
+      "mode": "shadow",
+      "buyer_verified": false,
+      "supplier_status": "pending",
+      "landed_cost_status": "pending",
+      "compliance_status": "buyer_identified_due_diligence_pending",
+      "margin_status": "pending_supplier_quote",
+      "offer_status": "shadow_not_sent",
+      "commission_status": "pending_deal_value_and_agreement",
+      "deal_score": 55,
+      "export_goods_review": {
+        "status": "goods_candidate",
+        "reason": "Başlık fiziksel ürün tedarikine açıkça işaret ediyor; kaynak türü ve ihracat koşulları teyit edilmeli.",
+        "basis": "headline_goods_signal"
+      },
+      "opportunity_type": "FİZİKSEL_MAL_ADAYI",
+      "scale_status": "value_verification_pending",
+      "commercial_priority": "REVIEW",
+      "freshness_status": "deadline_unknown_review",
+      "deadline_normalized": null,
+      "source_type": "public_procurement_notice",
+      "source_link_status": "missing_or_invalid",
+      "private_buyer_mandate_verified": false,
+      "buyer_due_diligence_status": "pending",
+      "supplier_due_diligence_status": "pending",
+      "pricing_evidence_status": "pending",
+      "commission_agreement_status": "not_signed",
+      "outreach_status": "shadow_not_sent",
+      "human_review_required": true,
+      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
+      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
+      "supplier_search_status": "Ajan araştırması bekliyor",
+      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
+      "supplier_agent": {
+        "status": "research_pending",
+        "query": "Turkey manufacturer exporter Transport of Materials and Equipment Transport of Materials and Equipment BC Central Government (Central Agencies) CI ICT Infrastructure",
+        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
+      },
+      "price_agent": {
+        "status": "quote_pending",
+        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
+        "currency": "pending"
+      },
+      "logistics_agent": {
+        "status": "route_pending",
+        "destination_country": "pending",
+        "incoterm": "pending",
+        "freight": "pending"
+      },
+      "risk_agent": {
+        "status": "due_diligence_pending",
+        "checks": [
+          "alıcı tüzel kişilik",
+          "ülke/yaptırım",
+          "ödeme şartı",
+          "ticaret ve teslimat riski"
+        ],
+        "buyer_source_identified": true,
+        "buyer_verified": false
+      },
+      "pipeline_stage": "SUPPLIER_RESEARCH",
+      "deadline_known": false,
+      "supplier_research": {
+        "status": "specification_review_pending",
+        "dossier_ready": false,
+        "product": "Transport of Materials and Equipment",
+        "buyer_country": null,
+        "search_query": null,
+        "candidate_suppliers": [],
+        "verified_supplier_count": 0,
+        "verification_required": true,
+        "blocked_by_missing_fields": [
+          "specification_evidence"
+        ],
+        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+      },
+      "demand_summary_tr": "Transport of Materials and Equipment. Kategori / ürün grubu: BC Central Government (Central Agencies) CI ICT Infrastructure",
+      "workflow": {
+        "buyer": {
+          "status": "source_identified_due_diligence_pending",
+          "name": "SADC Regional Statistics Project",
+          "country": null,
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "pricing_margin": {
+          "status": "quote_pending",
+          "supplier_quote": null,
+          "sell_price": null,
+          "gross_margin": null,
+          "commission": null
+        },
+        "logistics": {
+          "status": "route_pending",
+          "incoterm": null,
+          "freight": null,
+          "landed_cost": null
+        },
+        "risk": {
+          "status": "due_diligence_pending"
+        },
+        "offer": {
+          "status": "shadow_not_sent"
+        },
+        "contract": {
+          "status": "not_started"
+        },
+        "commission_protection": {
+          "status": "not_started",
+          "target_months": 12,
+          "starts_only_after_signed_agreement": true
+        },
+        "payment": {
+          "status": "not_started"
+        },
+        "opportunity_dossier": {
+          "status": "specification_review_pending",
+          "completeness_percent": 50,
+          "missing_fields": [
+            "quantity",
+            "deadline",
+            "official_source",
+            "specification_evidence"
+          ]
+        },
+        "specification_analysis": {
+          "status": "source_description_insufficient",
+          "supplier_sourcing_ready": false,
+          "technical_evidence_count": 1,
+          "document_count": 0,
+          "document_parsed": false,
+          "attachment_requires_parsing": false
+        }
+      },
+      "field_evidence": {
+        "country": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "city": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "product": {
+          "value": "Transport of Materials and Equipment",
+          "status": "source_backed",
+          "source_field": "product_name",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": "SADC Regional Statistics Project",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "country",
+        "city",
+        "quantity",
+        "deadline"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 2,
+        "total": 6,
+        "complete": false
+      },
+      "dossier": {
+        "buyer_name": "SADC Regional Statistics Project",
+        "buyer_country": null,
+        "product_name": "Transport of Materials and Equipment",
+        "demand_description": "Transport of Materials and Equipment",
+        "quantity": null,
+        "budget_value": null,
+        "budget_currency": null,
+        "delivery_location": null,
+        "deadline": null,
+        "procedure_type": "Invitation for Bids",
+        "contract_nature": null,
+        "cpv": [],
+        "official_links": [],
+        "source": "WORLD_BANK",
+        "missing_fields": [
+          "quantity",
+          "deadline",
+          "official_source",
+          "specification_evidence"
+        ],
+        "completeness_percent": 50,
+        "supplier_sourcing_ready": false,
+        "specification_status": "source_description_insufficient",
+        "specification_sourcing_ready": false,
+        "standards": [],
+        "document_links": [],
+        "document_parsed": false,
+        "technical_evidence_count": 1,
+        "eligibility_evidence_count": 0
+      },
+      "product_name": "Transport of Materials and Equipment",
+      "document_extraction": {
+        "status": "no_supported_document",
+        "source_backed_only": true,
+        "candidate_count": 0,
+        "source_page_count": 0,
+        "discovered_attachment_count": 0,
+        "parsed_count": 0,
+        "attempts": [],
+        "text_chars": 0
+      },
+      "specification_analysis": {
+        "status": "source_description_insufficient",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": false,
+        "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
+        "technical_evidence": [
+          {
+            "field": "source_text_candidate",
+            "text": "Transport of Materials and Equipment"
+          }
+        ],
+        "quantity_evidence": [],
+        "delivery_evidence": [],
+        "eligibility_evidence": [],
+        "award_evidence": [],
+        "standards": [],
+        "documents": [],
+        "attachment_requires_parsing": false,
+        "source_excerpt": "Transport of Materials and Equipment"
+      },
+      "sales_priority": {
+        "score": 0,
+        "grade": "C",
+        "queue": "research_only",
+        "reasons": [],
+        "blockers": [
+          "buyer_verification",
+          "specification_readiness",
+          "supplier_verification",
+          "compliance_clearance",
+          "margin_confirmation"
+        ],
+        "source_backed_only": true
+      },
+      "commercial_terms": {
+        "terms": {
+          "payment": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          },
+          "bond": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          },
+          "delivery": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          },
+          "eligibility": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          },
+          "award": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          }
+        },
+        "missing": [
+          "payment",
+          "bond",
+          "delivery",
+          "eligibility",
+          "award"
+        ],
+        "complete": false,
+        "source_backed_only": true,
+        "rule": "Payment, bond, delivery, eligibility and award terms are never inferred when absent from source fields."
+      },
+      "commercial_feasibility": {
+        "status": "commercial_inputs_missing",
+        "source_backed_only": true,
+        "calculation_ready": false,
+        "facts": {
+          "quantity": {
+            "value": null,
+            "source_field": null
+          },
+          "currency": {
+            "value": null,
+            "source_field": null
+          },
+          "unit_price": {
+            "value": null,
+            "source_field": null
+          },
+          "freight": {
+            "value": null,
+            "source_field": null
+          },
+          "duty": {
+            "value": null,
+            "source_field": null
+          },
+          "incoterm": {
+            "value": null,
+            "source_field": null
+          },
+          "destination": {
+            "value": null,
+            "source_field": null
+          }
+        },
+        "missing_inputs": [
+          "quantity",
+          "currency",
+          "unit_price",
+          "freight",
+          "duty",
+          "incoterm",
+          "destination"
+        ],
+        "assumptions": [],
+        "margin_claim_allowed": false,
+        "rule": "Unknown commercial inputs stay unknown; no price, freight, duty or margin is fabricated."
+      },
+      "offer_risk_gate": {
+        "draft_offer_ready": false,
+        "external_action_authorized": false,
+        "human_approval_required": true,
+        "blockers": [
+          "buyer_verification",
+          "specification",
+          "verified_supplier",
+          "commercial_feasibility"
+        ],
+        "allowed_actions": [
+          "internal_review",
+          "draft_only"
+        ],
+        "forbidden_actions": [
+          "send_email",
+          "submit_bid",
+          "place_order",
+          "take_payment"
+        ],
+        "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
+      }
+    },
+    {
       "id": "OP00462647",
       "notice_type": "Invitation for Bids",
       "project_id": "P178914",
@@ -63045,303 +63449,6 @@
       }
     },
     {
-      "id": "qatar-monaqasat-4675-2026",
-      "source": "Qatar Monaqasat",
-      "source_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-      "official_links": [
-        "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929"
-      ],
-      "title_original": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-      "title_tr": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-      "buyer-name": "نوفر",
-      "buyer-country": "Qatar",
-      "country": "Qatar",
-      "publication-date": "01/10/2026",
-      "deadline-receipt-tender-date-lot": "29/10/2026",
-      "bid_bond": "QAR 100,000.00",
-      "contract-nature": "supplies",
-      "procurement_category": "goods",
-      "gulf_live_source": true,
-      "foreign_supplier_eligibility_assumed": false,
-      "source_provenance": {
-        "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
-        "tender_number": "4675/2026",
-        "parsed_from_public_listing": true
-      },
-      "export_goods_review": {
-        "status": "goods_candidate",
-        "reason": "Kaynak fiziksel mal alımı olarak sınıflandırıyor; ihracat ve katılım koşulları ayrıca doğrulanmalı.",
-        "basis": "source_goods_type"
-      },
-      "opportunity_type": "FİZİKSEL_MAL_ADAYI",
-      "field_evidence": {
-        "country": {
-          "value": "Qatar",
-          "status": "source_backed",
-          "source_field": "buyer-country",
-          "inferred": false
-        },
-        "city": {
-          "value": "Qatar",
-          "status": "source_backed",
-          "source_field": "delivery_location",
-          "inferred": false
-        },
-        "product": {
-          "value": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-          "status": "source_backed",
-          "source_field": "product_name",
-          "inferred": false
-        },
-        "quantity": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
-          "inferred": false
-        },
-        "deadline": {
-          "value": "29/10/2026",
-          "status": "source_backed",
-          "source_field": "deadline-receipt-tender-date-lot",
-          "inferred": false
-        },
-        "buyer": {
-          "value": "نوفر",
-          "status": "source_backed",
-          "source_field": "buyer-name",
-          "inferred": false
-        }
-      },
-      "missing_core_fields": [
-        "quantity"
-      ],
-      "core_field_coverage": {
-        "verified_or_source_backed": 5,
-        "total": 6,
-        "complete": false
-      },
-      "dossier": {
-        "buyer_name": "نوفر",
-        "buyer_country": "Qatar",
-        "product_name": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-        "demand_description": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-        "quantity": null,
-        "budget_value": null,
-        "budget_currency": null,
-        "delivery_location": "Qatar",
-        "deadline": "29/10/2026",
-        "procedure_type": null,
-        "contract_nature": "supplies",
-        "cpv": [],
-        "official_links": [
-          "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929"
-        ],
-        "source": "Qatar Monaqasat",
-        "missing_fields": [
-          "quantity",
-          "specification_evidence"
-        ],
-        "completeness_percent": 83,
-        "supplier_sourcing_ready": false,
-        "specification_status": "document_analysis_pending",
-        "specification_sourcing_ready": false,
-        "standards": [],
-        "document_links": [
-          {
-            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-            "kind": "source_page"
-          }
-        ],
-        "document_parsed": false,
-        "technical_evidence_count": 0,
-        "eligibility_evidence_count": 0
-      },
-      "product_name": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-      "delivery_location": "Qatar",
-      "document_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-      "document_extraction": {
-        "status": "attempted_no_text",
-        "source_backed_only": true,
-        "candidate_count": 1,
-        "source_page_count": 1,
-        "discovered_attachment_count": 0,
-        "parsed_count": 0,
-        "attempts": [
-          {
-            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-            "status": "failed",
-            "source": "source_page",
-            "error": "URLError:<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:1010)>"
-          }
-        ],
-        "text_chars": 0
-      },
-      "specification_analysis": {
-        "status": "document_analysis_pending",
-        "source_backed_only": true,
-        "supplier_sourcing_ready": false,
-        "structured_specification_present": false,
-        "document_text_present": false,
-        "document_parsed": false,
-        "technical_evidence": [],
-        "quantity_evidence": [],
-        "delivery_evidence": [
-          {
-            "field": "delivery_location",
-            "text": "Qatar"
-          }
-        ],
-        "eligibility_evidence": [],
-        "award_evidence": [],
-        "standards": [],
-        "documents": [
-          {
-            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-            "kind": "source_page"
-          }
-        ],
-        "attachment_requires_parsing": false,
-        "source_excerpt": "Qatar"
-      },
-      "buyer_verified": false,
-      "compliance_status": "buyer_identified_due_diligence_pending",
-      "sales_priority": {
-        "score": 2,
-        "grade": "C",
-        "queue": "research_only",
-        "reasons": [
-          "source_link_present"
-        ],
-        "blockers": [
-          "buyer_verification",
-          "specification_readiness",
-          "supplier_verification",
-          "compliance_clearance",
-          "margin_confirmation"
-        ],
-        "source_backed_only": true
-      },
-      "commercial_terms": {
-        "terms": {
-          "payment": {
-            "value": null,
-            "source_field": null,
-            "status": "missing"
-          },
-          "bond": {
-            "value": "QAR 100,000.00",
-            "source_field": "bid_bond",
-            "status": "source_backed"
-          },
-          "delivery": {
-            "value": "Qatar",
-            "source_field": "delivery_location",
-            "status": "source_backed"
-          },
-          "eligibility": {
-            "value": null,
-            "source_field": null,
-            "status": "missing"
-          },
-          "award": {
-            "value": null,
-            "source_field": null,
-            "status": "missing"
-          }
-        },
-        "missing": [
-          "payment",
-          "eligibility",
-          "award"
-        ],
-        "complete": false,
-        "source_backed_only": true,
-        "rule": "Payment, bond, delivery, eligibility and award terms are never inferred when absent from source fields."
-      },
-      "supplier_research": {
-        "status": "specification_review_pending",
-        "dossier_ready": false,
-        "product": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-        "buyer_country": "Qatar",
-        "search_query": null,
-        "candidate_suppliers": [],
-        "verified_supplier_count": 0,
-        "verification_required": true,
-        "blocked_by_missing_fields": [
-          "specification_evidence"
-        ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
-      },
-      "commercial_feasibility": {
-        "status": "commercial_inputs_missing",
-        "source_backed_only": true,
-        "calculation_ready": false,
-        "facts": {
-          "quantity": {
-            "value": null,
-            "source_field": null
-          },
-          "currency": {
-            "value": null,
-            "source_field": null
-          },
-          "unit_price": {
-            "value": null,
-            "source_field": null
-          },
-          "freight": {
-            "value": null,
-            "source_field": null
-          },
-          "duty": {
-            "value": null,
-            "source_field": null
-          },
-          "incoterm": {
-            "value": null,
-            "source_field": null
-          },
-          "destination": {
-            "value": "Qatar",
-            "source_field": "delivery_location"
-          }
-        },
-        "missing_inputs": [
-          "quantity",
-          "currency",
-          "unit_price",
-          "freight",
-          "duty",
-          "incoterm"
-        ],
-        "assumptions": [],
-        "margin_claim_allowed": false,
-        "rule": "Unknown commercial inputs stay unknown; no price, freight, duty or margin is fabricated."
-      },
-      "offer_risk_gate": {
-        "draft_offer_ready": false,
-        "external_action_authorized": false,
-        "human_approval_required": true,
-        "blockers": [
-          "buyer_verification",
-          "specification",
-          "verified_supplier",
-          "commercial_feasibility"
-        ],
-        "allowed_actions": [
-          "internal_review",
-          "draft_only"
-        ],
-        "forbidden_actions": [
-          "send_email",
-          "submit_bid",
-          "place_order",
-          "take_payment"
-        ],
-        "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
-      }
-    },
-    {
       "id": "qatar-monaqasat-4650-2026",
       "source": "Qatar Monaqasat",
       "source_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904",
@@ -63637,6 +63744,303 @@
         ],
         "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
       }
+    },
+    {
+      "id": "qatar-monaqasat-4675-2026",
+      "source": "Qatar Monaqasat",
+      "source_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
+      "official_links": [
+        "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929"
+      ],
+      "title_original": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
+      "title_tr": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
+      "buyer-name": "نوفر",
+      "buyer-country": "Qatar",
+      "country": "Qatar",
+      "publication-date": "01/10/2026",
+      "deadline-receipt-tender-date-lot": "29/10/2026",
+      "bid_bond": "QAR 100,000.00",
+      "contract-nature": "supplies",
+      "procurement_category": "goods",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
+        "tender_number": "4675/2026",
+        "parsed_from_public_listing": true
+      },
+      "export_goods_review": {
+        "status": "goods_candidate",
+        "reason": "Kaynak fiziksel mal alımı olarak sınıflandırıyor; ihracat ve katılım koşulları ayrıca doğrulanmalı.",
+        "basis": "source_goods_type"
+      },
+      "opportunity_type": "FİZİKSEL_MAL_ADAYI",
+      "field_evidence": {
+        "country": {
+          "value": "Qatar",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": "Qatar",
+          "status": "source_backed",
+          "source_field": "delivery_location",
+          "inferred": false
+        },
+        "product": {
+          "value": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
+          "status": "source_backed",
+          "source_field": "product_name",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "29/10/2026",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "نوفر",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 5,
+        "total": 6,
+        "complete": false
+      },
+      "dossier": {
+        "buyer_name": "نوفر",
+        "buyer_country": "Qatar",
+        "product_name": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
+        "demand_description": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
+        "quantity": null,
+        "budget_value": null,
+        "budget_currency": null,
+        "delivery_location": "Qatar",
+        "deadline": "29/10/2026",
+        "procedure_type": null,
+        "contract_nature": "supplies",
+        "cpv": [],
+        "official_links": [
+          "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929"
+        ],
+        "source": "Qatar Monaqasat",
+        "missing_fields": [
+          "quantity",
+          "specification_evidence"
+        ],
+        "completeness_percent": 83,
+        "supplier_sourcing_ready": false,
+        "specification_status": "document_analysis_pending",
+        "specification_sourcing_ready": false,
+        "standards": [],
+        "document_links": [
+          {
+            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
+            "kind": "source_page"
+          }
+        ],
+        "document_parsed": false,
+        "technical_evidence_count": 0,
+        "eligibility_evidence_count": 0
+      },
+      "product_name": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
+      "delivery_location": "Qatar",
+      "document_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
+      "document_extraction": {
+        "status": "attempted_no_text",
+        "source_backed_only": true,
+        "candidate_count": 1,
+        "source_page_count": 1,
+        "discovered_attachment_count": 0,
+        "parsed_count": 0,
+        "attempts": [
+          {
+            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
+            "status": "failed",
+            "source": "source_page",
+            "error": "URLError:<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:1010)>"
+          }
+        ],
+        "text_chars": 0
+      },
+      "specification_analysis": {
+        "status": "document_analysis_pending",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": false,
+        "structured_specification_present": false,
+        "document_text_present": false,
+        "document_parsed": false,
+        "technical_evidence": [],
+        "quantity_evidence": [],
+        "delivery_evidence": [
+          {
+            "field": "delivery_location",
+            "text": "Qatar"
+          }
+        ],
+        "eligibility_evidence": [],
+        "award_evidence": [],
+        "standards": [],
+        "documents": [
+          {
+            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
+            "kind": "source_page"
+          }
+        ],
+        "attachment_requires_parsing": false,
+        "source_excerpt": "Qatar"
+      },
+      "buyer_verified": false,
+      "compliance_status": "buyer_identified_due_diligence_pending",
+      "sales_priority": {
+        "score": 2,
+        "grade": "C",
+        "queue": "research_only",
+        "reasons": [
+          "source_link_present"
+        ],
+        "blockers": [
+          "buyer_verification",
+          "specification_readiness",
+          "supplier_verification",
+          "compliance_clearance",
+          "margin_confirmation"
+        ],
+        "source_backed_only": true
+      },
+      "commercial_terms": {
+        "terms": {
+          "payment": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          },
+          "bond": {
+            "value": "QAR 100,000.00",
+            "source_field": "bid_bond",
+            "status": "source_backed"
+          },
+          "delivery": {
+            "value": "Qatar",
+            "source_field": "delivery_location",
+            "status": "source_backed"
+          },
+          "eligibility": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          },
+          "award": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          }
+        },
+        "missing": [
+          "payment",
+          "eligibility",
+          "award"
+        ],
+        "complete": false,
+        "source_backed_only": true,
+        "rule": "Payment, bond, delivery, eligibility and award terms are never inferred when absent from source fields."
+      },
+      "supplier_research": {
+        "status": "specification_review_pending",
+        "dossier_ready": false,
+        "product": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
+        "buyer_country": "Qatar",
+        "search_query": null,
+        "candidate_suppliers": [],
+        "verified_supplier_count": 0,
+        "verification_required": true,
+        "blocked_by_missing_fields": [
+          "specification_evidence"
+        ],
+        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+      },
+      "commercial_feasibility": {
+        "status": "commercial_inputs_missing",
+        "source_backed_only": true,
+        "calculation_ready": false,
+        "facts": {
+          "quantity": {
+            "value": null,
+            "source_field": null
+          },
+          "currency": {
+            "value": null,
+            "source_field": null
+          },
+          "unit_price": {
+            "value": null,
+            "source_field": null
+          },
+          "freight": {
+            "value": null,
+            "source_field": null
+          },
+          "duty": {
+            "value": null,
+            "source_field": null
+          },
+          "incoterm": {
+            "value": null,
+            "source_field": null
+          },
+          "destination": {
+            "value": "Qatar",
+            "source_field": "delivery_location"
+          }
+        },
+        "missing_inputs": [
+          "quantity",
+          "currency",
+          "unit_price",
+          "freight",
+          "duty",
+          "incoterm"
+        ],
+        "assumptions": [],
+        "margin_claim_allowed": false,
+        "rule": "Unknown commercial inputs stay unknown; no price, freight, duty or margin is fabricated."
+      },
+      "offer_risk_gate": {
+        "draft_offer_ready": false,
+        "external_action_authorized": false,
+        "human_approval_required": true,
+        "blockers": [
+          "buyer_verification",
+          "specification",
+          "verified_supplier",
+          "commercial_feasibility"
+        ],
+        "allowed_actions": [
+          "internal_review",
+          "draft_only"
+        ],
+        "forbidden_actions": [
+          "send_email",
+          "submit_bid",
+          "place_order",
+          "take_payment"
+        ],
+        "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
+      }
     }
   ],
   "market_sources": [
@@ -63762,25 +64166,6 @@
     "api_records": 48,
     "collection_path": "official_json_api"
   },
-  "uae_mof_feed": {
-    "source": "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/",
-    "alternate_official_source": "https://mof.gov.ae/ar/public-finance/government-procurement/current-business-opportunities/",
-    "status": "no_rows_found",
-    "parsed_opportunities": 0,
-    "added": 0,
-    "live_ingestion": false,
-    "foreign_supplier_eligibility_assumed": false,
-    "errors": [],
-    "successful_route": null,
-    "rendered_fallback_used": true,
-    "browser_fallback_pages": [
-      "en:1",
-      "ar:1"
-    ],
-    "budget_seconds": 70,
-    "budget_exhausted": false,
-    "elapsed_seconds": 38.29
-  },
   "qatar_monaqasat_feed": {
     "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
     "alternate_official_source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1",
@@ -63799,7 +64184,7 @@
     "browser_routes": [
       "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"
     ],
-    "elapsed_seconds": 10.81,
+    "elapsed_seconds": 20.02,
     "budget_seconds": 55,
     "budget_exhausted": false
   },
@@ -78353,7 +78738,7 @@
   ],
   "physical_goods_gate": {
     "mode": "physical_goods_only",
-    "goods_candidates": 65,
+    "goods_candidates": 66,
     "review_mixed_or_unknown": 97,
     "excluded_service_or_works": 0,
     "excluded_non_physical": 0,
@@ -79439,27 +79824,46 @@
       "coverage": 2,
       "priority": "normal",
       "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00474355",
+      "product": "Transport of Materials and Equipment",
+      "buyer": "SADC Regional Statistics Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
     }
   ],
   "field_evidence_summary": {
-    "opportunities": 65,
+    "opportunities": 66,
     "complete_core_records": 1,
     "source_backed_counts": {
       "country": 44,
       "city": 44,
-      "product": 65,
+      "product": 66,
       "quantity": 3,
       "deadline": 24,
-      "buyer": 65
+      "buyer": 66
     },
-    "research_queue": 64,
+    "research_queue": 65,
     "high_priority_research": 43,
     "missing_counts": {
-      "country": 21,
-      "city": 21,
+      "country": 22,
+      "city": 22,
       "product": 0,
-      "quantity": 62,
-      "deadline": 41,
+      "quantity": 63,
+      "deadline": 42,
       "buyer": 0
     },
     "rule": "missing values remain unknown; research source documents only; no inferred value is promoted as source-backed"
@@ -79800,7 +80204,7 @@
   "enrichment": {
     "version": 1,
     "mode": "source_only_no_hallucination",
-    "enriched_count": 65
+    "enriched_count": 66
   },
   "document_extraction": {
     "version": 3,
@@ -79816,10 +80220,10 @@
   "specification_analysis": {
     "version": 3,
     "mode": "source_evidence_plus_public_documents",
-    "analyzed_count": 65,
+    "analyzed_count": 66,
     "supplier_sourcing_ready": 22,
     "document_analysis_pending": 23,
-    "insufficient_source_detail": 20,
+    "insufficient_source_detail": 21,
     "attachments_requiring_parser": 0,
     "parsed_document_opportunities": 42
   },
@@ -79829,11 +80233,11 @@
     "grades": {
       "A": 0,
       "B": 0,
-      "C": 65
+      "C": 66
     },
     "close_first": 0,
     "develop_next": 0,
-    "research_only": 65
+    "research_only": 66
   },
   "gulf_sources": {
     "sources": [
@@ -79897,7 +80301,7 @@
     "rule": "Each country becomes live only after real official notice ingestion in the current scan. Priority Gulf coverage requires Saudi Arabia, UAE and Qatar; registered links alone do not count."
   },
   "commercial_terms_summary": {
-    "opportunities": 65,
+    "opportunities": 66,
     "complete": 0,
     "source_backed_counts": {
       "payment": 0,
@@ -79908,20 +80312,20 @@
     }
   },
   "supplier_research_summary": {
-    "opportunities": 65,
+    "opportunities": 66,
     "research_ready": 22,
-    "blocked": 43,
+    "blocked": 44,
     "verified_suppliers": 0,
     "mode": "research_queue_only"
   },
   "commercial_feasibility_summary": {
-    "opportunities": 65,
+    "opportunities": 66,
     "calculation_ready": 0,
-    "blocked_missing_inputs": 65,
+    "blocked_missing_inputs": 66,
     "source_backed_only": true
   },
   "offer_risk_summary": {
-    "opportunities": 65,
+    "opportunities": 66,
     "internal_draft_ready": 0,
     "external_action_authorized": 0,
     "mode": "shadow"
@@ -79929,37 +80333,37 @@
   "agent_center": {
     "mode": "shadow",
     "external_actions_enabled": false,
-    "opportunity_count": 65,
+    "opportunity_count": 66,
     "agents": {
       "source": {
         "has_official_link": 44,
-        "missing_link": 21
+        "missing_link": 22
       },
       "goods_gate": {
-        "goods_candidate": 65
+        "goods_candidate": 66
       },
       "field_evidence": {
-        "incomplete": 64,
+        "incomplete": 65,
         "complete": 1
       },
       "specification": {
         "source_document_analyzed": 21,
         "document_analysis_pending": 23,
-        "source_description_insufficient": 20,
+        "source_description_insufficient": 21,
         "source_description_analyzed": 1
       },
       "supplier": {
         "research_ready": 22,
-        "specification_review_pending": 43
+        "specification_review_pending": 44
       },
       "feasibility": {
-        "commercial_inputs_missing": 65
+        "commercial_inputs_missing": 66
       },
       "risk": {
-        "pending": 65
+        "pending": 66
       },
       "sales_priority": {
-        "C": 65
+        "C": 66
       }
     },
     "policy": {
