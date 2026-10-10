@@ -67391,10 +67391,13 @@
     "filtered_routes_with_rows": [],
     "budget_seconds": 70,
     "budget_exhausted": false,
-    "elapsed_seconds": 33.19,
+    "elapsed_seconds": 42.15,
     "ssr_fallback_attempted": true,
     "ssr_browser_fallback_attempted": true,
     "ssr_fallback_transport": null,
+    "ssr_fallback_errors": [
+      "browser:RuntimeError"
+    ],
     "ssr_fallback_status": "no_rows_found",
     "coverage_scope": "not_verified"
   },
@@ -67416,7 +67419,7 @@
     "browser_routes": [
       "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"
     ],
-    "elapsed_seconds": 10.48,
+    "elapsed_seconds": 11.78,
     "budget_seconds": 55,
     "budget_exhausted": false
   },
@@ -85753,7 +85756,7 @@
   "watchdog": {
     "mode": "shadow",
     "stale_after_hours": 24,
-    "checked_at": "2026-10-10T18:32:00.497119+00:00",
+    "checked_at": "2026-10-10T18:34:59.060595+00:00",
     "counts": {
       "healthy": 0,
       "warning": 0,
@@ -88438,6 +88441,16 @@
       "contract_sign": false,
       "human_approval_required": true
     }
+  },
+  "deal_lifecycle_cases": [],
+  "deal_lifecycle_summary": {
+    "case_count": 0,
+    "state_counts": {},
+    "blocked_count": 0,
+    "settled_count": 0,
+    "human_approval_required": true,
+    "external_actions_enabled": false,
+    "mode": "shadow"
   },
   "launch_gate": {
     "launch_ready": false,
