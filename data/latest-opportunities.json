@@ -70371,6 +70371,1059 @@
     "excluded_non_physical": 0,
     "research_pipeline_receives_only_goods_candidates": true
   },
+  "field_research_queue": [
+    {
+      "opportunity_id": "663847-2026",
+      "product": "Araç / yedek parça alımı",
+      "buyer": "Kasseler Verkehrs-Gesellschaft AG, , das Vergabeverfahren wird durchgeführt von, Städtische Werke Netz + Service GmbH, Eisenacher Straße 12, 34123 Kassel",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663866-2026",
+      "product": "Araç / yedek parça alımı",
+      "buyer": "Gemeente Gorinchem",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "664035-2026",
+      "product": "CPV ürün/hizmet grubu",
+      "buyer": "Woonhaven Antwerpen",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663822-2026",
+      "product": "Gıda / tarım ürünü alımı",
+      "buyer": "Narodowy Bank Polski",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663849-2026",
+      "product": "Gıda / tarım ürünü alımı",
+      "buyer": "Hrvatski Crveni križ Gradsko društvo Crvenog križa Osijek",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663931-2026",
+      "product": "Laboratuvar, optik ve hassas ölçüm ekipmanları",
+      "buyer": "Bundesrepublik Deutschland, vertreten durch das Bundesministerium des Innern, vertreten durch das Beschaffungsamt des BMI",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663963-2026",
+      "product": "Laboratuvar, optik ve hassas ölçüm ekipmanları",
+      "buyer": "Fraunhofer-lnstitut für Toxikologie und Experimentelle Medizin ITEM",
+      "source_url": null,
+      "missing_fields": [
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "deadline"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663971-2026",
+      "product": "Makine / ekipman alımı",
+      "buyer": "Ville de Mulhouse",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663873-2026",
+      "product": "Makine / ekipman alımı",
+      "buyer": "Tokaj-Hegyalja Egyetem",
+      "source_url": null,
+      "missing_fields": [
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "deadline"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663830-2026",
+      "product": "Medikal ekipman, ilaç ve kişisel bakım ürünleri",
+      "buyer": "Region Gävleborg",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663837-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "SZPITAL UNIWERSYTECKI IMIENIA KAROLA MARCINKOWSKIEGO W ZIELONEJ GÓRZE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663853-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "Unidade Local de Saúde de São José, EPE",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663856-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "SYKEHUSINNKJØP HF",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663939-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "Szpital Specjalistyczny im. Stefana Żeromskiego SPZOZ w Krakowie",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663958-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "CHU BORDEAUX Centre Hospitalier Universitaire de Bordeaux Centre hospitalier de la Côte Basque CH PERIGUEUX CH MONT DE MARSAN Centre Hospitalier d'Agen-Nerac CH PAU CHU LIMOGES",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663991-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "UNIVERSITATEA DE MEDICINA SI FARMACIE \"GRIGORE T.POPA\" DIN IASI",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "664039-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "Uniwersyteckie Centrum Kliniczne",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "664048-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "Unidade Local de Saúde de São José, EPE",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663871-2026",
+      "product": "Metal / maden ürünü alımı",
+      "buyer": "ALLIANCE OFFICES HABITAT",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663896-2026",
+      "product": "Metal / maden ürünü alımı",
+      "buyer": "Τμήμα Υπηρεσιών Πληροφορικής",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663865-2026",
+      "product": "North Macedonia – medikal consumables – medikal consumables",
+      "buyer": "PHI University Clinic for Otorhinolaryngology",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663797-2026",
+      "product": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Sukcesywne dostawy wyrobów jednorazowych",
+      "buyer": "Szpital im. Ryszarda Rzepki w Sulechowie Sp. z o.o.,",
+      "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663917-2026",
+      "product": "Araç / yedek parça alımı",
+      "buyer": "Wojewódzki Inspektorat Transportu Drogowego w Radomiu",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663941-2026",
+      "product": "Araç / yedek parça alımı",
+      "buyer": "GORSKA REŠEVALNA ZVEZA SLOVENIJE",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "664036-2026",
+      "product": "Araç / yedek parça alımı",
+      "buyer": "Sisekaitseakadeemia",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663893-2026",
+      "product": "Gıda / tarım ürünü alımı",
+      "buyer": "Fakultní nemocnice Motol a Homolka",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663993-2026",
+      "product": "Gıda / tarım ürünü alımı",
+      "buyer": "ОБЩИНА КАМЕНО",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663819-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "KLINIKA ZA INFEKTIVNE BOLESTI DR. FRAN MIHALJEVIĆ",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663828-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "SPITALUL JUDETEAN DE URGENTA ZALAU",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663886-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "УНИВЕРСИТЕТСКА МНОГОПРОФИЛНА БОЛНИЦА ЗА АКТИВНО ЛЕЧЕНИЕ - Д-Р ГЕОРГИ СТРАНСКИ ЕАД",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663897-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "Valsts sabiedrība ar ierobežotu atbildību “Traumatoloģijas un ortopēdijas slimnīca”",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663945-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "Szpitale Zachodniopomorskie Samodzielny Publiczny Zakład Opieki Zdrowotnej",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663964-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "Všeobecná fakultní nemocnice v Praze",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "664003-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "Hrvatski zavod za transfuzijsku medicinu",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "664045-2026",
+      "product": "Medikal ürün alımı",
+      "buyer": "Spital Clinic Judetean de Urgenta Arad",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663912-2026",
+      "product": "Metal / maden ürünü alımı",
+      "buyer": "Consejería del Mar y del Ciclo del Agua de la Comunidad Autónoma de las Illes Balears",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663919-2026",
+      "product": "Mobilya, iç donanım, ev aletleri ve temizlik ürünleri",
+      "buyer": "AZIENDA REGIONALE PER IL DIRITTO ALLO STUDIO UNIVERSITARIO - SERVIZIO APPROVVIGIONAMENTI E CONTRATTI",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663883-2026",
+      "product": "Norway – medikal equipments, pharmaceuticals and personal care products – Consumables MyoSure for Østfold hastane",
+      "buyer": "SYKEHUSINNKJØP HF",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663880-2026",
+      "product": "Norway, Sweden, Denmark, Finland, Germany, Iceland, Netherlands, Poland – elektrik makine apparatus, ekipman and consumables; lighting – Achilles Utilities NCE",
+      "buyer": "Achilles Information AS",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "663833-2026",
+      "product": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Dostawa sprzętu medycznego jednorazowego użytku oraz asortymentu na blok",
+      "buyer": "Wojewódzki Szpital Podkarpacki im. Jana Pawła II w Krośnie",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": null,
+      "product": "TR-317D and TR-353A Transducers and Spare Parts Production.",
+      "buyer": null,
+      "source_url": "https://sam.gov/workspace/contract/opp/cd42a9d5a75e4e4d9fc3c6501c0ea91b/view",
+      "missing_fields": [
+        "quantity",
+        "buyer"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 4,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00473154",
+      "product": "Balıkesir Fire Brigade Disaster Management Vehicles Procurement Sub-Project",
+      "buyer": "Türkiye Earthquake, Floods, and Wildfires Emergency Reconstruction Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00467285",
+      "product": "Expansion of Benapole Land Port- Construction Parking Yard, Sheds and Modem Chemical Godowns with other ancillary facilities",
+      "buyer": "Accelerating Transport and Trade Connectivity in Eastern South Asia – Bangladesh Phase 1 Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00464825",
+      "product": "Fourniture de matériels et équipements de sécurité dans l'aéroport de Toliara :  machine traceur (marques de piste)",
+      "buyer": "Multimodal Transport and Logistics Project.",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00473952",
+      "product": "Integrated Tourism Development, Infrastructure and Livelihood Improvement in Unguja,  (Nungwi village) - Construction of Village Square, Tourist Information Centre, Fish Market, Parking, Urban Furniture, Tide-Defence Embankment and Food Vending Stalls",
+      "buyer": "Boosting Inclusive Growth for Zanzibar: Integrated Development Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00468538",
+      "product": "Jubaland State Procurement for Veterinary Mobile Clinic Vehicles",
+      "buyer": "Food Systems Resilience Program for Eastern and Southern Africa (Phase 3) FSRP",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00472627",
+      "product": "MHCPP Camp Rehabilitation Procurement Package (2); Supply (Electrical Appliances, Furniture, Kitchen Utensils, Gym  Equipment, and Related Items)",
+      "buyer": "Regional Emergency Solar Power Intervention Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00469772",
+      "product": "Procurement of BPNS commodity- Ready to Use Therapeutic food (RUTF)",
+      "buyer": "Accelerating Nutrition Results in Nigeria 2.0",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00471714",
+      "product": "Procurement of Educational Materials and Equipment for Classrooms and STEM Laboratories for Grades 8–9",
+      "buyer": "Lifting Education Access and Resilience in times of Need in Ukraine Program",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00473353",
+      "product": "Procurement of Woreda information centre ICT equipment, tablets and laptops for NPCU, RPCU and woreda",
+      "buyer": "Second Ethiopia Resilient Landscapes and Livelihoods Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00471853",
+      "product": "Procurement of medical Equipment such as stethoscopes, thermometers, Blood pressure apparatus, adult scales, Hospital beds, Pillows, and others as specified in the SOR for spokes and hospitals in Faalaba, Western Rural, Bonthe and Tonkolili Districts",
+      "buyer": "Sierra Leone - Quality Essential Health Services and Systems Support Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00466944",
+      "product": "Procurement of transport vehicles for medical waste (MW)",
+      "buyer": "KOMPAS - Kosovo Comprehensive Approach to Health System Strengthening",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00462647",
+      "product": "Rehabilitation Works for the Spillway, Embankment Dam, and Dam Instrumentation Equipment",
+      "buyer": "Emergency Power Restoration Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00473266",
+      "product": "Supply and Delivery of 25,406 Bunk Beds to Selected Secondary Schools in Various Regions in Ghana (3 Lots)",
+      "buyer": "Secondary Education Transformation for Access, Relevance, and Results for Jobs",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00473261",
+      "product": "Supply and Delivery of 64,900 Mono Desks to Selected Secondary Schools in Various Regions in Ghana (5 Lots)",
+      "buyer": "Secondary Education Transformation for Access, Relevance, and Results for Jobs",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00470601",
+      "product": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
+      "buyer": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00470605",
+      "product": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor (Framework Agreement)",
+      "buyer": "Accelerating Sustainable and Clean Energy Access Transformation in Malawi",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00473269",
+      "product": "Supply and Delivery of Dining Hall Furniture (4,472 Tables and 8,944 Benches) to Selected Secondary Schools in Various Regions in Ghana (2 Lots)",
+      "buyer": "Secondary Education Transformation for Access, Relevance, and Results for Jobs",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00473943",
+      "product": "Supply and Delivery of Laboratory Equipment for the Central Materials Laboratory",
+      "buyer": "Resilient and Strategic Transport Operational Enhancement Project in Malawi",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00473248",
+      "product": "Supply and Delivery of Multideck Weighbridge",
+      "buyer": "Southern Africa Trade and Connectivity Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00471233",
+      "product": "Supply and Delivery of assorted furniture for classrooms (3-seater desks, Teachers' chairs & Tables), ICT & Science Laboratories (tables, chairs & shelves), Multipurpose Halls furniture and Administration Blocks for 72 New Secondary Schools under USEEP",
+      "buyer": "Uganda Secondary Education Expansion Project",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "OP00452338",
+      "product": "Supply of ICT and electronic equipment for PIU Office",
+      "buyer": "Scaling-up Locally Led Climate Action Program",
+      "source_url": null,
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "country",
+        "city"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 2,
+      "priority": "normal",
+      "rule": "research source/document only; do not infer missing facts"
+    }
+  ],
   "field_evidence_summary": {
     "opportunities": 63,
     "complete_core_records": 1,
@@ -70382,7 +71435,17 @@
       "deadline": 22,
       "buyer": 62
     },
-    "rule": "missing values remain unknown; no inferred value is promoted as source-backed"
+    "research_queue": 62,
+    "high_priority_research": 41,
+    "missing_counts": {
+      "country": 21,
+      "city": 21,
+      "product": 0,
+      "quantity": 60,
+      "deadline": 41,
+      "buyer": 1
+    },
+    "rule": "missing values remain unknown; research source documents only; no inferred value is promoted as source-backed"
   },
   "china_import_radar": {
     "meta": {
