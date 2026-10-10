@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-10",
   "scope": "ALL_GLOBAL_PRODUCTS",
-  "count": 63,
+  "count": 62,
   "opportunities": [
     {
       "deadline-receipt-tender-date-lot": [
@@ -53789,478 +53789,6 @@
       }
     },
     {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2027-10-09",
-      "archiveType": "autocustom",
-      "award": null,
-      "baseType": "Solicitation",
-      "classificationCode": "5845",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b",
-      "fullParentPathCode": "017.1700.NAVSEA.NAVSEA WARFARE CTR.N66604",
-      "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.NAVSEA WARFARE CENTER.NUWC DIV NEWPORT",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b&limit=1"
-        }
-      ],
-      "naicsCode": "334511",
-      "naicsCodes": [
-        "334511"
-      ],
-      "noticeId": "cd42a9d5a75e4e4d9fc3c6501c0ea91b",
-      "officeAddress": {
-        "zipcode": "02841-1703",
-        "city": "NEWPORT",
-        "countryCode": "USA",
-        "state": "RI"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": {
-        "streetAddress": "",
-        "zip": ""
-      },
-      "pointOfContact": [
-        {
-          "fax": "",
-          "type": "primary",
-          "email": "keri.l.gunn.civ@us.navy.mil",
-          "phone": "4018326779",
-          "fullName": "Keri Gunn"
-        },
-        {
-          "fax": "",
-          "type": "secondary",
-          "email": "Andrew.kenyon3.civ@us.navy.mil",
-          "phone": "4018327290",
-          "fullName": "Andrew Kenyon"
-        }
-      ],
-      "postedDate": "2026-10-09",
-      "resourceLinks": null,
-      "responseDeadLine": "2026-11-10T14:00:00-05:00",
-      "solicitationNumber": "N6660427R0004",
-      "title": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-      "type": "Solicitation",
-      "typeOfSetAside": null,
-      "typeOfSetAsideDescription": null,
-      "uiLink": "https://sam.gov/workspace/contract/opp/cd42a9d5a75e4e4d9fc3c6501c0ea91b/view",
-      "title_original": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-      "title_tr": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b",
-      "detail_tr": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "2026-11-10T14:00:00-05:00",
-      "classification-cpv": "334511",
-      "procedure-type": "Solicitation",
-      "source_url": "https://sam.gov/workspace/contract/opp/cd42a9d5a75e4e4d9fc3c6501c0ea91b/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 60,
-      "export_goods_review": {
-        "status": "goods_candidate",
-        "reason": "Başlık fiziksel ürün tedarikine açıkça işaret ediyor; kaynak türü ve ihracat koşulları teyit edilmeli.",
-        "basis": "headline_goods_signal"
-      },
-      "opportunity_type": "FİZİKSEL_MAL_ADAYI",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "freshness_status": "open_by_date_only",
-      "deadline_normalized": "2026-11-10",
-      "source_type": "public_procurement_notice",
-      "source_link_status": "present_unverified",
-      "private_buyer_mandate_verified": false,
-      "buyer_due_diligence_status": "pending",
-      "supplier_due_diligence_status": "pending",
-      "pricing_evidence_status": "pending",
-      "commission_agreement_status": "not_signed",
-      "outreach_status": "shadow_not_sent",
-      "human_review_required": true,
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter TR-317D and TR-353A Transducers and Spare Parts Production. https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b 334511",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ],
-        "buyer_source_identified": false,
-        "buyer_verified": false
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": true,
-      "supplier_research": {
-        "status": "specification_review_pending",
-        "dossier_ready": false,
-        "product": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-        "buyer_country": "United States",
-        "search_query": null,
-        "candidate_suppliers": [],
-        "verified_supplier_count": 0,
-        "verification_required": true,
-        "blocked_by_missing_fields": [
-          "specification_evidence"
-        ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
-      },
-      "demand_summary_tr": "TR-317D and TR-353A Transducers and Spare Parts Production.. Kategori / ürün grubu: 334511",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        },
-        "opportunity_dossier": {
-          "status": "specification_review_pending",
-          "completeness_percent": 67,
-          "missing_fields": [
-            "buyer",
-            "quantity",
-            "specification_evidence"
-          ]
-        },
-        "specification_analysis": {
-          "status": "document_analysis_pending",
-          "supplier_sourcing_ready": false,
-          "technical_evidence_count": 0,
-          "document_count": 2,
-          "document_parsed": false,
-          "attachment_requires_parsing": false
-        }
-      },
-      "field_evidence": {
-        "country": {
-          "value": "United States",
-          "status": "source_backed",
-          "source_field": "buyer-country",
-          "inferred": false
-        },
-        "city": {
-          "value": "United States",
-          "status": "source_backed",
-          "source_field": "delivery_location",
-          "inferred": false
-        },
-        "product": {
-          "value": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-          "status": "source_backed",
-          "source_field": "product_name",
-          "inferred": false
-        },
-        "quantity": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
-          "inferred": false
-        },
-        "deadline": {
-          "value": "2026-11-10T14:00:00-05:00",
-          "status": "source_backed",
-          "source_field": "deadline-receipt-tender-date-lot",
-          "inferred": false
-        },
-        "buyer": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
-          "inferred": false
-        }
-      },
-      "missing_core_fields": [
-        "quantity",
-        "buyer"
-      ],
-      "core_field_coverage": {
-        "verified_or_source_backed": 4,
-        "total": 6,
-        "complete": false
-      },
-      "dossier": {
-        "buyer_name": null,
-        "buyer_country": "United States",
-        "product_name": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-        "demand_description": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-        "quantity": null,
-        "budget_value": null,
-        "budget_currency": null,
-        "delivery_location": "United States",
-        "deadline": "2026-11-10T14:00:00-05:00",
-        "procedure_type": "Solicitation",
-        "contract_nature": null,
-        "cpv": [],
-        "official_links": [
-          "https://api.sam.gov/prod/opportunities/v2/search?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b&limit=1",
-          "https://sam.gov/workspace/contract/opp/cd42a9d5a75e4e4d9fc3c6501c0ea91b/view"
-        ],
-        "source": "SAM_GOV",
-        "missing_fields": [
-          "buyer",
-          "quantity",
-          "specification_evidence"
-        ],
-        "completeness_percent": 67,
-        "supplier_sourcing_ready": false,
-        "specification_status": "document_analysis_pending",
-        "specification_sourcing_ready": false,
-        "standards": [],
-        "document_links": [
-          {
-            "url": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b&limit=1",
-            "kind": "source_page"
-          },
-          {
-            "url": "https://sam.gov/workspace/contract/opp/cd42a9d5a75e4e4d9fc3c6501c0ea91b/view",
-            "kind": "source_page"
-          }
-        ],
-        "document_parsed": false,
-        "technical_evidence_count": 0,
-        "eligibility_evidence_count": 0
-      },
-      "product_name": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-      "delivery_location": "United States",
-      "official_links": [
-        "https://api.sam.gov/prod/opportunities/v2/search?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b&limit=1",
-        "https://sam.gov/workspace/contract/opp/cd42a9d5a75e4e4d9fc3c6501c0ea91b/view"
-      ],
-      "document_url": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b&limit=1",
-      "document_extraction": {
-        "status": "attempted_no_text",
-        "source_backed_only": true,
-        "candidate_count": 1,
-        "source_page_count": 1,
-        "discovered_attachment_count": 0,
-        "parsed_count": 0,
-        "attempts": [
-          {
-            "url": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b&limit=1",
-            "status": "failed",
-            "source": "source_page",
-            "error": "HTTPError:HTTP Error 404: Not Found"
-          }
-        ],
-        "text_chars": 0
-      },
-      "specification_analysis": {
-        "status": "document_analysis_pending",
-        "source_backed_only": true,
-        "supplier_sourcing_ready": false,
-        "structured_specification_present": false,
-        "document_text_present": false,
-        "document_parsed": false,
-        "technical_evidence": [],
-        "quantity_evidence": [],
-        "delivery_evidence": [
-          {
-            "field": "delivery_location",
-            "text": "United States"
-          }
-        ],
-        "eligibility_evidence": [],
-        "award_evidence": [],
-        "standards": [],
-        "documents": [
-          {
-            "url": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b&limit=1",
-            "kind": "source_page"
-          },
-          {
-            "url": "https://sam.gov/workspace/contract/opp/cd42a9d5a75e4e4d9fc3c6501c0ea91b/view",
-            "kind": "source_page"
-          }
-        ],
-        "attachment_requires_parsing": false,
-        "source_excerpt": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=cd42a9d5a75e4e4d9fc3c6501c0ea91b\nTR-317D and TR-353A Transducers and Spare Parts Production.\nUnited States"
-      },
-      "compliance_status": "buyer_identity_pending",
-      "sales_priority": {
-        "score": 2,
-        "grade": "C",
-        "queue": "research_only",
-        "reasons": [
-          "source_link_present"
-        ],
-        "blockers": [
-          "buyer_verification",
-          "specification_readiness",
-          "supplier_verification",
-          "compliance_clearance",
-          "margin_confirmation"
-        ],
-        "source_backed_only": true
-      },
-      "commercial_terms": {
-        "terms": {
-          "payment": {
-            "value": null,
-            "source_field": null,
-            "status": "missing"
-          },
-          "bond": {
-            "value": null,
-            "source_field": null,
-            "status": "missing"
-          },
-          "delivery": {
-            "value": "United States",
-            "source_field": "delivery_location",
-            "status": "source_backed"
-          },
-          "eligibility": {
-            "value": null,
-            "source_field": null,
-            "status": "missing"
-          },
-          "award": {
-            "value": null,
-            "source_field": null,
-            "status": "missing"
-          }
-        },
-        "missing": [
-          "payment",
-          "bond",
-          "eligibility",
-          "award"
-        ],
-        "complete": false,
-        "source_backed_only": true,
-        "rule": "Payment, bond, delivery, eligibility and award terms are never inferred when absent from source fields."
-      },
-      "commercial_feasibility": {
-        "status": "commercial_inputs_missing",
-        "source_backed_only": true,
-        "calculation_ready": false,
-        "facts": {
-          "quantity": {
-            "value": null,
-            "source_field": null
-          },
-          "currency": {
-            "value": null,
-            "source_field": null
-          },
-          "unit_price": {
-            "value": null,
-            "source_field": null
-          },
-          "freight": {
-            "value": null,
-            "source_field": null
-          },
-          "duty": {
-            "value": null,
-            "source_field": null
-          },
-          "incoterm": {
-            "value": null,
-            "source_field": null
-          },
-          "destination": {
-            "value": "United States",
-            "source_field": "delivery_location"
-          }
-        },
-        "missing_inputs": [
-          "quantity",
-          "currency",
-          "unit_price",
-          "freight",
-          "duty",
-          "incoterm"
-        ],
-        "assumptions": [],
-        "margin_claim_allowed": false,
-        "rule": "Unknown commercial inputs stay unknown; no price, freight, duty or margin is fabricated."
-      },
-      "offer_risk_gate": {
-        "draft_offer_ready": false,
-        "external_action_authorized": false,
-        "human_approval_required": true,
-        "blockers": [
-          "buyer_verification",
-          "specification",
-          "verified_supplier",
-          "commercial_feasibility"
-        ],
-        "allowed_actions": [
-          "internal_review",
-          "draft_only"
-        ],
-        "forbidden_actions": [
-          "send_email",
-          "submit_bid",
-          "place_order",
-          "take_payment"
-        ],
-        "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
-      }
-    },
-    {
       "id": "OP00473154",
       "notice_type": "Invitation for Bids",
       "project_id": "P176608",
@@ -62799,20 +62327,24 @@
     "detail_links": 0,
     "detail_failures": 0,
     "browser_fallback_used": false,
-    "browser_fallback_error": "TimeoutExpired:Command '['/usr/bin/google-chrome', '--headless=new', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage', '--virtual-time-budget=18000', '--dump-dom', 'https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC']' timed out after 45 seconds"
+    "browser_fallback_error": "RuntimeError:headless_browser_timeout_without_dom"
   },
   "uae_mof_feed": {
     "source": "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/",
+    "alternate_official_source": "https://mof.gov.ae/ar/public-finance/government-procurement/current-business-opportunities/",
     "status": "no_rows_found",
     "parsed_opportunities": 0,
     "added": 0,
     "live_ingestion": false,
     "foreign_supplier_eligibility_assumed": false,
     "errors": [],
+    "successful_route": null,
     "rendered_fallback_used": true,
     "browser_fallback_pages": [
-      1,
-      2
+      "en:1",
+      "ar:1",
+      "en:2",
+      "ar:2"
     ]
   },
   "qatar_monaqasat_feed": {
@@ -75384,199 +74916,6 @@
       }
     },
     {
-      "active": "Yes",
-      "additionalInfoLink": null,
-      "archiveDate": "2026-11-08",
-      "archiveType": "auto30",
-      "award": {
-        "date": "2026-10-23",
-        "number": "SPE8ED27QXXXX"
-      },
-      "baseType": "Justification",
-      "classificationCode": "8145",
-      "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=ef24d7a2bd52409fbc8e06b343af093a",
-      "fullParentPathCode": "097.97AS.DLA TRP SUPT C&E.SPE8ED",
-      "fullParentPathName": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.TROOP SUPPORT CONSTRUCTION & EQUIPMENT.DLA TROOP SUPPORT",
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=ef24d7a2bd52409fbc8e06b343af093a&limit=1"
-        }
-      ],
-      "naicsCode": "332439",
-      "naicsCodes": [
-        "332439"
-      ],
-      "noticeId": "ef24d7a2bd52409fbc8e06b343af093a",
-      "officeAddress": {
-        "zipcode": "19111-5096",
-        "city": "PHILADELPHIA",
-        "countryCode": "USA",
-        "state": "PA"
-      },
-      "organizationType": "OFFICE",
-      "placeOfPerformance": null,
-      "pointOfContact": [
-        {
-          "fax": "",
-          "type": "primary",
-          "email": "avril.dickerson@dla.mil",
-          "phone": "",
-          "fullName": "Avril Dickerson445-737-7976"
-        }
-      ],
-      "postedDate": "2026-10-09",
-      "resourceLinks": [
-        "https://sam.gov/api/prod/opps/v3/opportunities/resources/files/d4e87e14a82747388f80978f7a81b23b/download"
-      ],
-      "responseDeadLine": null,
-      "solicitationNumber": "SPE8ED26Q0576",
-      "title": "Hazardous Material Storage Building",
-      "type": "Justification",
-      "typeOfSetAside": null,
-      "typeOfSetAsideDescription": null,
-      "uiLink": "https://sam.gov/workspace/contract/opp/ef24d7a2bd52409fbc8e06b343af093a/view",
-      "title_original": "Hazardous Material Storage Building",
-      "title_tr": "Hazardous Material Storage Building",
-      "detail_original": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=ef24d7a2bd52409fbc8e06b343af093a",
-      "detail_tr": "Hazardous Material Storage Building",
-      "buyer-country": "United States",
-      "market_region": "ABD / Kuzey Amerika",
-      "buyer-name": "",
-      "deadline-receipt-tender-date-lot": "",
-      "classification-cpv": "332439",
-      "procedure-type": "Justification",
-      "source_url": "https://sam.gov/workspace/contract/opp/ef24d7a2bd52409fbc8e06b343af093a/view",
-      "source": "SAM_GOV",
-      "mode": "shadow",
-      "buyer_verified": false,
-      "supplier_status": "pending",
-      "landed_cost_status": "pending",
-      "margin_status": "pending_supplier_quote",
-      "offer_status": "shadow_not_sent",
-      "commission_status": "pending_deal_value_and_agreement",
-      "deal_score": 45,
-      "export_goods_review": {
-        "status": "review_unknown",
-        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
-        "basis": "insufficient_evidence"
-      },
-      "opportunity_type": "SATILABİLİR_ÜRÜN",
-      "scale_status": "value_verification_pending",
-      "commercial_priority": "REVIEW",
-      "freshness_status": "deadline_unknown_review",
-      "deadline_normalized": null,
-      "source_type": "public_procurement_notice",
-      "source_link_status": "present_unverified",
-      "private_buyer_mandate_verified": false,
-      "buyer_due_diligence_status": "pending",
-      "supplier_due_diligence_status": "pending",
-      "pricing_evidence_status": "pending",
-      "commission_agreement_status": "not_signed",
-      "outreach_status": "shadow_not_sent",
-      "human_review_required": true,
-      "broker_opportunity": "Ürün tedariği ağırlıklı — broker modeli için incelenecek",
-      "turkey_supply_status": "Türkiye'den tedarikçi eşleştirmesi araştırılacak",
-      "supplier_search_status": "Ajan araştırması bekliyor",
-      "commission_potential": "İşlem değeri ve komisyon anlaşması olmadan hesaplanamaz",
-      "supplier_agent": {
-        "status": "research_pending",
-        "query": "Turkey manufacturer exporter Hazardous Material Storage Building https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=ef24d7a2bd52409fbc8e06b343af093a 332439",
-        "requirement": "Üretici/ihracatçı kimliği, ürün uyumu ve iletişim kaynağı doğrulanmalı"
-      },
-      "price_agent": {
-        "status": "quote_pending",
-        "basis": "Gerçek tedarikçi teklifi olmadan fiyat veya marj üretilmez",
-        "currency": "pending"
-      },
-      "logistics_agent": {
-        "status": "route_pending",
-        "destination_country": "United States",
-        "incoterm": "pending",
-        "freight": "pending"
-      },
-      "risk_agent": {
-        "status": "due_diligence_pending",
-        "buyer_source_verified": false,
-        "checks": [
-          "alıcı tüzel kişilik",
-          "ülke/yaptırım",
-          "ödeme şartı",
-          "ticaret ve teslimat riski"
-        ]
-      },
-      "pipeline_stage": "SUPPLIER_RESEARCH",
-      "deadline_known": false,
-      "supplier_research": {
-        "status": "source_search_ready",
-        "product_query": "332439",
-        "country_focus": "Türkiye",
-        "sources": [
-          {
-            "name": "TOBB Sanayi Veritabanı",
-            "url": "https://sanayi.tobb.org.tr/",
-            "purpose": "ürün/GTİP/PRODCOM bazında üretici doğrulama"
-          },
-          {
-            "name": "TİM",
-            "url": "https://tim.org.tr/",
-            "purpose": "ihracatçı ve sektör doğrulama"
-          },
-          {
-            "name": "TOBB2B",
-            "url": "https://tobb2b.tobb.org.tr/teklifsorgula.php",
-            "purpose": "ticari teklif/talep eşleştirme"
-          }
-        ],
-        "candidates": [],
-        "verified_count": 0,
-        "next_action": "Ürün kodunu/anahtar kelimeyi kaynaklarda eşleştir; firma adı ve kaynak URL olmadan aday ekleme"
-      },
-      "demand_summary_tr": "Hazardous Material Storage Building. Kategori / ürün grubu: 332439",
-      "workflow": {
-        "buyer": {
-          "status": "identity_pending",
-          "name": null,
-          "country": "United States",
-          "verified": false
-        },
-        "supplier": {
-          "status": "research_pending",
-          "verified_candidates": 0
-        },
-        "pricing_margin": {
-          "status": "quote_pending",
-          "supplier_quote": null,
-          "sell_price": null,
-          "gross_margin": null,
-          "commission": null
-        },
-        "logistics": {
-          "status": "route_pending",
-          "incoterm": null,
-          "freight": null,
-          "landed_cost": null
-        },
-        "risk": {
-          "status": "due_diligence_pending"
-        },
-        "offer": {
-          "status": "shadow_not_sent"
-        },
-        "contract": {
-          "status": "not_started"
-        },
-        "commission_protection": {
-          "status": "not_started",
-          "target_months": 12,
-          "starts_only_after_signed_agreement": true
-        },
-        "payment": {
-          "status": "not_started"
-        }
-      }
-    },
-    {
       "id": "OP00471735",
       "notice_type": "Invitation for Bids",
       "project_id": "P506109",
@@ -76033,8 +75372,8 @@
   ],
   "physical_goods_gate": {
     "mode": "physical_goods_only",
-    "goods_candidates": 63,
-    "review_mixed_or_unknown": 50,
+    "goods_candidates": 62,
+    "review_mixed_or_unknown": 49,
     "excluded_service_or_works": 0,
     "excluded_non_physical": 0,
     "research_pipeline_receives_only_goods_candidates": true
@@ -76677,22 +76016,6 @@
       "rule": "research source/document only; do not infer missing facts"
     },
     {
-      "opportunity_id": null,
-      "product": "TR-317D and TR-353A Transducers and Spare Parts Production.",
-      "buyer": null,
-      "source_url": "https://sam.gov/workspace/contract/opp/cd42a9d5a75e4e4d9fc3c6501c0ea91b/view",
-      "missing_fields": [
-        "quantity",
-        "buyer"
-      ],
-      "critical_missing_fields": [
-        "quantity"
-      ],
-      "coverage": 4,
-      "priority": "high",
-      "rule": "research source/document only; do not infer missing facts"
-    },
-    {
       "opportunity_id": "OP00473154",
       "product": "Balıkesir Fire Brigade Disaster Management Vehicles Procurement Sub-Project",
       "buyer": "Türkiye Earthquake, Floods, and Wildfires Emergency Reconstruction Project",
@@ -77093,25 +76416,25 @@
     }
   ],
   "field_evidence_summary": {
-    "opportunities": 63,
+    "opportunities": 62,
     "complete_core_records": 1,
     "source_backed_counts": {
-      "country": 42,
-      "city": 42,
-      "product": 63,
+      "country": 41,
+      "city": 41,
+      "product": 62,
       "quantity": 3,
-      "deadline": 22,
+      "deadline": 21,
       "buyer": 62
     },
-    "research_queue": 62,
-    "high_priority_research": 41,
+    "research_queue": 61,
+    "high_priority_research": 40,
     "missing_counts": {
       "country": 21,
       "city": 21,
       "product": 0,
-      "quantity": 60,
+      "quantity": 59,
       "deadline": 41,
-      "buyer": 1
+      "buyer": 0
     },
     "rule": "missing values remain unknown; research source documents only; no inferred value is promoted as source-backed"
   },
@@ -77451,12 +76774,12 @@
   "enrichment": {
     "version": 1,
     "mode": "source_only_no_hallucination",
-    "enriched_count": 63
+    "enriched_count": 62
   },
   "document_extraction": {
     "version": 3,
     "mode": "public_source_pages_documents_and_ted_xml",
-    "attempted_opportunities": 42,
+    "attempted_opportunities": 41,
     "parsed_opportunities": 0,
     "source_pages_parsed": 0,
     "discovered_attachments": 0,
@@ -77467,9 +76790,9 @@
   "specification_analysis": {
     "version": 3,
     "mode": "source_evidence_plus_public_documents",
-    "analyzed_count": 63,
+    "analyzed_count": 62,
     "supplier_sourcing_ready": 9,
-    "document_analysis_pending": 34,
+    "document_analysis_pending": 33,
     "insufficient_source_detail": 20,
     "attachments_requiring_parser": 0,
     "parsed_document_opportunities": 0
@@ -77480,11 +76803,11 @@
     "grades": {
       "A": 0,
       "B": 0,
-      "C": 63
+      "C": 62
     },
     "close_first": 0,
     "develop_next": 0,
-    "research_only": 63
+    "research_only": 62
   },
   "gulf_sources": {
     "sources": [
@@ -77546,31 +76869,31 @@
     "rule": "Each country becomes live only after real official notice ingestion in the current scan. Priority Gulf coverage requires Saudi Arabia, UAE and Qatar; registered links alone do not count."
   },
   "commercial_terms_summary": {
-    "opportunities": 63,
+    "opportunities": 62,
     "complete": 0,
     "source_backed_counts": {
       "payment": 0,
       "bond": 0,
-      "delivery": 42,
+      "delivery": 41,
       "eligibility": 0,
       "award": 0
     }
   },
   "supplier_research_summary": {
-    "opportunities": 63,
+    "opportunities": 62,
     "research_ready": 9,
-    "blocked": 54,
+    "blocked": 53,
     "verified_suppliers": 0,
     "mode": "research_queue_only"
   },
   "commercial_feasibility_summary": {
-    "opportunities": 63,
+    "opportunities": 62,
     "calculation_ready": 0,
-    "blocked_missing_inputs": 63,
+    "blocked_missing_inputs": 62,
     "source_backed_only": true
   },
   "offer_risk_summary": {
-    "opportunities": 63,
+    "opportunities": 62,
     "internal_draft_ready": 0,
     "external_action_authorized": 0,
     "mode": "shadow"
@@ -77578,36 +76901,36 @@
   "agent_center": {
     "mode": "shadow",
     "external_actions_enabled": false,
-    "opportunity_count": 63,
+    "opportunity_count": 62,
     "agents": {
       "source": {
-        "has_official_link": 42,
+        "has_official_link": 41,
         "missing_link": 21
       },
       "goods_gate": {
-        "goods_candidate": 63
+        "goods_candidate": 62
       },
       "field_evidence": {
-        "incomplete": 62,
+        "incomplete": 61,
         "complete": 1
       },
       "specification": {
         "source_description_analyzed": 9,
-        "document_analysis_pending": 34,
+        "document_analysis_pending": 33,
         "source_description_insufficient": 20
       },
       "supplier": {
         "research_ready": 9,
-        "specification_review_pending": 54
+        "specification_review_pending": 53
       },
       "feasibility": {
-        "commercial_inputs_missing": 63
+        "commercial_inputs_missing": 62
       },
       "risk": {
-        "pending": 63
+        "pending": 62
       },
       "sales_priority": {
-        "C": 63
+        "C": 62
       }
     },
     "policy": {
