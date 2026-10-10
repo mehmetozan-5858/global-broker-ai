@@ -6,6 +6,8 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
+from src.opportunity_identity import stable_opportunity_id
+
 SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://yhzdqrqzjruduohypvqf.supabase.co").rstrip("/")
 SUPABASE_KEY = os.environ.get("SUPABASE_PUBLISHABLE_KEY", "sb_publishable_fFtN0JmDBp8TP01lKJhTFQ_sx6mkt-w")
 
@@ -118,7 +120,6 @@ def _country_code(row):
 
 
 def _mask_private(row):
-    # Return only customer-safe fields. Raw contacts, direct URLs and identifiable buyer fields never leave this endpoint.
     out = {}
     for k, v in row.items():
         lk = str(k).lower()
@@ -127,6 +128,7 @@ def _mask_private(row):
         if any(x in lk for x in ["email", "phone", "telephone", "mobile", "linkedin", "contact_person", "address"]):
             continue
         out[k] = v
+    out["opportunity_id"] = stable_opportunity_id(row)
     out["buyer_masked"] = True
     out["buyer_display"] = "Doğrulanmış alıcı — erişim kurallarına tabi"
     out["sector_id"] = _sector_for(row)
