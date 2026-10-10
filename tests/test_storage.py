@@ -25,6 +25,32 @@ class TestStorageAdapters(unittest.TestCase):
         self.assertIsInstance(store, EnvJsonRecordStore)
         self.assertEqual(store.get_opportunity_record("opp-1")["opportunity"]["id"], "opp-1")
 
+    def test_env_fallback_is_forbidden_on_vercel_production(self):
+        env = {
+            "VERCEL_ENV": "production",
+            "PRIVATE_ROOM_ALLOW_ENV_FALLBACK": "true",
+            "PRIVATE_ROOM_RECORDS_JSON": '{"opp-1":{"opportunity":{"id":"opp-1"}}}',
+        }
+        with self.assertRaises(StorageError) as ctx:
+            build_record_store(env)
+        self.assertEqual(str(ctx.exception), "durable_store_not_configured")
+
+    def test_env_fallback_is_forbidden_on_node_production(self):
+        env = {
+            "NODE_ENV": "production",
+            "PRIVATE_ROOM_ALLOW_ENV_FALLBACK": "true",
+        }
+        with self.assertRaises(StorageError):
+            build_record_store(env)
+
+    def test_production_prefers_durable_store_even_with_fallback_enabled(self):
+        env = {
+            "VERCEL_ENV": "production",
+            "PRIVATE_ROOM_STORE_URL": "https://store.example.test/opportunities",
+            "PRIVATE_ROOM_ALLOW_ENV_FALLBACK": "true",
+        }
+        self.assertIsInstance(build_record_store(env), HttpJsonRecordStore)
+
     def test_env_store_cannot_write_consent(self):
         store = EnvJsonRecordStore("{}")
         with self.assertRaises(StorageError) as ctx:
