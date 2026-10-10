@@ -6,6 +6,7 @@
     }
   },
   "rewrites": [
+    { "source": "/data/latest-opportunities.json", "destination": "/api/opportunities" },
     { "source": "/", "destination": "/web/website-mobile.html" },
     { "source": "/website.html", "destination": "/web/website-mobile.html" },
     { "source": "/customer", "destination": "/web/customer-shell.html" },
@@ -32,7 +33,15 @@
     {
       "source": "/data/latest-opportunities.json",
       "headers": [
-        { "key": "Cache-Control", "value": "no-store, max-age=0" }
+        { "key": "Cache-Control", "value": "private, no-store, max-age=0" },
+        { "key": "Referrer-Policy", "value": "no-referrer" }
+      ]
+    },
+    {
+      "source": "/api/opportunities",
+      "headers": [
+        { "key": "Cache-Control", "value": "private, no-store, max-age=0" },
+        { "key": "Referrer-Policy", "value": "no-referrer" }
       ]
     }
   ]
