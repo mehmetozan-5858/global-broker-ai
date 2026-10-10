@@ -332,15 +332,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Sukcesywne dostawy wyrobów jednorazowych",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -363,11 +363,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -1527,15 +1526,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Gıda / tarım ürünü alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -1558,11 +1557,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -2710,15 +2708,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "SWE",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
-          "value": "Uluslararası satın alma talebi",
+          "value": "Medikal ekipman, ilaç ve kişisel bakım ürünleri",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -2741,11 +2739,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -3902,15 +3899,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -3933,11 +3930,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -5097,15 +5093,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "NLD",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -5127,13 +5123,11 @@
           "inferred": false
         }
       },
-      "missing_core_fields": [
-        "city"
-      ],
+      "missing_core_fields": [],
       "core_field_coverage": {
-        "verified_or_source_backed": 5,
+        "verified_or_source_backed": 6,
         "total": 6,
-        "complete": false
+        "complete": true
       },
       "dossier": {
         "buyer_name": "Politie",
@@ -6308,15 +6302,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "DEU",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Araç / yedek parça alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -6339,11 +6333,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -7491,15 +7484,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "HRV",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Gıda / tarım ürünü alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -7522,11 +7515,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -8707,15 +8699,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "PRT",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -8738,11 +8730,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -9893,15 +9884,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "NOR",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -9924,11 +9915,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -11095,15 +11085,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "MKD",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "North Macedonia – medikal consumables – medikal consumables",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -11126,11 +11116,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -12346,15 +12335,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "NLD",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Araç / yedek parça alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -12377,11 +12366,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -13533,15 +13521,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "FRA",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Metal / maden ürünü alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -13564,11 +13552,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -14726,15 +14713,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "CYP",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Metal / maden ürünü alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -14757,11 +14744,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -15921,15 +15907,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "DEU",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
-          "value": "Uluslararası satın alma talebi",
+          "value": "Laboratuvar, optik ve hassas ölçüm ekipmanları",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -15952,11 +15938,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -17214,15 +17199,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -17245,11 +17230,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -18534,15 +18518,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "FRA",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -18565,11 +18549,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -19723,15 +19706,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "FRA",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Makine / ekipman alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -19754,11 +19737,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -20930,15 +20912,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "ROU",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -20961,11 +20943,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -22195,15 +22176,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "BEL",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
-          "value": "Uluslararası satın alma talebi",
+          "value": "CPV ürün/hizmet grubu",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -22226,11 +22207,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -23470,15 +23450,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -23501,11 +23481,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -24682,15 +24661,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "PRT",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -24713,11 +24692,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -25864,15 +25842,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "HRV",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -25895,12 +25873,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -27069,15 +27046,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "ROU",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -27100,12 +27077,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -28414,15 +28390,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Dostawa sprzętu medycznego jednorazowego użytku oraz asortymentu na blok",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -28445,12 +28421,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -29614,15 +29589,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "HUN",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Makine / ekipman alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -29645,11 +29620,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -30856,15 +30830,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "NOR",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Norway, Sweden, Denmark, Finland, Germany, Iceland, Netherlands, Poland – elektrik makine apparatus, ekipman and consumables; lighting – Achilles Utilities NCE",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -30887,12 +30861,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -32143,15 +32116,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "NOR",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Norway – medikal equipments, pharmaceuticals and personal care products – Consumables MyoSure for Østfold hastane",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -32174,12 +32147,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -33339,15 +33311,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "BGR",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -33370,12 +33342,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -34536,15 +34507,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "CZE",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Gıda / tarım ürünü alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -34567,12 +34538,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -35737,15 +35707,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "LVA",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -35768,12 +35738,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -36941,15 +36910,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "ESP",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Metal / maden ürünü alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -36972,12 +36941,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -38151,15 +38119,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Araç / yedek parça alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -38182,12 +38150,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -39383,15 +39350,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "ITA",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
-          "value": "Uluslararası satın alma talebi",
+          "value": "Mobilya, iç donanım, ev aletleri ve temizlik ürünleri",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -39414,12 +39381,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -40595,15 +40561,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "SVN",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Araç / yedek parça alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -40626,12 +40592,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -41888,15 +41853,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "POL",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -41919,12 +41884,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -43090,15 +43054,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "DEU",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
-          "value": "Uluslararası satın alma talebi",
+          "value": "Laboratuvar, optik ve hassas ölçüm ekipmanları",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -43121,11 +43085,10 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 4,
+        "verified_or_source_backed": 5,
         "total": 6,
         "complete": false
       },
@@ -44282,15 +44245,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "CZE",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -44313,12 +44276,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -45470,15 +45432,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "BGR",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Gıda / tarım ürünü alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -45501,12 +45463,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -46658,15 +46619,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "HRV",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -46689,12 +46650,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -47850,15 +47810,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "EST",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Araç / yedek parça alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -47881,12 +47841,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -49292,15 +49251,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "ROU",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "Medikal ürün alımı",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -49323,12 +49282,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "deadline"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -50405,15 +50363,15 @@
           "inferred": false
         },
         "city": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
+          "value": "United States",
+          "status": "source_backed",
+          "source_field": "delivery_location",
           "inferred": false
         },
         "product": {
           "value": "TR-317D and TR-353A Transducers and Spare Parts Production.",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -50436,12 +50394,11 @@
         }
       },
       "missing_core_fields": [
-        "city",
         "quantity",
         "buyer"
       ],
       "core_field_coverage": {
-        "verified_or_source_backed": 3,
+        "verified_or_source_backed": 4,
         "total": 6,
         "complete": false
       },
@@ -50770,7 +50727,7 @@
         "product": {
           "value": "Balıkesir Fire Brigade Disaster Management Vehicles Procurement Sub-Project",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -51079,7 +51036,7 @@
         "product": {
           "value": "Supply and Delivery of assorted furniture for classrooms (3-seater desks, Teachers' chairs & Tables), ICT & Science Laboratories (tables, chairs & shelves), Multipurpose Halls furniture and Administration Blocks for 72 New Secondary Schools under USEEP",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -51396,7 +51353,7 @@
         "product": {
           "value": "Procurement of medical Equipment such as stethoscopes, thermometers, Blood pressure apparatus, adult scales, Hospital beds, Pillows, and others as specified in the SOR for spokes and hospitals in Faalaba, Western Rural, Bonthe and Tonkolili Districts",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -51714,7 +51671,7 @@
         "product": {
           "value": "Rehabilitation Works for the Spillway, Embankment Dam, and Dam Instrumentation Equipment",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -52041,7 +51998,7 @@
         "product": {
           "value": "Procurement of Woreda information centre ICT equipment, tablets and laptops for NPCU, RPCU and woreda",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -52359,7 +52316,7 @@
         "product": {
           "value": "Integrated Tourism Development, Infrastructure and Livelihood Improvement in Unguja,  (Nungwi village) - Construction of Village Square, Tourist Information Centre, Fish Market, Parking, Urban Furniture, Tide-Defence Embankment and Food Vending Stalls",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -52676,7 +52633,7 @@
         "product": {
           "value": "Supply and Delivery of Multideck Weighbridge",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -52999,7 +52956,7 @@
         "product": {
           "value": "MHCPP Camp Rehabilitation Procurement Package (2); Supply (Electrical Appliances, Furniture, Kitchen Utensils, Gym  Equipment, and Related Items)",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -53321,7 +53278,7 @@
         "product": {
           "value": "Expansion of Benapole Land Port- Construction Parking Yard, Sheds and Modem Chemical Godowns with other ancillary facilities",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -53642,7 +53599,7 @@
         "product": {
           "value": "Jubaland State Procurement for Veterinary Mobile Clinic Vehicles",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -53942,7 +53899,7 @@
         "product": {
           "value": "Supply of ICT and electronic equipment for PIU Office",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -54246,7 +54203,7 @@
         "product": {
           "value": "Supply and Delivery of 25,406 Bunk Beds to Selected Secondary Schools in Various Regions in Ghana (3 Lots)",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -54550,7 +54507,7 @@
         "product": {
           "value": "Supply and Delivery of Dining Hall Furniture (4,472 Tables and 8,944 Benches) to Selected Secondary Schools in Various Regions in Ghana (2 Lots)",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -54854,7 +54811,7 @@
         "product": {
           "value": "Supply and Delivery of 64,900 Mono Desks to Selected Secondary Schools in Various Regions in Ghana (5 Lots)",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -55158,7 +55115,7 @@
         "product": {
           "value": "Fourniture de matériels et équipements de sécurité dans l'aéroport de Toliara :  machine traceur (marques de piste)",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -55458,7 +55415,7 @@
         "product": {
           "value": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor (Framework Agreement)",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -55763,7 +55720,7 @@
         "product": {
           "value": "Supply and Delivery of Laboratory Equipment for the Central Materials Laboratory",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -56073,7 +56030,7 @@
         "product": {
           "value": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -56378,7 +56335,7 @@
         "product": {
           "value": "Procurement of transport vehicles for medical waste (MW)",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -56677,7 +56634,7 @@
         "product": {
           "value": "Procurement of BPNS commodity- Ready to Use Therapeutic food (RUTF)",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -56976,7 +56933,7 @@
         "product": {
           "value": "Procurement of Educational Materials and Equipment for Classrooms and STEM Laboratories for Grades 8–9",
           "status": "source_backed",
-          "source_field": "title_tr",
+          "source_field": "product_name",
           "inferred": false
         },
         "quantity": {
@@ -70416,10 +70373,10 @@
   },
   "field_evidence_summary": {
     "opportunities": 63,
-    "complete_core_records": 0,
+    "complete_core_records": 1,
     "source_backed_counts": {
       "country": 42,
-      "city": 0,
+      "city": 42,
       "product": 63,
       "quantity": 3,
       "deadline": 22,
