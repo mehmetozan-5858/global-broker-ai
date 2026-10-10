@@ -5,8 +5,9 @@ from unittest.mock import patch
 
 from src.browser_render import dump_dom
 from src.saudi_etimad_feed import _api_record, collect, discover_detail_links, parse_detail
-from src.uae_mof_feed import AR_SOURCE_URL, BROWSER_USER_AGENT
+from src.uae_mof_feed import AR_SOURCE_URL, BROWSER_USER_AGENT, SOURCE_URL
 from src.uae_mof_feed import collect as collect_uae
+from src.uae_mof_feed import discover_ministry_filters, filtered_page_url
 from src.uae_mof_feed import parse as parse_uae
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +17,14 @@ UAE_HTML = '''
 <tr><td>12583</td><td>Emirates Space Agency</td><td>Supply of event gifts and giveaway items</td><td>02/10/2026</td><td>25/10/2026</td><td><a href="https://procurement.gov.ae/rfx/12583">Click here</a></td></tr>
 <tr><td>12601</td><td>Ministry</td><td>Leadership assessment services</td><td>05/10/2026</td><td>26/10/2026</td><td><a href="https://procurement.gov.ae/rfx/12601">Click here</a></td></tr>
 </table>
+'''
+
+UAE_FILTER_HTML = '''
+<select name="mof-dpp-ministry">
+<option value="">All</option>
+<option value="Emirates Space Agency - (286/9294)">Emirates Space Agency</option>
+<option value="Ministry of Justice - (121/16896)">Ministry of Justice</option>
+</select>
 '''
 
 UAE_CARD_HTML = '''
@@ -86,8 +95,30 @@ class GulfLiveFeedTests(unittest.TestCase):
         self.assertTrue(rows[0]['source_provenance']['parsed_from_public_listing'])
 
     def test_uae_card_parser_rejects_unrelated_numbers_without_two_dates(self):
-        rows = parse_uae('<div>2026</div><div>Ministry of Finance</div><div>Open tenders</div>')
-        self.assertEqual(rows, [])
+        self.assertEqual(parse_uae('<div>2026</div><div>Ministry of Finance</div><div>Open tenders</div>'), [])
+
+    def test_uae_ministry_filter_values_are_discovered_from_official_form(self):
+        values = discover_ministry_filters(UAE_FILTER_HTML)
+        self.assertEqual(values, ['Emirates Space Agency - (286/9294)', 'Ministry of Justice - (121/16896)'])
+        url = filtered_page_url(values[0])
+        self.assertIn('mof-dpp-ministry=Emirates+Space+Agency', url)
+        self.assertIn('mof-dpp-page=1', url)
+
+    def test_uae_uses_server_side_ministry_filter_before_browser(self):
+        requested = []
+        def fake_fetch(url):
+            requested.append(url)
+            if 'mof-dpp-ministry=' in url:
+                return UAE_HTML
+            if url.startswith(SOURCE_URL):
+                return UAE_FILTER_HTML
+            return '<html></html>'
+        with patch('src.uae_mof_feed._fetch_url', side_effect=fake_fetch), patch('src.uae_mof_feed.dump_dom') as browser:
+            rows, meta = collect_uae(max_pages=1)
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(meta['successful_route'], 'en:server_filter')
+        self.assertEqual(meta['ministry_filters_discovered']['en'], 2)
+        browser.assert_not_called()
 
     def test_uae_http_client_uses_normal_browser_identity(self):
         self.assertTrue(BROWSER_USER_AGENT.startswith('Mozilla/5.0'))
@@ -95,9 +126,7 @@ class GulfLiveFeedTests(unittest.TestCase):
         self.assertNotIn('GlobalBrokerAI', BROWSER_USER_AGENT)
 
     def test_uae_uses_headless_dom_when_server_html_has_no_rows(self):
-        with patch('src.uae_mof_feed._fetch_url', return_value='<html></html>'), patch(
-            'src.uae_mof_feed.dump_dom', return_value=UAE_HTML
-        ):
+        with patch('src.uae_mof_feed._fetch_url', return_value='<html></html>'), patch('src.uae_mof_feed.dump_dom', return_value=UAE_HTML):
             rows, meta = collect_uae(max_pages=1)
         self.assertEqual(len(rows), 2)
         self.assertTrue(meta['rendered_fallback_used'])
@@ -106,9 +135,7 @@ class GulfLiveFeedTests(unittest.TestCase):
     def test_uae_tries_arabic_official_route_when_english_is_empty(self):
         def fake_fetch(url):
             return UAE_HTML if url.startswith(AR_SOURCE_URL) else '<html></html>'
-        with patch('src.uae_mof_feed._fetch_url', side_effect=fake_fetch), patch(
-            'src.uae_mof_feed.dump_dom', return_value='<html></html>'
-        ):
+        with patch('src.uae_mof_feed._fetch_url', side_effect=fake_fetch), patch('src.uae_mof_feed.dump_dom', return_value='<html></html>'):
             rows, meta = collect_uae(max_pages=1)
         self.assertEqual(len(rows), 2)
         self.assertEqual(meta['successful_route'], 'ar')
@@ -118,9 +145,7 @@ class GulfLiveFeedTests(unittest.TestCase):
         def fake_fetch(url):
             requested.append(url)
             return '<html></html>'
-        with patch('src.uae_mof_feed._fetch_url', side_effect=fake_fetch), patch(
-            'src.uae_mof_feed.dump_dom', return_value='<html></html>'
-        ):
+        with patch('src.uae_mof_feed._fetch_url', side_effect=fake_fetch), patch('src.uae_mof_feed.dump_dom', return_value='<html></html>'):
             rows, meta = collect_uae(max_pages=4)
         self.assertEqual(rows, [])
         self.assertFalse(any('mof-dpp-page=2' in url for url in requested))
@@ -128,9 +153,7 @@ class GulfLiveFeedTests(unittest.TestCase):
 
     def test_browser_timeout_preserves_emitted_dom(self):
         timeout = subprocess.TimeoutExpired(['chrome'], 1, output='<html><body>ready</body></html>')
-        with patch('src.browser_render.find_browser', return_value='/usr/bin/google-chrome'), patch(
-            'src.browser_render.subprocess.run', side_effect=timeout
-        ):
+        with patch('src.browser_render.find_browser', return_value='/usr/bin/google-chrome'), patch('src.browser_render.subprocess.run', side_effect=timeout):
             self.assertIn('ready', dump_dom('https://example.invalid', timeout_seconds=1))
 
     def test_saudi_official_json_record_maps_only_source_fields(self):
@@ -143,9 +166,7 @@ class GulfLiveFeedTests(unittest.TestCase):
         self.assertFalse(row['foreign_supplier_eligibility_assumed'])
 
     def test_saudi_collection_prefers_official_json_api(self):
-        with patch('src.saudi_etimad_feed.collect_api', return_value=([
-            _api_record(SAUDI_API_ITEM, 'https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageNumber=1')
-        ], {'api_records': 1})), patch('src.saudi_etimad_feed.collect_html') as html_fallback:
+        with patch('src.saudi_etimad_feed.collect_api', return_value=([_api_record(SAUDI_API_ITEM, 'https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageNumber=1')], {'api_records': 1})), patch('src.saudi_etimad_feed.collect_html') as html_fallback:
             rows, meta = collect()
         self.assertEqual(len(rows), 1)
         self.assertEqual(meta['collection_path'], 'official_json_api')
