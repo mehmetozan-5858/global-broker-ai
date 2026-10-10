@@ -1,1 +1,0 @@
-Installed PWA entrypoint is migrated to /app so the standalone icon opens the branded admin application shell rather than a relative web directory URL.
