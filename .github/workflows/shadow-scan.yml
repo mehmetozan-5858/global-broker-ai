@@ -64,6 +64,10 @@ jobs:
           test -s "$NEXT"
           scan_step china_feed 300 python -m src.china_feed "$NEXT"
           scan_step china_ggzy_feed 300 python -m src.china_ggzy_feed "$NEXT"
+          # Hard A2 gate: only physical-goods candidates proceed to supplier,
+          # specification, pricing and verification research. Mixed/unknown stays
+          # quarantined in goods_review_queue; service/works/digital-only is excluded.
+          scan_step physical_goods_gate 30 python -m src.physical_goods_gate "$NEXT"
           scan_step china_import_radar 240 python -m src.china_import_radar "$NEXT" data/latest-opportunities.json
           scan_step enrichment 90 python -m src.enrichment "$NEXT"
           scan_step document_parser 480 python -m src.document_parser "$NEXT" data/latest-opportunities.json
@@ -85,6 +89,8 @@ jobs:
           radar=((data.get('china_import_radar') or {}).get('items') or [])
           if not opportunities and not radar:
               raise SystemExit('refusing to replace live data: all live opportunity and China-demand feeds are empty')
+          if any((o.get('export_goods_review') or {}).get('status') != 'goods_candidate' for o in opportunities):
+              raise SystemExit('physical-goods gate violation: non-goods record reached live opportunities')
           print(f'ATOMIC_FEED_GATE opportunities={len(opportunities)} china_import_radar={len(radar)}')
           PY
           mv "$NEXT" data/latest-opportunities.json
