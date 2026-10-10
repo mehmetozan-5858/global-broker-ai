@@ -1,5 +1,6 @@
 import subprocess
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 from src.browser_render import dump_dom
@@ -8,6 +9,7 @@ from src.uae_mof_feed import AR_SOURCE_URL, BROWSER_USER_AGENT
 from src.uae_mof_feed import collect as collect_uae
 from src.uae_mof_feed import parse as parse_uae
 
+ROOT = Path(__file__).resolve().parents[1]
 
 UAE_HTML = '''
 <table><tr><th>RFQ Number</th><th>Entity Name</th><th>Title</th><th>Open Date</th><th>Close Date</th><th>Link</th></tr>
@@ -48,6 +50,11 @@ SAUDI_API_ITEM = {
 
 
 class GulfLiveFeedTests(unittest.TestCase):
+    def test_uae_module_entrypoint_executes_main(self):
+        source = (ROOT / 'src/uae_mof_feed.py').read_text(encoding='utf-8')
+        self.assertIn('if __name__ == "__main__":', source)
+        self.assertIn('main(sys.argv[1])', source)
+
     def test_uae_table_extracts_official_rows_without_deciding_goods(self):
         rows = parse_uae(UAE_HTML)
         self.assertEqual(len(rows), 2)
