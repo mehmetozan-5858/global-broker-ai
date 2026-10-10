@@ -10,6 +10,8 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urljoin
 
+from .browser_render import dump_dom
+
 LIST_URL = "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
 BASE_URL = "https://tenders.etimad.sa/"
 DETAIL_PATH_TOKEN = "DetailsForVisitor?STenderId="
@@ -64,6 +66,18 @@ def discover_detail_links(markup: str, limit: int = 15) -> list[str]:
         if DETAIL_PATH_TOKEN.lower() not in href.lower():
             continue
         url = urljoin(BASE_URL, html.unescape(href))
+        if url not in seen:
+            seen.add(url)
+            links.append(url)
+        if len(links) >= limit:
+            break
+    if links:
+        return links
+    # Some client-side builds assign the detail URL outside an anchor. Recover only
+    # exact official Etimad visitor-detail URLs from the rendered DOM; do not invent IDs.
+    pattern = re.compile(r"(?:https?://tenders\.etimad\.sa)?/Tender/DetailsForVisitor\?STenderId=([^\"'<>\s]+)", re.I)
+    for match in pattern.finditer(html.unescape(markup)):
+        url = urljoin(BASE_URL, f"/Tender/DetailsForVisitor?STenderId={match.group(1)}")
         if url not in seen:
             seen.add(url)
             links.append(url)
@@ -132,20 +146,50 @@ def parse_detail(markup: str, url: str) -> dict[str, Any] | None:
     }
 
 
+def _render_if_needed(markup: str, meta: dict[str, Any]) -> str:
+    links = discover_detail_links(markup)
+    if links:
+        return markup
+    # Etimad's visitor board is Angular/client-rendered. The GitHub Ubuntu runner
+    # already ships a browser; use it as a zero-subscription fallback rather than
+    # paying for an external scraping service.
+    try:
+        rendered = dump_dom(LIST_URL, virtual_time_ms=18000, timeout_seconds=45)
+        meta["browser_fallback_used"] = True
+        return rendered
+    except Exception as exc:
+        meta["browser_fallback_error"] = f"{type(exc).__name__}:{exc}"
+        return markup
+
+
 def collect() -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    meta: dict[str, Any] = {"listing_url": LIST_URL, "listing_accessible": False, "detail_links": 0, "detail_failures": 0}
+    meta: dict[str, Any] = {
+        "listing_url": LIST_URL,
+        "listing_accessible": False,
+        "detail_links": 0,
+        "detail_failures": 0,
+        "browser_fallback_used": False,
+    }
     try:
         listing = _fetch(LIST_URL)
         meta["listing_accessible"] = True
     except Exception as exc:
         meta["error"] = type(exc).__name__
-        return [], meta
+        listing = ""
+    listing = _render_if_needed(listing, meta)
     links = discover_detail_links(listing)
     meta["detail_links"] = len(links)
     rows: list[dict[str, Any]] = []
     for url in links:
         try:
-            row = parse_detail(_fetch(url), url)
+            detail = _fetch(url)
+            row = parse_detail(detail, url)
+            if not row:
+                # Detail pages can also be client-rendered.
+                detail = dump_dom(url, virtual_time_ms=12000, timeout_seconds=35)
+                row = parse_detail(detail, url)
+                if row:
+                    meta["browser_detail_fallbacks"] = int(meta.get("browser_detail_fallbacks") or 0) + 1
             if row:
                 rows.append(row)
         except Exception:
@@ -165,7 +209,7 @@ def merge_payload(payload: dict[str, Any], rows: list[dict[str, Any]], meta: dic
             opportunities.append(row)
             seen.add(row["id"])
             added += 1
-    if not meta.get("listing_accessible"):
+    if not meta.get("listing_accessible") and not meta.get("browser_fallback_used"):
         status = "source_unavailable"
     elif not meta.get("detail_links"):
         status = "listing_accessible_no_detail_links"
