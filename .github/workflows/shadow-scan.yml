@@ -19,6 +19,7 @@ concurrency:
 permissions:
   contents: write
   actions: write
+  id-token: write
 
 jobs:
   shadow-scan:
@@ -74,6 +75,7 @@ jobs:
           scan_step field_evidence_final 30 python -m src.field_evidence "$NEXT"
           scan_step verification 180 python -m src.verification "$NEXT"
           scan_step sales_priority 90 python -m src.sales_priority "$NEXT"
+          # A4-A12 remain the source of health, risk, deal lifecycle and launch-gate outputs.
           scan_step remaining_pipeline 30 python -m src.remaining_pipeline "$NEXT"
       - name: Validate enriched live output
         run: |
@@ -104,7 +106,35 @@ jobs:
               raise SystemExit('unexpected production launch: Shadow Scan must not open production without explicit external production gates')
           print(f'ATOMIC_FEED_GATE opportunities={len(opportunities)} china_import_radar={len(radar)} launch_ready=false')
           PY
-          cp "$NEXT" data/latest-opportunities.private.json
+          mv "$NEXT" data/latest-opportunities.private.json
+      - name: Prepare private opportunity identities
+        run: python -m src.private_sync_payload data/latest-opportunities.private.json
+      - name: Sync full opportunities to private Supabase storage
+        env:
+          PRIVATE_INGEST_URL: https://yhzdqrqzjruduohypvqf.supabase.co/functions/v1/broker-private-ingest
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          from urllib.parse import urlencode
+          from urllib.request import Request, urlopen
+
+          request_url=os.environ['ACTIONS_ID_TOKEN_REQUEST_URL']
+          request_token=os.environ['ACTIONS_ID_TOKEN_REQUEST_TOKEN']
+          sep='&' if '?' in request_url else '?'
+          oidc_req=Request(request_url+sep+urlencode({'audience':'global-broker-supabase-ingest'}),headers={'Authorization':'Bearer '+request_token})
+          with urlopen(oidc_req,timeout=20) as r:
+              oidc=json.loads(r.read().decode('utf-8'))['value']
+          data=json.loads(Path('data/latest-opportunities.private.json').read_text(encoding='utf-8'))
+          payload=json.dumps({'opportunities':data.get('opportunities') or []},ensure_ascii=False,separators=(',',':')).encode('utf-8')
+          req=Request(os.environ['PRIVATE_INGEST_URL'],data=payload,headers={'Authorization':'Bearer '+oidc,'Content-Type':'application/json'},method='POST')
+          with urlopen(req,timeout=60) as r:
+              result=json.loads(r.read().decode('utf-8'))
+          if result.get('status')!='OK':
+              raise SystemExit('private Supabase ingest did not confirm OK')
+          print('PRIVATE_SUPABASE_SYNC_OK',result.get('result'))
+          PY
       - name: Generate ephemeral internal CEO review
         run: python -m src.build_ceo_report data/latest-opportunities.private.json data/latest-ceo-report.json
       - name: Build public-safe masked feed
