@@ -3,7 +3,7 @@ import unittest
 from unittest.mock import patch
 
 from src.browser_render import dump_dom
-from src.saudi_etimad_feed import discover_detail_links, parse_detail
+from src.saudi_etimad_feed import _api_record, collect, discover_detail_links, parse_detail
 from src.uae_mof_feed import AR_SOURCE_URL
 from src.uae_mof_feed import collect as collect_uae
 from src.uae_mof_feed import parse as parse_uae
@@ -35,6 +35,16 @@ SAUDI_DETAIL = '''<html><body>
 </body></html>'''
 
 SAUDI_ENDED = SAUDI_DETAIL.replace('5 أيام','إنتهى')
+SAUDI_API_ITEM = {
+    'referenceNumber': '260239009999',
+    'tenderName': 'توريد أجهزة قياس صناعية',
+    'tenderNumber': '2026/55',
+    'agencyName': 'وزارة الصناعة',
+    'branchName': 'الرياض',
+    'tenderTypeName': 'منافسة عامة',
+    'submitionDate': '2026-10-01T12:00:00',
+    'lastOfferPresentationDate': '2026-10-25T12:00:00',
+}
 
 
 class GulfLiveFeedTests(unittest.TestCase):
@@ -71,6 +81,24 @@ class GulfLiveFeedTests(unittest.TestCase):
             'src.browser_render.subprocess.run', side_effect=timeout
         ):
             self.assertIn('ready', dump_dom('https://example.invalid', timeout_seconds=1))
+
+    def test_saudi_official_json_record_maps_only_source_fields(self):
+        row = _api_record(SAUDI_API_ITEM, 'https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageNumber=1')
+        self.assertEqual(row['reference_number'], '260239009999')
+        self.assertEqual(row['country'], 'Saudi Arabia')
+        self.assertEqual(row['buyer-name'], 'وزارة الصناعة')
+        self.assertEqual(row['deadline-receipt-tender-date-lot'], '2026-10-25T12:00:00')
+        self.assertTrue(row['source_provenance']['parsed_from_official_json_endpoint'])
+        self.assertFalse(row['foreign_supplier_eligibility_assumed'])
+
+    def test_saudi_collection_prefers_official_json_api(self):
+        with patch('src.saudi_etimad_feed.collect_api', return_value=([
+            _api_record(SAUDI_API_ITEM, 'https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageNumber=1')
+        ], {'api_records': 1})), patch('src.saudi_etimad_feed.collect_html') as html_fallback:
+            rows, meta = collect()
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(meta['collection_path'], 'official_json_api')
+        html_fallback.assert_not_called()
 
     def test_saudi_listing_deduplicates_detail_links(self):
         links = discover_detail_links(SAUDI_LIST)
