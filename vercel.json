@@ -4,5 +4,30 @@
     "api/**/*.py": {
       "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,fixtures/**,__fixtures__/**,testdata/**,sample-data/**,static/**,assets/**}"
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/web/website.html" },
+    { "source": "/customer", "destination": "/web/index.html" },
+    { "source": "/account", "destination": "/web/account.html" },
+    { "source": "/pricing", "destination": "/web/pricing.html" },
+    { "source": "/privacy", "destination": "/web/privacy.html" },
+    { "source": "/terms", "destination": "/web/terms.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/data/latest-opportunities.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" }
+      ]
+    }
+  ]
 }
