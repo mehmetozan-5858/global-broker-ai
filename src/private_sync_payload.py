@@ -27,6 +27,11 @@ COUNTRY_CODES = {
     "australia":"AU","new zealand":"NZ","south africa":"ZA","morocco":"MA","algeria":"DZ","tunisia":"TN","nigeria":"NG","kenya":"KE"
 }
 
+EMAIL_RE = re.compile(r"(?:e-?mail|email address|e-?posta|eposta)\s*[:：-]\s*([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})", re.I)
+PHONE_RE = re.compile(r"(?:phone|telephone|tel\.?|mobile|telefon|irtibat telefonu|contact number)\s*[:：-]\s*(\+?[0-9][0-9() .\-/]{5,24}[0-9])", re.I)
+WEBSITE_RE = re.compile(r"(?:website|web site|web|internet sitesi)\s*[:：-]\s*(https://[^\s<>'\"]+)", re.I)
+CONTACT_PERSON_RE = re.compile(r"(?:contact person|contact name|authorized person|yetkili|irtibat kişisi|ilgili kişi)\s*[:：-]\s*([^\n\r;|]{3,100})", re.I)
+
 def text(v):
     if v is None: return ""
     if isinstance(v, list): return " ".join(text(x) for x in v)
@@ -38,6 +43,51 @@ def pick(row, keys):
         value = row.get(key)
         if value not in (None, "", [], {}): return text(value)
     return ""
+
+def _https(value):
+    value = str(value or "").strip().rstrip(".,;)")
+    return value if value.lower().startswith("https://") else ""
+
+def _labelled(pattern, source):
+    match = pattern.search(source or "")
+    return match.group(1).strip().rstrip(".,;") if match else ""
+
+def enrich_private_contact(row):
+    """Promote only explicit structured or labelled source contact facts.
+
+    Unlabelled e-mail addresses/phone-like numbers are intentionally ignored to
+    avoid turning unrelated document text into a buyer contact claim.
+    """
+    extracted = text(row.get("document_extracted_text"))
+    email = pick(row, ["contact_email", "buyer_email", "email_address"])
+    phone = pick(row, ["contact_phone", "buyer_phone", "phone_number"])
+    person = pick(row, ["contact_person", "representative", "contact_name"])
+    website = _https(pick(row, ["buyer_website", "organization_url", "website"]))
+
+    if not email:
+        email = _labelled(EMAIL_RE, extracted)
+    if not phone:
+        phone = _labelled(PHONE_RE, extracted)
+    if not website:
+        website = _https(_labelled(WEBSITE_RE, extracted))
+    if not person:
+        person = _labelled(CONTACT_PERSON_RE, extracted)
+
+    if email:
+        row["contact_email"] = email
+    if phone:
+        row["contact_phone"] = phone
+    if person:
+        row["contact_person"] = person
+    if website:
+        row["buyer_website"] = website
+
+    direct = bool(email or phone or website)
+    official_route = bool(_https(pick(row, ["source_url", "notice_url", "detail_url", "url", "document_url"])))
+    row["contact_route_available"] = direct or official_route
+    row["direct_contact_available"] = direct
+    row["contact_source_backed"] = bool(email or phone or website or person)
+    return row
 
 def sector_for(row):
     evidence = row.get("field_evidence") or {}
@@ -60,15 +110,26 @@ def prepare(path):
     data = json.loads(p.read_text(encoding="utf-8"))
     rows = data.get("opportunities") or []
     kept = 0
+    contact_routes = 0
+    direct_contacts = 0
     for row in rows:
         if not isinstance(row, dict): continue
         if (row.get("export_goods_review") or {}).get("status") != "goods_candidate": continue
         row["opportunity_id"] = stable_opportunity_id(row)
         row["sector_id"] = sector_for(row)
         row["country_code"] = country_code(row)
+        enrich_private_contact(row)
+        contact_routes += int(bool(row.get("contact_route_available")))
+        direct_contacts += int(bool(row.get("direct_contact_available")))
         kept += 1
+    data["private_contact_summary"] = {
+        "opportunities": kept,
+        "contact_routes_available": contact_routes,
+        "direct_contacts_available": direct_contacts,
+        "rule": "Only explicit structured or labelled source contact facts are promoted; unlabelled document text is not treated as contact evidence.",
+    }
     p.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    print(f"PRIVATE_SYNC_METADATA_READY opportunities={kept}")
+    print(f"PRIVATE_SYNC_METADATA_READY opportunities={kept} contact_routes={contact_routes} direct_contacts={direct_contacts}")
 
 if __name__ == "__main__":
     prepare(sys.argv[1] if len(sys.argv) > 1 else "data/latest-opportunities.private.json")
