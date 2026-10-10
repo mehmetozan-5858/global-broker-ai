@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from api.private_room import _build_access, _consent_command, _session_from_headers
+from api.private_room import _build_access, _consent_command, _session_from_headers, _subject_authorized
 from src.session_security import SessionError, issue_session
 
 
@@ -23,6 +23,14 @@ class TestPrivateRoomAuth(unittest.TestCase):
             os.environ.pop("PRIVATE_ROOM_SESSION_SECRET", None)
         else:
             os.environ["PRIVATE_ROOM_SESSION_SECRET"] = self.old
+
+    def test_private_room_requires_explicit_subject_allowlist(self):
+        session = {"sub": "buyer-user"}
+        self.assertFalse(_subject_authorized({}, session))
+        self.assertFalse(_subject_authorized({"allowed_subjects": []}, session))
+        self.assertFalse(_subject_authorized({"allowed_subjects": "buyer-user"}, session))
+        self.assertFalse(_subject_authorized({"allowed_subjects": ["other-user"]}, session))
+        self.assertTrue(_subject_authorized({"allowed_subjects": ["buyer-user"]}, session))
 
     def test_signed_session_is_accepted(self):
         token = issue_session("buyer-user", SECRET)
