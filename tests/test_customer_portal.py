@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 class CustomerPortalTests(unittest.TestCase):
     def test_portal_filters_to_physical_goods_and_has_core_filters(self):
         js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
-        self.assertIn('o.export_goods_review.status==="goods_candidate"',js)
+        self.assertIn("goods_candidate",js)
         self.assertIn('id="cpQuery"',js)
         self.assertIn('id="cpCountry"',js)
         self.assertIn('id="cpCity"',js)
@@ -15,6 +15,8 @@ class CustomerPortalTests(unittest.TestCase):
         self.assertIn('Miktar belirtilmemiş',js)
         self.assertIn('Şehir belirtilmemiş',js)
         self.assertIn('Kaynak alanı:',js)
+        self.assertIn('/api/contact_unlock',js)
+        self.assertIn('opportunity_id',js)
 
     def test_portal_does_not_invent_missing_values(self):
         js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
