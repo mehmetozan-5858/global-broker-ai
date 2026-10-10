@@ -5,7 +5,7 @@ contracts, moves money, or marks a deal won without explicit evidence.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date
 from typing import Any
 
@@ -40,13 +40,8 @@ class DealEvidence:
     source_reference: str | None = None
 
 
-def _audit(event: str, *, actor: str, source_reference: str | None, evidence: bool) -> dict[str, Any]:
-    return {
-        "event": event,
-        "actor": actor,
-        "source_reference": source_reference,
-        "evidence_present": bool(evidence),
-    }
+def _audit(event: str, *, actor: str, source_reference: str | None) -> dict[str, Any]:
+    return {"event": event, "actor": actor, "source_reference": source_reference, "evidence_present": True}
 
 
 def evaluate(
@@ -62,65 +57,76 @@ def evaluate(
     provider_currency: str | None = None,
     provider_verified: bool = False,
 ) -> dict[str, Any]:
-    """Return the furthest defensible lifecycle state and its blockers.
+    """Return the furthest defensible lifecycle state and blockers.
 
-    Payment confirmation never overrides access/consent gates. ``won`` requires
-    transaction evidence; ``lost`` requires explicit closure evidence. Commission
-    states reuse the A11 agreement/commission engine and therefore respect repeat
-    transaction protection windows.
+    Access-fee payment is source-backed through ``billing_gate.payment_record`` and
+    never overrides consent. Commission states reuse A11, including repeat-order
+    scope and protection windows.
     """
     blockers: list[str] = []
     audit: list[dict[str, Any]] = []
+    state = "match_reviewed"
+    state_achieved = False
 
-    if not evidence.match_reviewed:
-        blockers.append("match_review")
-        state = "match_reviewed"
-    else:
-        state = "match_reviewed"
-        audit.append(_audit("match_reviewed", actor=evidence.actor, source_reference=evidence.source_reference, evidence=True))
-
-    agreement_blockers = agreement.blockers()
-    if agreement_blockers:
-        blockers.extend(x for x in agreement_blockers if x not in blockers)
-    else:
-        state = "terms_signed"
-        audit.append(_audit("terms_signed", actor=evidence.actor, source_reference=agreement.agreement_id, evidence=True))
-
-    access_decision = evaluate_access(access)
-    if not access_decision["allowed"]:
-        blockers.extend(x for x in access_decision["missing"] if x not in blockers)
-    elif not evidence.introduction_evidence:
-        blockers.append("introduction_evidence")
-    else:
-        state = "introduced"
-        audit.append(_audit("introduced", actor=evidence.actor, source_reference=evidence.source_reference, evidence=True))
-
-    if state == "introduced":
-        if evidence.negotiation_evidence:
-            state = "deal_active"
-            audit.append(_audit("deal_active", actor=evidence.actor, source_reference=evidence.source_reference, evidence=True))
-        else:
-            blockers.append("negotiation_evidence")
-
-    if evidence.loss_evidence:
-        if not (evidence.loss_reason or "").strip():
-            blockers.append("loss_reason")
-        elif state in ("introduced", "deal_active"):
-            state = "lost"
-            audit.append(_audit("lost", actor=evidence.actor, source_reference=evidence.source_reference, evidence=True))
-
-    if state == "deal_active" and evidence.transaction_evidence:
-        state = "won"
-        audit.append(_audit("won", actor=evidence.actor, source_reference=evidence.source_reference, evidence=True))
-    elif state == "deal_active" and not evidence.loss_evidence:
-        blockers.append("transaction_evidence")
-
-    payment = payment_record(
+    provider_payment = payment_record(
         provider_reference=provider_reference,
         amount=provider_amount,
         currency=provider_currency,
         provider_verified=provider_verified,
     )
+    effective_access = access
+    if access.access_fee_required:
+        effective_access = replace(access, access_paid=provider_payment["status"] == "confirmed")
+
+    if not evidence.match_reviewed:
+        blockers.append("match_review")
+    else:
+        state_achieved = True
+        audit.append(_audit("match_reviewed", actor=evidence.actor, source_reference=evidence.source_reference))
+
+    agreement_blockers = agreement.blockers()
+    if state_achieved:
+        if agreement_blockers:
+            blockers.extend(x for x in agreement_blockers if x not in blockers)
+        else:
+            state = "terms_signed"
+            audit.append(_audit("terms_signed", actor=evidence.actor, source_reference=agreement.agreement_id))
+
+    access_decision = evaluate_access(effective_access)
+    if state == "terms_signed":
+        if not access_decision["allowed"]:
+            blockers.extend(x for x in access_decision["missing"] if x not in blockers)
+        elif not evidence.introduction_evidence:
+            blockers.append("introduction_evidence")
+        else:
+            state = "introduced"
+            audit.append(_audit("introduced", actor=evidence.actor, source_reference=evidence.source_reference))
+
+    if state == "introduced":
+        if evidence.loss_evidence:
+            if not (evidence.loss_reason or "").strip():
+                blockers.append("loss_reason")
+            else:
+                state = "lost"
+                audit.append(_audit("lost", actor=evidence.actor, source_reference=evidence.source_reference))
+        elif evidence.negotiation_evidence:
+            state = "deal_active"
+            audit.append(_audit("deal_active", actor=evidence.actor, source_reference=evidence.source_reference))
+        else:
+            blockers.append("negotiation_evidence")
+
+    if state == "deal_active":
+        if evidence.loss_evidence:
+            if not (evidence.loss_reason or "").strip():
+                blockers.append("loss_reason")
+            else:
+                state = "lost"
+                audit.append(_audit("lost", actor=evidence.actor, source_reference=evidence.source_reference))
+        elif evidence.transaction_evidence:
+            state = "won"
+            audit.append(_audit("won", actor=evidence.actor, source_reference=evidence.source_reference))
+        else:
+            blockers.append("transaction_evidence")
 
     ledger = build_ledger_entry(
         agreement,
@@ -136,23 +142,24 @@ def evaluate(
     if state == "won":
         if ledger["commission_status"] in ("trigger_evidenced", "collected"):
             state = "commission_due"
-            audit.append(_audit("commission_due", actor=evidence.actor, source_reference=evidence.source_reference, evidence=True))
+            audit.append(_audit("commission_due", actor=evidence.actor, source_reference=evidence.source_reference))
         elif evidence.payment_trigger_evidence:
             blockers.append("commission_entitlement")
 
     if state == "commission_due":
         if ledger["collection_recorded"]:
             state = "commission_settled"
-            audit.append(_audit("commission_settled", actor=evidence.actor, source_reference=evidence.collection_reference, evidence=True))
+            audit.append(_audit("commission_settled", actor=evidence.actor, source_reference=evidence.collection_reference))
         elif evidence.collection_evidence and not evidence.collection_reference:
             blockers.append("collection_reference")
 
     return {
         "state": state,
+        "state_achieved": state_achieved,
         "states": list(STATES),
         "blockers": blockers,
         "access": access_decision,
-        "provider_payment": payment,
+        "provider_payment": provider_payment,
         "commission_ledger": ledger,
         "audit": audit,
         "repeat_transaction": repeat_transaction,
