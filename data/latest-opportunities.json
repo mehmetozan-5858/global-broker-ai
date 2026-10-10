@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-10",
   "scope": "ALL_GLOBAL_PRODUCTS",
-  "count": 66,
+  "count": 68,
   "opportunities": [
     {
       "deadline-receipt-tender-date-lot": [
@@ -66175,6 +66175,860 @@
       }
     },
     {
+      "id": "ggzy:67faf0727cb015a2",
+      "source": "National Public Resources Trading Platform (China)",
+      "source_type": "official_national_public_resources_platform",
+      "source_url": "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html",
+      "official_url": "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html",
+      "official_links": [
+        "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html"
+      ],
+      "title_original": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公...",
+      "title_tr": "Çin resmî alım ilanı — 大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公...",
+      "detail_original": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a'; var mypppSid = '00536c16973a74fe4afb9f252198a66f778a'; var myds = '513'; var myplatformCode = '12532500067137175R'; var myareaId = '530000'; var mybasepath = '/information'; var mycl = '02'; var myst = '0201';\n政府网站工作年度报表\n服务号\n// 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin'); var ewm = document.getElementById('ewm'); var timeoutId = null; if (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } // 显示二维码（使用 slideDown 效果） slideDown(ewm); }); // 鼠标移出微信图标 weixin.addEventListener('mouseleave', function() { // 延迟隐藏，给用户时间移动到二维码区域 timeoutId = setTimeout(function() { slideUp(ewm); }, 100); }); // 鼠标移入二维码区域 ewm.addEventListener('mouseenter', function() { // 清除隐藏定时器，保持显示 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } }); // 鼠标移出二维码区域 ewm.addEventListener('mouseleave', function() { slideUp(ewm); }); } }); // 模拟 jQuery 的 slideDown 效果 function slideDown(element) { element.style.overflow = 'hidden'; element.style.display = 'block'; element.style.height = '0'; element.style.opacity = '0'; var targetHeight = element.scrollHeight; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-out） var easePercent = 1 - Math.pow(1 - percent, 3); element.style.height = (targetHeight * easePercent) + 'px'; element.style.opacity = easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.height = 'auto'; element.style.opacity = '1'; } } requestAnimationFrame(animate); } // 模拟 jQuery 的 slideUp 效果 function slideUp(element) { element.style.overflow = 'hidden'; var startHeight = element.offsetHeight; element.style.height = startHeight + 'px'; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-in） var easePercent = Math.pow(percent, 3); element.style.height = (startHeight * (1 - easePercent)) + 'px'; element.style.opacity = 1 - easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.display = 'none'; element.style.height = ''; element.style.opacity = ''; element.style.overflow = ''; } } requestAnimationFrame(animate); }\n首页\n机构职能\n交易公开\n工程建设\n政府采购\n土地使用权\n矿业权\n国有产权\n碳排放权\n排污权\n药品采购\n二类疫苗\n林权\n其他\n交易诚信\n违法违规\n奖励信息\n数据服务\n交易统计\n平台导航\n政策法规\n政策法规文件\n政策法规解读\n服务中心\n培训交流\n微信订阅\n意见建议\n调查征集\n关于我们\n首页 > 交易公开 > 政府采购\n大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告\n采购项目编号：0809-25411DGG104012501 信息来源： 广东省\n采购/资审公告\n中标公告\n采购合同\n更正事项\n大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告 2026-10-10\n暂无数据\n暂无数据\n暂无数据\nvar firstLastUrl = '/information/deal/html/b/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html';\n网站地图 |\n网站声明 |\n添加收藏 |\n联系我们\n主办：国家信息中心 指导单位： 国家发展和改革委员会\n网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号\n地址：北京西城区三里河路58号 邮政编码：100045\nfunction linkto_jiucuo(site_code) { //获取该站点需要纠错页面的url地址 var url = \"\"; if (parent !== window) { try { url = window.top.location.href; } catch (e) { url = window.top.document.referrer; } } if (url.length == 0) url = document.location.href; //跳转至纠错系统填写页面 window.open(\"http://121.43.68.40/exposure/jiucuo.html?site_code=\" + site_code + \"&url=\" + encodeURIComponent(url)); } function addFavorite() { var url = window.location; var title = document.title; var ua = navigator.userAgent.toLowerCase(); if (ua.indexOf(\"360se\") > -1) { alert(\"由于360浏览器功能限制，请按 Ctrl+D 手动收藏！\"); } else if (ua.indexOf(\"msie 8\") > -1) { window.external.AddToFavoritesBar(url, title); //IE8 } else if (document.all) { try { window.external.addFavorite(url, title); } catch (e) { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } } else if (window.sidebar) { window.sidebar.addPanel(title, url, \"\"); } else { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } }",
+      "demand_summary_tr": "Çin Ulusal Kamu Kaynakları Ticaret Platformunda yayımlanan mal/ekipman alım kaydı. Teknik ve ticari koşullar resmî kaynak metni üzerinden doğrulanmalıdır.",
+      "buyer-name": "",
+      "buyer-country": "CHINA",
+      "country_name": "China",
+      "market_region": "Çin / Doğu Asya",
+      "regionname": "China",
+      "product_name": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公...",
+      "estimated_value": "",
+      "deadline": "",
+      "project_code": "0809-25411DGG104012501 信息来源： 广东省",
+      "contract-nature": "goods",
+      "opportunity_type": "FİZİKSEL_MAL_ADAYI",
+      "translation_status": "pending_human_or_ai_translation",
+      "market_access_status": "foreign_supplier_eligibility_review_required",
+      "buyer_verified": false,
+      "buyer_source_identified": false,
+      "technical-specification": "",
+      "supplier_research": {
+        "status": "specification_review_pending",
+        "dossier_ready": false,
+        "product": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公...",
+        "buyer_country": "CHINA",
+        "search_query": null,
+        "candidate_suppliers": [],
+        "verified_supplier_count": 0,
+        "verification_required": true,
+        "blocked_by_missing_fields": [
+          "specification_evidence"
+        ],
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
+      },
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "china_market_research": {
+          "status": "demand_validation_pending",
+          "product_query": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公...",
+          "goal": "Çin ithalat talebi, hacim, alıcı ve resmi kaynaklarla doğrulanacak"
+        },
+        "opportunity_dossier": {
+          "status": "specification_review_pending",
+          "completeness_percent": 50,
+          "missing_fields": [
+            "buyer",
+            "quantity",
+            "deadline",
+            "specification_evidence"
+          ]
+        },
+        "specification_analysis": {
+          "status": "document_analysis_pending",
+          "supplier_sourcing_ready": false,
+          "technical_evidence_count": 0,
+          "document_count": 1,
+          "document_parsed": true,
+          "attachment_requires_parsing": false
+        }
+      },
+      "source_excerpt": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a'; var mypppSid = '00536c16973a74fe4afb9f252198a66f778a'; var myds = '513'; var myplatformCode = '12532500067137175R'; var myareaId = '530000'; var mybasepath = '/information'; var mycl = '02'; var myst = '0201';\n政府网站工作年度报表\n服务号\n// 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin'); var ewm = document.getElementById('ewm'); var timeoutId = null; if (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } // 显示二维码（使用 slideDown 效果） slideDown(ewm); }); // 鼠标移出微信图标 weixin.addEventListener('mouseleave', function() { // 延迟隐藏，给用户时间移动到二维码区域 timeoutId = setTimeout(function() { slideUp(ewm); }, 100); }); // 鼠标移入二维码区域 ewm.addEventListener('mouseenter', function() { // 清除隐藏定时器，保持显示 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } }); // 鼠标移出二维码区域 ewm.addEventListener('mouseleave', function() { slideUp(ewm); }); } }); // 模拟 jQuery 的 slideDown 效果 function slideDown(element) { element.style.overflow = 'hidden'; element.style.display = 'block'; element.style.height = '0'; element.style.opacity = '0'; var targetHeight = element.scrollHeight; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-out） var easePercent = 1 - Math.pow(1 - percent, 3); element.style.height = (targetHeight * easePercent) + 'px'; element.style.opacity = easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.height = 'auto'; element.style.opacity = '1'; } } requestAnimationFrame(animate); } // 模拟 jQuery 的 slideUp 效果 function slideUp(element) { element.style.overflow = 'hidden'; var startHeight = element.offsetHeight; element.style.height = startHeight + 'px'; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-in） var easePercent = Math.pow(percent, 3); element.style.height = (startHeight * (1 - easePercent)) + 'px'; element.style.opacity = 1 - easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.display = 'none'; element.style.height = ''; element.style.opacity = ''; element.style.overflow = ''; } } requestAnimationFrame(animate); }\n首页\n机构职能\n交易公开\n工程建设\n政府采购\n土地使用权\n矿业权\n国有产权\n碳排放权\n排污权\n药品采购\n二类疫苗\n林权\n其他\n交易诚信\n违法违规\n奖励信息\n数据服务\n交易统计\n平台导航\n政策法规\n政策法规文件\n政策法规解读\n服务中心\n培训交流\n微信订阅\n意见建议\n调查征集\n关于我们\n首页 > 交易公开 > 政府采购\n大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告\n采购项目编号：0809-25411DGG104012501 信息来源： 广东省\n采购/资审公告\n中标公告\n采购合同\n更正事项\n大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告 2026-10-10\n暂无数据\n暂无数据\n暂无数据\nvar firstLastUrl = '/information/deal/html/b/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html';\n网站地图 |\n网站声明 |\n添加收藏 |\n联系我们\n主办：国家信息中心 指导单位： 国家发展和改革委员会\n网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号\n地址：北京西城区三里河路58号 邮政编码：100045\nfunction linkto_jiucuo(site_code) { //获取该站点需要纠错页面的url地址 var url = \"\"; if (parent !== window) { try { url = window.top.location.href; } catch (e) { url = window.top.document.referrer; } } if (url.length == 0) url = document.location.href; //跳转至纠错系统填写页面 window.open(\"http://121.43.68.40/exposure/jiucuo.html?site_code=\" + site_code + \"&url=\" + encodeURIComponent(url)); } function addFavorite() { var url = window.location; var title = document.title; var ua = navigator.userAgent.toLowerCase(); if (ua.indexOf(\"360se\") > -1) { alert(\"由于360浏览器功能限制，请按 Ctrl+D 手动收藏！\"); } else if (ua.indexOf(\"msie 8\") > -1) { window.external.AddToFavoritesBar(url, title); //IE8 } else if (document.all) { try { window.external.addFavorite(url, title); } catch (e) { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } } else if (window.sidebar) { window.sidebar.addPanel(title, url, \"\"); } else { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } }",
+      "export_goods_review": {
+        "status": "goods_candidate",
+        "reason": "Kaynak fiziksel mal alımı olarak sınıflandırıyor; ihracat ve katılım koşulları ayrıca doğrulanmalı.",
+        "basis": "source_goods_type"
+      },
+      "field_evidence": {
+        "country": {
+          "value": "CHINA",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": "CHINA",
+          "status": "source_backed",
+          "source_field": "delivery_location",
+          "inferred": false
+        },
+        "product": {
+          "value": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公...",
+          "status": "source_backed",
+          "source_field": "product_name",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "quantity",
+        "deadline",
+        "buyer"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
+      "dossier": {
+        "buyer_name": null,
+        "buyer_country": "CHINA",
+        "product_name": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公...",
+        "demand_description": "Çin Ulusal Kamu Kaynakları Ticaret Platformunda yayımlanan mal/ekipman alım kaydı. Teknik ve ticari koşullar resmî kaynak metni üzerinden doğrulanmalıdır.",
+        "quantity": null,
+        "budget_value": null,
+        "budget_currency": null,
+        "delivery_location": "CHINA",
+        "deadline": null,
+        "procedure_type": null,
+        "contract_nature": "goods",
+        "cpv": [
+          {
+            "code": "20261010",
+            "label_tr": "CPV ürün/hizmet grubu"
+          },
+          {
+            "code": "04000008",
+            "label_tr": "CPV ürün/hizmet grubu"
+          },
+          {
+            "code": "05052393",
+            "label_tr": "CPV ürün/hizmet grubu"
+          }
+        ],
+        "official_links": [
+          "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html"
+        ],
+        "source": "National Public Resources Trading Platform (China)",
+        "missing_fields": [
+          "buyer",
+          "quantity",
+          "deadline",
+          "specification_evidence"
+        ],
+        "completeness_percent": 50,
+        "supplier_sourcing_ready": false,
+        "specification_status": "document_analysis_pending",
+        "specification_sourcing_ready": false,
+        "standards": [],
+        "document_links": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html",
+            "kind": "source_page"
+          }
+        ],
+        "document_parsed": true,
+        "technical_evidence_count": 0,
+        "eligibility_evidence_count": 0
+      },
+      "delivery_location": "CHINA",
+      "document_url": "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html",
+      "document_extraction": {
+        "status": "parsed",
+        "source_backed_only": true,
+        "candidate_count": 1,
+        "source_page_count": 1,
+        "discovered_attachment_count": 0,
+        "parsed_count": 1,
+        "attempts": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html",
+            "status": "parsed",
+            "source": "source_page",
+            "kind": "source_page",
+            "final_url": "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html",
+            "content_type": "text/html",
+            "bytes": 13929,
+            "extracted_chars": 504,
+            "discovered_attachments": 0
+          }
+        ],
+        "text_chars": 504
+      },
+      "document_extracted_text": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告_交易公开_国家公共资源交易平台 政府网站工作年度报表 服务号 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告 采购项目编号：0809-25411DGG104012501 信息来源： 广东省 采购/资审公告 中标公告 采购合同 更正事项 大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告 2026-10-10 暂无数据 暂无数据 暂无数据 网站地图 | 网站声明 | 添加收藏 | 联系我们 主办：国家信息中心 指导单位： 国家发展和改革委员会 网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号 地址：北京西城区三里河路58号 邮政编码：100045",
+      "a5_source_term_evidence": {},
+      "specification_analysis": {
+        "status": "document_analysis_pending",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": false,
+        "structured_specification_present": false,
+        "document_text_present": true,
+        "document_parsed": true,
+        "technical_evidence": [],
+        "quantity_evidence": [
+          {
+            "field": "source_text_candidate",
+            "text": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a';"
+          },
+          {
+            "field": "source_text_candidate",
+            "text": "} 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告 采购项目编号：0809-25411DGG104012501 信息来源： 广东省 采购/资审公告 中标公告 采购合同 更正事项 大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告 2026-10-10 暂无数据 暂无数据 暂无数据 var firstLastUrl = '/information/deal/html/b/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html';"
+          },
+          {
+            "field": "source_text_candidate",
+            "text": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告_交易公开_国家公共资源交易平台 政府网站工作年度报表 服务号 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告 采购项目编号：0809-25411DGG104012501 信息来源： 广东省 采购/资审公告 中标公告 采购合同 更正事项 大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告 2026-10-10 暂无数据 暂无数据 暂无数据 网站地图 | 网站声明 | 添加收藏 | 联系我们 主办：国家信息中心 指导单位： 国家发展和改革委员会 网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号 地址：北京西城区三里河路58号 邮政编码：100045"
+          }
+        ],
+        "delivery_evidence": [
+          {
+            "field": "delivery_location",
+            "text": "CHINA"
+          }
+        ],
+        "eligibility_evidence": [],
+        "award_evidence": [],
+        "standards": [],
+        "documents": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html",
+            "kind": "source_page"
+          }
+        ],
+        "attachment_requires_parsing": false,
+        "source_excerpt": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a';\nvar mypppSid = '00536c16973a74fe4afb9f252198a66f778a';\nvar myds = '513';\nvar myplatformCode = '12532500067137175R';\nvar myareaId = '530000';\nvar mybasepath = '/information';\nvar mycl = '02';\nvar myst = '0201';\n政府网站工作年度报表 服务号 // 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin');\nvar ewm = document.getElementById('ewm');\nvar timeoutId = null;\nif (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId);"
+      },
+      "compliance_status": "buyer_identity_pending",
+      "sales_priority": {
+        "score": 7,
+        "grade": "C",
+        "queue": "research_only",
+        "reasons": [
+          "source_document_parsed",
+          "source_link_present"
+        ],
+        "blockers": [
+          "buyer_verification",
+          "specification_readiness",
+          "supplier_verification",
+          "compliance_clearance",
+          "margin_confirmation"
+        ],
+        "source_backed_only": true
+      },
+      "commercial_terms": {
+        "terms": {
+          "quantity": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "payment": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "bond": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "performance_security": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "delivery": {
+            "value": "CHINA",
+            "source_field": "delivery_location",
+            "status": "source_backed",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "eligibility": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "award": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          }
+        },
+        "missing": [
+          "quantity",
+          "payment",
+          "bond",
+          "performance_security",
+          "eligibility",
+          "award"
+        ],
+        "complete": false,
+        "source_backed_only": true,
+        "rule": "Quantity, payment, bonds, delivery, eligibility and award terms are never inferred when absent from explicit source evidence."
+      },
+      "commercial_feasibility": {
+        "status": "commercial_inputs_missing",
+        "source_backed_only": true,
+        "calculation_ready": false,
+        "landed_cost_ready": false,
+        "facts": {
+          "quantity": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "currency": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "unit_price": {
+            "value": null,
+            "source_field": null,
+            "verified": false,
+            "requires_verified_supplier": true
+          },
+          "freight": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "duty": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "incoterm": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "destination": {
+            "value": "CHINA",
+            "source_field": "delivery_location",
+            "verified": true
+          }
+        },
+        "missing_inputs": [
+          "quantity",
+          "currency",
+          "unit_price",
+          "freight",
+          "duty",
+          "incoterm"
+        ],
+        "blockers": [
+          "quantity",
+          "currency",
+          "unit_price",
+          "freight"
+        ],
+        "assumptions": [],
+        "margin_claim_allowed": false,
+        "human_review_required": true,
+        "rule": "Unknown commercial inputs stay unknown; supplier pricing must be tied to a verified supplier; no price, freight, duty or margin is fabricated."
+      },
+      "offer_risk_gate": {
+        "draft_offer_ready": false,
+        "risk_review_required": true,
+        "risk_flags": [
+          "missing_payment_term",
+          "missing_bond_term",
+          "missing_eligibility_term",
+          "missing_award_term"
+        ],
+        "external_action_authorized": false,
+        "human_approval_required": true,
+        "blockers": [
+          "buyer_verification",
+          "specification",
+          "verified_supplier",
+          "commercial_feasibility"
+        ],
+        "verified_supplier_count": 0,
+        "allowed_actions": [
+          "internal_review"
+        ],
+        "forbidden_actions": [
+          "send_email",
+          "submit_bid",
+          "place_order",
+          "take_payment",
+          "sign_contract"
+        ],
+        "approval_chain": [
+          "commercial_review",
+          "risk_review",
+          "human_final_approval"
+        ],
+        "rule": "A8 can prepare an internal draft only when the goods, buyer, specification, verified supplier, commercial feasibility and delivery evidence gates all pass. Risk flags remain visible and no external action is ever authorized automatically."
+      }
+    },
+    {
+      "id": "ggzy:8f30e3e7340b7114",
+      "source": "National Public Resources Trading Platform (China)",
+      "source_type": "official_national_public_resources_platform",
+      "source_url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html",
+      "official_url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html",
+      "official_links": [
+        "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html"
+      ],
+      "title_original": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告",
+      "title_tr": "Çin resmî alım ilanı — 蠡县教育和体育局义务教育阶段教学设备采购项目招标公告",
+      "detail_original": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a'; var mypppSid = '00536c16973a74fe4afb9f252198a66f778a'; var myds = '513'; var myplatformCode = '12532500067137175R'; var myareaId = '530000'; var mybasepath = '/information'; var mycl = '02'; var myst = '0201';\n政府网站工作年度报表\n服务号\n// 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin'); var ewm = document.getElementById('ewm'); var timeoutId = null; if (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } // 显示二维码（使用 slideDown 效果） slideDown(ewm); }); // 鼠标移出微信图标 weixin.addEventListener('mouseleave', function() { // 延迟隐藏，给用户时间移动到二维码区域 timeoutId = setTimeout(function() { slideUp(ewm); }, 100); }); // 鼠标移入二维码区域 ewm.addEventListener('mouseenter', function() { // 清除隐藏定时器，保持显示 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } }); // 鼠标移出二维码区域 ewm.addEventListener('mouseleave', function() { slideUp(ewm); }); } }); // 模拟 jQuery 的 slideDown 效果 function slideDown(element) { element.style.overflow = 'hidden'; element.style.display = 'block'; element.style.height = '0'; element.style.opacity = '0'; var targetHeight = element.scrollHeight; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-out） var easePercent = 1 - Math.pow(1 - percent, 3); element.style.height = (targetHeight * easePercent) + 'px'; element.style.opacity = easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.height = 'auto'; element.style.opacity = '1'; } } requestAnimationFrame(animate); } // 模拟 jQuery 的 slideUp 效果 function slideUp(element) { element.style.overflow = 'hidden'; var startHeight = element.offsetHeight; element.style.height = startHeight + 'px'; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-in） var easePercent = Math.pow(percent, 3); element.style.height = (startHeight * (1 - easePercent)) + 'px'; element.style.opacity = 1 - easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.display = 'none'; element.style.height = ''; element.style.opacity = ''; element.style.overflow = ''; } } requestAnimationFrame(animate); }\n首页\n机构职能\n交易公开\n工程建设\n政府采购\n土地使用权\n矿业权\n国有产权\n碳排放权\n排污权\n药品采购\n二类疫苗\n林权\n其他\n交易诚信\n违法违规\n奖励信息\n数据服务\n交易统计\n平台导航\n政策法规\n政策法规文件\n政策法规解读\n服务中心\n培训交流\n微信订阅\n意见建议\n调查征集\n关于我们\n首页 > 交易公开 > 政府采购\n蠡县教育和体育局义务教育阶段教学设备采购项目招标公告\n采购项目编号：Z130635260069 信息来源： 保定市公共资源交易中心\n采购/资审公告\n中标公告\n采购合同\n更正事项\n蠡县教育和体育局义务教育阶段教学设备采购项目招标公告 2026-10-10\n暂无数据\n暂无数据\n暂无数据\nvar firstLastUrl = '/information/deal/html/b/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html';\n网站地图 |\n网站声明 |\n添加收藏 |\n联系我们\n主办：国家信息中心 指导单位： 国家发展和改革委员会\n网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号\n地址：北京西城区三里河路58号 邮政编码：100045\nfunction linkto_jiucuo(site_code) { //获取该站点需要纠错页面的url地址 var url = \"\"; if (parent !== window) { try { url = window.top.location.href; } catch (e) { url = window.top.document.referrer; } } if (url.length == 0) url = document.location.href; //跳转至纠错系统填写页面 window.open(\"http://121.43.68.40/exposure/jiucuo.html?site_code=\" + site_code + \"&url=\" + encodeURIComponent(url)); } function addFavorite() { var url = window.location; var title = document.title; var ua = navigator.userAgent.toLowerCase(); if (ua.indexOf(\"360se\") > -1) { alert(\"由于360浏览器功能限制，请按 Ctrl+D 手动收藏！\"); } else if (ua.indexOf(\"msie 8\") > -1) { window.external.AddToFavoritesBar(url, title); //IE8 } else if (document.all) { try { window.external.addFavorite(url, title); } catch (e) { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } } else if (window.sidebar) { window.sidebar.addPanel(title, url, \"\"); } else { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } }",
+      "demand_summary_tr": "Çin Ulusal Kamu Kaynakları Ticaret Platformunda yayımlanan mal/ekipman alım kaydı. Teknik ve ticari koşullar resmî kaynak metni üzerinden doğrulanmalıdır.",
+      "buyer-name": "",
+      "buyer-country": "CHINA",
+      "country_name": "China",
+      "market_region": "Çin / Doğu Asya",
+      "regionname": "China",
+      "product_name": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告",
+      "estimated_value": "",
+      "deadline": "",
+      "project_code": "Z130635260069 信息来源： 保定市公共资源交易中心",
+      "contract-nature": "goods",
+      "opportunity_type": "FİZİKSEL_MAL_ADAYI",
+      "translation_status": "pending_human_or_ai_translation",
+      "market_access_status": "foreign_supplier_eligibility_review_required",
+      "buyer_verified": false,
+      "buyer_source_identified": false,
+      "technical-specification": "",
+      "supplier_research": {
+        "status": "specification_review_pending",
+        "dossier_ready": false,
+        "product": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告",
+        "buyer_country": "CHINA",
+        "search_query": null,
+        "candidate_suppliers": [],
+        "verified_supplier_count": 0,
+        "verification_required": true,
+        "blocked_by_missing_fields": [
+          "specification_evidence"
+        ],
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
+      },
+      "workflow": {
+        "buyer": {
+          "status": "identity_pending",
+          "verified": false
+        },
+        "supplier": {
+          "status": "research_pending",
+          "verified_candidates": 0
+        },
+        "china_market_research": {
+          "status": "demand_validation_pending",
+          "product_query": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告",
+          "goal": "Çin ithalat talebi, hacim, alıcı ve resmi kaynaklarla doğrulanacak"
+        },
+        "opportunity_dossier": {
+          "status": "specification_review_pending",
+          "completeness_percent": 50,
+          "missing_fields": [
+            "buyer",
+            "quantity",
+            "deadline",
+            "specification_evidence"
+          ]
+        },
+        "specification_analysis": {
+          "status": "document_analysis_pending",
+          "supplier_sourcing_ready": false,
+          "technical_evidence_count": 0,
+          "document_count": 1,
+          "document_parsed": true,
+          "attachment_requires_parsing": false
+        }
+      },
+      "source_excerpt": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a'; var mypppSid = '00536c16973a74fe4afb9f252198a66f778a'; var myds = '513'; var myplatformCode = '12532500067137175R'; var myareaId = '530000'; var mybasepath = '/information'; var mycl = '02'; var myst = '0201';\n政府网站工作年度报表\n服务号\n// 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin'); var ewm = document.getElementById('ewm'); var timeoutId = null; if (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } // 显示二维码（使用 slideDown 效果） slideDown(ewm); }); // 鼠标移出微信图标 weixin.addEventListener('mouseleave', function() { // 延迟隐藏，给用户时间移动到二维码区域 timeoutId = setTimeout(function() { slideUp(ewm); }, 100); }); // 鼠标移入二维码区域 ewm.addEventListener('mouseenter', function() { // 清除隐藏定时器，保持显示 if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; } }); // 鼠标移出二维码区域 ewm.addEventListener('mouseleave', function() { slideUp(ewm); }); } }); // 模拟 jQuery 的 slideDown 效果 function slideDown(element) { element.style.overflow = 'hidden'; element.style.display = 'block'; element.style.height = '0'; element.style.opacity = '0'; var targetHeight = element.scrollHeight; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-out） var easePercent = 1 - Math.pow(1 - percent, 3); element.style.height = (targetHeight * easePercent) + 'px'; element.style.opacity = easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.height = 'auto'; element.style.opacity = '1'; } } requestAnimationFrame(animate); } // 模拟 jQuery 的 slideUp 效果 function slideUp(element) { element.style.overflow = 'hidden'; var startHeight = element.offsetHeight; element.style.height = startHeight + 'px'; var duration = 200; // 动画持续时间（毫秒） var startTime = null; function animate(currentTime) { if (!startTime) startTime = currentTime; var progress = currentTime - startTime; var percent = Math.min(progress / duration, 1); // 缓动函数（ease-in） var easePercent = Math.pow(percent, 3); element.style.height = (startHeight * (1 - easePercent)) + 'px'; element.style.opacity = 1 - easePercent; if (percent < 1) { requestAnimationFrame(animate); } else { element.style.display = 'none'; element.style.height = ''; element.style.opacity = ''; element.style.overflow = ''; } } requestAnimationFrame(animate); }\n首页\n机构职能\n交易公开\n工程建设\n政府采购\n土地使用权\n矿业权\n国有产权\n碳排放权\n排污权\n药品采购\n二类疫苗\n林权\n其他\n交易诚信\n违法违规\n奖励信息\n数据服务\n交易统计\n平台导航\n政策法规\n政策法规文件\n政策法规解读\n服务中心\n培训交流\n微信订阅\n意见建议\n调查征集\n关于我们\n首页 > 交易公开 > 政府采购\n蠡县教育和体育局义务教育阶段教学设备采购项目招标公告\n采购项目编号：Z130635260069 信息来源： 保定市公共资源交易中心\n采购/资审公告\n中标公告\n采购合同\n更正事项\n蠡县教育和体育局义务教育阶段教学设备采购项目招标公告 2026-10-10\n暂无数据\n暂无数据\n暂无数据\nvar firstLastUrl = '/information/deal/html/b/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html';\n网站地图 |\n网站声明 |\n添加收藏 |\n联系我们\n主办：国家信息中心 指导单位： 国家发展和改革委员会\n网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号\n地址：北京西城区三里河路58号 邮政编码：100045\nfunction linkto_jiucuo(site_code) { //获取该站点需要纠错页面的url地址 var url = \"\"; if (parent !== window) { try { url = window.top.location.href; } catch (e) { url = window.top.document.referrer; } } if (url.length == 0) url = document.location.href; //跳转至纠错系统填写页面 window.open(\"http://121.43.68.40/exposure/jiucuo.html?site_code=\" + site_code + \"&url=\" + encodeURIComponent(url)); } function addFavorite() { var url = window.location; var title = document.title; var ua = navigator.userAgent.toLowerCase(); if (ua.indexOf(\"360se\") > -1) { alert(\"由于360浏览器功能限制，请按 Ctrl+D 手动收藏！\"); } else if (ua.indexOf(\"msie 8\") > -1) { window.external.AddToFavoritesBar(url, title); //IE8 } else if (document.all) { try { window.external.addFavorite(url, title); } catch (e) { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } } else if (window.sidebar) { window.sidebar.addPanel(title, url, \"\"); } else { alert(\"您的浏览器不支持,请按 Ctrl+D 手动收藏!\"); } }",
+      "export_goods_review": {
+        "status": "goods_candidate",
+        "reason": "Kaynak fiziksel mal alımı olarak sınıflandırıyor; ihracat ve katılım koşulları ayrıca doğrulanmalı.",
+        "basis": "source_goods_type"
+      },
+      "field_evidence": {
+        "country": {
+          "value": "CHINA",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": "CHINA",
+          "status": "source_backed",
+          "source_field": "delivery_location",
+          "inferred": false
+        },
+        "product": {
+          "value": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告",
+          "status": "source_backed",
+          "source_field": "product_name",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "buyer": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "quantity",
+        "deadline",
+        "buyer"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 3,
+        "total": 6,
+        "complete": false
+      },
+      "dossier": {
+        "buyer_name": null,
+        "buyer_country": "CHINA",
+        "product_name": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告",
+        "demand_description": "Çin Ulusal Kamu Kaynakları Ticaret Platformunda yayımlanan mal/ekipman alım kaydı. Teknik ve ticari koşullar resmî kaynak metni üzerinden doğrulanmalıdır.",
+        "quantity": null,
+        "budget_value": null,
+        "budget_currency": null,
+        "delivery_location": "CHINA",
+        "deadline": null,
+        "procedure_type": null,
+        "contract_nature": "goods",
+        "cpv": [
+          {
+            "code": "20261010",
+            "label_tr": "CPV ürün/hizmet grubu"
+          },
+          {
+            "code": "04000008",
+            "label_tr": "CPV ürün/hizmet grubu"
+          },
+          {
+            "code": "05052393",
+            "label_tr": "CPV ürün/hizmet grubu"
+          }
+        ],
+        "official_links": [
+          "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html"
+        ],
+        "source": "National Public Resources Trading Platform (China)",
+        "missing_fields": [
+          "buyer",
+          "quantity",
+          "deadline",
+          "specification_evidence"
+        ],
+        "completeness_percent": 50,
+        "supplier_sourcing_ready": false,
+        "specification_status": "document_analysis_pending",
+        "specification_sourcing_ready": false,
+        "standards": [],
+        "document_links": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html",
+            "kind": "source_page"
+          }
+        ],
+        "document_parsed": true,
+        "technical_evidence_count": 0,
+        "eligibility_evidence_count": 0
+      },
+      "delivery_location": "CHINA",
+      "document_url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html",
+      "document_extraction": {
+        "status": "parsed",
+        "source_backed_only": true,
+        "candidate_count": 1,
+        "source_page_count": 1,
+        "discovered_attachment_count": 0,
+        "parsed_count": 1,
+        "attempts": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html",
+            "status": "parsed",
+            "source": "source_page",
+            "kind": "source_page",
+            "final_url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html",
+            "content_type": "text/html",
+            "bytes": 13908,
+            "extracted_chars": 494,
+            "discovered_attachments": 0
+          }
+        ],
+        "text_chars": 494
+      },
+      "document_extracted_text": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告_交易公开_国家公共资源交易平台 政府网站工作年度报表 服务号 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 蠡县教育和体育局义务教育阶段教学设备采购项目招标公告 采购项目编号：Z130635260069 信息来源： 保定市公共资源交易中心 采购/资审公告 中标公告 采购合同 更正事项 蠡县教育和体育局义务教育阶段教学设备采购项目招标公告 2026-10-10 暂无数据 暂无数据 暂无数据 网站地图 | 网站声明 | 添加收藏 | 联系我们 主办：国家信息中心 指导单位： 国家发展和改革委员会 网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号 地址：北京西城区三里河路58号 邮政编码：100045",
+      "a5_source_term_evidence": {},
+      "specification_analysis": {
+        "status": "document_analysis_pending",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": false,
+        "structured_specification_present": false,
+        "document_text_present": true,
+        "document_parsed": true,
+        "technical_evidence": [],
+        "quantity_evidence": [
+          {
+            "field": "source_text_candidate",
+            "text": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a';"
+          },
+          {
+            "field": "source_text_candidate",
+            "text": "} 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 蠡县教育和体育局义务教育阶段教学设备采购项目招标公告 采购项目编号：Z130635260069 信息来源： 保定市公共资源交易中心 采购/资审公告 中标公告 采购合同 更正事项 蠡县教育和体育局义务教育阶段教学设备采购项目招标公告 2026-10-10 暂无数据 暂无数据 暂无数据 var firstLastUrl = '/information/deal/html/b/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html';"
+          },
+          {
+            "field": "source_text_candidate",
+            "text": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告_交易公开_国家公共资源交易平台 政府网站工作年度报表 服务号 首页 机构职能 交易公开 工程建设 政府采购 土地使用权 矿业权 国有产权 碳排放权 排污权 药品采购 二类疫苗 林权 其他 交易诚信 违法违规 奖励信息 数据服务 交易统计 平台导航 政策法规 政策法规文件 政策法规解读 服务中心 培训交流 微信订阅 意见建议 调查征集 关于我们 首页 > 交易公开 > 政府采购 蠡县教育和体育局义务教育阶段教学设备采购项目招标公告 采购项目编号：Z130635260069 信息来源： 保定市公共资源交易中心 采购/资审公告 中标公告 采购合同 更正事项 蠡县教育和体育局义务教育阶段教学设备采购项目招标公告 2026-10-10 暂无数据 暂无数据 暂无数据 网站地图 | 网站声明 | 添加收藏 | 联系我们 主办：国家信息中心 指导单位： 国家发展和改革委员会 网站标识码：bm04000008 京ICP备05052393号-9 京公网安备11010202007733号 地址：北京西城区三里河路58号 邮政编码：100045"
+          }
+        ],
+        "delivery_evidence": [
+          {
+            "field": "delivery_location",
+            "text": "CHINA"
+          }
+        ],
+        "eligibility_evidence": [],
+        "award_evidence": [],
+        "standards": [],
+        "documents": [
+          {
+            "url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html",
+            "kind": "source_page"
+          }
+        ],
+        "attachment_requires_parsing": false,
+        "source_excerpt": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告_交易公开_国家公共资源交易平台 var mysid = '00536c16973a74fe4afb9f252198a66f778a';\nvar mypppSid = '00536c16973a74fe4afb9f252198a66f778a';\nvar myds = '513';\nvar myplatformCode = '12532500067137175R';\nvar myareaId = '530000';\nvar mybasepath = '/information';\nvar mycl = '02';\nvar myst = '0201';\n政府网站工作年度报表 服务号 // 等待 DOM 加载完成 document.addEventListener('DOMContentLoaded', function() { var weixin = document.getElementById('weixin');\nvar ewm = document.getElementById('ewm');\nvar timeoutId = null;\nif (weixin && ewm) { // 鼠标移入微信图标 weixin.addEventListener('mouseenter', function() { // 清除之前的定时器 if (timeoutId) { clearTimeout(timeoutId);"
+      },
+      "compliance_status": "buyer_identity_pending",
+      "sales_priority": {
+        "score": 7,
+        "grade": "C",
+        "queue": "research_only",
+        "reasons": [
+          "source_document_parsed",
+          "source_link_present"
+        ],
+        "blockers": [
+          "buyer_verification",
+          "specification_readiness",
+          "supplier_verification",
+          "compliance_clearance",
+          "margin_confirmation"
+        ],
+        "source_backed_only": true
+      },
+      "commercial_terms": {
+        "terms": {
+          "quantity": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "payment": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "bond": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "performance_security": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "delivery": {
+            "value": "CHINA",
+            "source_field": "delivery_location",
+            "status": "source_backed",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "eligibility": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          },
+          "award": {
+            "value": null,
+            "source_field": null,
+            "status": "missing",
+            "extracted_from_labeled_source_text": false,
+            "evidence_source_field": null
+          }
+        },
+        "missing": [
+          "quantity",
+          "payment",
+          "bond",
+          "performance_security",
+          "eligibility",
+          "award"
+        ],
+        "complete": false,
+        "source_backed_only": true,
+        "rule": "Quantity, payment, bonds, delivery, eligibility and award terms are never inferred when absent from explicit source evidence."
+      },
+      "commercial_feasibility": {
+        "status": "commercial_inputs_missing",
+        "source_backed_only": true,
+        "calculation_ready": false,
+        "landed_cost_ready": false,
+        "facts": {
+          "quantity": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "currency": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "unit_price": {
+            "value": null,
+            "source_field": null,
+            "verified": false,
+            "requires_verified_supplier": true
+          },
+          "freight": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "duty": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "incoterm": {
+            "value": null,
+            "source_field": null,
+            "verified": false
+          },
+          "destination": {
+            "value": "CHINA",
+            "source_field": "delivery_location",
+            "verified": true
+          }
+        },
+        "missing_inputs": [
+          "quantity",
+          "currency",
+          "unit_price",
+          "freight",
+          "duty",
+          "incoterm"
+        ],
+        "blockers": [
+          "quantity",
+          "currency",
+          "unit_price",
+          "freight"
+        ],
+        "assumptions": [],
+        "margin_claim_allowed": false,
+        "human_review_required": true,
+        "rule": "Unknown commercial inputs stay unknown; supplier pricing must be tied to a verified supplier; no price, freight, duty or margin is fabricated."
+      },
+      "offer_risk_gate": {
+        "draft_offer_ready": false,
+        "risk_review_required": true,
+        "risk_flags": [
+          "missing_payment_term",
+          "missing_bond_term",
+          "missing_eligibility_term",
+          "missing_award_term"
+        ],
+        "external_action_authorized": false,
+        "human_approval_required": true,
+        "blockers": [
+          "buyer_verification",
+          "specification",
+          "verified_supplier",
+          "commercial_feasibility"
+        ],
+        "verified_supplier_count": 0,
+        "allowed_actions": [
+          "internal_review"
+        ],
+        "forbidden_actions": [
+          "send_email",
+          "submit_bid",
+          "place_order",
+          "take_payment",
+          "sign_contract"
+        ],
+        "approval_chain": [
+          "commercial_review",
+          "risk_review",
+          "human_final_approval"
+        ],
+        "rule": "A8 can prepare an internal draft only when the goods, buyer, specification, verified supplier, commercial feasibility and delivery evidence gates all pass. Risk flags remain visible and no external action is ever authorized automatically."
+      }
+    },
+    {
       "id": "saudi-etimad-261039002860",
       "source": "Saudi Etimad official visitor API",
       "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
@@ -67345,9 +68199,9 @@
   },
   "china_ggzy_feed": {
     "source": "https://www.ggzy.gov.cn/",
-    "status": "no_tradeable_goods_found",
-    "candidate_goods_links": 0,
-    "goods_opportunities_added": 0,
+    "status": "ok",
+    "candidate_goods_links": 2,
+    "goods_opportunities_added": 2,
     "detail_failures": 0,
     "errors": [],
     "foreign_supplier_eligibility_assumed": false
@@ -67392,8 +68246,10 @@
     "filtered_routes_with_rows": [],
     "budget_seconds": 70,
     "budget_exhausted": false,
-    "elapsed_seconds": 35.76,
+    "elapsed_seconds": 36.65,
     "ssr_fallback_attempted": true,
+    "ssr_browser_fallback_attempted": true,
+    "ssr_fallback_transport": null,
     "ssr_fallback_status": "no_rows_found",
     "coverage_scope": "not_verified"
   },
@@ -67415,7 +68271,7 @@
     "browser_routes": [
       "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"
     ],
-    "elapsed_seconds": 8.89,
+    "elapsed_seconds": 8.87,
     "budget_seconds": 55,
     "budget_exhausted": false
   },
@@ -81969,7 +82825,7 @@
   ],
   "physical_goods_gate": {
     "mode": "physical_goods_only",
-    "goods_candidates": 66,
+    "goods_candidates": 68,
     "review_mixed_or_unknown": 97,
     "excluded_service_or_works": 0,
     "excluded_non_physical": 0,
@@ -82658,6 +83514,42 @@
       "rule": "research source/document only; do not infer missing facts"
     },
     {
+      "opportunity_id": "ggzy:67faf0727cb015a2",
+      "product": "大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公...",
+      "buyer": null,
+      "source_url": "https://www.ggzy.gov.cn/information/deal/html/a/440000/0201/20261010/004436f0558e7e934fefa6ef6c358b4da874.html",
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "buyer"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 3,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "ggzy:8f30e3e7340b7114",
+      "product": "蠡县教育和体育局义务教育阶段教学设备采购项目招标公告",
+      "buyer": null,
+      "source_url": "https://www.ggzy.gov.cn/information/deal/html/a/130000/0201/20261010/0013e54bc62229cb4309b8a9727f52494a1a.html",
+      "missing_fields": [
+        "quantity",
+        "deadline",
+        "buyer"
+      ],
+      "critical_missing_fields": [
+        "quantity",
+        "deadline"
+      ],
+      "coverage": 3,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
       "opportunity_id": "OP00473154",
       "product": "Balıkesir Fire Brigade Disaster Management Vehicles Procurement Sub-Project",
       "buyer": "Türkiye Earthquake, Floods, and Wildfires Emergency Reconstruction Project",
@@ -83077,25 +83969,25 @@
     }
   ],
   "field_evidence_summary": {
-    "opportunities": 66,
+    "opportunities": 68,
     "complete_core_records": 1,
     "source_backed_counts": {
-      "country": 44,
-      "city": 44,
-      "product": 66,
+      "country": 46,
+      "city": 46,
+      "product": 68,
       "quantity": 3,
       "deadline": 24,
       "buyer": 66
     },
-    "research_queue": 65,
-    "high_priority_research": 43,
+    "research_queue": 67,
+    "high_priority_research": 45,
     "missing_counts": {
       "country": 22,
       "city": 22,
       "product": 0,
-      "quantity": 63,
-      "deadline": 42,
-      "buyer": 0
+      "quantity": 65,
+      "deadline": 44,
+      "buyer": 2
     },
     "rule": "missing values remain unknown; research source documents only; no inferred value is promoted as source-backed"
   },
@@ -83435,21 +84327,21 @@
   "enrichment": {
     "version": 1,
     "mode": "source_only_no_hallucination",
-    "enriched_count": 66
+    "enriched_count": 68
   },
   "document_extraction": {
     "version": 3,
     "mode": "public_source_pages_documents_and_ted_xml",
-    "attempted_opportunities": 44,
-    "parsed_opportunities": 1,
-    "source_pages_parsed": 1,
+    "attempted_opportunities": 46,
+    "parsed_opportunities": 3,
+    "source_pages_parsed": 3,
     "discovered_attachments": 0,
     "reused_last_known_good": 1,
     "ted_xml_attempted": 41,
     "ted_xml_parsed": 0
   },
   "a5_source_terms_summary": {
-    "opportunities": 66,
+    "opportunities": 68,
     "opportunities_with_new_terms": 0,
     "new_source_backed_counts": {
       "quantity": 0,
@@ -83466,12 +84358,12 @@
   "specification_analysis": {
     "version": 3,
     "mode": "source_evidence_plus_public_documents",
-    "analyzed_count": 66,
+    "analyzed_count": 68,
     "supplier_sourcing_ready": 9,
-    "document_analysis_pending": 36,
+    "document_analysis_pending": 38,
     "insufficient_source_detail": 21,
     "attachments_requiring_parser": 0,
-    "parsed_document_opportunities": 1
+    "parsed_document_opportunities": 3
   },
   "sales_priority_summary": {
     "version": 1,
@@ -83479,11 +84371,11 @@
     "grades": {
       "A": 0,
       "B": 0,
-      "C": 66
+      "C": 68
     },
     "close_first": 0,
     "develop_next": 0,
-    "research_only": 66
+    "research_only": 68
   },
   "gulf_sources": {
     "sources": [
@@ -83547,40 +84439,40 @@
     "rule": "Each country becomes live only after real official notice ingestion in the current scan. Priority Gulf coverage requires Saudi Arabia, UAE and Qatar; registered links alone do not count."
   },
   "commercial_terms_summary": {
-    "opportunities": 66,
+    "opportunities": 68,
     "complete": 0,
     "source_backed_counts": {
       "quantity": 3,
       "payment": 0,
       "bond": 2,
       "performance_security": 0,
-      "delivery": 44,
+      "delivery": 46,
       "eligibility": 0,
       "award": 0
     }
   },
   "supplier_research_summary": {
-    "opportunities": 66,
+    "opportunities": 68,
     "research_ready": 9,
-    "blocked": 57,
+    "blocked": 59,
     "verified_suppliers": 0,
     "opportunities_with_verified_supplier": 0,
     "mode": "source_verified_candidates"
   },
   "commercial_feasibility_summary": {
-    "opportunities": 66,
+    "opportunities": 68,
     "calculation_ready": 0,
     "landed_cost_ready": 0,
     "verified_supplier_quote_ready": 0,
-    "blocked_missing_inputs": 66,
+    "blocked_missing_inputs": 68,
     "source_backed_only": true,
     "margin_claim_allowed": false
   },
   "offer_risk_summary": {
-    "opportunities": 66,
+    "opportunities": 68,
     "internal_draft_ready": 0,
-    "risk_review_required": 66,
-    "blocked": 66,
+    "risk_review_required": 68,
+    "blocked": 68,
     "external_action_authorized": 0,
     "mode": "shadow",
     "human_approval_required": true
@@ -83588,44 +84480,44 @@
   "agent_center": {
     "mode": "shadow",
     "external_actions_enabled": false,
-    "opportunity_count": 66,
+    "opportunity_count": 68,
     "agents": {
       "source": {
-        "has_official_link": 44,
+        "has_official_link": 46,
         "missing_link": 22
       },
       "goods_gate": {
-        "goods_candidate": 66
+        "goods_candidate": 68
       },
       "field_evidence": {
-        "incomplete": 65,
+        "incomplete": 67,
         "complete": 1
       },
       "specification": {
         "source_description_analyzed": 9,
-        "document_analysis_pending": 36,
+        "document_analysis_pending": 38,
         "source_description_insufficient": 21
       },
       "supplier": {
         "research_ready": 9,
-        "specification_review_pending": 57
+        "specification_review_pending": 59
       },
       "feasibility": {
-        "commercial_inputs_missing": 66
+        "commercial_inputs_missing": 68
       },
       "risk": {
-        "pending": 66
+        "pending": 68
       },
       "sales_priority": {
-        "C": 66
+        "C": 68
       }
     },
     "blocker_counts": {
-      "field_evidence": 65,
-      "verified_supplier": 66,
-      "commercial_feasibility": 66,
-      "offer_risk_gate": 66,
-      "specification": 57,
+      "field_evidence": 67,
+      "verified_supplier": 68,
+      "commercial_feasibility": 68,
+      "offer_risk_gate": 68,
+      "specification": 59,
       "official_source": 22
     },
     "work_queue": [
@@ -84524,6 +85416,34 @@
         "external_action_authorized": false
       },
       {
+        "opportunity_id": "ggzy:67faf0727cb015a2",
+        "title": "Çin resmî alım ilanı — 大湾区大学电感耦合等离子体化学气相沉积设备采购项目招标公...",
+        "blockers": [
+          "field_evidence",
+          "specification",
+          "verified_supplier",
+          "commercial_feasibility",
+          "offer_risk_gate"
+        ],
+        "next_agent": "field_evidence",
+        "draft_offer_ready": false,
+        "external_action_authorized": false
+      },
+      {
+        "opportunity_id": "ggzy:8f30e3e7340b7114",
+        "title": "Çin resmî alım ilanı — 蠡县教育和体育局义务教育阶段教学设备采购项目招标公告",
+        "blockers": [
+          "field_evidence",
+          "specification",
+          "verified_supplier",
+          "commercial_feasibility",
+          "offer_risk_gate"
+        ],
+        "next_agent": "field_evidence",
+        "draft_offer_ready": false,
+        "external_action_authorized": false
+      },
+      {
         "opportunity_id": "saudi-etimad-261039002860",
         "title": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
         "blockers": [
@@ -84568,7 +85488,7 @@
     ],
     "summary": {
       "ready_for_human_review": 0,
-      "blocked": 66
+      "blocked": 68
     },
     "policy": {
       "email_send": false,
