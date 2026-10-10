@@ -80,8 +80,8 @@ jobs:
           scan_step field_evidence_final 30 python -m src.field_evidence "$NEXT"
           scan_step verification 180 python -m src.verification "$NEXT"
           scan_step sales_priority 90 python -m src.sales_priority "$NEXT"
-          # A4-A10: official Gulf registry truthfulness, commercial terms, supplier queue,
-          # feasibility, offer/risk gate, agent center and fail-closed launch readiness.
+          # A4-A12: official Gulf registry truthfulness, commercial terms, supplier queue,
+          # feasibility, offer/risk, agent center, watchdog, deal lifecycle and launch readiness.
           scan_step remaining_pipeline 30 python -m src.remaining_pipeline "$NEXT"
       - name: Validate enriched live output
         run: |
@@ -105,7 +105,7 @@ jobs:
               raise SystemExit('A3 field evidence missing from one or more live opportunities')
           if opportunities and not data.get('a5_source_terms_summary'):
               raise SystemExit('A5 source term extraction summary missing from live payload')
-          for required in ('gulf_sources','commercial_terms_summary','supplier_research_summary','commercial_feasibility_summary','offer_risk_summary','agent_center','launch_gate'):
+          for required in ('gulf_sources','commercial_terms_summary','supplier_research_summary','commercial_feasibility_summary','offer_risk_summary','agent_center','watchdog','deal_lifecycle_summary','launch_gate','launch_readiness_report'):
               if required not in data:
                   raise SystemExit(f'remaining roadmap stage missing: {required}')
           if (data.get('launch_gate') or {}).get('launch_ready'):
