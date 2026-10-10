@@ -15,10 +15,11 @@ html,body{margin:0;width:100%;height:100%;background:#061725;overflow:hidden}
 <script>
 (function(){
   var frame=document.getElementById('portal');
+  function addScript(d,src,onload){var s=d.createElement('script');s.src=src;if(onload)s.onload=onload;d.body.appendChild(s);}
   function enhance(){
     var w=frame.contentWindow, d=frame.contentDocument;
     if(!w||!d) return;
-    var brandScript=d.createElement('script');brandScript.src='/web/customer-brand-bridge.js';d.body.appendChild(brandScript);
+    addScript(d,'/web/customer-brand-bridge.js');
     var nav=d.querySelector('nav');
     if(nav){
       nav.setAttribute('aria-label','Mobil ana menü');
@@ -32,13 +33,14 @@ html,body{margin:0;width:100%;height:100%;background:#061725;overflow:hidden}
     }
     var corporate=d.querySelector('a[href="website.html"]');if(corporate){corporate.textContent='← GLOBAL BROKER kurumsal sitesi';corporate.addEventListener('click',function(e){e.preventDefault();window.top.location.href='/';});}
     var style=d.createElement('style');style.textContent='nav span{touch-action:manipulation;-webkit-tap-highlight-color:transparent} nav span:active{transform:scale(.97)} .panel{scroll-margin-top:8px}.brand{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;font-weight:900!important;letter-spacing:-.03em!important}.brand span{color:#f3923c!important}';d.head.appendChild(style);
-    var live=d.createElement('script');live.src='/web/operational-panels.js';d.body.appendChild(live);
-    var readiness=d.createElement('script');readiness.src='/web/opportunity-readiness.js';d.body.appendChild(readiness);
-    var dossier=d.createElement('script');dossier.src='/web/opportunity-dossier.js';d.body.appendChild(dossier);
-    var priority=d.createElement('script');priority.src='/web/ceo-priority.js';d.body.appendChild(priority);
-    var tasks=d.createElement('script');tasks.src='/web/today-tasks.js';d.body.appendChild(tasks);
-    var taskCenter=d.createElement('script');taskCenter.src='/web/task-center.js';d.body.appendChild(taskCenter);
-    var health=d.createElement('script');health.src='/web/system-health.js';d.body.appendChild(health);
+    addScript(d,'/web/pricing-policy.js',function(){addScript(d,'/web/customer-portal.js');});
+    addScript(d,'/web/operational-panels.js');
+    addScript(d,'/web/opportunity-readiness.js');
+    addScript(d,'/web/opportunity-dossier.js');
+    addScript(d,'/web/ceo-priority.js');
+    addScript(d,'/web/today-tasks.js');
+    addScript(d,'/web/task-center.js');
+    addScript(d,'/web/system-health.js');
   }
   frame.addEventListener('load',function(){setTimeout(enhance,0);});
 })();
