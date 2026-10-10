@@ -41,8 +41,6 @@ jobs:
           mkdir -p data
           NEXT=data/latest-opportunities.next.json
           rm -f "$NEXT"
-          # Bounded execution, clear step-level timings, and no partial feed publication.
-          # Network-heavy modules can fail safely: the existing published JSON is retained.
           scan_step() {
             local label="$1" seconds="$2"
             shift 2
@@ -57,17 +55,16 @@ jobs:
             fi
             echo "::endgroup::" >&2
           }
-          # The core collector must not spend minutes making one external translation
-          # request per notice. Turkish presentation can be enriched after the source
-          # data is safely collected; this stage prioritizes reliable live ingestion.
+          # Core collection is kept deterministic; presentation translation happens outside this bounded stage.
           scan_step broker 180 python -c 'import src.broker as b; b.auto_translate_tr=lambda text:""; b.main()' > "$NEXT"
           test -s "$NEXT"
           scan_step china_feed 300 python -m src.china_feed "$NEXT"
           scan_step china_ggzy_feed 300 python -m src.china_ggzy_feed "$NEXT"
-          # Hard A2 gate: only physical-goods candidates proceed to supplier,
-          # specification, pricing and verification research. Mixed/unknown stays
-          # quarantined in goods_review_queue; service/works/digital-only is excluded.
+          # A2: only physical goods can enter the commercial research pipeline.
           scan_step physical_goods_gate 30 python -m src.physical_goods_gate "$NEXT"
+          # A3: label country/city/product/quantity/deadline/buyer strictly from source fields.
+          # Unknown fields remain explicitly missing; no inferred value is promoted as source-backed.
+          scan_step field_evidence 30 python -m src.field_evidence "$NEXT"
           scan_step china_import_radar 240 python -m src.china_import_radar "$NEXT" data/latest-opportunities.json
           scan_step enrichment 90 python -m src.enrichment "$NEXT"
           scan_step document_parser 480 python -m src.document_parser "$NEXT" data/latest-opportunities.json
@@ -91,6 +88,10 @@ jobs:
               raise SystemExit('refusing to replace live data: all live opportunity and China-demand feeds are empty')
           if any((o.get('export_goods_review') or {}).get('status') != 'goods_candidate' for o in opportunities):
               raise SystemExit('physical-goods gate violation: non-goods record reached live opportunities')
+          if opportunities and not data.get('field_evidence_summary'):
+              raise SystemExit('A3 field evidence missing from live payload')
+          if any(not isinstance(o.get('field_evidence'), dict) for o in opportunities):
+              raise SystemExit('A3 field evidence missing from one or more live opportunities')
           print(f'ATOMIC_FEED_GATE opportunities={len(opportunities)} china_import_radar={len(radar)}')
           PY
           mv "$NEXT" data/latest-opportunities.json
@@ -101,8 +102,6 @@ jobs:
         run: |
           git config user.name "global-broker-bot"
           git config user.email "global-broker-bot@users.noreply.github.com"
-          # Keep the freshly validated JSON while rebasing onto the latest main.
-          # A regular pull --rebase conflicts when another scan updated the same JSON.
           for attempt in 1 2 3 4; do
             git fetch origin main
             git reset --mixed origin/main

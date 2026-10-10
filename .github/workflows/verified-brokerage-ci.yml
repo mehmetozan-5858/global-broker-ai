@@ -9,12 +9,14 @@ on:
     paths:
       - 'src/**'
       - 'tests/**'
+      - 'web/**'
       - '.github/workflows/verified-brokerage-ci.yml'
   pull_request:
     branches: ["main"]
     paths:
       - 'src/**'
       - 'tests/**'
+      - 'web/**'
       - '.github/workflows/verified-brokerage-ci.yml'
 
 permissions:
@@ -35,3 +37,4 @@ jobs:
           node --check web/ceo-dashboard.js
           node --check web/tender-dossier.js
           node --check web/country-markets.js
+          node --check web/customer-portal.js
