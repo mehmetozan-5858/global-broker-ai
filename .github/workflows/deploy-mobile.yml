@@ -53,3 +53,41 @@ jobs:
         with:
           path: public
       - uses: actions/deploy-pages@v4
+      - name: Live customer acceptance smoke test
+        run: |
+          set -euo pipefail
+          BASE="https://mehmetozan-5858.github.io/global-broker-ai"
+          fetch_page() {
+            local path="$1" out="$2"
+            for attempt in 1 2 3 4 5 6; do
+              if curl -fsSL --max-time 20 "$BASE/$path" -o "$out"; then
+                return 0
+              fi
+              sleep 5
+            done
+            echo "unable to fetch deployed page: $path" >&2
+            return 1
+          }
+          fetch_page "" /tmp/home.html
+          fetch_page "customer.html" /tmp/customer.html
+          fetch_page "account.html" /tmp/account.html
+          fetch_page "privacy.html" /tmp/privacy.html
+          fetch_page "terms.html" /tmp/terms.html
+          fetch_page "data/latest-opportunities.json" /tmp/opportunities.json
+
+          grep -q "GLOBAL" /tmp/home.html
+          grep -q "Fırsat" /tmp/customer.html
+          grep -q "/auth/v1/token?grant_type=password" /tmp/account.html
+          grep -q "Gizlilik" /tmp/privacy.html
+          grep -q "Kullanım koşulları" /tmp/terms.html
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('/tmp/opportunities.json').read_text(encoding='utf-8'))
+          rows=data.get('opportunities') or []
+          if not rows:
+              raise SystemExit('public customer feed is empty')
+          if any((row.get('export_goods_review') or {}).get('status') != 'goods_candidate' for row in rows):
+              raise SystemExit('public customer feed contains a non-goods record')
+          print(f'CUSTOMER_ACCEPTANCE_OK opportunities={len(rows)}')
+          PY
