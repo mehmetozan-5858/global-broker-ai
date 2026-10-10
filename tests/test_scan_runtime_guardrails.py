@@ -18,7 +18,9 @@ class ScanRuntimeGuardrailTests(unittest.TestCase):
 
     def test_atomic_feed_and_diagnostics(self):
         self.assertIn('echo "SCAN_STEP_OK $label duration=$((SECONDS-started))s" >&2',WORKFLOW)
-        self.assertIn('mv "$NEXT" data/latest-opportunities.json',WORKFLOW)
+        self.assertIn('cp "$NEXT" data/latest-opportunities.private.json',WORKFLOW)
+        self.assertIn("Build public-safe masked feed",WORKFLOW)
+        self.assertIn("PUBLIC_FEED_PRIVACY_GATE_OK",WORKFLOW)
         self.assertIn('refusing to replace live data',WORKFLOW)
 
 if __name__=="__main__":
