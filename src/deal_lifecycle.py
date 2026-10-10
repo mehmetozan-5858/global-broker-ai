@@ -5,6 +5,7 @@ contracts, moves money, or marks a deal won without explicit evidence.
 """
 from __future__ import annotations
 
+from collections import Counter
 from dataclasses import dataclass, replace
 from datetime import date
 from typing import Any
@@ -42,6 +43,14 @@ class DealEvidence:
 
 def _audit(event: str, *, actor: str, source_reference: str | None) -> dict[str, Any]:
     return {"event": event, "actor": actor, "source_reference": source_reference, "evidence_present": True}
+
+
+def _as_date(value: Any) -> date | None:
+    if value in (None, ""):
+        return None
+    if isinstance(value, date):
+        return value
+    return date.fromisoformat(str(value))
 
 
 def evaluate(
@@ -175,3 +184,63 @@ def evaluate(
             "mark_won_without_evidence": False,
         },
     }
+
+
+def process_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    """Evaluate explicitly structured ``deal_cases`` and attach a fail-closed summary.
+
+    No opportunity is silently converted into a deal. Only records deliberately
+    placed in ``deal_cases`` are evaluated.
+    """
+    cases = [x for x in (payload.get("deal_cases") or []) if isinstance(x, dict)]
+    results: list[dict[str, Any]] = []
+    states: Counter[str] = Counter()
+
+    for index, case in enumerate(cases):
+        try:
+            agreement_data = dict(case.get("agreement") or {})
+            if "signed_on" in agreement_data:
+                agreement_data["signed_on"] = _as_date(agreement_data.get("signed_on"))
+            agreement = AgreementRecord(**agreement_data)
+            access = AccessRecord(**dict(case.get("access") or {}))
+            evidence = DealEvidence(**dict(case.get("evidence") or {}))
+            payment = dict(case.get("provider_payment") or {})
+            result = evaluate(
+                agreement=agreement,
+                access=access,
+                evidence=evidence,
+                transaction_amount=case.get("transaction_amount"),
+                transaction_date=_as_date(case.get("transaction_date")),
+                repeat_transaction=bool(case.get("repeat_transaction", False)),
+                provider_reference=payment.get("provider_reference"),
+                provider_amount=payment.get("amount"),
+                provider_currency=payment.get("currency"),
+                provider_verified=payment.get("provider_verified") is True,
+            )
+            result["case_id"] = str(case.get("case_id") or f"deal-{index + 1}")
+        except (TypeError, ValueError) as exc:
+            result = {
+                "case_id": str(case.get("case_id") or f"deal-{index + 1}"),
+                "state": "match_reviewed",
+                "state_achieved": False,
+                "blockers": ["invalid_deal_case"],
+                "validation_error": str(exc),
+                "human_approval_required": True,
+                "external_actions_allowed": False,
+                "mode": "shadow",
+            }
+        states[result["state"]] += 1
+        results.append(result)
+
+    summary = {
+        "case_count": len(results),
+        "state_counts": dict(states),
+        "blocked_count": sum(1 for x in results if x.get("blockers")),
+        "settled_count": sum(1 for x in results if x.get("state") == "commission_settled"),
+        "human_approval_required": True,
+        "external_actions_enabled": False,
+        "mode": "shadow",
+    }
+    payload["deal_lifecycle_cases"] = results
+    payload["deal_lifecycle_summary"] = summary
+    return summary
