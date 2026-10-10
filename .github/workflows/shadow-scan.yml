@@ -12,6 +12,10 @@ on:
       - '.github/workflows/shadow-scan.yml'
       - '.github/workflows/shadow-scan-trigger.txt'
 
+concurrency:
+  group: global-broker-shadow-scan
+  cancel-in-progress: false
+
 permissions:
   contents: write
   actions: write
@@ -19,6 +23,7 @@ permissions:
 jobs:
   shadow-scan:
     runs-on: ubuntu-latest
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,17 +41,33 @@ jobs:
           mkdir -p data
           NEXT=data/latest-opportunities.next.json
           rm -f "$NEXT"
-          python src/broker.py > "$NEXT"
+          # Bounded execution, clear step-level timings, and no partial feed publication.
+          # Network-heavy modules can fail safely: the existing published JSON is retained.
+          scan_step() {
+            local label="$1" seconds="$2"
+            shift 2
+            echo "::group::SCAN_STEP_START $label $(date -u +%FT%TZ) limit=${seconds}s" >&2
+            local started=$SECONDS
+            if timeout --signal=TERM --kill-after=15s "${seconds}s" "$@"; then
+              echo "SCAN_STEP_OK $label duration=$((SECONDS-started))s" >&2
+            else
+              local status=$?
+              echo "::error::SCAN_STEP_FAILED $label status=$status duration=$((SECONDS-started))s" >&2
+              exit "$status"
+            fi
+            echo "::endgroup::" >&2
+          }
+          scan_step broker 360 python src/broker.py > "$NEXT"
           test -s "$NEXT"
-          python -m src.china_feed "$NEXT"
-          python -m src.china_ggzy_feed "$NEXT"
-          python -m src.china_import_radar "$NEXT" data/latest-opportunities.json
-          python -m src.enrichment "$NEXT"
-          python -m src.document_parser "$NEXT" data/latest-opportunities.json
-          python -m src.ted_xml_enricher "$NEXT"
-          python -m src.specification "$NEXT"
-          python -m src.verification "$NEXT"
-          python -m src.sales_priority "$NEXT"
+          scan_step china_feed 300 python -m src.china_feed "$NEXT"
+          scan_step china_ggzy_feed 300 python -m src.china_ggzy_feed "$NEXT"
+          scan_step china_import_radar 240 python -m src.china_import_radar "$NEXT" data/latest-opportunities.json
+          scan_step enrichment 90 python -m src.enrichment "$NEXT"
+          scan_step document_parser 480 python -m src.document_parser "$NEXT" data/latest-opportunities.json
+          scan_step ted_xml_enricher 480 python -m src.ted_xml_enricher "$NEXT"
+          scan_step specification 90 python -m src.specification "$NEXT"
+          scan_step verification 180 python -m src.verification "$NEXT"
+          scan_step sales_priority 90 python -m src.sales_priority "$NEXT"
       - name: Validate enriched live output
         run: |
           set -euo pipefail
