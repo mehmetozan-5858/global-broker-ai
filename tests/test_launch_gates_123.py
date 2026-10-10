@@ -40,7 +40,8 @@ class LaunchGates123Tests(unittest.TestCase):
         workflow = (ROOT / ".github/workflows/deploy-mobile.yml").read_text(encoding="utf-8")
         self.assertIn("Live customer acceptance smoke test", workflow)
         self.assertIn("CUSTOMER_ACCEPTANCE_OK", workflow)
-        self.assertIn("public customer feed contains a non-goods record", workflow)
+        self.assertIn("public_preview_masked", workflow)
+        self.assertIn("masked preview contains private fields", workflow)
 
     def test_shadow_scan_runs_all_three_priority_gulf_adapters(self):
         workflow = (ROOT / ".github/workflows/shadow-scan.yml").read_text(encoding="utf-8")
