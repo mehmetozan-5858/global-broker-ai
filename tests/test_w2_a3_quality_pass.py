@@ -18,14 +18,16 @@ class W2A3QualityPassTests(unittest.TestCase):
         self.assertLess(specification, final)
         self.assertIn('python -m src.field_evidence "$NEXT"', workflow)
 
-    def test_customer_portal_has_quality_filter_and_buyer_search(self):
+    def test_customer_portal_has_quality_filter_and_protected_buyer_identity(self):
         portal = (ROOT / "web/customer-portal.js").read_text(encoding="utf-8")
         self.assertIn('id="cpQuality"', portal)
         self.assertIn("En az 4/6 alan", portal)
         self.assertIn("function buyer(o)", portal)
         self.assertIn("coverage(b)-coverage(a)", portal)
-        self.assertIn("Ürün / alıcı ara", portal)
-        self.assertIn('field(facts,"Alıcı"', portal)
+        self.assertIn("Ürün ara", portal)
+        self.assertIn("maskedBuyer", portal)
+        self.assertIn('field(facts,"Alıcı",maskedBuyer()', portal)
+        self.assertNotIn('product(o)+" "+buyer(o)', portal)
 
     def test_missing_values_are_still_explicit(self):
         portal = (ROOT / "web/customer-portal.js").read_text(encoding="utf-8")
