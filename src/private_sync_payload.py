@@ -80,7 +80,8 @@ def enrich_private_contact(row):
     if person:
         row["contact_person"] = person
     if website:
-        row["buyer_website"] = website
+        row["website"] = website
+        row.pop("buyer_website", None)
 
     direct = bool(email or phone or website)
     official_route = bool(_https(pick(row, ["source_url", "notice_url", "detail_url", "url", "document_url"])))
