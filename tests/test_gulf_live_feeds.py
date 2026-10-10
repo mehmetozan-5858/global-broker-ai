@@ -18,6 +18,18 @@ UAE_HTML = '''
 </table>
 '''
 
+UAE_CARD_HTML = '''
+<div class="tender-card">
+  <h3>RFP EMM gifts and giveaway for events, csr, and roadshows</h3>
+  <div>12583</div>
+  <div>Emirates Space Agency - (286/9294)</div>
+  <p>Specialized suppliers in the field of gifts and giveaways are invited to participate.</p>
+  <div>Open Date 02/10/2026 10:17:38 AM</div>
+  <div>Close Date 25/10/2026 10:30:00 PM</div>
+  <a href="https://procurement.gov.ae/rfx/12583">Click here</a>
+</div>
+'''
+
 SAUDI_LIST = '''<html><body>
 <a href="/Tender/DetailsForVisitor?STenderId=abc%3D%3D">تفاصيل المنافسة</a>
 <a href="/Tender/DetailsForVisitor?STenderId=abc%3D%3D">duplicate</a>
@@ -62,6 +74,20 @@ class GulfLiveFeedTests(unittest.TestCase):
         self.assertEqual(rows[0]['rfq_number'], '12583')
         self.assertNotIn('contract-nature', rows[0])
         self.assertTrue(rows[0]['source_url'].startswith('https://procurement.gov.ae/'))
+
+    def test_uae_rendered_card_layout_is_parsed_from_source_text(self):
+        rows = parse_uae(UAE_CARD_HTML)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]['rfq_number'], '12583')
+        self.assertEqual(rows[0]['buyer-name'], 'Emirates Space Agency - (286/9294)')
+        self.assertEqual(rows[0]['title_original'], 'RFP EMM gifts and giveaway for events, csr, and roadshows')
+        self.assertEqual(rows[0]['publication-date'], '02/10/2026 10:17:38 AM')
+        self.assertEqual(rows[0]['deadline-receipt-tender-date-lot'], '25/10/2026 10:30:00 PM')
+        self.assertTrue(rows[0]['source_provenance']['parsed_from_public_listing'])
+
+    def test_uae_card_parser_rejects_unrelated_numbers_without_two_dates(self):
+        rows = parse_uae('<div>2026</div><div>Ministry of Finance</div><div>Open tenders</div>')
+        self.assertEqual(rows, [])
 
     def test_uae_http_client_uses_normal_browser_identity(self):
         self.assertTrue(BROWSER_USER_AGENT.startswith('Mozilla/5.0'))
