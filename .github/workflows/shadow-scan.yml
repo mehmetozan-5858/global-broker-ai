@@ -63,6 +63,7 @@ jobs:
           # A4 official Gulf adapters. A source counts as live only when this scan parses real official notices.
           scan_step saudi_etimad 120 python -m src.saudi_etimad_feed "$NEXT"
           scan_step uae_mof 120 python -m src.uae_mof_feed "$NEXT"
+          scan_step uae_mof_ssr_fallback 30 python -m src.uae_mof_ssr_fallback "$NEXT"
           scan_step qatar_monaqasat 90 python -m src.qatar_monaqasat_feed "$NEXT"
           # A2: only physical goods can enter the commercial research pipeline.
           scan_step physical_goods_gate 30 python -m src.physical_goods_gate "$NEXT"
