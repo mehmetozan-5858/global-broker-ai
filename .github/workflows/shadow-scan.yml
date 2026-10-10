@@ -73,9 +73,10 @@ jobs:
           scan_step enrichment 90 python -m src.enrichment "$NEXT"
           scan_step document_parser 480 python -m src.document_parser "$NEXT" data/latest-opportunities.json
           scan_step ted_xml_enricher 480 python -m src.ted_xml_enricher "$NEXT"
+          # A5: promote only explicitly labelled quantity/payment/bond/delivery/eligibility/award facts from source text.
+          scan_step a5_source_terms 30 python -m src.a5_source_terms "$NEXT"
           scan_step specification 90 python -m src.specification "$NEXT"
-          # A3 final pass: source documents/XML may have added direct fields after the initial pass.
-          # Recompute coverage only from explicit source-backed fields; missing values stay missing.
+          # A3 final pass: source documents/XML/A5 explicit labels may have added direct fields.
           scan_step field_evidence_final 30 python -m src.field_evidence "$NEXT"
           scan_step verification 180 python -m src.verification "$NEXT"
           scan_step sales_priority 90 python -m src.sales_priority "$NEXT"
@@ -102,6 +103,8 @@ jobs:
               raise SystemExit('A3 field evidence missing from live payload')
           if any(not isinstance(o.get('field_evidence'), dict) for o in opportunities):
               raise SystemExit('A3 field evidence missing from one or more live opportunities')
+          if opportunities and not data.get('a5_source_terms_summary'):
+              raise SystemExit('A5 source term extraction summary missing from live payload')
           for required in ('gulf_sources','commercial_terms_summary','supplier_research_summary','commercial_feasibility_summary','offer_risk_summary','agent_center','launch_gate'):
               if required not in data:
                   raise SystemExit(f'remaining roadmap stage missing: {required}')
