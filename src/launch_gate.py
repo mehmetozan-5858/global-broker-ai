@@ -10,9 +10,12 @@ def _flag(name: str) -> bool:
 
 def _gulf_current_scan_verified(payload: dict[str, Any]) -> bool:
     gulf = payload.get("gulf_sources") or {}
-    return bool(
-        gulf.get("priority_gulf_live_ingestion_verified")
-        or gulf.get("live_ingestion_verified")
+    return (
+        gulf.get("priority_gulf_live_ingestion_verified") is True
+        and gulf.get("live_ingestion_verified") is True
+        and gulf.get("saudi_live_ingestion_verified") is True
+        and gulf.get("uae_live_ingestion_verified") is True
+        and gulf.get("qatar_live_ingestion_verified") is True
     )
 
 
