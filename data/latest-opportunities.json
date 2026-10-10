@@ -67368,16 +67368,17 @@
   "uae_mof_feed": {
     "source": "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/",
     "alternate_official_source": "https://mof.gov.ae/ar/public-finance/government-procurement/current-business-opportunities/",
-    "status": "no_rows_found",
+    "status": "source_unavailable",
     "parsed_opportunities": 0,
     "added": 0,
     "live_ingestion": false,
     "foreign_supplier_eligibility_assumed": false,
-    "errors": [],
+    "errors": [
+      "route=en:page=1:browser:RuntimeError:headless_browser_timeout_without_dom"
+    ],
     "successful_route": null,
     "rendered_fallback_used": true,
     "browser_fallback_pages": [
-      "en:1",
       "ar:1"
     ],
     "ministry_filters_discovered": {
@@ -67391,13 +67392,10 @@
     "filtered_routes_with_rows": [],
     "budget_seconds": 70,
     "budget_exhausted": false,
-    "elapsed_seconds": 42.15,
+    "elapsed_seconds": 36.02,
     "ssr_fallback_attempted": true,
     "ssr_browser_fallback_attempted": true,
     "ssr_fallback_transport": null,
-    "ssr_fallback_errors": [
-      "browser:RuntimeError"
-    ],
     "ssr_fallback_status": "no_rows_found",
     "coverage_scope": "not_verified"
   },
@@ -67419,7 +67417,7 @@
     "browser_routes": [
       "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"
     ],
-    "elapsed_seconds": 11.78,
+    "elapsed_seconds": 8.42,
     "budget_seconds": 55,
     "budget_exhausted": false
   },
@@ -85756,7 +85754,7 @@
   "watchdog": {
     "mode": "shadow",
     "stale_after_hours": 24,
-    "checked_at": "2026-10-10T18:34:59.060595+00:00",
+    "checked_at": "2026-10-10T18:37:09.610191+00:00",
     "counts": {
       "healthy": 0,
       "warning": 0,
