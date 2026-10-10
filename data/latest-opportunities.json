@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-10",
   "scope": "ALL_GLOBAL_PRODUCTS",
-  "count": 66,
+  "count": 64,
   "opportunities": [
     {
       "deadline-receipt-tender-date-lot": [
@@ -851,7 +851,7 @@
             "url": "https://ted.europa.eu/en/notice/663797-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663797-2026/xml",
@@ -2164,7 +2164,7 @@
             "url": "https://ted.europa.eu/en/notice/663822-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663822-2026/xml",
@@ -3481,7 +3481,7 @@
             "url": "https://ted.europa.eu/en/notice/663830-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663830-2026/xml",
@@ -4801,7 +4801,7 @@
             "url": "https://ted.europa.eu/en/notice/663837-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663837-2026/xml",
@@ -6141,7 +6141,7 @@
             "url": "https://ted.europa.eu/en/notice/663841-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663841-2026/xml",
@@ -7453,7 +7453,7 @@
             "url": "https://ted.europa.eu/en/notice/663847-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663847-2026/xml",
@@ -8760,7 +8760,7 @@
             "url": "https://ted.europa.eu/en/notice/663849-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663849-2026/xml",
@@ -10100,7 +10100,7 @@
             "url": "https://ted.europa.eu/en/notice/663853-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663853-2026/xml",
@@ -11414,7 +11414,7 @@
             "url": "https://ted.europa.eu/en/notice/663856-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663856-2026/xml",
@@ -12738,7 +12738,7 @@
             "url": "https://ted.europa.eu/en/notice/663865-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663865-2026/xml",
@@ -14126,7 +14126,7 @@
             "url": "https://ted.europa.eu/en/notice/663866-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663866-2026/xml",
@@ -15429,7 +15429,7 @@
             "url": "https://ted.europa.eu/en/notice/663871-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663871-2026/xml",
@@ -16758,7 +16758,7 @@
             "url": "https://ted.europa.eu/en/notice/663896-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663896-2026/xml",
@@ -18069,7 +18069,7 @@
             "url": "https://ted.europa.eu/en/notice/663931-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663931-2026/xml",
@@ -19486,7 +19486,7 @@
             "url": "https://ted.europa.eu/en/notice/663939-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663939-2026/xml",
@@ -20932,7 +20932,7 @@
             "url": "https://ted.europa.eu/en/notice/663958-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663958-2026/xml",
@@ -22255,7 +22255,7 @@
             "url": "https://ted.europa.eu/en/notice/663971-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663971-2026/xml",
@@ -23610,7 +23610,7 @@
             "url": "https://ted.europa.eu/en/notice/663991-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663991-2026/xml",
@@ -24982,7 +24982,7 @@
             "url": "https://ted.europa.eu/en/notice/664035-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664035-2026/xml",
@@ -26390,7 +26390,7 @@
             "url": "https://ted.europa.eu/en/notice/664039-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664039-2026/xml",
@@ -27742,7 +27742,7 @@
             "url": "https://ted.europa.eu/en/notice/664048-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664048-2026/xml",
@@ -29053,7 +29053,7 @@
             "url": "https://ted.europa.eu/en/notice/663819-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663819-2026/xml",
@@ -30379,7 +30379,7 @@
             "url": "https://ted.europa.eu/en/notice/663828-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663828-2026/xml",
@@ -31889,7 +31889,7 @@
             "url": "https://ted.europa.eu/en/notice/663833-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663833-2026/xml",
@@ -33207,7 +33207,7 @@
             "url": "https://ted.europa.eu/en/notice/663873-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663873-2026/xml",
@@ -34669,7 +34669,7 @@
             "url": "https://ted.europa.eu/en/notice/663880-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://www.achilles.com/wp/wp-content/uploads/2023/05/Product-and-Service-Code-Guide-EN.pdf",
@@ -36032,7 +36032,7 @@
             "url": "https://ted.europa.eu/en/notice/663883-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663883-2026/xml",
@@ -37355,7 +37355,7 @@
             "url": "https://ted.europa.eu/en/notice/663886-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663886-2026/xml",
@@ -38687,7 +38687,7 @@
             "url": "https://ted.europa.eu/en/notice/663893-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663893-2026/xml",
@@ -40015,7 +40015,7 @@
             "url": "https://ted.europa.eu/en/notice/663897-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663897-2026/xml",
@@ -41334,7 +41334,7 @@
             "url": "https://ted.europa.eu/en/notice/663912-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663912-2026/xml",
@@ -42691,7 +42691,7 @@
             "url": "https://ted.europa.eu/en/notice/663917-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663917-2026/xml",
@@ -44024,7 +44024,7 @@
             "url": "https://ted.europa.eu/en/notice/663919-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663919-2026/xml",
@@ -45364,7 +45364,7 @@
             "url": "https://ted.europa.eu/en/notice/663941-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663941-2026/xml",
@@ -46792,7 +46792,7 @@
             "url": "https://ted.europa.eu/en/notice/663945-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663945-2026/xml",
@@ -48122,7 +48122,7 @@
             "url": "https://ted.europa.eu/en/notice/663963-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663963-2026/xml",
@@ -49440,7 +49440,7 @@
             "url": "https://ted.europa.eu/en/notice/663964-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663964-2026/xml",
@@ -50747,7 +50747,7 @@
             "url": "https://ted.europa.eu/en/notice/663993-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663993-2026/xml",
@@ -52058,7 +52058,7 @@
             "url": "https://ted.europa.eu/en/notice/664003-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664003-2026/xml",
@@ -53393,7 +53393,7 @@
             "url": "https://ted.europa.eu/en/notice/664036-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664036-2026/xml",
@@ -54938,7 +54938,7 @@
             "url": "https://ted.europa.eu/en/notice/664045-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "insufficient_source_page_text"
+            "error": "ValueError:source_page_not_html"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664045-2026/xml",
@@ -65172,654 +65172,6 @@
         ],
         "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
       }
-    },
-    {
-      "id": "qatar-monaqasat-4675-2026",
-      "source": "Qatar Monaqasat",
-      "source_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-      "official_links": [
-        "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929"
-      ],
-      "title_original": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-      "title_tr": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-      "buyer-name": "نوفر",
-      "buyer-country": "Qatar",
-      "country": "Qatar",
-      "publication-date": "01/10/2026",
-      "deadline-receipt-tender-date-lot": "29/10/2026",
-      "bid_bond": "QAR 100,000.00",
-      "contract-nature": "supplies",
-      "procurement_category": "goods",
-      "gulf_live_source": true,
-      "foreign_supplier_eligibility_assumed": false,
-      "source_provenance": {
-        "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
-        "tender_number": "4675/2026",
-        "parsed_from_public_listing": true
-      },
-      "export_goods_review": {
-        "status": "goods_candidate",
-        "reason": "Kaynak fiziksel mal alımı olarak sınıflandırıyor; ihracat ve katılım koşulları ayrıca doğrulanmalı.",
-        "basis": "source_goods_type"
-      },
-      "opportunity_type": "FİZİKSEL_MAL_ADAYI",
-      "field_evidence": {
-        "country": {
-          "value": "Qatar",
-          "status": "source_backed",
-          "source_field": "buyer-country",
-          "inferred": false
-        },
-        "city": {
-          "value": "Qatar",
-          "status": "source_backed",
-          "source_field": "delivery_location",
-          "inferred": false
-        },
-        "product": {
-          "value": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-          "status": "source_backed",
-          "source_field": "product_name",
-          "inferred": false
-        },
-        "quantity": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
-          "inferred": false
-        },
-        "deadline": {
-          "value": "29/10/2026",
-          "status": "source_backed",
-          "source_field": "deadline-receipt-tender-date-lot",
-          "inferred": false
-        },
-        "buyer": {
-          "value": "نوفر",
-          "status": "source_backed",
-          "source_field": "buyer-name",
-          "inferred": false
-        }
-      },
-      "missing_core_fields": [
-        "quantity"
-      ],
-      "core_field_coverage": {
-        "verified_or_source_backed": 5,
-        "total": 6,
-        "complete": false
-      },
-      "dossier": {
-        "buyer_name": "نوفر",
-        "buyer_country": "Qatar",
-        "product_name": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-        "demand_description": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-        "quantity": null,
-        "budget_value": null,
-        "budget_currency": null,
-        "delivery_location": "Qatar",
-        "deadline": "29/10/2026",
-        "procedure_type": null,
-        "contract_nature": "supplies",
-        "cpv": [],
-        "official_links": [
-          "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929"
-        ],
-        "source": "Qatar Monaqasat",
-        "missing_fields": [
-          "quantity",
-          "specification_evidence"
-        ],
-        "completeness_percent": 83,
-        "supplier_sourcing_ready": false,
-        "specification_status": "document_analysis_pending",
-        "specification_sourcing_ready": false,
-        "standards": [],
-        "document_links": [
-          {
-            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-            "kind": "source_page"
-          }
-        ],
-        "document_parsed": false,
-        "technical_evidence_count": 0,
-        "eligibility_evidence_count": 0
-      },
-      "product_name": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-      "delivery_location": "Qatar",
-      "document_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-      "document_extraction": {
-        "status": "attempted_no_text",
-        "source_backed_only": true,
-        "candidate_count": 1,
-        "source_page_count": 1,
-        "discovered_attachment_count": 0,
-        "parsed_count": 0,
-        "attempts": [
-          {
-            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-            "status": "failed",
-            "source": "source_page",
-            "error": "URLError:<urlopen error timed out>"
-          }
-        ],
-        "text_chars": 0
-      },
-      "a5_source_term_evidence": {},
-      "specification_analysis": {
-        "status": "document_analysis_pending",
-        "source_backed_only": true,
-        "supplier_sourcing_ready": false,
-        "structured_specification_present": false,
-        "document_text_present": false,
-        "document_parsed": false,
-        "technical_evidence": [],
-        "quantity_evidence": [],
-        "delivery_evidence": [
-          {
-            "field": "delivery_location",
-            "text": "Qatar"
-          }
-        ],
-        "eligibility_evidence": [],
-        "award_evidence": [],
-        "standards": [],
-        "documents": [
-          {
-            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
-            "kind": "source_page"
-          }
-        ],
-        "attachment_requires_parsing": false,
-        "source_excerpt": "Qatar"
-      },
-      "buyer_verified": false,
-      "compliance_status": "buyer_identified_due_diligence_pending",
-      "sales_priority": {
-        "score": 2,
-        "grade": "C",
-        "queue": "research_only",
-        "reasons": [
-          "source_link_present"
-        ],
-        "blockers": [
-          "buyer_verification",
-          "specification_readiness",
-          "supplier_verification",
-          "compliance_clearance",
-          "margin_confirmation"
-        ],
-        "source_backed_only": true
-      },
-      "commercial_terms": {
-        "terms": {
-          "quantity": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "payment": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "bond": {
-            "value": "QAR 100,000.00",
-            "source_field": "bid_bond",
-            "status": "source_backed",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "performance_security": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "delivery": {
-            "value": "Qatar",
-            "source_field": "delivery_location",
-            "status": "source_backed",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "eligibility": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "award": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          }
-        },
-        "missing": [
-          "quantity",
-          "payment",
-          "performance_security",
-          "eligibility",
-          "award"
-        ],
-        "complete": false,
-        "source_backed_only": true,
-        "rule": "Quantity, payment, bonds, delivery, eligibility and award terms are never inferred when absent from explicit source evidence."
-      },
-      "supplier_research": {
-        "status": "specification_review_pending",
-        "dossier_ready": false,
-        "product": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-        "buyer_country": "Qatar",
-        "search_query": null,
-        "candidate_suppliers": [],
-        "verified_supplier_count": 0,
-        "verification_required": true,
-        "blocked_by_missing_fields": [
-          "specification_evidence"
-        ],
-        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
-      },
-      "commercial_feasibility": {
-        "status": "commercial_inputs_missing",
-        "source_backed_only": true,
-        "calculation_ready": false,
-        "facts": {
-          "quantity": {
-            "value": null,
-            "source_field": null
-          },
-          "currency": {
-            "value": null,
-            "source_field": null
-          },
-          "unit_price": {
-            "value": null,
-            "source_field": null
-          },
-          "freight": {
-            "value": null,
-            "source_field": null
-          },
-          "duty": {
-            "value": null,
-            "source_field": null
-          },
-          "incoterm": {
-            "value": null,
-            "source_field": null
-          },
-          "destination": {
-            "value": "Qatar",
-            "source_field": "delivery_location"
-          }
-        },
-        "missing_inputs": [
-          "quantity",
-          "currency",
-          "unit_price",
-          "freight",
-          "duty",
-          "incoterm"
-        ],
-        "assumptions": [],
-        "margin_claim_allowed": false,
-        "rule": "Unknown commercial inputs stay unknown; no price, freight, duty or margin is fabricated."
-      },
-      "offer_risk_gate": {
-        "draft_offer_ready": false,
-        "external_action_authorized": false,
-        "human_approval_required": true,
-        "blockers": [
-          "buyer_verification",
-          "specification",
-          "verified_supplier",
-          "commercial_feasibility"
-        ],
-        "allowed_actions": [
-          "internal_review",
-          "draft_only"
-        ],
-        "forbidden_actions": [
-          "send_email",
-          "submit_bid",
-          "place_order",
-          "take_payment"
-        ],
-        "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
-      }
-    },
-    {
-      "id": "qatar-monaqasat-4650-2026",
-      "source": "Qatar Monaqasat",
-      "source_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904",
-      "official_links": [
-        "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904"
-      ],
-      "title_original": "Separation and upgrade of the central data room equipment at Al Faisal Tower",
-      "title_tr": "Separation and upgrade of the central data room equipment at Al Faisal Tower",
-      "buyer-name": "Civil and Governmental Development Bureau",
-      "buyer-country": "Qatar",
-      "country": "Qatar",
-      "publication-date": "01/10/2026",
-      "deadline-receipt-tender-date-lot": "21/10/2026",
-      "bid_bond": "QAR 60,000.00",
-      "contract-nature": "supplies",
-      "procurement_category": "goods",
-      "gulf_live_source": true,
-      "foreign_supplier_eligibility_assumed": false,
-      "source_provenance": {
-        "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
-        "tender_number": "4650/2026",
-        "parsed_from_public_listing": true
-      },
-      "export_goods_review": {
-        "status": "goods_candidate",
-        "reason": "Kaynak fiziksel mal alımı olarak sınıflandırıyor; ihracat ve katılım koşulları ayrıca doğrulanmalı.",
-        "basis": "source_goods_type"
-      },
-      "opportunity_type": "FİZİKSEL_MAL_ADAYI",
-      "field_evidence": {
-        "country": {
-          "value": "Qatar",
-          "status": "source_backed",
-          "source_field": "buyer-country",
-          "inferred": false
-        },
-        "city": {
-          "value": "Qatar",
-          "status": "source_backed",
-          "source_field": "delivery_location",
-          "inferred": false
-        },
-        "product": {
-          "value": "Separation and upgrade of the central data room equipment at Al Faisal Tower",
-          "status": "source_backed",
-          "source_field": "product_name",
-          "inferred": false
-        },
-        "quantity": {
-          "value": null,
-          "status": "missing",
-          "source_field": null,
-          "inferred": false
-        },
-        "deadline": {
-          "value": "21/10/2026",
-          "status": "source_backed",
-          "source_field": "deadline-receipt-tender-date-lot",
-          "inferred": false
-        },
-        "buyer": {
-          "value": "Civil and Governmental Development Bureau",
-          "status": "source_backed",
-          "source_field": "buyer-name",
-          "inferred": false
-        }
-      },
-      "missing_core_fields": [
-        "quantity"
-      ],
-      "core_field_coverage": {
-        "verified_or_source_backed": 5,
-        "total": 6,
-        "complete": false
-      },
-      "dossier": {
-        "buyer_name": "Civil and Governmental Development Bureau",
-        "buyer_country": "Qatar",
-        "product_name": "Separation and upgrade of the central data room equipment at Al Faisal Tower",
-        "demand_description": "Separation and upgrade of the central data room equipment at Al Faisal Tower",
-        "quantity": null,
-        "budget_value": null,
-        "budget_currency": null,
-        "delivery_location": "Qatar",
-        "deadline": "21/10/2026",
-        "procedure_type": null,
-        "contract_nature": "supplies",
-        "cpv": [],
-        "official_links": [
-          "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904"
-        ],
-        "source": "Qatar Monaqasat",
-        "missing_fields": [
-          "quantity",
-          "specification_evidence"
-        ],
-        "completeness_percent": 83,
-        "supplier_sourcing_ready": false,
-        "specification_status": "document_analysis_pending",
-        "specification_sourcing_ready": false,
-        "standards": [],
-        "document_links": [
-          {
-            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904",
-            "kind": "source_page"
-          }
-        ],
-        "document_parsed": false,
-        "technical_evidence_count": 0,
-        "eligibility_evidence_count": 0
-      },
-      "product_name": "Separation and upgrade of the central data room equipment at Al Faisal Tower",
-      "delivery_location": "Qatar",
-      "document_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904",
-      "document_extraction": {
-        "status": "attempted_no_text",
-        "source_backed_only": true,
-        "candidate_count": 1,
-        "source_page_count": 1,
-        "discovered_attachment_count": 0,
-        "parsed_count": 0,
-        "attempts": [
-          {
-            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904",
-            "status": "failed",
-            "source": "source_page",
-            "error": "URLError:<urlopen error timed out>"
-          }
-        ],
-        "text_chars": 0
-      },
-      "a5_source_term_evidence": {},
-      "specification_analysis": {
-        "status": "document_analysis_pending",
-        "source_backed_only": true,
-        "supplier_sourcing_ready": false,
-        "structured_specification_present": false,
-        "document_text_present": false,
-        "document_parsed": false,
-        "technical_evidence": [],
-        "quantity_evidence": [],
-        "delivery_evidence": [
-          {
-            "field": "delivery_location",
-            "text": "Qatar"
-          }
-        ],
-        "eligibility_evidence": [],
-        "award_evidence": [],
-        "standards": [],
-        "documents": [
-          {
-            "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904",
-            "kind": "source_page"
-          }
-        ],
-        "attachment_requires_parsing": false,
-        "source_excerpt": "Qatar"
-      },
-      "buyer_verified": false,
-      "compliance_status": "buyer_identified_due_diligence_pending",
-      "sales_priority": {
-        "score": 2,
-        "grade": "C",
-        "queue": "research_only",
-        "reasons": [
-          "source_link_present"
-        ],
-        "blockers": [
-          "buyer_verification",
-          "specification_readiness",
-          "supplier_verification",
-          "compliance_clearance",
-          "margin_confirmation"
-        ],
-        "source_backed_only": true
-      },
-      "commercial_terms": {
-        "terms": {
-          "quantity": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "payment": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "bond": {
-            "value": "QAR 60,000.00",
-            "source_field": "bid_bond",
-            "status": "source_backed",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "performance_security": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "delivery": {
-            "value": "Qatar",
-            "source_field": "delivery_location",
-            "status": "source_backed",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "eligibility": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          },
-          "award": {
-            "value": null,
-            "source_field": null,
-            "status": "missing",
-            "extracted_from_labeled_source_text": false,
-            "evidence_source_field": null
-          }
-        },
-        "missing": [
-          "quantity",
-          "payment",
-          "performance_security",
-          "eligibility",
-          "award"
-        ],
-        "complete": false,
-        "source_backed_only": true,
-        "rule": "Quantity, payment, bonds, delivery, eligibility and award terms are never inferred when absent from explicit source evidence."
-      },
-      "supplier_research": {
-        "status": "specification_review_pending",
-        "dossier_ready": false,
-        "product": "Separation and upgrade of the central data room equipment at Al Faisal Tower",
-        "buyer_country": "Qatar",
-        "search_query": null,
-        "candidate_suppliers": [],
-        "verified_supplier_count": 0,
-        "verification_required": true,
-        "blocked_by_missing_fields": [
-          "specification_evidence"
-        ],
-        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
-      },
-      "commercial_feasibility": {
-        "status": "commercial_inputs_missing",
-        "source_backed_only": true,
-        "calculation_ready": false,
-        "facts": {
-          "quantity": {
-            "value": null,
-            "source_field": null
-          },
-          "currency": {
-            "value": null,
-            "source_field": null
-          },
-          "unit_price": {
-            "value": null,
-            "source_field": null
-          },
-          "freight": {
-            "value": null,
-            "source_field": null
-          },
-          "duty": {
-            "value": null,
-            "source_field": null
-          },
-          "incoterm": {
-            "value": null,
-            "source_field": null
-          },
-          "destination": {
-            "value": "Qatar",
-            "source_field": "delivery_location"
-          }
-        },
-        "missing_inputs": [
-          "quantity",
-          "currency",
-          "unit_price",
-          "freight",
-          "duty",
-          "incoterm"
-        ],
-        "assumptions": [],
-        "margin_claim_allowed": false,
-        "rule": "Unknown commercial inputs stay unknown; no price, freight, duty or margin is fabricated."
-      },
-      "offer_risk_gate": {
-        "draft_offer_ready": false,
-        "external_action_authorized": false,
-        "human_approval_required": true,
-        "blockers": [
-          "buyer_verification",
-          "specification",
-          "verified_supplier",
-          "commercial_feasibility"
-        ],
-        "allowed_actions": [
-          "internal_review",
-          "draft_only"
-        ],
-        "forbidden_actions": [
-          "send_email",
-          "submit_bid",
-          "place_order",
-          "take_payment"
-        ],
-        "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
-      }
     }
   ],
   "market_sources": [
@@ -65971,7 +65323,7 @@
     "filtered_routes_with_rows": [],
     "budget_seconds": 70,
     "budget_exhausted": false,
-    "elapsed_seconds": 26.98,
+    "elapsed_seconds": 36.39,
     "ssr_fallback_attempted": true,
     "ssr_fallback_status": "no_rows_found",
     "coverage_scope": "not_verified"
@@ -65979,22 +65331,22 @@
   "qatar_monaqasat_feed": {
     "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
     "alternate_official_source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1",
-    "status": "ok",
-    "parsed_goods": 3,
-    "added": 3,
-    "live_ingestion": true,
+    "status": "source_unavailable",
+    "parsed_goods": 0,
+    "added": 0,
+    "live_ingestion": false,
     "foreign_supplier_eligibility_assumed": false,
-    "successful_route": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
-    "attempts": 3,
+    "successful_route": null,
+    "attempts": 4,
     "errors": [
       "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2:http:URLError",
-      "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1:http:URLError"
+      "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1:http:URLError",
+      "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2:browser:RuntimeError:headless_browser_empty_dom",
+      "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1:browser:RuntimeError:headless_browser_empty_dom"
     ],
-    "browser_fallback_used": true,
-    "browser_routes": [
-      "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"
-    ],
-    "elapsed_seconds": 8.24,
+    "browser_fallback_used": false,
+    "browser_routes": [],
+    "elapsed_seconds": 3.32,
     "budget_seconds": 55,
     "budget_exhausted": false
   },
@@ -79012,6 +78364,38 @@
       }
     },
     {
+      "id": "saudi-etimad-260739006600",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "أعمال الحراسات الأمنية لمبنى فرع الوزارة الرئيسي بمحافظة جدة والمباني التابعة له",
+      "title_tr": "أعمال الحراسات الأمنية لمبنى فرع الوزارة الرئيسي بمحافظة جدة والمباني التابعة له",
+      "buyer-name": "وزارة الصناعة والثروة المعدنية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T14:51:15.9422347",
+      "deadline-receipt-tender-date-lot": "2026-11-09T09:59:00",
+      "tender_number": "100000574",
+      "reference_number": "260739006600",
+      "tender_type": "منافسة عامة",
+      "branch_name": "الوزارة الرئيسي",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260739006600",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
       "id": "saudi-etimad-260939006332",
       "source": "Saudi Etimad official visitor API",
       "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
@@ -79750,9 +79134,9 @@
     {
       "id": "saudi-etimad-260839000641",
       "source": "Saudi Etimad official visitor API",
-      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
       "official_links": [
-        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
         "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
       ],
       "title_original": "مشروع إنشاء مستشفى فيفا العام بجازان",
@@ -79769,7 +79153,7 @@
       "gulf_live_source": true,
       "foreign_supplier_eligibility_assumed": false,
       "source_provenance": {
-        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
         "reference_number": "260839000641",
         "parsed_from_official_json_endpoint": true
       },
@@ -80482,74 +79866,12 @@
         "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
         "basis": "insufficient_evidence"
       }
-    },
-    {
-      "id": "saudi-etimad-260939010330",
-      "source": "Saudi Etimad official visitor API",
-      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
-      "official_links": [
-        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
-        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
-      ],
-      "title_original": "توريد قطع غيار لمسخن هواء تابع لمنظومة انتاج ينبع 60020449",
-      "title_tr": "توريد قطع غيار لمسخن هواء تابع لمنظومة انتاج ينبع 60020449",
-      "buyer-name": "الهيئة السعودية للمياه",
-      "buyer-country": "Saudi Arabia",
-      "country": "Saudi Arabia",
-      "publication-date": "2026-10-08T15:27:45.9462802",
-      "deadline-receipt-tender-date-lot": "2026-11-07T09:59:00",
-      "tender_number": "60020449",
-      "reference_number": "260939010330",
-      "tender_type": "منافسة عامة",
-      "branch_name": "إدارة الشراء - قسم المواد وقطع الغيار",
-      "gulf_live_source": true,
-      "foreign_supplier_eligibility_assumed": false,
-      "source_provenance": {
-        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
-        "reference_number": "260939010330",
-        "parsed_from_official_json_endpoint": true
-      },
-      "export_goods_review": {
-        "status": "review_unknown",
-        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
-        "basis": "insufficient_evidence"
-      }
-    },
-    {
-      "id": "qatar-monaqasat-5016-2026",
-      "source": "Qatar Monaqasat",
-      "source_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/661270",
-      "official_links": [
-        "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/661270"
-      ],
-      "title_original": "Supply and installation of Furniture for New Building at al duhail Sports club",
-      "title_tr": "Supply and installation of Furniture for New Building at al duhail Sports club",
-      "buyer-name": "Ministry Of Sports And Youth",
-      "buyer-country": "Qatar",
-      "country": "Qatar",
-      "publication-date": "04/10/2026",
-      "deadline-receipt-tender-date-lot": "22/10/2026",
-      "bid_bond": "QAR 10,500.00",
-      "contract-nature": "supplies",
-      "procurement_category": "goods",
-      "gulf_live_source": true,
-      "foreign_supplier_eligibility_assumed": false,
-      "source_provenance": {
-        "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
-        "tender_number": "5016/2026",
-        "parsed_from_public_listing": true
-      },
-      "export_goods_review": {
-        "status": "review_mixed",
-        "reason": "Kaynak mal alımı diyor ancak hizmet, kurulum, destek veya dijital unsur da içeriyor.",
-        "basis": "source_goods_with_mixed_signal"
-      }
     }
   ],
   "physical_goods_gate": {
     "mode": "physical_goods_only",
-    "goods_candidates": 66,
-    "review_mixed_or_unknown": 97,
+    "goods_candidates": 64,
+    "review_mixed_or_unknown": 96,
     "excluded_service_or_works": 0,
     "excluded_non_physical": 0,
     "research_pipeline_receives_only_goods_candidates": true
@@ -80590,21 +79912,6 @@
       "product": "CPV ürün/hizmet grubu",
       "buyer": "Woonhaven Antwerpen",
       "source_url": null,
-      "missing_fields": [
-        "quantity"
-      ],
-      "critical_missing_fields": [
-        "quantity"
-      ],
-      "coverage": 5,
-      "priority": "high",
-      "rule": "research source/document only; do not infer missing facts"
-    },
-    {
-      "opportunity_id": "qatar-monaqasat-4675-2026",
-      "product": "Call-Off Agreement to supply Urine Cups for Illicit Drugs for Three (3)Years",
-      "buyer": "نوفر",
-      "source_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
       "missing_fields": [
         "quantity"
       ],
@@ -80890,21 +80197,6 @@
       "product": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Sukcesywne dostawy wyrobów jednorazowych",
       "buyer": "Szpital im. Ryszarda Rzepki w Sulechowie Sp. z o.o.,",
       "source_url": null,
-      "missing_fields": [
-        "quantity"
-      ],
-      "critical_missing_fields": [
-        "quantity"
-      ],
-      "coverage": 5,
-      "priority": "high",
-      "rule": "research source/document only; do not infer missing facts"
-    },
-    {
-      "opportunity_id": "qatar-monaqasat-4650-2026",
-      "product": "Separation and upgrade of the central data room equipment at Al Faisal Tower",
-      "buyer": "Civil and Governmental Development Bureau",
-      "source_url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904",
       "missing_fields": [
         "quantity"
       ],
@@ -81656,23 +80948,23 @@
     }
   ],
   "field_evidence_summary": {
-    "opportunities": 66,
+    "opportunities": 64,
     "complete_core_records": 1,
     "source_backed_counts": {
-      "country": 44,
-      "city": 44,
-      "product": 66,
+      "country": 42,
+      "city": 42,
+      "product": 64,
       "quantity": 3,
-      "deadline": 24,
-      "buyer": 66
+      "deadline": 22,
+      "buyer": 64
     },
-    "research_queue": 65,
-    "high_priority_research": 43,
+    "research_queue": 63,
+    "high_priority_research": 41,
     "missing_counts": {
       "country": 22,
       "city": 22,
       "product": 0,
-      "quantity": 63,
+      "quantity": 61,
       "deadline": 42,
       "buyer": 0
     },
@@ -82014,12 +81306,12 @@
   "enrichment": {
     "version": 1,
     "mode": "source_only_no_hallucination",
-    "enriched_count": 66
+    "enriched_count": 64
   },
   "document_extraction": {
     "version": 3,
     "mode": "public_source_pages_documents_and_ted_xml",
-    "attempted_opportunities": 44,
+    "attempted_opportunities": 42,
     "parsed_opportunities": 42,
     "source_pages_parsed": 1,
     "discovered_attachments": 0,
@@ -82028,7 +81320,7 @@
     "ted_xml_parsed": 41
   },
   "a5_source_terms_summary": {
-    "opportunities": 66,
+    "opportunities": 64,
     "opportunities_with_new_terms": 0,
     "new_source_backed_counts": {
       "quantity": 0,
@@ -82045,9 +81337,9 @@
   "specification_analysis": {
     "version": 3,
     "mode": "source_evidence_plus_public_documents",
-    "analyzed_count": 66,
+    "analyzed_count": 64,
     "supplier_sourcing_ready": 22,
-    "document_analysis_pending": 23,
+    "document_analysis_pending": 21,
     "insufficient_source_detail": 21,
     "attachments_requiring_parser": 0,
     "parsed_document_opportunities": 42
@@ -82058,11 +81350,11 @@
     "grades": {
       "A": 0,
       "B": 0,
-      "C": 66
+      "C": 64
     },
     "close_first": 0,
     "develop_next": 0,
-    "research_only": 66
+    "research_only": 64
   },
   "gulf_sources": {
     "sources": [
@@ -82085,9 +81377,8 @@
         "country": "Qatar",
         "name": "Monaqasat",
         "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
-        "status": "live_ingestion_verified_this_scan",
-        "live_ingestion": true,
-        "last_scan_rows": 3
+        "status": "official_source_registered",
+        "live_ingestion": false
       },
       {
         "country": "Kuwait",
@@ -82120,40 +81411,40 @@
     ],
     "saudi_live_ingestion_verified": true,
     "uae_live_ingestion_verified": false,
-    "qatar_live_ingestion_verified": true,
+    "qatar_live_ingestion_verified": false,
     "priority_gulf_live_ingestion_verified": false,
     "live_ingestion_verified": false,
     "rule": "Each country becomes live only after real official notice ingestion in the current scan. Priority Gulf coverage requires Saudi Arabia, UAE and Qatar; registered links alone do not count."
   },
   "commercial_terms_summary": {
-    "opportunities": 66,
+    "opportunities": 64,
     "complete": 0,
     "source_backed_counts": {
       "quantity": 3,
       "payment": 0,
-      "bond": 2,
+      "bond": 0,
       "performance_security": 0,
-      "delivery": 44,
+      "delivery": 42,
       "eligibility": 0,
       "award": 0
     }
   },
   "supplier_research_summary": {
-    "opportunities": 66,
+    "opportunities": 64,
     "research_ready": 22,
-    "blocked": 44,
+    "blocked": 42,
     "verified_suppliers": 0,
     "opportunities_with_verified_supplier": 0,
     "mode": "source_verified_candidates"
   },
   "commercial_feasibility_summary": {
-    "opportunities": 66,
+    "opportunities": 64,
     "calculation_ready": 0,
-    "blocked_missing_inputs": 66,
+    "blocked_missing_inputs": 64,
     "source_backed_only": true
   },
   "offer_risk_summary": {
-    "opportunities": 66,
+    "opportunities": 64,
     "internal_draft_ready": 0,
     "external_action_authorized": 0,
     "mode": "shadow"
@@ -82161,37 +81452,37 @@
   "agent_center": {
     "mode": "shadow",
     "external_actions_enabled": false,
-    "opportunity_count": 66,
+    "opportunity_count": 64,
     "agents": {
       "source": {
-        "has_official_link": 44,
+        "has_official_link": 42,
         "missing_link": 22
       },
       "goods_gate": {
-        "goods_candidate": 66
+        "goods_candidate": 64
       },
       "field_evidence": {
-        "incomplete": 65,
+        "incomplete": 63,
         "complete": 1
       },
       "specification": {
         "source_document_analyzed": 21,
-        "document_analysis_pending": 23,
+        "document_analysis_pending": 21,
         "source_description_insufficient": 21,
         "source_description_analyzed": 1
       },
       "supplier": {
         "research_ready": 22,
-        "specification_review_pending": 44
+        "specification_review_pending": 42
       },
       "feasibility": {
-        "commercial_inputs_missing": 66
+        "commercial_inputs_missing": 64
       },
       "risk": {
-        "pending": 66
+        "pending": 64
       },
       "sales_priority": {
-        "C": 66
+        "C": 64
       }
     },
     "policy": {
