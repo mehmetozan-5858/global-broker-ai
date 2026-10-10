@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 from typing import Any
 
 GULF_SOURCES = {
@@ -29,13 +30,22 @@ GULF_SOURCES = {
 
 
 def annotate_payload(payload: dict[str, Any]) -> dict[str, Any]:
-    sources = []
-    for country, source in GULF_SOURCES.items():
-        row = {"country": country, **source}
-        sources.append(row)
+    registry = deepcopy(GULF_SOURCES)
+    qatar = payload.get("qatar_monaqasat_feed") or {}
+    qatar_live = bool(qatar.get("live_ingestion")) and int(qatar.get("parsed_goods") or 0) > 0
+    if qatar_live:
+        registry["Qatar"]["live_ingestion"] = True
+        registry["Qatar"]["status"] = "live_goods_ingestion_verified_this_scan"
+        registry["Qatar"]["last_scan_goods"] = int(qatar.get("parsed_goods") or 0)
+
+    sources = [{"country": country, **source} for country, source in registry.items()]
+    priority = ("Saudi Arabia", "United Arab Emirates", "Qatar")
+    priority_live = all(registry[country]["live_ingestion"] for country in priority)
     payload["gulf_sources"] = {
         "sources": sources,
-        "live_ingestion_verified": False,
-        "rule": "Registered official links are discovery sources only until real notice ingestion, document provenance and refresh tests pass.",
+        "qatar_live_ingestion_verified": qatar_live,
+        "priority_gulf_live_ingestion_verified": priority_live,
+        "live_ingestion_verified": priority_live,
+        "rule": "Each country becomes live only after real notice ingestion in the current scan. Priority Gulf coverage requires Saudi Arabia, UAE and Qatar; registered links alone do not count.",
     }
     return payload
