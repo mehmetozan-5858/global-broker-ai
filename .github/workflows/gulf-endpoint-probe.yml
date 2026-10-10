@@ -1,0 +1,25 @@
+name: Gulf Endpoint Probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - 'src/gulf_endpoint_discovery.py'
+      - 'src/gulf_endpoint_probe.py'
+      - '.github/workflows/gulf-endpoint-probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe public same-origin API hints
+        run: timeout --signal=TERM --kill-after=10s 180s python -m src.gulf_endpoint_probe
