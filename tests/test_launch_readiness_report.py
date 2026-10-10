@@ -18,7 +18,8 @@ class LaunchReadinessReportTests(unittest.TestCase):
             },
         }
         result = build(payload)
-        self.assertTrue(result["global_market_scope"])
+        self.assertEqual(result["intended_market_scope"], "worldwide")
+        self.assertFalse(result["worldwide_live_coverage_verified"])
         self.assertFalse(result["production_launch_ready"])
         self.assertEqual(result["mode"], "shadow")
         self.assertFalse(result["priority_gulf_sources"]["United Arab Emirates"]["live_this_scan"])
