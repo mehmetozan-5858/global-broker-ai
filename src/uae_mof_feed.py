@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 import sys
 import time
 import urllib.request
@@ -20,6 +21,18 @@ BROWSER_TIMEOUT_SECONDS = 18
 BROWSER_VIRTUAL_TIME_MS = 7000
 COLLECT_BUDGET_SECONDS = 70
 BROWSER_USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36"
+DATE_RE = re.compile(r"\b\d{1,2}/\d{1,2}/\d{4}(?:\s+\d{1,2}:\d{2}(?::\d{2})?\s*(?:AM|PM)?)?\b", re.I)
+RFQ_RE = re.compile(r"^\d{4,6}$")
+GENERIC_CARD_LABELS = {
+    "rfq number",
+    "entity name",
+    "title",
+    "open date",
+    "close date",
+    "link",
+    "click here",
+    "open tenders",
+}
 
 
 class _TableParser(HTMLParser):
@@ -59,6 +72,28 @@ class _TableParser(HTMLParser):
             self.in_tr = False
 
 
+class _VisibleTextParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.parts: list[str] = []
+        self._ignored = 0
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() in {"script", "style", "noscript", "svg"}:
+            self._ignored += 1
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() in {"script", "style", "noscript", "svg"} and self._ignored:
+            self._ignored -= 1
+
+    def handle_data(self, data: str) -> None:
+        if self._ignored:
+            return
+        text = " ".join(html.unescape(data).split()).strip()
+        if text:
+            self.parts.append(text)
+
+
 def _fetch_url(url: str) -> str:
     req = urllib.request.Request(
         url,
@@ -76,6 +111,77 @@ def _fetch_url(url: str) -> str:
 
 def page_url(page: int = 1, source_url: str = SOURCE_URL) -> str:
     return f"{source_url}?{urlencode({'mof-dpp-page': page})}"
+
+
+def _record(rfq: str, entity: str, title: str, open_date: str, close_date: str, source_url: str, href: str = "") -> dict[str, Any]:
+    official = urljoin(source_url, html.unescape(href)) if href else source_url
+    return {
+        "id": f"uae-mof-{rfq}",
+        "source": "UAE Ministry of Finance - Current Business Opportunities",
+        "source_url": official,
+        "official_links": [official],
+        "title_original": title,
+        "title_tr": title,
+        "buyer-name": entity or None,
+        "buyer-country": "United Arab Emirates",
+        "country": "United Arab Emirates",
+        "publication-date": open_date or None,
+        "deadline-receipt-tender-date-lot": close_date or None,
+        "rfq_number": rfq,
+        "gulf_live_source": True,
+        "foreign_supplier_eligibility_assumed": False,
+        "source_provenance": {
+            "source": source_url,
+            "rfq_number": rfq,
+            "parsed_from_public_listing": True,
+        },
+    }
+
+
+def _parse_cards(markup: str, source_url: str) -> list[dict[str, Any]]:
+    """Parse the rendered card/mobile layout used by the MOF page.
+
+    The site sometimes exposes the same official RFQ data as cards instead of a
+    table. We only accept records with an explicit RFQ number plus both source
+    dates, so unrelated page numbers or navigation text cannot become tenders.
+    """
+    parser = _VisibleTextParser()
+    parser.feed(markup)
+    parts = parser.parts
+    results: list[dict[str, Any]] = []
+    seen: set[str] = set()
+
+    for i, part in enumerate(parts):
+        if not RFQ_RE.fullmatch(part) or part in seen:
+            continue
+        window = parts[i + 1 : i + 16]
+        date_positions = [idx for idx, value in enumerate(window) if DATE_RE.search(value)]
+        if len(date_positions) < 2:
+            continue
+        first_date_idx, second_date_idx = date_positions[0], date_positions[1]
+        if second_date_idx - first_date_idx > 4:
+            continue
+
+        open_match = DATE_RE.search(window[first_date_idx])
+        close_match = DATE_RE.search(window[second_date_idx])
+        if not open_match or not close_match:
+            continue
+
+        before_dates = [
+            value for value in window[:first_date_idx]
+            if value.strip().lower() not in GENERIC_CARD_LABELS and not RFQ_RE.fullmatch(value.strip())
+        ]
+        previous = parts[i - 1].strip() if i else ""
+        previous_ok = previous and previous.lower() not in GENERIC_CARD_LABELS and not RFQ_RE.fullmatch(previous)
+
+        entity = before_dates[0] if before_dates else ""
+        title = previous if previous_ok else (before_dates[1] if len(before_dates) > 1 else "")
+        if not title or not entity:
+            continue
+
+        results.append(_record(part, entity, title, open_match.group(0), close_match.group(0), source_url))
+        seen.add(part)
+    return results
 
 
 def parse(markup: str, source_url: str = SOURCE_URL) -> list[dict[str, Any]]:
@@ -96,32 +202,12 @@ def parse(markup: str, source_url: str = SOURCE_URL) -> list[dict[str, Any]]:
         href = ""
         for cell in cells[5:]:
             if cell.get("href"):
-                href = urljoin(source_url, html.unescape(cell["href"]))
+                href = cell["href"]
                 break
         if not title:
             continue
-        results.append({
-            "id": f"uae-mof-{rfq}",
-            "source": "UAE Ministry of Finance - Current Business Opportunities",
-            "source_url": href or source_url,
-            "official_links": [href or source_url],
-            "title_original": title,
-            "title_tr": title,
-            "buyer-name": entity or None,
-            "buyer-country": "United Arab Emirates",
-            "country": "United Arab Emirates",
-            "publication-date": open_date or None,
-            "deadline-receipt-tender-date-lot": close_date or None,
-            "rfq_number": rfq,
-            "gulf_live_source": True,
-            "foreign_supplier_eligibility_assumed": False,
-            "source_provenance": {
-                "source": source_url,
-                "rfq_number": rfq,
-                "parsed_from_public_listing": True,
-            },
-        })
-    return results
+        results.append(_record(rfq, entity, title, open_date, close_date, source_url, href))
+    return results or _parse_cards(markup, source_url)
 
 
 def _collect_page(page: int, source_url: str, meta: dict[str, Any], *, allow_browser: bool) -> list[dict[str, Any]]:
