@@ -10,6 +10,7 @@
     { "source": "/website.html", "destination": "/web/website-mobile.html" },
     { "source": "/customer", "destination": "/web/customer-shell.html" },
     { "source": "/customer.html", "destination": "/web/customer-shell.html" },
+    { "source": "/app", "destination": "/web/app-shell.html" },
     { "source": "/account", "destination": "/web/account.html" },
     { "source": "/pricing", "destination": "/web/pricing.html" },
     { "source": "/privacy", "destination": "/web/privacy.html" },
