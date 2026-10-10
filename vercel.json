@@ -14,7 +14,8 @@
     { "source": "/account", "destination": "/web/account.html" },
     { "source": "/pricing", "destination": "/web/pricing.html" },
     { "source": "/privacy", "destination": "/web/privacy.html" },
-    { "source": "/terms", "destination": "/web/terms.html" }
+    { "source": "/terms", "destination": "/web/terms.html" },
+    { "source": "/refund", "destination": "/web/refund.html" }
   ],
   "headers": [
     {
