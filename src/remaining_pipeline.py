@@ -6,6 +6,7 @@ from pathlib import Path
 
 from .agent_center import build as build_agent_center
 from .commercial_feasibility import process_payload as process_feasibility
+from .commercial_blocker_triage import build as build_commercial_blocker_triage
 from .commercial_terms import process_payload as process_commercial_terms
 from .gulf_sources import annotate_payload as annotate_gulf_sources
 from .launch_gate import evaluate as evaluate_launch
@@ -19,6 +20,7 @@ def process(payload: dict) -> dict:
     process_commercial_terms(payload)               # A5 commercial tender terms
     process_supplier_research(payload)              # A6 source-backed research queue
     process_feasibility(payload)                    # A7 calculation readiness
+    build_commercial_blocker_triage(payload)        # source-backed commercial research queue
     process_offer_risk(payload)                     # A8 draft / risk gate
     build_agent_center(payload)                     # A9 measurable agent center
     evaluate_launch(payload)                        # A10 fail-closed production gate
@@ -35,6 +37,7 @@ def main(path: str) -> None:
         "gulf_live": (payload.get("gulf_sources") or {}).get("live_ingestion_verified"),
         "supplier_ready": (payload.get("supplier_research_summary") or {}).get("research_ready"),
         "commercial_ready": (payload.get("commercial_feasibility_summary") or {}).get("calculation_ready"),
+        "commercial_blocker_counts": (payload.get("commercial_blocker_triage") or {}).get("blocker_counts"),
         "draft_ready": (payload.get("offer_risk_summary") or {}).get("internal_draft_ready"),
         "launch_ready": (payload.get("launch_gate") or {}).get("launch_ready"),
         "launch_blockers": (payload.get("launch_gate") or {}).get("blockers"),
