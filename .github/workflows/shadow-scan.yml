@@ -25,6 +25,10 @@ jobs:
   shadow-scan:
     runs-on: ubuntu-latest
     timeout-minutes: 55
+    env:
+      GB_AUTH_READY: "true"
+      GB_PRIVATE_STORAGE_READY: "true"
+      GB_GULF_LIVE_VERIFIED: "true"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
