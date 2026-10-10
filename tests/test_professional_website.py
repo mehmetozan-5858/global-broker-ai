@@ -35,7 +35,7 @@ class ProfessionalWebTests(unittest.TestCase):
         self.assertNotIn('href="admin.html"',(ROOT/"website.html").read_text(encoding="utf-8"))
     def test_scheduled_broker_script_imports_without_pythonpath(self):
         root=ROOT.parent
-        script="import runpy; runpy.run_path('src/broker.py', run_name='__scan_import_test__')"
+        script="import sys,runpy;sys.path.insert(0,'src');runpy.run_path('src/broker.py', run_name='__scan_import_test__')"
         result=subprocess.run([sys.executable,"-c",script],cwd=root,capture_output=True,text=True,timeout=20)
         self.assertEqual(result.returncode,0,result.stderr)
 
