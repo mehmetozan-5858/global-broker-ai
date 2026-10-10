@@ -1,1 +1,1 @@
-{"name":"Global Broker","short_name":"Global Broker","start_url":"./?app=v4","scope":"./","display":"standalone","background_color":"#071827","theme_color":"#071827","description":"Global trade, sourcing, markets and opportunities control center"}
+{"name":"Global Broker","short_name":"Global Broker","start_url":"/app","scope":"/","display":"standalone","background_color":"#071827","theme_color":"#071827","description":"Global Broker trade, sourcing, markets and opportunities control center"}
