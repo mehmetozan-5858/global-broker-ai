@@ -27,7 +27,7 @@ jobs:
           cp -r web/* public/
           if [ -f web/index.html ]; then
             cp web/index.html public/customer.html
-            sed -i 's#</body>#<script src="pricing-policy.js" defer></script><script src="customer-portal.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html
+            sed -i 's#</body>#<script src="pricing-policy.js" defer></script><script src="contact-unlock-bridge.js" defer></script><script src="customer-portal.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html
           fi
           if [ -f web/app.html ]; then
             cp web/app.html public/dashboard.html
@@ -99,9 +99,12 @@ jobs:
           fetch_page "privacy.html" /tmp/privacy.html
           fetch_page "terms.html" /tmp/terms.html
           fetch_page "data/latest-opportunities.json" /tmp/opportunities.json
+          fetch_page "contact-unlock-bridge.js" /tmp/contact-unlock-bridge.js
 
           grep -q "GLOBAL" /tmp/home.html
           grep -q "Fırsat" /tmp/customer.html
+          grep -q "contact-unlock-bridge.js" /tmp/customer.html
+          grep -q "broker-contact-unlock" /tmp/contact-unlock-bridge.js
           grep -q "/auth/v1/token?grant_type=password" /tmp/account.html
           grep -q "Gizlilik" /tmp/privacy.html
           grep -q "Kullanım koşulları" /tmp/terms.html
@@ -113,6 +116,8 @@ jobs:
               raise SystemExit('public feed is not masked preview mode')
           rows=data.get('opportunities') or []
           for row in rows:
+              if (row.get('export_goods_review') or {}).get('status')!='goods_candidate':
+                  raise SystemExit('public customer feed contains a non-goods record')
               text=' '.join(map(str,row.keys())).lower()
               if 'buyer_name' in text or 'buyer-name' in text or 'email' in text or 'phone' in text or 'source_url' in text:
                   raise SystemExit('masked preview contains private fields')
