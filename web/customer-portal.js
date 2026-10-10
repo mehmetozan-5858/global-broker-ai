@@ -27,18 +27,20 @@ function city(o){return evidence(o,"city").value||pick(o,["place-of-performance-
 function product(o){return evidence(o,"product").value||pick(o,["product_name","product","title_tr","title_original","bid_description","notice-title","title"])||"Ürün adı belirtilmemiş";}
 function quantity(o){return evidence(o,"quantity").value||pick(o,["quantity-lot","quantity","requested_quantity","qty"])||"Miktar belirtilmemiş";}
 function deadline(o){return evidence(o,"deadline").value||pick(o,["deadline-receipt-tender-date-lot","responseDeadLine","deadline_date","submission_deadline_date","deadline","closing_date"])||"Son tarih belirtilmemiş";}
+function buyer(o){return evidence(o,"buyer").value||pick(o,["buyer-name","buyer_name","borrower","agency","department","office"])||"Alıcı belirtilmemiş";}
 function source(o){return pick(o,["source","source_name"])||"Kaynak belirtilmemiş";}
 function sourceUrl(o){return pick(o,["source_url","source-url","url","notice_url","detail_url"]);}
 function isGoods(o){return !!(o.export_goods_review&&o.export_goods_review.status==="goods_candidate");}
+function coverage(o){var c=o.core_field_coverage||{};var n=Number(c.verified_or_source_backed||0);return isFinite(n)?n:0;}
 
-function option(select,value){
+function option(select,value,label){
   var el=document.createElement("option");
-  el.value=value;el.textContent=value;select.appendChild(el);
+  el.value=value;el.textContent=label||value;select.appendChild(el);
 }
 function field(parent,label,value,missing){
   var row=document.createElement("div");row.className="cp-fact";
   var k=document.createElement("span");k.className="cp-key";k.textContent=label;
-  var v=document.createElement("strong");v.textContent=value; if(missing)v.className="cp-missing";
+  var v=document.createElement("strong");v.textContent=value;if(missing)v.className="cp-missing";
   row.appendChild(k);row.appendChild(v);parent.appendChild(row);
 }
 function unique(rows,fn){
@@ -52,19 +54,23 @@ function mount(rows){
   var cards=document.getElementById("cards");
   if(!cards)return;
   var panel=document.createElement("section");panel.id="customerSearch";panel.className="cp-panel";
-  panel.innerHTML='<div class="cp-head"><div><small>MÜŞTERİ FIRSAT PORTALI</small><h2>Fiziksel ürün taleplerini ara</h2><p>Yalnızca mal alımı adayı olarak doğrulanan kayıtlar gösterilir. Kaynakta olmayan alanlar tahmin edilmez.</p></div><div class="cp-count" id="cpCount">0 fırsat</div></div>'+
-  '<div class="cp-filters"><label>Ürün ara<input id="cpQuery" type="search" placeholder="Örn. pompa, mobilya, medikal..." autocomplete="off"></label><label>Ülke<select id="cpCountry"><option value="">Tüm ülkeler</option></select></label><label>Şehir<select id="cpCity"><option value="">Tüm şehirler</option></select></label></div><div id="cpResults" class="cp-results"></div>';
+  panel.innerHTML='<div class="cp-head"><div><small>MÜŞTERİ FIRSAT PORTALI</small><h2>Fiziksel ürün taleplerini ara</h2><p>Yalnızca mal alımı adayı olarak doğrulanan kayıtlar gösterilir. Kaynakta olmayan alanlar tahmin edilmez; daha güçlü kaynak kapsamına sahip fırsatlar önce gösterilir.</p></div><div class="cp-count" id="cpCount">0 fırsat</div></div>'+
+  '<div class="cp-filters"><label>Ürün / alıcı ara<input id="cpQuery" type="search" placeholder="Örn. pompa, mobilya, hastane..." autocomplete="off"></label><label>Ülke<select id="cpCountry"><option value="">Tüm ülkeler</option></select></label><label>Şehir<select id="cpCity"><option value="">Tüm şehirler</option></select></label><label>Kaynak kapsamı<select id="cpQuality"><option value="0">Tümü</option><option value="4">En az 4/6 alan</option><option value="5">En az 5/6 alan</option><option value="6">6/6 tam</option></select></label></div><div id="cpResults" class="cp-results"></div>';
   cards.parentNode.insertBefore(panel,cards);
 
-  var countrySel=document.getElementById("cpCountry"),citySel=document.getElementById("cpCity"),query=document.getElementById("cpQuery"),results=document.getElementById("cpResults"),count=document.getElementById("cpCount");
+  var countrySel=document.getElementById("cpCountry"),citySel=document.getElementById("cpCity"),qualitySel=document.getElementById("cpQuality"),query=document.getElementById("cpQuery"),results=document.getElementById("cpResults"),count=document.getElementById("cpCount");
   unique(rows,country).forEach(function(v){option(countrySel,v)});
-  unique(rows,city).forEach(function(v){option(citySel,v)});
+  unique(rows,city).filter(function(v){return v!=="Şehir belirtilmemiş"}).forEach(function(v){option(citySel,v)});
 
   function render(){
-    var q=query.value.trim().toLocaleLowerCase("tr"),c=countrySel.value,ct=citySel.value;
+    var q=query.value.trim().toLocaleLowerCase("tr"),c=countrySel.value,ct=citySel.value,minCoverage=Number(qualitySel.value||0);
     var filtered=rows.filter(function(o){
-      var hay=(product(o)+" "+country(o)+" "+city(o)).toLocaleLowerCase("tr");
-      return (!q||hay.indexOf(q)>=0)&&(!c||country(o)===c)&&(!ct||city(o)===ct);
+      var hay=(product(o)+" "+buyer(o)+" "+country(o)+" "+city(o)).toLocaleLowerCase("tr");
+      return (!q||hay.indexOf(q)>=0)&&(!c||country(o)===c)&&(!ct||city(o)===ct)&&coverage(o)>=minCoverage;
+    }).sort(function(a,b){
+      var d=coverage(b)-coverage(a);
+      if(d)return d;
+      return product(a).localeCompare(product(b),"tr");
     });
     count.textContent=filtered.length+" fırsat";
     results.textContent="";
@@ -75,23 +81,24 @@ function mount(rows){
       var title=document.createElement("h3");title.textContent=product(o);top.appendChild(title);
       var badge=document.createElement("span");badge.className="cp-badge";badge.textContent="Fiziksel ürün";top.appendChild(badge);card.appendChild(top);
       var facts=document.createElement("div");facts.className="cp-facts";
+      field(facts,"Alıcı",buyer(o),evidence(o,"buyer").status!=="source_backed");
       field(facts,"Ülke",country(o),evidence(o,"country").status!=="source_backed");
       field(facts,"Şehir",city(o),evidence(o,"city").status!=="source_backed");
       field(facts,"Miktar",quantity(o),evidence(o,"quantity").status!=="source_backed");
       field(facts,"Son tarih",deadline(o),evidence(o,"deadline").status!=="source_backed");
       field(facts,"Kaynak",source(o),false);card.appendChild(facts);
       var foot=document.createElement("div");foot.className="cp-foot";
-      var coverage=(o.core_field_coverage||{});var cov=document.createElement("span");cov.textContent="Kaynak alanı: "+(coverage.verified_or_source_backed||0)+"/"+(coverage.total||6);foot.appendChild(cov);
+      var cov=document.createElement("span");cov.textContent="Kaynak alanı: "+coverage(o)+"/"+((o.core_field_coverage||{}).total||6);foot.appendChild(cov);
       var url=sourceUrl(o);if(/^https:\/\//i.test(url)){var a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Resmî/kaynak ilanı aç →";foot.appendChild(a)}
       card.appendChild(foot);results.appendChild(card);
     });
   }
-  [query,countrySel,citySel].forEach(function(el){el.addEventListener(el===query?"input":"change",render)});
+  [query,countrySel,citySel,qualitySel].forEach(function(el){el.addEventListener(el===query?"input":"change",render)});
   render();
 }
 
 function style(){
-  var css=document.createElement("style");css.textContent='.cp-panel{margin:12px 14px 26px;padding:22px;border:1px solid #24465d;border-radius:18px;background:linear-gradient(145deg,#0c2b3e,#0a2030);box-shadow:0 16px 40px #0003}.cp-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.cp-head small{color:#f3bd67;letter-spacing:.12em;font-weight:800}.cp-head h2{margin:5px 0 6px;font-size:25px}.cp-head p{margin:0;color:#b8c9d4;max-width:650px;line-height:1.45}.cp-count{background:#173d55;border:1px solid #38627b;border-radius:999px;padding:8px 12px;font-weight:800;white-space:nowrap}.cp-filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin:18px 0}.cp-filters label{font-size:11px;color:#b8c9d4;font-weight:700}.cp-filters input,.cp-filters select{width:100%;margin-top:6px;padding:12px;border-radius:10px;border:1px solid #3b6077;background:#071b29;color:#fff;font:inherit}.cp-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;max-height:720px;overflow:auto}.cp-card{border:1px solid #2e5268;background:#0a2234;border-radius:14px;padding:15px}.cp-card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.cp-card h3{margin:0;font-size:16px;line-height:1.35}.cp-badge{font-size:10px;padding:5px 8px;border-radius:999px;background:#154938;color:#aef0c9;white-space:nowrap}.cp-facts{display:grid;grid-template-columns:1fr 1fr;gap:7px 12px;margin-top:13px}.cp-fact{min-width:0}.cp-key{display:block;color:#8fa8b8;font-size:10px}.cp-fact strong{display:block;font-size:12px;line-height:1.4;overflow-wrap:anywhere}.cp-missing{color:#f5c877}.cp-foot{border-top:1px solid #26475c;margin-top:12px;padding-top:10px;display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#9fb4c1}.cp-foot a{color:#8bc8ff;text-decoration:none}.cp-empty{padding:20px;border:1px dashed #3b6077;border-radius:12px;color:#b8c9d4}@media(max-width:700px){.cp-panel{margin-left:8px;margin-right:8px;padding:16px}.cp-head{display:block}.cp-count{display:inline-block;margin-top:12px}.cp-filters{grid-template-columns:1fr}.cp-results{grid-template-columns:1fr;max-height:none}.cp-facts{grid-template-columns:1fr 1fr}}';document.head.appendChild(css);
+  var css=document.createElement("style");css.textContent='.cp-panel{margin:12px 14px 26px;padding:22px;border:1px solid #24465d;border-radius:18px;background:linear-gradient(145deg,#0c2b3e,#0a2030);box-shadow:0 16px 40px #0003}.cp-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.cp-head small{color:#f3bd67;letter-spacing:.12em;font-weight:800}.cp-head h2{margin:5px 0 6px;font-size:25px}.cp-head p{margin:0;color:#b8c9d4;max-width:650px;line-height:1.45}.cp-count{background:#173d55;border:1px solid #38627b;border-radius:999px;padding:8px 12px;font-weight:800;white-space:nowrap}.cp-filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin:18px 0}.cp-filters label{font-size:11px;color:#b8c9d4;font-weight:700}.cp-filters input,.cp-filters select{width:100%;margin-top:6px;padding:12px;border-radius:10px;border:1px solid #3b6077;background:#071b29;color:#fff;font:inherit}.cp-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;max-height:720px;overflow:auto}.cp-card{border:1px solid #2e5268;background:#0a2234;border-radius:14px;padding:15px}.cp-card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.cp-card h3{margin:0;font-size:16px;line-height:1.35}.cp-badge{font-size:10px;padding:5px 8px;border-radius:999px;background:#154938;color:#aef0c9;white-space:nowrap}.cp-facts{display:grid;grid-template-columns:1fr 1fr;gap:7px 12px;margin-top:13px}.cp-fact{min-width:0}.cp-key{display:block;color:#8fa8b8;font-size:10px}.cp-fact strong{display:block;font-size:12px;line-height:1.4;overflow-wrap:anywhere}.cp-missing{color:#f5c877}.cp-foot{border-top:1px solid #26475c;margin-top:12px;padding-top:10px;display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#9fb4c1}.cp-foot a{color:#8bc8ff;text-decoration:none}.cp-empty{padding:20px;border:1px dashed #3b6077;border-radius:12px;color:#b8c9d4}@media(max-width:820px){.cp-filters{grid-template-columns:1fr 1fr}}@media(max-width:700px){.cp-panel{margin-left:8px;margin-right:8px;padding:16px}.cp-head{display:block}.cp-count{display:inline-block;margin-top:12px}.cp-filters{grid-template-columns:1fr}.cp-results{grid-template-columns:1fr;max-height:none}.cp-facts{grid-template-columns:1fr 1fr}}';document.head.appendChild(css);
 }
 
 style();
