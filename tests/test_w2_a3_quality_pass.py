@@ -22,11 +22,10 @@ class W2A3QualityPassTests(unittest.TestCase):
         portal = (ROOT / "web/customer-portal.js").read_text(encoding="utf-8")
         self.assertIn('id="cpQuality"', portal)
         self.assertIn("En az 4/6 alan", portal)
-        self.assertIn("function buyer(o)", portal)
         self.assertIn("coverage(b)-coverage(a)", portal)
         self.assertIn("Ürün ara", portal)
         self.assertIn("maskedBuyer", portal)
-        self.assertIn('field(facts,"Alıcı",maskedBuyer()', portal)
+        self.assertIn("/api/contact_unlock", portal)
         self.assertNotIn('product(o)+" "+buyer(o)', portal)
 
     def test_missing_values_are_still_explicit(self):
@@ -34,7 +33,7 @@ class W2A3QualityPassTests(unittest.TestCase):
         self.assertIn("Şehir belirtilmemiş", portal)
         self.assertIn("Miktar belirtilmemiş", portal)
         self.assertIn("Son tarih belirtilmemiş", portal)
-        self.assertIn("Alıcı belirtilmemiş", portal)
+        self.assertIn("Doğrulanmış alıcı", portal)
 
 
 if __name__ == "__main__":
