@@ -55,33 +55,25 @@ jobs:
             fi
             echo "::endgroup::" >&2
           }
-          # Core collection is kept deterministic; presentation translation happens outside this bounded stage.
           scan_step broker 180 python -c 'import src.broker as b; b.auto_translate_tr=lambda text:""; b.main()' > "$NEXT"
           test -s "$NEXT"
           scan_step china_feed 300 python -m src.china_feed "$NEXT"
           scan_step china_ggzy_feed 300 python -m src.china_ggzy_feed "$NEXT"
-          # A4 official Gulf adapters. A source counts as live only when this scan parses real official notices.
           scan_step saudi_etimad 120 python -m src.saudi_etimad_feed "$NEXT"
           scan_step uae_mof 120 python -m src.uae_mof_feed "$NEXT"
           scan_step uae_mof_ssr_fallback 30 python -m src.uae_mof_ssr_fallback "$NEXT"
           scan_step qatar_monaqasat 90 python -m src.qatar_monaqasat_feed "$NEXT"
-          # A2: only physical goods can enter the commercial research pipeline.
           scan_step physical_goods_gate 30 python -m src.physical_goods_gate "$NEXT"
-          # A3 first pass: label immediately available source fields before research.
           scan_step field_evidence_initial 30 python -m src.field_evidence "$NEXT"
           scan_step china_import_radar 240 python -m src.china_import_radar "$NEXT" data/latest-opportunities.json
           scan_step enrichment 90 python -m src.enrichment "$NEXT"
           scan_step document_parser 480 python -m src.document_parser "$NEXT" data/latest-opportunities.json
           scan_step ted_xml_enricher 480 python -m src.ted_xml_enricher "$NEXT"
-          # A5: promote only explicitly labelled quantity/payment/bond/delivery/eligibility/award facts from source text.
           scan_step a5_source_terms 30 python -m src.a5_source_terms "$NEXT"
           scan_step specification 90 python -m src.specification "$NEXT"
-          # A3 final pass: source documents/XML/A5 explicit labels may have added direct fields.
           scan_step field_evidence_final 30 python -m src.field_evidence "$NEXT"
           scan_step verification 180 python -m src.verification "$NEXT"
           scan_step sales_priority 90 python -m src.sales_priority "$NEXT"
-          # A4-A12: official Gulf registry truthfulness, commercial terms, supplier queue,
-          # feasibility, offer/risk, agent center, watchdog, deal lifecycle and launch readiness.
           scan_step remaining_pipeline 30 python -m src.remaining_pipeline "$NEXT"
       - name: Validate enriched live output
         run: |
@@ -112,11 +104,70 @@ jobs:
               raise SystemExit('unexpected production launch: Shadow Scan must not open production without explicit external production gates')
           print(f'ATOMIC_FEED_GATE opportunities={len(opportunities)} china_import_radar={len(radar)} launch_ready=false')
           PY
-          mv "$NEXT" data/latest-opportunities.json
-      # Internal CEO analysis is deliberately NOT committed or deployed publicly.
+          cp "$NEXT" data/latest-opportunities.private.json
       - name: Generate ephemeral internal CEO review
-        run: python -m src.build_ceo_report data/latest-opportunities.json data/latest-ceo-report.json
-      - name: Commit Shadow Mode output
+        run: python -m src.build_ceo_report data/latest-opportunities.private.json data/latest-ceo-report.json
+      - name: Build public-safe masked feed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          src=Path('data/latest-opportunities.private.json')
+          dst=Path('data/latest-opportunities.json')
+          data=json.loads(src.read_text(encoding='utf-8'))
+          blocked_exact={
+              'email','e-mail','phone','telephone','mobile','contact','contact_email','contact_phone','buyer_email','buyer_phone','supplier_email','supplier_phone',
+              'website','linkedin','address','street','postal_code','contact_person','representative','buyer-name','buyer_name','borrower','agency','department','office',
+              'contracting_authority','organization_name','source_url','source-url','url','notice_url','detail_url','document_url'
+          }
+          def scrub_value(value):
+              if isinstance(value, dict):
+                  out={}
+                  for k,v in value.items():
+                      lk=str(k).lower()
+                      if lk in blocked_exact or any(x in lk for x in ('email','phone','telephone','mobile','linkedin','contact_person','address')):
+                          continue
+                      out[k]=scrub_value(v)
+                  return out
+              if isinstance(value, list):
+                  return [scrub_value(x) for x in value]
+              return value
+          safe=scrub_value(data)
+          rows=[]
+          for row in safe.get('opportunities') or []:
+              if isinstance(row,dict):
+                  row['buyer_masked']=True
+                  row['buyer_display']='Doğrulanmış alıcı — üyelik erişim kurallarına tabi'
+                  rows.append(row)
+          safe['opportunities']=rows
+          safe['mode']='public_masked_feed'
+          safe['privacy_notice']='Direct buyer identity, contact details and direct source URLs are not published in the public feed.'
+          dst.write_text(json.dumps(safe,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+          print(f'PUBLIC_MASKED_FEED opportunities={len(rows)}')
+          PY
+          rm -f data/latest-opportunities.private.json data/latest-opportunities.next.json data/latest-ceo-report.json
+      - name: Verify no restricted fields are published
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('data/latest-opportunities.json').read_text(encoding='utf-8'))
+          if data.get('mode')!='public_masked_feed':
+              raise SystemExit('public feed mode is not masked')
+          forbidden=('email','phone','telephone','mobile','linkedin','contact_person','buyer_name','buyer-name','source_url','notice_url','detail_url','document_url')
+          def walk(v,path='root'):
+              if isinstance(v,dict):
+                  for k,x in v.items():
+                      lk=str(k).lower()
+                      if any(f==lk for f in forbidden):
+                          raise SystemExit(f'restricted key published: {path}.{k}')
+                      walk(x,path+'.'+str(k))
+              elif isinstance(v,list):
+                  for i,x in enumerate(v): walk(x,f'{path}[{i}]')
+          walk(data)
+          print('PUBLIC_FEED_PRIVACY_GATE_OK')
+          PY
+      - name: Commit masked Shadow Mode output
         run: |
           git config user.name "global-broker-bot"
           git config user.email "global-broker-bot@users.noreply.github.com"
@@ -125,12 +176,12 @@ jobs:
             git reset --mixed origin/main
             git add data/latest-opportunities.json
             if git diff --cached --quiet; then
-              echo "No new opportunity data to publish"
+              echo "No new masked opportunity data to publish"
               break
             fi
-            git commit -m "chore: update live shadow opportunities"
+            git commit -m "chore: update masked live opportunities"
             if git push origin HEAD:main; then
-              echo "Validated opportunity data published"
+              echo "Masked opportunity data published"
               break
             fi
             if [ "$attempt" -eq 4 ]; then
@@ -139,8 +190,7 @@ jobs:
             fi
             sleep 2
           done
-
-      - name: Trigger Pages deployment with translated data
+      - name: Trigger Pages deployment with masked data
         run: |
           gh workflow run deploy-mobile.yml
         env:
