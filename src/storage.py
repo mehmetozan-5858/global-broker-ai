@@ -158,7 +158,13 @@ def build_record_store(env: dict[str, str] | None = None) -> RecordStore:
         return HttpJsonRecordStore(durable_url, durable_token)
 
     allow_fallback = (values.get("PRIVATE_ROOM_ALLOW_ENV_FALLBACK") or "").lower() == "true"
-    if allow_fallback:
+    # A mistakenly enabled test fallback must never expose private-room data
+    # in a production deployment. Production always requires durable storage.
+    production = (
+        (values.get("VERCEL_ENV") or "").strip().lower() == "production"
+        or (values.get("NODE_ENV") or "").strip().lower() == "production"
+    )
+    if allow_fallback and not production:
         return EnvJsonRecordStore(values.get("PRIVATE_ROOM_RECORDS_JSON") or "{}")
 
     raise StorageError("durable_store_not_configured")
