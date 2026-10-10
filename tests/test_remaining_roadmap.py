@@ -1,9 +1,11 @@
+import json
 import os
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
 from src.agent_center import build as build_agent_center
+from src.billing_gate import decide as billing_decide, payment_record
 from src.commercial_feasibility import assess as assess_feasibility
 from src.commercial_terms import analyze as analyze_terms
 from src.gulf_sources import annotate_payload
@@ -79,6 +81,21 @@ class RemainingRoadmapTests(unittest.TestCase):
         self.assertIn("/auth/v1/recover",html)
         self.assertNotIn("role:'admin'",html)
         self.assertNotIn('role:"admin"',html)
+
+    def test_w4_billing_stays_closed_until_all_business_gates_pass(self):
+        d=billing_decide(provider_verified=False,legal_entity_verified=False,invoice_flow_verified=False,refund_terms_reviewed=False,customer_terms_accepted=False)
+        self.assertFalse(d.payment_allowed)
+        self.assertIn("payment_provider",d.blockers)
+        self.assertEqual(payment_record(provider_reference=None,amount=None,currency=None,provider_verified=False)["status"],"unconfirmed")
+
+    def test_w5_vercel_has_clean_routes_and_security_headers(self):
+        cfg=json.loads((ROOT/"vercel.json").read_text(encoding="utf-8"))
+        routes={x["source"]:x["destination"] for x in cfg["rewrites"]}
+        self.assertEqual(routes["/"],"/web/website.html")
+        self.assertEqual(routes["/account"],"/web/account.html")
+        all_headers={h["key"] for block in cfg["headers"] for h in block["headers"]}
+        self.assertIn("X-Content-Type-Options",all_headers)
+        self.assertIn("X-Frame-Options",all_headers)
 
     def test_shadow_scan_integrates_remaining_pipeline(self):
         workflow=(ROOT/".github/workflows/shadow-scan.yml").read_text(encoding="utf-8")
