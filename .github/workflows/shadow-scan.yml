@@ -57,7 +57,10 @@ jobs:
             fi
             echo "::endgroup::" >&2
           }
-          scan_step broker 360 python src/broker.py > "$NEXT"
+          # The core collector must not spend minutes making one external translation
+          # request per notice. Turkish presentation can be enriched after the source
+          # data is safely collected; this stage prioritizes reliable live ingestion.
+          scan_step broker 180 python -c 'import src.broker as b; b.auto_translate_tr=lambda text:""; b.main()' > "$NEXT"
           test -s "$NEXT"
           scan_step china_feed 300 python -m src.china_feed "$NEXT"
           scan_step china_ggzy_feed 300 python -m src.china_ggzy_feed "$NEXT"
