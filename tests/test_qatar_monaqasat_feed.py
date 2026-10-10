@@ -1,6 +1,7 @@
 import unittest
+from unittest.mock import patch
 
-from src.qatar_monaqasat_feed import parse, merge_payload
+from src.qatar_monaqasat_feed import ALT_SOURCE_URL, SOURCE_URL, collect, merge_payload, parse
 
 
 HTML='''
@@ -22,6 +23,19 @@ HTML='''
 </body></html>
 '''
 
+AR_HTML='''
+<html><body>
+<div>4901/2026 توريد أجهزة مخبرية</div>
+<div>تاريخ الطرح 08/10/2026</div>
+<div>نوع القطاع المطلوب موردين / مقدمى خدمات</div>
+<div>التأمين المؤقت 32,000.00</div>
+<div>قيمة الوثائق 500.00</div>
+<div>الجهة كلية المجتمع</div>
+<div>النوع مناقصة عامة</div>
+<div>تاريخ الإغلاق 02/11/2026 شراء</div>
+</body></html>
+'''
+
 
 class QatarMonaqasatFeedTests(unittest.TestCase):
     def test_only_clear_goods_are_parsed(self):
@@ -34,11 +48,29 @@ class QatarMonaqasatFeedTests(unittest.TestCase):
         self.assertEqual(row['bid_bond'],'QAR 50,000.00')
         self.assertFalse(row.get('foreign_supplier_eligibility_assumed',False))
 
+    def test_arabic_public_route_is_parseable(self):
+        rows=parse(AR_HTML, ALT_SOURCE_URL)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]['buyer-country'],'Qatar')
+        self.assertIn('توريد',rows[0]['title_original'])
+        self.assertEqual(rows[0]['source_provenance']['source'],ALT_SOURCE_URL)
+
+    def test_collect_falls_back_to_alternate_public_route(self):
+        def fake_fetch(url, timeout=18):
+            if url == SOURCE_URL:
+                raise OSError('blocked')
+            return AR_HTML
+        with patch('src.qatar_monaqasat_feed._fetch', side_effect=fake_fetch), patch('src.qatar_monaqasat_feed.time.sleep'):
+            rows,meta=collect()
+        self.assertEqual(len(rows),1)
+        self.assertEqual(meta['successful_route'],ALT_SOURCE_URL)
+        self.assertGreaterEqual(meta['attempts'],3)
+
     def test_merge_is_deduplicated(self):
         rows=parse(HTML)
         payload={'opportunities':[]}
-        merge_payload(payload,rows)
-        merge_payload(payload,rows)
+        merge_payload(payload,rows,{'successful_route':SOURCE_URL,'attempts':1,'errors':[]})
+        merge_payload(payload,rows,{'successful_route':SOURCE_URL,'attempts':1,'errors':[]})
         self.assertEqual(len(payload['opportunities']),1)
         self.assertTrue(payload['qatar_monaqasat_feed']['live_ingestion'])
 

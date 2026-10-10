@@ -4,6 +4,7 @@ import html
 import json
 import re
 import sys
+import time
 import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
@@ -11,6 +12,8 @@ from typing import Any
 from urllib.parse import urljoin
 
 SOURCE_URL = "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"
+ALT_SOURCE_URL = "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/1"
+SOURCE_URLS = (SOURCE_URL, ALT_SOURCE_URL)
 TENDER_NO = re.compile(r"\b\d{3,5}/20\d{2}\b")
 DATE = re.compile(r"\b\d{2}/\d{2}/20\d{2}\b")
 GOODS_WORDS = ("supply", "supplies", "medical consumables", "equipment", "items", "توريد", "شراء")
@@ -48,9 +51,15 @@ class _TextParser(HTMLParser):
             self._anchor_parts = []
 
 
-def _fetch(url: str = SOURCE_URL) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": "GlobalBrokerAI/1.0", "Accept-Language": "en"})
-    with urllib.request.urlopen(req, timeout=35) as response:
+def _fetch(url: str, timeout: int = 18) -> str:
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 (compatible; GlobalBrokerAI/1.0)",
+            "Accept-Language": "ar,en;q=0.8",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as response:
         return response.read().decode("utf-8", "replace")
 
 
@@ -73,13 +82,13 @@ def _field(segment: str, start_terms: tuple[str, ...], end_terms: tuple[str, ...
     return " ".join(segment[start:end].split()).strip(" :-")
 
 
-def _detail_url(number: str, subject: str, links: list[tuple[str, str]]) -> str:
+def _detail_url(number: str, subject: str, links: list[tuple[str, str]], source_url: str) -> str:
     needles = {number.lower(), subject[:40].lower()}
     for label, href in links:
         ll = label.lower()
         if any(n and n in ll for n in needles):
-            return urljoin(SOURCE_URL, html.unescape(href))
-    return SOURCE_URL
+            return urljoin(source_url, html.unescape(href))
+    return source_url
 
 
 def _physical_goods_subject(subject: str) -> bool:
@@ -90,7 +99,7 @@ def _physical_goods_subject(subject: str) -> bool:
     return goods > 0 and goods > services and goods > works
 
 
-def parse(markup: str) -> list[dict[str, Any]]:
+def parse(markup: str, source_url: str = SOURCE_URL) -> list[dict[str, Any]]:
     flat, links = _segment_text(markup)
     matches = list(TENDER_NO.finditer(flat))
     rows: list[dict[str, Any]] = []
@@ -98,8 +107,6 @@ def parse(markup: str) -> list[dict[str, Any]]:
         number = match.group(0)
         end = matches[i + 1].start() if i + 1 < len(matches) else len(flat)
         segment = flat[match.end():end]
-        subject = _field(segment, ("",), ("Publish date", "تاريخ الطرح")) if False else ""
-        # Subject is the text before the first publish-date marker.
         marker_positions = [x for x in (segment.lower().find("publish date"), segment.find("تاريخ الطرح")) if x >= 0]
         subject = " ".join(segment[:min(marker_positions)].split()).strip(" :-") if marker_positions else ""
         if not subject or not _physical_goods_subject(subject):
@@ -113,7 +120,7 @@ def parse(markup: str) -> list[dict[str, Any]]:
             publish = dates[0]
         if not close and len(dates) > 1:
             close = dates[-1]
-        url = _detail_url(number, subject, links)
+        url = _detail_url(number, subject, links, source_url)
         rows.append({
             "id": f"qatar-monaqasat-{number.replace('/','-')}",
             "source": "Qatar Monaqasat",
@@ -130,12 +137,37 @@ def parse(markup: str) -> list[dict[str, Any]]:
             "contract-nature": "supplies",
             "procurement_category": "goods",
             "gulf_live_source": True,
-            "source_provenance": {"source": SOURCE_URL, "tender_number": number, "parsed_from_public_listing": True},
+            "foreign_supplier_eligibility_assumed": False,
+            "source_provenance": {"source": source_url, "tender_number": number, "parsed_from_public_listing": True},
         })
     return rows
 
 
-def merge_payload(payload: dict[str, Any], rows: list[dict[str, Any]]) -> dict[str, Any]:
+def collect() -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    errors: list[str] = []
+    attempts = 0
+    for source_url in SOURCE_URLS:
+        for retry in range(2):
+            attempts += 1
+            try:
+                markup = _fetch(source_url)
+                rows = parse(markup, source_url)
+                if rows:
+                    return rows, {
+                        "successful_route": source_url,
+                        "attempts": attempts,
+                        "errors": errors,
+                    }
+                errors.append(f"{source_url}:no_tradeable_goods_found")
+            except Exception as exc:
+                errors.append(f"{source_url}:{type(exc).__name__}")
+            if retry == 0:
+                time.sleep(1)
+    return [], {"successful_route": None, "attempts": attempts, "errors": errors}
+
+
+def merge_payload(payload: dict[str, Any], rows: list[dict[str, Any]], meta: dict[str, Any] | None = None) -> dict[str, Any]:
+    meta = meta or {}
     existing = payload.get("opportunities")
     if not isinstance(existing, list):
         existing = []
@@ -147,13 +179,18 @@ def merge_payload(payload: dict[str, Any], rows: list[dict[str, Any]]) -> dict[s
             existing.append(row)
             seen.add(row["id"])
             added += 1
+    errors = list(meta.get("errors") or [])
     payload["qatar_monaqasat_feed"] = {
-        "source": SOURCE_URL,
-        "status": "ok" if rows else "no_tradeable_goods_found",
+        "source": meta.get("successful_route") or SOURCE_URL,
+        "alternate_official_source": ALT_SOURCE_URL,
+        "status": "ok" if rows else ("source_unavailable" if errors and all("no_tradeable_goods_found" not in x for x in errors) else "no_tradeable_goods_found"),
         "parsed_goods": len(rows),
         "added": added,
         "live_ingestion": bool(rows),
         "foreign_supplier_eligibility_assumed": False,
+        "successful_route": meta.get("successful_route"),
+        "attempts": int(meta.get("attempts") or 0),
+        "errors": errors,
     }
     return payload
 
@@ -161,20 +198,8 @@ def merge_payload(payload: dict[str, Any], rows: list[dict[str, Any]]) -> dict[s
 def main(path: str) -> None:
     p = Path(path)
     payload = json.loads(p.read_text(encoding="utf-8"))
-    try:
-        markup = _fetch()
-        rows = parse(markup)
-        merge_payload(payload, rows)
-    except Exception as exc:
-        payload["qatar_monaqasat_feed"] = {
-            "source": SOURCE_URL,
-            "status": "source_unavailable",
-            "parsed_goods": 0,
-            "added": 0,
-            "live_ingestion": False,
-            "foreign_supplier_eligibility_assumed": False,
-            "error": type(exc).__name__,
-        }
+    rows, meta = collect()
+    merge_payload(payload, rows, meta)
     p.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print("QATAR_MONAQASAT", json.dumps(payload["qatar_monaqasat_feed"], ensure_ascii=False), file=sys.stderr)
 
