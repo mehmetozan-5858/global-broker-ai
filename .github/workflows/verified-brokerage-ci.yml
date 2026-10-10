@@ -39,3 +39,11 @@ jobs:
           node --check web/country-markets.js
           node --check web/customer-portal.js
           node --check web/customer-priority.js
+          node --check web/customer-brand-bridge.js
+          node --check web/operational-panels.js
+          node --check web/opportunity-readiness.js
+          node --check web/opportunity-dossier.js
+          node --check web/ceo-priority.js
+          node --check web/today-tasks.js
+          node --check web/task-center.js
+          node --check web/system-health.js
