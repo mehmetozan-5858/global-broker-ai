@@ -71,8 +71,10 @@ class RemainingRoadmapTests(unittest.TestCase):
     def test_orchestrator_runs_all_remaining_stages(self):
         payload={"opportunities":[{"title_original":"Pump","export_goods_review":{"status":"goods_candidate"},"specification_analysis":{"supplier_sourcing_ready":False}}]}
         process(payload)
-        for key in ("gulf_sources","commercial_terms_summary","supplier_research_summary","commercial_feasibility_summary","offer_risk_summary","agent_center","launch_gate"):
+        for key in ("gulf_sources","commercial_terms_summary","supplier_research_summary","commercial_feasibility_summary","offer_risk_summary","agent_center","deal_lifecycle_summary","launch_gate"):
             self.assertIn(key,payload)
+        self.assertEqual(payload["deal_lifecycle_summary"]["case_count"],0)
+        self.assertFalse(payload["deal_lifecycle_summary"]["external_actions_enabled"])
 
     def test_w3_account_page_uses_real_auth_and_has_no_admin_self_assignment(self):
         html=(ROOT/"web/account.html").read_text(encoding="utf-8")
