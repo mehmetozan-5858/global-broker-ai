@@ -39,6 +39,23 @@ class ProfessionalWebTests(unittest.TestCase):
         result=subprocess.run([sys.executable,"-c",script],cwd=root,capture_output=True,text=True,timeout=20)
         self.assertEqual(result.returncode,0,result.stderr)
 
+    def test_vibrant_landing_and_preserved_dashboard_routes(self):
+        html=(ROOT/"website.html").read_text(encoding="utf-8")
+        workflow=(ROOT.parent/".github/workflows/deploy-mobile.yml").read_text(encoding="utf-8")
+        self.assertGreaterEqual(html.count('images.unsplash.com/photo-'),4)
+        self.assertIn("hero-layout",html)
+        self.assertIn("visual-grid",html)
+        self.assertIn("cp web/website.html public/index.html",workflow)
+        self.assertIn("cp web/app.html public/dashboard.html",workflow)
+        self.assertIn("cp web/index.html public/customer.html",workflow)
+        self.assertIn("public/dashboard.html",workflow)
+        self.assertNotIn("cp web/app.html public/index.html",workflow)
+
+    def test_roadmap_has_gates_and_cost_controls(self):
+        plan=(ROOT.parent/"docs/ROADMAP_WEB_AND_BROKER.md").read_text(encoding="utf-8")
+        for token in ("W1","W5","A1","A10","Shadow Mode","minimum sabit gider","canlı davranış kontrolü"):
+            self.assertIn(token,plan)
+
     def test_mobile_and_accessibility(self):
         html=(ROOT/"website.html").read_text(encoding="utf-8")
         for needle in ("width=device-width","prefers-reduced-motion","focus-visible","Ana içeriğe geç","aria-label","@media"):
