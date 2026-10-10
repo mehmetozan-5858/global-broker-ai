@@ -97,4 +97,8 @@ def build(payload: dict[str, Any]) -> dict[str, Any]:
         },
     }
     payload["agent_center"] = center
+
+    from .watchdog import build as build_watchdog
+
+    build_watchdog(payload)
     return center
