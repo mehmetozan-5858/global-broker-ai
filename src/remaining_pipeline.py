@@ -9,6 +9,7 @@ from .commercial_feasibility import process_payload as process_feasibility
 from .commercial_terms import process_payload as process_commercial_terms
 from .gulf_sources import annotate_payload as annotate_gulf_sources
 from .launch_gate import evaluate as evaluate_launch
+from .launch_readiness_report import build as build_launch_readiness_report
 from .offer_risk_gate import process_payload as process_offer_risk
 from .supplier_research import process_payload as process_supplier_research
 
@@ -21,6 +22,7 @@ def process(payload: dict) -> dict:
     process_offer_risk(payload)                     # A8 draft / risk gate
     build_agent_center(payload)                     # A9 measurable agent center
     evaluate_launch(payload)                        # A10 fail-closed production gate
+    build_launch_readiness_report(payload)          # operator-visible launch blocker report
     return payload
 
 
@@ -36,6 +38,8 @@ def main(path: str) -> None:
         "draft_ready": (payload.get("offer_risk_summary") or {}).get("internal_draft_ready"),
         "launch_ready": (payload.get("launch_gate") or {}).get("launch_ready"),
         "launch_blockers": (payload.get("launch_gate") or {}).get("blockers"),
+        "launch_categories": (payload.get("launch_readiness_report") or {}).get("categories"),
+        "global_market_scope": True,
     }, ensure_ascii=False), file=sys.stderr)
 
 
