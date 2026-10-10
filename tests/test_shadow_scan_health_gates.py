@@ -15,7 +15,8 @@ class ShadowScanHealthGateTests(unittest.TestCase):
     def test_remaining_pipeline_is_still_the_source_of_health_outputs(self):
         workflow = (ROOT / ".github/workflows/shadow-scan.yml").read_text(encoding="utf-8")
         self.assertIn('python -m src.remaining_pipeline "$NEXT"', workflow)
-        self.assertIn("A4-A12", workflow)
+        self.assertIn("Build public-safe masked feed", workflow)
+        self.assertIn("Verify no restricted fields are published", workflow)
 
 
 if __name__ == "__main__":
