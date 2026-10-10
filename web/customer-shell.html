@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061725">
+<title>Global Broker Fırsat Portalı</title>
+<style>
+html,body{margin:0;width:100%;height:100%;background:#061725;overflow:hidden}
+#portal{display:block;width:100%;height:100%;border:0;background:#061725}
+</style>
+</head>
+<body>
+<iframe id="portal" src="/web/index.html" title="Global Broker Fırsat Portalı"></iframe>
+<script>
+(function(){
+  var frame=document.getElementById('portal');
+  function enhance(){
+    var w=frame.contentWindow, d=frame.contentDocument;
+    if(!w||!d) return;
+
+    var nav=d.querySelector('nav');
+    if(nav){
+      nav.setAttribute('aria-label','Mobil ana menü');
+      var tabs=[].slice.call(nav.querySelectorAll('span'));
+      var map=['home','agents','opps','report','settings'];
+      tabs.forEach(function(tab,i){
+        tab.setAttribute('role','button');
+        tab.setAttribute('tabindex','0');
+        tab.setAttribute('data-tab',map[i]||'');
+        tab.style.cursor='pointer';
+        tab.style.minWidth='56px';
+        tab.style.padding='4px 7px';
+        tab.style.borderRadius='10px';
+        tab.style.transition='background .15s,color .15s';
+        tab.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tab.click();}});
+      });
+      function setActive(key){
+        tabs.forEach(function(t){
+          var on=t.getAttribute('data-tab')===key;
+          t.classList.toggle('navon',on);
+          t.setAttribute('aria-current',on?'page':'false');
+          t.style.background=on?'rgba(88,161,255,.12)':'transparent';
+        });
+      }
+      var originalHome=w.goHome;
+      if(typeof originalHome==='function'){
+        w.goHome=function(){originalHome();setActive('home');w.scrollTo(0,0);};
+      }
+      var originalOpen=w.openCard;
+      if(typeof originalOpen==='function'){
+        w.openCard=function(k,t){
+          originalOpen(k,t);
+          var active=(k==='agents'||k==='opps'||k==='report'||k==='settings')?k:'';
+          if(active)setActive(active);
+          w.scrollTo(0,0);
+          var panel=d.getElementById('panel');
+          if(panel) panel.scrollIntoView({block:'start'});
+        };
+      }
+      setActive('home');
+    }
+
+    var corporate=d.querySelector('a[href="website.html"]');
+    if(corporate){
+      corporate.addEventListener('click',function(e){e.preventDefault();window.top.location.href='/';});
+    }
+
+    var style=d.createElement('style');
+    style.textContent='nav span{touch-action:manipulation;-webkit-tap-highlight-color:transparent} nav span:active{transform:scale(.97)} .panel{scroll-margin-top:8px}';
+    d.head.appendChild(style);
+  }
+  frame.addEventListener('load',function(){setTimeout(enhance,0);});
+})();
+</script>
+</body>
+</html>
