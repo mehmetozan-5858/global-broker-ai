@@ -62787,6 +62787,27 @@
     "errors": [],
     "foreign_supplier_eligibility_assumed": false
   },
+  "saudi_etimad_feed": {
+    "source": "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC",
+    "status": "listing_accessible_no_detail_links",
+    "parsed_opportunities": 0,
+    "added": 0,
+    "live_ingestion": false,
+    "foreign_supplier_eligibility_assumed": false,
+    "listing_url": "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC",
+    "listing_accessible": true,
+    "detail_links": 0,
+    "detail_failures": 0
+  },
+  "uae_mof_feed": {
+    "source": "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/",
+    "status": "no_rows_found",
+    "parsed_opportunities": 0,
+    "added": 0,
+    "live_ingestion": false,
+    "foreign_supplier_eligibility_assumed": false,
+    "errors": []
+  },
   "qatar_monaqasat_feed": {
     "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
     "status": "source_unavailable",
@@ -77089,13 +77110,18 @@
   },
   "china_import_radar": {
     "meta": {
-      "status": "ok",
+      "status": "stale_last_known_good",
       "current_year": 2025,
       "previous_year": 2024,
       "products_monitored": 16,
       "products_with_data": 16,
       "source": "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
-      "buyer_data_inferred": false
+      "buyer_data_inferred": false,
+      "fresh_fetch_status": "source_unavailable",
+      "fresh_fetch_errors": [
+        "2025: TimeoutError",
+        "2024: TimeoutError"
+      ]
     },
     "items": [
       {
@@ -77463,14 +77489,14 @@
       {
         "country": "Saudi Arabia",
         "name": "Etimad",
-        "url": "https://tenders.etimad.sa/",
+        "url": "https://tenders.etimad.sa/Tender/AllTendersForVisitor",
         "status": "official_source_registered",
         "live_ingestion": false
       },
       {
         "country": "United Arab Emirates",
-        "name": "UAE Ministry of Finance Digital Procurement Platform",
-        "url": "https://mof.gov.ae/en/public-finance/government-procurement/digital-procurement-platform/",
+        "name": "UAE Ministry of Finance Current Business Opportunities",
+        "url": "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/",
         "status": "official_source_registered",
         "live_ingestion": false
       },
@@ -77510,10 +77536,12 @@
         "live_ingestion": false
       }
     ],
+    "saudi_live_ingestion_verified": false,
+    "uae_live_ingestion_verified": false,
     "qatar_live_ingestion_verified": false,
     "priority_gulf_live_ingestion_verified": false,
     "live_ingestion_verified": false,
-    "rule": "Each country becomes live only after real notice ingestion in the current scan. Priority Gulf coverage requires Saudi Arabia, UAE and Qatar; registered links alone do not count."
+    "rule": "Each country becomes live only after real official notice ingestion in the current scan. Priority Gulf coverage requires Saudi Arabia, UAE and Qatar; registered links alone do not count."
   },
   "commercial_terms_summary": {
     "opportunities": 63,
@@ -77599,6 +77627,7 @@
       "commercial_feasibility_pipeline_present": true,
       "server_side_auth_configured": false,
       "durable_private_storage_configured": false,
+      "admin_dual_recovery_ready": false,
       "legal_text_reviewed": false,
       "payment_provider_tested": false,
       "verified_business_contact": false,
@@ -77611,6 +77640,7 @@
     "blockers": [
       "server_side_auth_configured",
       "durable_private_storage_configured",
+      "admin_dual_recovery_ready",
       "legal_text_reviewed",
       "payment_provider_tested",
       "verified_business_contact",
@@ -77618,6 +77648,6 @@
       "gulf_live_ingestion_verified",
       "real_customer_acceptance_tested"
     ],
-    "rule": "Production launch stays closed until every required technical, security, legal, payment, domain and acceptance gate is explicitly verified."
+    "rule": "Production launch stays closed until every required technical, admin-recovery, security, legal, payment, domain, Gulf-ingestion and acceptance gate is explicitly verified."
   }
 }
