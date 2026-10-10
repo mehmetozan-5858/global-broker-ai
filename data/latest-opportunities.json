@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-10",
   "scope": "ALL_GLOBAL_PRODUCTS",
-  "count": 62,
+  "count": 63,
   "opportunities": [
     {
       "deadline-receipt-tender-date-lot": [
@@ -62203,6 +62203,312 @@
         ],
         "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
       }
+    },
+    {
+      "id": "saudi-etimad-261039002860",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true"
+      ],
+      "title_original": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
+      "title_tr": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
+      "buyer-name": "الشؤون الصحیة بوزارة الحرس الوطني",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T10:51:12.4161069",
+      "deadline-receipt-tender-date-lot": "2026-10-12T09:59:00",
+      "tender_number": "141991",
+      "reference_number": "261039002860",
+      "tender_type": "شراء مباشر",
+      "branch_name": "إدارة المشتريات - مستشفى الامير محمد بن عبدالعزيز بالمدينة المنورة",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039002860",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "goods_candidate",
+        "reason": "Başlık fiziksel ürün tedarikine açıkça işaret ediyor; kaynak türü ve ihracat koşulları teyit edilmeli.",
+        "basis": "headline_goods_signal"
+      },
+      "opportunity_type": "FİZİKSEL_MAL_ADAYI",
+      "field_evidence": {
+        "country": {
+          "value": "Saudi Arabia",
+          "status": "source_backed",
+          "source_field": "buyer-country",
+          "inferred": false
+        },
+        "city": {
+          "value": "Saudi Arabia",
+          "status": "source_backed",
+          "source_field": "delivery_location",
+          "inferred": false
+        },
+        "product": {
+          "value": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
+          "status": "source_backed",
+          "source_field": "product_name",
+          "inferred": false
+        },
+        "quantity": {
+          "value": null,
+          "status": "missing",
+          "source_field": null,
+          "inferred": false
+        },
+        "deadline": {
+          "value": "2026-10-12T09:59:00",
+          "status": "source_backed",
+          "source_field": "deadline-receipt-tender-date-lot",
+          "inferred": false
+        },
+        "buyer": {
+          "value": "الشؤون الصحیة بوزارة الحرس الوطني",
+          "status": "source_backed",
+          "source_field": "buyer-name",
+          "inferred": false
+        }
+      },
+      "missing_core_fields": [
+        "quantity"
+      ],
+      "core_field_coverage": {
+        "verified_or_source_backed": 5,
+        "total": 6,
+        "complete": false
+      },
+      "dossier": {
+        "buyer_name": "الشؤون الصحیة بوزارة الحرس الوطني",
+        "buyer_country": "Saudi Arabia",
+        "product_name": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
+        "demand_description": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
+        "quantity": null,
+        "budget_value": null,
+        "budget_currency": null,
+        "delivery_location": "Saudi Arabia",
+        "deadline": "2026-10-12T09:59:00",
+        "procedure_type": null,
+        "contract_nature": null,
+        "cpv": [],
+        "official_links": [
+          "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true"
+        ],
+        "source": "Saudi Etimad official visitor API",
+        "missing_fields": [
+          "quantity",
+          "specification_evidence"
+        ],
+        "completeness_percent": 83,
+        "supplier_sourcing_ready": false,
+        "specification_status": "document_analysis_pending",
+        "specification_sourcing_ready": false,
+        "standards": [],
+        "document_links": [
+          {
+            "url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+            "kind": "source_page"
+          }
+        ],
+        "document_parsed": true,
+        "technical_evidence_count": 0,
+        "eligibility_evidence_count": 0
+      },
+      "product_name": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
+      "delivery_location": "Saudi Arabia",
+      "document_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "document_extraction": {
+        "status": "parsed",
+        "source_backed_only": true,
+        "candidate_count": 1,
+        "source_page_count": 1,
+        "discovered_attachment_count": 0,
+        "parsed_count": 1,
+        "attempts": [
+          {
+            "url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+            "status": "parsed",
+            "source": "source_page",
+            "kind": "source_page",
+            "final_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+            "content_type": "text/html",
+            "bytes": 47922,
+            "extracted_chars": 218,
+            "discovered_attachments": 0
+          }
+        ],
+        "text_chars": 218
+      },
+      "document_extracted_text": "This question is for testing whether you are a human visitor and to prevent automated spam submission. Audio is not supported in your browser. What code is in the image? submit Your support ID is: 13157508242838637583.",
+      "specification_analysis": {
+        "status": "document_analysis_pending",
+        "source_backed_only": true,
+        "supplier_sourcing_ready": false,
+        "structured_specification_present": false,
+        "document_text_present": true,
+        "document_parsed": true,
+        "technical_evidence": [],
+        "quantity_evidence": [],
+        "delivery_evidence": [
+          {
+            "field": "delivery_location",
+            "text": "Saudi Arabia"
+          }
+        ],
+        "eligibility_evidence": [],
+        "award_evidence": [],
+        "standards": [],
+        "documents": [
+          {
+            "url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+            "kind": "source_page"
+          }
+        ],
+        "attachment_requires_parsing": false,
+        "source_excerpt": "This question is for testing whether you are a human visitor and to prevent automated spam submission.\nAudio is not supported in your browser.\nWhat code is in the image?\nsubmit Your support ID is: 13157508242838637583.\nSaudi Arabia"
+      },
+      "buyer_verified": false,
+      "compliance_status": "buyer_identified_due_diligence_pending",
+      "sales_priority": {
+        "score": 7,
+        "grade": "C",
+        "queue": "research_only",
+        "reasons": [
+          "source_document_parsed",
+          "source_link_present"
+        ],
+        "blockers": [
+          "buyer_verification",
+          "specification_readiness",
+          "supplier_verification",
+          "compliance_clearance",
+          "margin_confirmation"
+        ],
+        "source_backed_only": true
+      },
+      "commercial_terms": {
+        "terms": {
+          "payment": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          },
+          "bond": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          },
+          "delivery": {
+            "value": "Saudi Arabia",
+            "source_field": "delivery_location",
+            "status": "source_backed"
+          },
+          "eligibility": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          },
+          "award": {
+            "value": null,
+            "source_field": null,
+            "status": "missing"
+          }
+        },
+        "missing": [
+          "payment",
+          "bond",
+          "eligibility",
+          "award"
+        ],
+        "complete": false,
+        "source_backed_only": true,
+        "rule": "Payment, bond, delivery, eligibility and award terms are never inferred when absent from source fields."
+      },
+      "supplier_research": {
+        "status": "specification_review_pending",
+        "dossier_ready": false,
+        "product": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
+        "buyer_country": "Saudi Arabia",
+        "search_query": null,
+        "candidate_suppliers": [],
+        "verified_supplier_count": 0,
+        "verification_required": true,
+        "blocked_by_missing_fields": [
+          "specification_evidence"
+        ],
+        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+      },
+      "commercial_feasibility": {
+        "status": "commercial_inputs_missing",
+        "source_backed_only": true,
+        "calculation_ready": false,
+        "facts": {
+          "quantity": {
+            "value": null,
+            "source_field": null
+          },
+          "currency": {
+            "value": null,
+            "source_field": null
+          },
+          "unit_price": {
+            "value": null,
+            "source_field": null
+          },
+          "freight": {
+            "value": null,
+            "source_field": null
+          },
+          "duty": {
+            "value": null,
+            "source_field": null
+          },
+          "incoterm": {
+            "value": null,
+            "source_field": null
+          },
+          "destination": {
+            "value": "Saudi Arabia",
+            "source_field": "delivery_location"
+          }
+        },
+        "missing_inputs": [
+          "quantity",
+          "currency",
+          "unit_price",
+          "freight",
+          "duty",
+          "incoterm"
+        ],
+        "assumptions": [],
+        "margin_claim_allowed": false,
+        "rule": "Unknown commercial inputs stay unknown; no price, freight, duty or margin is fabricated."
+      },
+      "offer_risk_gate": {
+        "draft_offer_ready": false,
+        "external_action_authorized": false,
+        "human_approval_required": true,
+        "blockers": [
+          "buyer_verification",
+          "specification",
+          "verified_supplier",
+          "commercial_feasibility"
+        ],
+        "allowed_actions": [
+          "internal_review",
+          "draft_only"
+        ],
+        "forbidden_actions": [
+          "send_email",
+          "submit_bid",
+          "place_order",
+          "take_payment"
+        ],
+        "rule": "Even a complete dossier stays in Shadow Mode until explicit human authorization and production legal/payment gates exist."
+      }
     }
   ],
   "market_sources": [
@@ -62316,36 +62622,37 @@
     "foreign_supplier_eligibility_assumed": false
   },
   "saudi_etimad_feed": {
-    "source": "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC",
-    "status": "listing_accessible_no_detail_links",
-    "parsed_opportunities": 0,
-    "added": 0,
-    "live_ingestion": false,
+    "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync",
+    "status": "ok",
+    "parsed_opportunities": 48,
+    "added": 48,
+    "live_ingestion": true,
     "foreign_supplier_eligibility_assumed": false,
-    "listing_url": "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC",
-    "listing_accessible": true,
-    "detail_links": 0,
-    "detail_failures": 0,
-    "browser_fallback_used": false,
-    "browser_fallback_error": "RuntimeError:headless_browser_timeout_without_dom"
+    "api_endpoint": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync",
+    "api_pages_fetched": 2,
+    "api_errors": [],
+    "api_records": 48,
+    "collection_path": "official_json_api"
   },
   "uae_mof_feed": {
     "source": "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/",
     "alternate_official_source": "https://mof.gov.ae/ar/public-finance/government-procurement/current-business-opportunities/",
-    "status": "no_rows_found",
+    "status": "source_unavailable",
     "parsed_opportunities": 0,
     "added": 0,
     "live_ingestion": false,
     "foreign_supplier_eligibility_assumed": false,
-    "errors": [],
+    "errors": [
+      "route=en:page=1:browser:RuntimeError:headless_browser_timeout_without_dom"
+    ],
     "successful_route": null,
     "rendered_fallback_used": true,
     "browser_fallback_pages": [
-      "en:1",
-      "ar:1",
-      "en:2",
-      "ar:2"
-    ]
+      "ar:1"
+    ],
+    "budget_seconds": 70,
+    "budget_exhausted": false,
+    "elapsed_seconds": 37.66
   },
   "qatar_monaqasat_feed": {
     "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
@@ -75368,12 +75675,1516 @@
           "status": "not_started"
         }
       }
+    },
+    {
+      "id": "saudi-etimad-260739008285",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "تأمين وحدة تحكم الكترونية (260463)",
+      "title_tr": "تأمين وحدة تحكم الكترونية (260463)",
+      "buyer-name": "المؤسسة العامة للصناعات العسكرية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:22:31.8625258",
+      "deadline-receipt-tender-date-lot": "2026-10-16T09:59:00",
+      "tender_number": "260463",
+      "reference_number": "260739008285",
+      "tender_type": "شراء مباشر",
+      "branch_name": "الإدارة العامة للعقود والمشتريات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260739008285",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260739010563",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توريد محرك بمضخة لسحب الزيوت",
+      "title_tr": "توريد محرك بمضخة لسحب الزيوت",
+      "buyer-name": "المؤسسة العامة للصناعات العسكرية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:20:46.975175",
+      "deadline-receipt-tender-date-lot": "2026-10-16T09:59:00",
+      "tender_number": "260457",
+      "reference_number": "260739010563",
+      "tender_type": "شراء مباشر",
+      "branch_name": "الإدارة العامة للعقود والمشتريات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260739010563",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260839001467",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "تامين قطع غيار لأعمال قسم الميكانيكا",
+      "title_tr": "تامين قطع غيار لأعمال قسم الميكانيكا",
+      "buyer-name": "المؤسسة العامة للصناعات العسكرية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:18:10.2254749",
+      "deadline-receipt-tender-date-lot": "2026-10-17T09:59:00",
+      "tender_number": "260486",
+      "reference_number": "260839001467",
+      "tender_type": "شراء مباشر",
+      "branch_name": "الإدارة العامة للعقود والمشتريات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260839001467",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260839010464",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "اشتراك الدعم الفني لنظام سير الأعمال",
+      "title_tr": "اشتراك الدعم الفني لنظام سير الأعمال",
+      "buyer-name": "وزارة الاتصالات وتقنية المعلومات - الديوان العام",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:16:20.4694245",
+      "deadline-receipt-tender-date-lot": "2026-10-25T09:59:00",
+      "tender_number": "10679",
+      "reference_number": "260839010464",
+      "tender_type": "منافسة عامة",
+      "branch_name": "المنافسات -المساعد",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260839010464",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939002672",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "منافسة توريد بطاريات لأجهزة الصدمات الكهربائية بمستشفى الملك عبد العزيز بالأحساء التابع للشؤون الصحية بوزارة الحرس الوطني",
+      "title_tr": "منافسة توريد بطاريات لأجهزة الصدمات الكهربائية بمستشفى الملك عبد العزيز بالأحساء التابع للشؤون الصحية بوزارة الحرس الوطني",
+      "buyer-name": "الشؤون الصحیة بوزارة الحرس الوطني",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:15:03.4803678",
+      "deadline-receipt-tender-date-lot": "2026-10-30T09:59:00",
+      "tender_number": "م ا م / 2 / 2026",
+      "reference_number": "260939002672",
+      "tender_type": "منافسة عامة",
+      "branch_name": "مناقصات مستشفى الملك عبدالعزيز بالاحساء ومستشفى الامام عبدالرحمن بن فيصل بالدمام",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939002672",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939007842",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "الرخص التشغيلية لأمن المعلومات في الصندوق الصناعي لعام 2026م",
+      "title_tr": "الرخص التشغيلية لأمن المعلومات في الصندوق الصناعي لعام 2026م",
+      "buyer-name": "صندوق التنمية الصناعية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:07:53.6047193",
+      "deadline-receipt-tender-date-lot": "2026-10-25T09:59:00",
+      "tender_number": "4000004004",
+      "reference_number": "260939007842",
+      "tender_type": "منافسة عامة",
+      "branch_name": "المنافسات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939007842",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939007844",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "خدمة تجديد رخص المستخدمين للصندوق الصناعي لعام 2026م",
+      "title_tr": "خدمة تجديد رخص المستخدمين للصندوق الصناعي لعام 2026م",
+      "buyer-name": "صندوق التنمية الصناعية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:06:54.2471755",
+      "deadline-receipt-tender-date-lot": "2026-11-09T09:59:00",
+      "tender_number": "3000001803",
+      "reference_number": "260939007844",
+      "tender_type": "منافسة عامة",
+      "branch_name": "المنافسات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939007844",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939008547",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "مشروع الدعم الفني لصيانة نظام معلومات إدارة الخدمات الطبية لديوان رئاسة أمن الدولة",
+      "title_tr": "مشروع الدعم الفني لصيانة نظام معلومات إدارة الخدمات الطبية لديوان رئاسة أمن الدولة",
+      "buyer-name": "الديوان العام لرئاسة أمن الدولة",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:05:12.5761226",
+      "deadline-receipt-tender-date-lot": "2026-10-25T09:59:00",
+      "tender_number": "2026-86م",
+      "reference_number": "260939008547",
+      "tender_type": "منافسة عامة",
+      "branch_name": "المنافسات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939008547",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939009121",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "تجديد الاشتراك في نظام فحص الأبحاث والتحقق من الأصالة العلمية (برنامج الانتيثيكيت)",
+      "title_tr": "تجديد الاشتراك في نظام فحص الأبحاث والتحقق من الأصالة العلمية (برنامج الانتيثيكيت)",
+      "buyer-name": "الهيئة الملكية بينبع",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:03:39.564027",
+      "deadline-receipt-tender-date-lot": "2026-10-23T09:59:00",
+      "tender_number": "26150000117",
+      "reference_number": "260939009121",
+      "tender_type": "شراء مباشر",
+      "branch_name": "مدينة ينبع الصناعية - إدارة المشتريات - قسم المشتريات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939009121",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039000930",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توفيراشتراكات لتطبيقات أدوبي لمدة سنة للإدارة العامة لتقنية المعلومات في الشؤون الصحية بوزارة الحرس الوطني بالرياض",
+      "title_tr": "توفيراشتراكات لتطبيقات أدوبي لمدة سنة للإدارة العامة لتقنية المعلومات في الشؤون الصحية بوزارة الحرس الوطني بالرياض",
+      "buyer-name": "الشؤون الصحیة بوزارة الحرس الوطني",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T02:01:29.0312646",
+      "deadline-receipt-tender-date-lot": "2026-10-17T09:59:00",
+      "tender_number": "2387166",
+      "reference_number": "261039000930",
+      "tender_type": "شراء مباشر",
+      "branch_name": "الإدارة العامة للعقود - عقود الخدمات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039000930",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039001471",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "متطلبات غرفة فحص محتوى الألعاب الالكترونية",
+      "title_tr": "متطلبات غرفة فحص محتوى الألعاب الالكترونية",
+      "buyer-name": "الهيئة العامة لتنظيم الإعلام",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T01:54:30.5565523",
+      "deadline-receipt-tender-date-lot": "2026-10-25T09:59:00",
+      "tender_number": "2026/15",
+      "reference_number": "261039001471",
+      "tender_type": "منافسة عامة",
+      "branch_name": "الإدارة العامة للعقود والمشتريات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039001471",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039001121",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توريد كيابل كهربائية لصيانة شبكة الإنارة ببلدية بداء",
+      "title_tr": "توريد كيابل كهربائية لصيانة شبكة الإنارة ببلدية بداء",
+      "buyer-name": "بلدية بداء",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T00:49:01.5851388",
+      "deadline-receipt-tender-date-lot": "2026-10-25T09:59:00",
+      "tender_number": "25م2026",
+      "reference_number": "261039001121",
+      "tender_type": "منافسة عامة",
+      "branch_name": "بلدية بداء",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039001121",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039002355",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "منافسة استئجار معدة",
+      "title_tr": "منافسة استئجار معدة",
+      "buyer-name": "بلدية بداء",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T00:45:18.35025",
+      "deadline-receipt-tender-date-lot": "2026-10-25T09:59:00",
+      "tender_number": "29م2026",
+      "reference_number": "261039002355",
+      "tender_type": "منافسة عامة",
+      "branch_name": "بلدية بداء",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039002355",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039001015",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "الحلول العاجلة لصيانة الطرق المتضررة من السيول(بمركز الصغوي)",
+      "title_tr": "الحلول العاجلة لصيانة الطرق المتضررة من السيول(بمركز الصغوي)",
+      "buyer-name": "أمانة منطقة حائل",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T22:03:26.5785911",
+      "deadline-receipt-tender-date-lot": "2026-10-29T09:59:00",
+      "tender_number": "2026/57",
+      "reference_number": "261039001015",
+      "tender_type": "منافسة عامة",
+      "branch_name": "بلديه فيد / اداره المشاريع",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039001015",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260239000039",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "صيانة وتشغيل أنظمة الاتصالات وتقنية المعلومات للمركز الوطني للعمليات الأمنية 911 ومباني قيادات قوات أمن الحج بمنطقة مكة المكرمة",
+      "title_tr": "صيانة وتشغيل أنظمة الاتصالات وتقنية المعلومات للمركز الوطني للعمليات الأمنية 911 ومباني قيادات قوات أمن الحج بمنطقة مكة المكرمة",
+      "buyer-name": "الأمن العام ( الإدارة العامة لأنظمة الاتصالات)",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T20:13:17.1053792",
+      "deadline-receipt-tender-date-lot": "2026-11-08T09:59:00",
+      "tender_number": "2026/16",
+      "reference_number": "260239000039",
+      "tender_type": "منافسة عامة",
+      "branch_name": "الإدارة العامة لأنظمة الإتصالات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260239000039",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260239002965",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "تشغيل وصيانة أنظمة وتطبيقات الوزارة",
+      "title_tr": "تشغيل وصيانة أنظمة وتطبيقات الوزارة",
+      "buyer-name": "وزارة العدل - الديوان العام",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T20:09:42.2730188",
+      "deadline-receipt-tender-date-lot": "2026-11-09T09:59:00",
+      "tender_number": "2026/14",
+      "reference_number": "260239002965",
+      "tender_type": "منافسة عامة",
+      "branch_name": "إدارة المشتريات والعقود",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260239002965",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260439012842",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "استكمال إنشاء الموقع العام بالمدينة الطبية بجامعة الأمير سطام بن عبدالعزيز بالخرج",
+      "title_tr": "استكمال إنشاء الموقع العام بالمدينة الطبية بجامعة الأمير سطام بن عبدالعزيز بالخرج",
+      "buyer-name": "جامعة الأمير سطام بن عبدالعزيز",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T20:07:23.37253",
+      "deadline-receipt-tender-date-lot": "2026-11-08T09:59:00",
+      "tender_number": "23 / 26",
+      "reference_number": "260439012842",
+      "tender_type": "منافسة عامة",
+      "branch_name": "إدارة المشتريات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260439012842",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260539001859",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "تشغيل مراكز هدف للتوظيف منطقة 3",
+      "title_tr": "تشغيل مراكز هدف للتوظيف منطقة 3",
+      "buyer-name": "صندوق تنمية الموارد البشرية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T20:05:56.7973708",
+      "deadline-receipt-tender-date-lot": "2026-12-08T09:59:00",
+      "tender_number": "4479",
+      "reference_number": "260539001859",
+      "tender_type": "منافسة عامة",
+      "branch_name": "هدف",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260539001859",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260639000632",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "تقديم خدمات متابعة الحمل والولادة (الحمل منخفض الخطورة)",
+      "title_tr": "تقديم خدمات متابعة الحمل والولادة (الحمل منخفض الخطورة)",
+      "buyer-name": "مستشفى قوى الأمن بمنطقة الرياض",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T19:58:57.1283507",
+      "deadline-receipt-tender-date-lot": "2026-11-11T09:59:00",
+      "tender_number": "2657",
+      "reference_number": "260639000632",
+      "tender_type": "منافسة عامة",
+      "branch_name": "إدارة المواد، قسم المنافسات والعقود",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260639000632",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260639002905",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "صيانة ونظافة وتشغيل غير طبي لمستشفى الحرث العام بمنطقة جازان",
+      "title_tr": "صيانة ونظافة وتشغيل غير طبي لمستشفى الحرث العام بمنطقة جازان",
+      "buyer-name": "تجمع جازان الصحي",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T19:55:33.7690682",
+      "deadline-receipt-tender-date-lot": "2026-11-08T09:59:00",
+      "tender_number": "718-47-011324",
+      "reference_number": "260639002905",
+      "tender_type": "منافسة عامة",
+      "branch_name": "المنافسات والعقود",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260639002905",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260739001513",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توفير الخدمات للتقنيات المتقدمة المرحلة الرابعة",
+      "title_tr": "توفير الخدمات للتقنيات المتقدمة المرحلة الرابعة",
+      "buyer-name": "الهيئة السعودية للبيانات والذكاء الاصطناعي",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T19:47:54.6777805",
+      "deadline-receipt-tender-date-lot": "2026-12-08T09:59:00",
+      "tender_number": "1799",
+      "reference_number": "260739001513",
+      "tender_type": "منافسة عامة",
+      "branch_name": "الهيئة السعودية للبيانات والذكاء الاصطناعي",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260739001513",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039003434",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توريد مواد كهربائية لاعمال البنية التحتية",
+      "title_tr": "توريد مواد كهربائية لاعمال البنية التحتية",
+      "buyer-name": "القوات البرية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T19:43:55.3636763",
+      "deadline-receipt-tender-date-lot": "2026-10-24T09:59:00",
+      "tender_number": "447/41/14",
+      "reference_number": "261039003434",
+      "tender_type": "منافسة عامة",
+      "branch_name": "ادارة تشغيل وصيانة المنشآت العسكرية بقوة شرورة",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039003434",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260839000641",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "مشروع إنشاء مستشفى فيفا العام بجازان",
+      "title_tr": "مشروع إنشاء مستشفى فيفا العام بجازان",
+      "buyer-name": "وزارة الصحه الديوان العام",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T19:32:20.244702",
+      "deadline-receipt-tender-date-lot": "2026-12-08T09:59:00",
+      "tender_number": "2026100098",
+      "reference_number": "260839000641",
+      "tender_type": "منافسة عامة",
+      "branch_name": "ديوان الوزارة ، الإدارة العامة للعقود والمشتريات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260839000641",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939009565",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "نزح مياه الصرف الصحي من الكلية التقنية بحبونا",
+      "title_tr": "نزح مياه الصرف الصحي من الكلية التقنية بحبونا",
+      "buyer-name": "المؤسسة العامة للتدريب التقني والمهني",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T18:58:48.4721519",
+      "deadline-receipt-tender-date-lot": "2026-10-24T09:59:00",
+      "tender_number": "319",
+      "reference_number": "260939009565",
+      "tender_type": "منافسة عامة",
+      "branch_name": "إدارة المشتريات - المنافسات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939009565",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939009412",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "صيانة الألعاب بالحدائق والمنتزهات بمحافظة الدرب وقراها ( عقد بديل )",
+      "title_tr": "صيانة الألعاب بالحدائق والمنتزهات بمحافظة الدرب وقراها ( عقد بديل )",
+      "buyer-name": "بلدية محافظة الدرب",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T18:50:54.1821695",
+      "deadline-receipt-tender-date-lot": "2026-10-24T09:59:00",
+      "tender_number": "019/009/704/300130000/224243",
+      "reference_number": "260939009412",
+      "tender_type": "منافسة عامة",
+      "branch_name": "بلدية محافظة الدرب",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939009412",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039000112",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "WM-Supply 6 six covers with frames (bases) for the treatment tank (size: 59x59 cm)",
+      "title_tr": "WM-Supply 6 six covers with frames (bases) for the treatment tank (size: 59x59 cm)",
+      "buyer-name": "الشؤون الصحیة بوزارة الحرس الوطني",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-09T10:50:18.953347",
+      "deadline-receipt-tender-date-lot": "2026-10-14T09:59:00",
+      "tender_number": "172001",
+      "reference_number": "261039000112",
+      "tender_type": "شراء مباشر",
+      "branch_name": "إدارة المشتريات - مستشفى الامير محمد بن عبدالعزيز بالمدينة المنورة",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039000112",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039003071",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "أعمال اصلاح وصيانة لزوم غرفة التوقيف بمنطقة حازان",
+      "title_tr": "أعمال اصلاح وصيانة لزوم غرفة التوقيف بمنطقة حازان",
+      "buyer-name": "ادارة الشؤون الفنية المركزية بمنطقة جازان",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T23:59:49.2587123",
+      "deadline-receipt-tender-date-lot": "2026-10-11T09:59:00",
+      "tender_number": "m-27",
+      "reference_number": "261039003071",
+      "tender_type": "شراء مباشر",
+      "branch_name": "ادارة الشؤون الفنية المركزية بمنطقة جازان",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039003071",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039003229",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "صيانة حافلات انترناشيونال كلية الملك فهد البحرية .",
+      "title_tr": "صيانة حافلات انترناشيونال كلية الملك فهد البحرية .",
+      "buyer-name": "القوات البحرية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T23:15:10.6355344",
+      "deadline-receipt-tender-date-lot": "2026-10-19T09:59:00",
+      "tender_number": "26-302002000038-04",
+      "reference_number": "261039003229",
+      "tender_type": "شراء مباشر",
+      "branch_name": "كلية الملك فهد البحرية /الامداد",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039003229",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260839009993",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "تنفيذ اعمال الهوية البصرية في مركز الابداع لقنوات التلفزيون ( السعودية / SBC/ ذكريات / الرياضية / السعودية الان / المنصة الاولى )",
+      "title_tr": "تنفيذ اعمال الهوية البصرية في مركز الابداع لقنوات التلفزيون ( السعودية / SBC/ ذكريات / الرياضية / السعودية الان / المنصة الاولى )",
+      "buyer-name": "هيئة الإذاعة والتلفزيون",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T21:38:46.5232743",
+      "deadline-receipt-tender-date-lot": "2026-11-07T09:59:00",
+      "tender_number": "202601104",
+      "reference_number": "260839009993",
+      "tender_type": "منافسة عامة",
+      "branch_name": "الادارة المالية- المشتريات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260839009993",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939009598",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "صيانة المباني والمرافق والمنشآت التابعة لأمانة الاحساء – 2026 م (دورات مياه)",
+      "title_tr": "صيانة المباني والمرافق والمنشآت التابعة لأمانة الاحساء – 2026 م (دورات مياه)",
+      "buyer-name": "أمانة محافظة الأحساء",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T21:35:21.2554016",
+      "deadline-receipt-tender-date-lot": "2026-11-08T09:59:00",
+      "tender_number": "19-1448",
+      "reference_number": "260939009598",
+      "tender_type": "منافسة عامة",
+      "branch_name": "المناقصات 2019",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939009598",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939004713",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "صيانة البوابات بديوان إمارة منطقة مكة المكرمة",
+      "title_tr": "صيانة البوابات بديوان إمارة منطقة مكة المكرمة",
+      "buyer-name": "أمارة منطقة مكة المكرمة",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T20:18:47.3016569",
+      "deadline-receipt-tender-date-lot": "2026-10-11T09:59:00",
+      "tender_number": "6968730",
+      "reference_number": "260939004713",
+      "tender_type": "شراء مباشر",
+      "branch_name": "المشتريات والعقود",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939004713",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039003020",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "صيانة تصريف مياه الأمطار بطرق وشوارع مركز قوز الجعافرة",
+      "title_tr": "صيانة تصريف مياه الأمطار بطرق وشوارع مركز قوز الجعافرة",
+      "buyer-name": "بلدية قوز الجعافرة",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T18:58:10.7753229",
+      "deadline-receipt-tender-date-lot": "2026-10-28T10:00:00",
+      "tender_number": "019/009/715/300110000/224241",
+      "reference_number": "261039003020",
+      "tender_type": "منافسة عامة",
+      "branch_name": "بلدية قوز الجعافرة",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039003020",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039003080",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "معايرة عدد وأجهزة خاصة بالطائرات للإخلاء الطبي الجوي",
+      "title_tr": "معايرة عدد وأجهزة خاصة بالطائرات للإخلاء الطبي الجوي",
+      "buyer-name": "الإخلاء الطبي",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T18:48:20.1358652",
+      "deadline-receipt-tender-date-lot": "2026-10-11T09:59:00",
+      "tender_number": "143-181",
+      "reference_number": "261039003080",
+      "tender_type": "شراء مباشر",
+      "branch_name": "إدارة الإخلاء الطبي الجوي",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039003080",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039001930",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "منافسة توريد مكيفات نوع سبلت لمختبر مستشفى الإمام عبد الرحمن بن فيصل بالدمام التابعة للشؤون الصحية بوزارة الحرس الوطني",
+      "title_tr": "منافسة توريد مكيفات نوع سبلت لمختبر مستشفى الإمام عبد الرحمن بن فيصل بالدمام التابعة للشؤون الصحية بوزارة الحرس الوطني",
+      "buyer-name": "الشؤون الصحیة بوزارة الحرس الوطني",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T18:03:51.5272134",
+      "deadline-receipt-tender-date-lot": "2026-10-15T09:59:00",
+      "tender_number": "DR223233",
+      "reference_number": "261039001930",
+      "tender_type": "شراء مباشر",
+      "branch_name": "إدارة العقود - مستشفى الإمام عبدالرحمن بن فيصل بالدمام",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039001930",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939010289",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توريد قطع غيار لصمامات تابعه لمنظومة انتاج ينبع 60020536",
+      "title_tr": "توريد قطع غيار لصمامات تابعه لمنظومة انتاج ينبع 60020536",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T16:27:11.8430845",
+      "deadline-receipt-tender-date-lot": "2026-10-23T09:59:00",
+      "tender_number": "60020536",
+      "reference_number": "260939010289",
+      "tender_type": "منافسة عامة",
+      "branch_name": "إدارة الشراء - قسم المواد وقطع الغيار",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939010289",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-2000002482",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "تجديد وتعديل وإعادة تأهيل سد غالبة بعسير",
+      "title_tr": "تجديد وتعديل وإعادة تأهيل سد غالبة بعسير",
+      "buyer-name": "20251231SAUDI IRRIGATION ORGANIZATION (S",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T16:18:32",
+      "deadline-receipt-tender-date-lot": "2026-11-11T07:00:00",
+      "tender_number": "2000002482",
+      "reference_number": "2000002482",
+      "tender_type": "منافسة عامة",
+      "branch_name": "قسم المنافسات",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "2000002482",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939001825",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توريد مواد وقطع غيار الات ميكانيكية  للهيئة السعودية للمياه منظومة انتاج جده الساحل الغربي 60021048",
+      "title_tr": "توريد مواد وقطع غيار الات ميكانيكية  للهيئة السعودية للمياه منظومة انتاج جده الساحل الغربي 60021048",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T16:15:18.6291527",
+      "deadline-receipt-tender-date-lot": "2026-10-22T09:59:00",
+      "tender_number": "60021048",
+      "reference_number": "260939001825",
+      "tender_type": "شراء مباشر",
+      "branch_name": "شعبة مشتريات الساحل الغربي",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939001825",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039002836",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "60021308 - توريد قطع غيار صناعية لمنظومة انتاج الخبر بالساحل الشرقي",
+      "title_tr": "60021308 - توريد قطع غيار صناعية لمنظومة انتاج الخبر بالساحل الشرقي",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T16:12:01.7688477",
+      "deadline-receipt-tender-date-lot": "2026-10-13T09:59:00",
+      "tender_number": "60021308",
+      "reference_number": "261039002836",
+      "tender_type": "شراء مباشر",
+      "branch_name": "شعبة مشتريات الساحل الشرقي",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039002836",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039002839",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "60021309 - توريد قطع غيار ميكانيكية لمنظومة انتاج الخبر بالساحل الشرقي",
+      "title_tr": "60021309 - توريد قطع غيار ميكانيكية لمنظومة انتاج الخبر بالساحل الشرقي",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T16:09:05.5694899",
+      "deadline-receipt-tender-date-lot": "2026-10-13T09:59:00",
+      "tender_number": "60021309",
+      "reference_number": "261039002839",
+      "tender_type": "شراء مباشر",
+      "branch_name": "شعبة مشتريات الساحل الشرقي",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039002839",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039002840",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "60021310 - توريد أنوار لمنظومة انتاج رأس الخير بالساحل الشرقي",
+      "title_tr": "60021310 - توريد أنوار لمنظومة انتاج رأس الخير بالساحل الشرقي",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T16:06:13.5183171",
+      "deadline-receipt-tender-date-lot": "2026-10-13T09:59:00",
+      "tender_number": "60021310",
+      "reference_number": "261039002840",
+      "tender_type": "شراء مباشر",
+      "branch_name": "شعبة مشتريات الساحل الشرقي",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039002840",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039002842",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "60021311 - توريد مضخة لمنظومة انتاج رأس الخير بالساحل الشرقي",
+      "title_tr": "60021311 - توريد مضخة لمنظومة انتاج رأس الخير بالساحل الشرقي",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T16:03:12.8913195",
+      "deadline-receipt-tender-date-lot": "2026-10-13T09:59:00",
+      "tender_number": "60021311",
+      "reference_number": "261039002842",
+      "tender_type": "شراء مباشر",
+      "branch_name": "شعبة مشتريات الساحل الشرقي",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039002842",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039002845",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "60021312 - توريد مراوح تبريد لمنظومة انتاج رأس الخير بالساحل الشرقي",
+      "title_tr": "60021312 - توريد مراوح تبريد لمنظومة انتاج رأس الخير بالساحل الشرقي",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T16:00:20.9585175",
+      "deadline-receipt-tender-date-lot": "2026-10-13T09:59:00",
+      "tender_number": "60021312",
+      "reference_number": "261039002845",
+      "tender_type": "شراء مباشر",
+      "branch_name": "شعبة مشتريات الساحل الشرقي",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039002845",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939010322",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توريد قطع غيار مكانيكة صمام وضاغط لمنظومة انتاج ينبع 60020452",
+      "title_tr": "توريد قطع غيار مكانيكة صمام وضاغط لمنظومة انتاج ينبع 60020452",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T15:41:59.5162114",
+      "deadline-receipt-tender-date-lot": "2026-10-23T09:59:00",
+      "tender_number": "60020452",
+      "reference_number": "260939010322",
+      "tender_type": "منافسة عامة",
+      "branch_name": "إدارة الشراء - قسم المواد وقطع الغيار",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939010322",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939010326",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توريد مضخات لمنظومة انتاج ينبع 60020529",
+      "title_tr": "توريد مضخات لمنظومة انتاج ينبع 60020529",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T15:36:34.8791862",
+      "deadline-receipt-tender-date-lot": "2026-10-23T09:59:00",
+      "tender_number": "60020529",
+      "reference_number": "260939010326",
+      "tender_type": "منافسة عامة",
+      "branch_name": "إدارة الشراء - قسم المواد وقطع الغيار",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939010326",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039002270",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توفير مستلزمات الضيافة ومواد التموين لمركز الإسناد والتصفية – إنفاذ",
+      "title_tr": "توفير مستلزمات الضيافة ومواد التموين لمركز الإسناد والتصفية – إنفاذ",
+      "buyer-name": "مركز الإسناد و التصفية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T15:31:32.0072106",
+      "deadline-receipt-tender-date-lot": "2026-10-23T09:59:00",
+      "tender_number": null,
+      "reference_number": "261039002270",
+      "tender_type": "منافسة عامة",
+      "branch_name": "مركز الإسناد و التصفية",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039002270",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-260939010330",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توريد قطع غيار لمسخن هواء تابع لمنظومة انتاج ينبع 60020449",
+      "title_tr": "توريد قطع غيار لمسخن هواء تابع لمنظومة انتاج ينبع 60020449",
+      "buyer-name": "الهيئة السعودية للمياه",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T15:27:45.9462802",
+      "deadline-receipt-tender-date-lot": "2026-11-07T09:59:00",
+      "tender_number": "60020449",
+      "reference_number": "260939010330",
+      "tender_type": "منافسة عامة",
+      "branch_name": "إدارة الشراء - قسم المواد وقطع الغيار",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939010330",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
+      "id": "saudi-etimad-261039003224",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "توريد قطع غيار وسائط النقل لصالح كلية الملك فهد البحرية .",
+      "title_tr": "توريد قطع غيار وسائط النقل لصالح كلية الملك فهد البحرية .",
+      "buyer-name": "القوات البحرية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-08T15:21:43.7489444",
+      "deadline-receipt-tender-date-lot": "2026-10-15T09:59:00",
+      "tender_number": "26-302002000038-03",
+      "reference_number": "261039003224",
+      "tender_type": "شراء مباشر",
+      "branch_name": "كلية الملك فهد البحرية /الامداد",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "261039003224",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
     }
   ],
   "physical_goods_gate": {
     "mode": "physical_goods_only",
-    "goods_candidates": 62,
-    "review_mixed_or_unknown": 49,
+    "goods_candidates": 63,
+    "review_mixed_or_unknown": 96,
     "excluded_service_or_works": 0,
     "excluded_non_physical": 0,
     "research_pipeline_receives_only_goods_candidates": true
@@ -75699,6 +77510,21 @@
       "product": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Sukcesywne dostawy wyrobów jednorazowych",
       "buyer": "Szpital im. Ryszarda Rzepki w Sulechowie Sp. z o.o.,",
       "source_url": null,
+      "missing_fields": [
+        "quantity"
+      ],
+      "critical_missing_fields": [
+        "quantity"
+      ],
+      "coverage": 5,
+      "priority": "high",
+      "rule": "research source/document only; do not infer missing facts"
+    },
+    {
+      "opportunity_id": "saudi-etimad-261039002860",
+      "product": "WM-Portable Drill Machine - Power Source:- Battery - Chuck Siz:- 13 mm - Reverse Function:-Yes - Volt:- 12 V - Adjustable Speed:- Yes - Power:- null Screw Functionality:- Yes - Hammer Functionality:- Yes",
+      "buyer": "الشؤون الصحیة بوزارة الحرس الوطني",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
       "missing_fields": [
         "quantity"
       ],
@@ -76416,23 +78242,23 @@
     }
   ],
   "field_evidence_summary": {
-    "opportunities": 62,
+    "opportunities": 63,
     "complete_core_records": 1,
     "source_backed_counts": {
-      "country": 41,
-      "city": 41,
-      "product": 62,
+      "country": 42,
+      "city": 42,
+      "product": 63,
       "quantity": 3,
-      "deadline": 21,
-      "buyer": 62
+      "deadline": 22,
+      "buyer": 63
     },
-    "research_queue": 61,
-    "high_priority_research": 40,
+    "research_queue": 62,
+    "high_priority_research": 41,
     "missing_counts": {
       "country": 21,
       "city": 21,
       "product": 0,
-      "quantity": 59,
+      "quantity": 60,
       "deadline": 41,
       "buyer": 0
     },
@@ -76774,14 +78600,14 @@
   "enrichment": {
     "version": 1,
     "mode": "source_only_no_hallucination",
-    "enriched_count": 62
+    "enriched_count": 63
   },
   "document_extraction": {
     "version": 3,
     "mode": "public_source_pages_documents_and_ted_xml",
-    "attempted_opportunities": 41,
-    "parsed_opportunities": 0,
-    "source_pages_parsed": 0,
+    "attempted_opportunities": 42,
+    "parsed_opportunities": 1,
+    "source_pages_parsed": 1,
     "discovered_attachments": 0,
     "reused_last_known_good": 0,
     "ted_xml_attempted": 41,
@@ -76790,12 +78616,12 @@
   "specification_analysis": {
     "version": 3,
     "mode": "source_evidence_plus_public_documents",
-    "analyzed_count": 62,
+    "analyzed_count": 63,
     "supplier_sourcing_ready": 9,
-    "document_analysis_pending": 33,
+    "document_analysis_pending": 34,
     "insufficient_source_detail": 20,
     "attachments_requiring_parser": 0,
-    "parsed_document_opportunities": 0
+    "parsed_document_opportunities": 1
   },
   "sales_priority_summary": {
     "version": 1,
@@ -76803,11 +78629,11 @@
     "grades": {
       "A": 0,
       "B": 0,
-      "C": 62
+      "C": 63
     },
     "close_first": 0,
     "develop_next": 0,
-    "research_only": 62
+    "research_only": 63
   },
   "gulf_sources": {
     "sources": [
@@ -76815,8 +78641,9 @@
         "country": "Saudi Arabia",
         "name": "Etimad",
         "url": "https://tenders.etimad.sa/Tender/AllTendersForVisitor",
-        "status": "official_source_registered",
-        "live_ingestion": false
+        "status": "live_ingestion_verified_this_scan",
+        "live_ingestion": true,
+        "last_scan_rows": 48
       },
       {
         "country": "United Arab Emirates",
@@ -76861,7 +78688,7 @@
         "live_ingestion": false
       }
     ],
-    "saudi_live_ingestion_verified": false,
+    "saudi_live_ingestion_verified": true,
     "uae_live_ingestion_verified": false,
     "qatar_live_ingestion_verified": false,
     "priority_gulf_live_ingestion_verified": false,
@@ -76869,31 +78696,31 @@
     "rule": "Each country becomes live only after real official notice ingestion in the current scan. Priority Gulf coverage requires Saudi Arabia, UAE and Qatar; registered links alone do not count."
   },
   "commercial_terms_summary": {
-    "opportunities": 62,
+    "opportunities": 63,
     "complete": 0,
     "source_backed_counts": {
       "payment": 0,
       "bond": 0,
-      "delivery": 41,
+      "delivery": 42,
       "eligibility": 0,
       "award": 0
     }
   },
   "supplier_research_summary": {
-    "opportunities": 62,
+    "opportunities": 63,
     "research_ready": 9,
-    "blocked": 53,
+    "blocked": 54,
     "verified_suppliers": 0,
     "mode": "research_queue_only"
   },
   "commercial_feasibility_summary": {
-    "opportunities": 62,
+    "opportunities": 63,
     "calculation_ready": 0,
-    "blocked_missing_inputs": 62,
+    "blocked_missing_inputs": 63,
     "source_backed_only": true
   },
   "offer_risk_summary": {
-    "opportunities": 62,
+    "opportunities": 63,
     "internal_draft_ready": 0,
     "external_action_authorized": 0,
     "mode": "shadow"
@@ -76901,36 +78728,36 @@
   "agent_center": {
     "mode": "shadow",
     "external_actions_enabled": false,
-    "opportunity_count": 62,
+    "opportunity_count": 63,
     "agents": {
       "source": {
-        "has_official_link": 41,
+        "has_official_link": 42,
         "missing_link": 21
       },
       "goods_gate": {
-        "goods_candidate": 62
+        "goods_candidate": 63
       },
       "field_evidence": {
-        "incomplete": 61,
+        "incomplete": 62,
         "complete": 1
       },
       "specification": {
         "source_description_analyzed": 9,
-        "document_analysis_pending": 33,
+        "document_analysis_pending": 34,
         "source_description_insufficient": 20
       },
       "supplier": {
         "research_ready": 9,
-        "specification_review_pending": 53
+        "specification_review_pending": 54
       },
       "feasibility": {
-        "commercial_inputs_missing": 62
+        "commercial_inputs_missing": 63
       },
       "risk": {
-        "pending": 62
+        "pending": 63
       },
       "sales_priority": {
-        "C": 62
+        "C": 63
       }
     },
     "policy": {
