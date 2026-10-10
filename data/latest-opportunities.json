@@ -247,7 +247,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Sukcesywne dostawy wyrobów jednorazowych. Kategori / ürün grubu: 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000",
       "workflow": {
@@ -851,7 +851,7 @@
             "url": "https://ted.europa.eu/en/notice/663797-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663797-2026/xml",
@@ -1562,7 +1562,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Gıda / tarım ürünü alımı. Kategori / ürün grubu: 39130000 39130000 39130000",
       "workflow": {
@@ -2164,7 +2164,7 @@
             "url": "https://ted.europa.eu/en/notice/663822-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663822-2026/xml",
@@ -2875,7 +2875,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Uluslararası satın alma talebi. Kategori / ürün grubu: 33124110 33696500 33124110 33696500",
       "workflow": {
@@ -3481,7 +3481,7 @@
             "url": "https://ted.europa.eu/en/notice/663830-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663830-2026/xml",
@@ -4197,7 +4197,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33600000 33600000",
       "workflow": {
@@ -4801,7 +4801,7 @@
             "url": "https://ted.europa.eu/en/notice/663837-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663837-2026/xml",
@@ -5518,7 +5518,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Miktar: 32000. Kategori / ürün grubu: 33140000 18900000 18930000 18937100 33141620 33196000 33140000 18900000 18930000 18937100 33141620 33196000",
       "workflow": {
@@ -6141,7 +6141,7 @@
             "url": "https://ted.europa.eu/en/notice/663841-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663841-2026/xml",
@@ -6851,7 +6851,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Araç / yedek parça alımı. Kategori / ürün grubu: 34946000 34946000",
       "workflow": {
@@ -7453,7 +7453,7 @@
             "url": "https://ted.europa.eu/en/notice/663847-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663847-2026/xml",
@@ -8158,7 +8158,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Gıda / tarım ürünü alımı. Kategori / ürün grubu: 15897300 15897300",
       "workflow": {
@@ -8760,7 +8760,7 @@
             "url": "https://ted.europa.eu/en/notice/663849-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663849-2026/xml",
@@ -9498,7 +9498,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000",
       "workflow": {
@@ -10100,7 +10100,7 @@
             "url": "https://ted.europa.eu/en/notice/663853-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663853-2026/xml",
@@ -10808,7 +10808,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33000000 33000000 33141700",
       "workflow": {
@@ -11414,7 +11414,7 @@
             "url": "https://ted.europa.eu/en/notice/663856-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663856-2026/xml",
@@ -12136,7 +12136,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "North Macedonia – medikal consumables – medikal consumables. Kategori / ürün grubu: 33140000 33140000 33140000 33140000",
       "workflow": {
@@ -12738,7 +12738,7 @@
             "url": "https://ted.europa.eu/en/notice/663865-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663865-2026/xml",
@@ -13518,7 +13518,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Araç / yedek parça alımı. Kategori / ürün grubu: 34144700 34136000 34144700 34144700 34144700 34144700 34136000",
       "workflow": {
@@ -14126,7 +14126,7 @@
             "url": "https://ted.europa.eu/en/notice/663866-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663866-2026/xml",
@@ -14827,7 +14827,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Metal / maden ürünü alımı. Kategori / ürün grubu: 31682000 31682000",
       "workflow": {
@@ -15429,7 +15429,7 @@
             "url": "https://ted.europa.eu/en/notice/663871-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663871-2026/xml",
@@ -16146,7 +16146,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Metal / maden ürünü alımı. Kategori / ürün grubu: 48820000 48000000 32420000 48820000 48820000 48000000 32420000 48000000 32420000",
       "workflow": {
@@ -16758,7 +16758,7 @@
             "url": "https://ted.europa.eu/en/notice/663896-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663896-2026/xml",
@@ -17465,7 +17465,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Uluslararası satın alma talebi. Kategori / ürün grubu: 38600000 38600000 38600000",
       "workflow": {
@@ -18069,7 +18069,7 @@
             "url": "https://ted.europa.eu/en/notice/663931-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663931-2026/xml",
@@ -18882,7 +18882,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000",
       "workflow": {
@@ -19486,7 +19486,7 @@
             "url": "https://ted.europa.eu/en/notice/663939-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663939-2026/xml",
@@ -20324,7 +20324,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33600000 33182220 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220 33600000 33182220",
       "workflow": {
@@ -20932,7 +20932,7 @@
             "url": "https://ted.europa.eu/en/notice/663958-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663958-2026/xml",
@@ -21649,7 +21649,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Makine / ekipman alımı. Kategori / ürün grubu: 34928500 34928510 34928500 34928510",
       "workflow": {
@@ -22255,7 +22255,7 @@
             "url": "https://ted.europa.eu/en/notice/663971-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663971-2026/xml",
@@ -22982,7 +22982,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 34913000 24965000 33140000 33696500 34913000 38432200 38437110 38437120",
       "workflow": {
@@ -23610,7 +23610,7 @@
             "url": "https://ted.europa.eu/en/notice/663991-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663991-2026/xml",
@@ -24376,7 +24376,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Uluslararası satın alma talebi. Kategori / ürün grubu: 22000000 22000000 22900000",
       "workflow": {
@@ -24982,7 +24982,7 @@
             "url": "https://ted.europa.eu/en/notice/664035-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664035-2026/xml",
@@ -25784,7 +25784,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33600000 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600 33631600",
       "workflow": {
@@ -26390,7 +26390,7 @@
             "url": "https://ted.europa.eu/en/notice/664039-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664039-2026/xml",
@@ -27140,7 +27140,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000",
       "workflow": {
@@ -27742,7 +27742,7 @@
             "url": "https://ted.europa.eu/en/notice/664048-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664048-2026/xml",
@@ -28446,7 +28446,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33140000 33140000",
       "workflow": {
@@ -29053,7 +29053,7 @@
             "url": "https://ted.europa.eu/en/notice/663819-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663819-2026/xml",
@@ -29772,7 +29772,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33190000 33190000 33190000 33190000 33190000 33190000 33190000 33190000 33190000",
       "workflow": {
@@ -30379,7 +30379,7 @@
             "url": "https://ted.europa.eu/en/notice/663828-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663828-2026/xml",
@@ -31270,7 +31270,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Poland – Disposable non - kimyasal medikal consumables and haematological consumables – Dostawa sprzętu medycznego jednorazowego użytku oraz asortymentu na blok. Kategori / ürün grubu: 33141000 33140000 33162000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33141000 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100 33140000 33162100",
       "workflow": {
@@ -31889,7 +31889,7 @@
             "url": "https://ted.europa.eu/en/notice/663833-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663833-2026/xml",
@@ -32604,7 +32604,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Makine / ekipman alımı. Miktar: 19 7. Kategori / ürün grubu: 39162000 39162000 39162000",
       "workflow": {
@@ -33207,7 +33207,7 @@
             "url": "https://ted.europa.eu/en/notice/663873-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663873-2026/xml",
@@ -33976,7 +33976,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Norway, Sweden, Denmark, Finland, Germany, Iceland, Netherlands, Poland – elektrik makine apparatus, ekipman and consumables; lighting – Achilles Utilities NCE. Kategori / ürün grubu: 31000000 03000000 09000000 14000000 15000000 16000000 18000000 19000000 22000000 24000000 30000000 32000000 33000000 34000000 35000000 37000000 38000000 39000000 41000000 42000000 43000000 44000000 48000000 31000000 03000000 09000000 14000000 15000000 16000000 18000000 19000000 22000000 24000000 30000000 32000000 33000000 34000000 35000000 37000000 38000000 39000000 41000000 42000000 43000000 44000000 48000000",
       "workflow": {
@@ -34669,7 +34669,7 @@
             "url": "https://ted.europa.eu/en/notice/663880-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://www.achilles.com/wp/wp-content/uploads/2023/05/Product-and-Service-Code-Guide-EN.pdf",
@@ -35423,7 +35423,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Norway – medikal equipments, pharmaceuticals and personal care products – Consumables MyoSure for Østfold hastane. Kategori / ürün grubu: 33000000 33000000 33140000",
       "workflow": {
@@ -36032,7 +36032,7 @@
             "url": "https://ted.europa.eu/en/notice/663883-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663883-2026/xml",
@@ -36748,7 +36748,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33140000 33140000",
       "workflow": {
@@ -37355,7 +37355,7 @@
             "url": "https://ted.europa.eu/en/notice/663886-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663886-2026/xml",
@@ -38068,7 +38068,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Gıda / tarım ürünü alımı. Kategori / ürün grubu: 30213300 30213100 30231310 32324000 32324000 30231310 30213100 30213300",
       "workflow": {
@@ -38687,7 +38687,7 @@
             "url": "https://ted.europa.eu/en/notice/663893-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663893-2026/xml",
@@ -39392,7 +39392,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33000000 33141113 33141114 33141110 33140000 33000000",
       "workflow": {
@@ -40015,7 +40015,7 @@
             "url": "https://ted.europa.eu/en/notice/663897-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663897-2026/xml",
@@ -40719,7 +40719,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Metal / maden ürünü alımı. Kategori / ürün grubu: 38420000 32260000 32270000 38420000 32260000 32270000",
       "workflow": {
@@ -41334,7 +41334,7 @@
             "url": "https://ted.europa.eu/en/notice/663912-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663912-2026/xml",
@@ -42050,7 +42050,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Araç / yedek parça alımı. Kategori / ürün grubu: 34114000 42962000 32260000 31521320 33141623 44510000 38412000 38432300 38434300 38341200 34114000 42962000 32260000 31521320 33141623 44510000 38412000 38432300 38434300 38341200",
       "workflow": {
@@ -42691,7 +42691,7 @@
             "url": "https://ted.europa.eu/en/notice/663917-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663917-2026/xml",
@@ -43411,7 +43411,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Uluslararası satın alma talebi. Kategori / ürün grubu: 39222100 39222110 39220000 39222100 39222100 39222100 39222110 39220000 39222110 39220000 39222110 39220000",
       "workflow": {
@@ -44024,7 +44024,7 @@
             "url": "https://ted.europa.eu/en/notice/663919-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663919-2026/xml",
@@ -44753,7 +44753,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Araç / yedek parça alımı. Kategori / ürün grubu: 34114100 34114100 34114100 34114100 42415320 34114100 42415320 34114100 42415320 34114100",
       "workflow": {
@@ -45364,7 +45364,7 @@
             "url": "https://ted.europa.eu/en/notice/663941-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663941-2026/xml",
@@ -46169,7 +46169,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33000000 33140000 33190000 33184100 33600000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000 33000000",
       "workflow": {
@@ -46792,7 +46792,7 @@
             "url": "https://ted.europa.eu/en/notice/663945-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663945-2026/xml",
@@ -47517,7 +47517,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Uluslararası satın alma talebi. Miktar: 1. Kategori / ürün grubu: 38300000 38300000 38300000",
       "workflow": {
@@ -48122,7 +48122,7 @@
             "url": "https://ted.europa.eu/en/notice/663963-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "HTTPError:HTTP Error 429: Too Many Requests"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663963-2026/xml",
@@ -48829,7 +48829,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33600000 33652300",
       "workflow": {
@@ -49440,7 +49440,7 @@
             "url": "https://ted.europa.eu/en/notice/663964-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663964-2026/xml",
@@ -50140,7 +50140,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Gıda / tarım ürünü alımı. Kategori / ürün grubu: 15000000 15000000",
       "workflow": {
@@ -50747,7 +50747,7 @@
             "url": "https://ted.europa.eu/en/notice/663993-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/663993-2026/xml",
@@ -51451,7 +51451,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33140000 33140000 33140000",
       "workflow": {
@@ -52058,7 +52058,7 @@
             "url": "https://ted.europa.eu/en/notice/664003-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "ValueError:source_page_not_html"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664003-2026/xml",
@@ -52766,7 +52766,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Araç / yedek parça alımı. Kategori / ürün grubu: 34100000 66114000 50100000 34000000 34220000 34400000 34100000 34220000 34400000",
       "workflow": {
@@ -53393,7 +53393,7 @@
             "url": "https://ted.europa.eu/en/notice/664036-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "HTTPError:HTTP Error 429: Too Many Requests"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664036-2026/xml",
@@ -54331,7 +54331,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Medikal ürün alımı. Kategori / ürün grubu: 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000 33140000",
       "workflow": {
@@ -54938,7 +54938,7 @@
             "url": "https://ted.europa.eu/en/notice/664045-2026/xml",
             "status": "failed",
             "source": "source_page",
-            "error": "HTTPError:HTTP Error 429: Too Many Requests"
+            "error": "insufficient_source_page_text"
           },
           {
             "url": "https://ted.europa.eu/en/notice/664045-2026/xml",
@@ -55538,7 +55538,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Balıkesir Fire Brigade Disaster Management Vehicles Procurement Sub-Project. Kategori / ürün grubu: BZ Other Public Administration WC Water Supply TC Urban Transport WA Sanitation",
       "workflow": {
@@ -55964,7 +55964,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Supply and Delivery of assorted furniture for classrooms (3-seater desks, Teachers' chairs & Tables), ICT & Science Laboratories (tables, chairs & shelves), Multipurpose Halls furniture and Administration Blocks for 72 New Secondary Schools under USEEP. Kategori / ürün grubu: ES Secondary Education EF Public Administration - Education",
       "workflow": {
@@ -56398,7 +56398,7 @@
         "verified_supplier_count": 0,
         "verification_required": true,
         "blocked_by_missing_fields": [],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Procurement of medical Equipment such as stethoscopes, thermometers, Blood pressure apparatus, adult scales, Hospital beds, Pillows, and others as specified in the SOR for spokes and hospitals in Faalaba, Western Rural, Bonthe and Tonkolili Districts. Kategori / ürün grubu: HQ Health Facilities and Construction HF Public Administration - Health HG Health",
       "workflow": {
@@ -56831,7 +56831,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Transport of Materials and Equipment. Kategori / ürün grubu: BC Central Government (Central Agencies) CI ICT Infrastructure",
       "workflow": {
@@ -57262,7 +57262,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Rehabilitation Works for the Spillway, Embankment Dam, and Dam Instrumentation Equipment. Kategori / ürün grubu: LH Renewable Energy Hydro LT Energy Transmission and Distribution",
       "workflow": {
@@ -57706,7 +57706,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Procurement of Woreda information centre ICT equipment, tablets and laptops for NPCU, RPCU and woreda. Kategori / ürün grubu: BH Sub-National Government AB Agricultural Extension, Research, and Other Support Activities AT Forestry AK Public Administration - Agriculture, Fishing & Forestry YA Agricultural markets, commercialization and agri-business",
       "workflow": {
@@ -58141,7 +58141,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Integrated Tourism Development, Infrastructure and Livelihood Improvement in Unguja,  (Nungwi village) - Construction of Village Square, Tourist Information Centre, Fish Market, Parking, Urban Furniture, Tide-Defence Embankment and Food Vending Stalls. Kategori / ürün grubu: YT Tourism BH Sub-National Government TC Urban Transport",
       "workflow": {
@@ -58575,7 +58575,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Supply and Delivery of Multideck Weighbridge. Kategori / ürün grubu: CF Public Administration - Information and Communications Technologies YY Trade TI Rural and Inter-Urban Roads YA Agricultural markets, commercialization and agri-business",
       "workflow": {
@@ -59015,7 +59015,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "MHCPP Camp Rehabilitation Procurement Package (2); Supply (Electrical Appliances, Furniture, Kitchen Utensils, Gym  Equipment, and Related Items). Kategori / ürün grubu: LU Renewable Energy Solar LZ Other Energy and Extractives LP Public Administration - Energy and Extractives LT Energy Transmission and Distribution",
       "workflow": {
@@ -59454,7 +59454,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Expansion of Benapole Land Port- Construction Parking Yard, Sheds and Modem Chemical Godowns with other ancillary facilities. Kategori / ürün grubu: TF Public Administration - Transportation YY Trade TI Rural and Inter-Urban Roads CI ICT Infrastructure",
       "workflow": {
@@ -59892,7 +59892,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Jubaland State Procurement for Veterinary Mobile Clinic Vehicles. Kategori / ürün grubu: YA Agricultural markets, commercialization and agri-business AI Irrigation and Drainage AZ Other Agriculture, Fishing and Forestry AB Agricultural Extension, Research, and Other Support Activities AK Public Administration - Agriculture, Fishing & Forestry",
       "workflow": {
@@ -60309,7 +60309,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Supply of ICT and electronic equipment for PIU Office",
       "workflow": {
@@ -60730,7 +60730,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Supply and Delivery of 25,406 Bunk Beds to Selected Secondary Schools in Various Regions in Ghana (3 Lots)",
       "workflow": {
@@ -61151,7 +61151,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Supply and Delivery of Dining Hall Furniture (4,472 Tables and 8,944 Benches) to Selected Secondary Schools in Various Regions in Ghana (2 Lots)",
       "workflow": {
@@ -61572,7 +61572,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Supply and Delivery of 64,900 Mono Desks to Selected Secondary Schools in Various Regions in Ghana (5 Lots)",
       "workflow": {
@@ -61993,7 +61993,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Fourniture de matériels et équipements de sécurité dans l'aéroport de Toliara :  machine traceur (marques de piste)",
       "workflow": {
@@ -62410,7 +62410,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor (Framework Agreement)",
       "workflow": {
@@ -62832,7 +62832,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Supply and Delivery of Laboratory Equipment for the Central Materials Laboratory",
       "workflow": {
@@ -63259,7 +63259,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Supply and Delivery of Cables and Conductors and 10mm2 single core copper conductor",
       "workflow": {
@@ -63681,7 +63681,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Procurement of transport vehicles for medical waste (MW)",
       "workflow": {
@@ -64097,7 +64097,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Procurement of BPNS commodity- Ready to Use Therapeutic food (RUTF)",
       "workflow": {
@@ -64513,7 +64513,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "demand_summary_tr": "Procurement of Educational Materials and Equipment for Classrooms and STEM Laboratories for Grades 8–9",
       "workflow": {
@@ -65102,7 +65102,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "commercial_feasibility": {
         "status": "commercial_inputs_missing",
@@ -65300,7 +65300,7 @@
             "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660929",
             "status": "failed",
             "source": "source_page",
-            "error": "URLError:<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:1010)>"
+            "error": "URLError:<urlopen error timed out>"
           }
         ],
         "text_chars": 0
@@ -65426,7 +65426,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "commercial_feasibility": {
         "status": "commercial_inputs_missing",
@@ -65624,7 +65624,7 @@
             "url": "https://monaqasat.mof.gov.qa/TendersOnlineServices/TenderDetails/660904",
             "status": "failed",
             "source": "source_page",
-            "error": "URLError:<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:1010)>"
+            "error": "URLError:<urlopen error timed out>"
           }
         ],
         "text_chars": 0
@@ -65750,7 +65750,7 @@
         "blocked_by_missing_fields": [
           "specification_evidence"
         ],
-        "rule": "A supplier name is never treated as verified without a source URL, product match and explicit verification evidence."
+        "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent."
       },
       "commercial_feasibility": {
         "status": "commercial_inputs_missing",
@@ -65971,7 +65971,7 @@
     "filtered_routes_with_rows": [],
     "budget_seconds": 70,
     "budget_exhausted": false,
-    "elapsed_seconds": 37.85,
+    "elapsed_seconds": 26.98,
     "ssr_fallback_attempted": true,
     "ssr_fallback_status": "no_rows_found",
     "coverage_scope": "not_verified"
@@ -65994,7 +65994,7 @@
     "browser_routes": [
       "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2"
     ],
-    "elapsed_seconds": 10.54,
+    "elapsed_seconds": 8.24,
     "budget_seconds": 55,
     "budget_exhausted": false
   },
@@ -79012,6 +79012,38 @@
       }
     },
     {
+      "id": "saudi-etimad-260939006332",
+      "source": "Saudi Etimad official visitor API",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "official_links": [
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
+      ],
+      "title_original": "تأمين مواد ومستلزمات لمركز الترميم والتعقيم والتجليد",
+      "title_tr": "تأمين مواد ومستلزمات لمركز الترميم والتعقيم والتجليد",
+      "buyer-name": "مجمع الملك عبدالعزيز للمكتبات الوقفية",
+      "buyer-country": "Saudi Arabia",
+      "country": "Saudi Arabia",
+      "publication-date": "2026-10-10T14:47:09.3737195",
+      "deadline-receipt-tender-date-lot": "2026-10-26T09:59:00",
+      "tender_number": "55/2026",
+      "reference_number": "260939006332",
+      "tender_type": "منافسة عامة",
+      "branch_name": "مجمع الملك عبدالعزيز للمكتبات الوقفية",
+      "gulf_live_source": true,
+      "foreign_supplier_eligibility_assumed": false,
+      "source_provenance": {
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "reference_number": "260939006332",
+        "parsed_from_official_json_endpoint": true
+      },
+      "export_goods_review": {
+        "status": "review_unknown",
+        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
+        "basis": "insufficient_evidence"
+      }
+    },
+    {
       "id": "saudi-etimad-260739008285",
       "source": "Saudi Etimad official visitor API",
       "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
@@ -79750,9 +79782,9 @@
     {
       "id": "saudi-etimad-260939009565",
       "source": "Saudi Etimad official visitor API",
-      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
       "official_links": [
-        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
         "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
       ],
       "title_original": "نزح مياه الصرف الصحي من الكلية التقنية بحبونا",
@@ -79769,7 +79801,7 @@
       "gulf_live_source": true,
       "foreign_supplier_eligibility_assumed": false,
       "source_provenance": {
-        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=1&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
+        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
         "reference_number": "260939009565",
         "parsed_from_official_json_endpoint": true
       },
@@ -80475,38 +80507,6 @@
       "source_provenance": {
         "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
         "reference_number": "260939010330",
-        "parsed_from_official_json_endpoint": true
-      },
-      "export_goods_review": {
-        "status": "review_unknown",
-        "reason": "İlanın fiziksel mal alımı olduğu henüz kanıtlanamadı.",
-        "basis": "insufficient_evidence"
-      }
-    },
-    {
-      "id": "saudi-etimad-261039003224",
-      "source": "Saudi Etimad official visitor API",
-      "source_url": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
-      "official_links": [
-        "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
-        "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC"
-      ],
-      "title_original": "توريد قطع غيار وسائط النقل لصالح كلية الملك فهد البحرية .",
-      "title_tr": "توريد قطع غيار وسائط النقل لصالح كلية الملك فهد البحرية .",
-      "buyer-name": "القوات البحرية",
-      "buyer-country": "Saudi Arabia",
-      "country": "Saudi Arabia",
-      "publication-date": "2026-10-08T15:21:43.7489444",
-      "deadline-receipt-tender-date-lot": "2026-10-15T09:59:00",
-      "tender_number": "26-302002000038-03",
-      "reference_number": "261039003224",
-      "tender_type": "شراء مباشر",
-      "branch_name": "كلية الملك فهد البحرية /الامداد",
-      "gulf_live_source": true,
-      "foreign_supplier_eligibility_assumed": false,
-      "source_provenance": {
-        "source": "https://tenders.etimad.sa/Tender/AllSupplierTendersForVisitorAsync?PageSize=24&PageNumber=2&TenderCategory=2&PublishDateId=1&SortDirection=DESC&Sort=SubmitionDate&IsSearch=true",
-        "reference_number": "261039003224",
         "parsed_from_official_json_endpoint": true
       },
       "export_goods_review": {
@@ -82143,7 +82143,8 @@
     "research_ready": 22,
     "blocked": 44,
     "verified_suppliers": 0,
-    "mode": "research_queue_only"
+    "opportunities_with_verified_supplier": 0,
+    "mode": "source_verified_candidates"
   },
   "commercial_feasibility_summary": {
     "opportunities": 66,
