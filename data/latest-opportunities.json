@@ -62797,7 +62797,9 @@
     "listing_url": "https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC",
     "listing_accessible": true,
     "detail_links": 0,
-    "detail_failures": 0
+    "detail_failures": 0,
+    "browser_fallback_used": false,
+    "browser_fallback_error": "TimeoutExpired:Command '['/usr/bin/google-chrome', '--headless=new', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage', '--virtual-time-budget=18000', '--dump-dom', 'https://tenders.etimad.sa/Tender/AllTendersForVisitor?PageNumber=1&PageSize=20&PublishDateId=5&Sort=SubmitionDate&SortDirection=DESC']' timed out after 45 seconds"
   },
   "uae_mof_feed": {
     "source": "https://mof.gov.ae/en/public-finance/government-procurement/current-business-opportunities/",
@@ -62806,7 +62808,12 @@
     "added": 0,
     "live_ingestion": false,
     "foreign_supplier_eligibility_assumed": false,
-    "errors": []
+    "errors": [],
+    "rendered_fallback_used": true,
+    "browser_fallback_pages": [
+      1,
+      2
+    ]
   },
   "qatar_monaqasat_feed": {
     "source": "https://monaqasat.mof.gov.qa/TendersOnlineServices/AvailableMinistriesTenders/2",
@@ -77110,18 +77117,13 @@
   },
   "china_import_radar": {
     "meta": {
-      "status": "stale_last_known_good",
+      "status": "ok",
       "current_year": 2025,
       "previous_year": 2024,
       "products_monitored": 16,
       "products_with_data": 16,
       "source": "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
-      "buyer_data_inferred": false,
-      "fresh_fetch_status": "source_unavailable",
-      "fresh_fetch_errors": [
-        "2025: TimeoutError",
-        "2024: TimeoutError"
-      ]
+      "buyer_data_inferred": false
     },
     "items": [
       {
