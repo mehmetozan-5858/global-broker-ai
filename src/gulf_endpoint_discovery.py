@@ -55,15 +55,15 @@ def _fetch_text(url: str, timeout: int = 15) -> str:
 
 
 # Only public endpoint-like strings are returned. Query strings, fragments, bearer-like
-# values and long opaque tokens are deliberately stripped so diagnostics cannot become
-# a credential exfiltration path.
+# values and long opaque tokens are deliberately stripped after parsing so diagnostics
+# cannot become a credential exfiltration path.
 _ENDPOINT_RE = re.compile(
-    r"(?P<q>['\"])(?P<value>(?:https?://[^'\"?#\s]{4,240}|/[A-Za-z0-9._~!$&'()*+,;=:@%/-]{3,220}))(?P=q)",
+    r"(?P<q>['\"])(?P<value>(?:https?://[^'\"\s]{4,240}|/[^'\"\s]{3,220}))(?P=q)",
     re.I,
 )
 _KEYWORDS = (
     "api", "tender", "competition", "opportun", "procurement", "rfq", "rfx",
-    "allTenders", "visitor", "mof-dpp", "ajax", "wp-json", "GetTender", "SearchTender",
+    "alltenders", "visitor", "mof-dpp", "ajax", "wp-json", "gettender", "searchtender",
 )
 
 
@@ -73,7 +73,7 @@ def endpoint_hints(text: str, base_url: str, *, limit: int = 24) -> list[str]:
     seen: set[str] = set()
     for match in _ENDPOINT_RE.finditer(text):
         raw = html.unescape(match.group("value")).strip()
-        if not any(keyword.lower() in raw.lower() for keyword in _KEYWORDS):
+        if not any(keyword in raw.lower() for keyword in _KEYWORDS):
             continue
         absolute = urljoin(base_url, raw)
         parsed = urlparse(absolute)
@@ -82,7 +82,6 @@ def endpoint_hints(text: str, base_url: str, *, limit: int = 24) -> list[str]:
         clean = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
         if len(clean) > 260 or clean in seen:
             continue
-        # Ignore static assets; we want request/API route candidates.
         if clean.lower().endswith((".js", ".css", ".png", ".jpg", ".jpeg", ".svg", ".woff", ".woff2")):
             continue
         seen.add(clean)
