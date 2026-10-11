@@ -13,11 +13,10 @@ def _bearer(headers):
     return value[7:].strip() if value.startswith("Bearer ") else ""
 
 
-def _rpc(token, opportunity_id):
-    payload = json.dumps({"p_opportunity_id": opportunity_id}).encode("utf-8")
+def _post_json(url, token, payload, timeout=12):
     req = Request(
-        SUPABASE_URL + "/rest/v1/rpc/request_introduction",
-        data=payload,
+        url,
+        data=json.dumps(payload).encode("utf-8"),
         method="POST",
         headers={
             "apikey": SUPABASE_KEY,
@@ -27,7 +26,7 @@ def _rpc(token, opportunity_id):
         },
     )
     try:
-        with urlopen(req, timeout=12) as response:
+        with urlopen(req, timeout=timeout) as response:
             raw = response.read().decode("utf-8")
             return response.status, json.loads(raw) if raw else {}
     except HTTPError as exc:
@@ -39,6 +38,25 @@ def _rpc(token, opportunity_id):
         return exc.code, body
     except (URLError, TimeoutError, json.JSONDecodeError):
         return 503, {}
+
+
+def _rpc(token, opportunity_id):
+    return _post_json(
+        SUPABASE_URL + "/rest/v1/rpc/request_introduction",
+        token,
+        {"p_opportunity_id": opportunity_id},
+    )
+
+
+def _verify(token, request_id):
+    if not request_id:
+        return 400, {}
+    return _post_json(
+        SUPABASE_URL + "/functions/v1/broker-introduction-verify",
+        token,
+        {"request_id": request_id},
+        timeout=15,
+    )
 
 
 def _error_code(body):
@@ -104,11 +122,25 @@ class handler(BaseHTTPRequestHandler):
             self._json(status, {"status": code})
             return
 
+        request_id = result.get("request_id")
+        request_status = result.get("status")
+        verification = None
+        verify_status, verified = _verify(token, request_id)
+        if verify_status < 400 and isinstance(verified, dict) and verified.get("status") == "OK":
+            verification = {
+                "route_type": verified.get("route_type"),
+                "verification_score": verified.get("verification_score"),
+                "reason": verified.get("reason"),
+                "credit_refunded": bool(verified.get("credit_refunded")),
+            }
+            request_status = verified.get("request_status") or request_status
+
         self._json(200, {
             "status": "INTRODUCTION_REQUESTED",
             "opportunity_id": opportunity_id,
-            "request_id": result.get("request_id"),
-            "request_status": result.get("status"),
+            "request_id": request_id,
+            "request_status": request_status,
             "already_requested": bool(result.get("already_requested")),
             "credits_remaining": result.get("credits_remaining"),
+            "verification": verification,
         })
