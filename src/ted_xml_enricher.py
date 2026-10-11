@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from src import document_parser
-from src.ted_xml_parser import is_xml_source, parse_ted_xml
+from src.ted_xml_parser import extract_ted_contacts, is_xml_source, parse_ted_xml
 
 MIN_SOURCE_TEXT_CHARS = 160
 MAX_EXTRACTED_CHARS = document_parser.MAX_EXTRACTED_CHARS
@@ -43,14 +43,13 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
         if not is_xml_source(data, content_type, final_url):
             raise ValueError("ted_source_not_xml")
         text, attachments = parse_ted_xml(data, final_url)
+        contacts = extract_ted_contacts(data)
         if len(text) < MIN_SOURCE_TEXT_CHARS:
             raise ValueError("insufficient_ted_xml_text")
 
         existing = item.get("document_extracted_text")
         parts = [existing] if isinstance(existing, str) and existing.strip() else []
         parts.append(text)
-        # TED XML can contain direct links to tender attachments. Read the
-        # documents, not merely their URLs, while retaining source provenance.
         existing_urls = {
             a.get("url") for a in attempts if isinstance(a, dict) and a.get("status") == "parsed"
         }
@@ -62,6 +61,22 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             )
         merged = "\n\n".join(parts)[:MAX_EXTRACTED_CHARS]
         item["document_extracted_text"] = merged
+
+        # Structured TED touchpoint fields are stronger evidence than generic text
+        # matching. Preserve an existing source-backed value and only fill gaps.
+        for key in ("contact_email", "contact_phone", "contact_person", "buyer_website"):
+            if contacts.get(key) and not item.get(key):
+                item[key] = contacts[key]
+        if contacts:
+            item["ted_touchpoint_contact"] = {
+                "source": "ted_xml_touchpoint",
+                "email_present": bool(contacts.get("contact_email")),
+                "phone_present": bool(contacts.get("contact_phone")),
+                "person_present": bool(contacts.get("contact_person")),
+                "website_present": bool(contacts.get("buyer_website")),
+                "source_backed_only": True,
+            }
+
         attempt.update({
             "status": "parsed",
             "kind": "ted_xml",
@@ -70,6 +85,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "bytes": len(data),
             "extracted_chars": len(text),
             "discovered_attachments": len(attachments),
+            "structured_contact_found": bool(contacts),
         })
         attempts.append(attempt)
         info.update({
@@ -79,6 +95,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "attempts": attempts,
             "text_chars": len(merged),
             "ted_xml_parsed": True,
+            "ted_structured_contact_found": bool(contacts),
         })
         item["document_extraction"] = info
         return True
@@ -100,21 +117,24 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
 
     attempted = 0
     parsed = 0
+    structured_contacts = 0
     for item in opportunities:
         if not isinstance(item, dict) or not _ted_xml_url(item):
             continue
         attempted += 1
         if enrich_opportunity(item):
             parsed += 1
+            structured_contacts += int(bool((item.get("document_extraction") or {}).get("ted_structured_contact_found")))
 
     summary = payload.get("document_extraction")
     if not isinstance(summary, dict):
         summary = {}
     summary.update({
-        "version": max(int(summary.get("version") or 0), 3),
-        "mode": "public_source_pages_documents_and_ted_xml",
+        "version": max(int(summary.get("version") or 0), 4),
+        "mode": "public_source_pages_documents_ted_xml_and_touchpoints",
         "ted_xml_attempted": attempted,
         "ted_xml_parsed": parsed,
+        "ted_structured_contacts": structured_contacts,
         "parsed_opportunities": sum(
             1
             for item in opportunities
@@ -137,7 +157,8 @@ def main() -> None:
     print(
         "TED_XML_SUMMARY "
         f"attempted={summary.get('ted_xml_attempted', 0)} "
-        f"parsed={summary.get('ted_xml_parsed', 0)}",
+        f"parsed={summary.get('ted_xml_parsed', 0)} "
+        f"structured_contacts={summary.get('ted_structured_contacts', 0)}",
         file=sys.stderr,
     )
 
