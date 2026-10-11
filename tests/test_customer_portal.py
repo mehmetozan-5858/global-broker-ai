@@ -15,8 +15,18 @@ class CustomerPortalTests(unittest.TestCase):
         self.assertIn('Miktar belirtilmemiş',js)
         self.assertIn('Şehir belirtilmemiş',js)
         self.assertIn('Kaynak alanı:',js)
-        self.assertIn('/api/contact_unlock',js)
+        self.assertIn('/api/introduction',js)
         self.assertIn('opportunity_id',js)
+
+    def test_portal_uses_introduction_credit_not_raw_contact_unlock(self):
+        js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
+        self.assertIn('Tanıştırma Kredisi',js)
+        self.assertIn('Tanıştırma talebi gönder',js)
+        self.assertIn('kontrollü tanıştırma',js)
+        self.assertIn('my_introduction_requests',js)
+        self.assertNotIn('/api/contact_unlock',js)
+        self.assertNotIn('mailto:',js)
+        self.assertNotIn('tel:',js)
 
     def test_portal_does_not_invent_missing_values(self):
         js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
