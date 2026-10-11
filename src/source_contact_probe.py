@@ -11,6 +11,7 @@ from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 
 from src.contact_enrichment import CONTACT_HINT_RE, EMAIL_RE, PHONE_RE, _clean_phone
+from src.contact_source_priority import score_row
 
 USER_AGENT = "GlobalBrokerContactProbe/1.0 (+source-verification)"
 MAX_BYTES = 900_000
@@ -138,7 +139,7 @@ def _best_contact(parser: PageParser) -> tuple[str, str, str]:
 
 
 def _source_url(row: dict[str, Any]) -> str:
-    for key in ("source_url", "notice_url", "detail_url", "official_url", "url"):
+    for key in ("source_url", "notice_url", "detail_url", "official_url", "url", "document_url"):
         value = str(row.get(key) or "").strip()
         if value.startswith("https://"):
             return value
@@ -159,6 +160,7 @@ def probe_row(row: dict[str, Any]) -> dict[str, Any]:
         return row
     parser = _fetch(base)
     if not parser:
+        row["contact_probe"] = {"version": 2, "status": "source_unreachable", "checked_pages": [base], "source_page": None}
         return row
     email, phone, _ = _best_contact(parser)
     checked = [base]
@@ -182,10 +184,11 @@ def probe_row(row: dict[str, Any]) -> dict[str, Any]:
                 break
 
     row["contact_probe"] = {
-        "version": 1,
+        "version": 2,
         "status": "found" if (email or phone) else "checked_no_direct_contact",
         "checked_pages": checked,
         "source_page": source_page if (email or phone) else None,
+        "priority": int(row.get("contact_discovery_priority") or score_row(row)[0]),
     }
     if email:
         row["contact_email"] = email
@@ -202,22 +205,30 @@ def probe_payload(payload: dict[str, Any]) -> dict[str, Any]:
     rows = payload.get("opportunities")
     if not isinstance(rows, list):
         return payload
-    attempted = found = 0
+
+    eligible: list[dict[str, Any]] = []
     for row in rows:
-        if attempted >= MAX_ROWS:
-            break
-        if not isinstance(row, dict) or row.get("direct_contact_available"):
+        if not isinstance(row, dict) or row.get("direct_contact_available") or not _source_url(row):
             continue
-        if not _source_url(row):
-            continue
+        if "contact_discovery_priority" not in row:
+            score, reasons = score_row(row)
+            row["contact_discovery_priority"] = score
+            row["contact_discovery_reason"] = reasons
+        eligible.append(row)
+
+    eligible.sort(key=lambda row: int(row.get("contact_discovery_priority") or 0), reverse=True)
+    attempted = found = 0
+    for row in eligible[:MAX_ROWS]:
         attempted += 1
         before = bool(row.get("contact_email") or row.get("contact_phone"))
         probe_row(row)
         after = bool(row.get("contact_email") or row.get("contact_phone"))
         found += int(after and not before)
+
     payload["contact_probe_summary"] = {
-        "version": 1,
-        "mode": "official_source_same_origin_only",
+        "version": 2,
+        "mode": "priority_ranked_official_source_same_origin_only",
+        "eligible": len(eligible),
         "attempted": attempted,
         "direct_contacts_found": found,
         "max_rows_per_run": MAX_ROWS,
