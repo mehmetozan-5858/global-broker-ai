@@ -13,6 +13,7 @@ class ControlledIntroductionTests(unittest.TestCase):
     def test_introduction_api_uses_request_rpc_and_returns_no_contact(self):
         code = (ROOT / "api/introduction.py").read_text(encoding="utf-8")
         self.assertIn("/rest/v1/rpc/request_introduction", code)
+        self.assertIn("/functions/v1/broker-introduction-verify", code)
         self.assertIn('"request_id"', code)
         self.assertIn('"request_status"', code)
         self.assertNotIn('"contact"', code)
@@ -33,6 +34,17 @@ class ControlledIntroductionTests(unittest.TestCase):
         self.assertNotIn("contact_email", returned)
         self.assertNotIn("contact_phone", returned)
         self.assertNotIn("buyer_website", returned)
+
+    def test_verification_agent_is_fail_closed_and_service_only(self):
+        sql = (ROOT / "sql/introduction_verification_agent.sql").read_text(encoding="utf-8")
+        self.assertIn("gb_verify_introduction_request", sql)
+        self.assertIn("gb_process_introduction_queue", sql)
+        self.assertIn("service_role_required", sql)
+        self.assertIn("no_verified_access_route", sql)
+        self.assertIn("buyer_consent_pending", sql)
+        self.assertIn("official_public_procurement_route_verified", sql)
+        self.assertIn("credit_refunded", sql)
+        self.assertNotIn("return jsonb_build_object('contact'", sql.lower())
 
 
 if __name__ == "__main__":
