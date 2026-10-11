@@ -74,6 +74,7 @@ jobs:
           scan_step enrichment 90 python -m src.enrichment "$NEXT"
           scan_step document_parser 480 python -m src.document_parser "$NEXT" data/latest-opportunities.json
           scan_step ted_xml_enricher 480 python -m src.ted_xml_enricher "$NEXT"
+          scan_step contact_source_priority 30 python -m src.contact_source_priority "$NEXT"
           scan_step source_contact_probe 180 python -m src.source_contact_probe "$NEXT"
           scan_step contact_enrichment 60 python -m src.contact_enrichment "$NEXT"
           scan_step a5_source_terms 30 python -m src.a5_source_terms "$NEXT"
@@ -81,7 +82,6 @@ jobs:
           scan_step field_evidence_final 30 python -m src.field_evidence "$NEXT"
           scan_step verification 180 python -m src.verification "$NEXT"
           scan_step sales_priority 90 python -m src.sales_priority "$NEXT"
-          # A4-A12 remain the source of health, risk, deal lifecycle and launch-gate outputs.
           scan_step remaining_pipeline 30 python -m src.remaining_pipeline "$NEXT"
       - name: Validate enriched live output
         run: |
@@ -103,6 +103,8 @@ jobs:
               raise SystemExit('A3 field evidence missing from live payload')
           if any(not isinstance(o.get('field_evidence'), dict) for o in opportunities):
               raise SystemExit('A3 field evidence missing from one or more live opportunities')
+          if opportunities and not data.get('contact_source_priority_summary'):
+              raise SystemExit('contact source priority summary missing from live payload')
           if opportunities and not data.get('contact_probe_summary'):
               raise SystemExit('official source contact probe summary missing from live payload')
           if opportunities and not data.get('contact_enrichment_summary'):
@@ -129,7 +131,6 @@ jobs:
           from pathlib import Path
           from urllib.parse import urlencode
           from urllib.request import Request, urlopen
-
           request_url=os.environ['ACTIONS_ID_TOKEN_REQUEST_URL']
           request_token=os.environ['ACTIONS_ID_TOKEN_REQUEST_TOKEN']
           sep='&' if '?' in request_url else '?'
@@ -150,27 +151,33 @@ jobs:
       - name: Build public-safe masked feed
         run: |
           python - <<'PY'
-          import json
+          import json,re
           from pathlib import Path
           src=Path('data/latest-opportunities.private.json')
           dst=Path('data/latest-opportunities.json')
           data=json.loads(src.read_text(encoding='utf-8'))
           blocked_exact={
-              'email','e-mail','phone','telephone','mobile','contact','contact_email','contact_phone','buyer_email','buyer_phone','supplier_email','supplier_phone',
+              'email','e-mail','phone','telephone','mobile','contact','buyer','contact_email','contact_phone','buyer_email','buyer_phone','supplier_email','supplier_phone',
               'website','linkedin','address','street','postal_code','contact_person','representative','buyer-name','buyer_name','borrower','agency','department','office',
-              'contracting_authority','organization_name','source_url','source-url','url','notice_url','detail_url','document_url'
+              'contracting_authority','organization_name','source_url','source-url','url','notice_url','detail_url','document_url','official_url','official_links','links',
+              'checked_pages','source_page','final_url','document_extracted_text','source_excerpt'
           }
+          email_re=re.compile(r'(?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}')
+          mailtel_re=re.compile(r'(?i)(mailto:|tel:)\S+')
           def scrub_value(value):
               if isinstance(value, dict):
                   out={}
                   for k,v in value.items():
                       lk=str(k).lower()
-                      if lk in blocked_exact or any(x in lk for x in ('email','phone','telephone','mobile','linkedin','contact_person','address')):
+                      if lk in blocked_exact or 'contact' in lk or any(x in lk for x in ('email','phone','telephone','mobile','linkedin','contact_person','address')):
                           continue
                       out[k]=scrub_value(v)
                   return out
               if isinstance(value, list):
                   return [scrub_value(x) for x in value]
+              if isinstance(value,str):
+                  value=email_re.sub('[redacted]',value)
+                  value=mailtel_re.sub('[redacted]',value)
               return value
           safe=scrub_value(data)
           rows=[]
@@ -181,7 +188,7 @@ jobs:
                   rows.append(row)
           safe['opportunities']=rows
           safe['mode']='public_masked_feed'
-          safe['privacy_notice']='Direct buyer identity, contact details and direct source URLs are not published in the public feed.'
+          safe['privacy_notice']='Direct buyer identity, contact details, evidence excerpts and direct source URLs are not published in the public feed.'
           dst.write_text(json.dumps(safe,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
           print(f'PUBLIC_MASKED_FEED opportunities={len(rows)}')
           PY
@@ -189,22 +196,27 @@ jobs:
       - name: Verify no restricted fields are published
         run: |
           python - <<'PY'
-          import json
+          import json,re
           from pathlib import Path
-          data=json.loads(Path('data/latest-opportunities.json').read_text(encoding='utf-8'))
+          raw=Path('data/latest-opportunities.json').read_text(encoding='utf-8')
+          data=json.loads(raw)
           if data.get('mode')!='public_masked_feed':
               raise SystemExit('public feed mode is not masked')
-          forbidden=('email','phone','telephone','mobile','linkedin','contact_person','buyer_name','buyer-name','source_url','notice_url','detail_url','document_url')
+          forbidden=('email','phone','telephone','mobile','linkedin','contact_person','buyer_name','buyer-name','source_url','notice_url','detail_url','document_url','official_url','checked_pages','source_page','final_url')
           def walk(v,path='root'):
               if isinstance(v,dict):
                   for k,x in v.items():
                       lk=str(k).lower()
-                      if any(f==lk for f in forbidden):
+                      if 'contact' in lk or any(f==lk for f in forbidden):
                           raise SystemExit(f'restricted key published: {path}.{k}')
                       walk(x,path+'.'+str(k))
               elif isinstance(v,list):
                   for i,x in enumerate(v): walk(x,f'{path}[{i}]')
           walk(data)
+          if re.search(r'(?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}',raw):
+              raise SystemExit('email-like value published in public feed')
+          if re.search(r'(?i)(mailto:|tel:)',raw):
+              raise SystemExit('direct contact URI published in public feed')
           print('PUBLIC_FEED_PRIVACY_GATE_OK')
           PY
       - name: Commit masked Shadow Mode output
