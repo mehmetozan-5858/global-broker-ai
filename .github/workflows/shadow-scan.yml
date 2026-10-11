@@ -113,7 +113,7 @@ jobs:
               raise SystemExit('buyer contact enrichment summary missing from live payload')
           if opportunities and not data.get('a5_source_terms_summary'):
               raise SystemExit('A5 source term extraction summary missing from live payload')
-          for required in ('gulf_sources','commercial_terms_summary','supplier_research_summary','commercial_feasibility_summary','offer_risk_summary','agent_center','watchdog','deal_lifecycle_summary','launch_gate','launch_readiness_report'):
+          for required in ('gulf_sources','commercial_terms_summary','supplier_research_summary','commercial_feasibility_summary','offer_risk_summary','offer_candidate_queue','agent_center','watchdog','deal_lifecycle_summary','launch_gate','launch_readiness_report'):
               if required not in data:
                   raise SystemExit(f'remaining roadmap stage missing: {required}')
           if (data.get('launch_gate') or {}).get('launch_ready'):
@@ -209,7 +209,7 @@ jobs:
           for row in safe.get('opportunities') or []:
               if isinstance(row,dict):
                   row['buyer_masked']=True
-                  row['buyer_display']='Doğrulanmış alıcı — üyelik erişim kurallarına tabi'
+                  row['buyer_display']='Alıcı kimliği kontrollü tanıştırma ile paylaşılır'
                   rows.append(row)
           safe['opportunities']=rows
           safe['mode']='public_masked_feed'
