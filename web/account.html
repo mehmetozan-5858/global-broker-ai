@@ -11,13 +11,13 @@
 <div class="actions"><button id="login">Giriş yap</button><button id="signup" class="secondary">Hesap oluştur</button><button id="reset" class="secondary">Şifre sıfırla</button><button id="logout" class="secondary hidden">Çıkış</button></div>
 <div id="status" class="status">Oturum kontrol ediliyor…</div>
 <div id="profile" class="profile hidden"><strong>Oturum açık</strong><div id="who" class="small"></div><div id="role" class="small"></div></div>
-<div class="planbox"><strong>Sektör erişimi ve üyelik</strong><div class="small">Global Broker paketleri sektör kapsamı, ülke kapsamı, doğrulanmış kontak kredisi ve başarı komisyonu avantajına göre ayrılır. Free hesaplarda doğrudan firma kontakları açılmaz.</div><div class="actions"><a class="linkbtn" href="pricing.html">Paketleri ve sektörleri incele</a></div></div>
+<div class="planbox"><strong>Sektör erişimi ve üyelik</strong><div class="small">Global Broker paketleri sektör kapsamı, ülke kapsamı, Tanıştırma Kredisi ve başarı komisyonu avantajına göre ayrılır. Free hesaplarda doğrudan firma iletişim bilgileri açılmaz; kredi, kontrollü tanıştırma sürecini başlatır.</div><div class="actions"><a class="linkbtn" href="pricing.html">Paketleri ve sektörleri incele</a></div></div>
 <div id="accessbox" class="planbox hidden">
   <div class="access-head"><div><strong>Fırsat alanım</strong><div class="small">Sistem yalnız seçtiğiniz sektör kümelerini ve ülke kapsamını öne çıkarır.</div></div><span id="planpill" class="pill">FREE</span></div>
-  <div class="metrics"><div class="metric"><b id="sectorLimit">—</b><small>Sektör limiti</small></div><div class="metric"><b id="countryLimit">—</b><small>Ülke limiti</small></div><div class="metric"><b id="creditLeft">—</b><small>Kalan kontak kredisi</small></div></div>
+  <div class="metrics"><div class="metric"><b id="sectorLimit">—</b><small>Sektör limiti</small></div><div class="metric"><b id="countryLimit">—</b><small>Ülke limiti</small></div><div class="metric"><b id="creditLeft">—</b><small>Kalan Tanıştırma Kredisi</small></div></div>
   <div id="sectorList" class="sector-list"></div>
   <div class="countrybox"><label>Ülke kodları (ISO-2, virgülle)<input id="countries" placeholder="TR, DE, GB"></label><div class="hint">Örnek: TR, DE, US. Boş bırakırsanız paketinizin ülke limiti dahilinde genel keşif yapılır.</div></div>
-  <div class="locknote">Kontak açma hakkı paket tarafından sunucu tarafında kontrol edilir. Tarayıcıdan plan veya kredi değiştirilemez.</div>
+  <div class="locknote">Tanıştırma hakkı paket tarafından sunucu tarafında kontrol edilir. Kredi kullanımı yalnız tanıştırma talebi oluşturur; ham iletişim bilgisi açmaz. Tarayıcıdan plan veya kredi değiştirilemez.</div>
   <div class="actions"><button id="saveAccess">Sektör ve ülkeleri kaydet</button></div><div id="saveStatus" class="save-status"></div>
 </div>
 <p class="small">Güvenlik notu: e-posta doğrulaması ve Supabase oturum güvenliği aktiftir. Yönetici şifre kurtarmasında planlanan bağımsız e-posta + telefon çift kod doğrulaması henüz canlı SMS sağlayıcısı bağlanmadığı için üretim kapısı olarak açık bırakılmamıştır.</p>
