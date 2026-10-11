@@ -1,6 +1,5 @@
 -- Global Broker automated introduction verification agent.
 -- This agent never reveals raw contact details. It classifies the safest next step.
--- Authorization is enforced by EXECUTE grants: only service_role can call these RPCs.
 
 alter table private.introduction_requests
   add column if not exists verification_route_type text,
