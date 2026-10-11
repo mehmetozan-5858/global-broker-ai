@@ -25,7 +25,9 @@ class W2A3QualityPassTests(unittest.TestCase):
         self.assertIn("coverage(b)-coverage(a)", portal)
         self.assertIn("Ürün ara", portal)
         self.assertIn("maskedBuyer", portal)
-        self.assertIn("/api/contact_unlock", portal)
+        self.assertIn("/api/introduction", portal)
+        self.assertIn("kontrollü tanıştırma", portal)
+        self.assertNotIn("/api/contact_unlock", portal)
         self.assertNotIn('product(o)+" "+buyer(o)', portal)
 
     def test_missing_values_are_still_explicit(self):
