@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import re
 import urllib.parse
-from typing import Iterable
+from typing import Iterable, Any
 from xml.etree import ElementTree
 
 MAX_EXTRACTED_CHARS = 40000
 ATTACHMENT_EXTENSIONS = (".pdf", ".docx", ".txt")
+EMAIL_RE = re.compile(r"(?i)(?<![A-Z0-9._%+-])([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})(?![A-Z0-9._%+-])")
+PHONE_RE = re.compile(r"(?<!\d)(\+?\d[\d\s()./-]{7,}\d)(?!\d)")
 
 
 def _clean_text(parts: Iterable[str]) -> str:
@@ -20,6 +22,75 @@ def _looks_like_attachment(value: str) -> bool:
     except Exception:
         return False
     return path.endswith(ATTACHMENT_EXTENSIONS)
+
+
+def _local_name(tag: Any) -> str:
+    text = str(tag or "")
+    if "}" in text:
+        text = text.rsplit("}", 1)[-1]
+    return re.sub(r"[^a-z0-9]+", "", text.lower())
+
+
+def _node_text(node: ElementTree.Element) -> str:
+    return " ".join(" ".join(node.itertext()).split()).strip()
+
+
+def _clean_phone(value: str) -> str:
+    value = re.sub(r"\s+", " ", value).strip(" .,-/()")
+    digits = re.sub(r"\D", "", value)
+    return value if 8 <= len(digits) <= 16 else ""
+
+
+def extract_ted_contacts(data: bytes) -> dict[str, str]:
+    """Extract only explicit TED/eForms touchpoint contact values.
+
+    The parser is namespace/schema tolerant, but intentionally conservative: it
+    accepts e-mail/telephone/URI/person values only from contact-like XML nodes.
+    This avoids treating arbitrary addresses or URLs elsewhere in a notice as the
+    buyer's direct contact details.
+    """
+    root = ElementTree.fromstring(data)
+    result: dict[str, str] = {}
+    contact_context = {
+        "contact", "touchpoint", "communication", "organisation", "organization",
+        "contractingparty", "buyer", "tenderingparty", "department", "office",
+    }
+
+    for node in root.iter():
+        name = _local_name(node.tag)
+        value = _node_text(node)
+        if not value:
+            continue
+        ancestors_hint = any(h in name for h in contact_context)
+
+        if "electronicmail" in name or name in {"email", "emailaddress", "emailuri"}:
+            match = EMAIL_RE.search(value)
+            if match and "contact_email" not in result:
+                result["contact_email"] = match.group(1).lower()
+                result["contact_evidence_source"] = "ted_xml_touchpoint"
+            continue
+
+        if "telephone" in name or name in {"phone", "phonenumber", "telephonecommunication"}:
+            match = PHONE_RE.search(value)
+            if match and "contact_phone" not in result:
+                phone = _clean_phone(match.group(1))
+                if phone:
+                    result["contact_phone"] = phone
+                    result["contact_evidence_source"] = "ted_xml_touchpoint"
+            continue
+
+        if name in {"contactname", "personname", "contactpointname"} and "contact_person" not in result:
+            if 2 <= len(value) <= 160:
+                result["contact_person"] = value
+                result["contact_evidence_source"] = "ted_xml_touchpoint"
+            continue
+
+        if ancestors_hint and ("internetaddress" in name or name in {"websiteuri", "uri", "endpointuri"}):
+            if value.lower().startswith("https://") and "buyer_website" not in result:
+                result["buyer_website"] = value.rstrip(".,;)")
+                result["contact_evidence_source"] = "ted_xml_touchpoint"
+
+    return result
 
 
 def parse_ted_xml(data: bytes, base_url: str) -> tuple[str, list[str]]:
