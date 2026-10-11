@@ -8,6 +8,8 @@ from typing import Any
 
 TEXT_KEYS = (
     "document_extracted_text",
+    "notice_text",
+    "description",
     "description-lot",
     "detail_original",
     "detail_tr",
@@ -17,38 +19,40 @@ TEXT_KEYS = (
     "specification",
 )
 
+SEP = r"\s*(?::|=|\-|–|—|：)\s*"
+
 PATTERNS = {
     "quantity": [
-        re.compile(r"(?im)\b(?:quantity|qty|miktar)\s*[:\-]\s*([^\n\r;]{1,120})"),
-        re.compile(r"(?im)(?:الكمية)\s*[:\-]\s*([^\n\r;]{1,120})"),
+        re.compile(rf"(?im)\b(?:quantity|qty|requested quantity|miktar|adet)\b{SEP}([^\n\r;]{{1,120}})"),
+        re.compile(rf"(?im)(?:الكمية|العدد){SEP}([^\n\r;]{{1,120}})"),
     ],
     "payment_terms": [
-        re.compile(r"(?im)\b(?:payment terms?|terms of payment|ödeme şart(?:ı|ları)?)\s*[:\-]\s*([^\n\r;]{2,300})"),
-        re.compile(r"(?im)(?:شروط الدفع)\s*[:\-]\s*([^\n\r;]{2,300})"),
+        re.compile(rf"(?im)\b(?:payment terms?|terms of payment|payment condition|ödeme şart(?:ı|ları)?|ödeme koşul(?:u|ları)?)\b{SEP}([^\n\r]{{2,300}})"),
+        re.compile(rf"(?im)(?:شروط الدفع|طريقة الدفع){SEP}([^\n\r]{{2,300}})"),
     ],
     "bid_bond": [
-        re.compile(r"(?im)\b(?:bid bond|tender bond|bid security|temporary guarantee|geçici teminat)\s*[:\-]\s*([^\n\r;]{1,200})"),
-        re.compile(r"(?im)(?:التأمين المؤقت|ضمان العطاء)\s*[:\-]\s*([^\n\r;]{1,200})"),
+        re.compile(rf"(?im)\b(?:bid bond|tender bond|bid security|temporary guarantee|geçici teminat)\b{SEP}([^\n\r]{{1,200}})"),
+        re.compile(rf"(?im)(?:التأمين المؤقت|ضمان العطاء){SEP}([^\n\r]{{1,200}})"),
     ],
     "performance_security": [
-        re.compile(r"(?im)\b(?:performance bond|performance security|kesin teminat)\s*[:\-]\s*([^\n\r;]{1,200})"),
-        re.compile(r"(?im)(?:ضمان الأداء|التأمين النهائي)\s*[:\-]\s*([^\n\r;]{1,200})"),
+        re.compile(rf"(?im)\b(?:performance bond|performance security|final guarantee|kesin teminat)\b{SEP}([^\n\r]{{1,200}})"),
+        re.compile(rf"(?im)(?:ضمان الأداء|التأمين النهائي){SEP}([^\n\r]{{1,200}})"),
     ],
     "delivery_terms": [
-        re.compile(r"(?im)\b(?:delivery terms?|delivery condition|incoterms?|teslim şart(?:ı|ları)?)\s*[:\-]\s*([^\n\r;]{2,300})"),
-        re.compile(r"(?im)(?:شروط التسليم)\s*[:\-]\s*([^\n\r;]{2,300})"),
+        re.compile(rf"(?im)\b(?:delivery terms?|delivery condition|incoterms?|incoterm|teslim şart(?:ı|ları)?|teslim koşul(?:u|ları)?)\b{SEP}([^\n\r]{{2,300}})"),
+        re.compile(rf"(?im)(?:شروط التسليم|شرط التسليم){SEP}([^\n\r]{{2,300}})"),
     ],
     "delivery_location": [
-        re.compile(r"(?im)\b(?:delivery location|place of delivery|place of performance|teslim yeri)\s*[:\-]\s*([^\n\r;]{2,300})"),
-        re.compile(r"(?im)(?:مكان التسليم|مكان التنفيذ)\s*[:\-]\s*([^\n\r;]{2,300})"),
+        re.compile(rf"(?im)\b(?:delivery location|delivery place|place of delivery|place of performance|destination|teslim yeri|teslimat yeri)\b{SEP}([^\n\r]{{2,300}})"),
+        re.compile(rf"(?im)(?:مكان التسليم|مكان التنفيذ|وجهة التسليم){SEP}([^\n\r]{{2,300}})"),
     ],
     "eligibility": [
-        re.compile(r"(?im)\b(?:eligibility|qualification requirements?|participation requirements?|yeterlilik(?: kriterleri| şartları)?)\s*[:\-]\s*([^\n\r]{3,500})"),
-        re.compile(r"(?im)(?:متطلبات التأهيل|شروط المشاركة)\s*[:\-]\s*([^\n\r]{3,500})"),
+        re.compile(rf"(?im)\b(?:eligibility|qualification requirements?|participation requirements?|yeterlilik(?: kriterleri| şartları)?)\b{SEP}([^\n\r]{{3,500}})"),
+        re.compile(rf"(?im)(?:متطلبات التأهيل|شروط المشاركة){SEP}([^\n\r]{{3,500}})"),
     ],
     "award_criteria": [
-        re.compile(r"(?im)\b(?:award criteria|evaluation criteria|değerlendirme kriter(?:i|leri))\s*[:\-]\s*([^\n\r]{3,500})"),
-        re.compile(r"(?im)(?:معايير الترسية|معايير التقييم)\s*[:\-]\s*([^\n\r]{3,500})"),
+        re.compile(rf"(?im)\b(?:award criteria|evaluation criteria|değerlendirme kriter(?:i|leri)|ihale kriter(?:i|leri))\b{SEP}([^\n\r]{{3,500}})"),
+        re.compile(rf"(?im)(?:معايير الترسية|معايير التقييم){SEP}([^\n\r]{{3,500}})"),
     ],
 }
 
@@ -75,7 +79,7 @@ def _source_blocks(item: dict[str, Any]) -> list[tuple[str, str]]:
 
 
 def _clean(value: str) -> str:
-    return " ".join(value.split()).strip(" :-\t")[:500]
+    return " ".join(value.split()).strip(" :-=–—：\t")[:500]
 
 
 def extract(item: dict[str, Any]) -> dict[str, Any]:
