@@ -37,14 +37,19 @@ class ControlledIntroductionTests(unittest.TestCase):
 
     def test_verification_agent_is_fail_closed_and_service_only(self):
         sql = (ROOT / "sql/introduction_verification_agent.sql").read_text(encoding="utf-8")
+        lower = sql.lower()
         self.assertIn("gb_verify_introduction_request", sql)
         self.assertIn("gb_process_introduction_queue", sql)
-        self.assertIn("service_role_required", sql)
         self.assertIn("no_verified_access_route", sql)
         self.assertIn("buyer_consent_pending", sql)
         self.assertIn("official_public_procurement_route_verified", sql)
         self.assertIn("credit_refunded", sql)
-        self.assertNotIn("return jsonb_build_object('contact'", sql.lower())
+        self.assertIn("revoke all on function public.gb_verify_introduction_request(uuid) from public,anon,authenticated", lower)
+        self.assertIn("grant execute on function public.gb_verify_introduction_request(uuid) to service_role", lower)
+        self.assertIn("revoke all on function public.gb_process_introduction_queue(integer) from public,anon,authenticated", lower)
+        self.assertIn("grant execute on function public.gb_process_introduction_queue(integer) to service_role", lower)
+        self.assertNotIn("request.jwt.claim.role", lower)
+        self.assertNotIn("return jsonb_build_object('contact'", lower)
 
 
 if __name__ == "__main__":
