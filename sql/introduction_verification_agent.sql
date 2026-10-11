@@ -1,5 +1,6 @@
 -- Global Broker automated introduction verification agent.
 -- This agent never reveals raw contact details. It classifies the safest next step.
+-- Authorization is enforced by EXECUTE grants: only service_role can call these RPCs.
 
 alter table private.introduction_requests
   add column if not exists verification_route_type text,
@@ -16,7 +17,6 @@ as $$
 declare
   req private.introduction_requests%rowtype;
   opp jsonb;
-  jwt_role text := coalesce(current_setting('request.jwt.claim.role',true),'');
   goods_ok boolean := false;
   contact_backed boolean := false;
   buyer_backed boolean := false;
@@ -32,8 +32,6 @@ declare
   source_url text;
   refund_now boolean := false;
 begin
-  if jwt_role <> 'service_role' then raise exception 'service_role_required'; end if;
-
   select * into req from private.introduction_requests where id=p_request_id for update;
   if not found then raise exception 'introduction_request_not_found'; end if;
 
@@ -130,7 +128,6 @@ security definer
 set search_path=public,private,auth
 as $$
 declare
-  jwt_role text := coalesce(current_setting('request.jwt.claim.role',true),'');
   r record;
   result jsonb;
   processed integer := 0;
@@ -139,7 +136,6 @@ declare
   declined integer := 0;
   verifying integer := 0;
 begin
-  if jwt_role <> 'service_role' then raise exception 'service_role_required'; end if;
   if p_limit is null or p_limit < 1 or p_limit > 100 then raise exception 'invalid_queue_limit'; end if;
 
   for r in
