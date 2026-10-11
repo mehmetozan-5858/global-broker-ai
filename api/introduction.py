@@ -124,16 +124,11 @@ class handler(BaseHTTPRequestHandler):
 
         request_id = result.get("request_id")
         request_status = result.get("status")
-        verification = None
+        credit_refunded = False
         verify_status, verified = _verify(token, request_id)
         if verify_status < 400 and isinstance(verified, dict) and verified.get("status") == "OK":
-            verification = {
-                "route_type": verified.get("route_type"),
-                "verification_score": verified.get("verification_score"),
-                "reason": verified.get("reason"),
-                "credit_refunded": bool(verified.get("credit_refunded")),
-            }
             request_status = verified.get("request_status") or request_status
+            credit_refunded = bool(verified.get("credit_refunded"))
 
         self._json(200, {
             "status": "INTRODUCTION_REQUESTED",
@@ -142,5 +137,5 @@ class handler(BaseHTTPRequestHandler):
             "request_status": request_status,
             "already_requested": bool(result.get("already_requested")),
             "credits_remaining": result.get("credits_remaining"),
-            "verification": verification,
+            "credit_refunded": credit_refunded,
         })
