@@ -1,62 +1,5 @@
 from http.server import BaseHTTPRequestHandler
 import json
-import os
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
-
-SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://yhzdqrqzjruduohypvqf.supabase.co").rstrip("/")
-SUPABASE_KEY = os.environ.get("SUPABASE_PUBLISHABLE_KEY", "sb_publishable_fFtN0JmDBp8TP01lKJhTFQ_sx6mkt-w")
-
-
-def _bearer(headers):
-    value = headers.get("Authorization", "")
-    return value[7:].strip() if value.startswith("Bearer ") else ""
-
-
-def _rpc_unlock(token, opportunity_id):
-    payload = json.dumps({"p_opportunity_id": opportunity_id}).encode("utf-8")
-    request = Request(
-        SUPABASE_URL + "/rest/v1/rpc/unlock_opportunity_contact",
-        data=payload,
-        method="POST",
-        headers={
-            "apikey": SUPABASE_KEY,
-            "Authorization": "Bearer " + token,
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-        },
-    )
-    try:
-        with urlopen(request, timeout=12) as response:
-            raw = response.read().decode("utf-8")
-            return response.status, json.loads(raw) if raw else {}
-    except HTTPError as exc:
-        try:
-            raw = exc.read().decode("utf-8")
-            body = json.loads(raw) if raw else {}
-        except (UnicodeDecodeError, json.JSONDecodeError):
-            body = {}
-        return exc.code, body
-    except (URLError, TimeoutError, json.JSONDecodeError):
-        return 503, {}
-
-
-def _error_code(body):
-    message = str((body or {}).get("message") or (body or {}).get("details") or "").lower()
-    checks = (
-        ("authentication_required", "AUTHENTICATION_REQUIRED", 401),
-        ("active_plan_required", "ACTIVE_PLAN_REQUIRED", 403),
-        ("invalid_opportunity_id", "INVALID_OPPORTUNITY_ID", 400),
-        ("opportunity_not_found", "OPPORTUNITY_NOT_FOUND", 404),
-        ("sector_not_in_plan", "SECTOR_NOT_IN_PLAN", 403),
-        ("country_not_selected", "COUNTRY_NOT_SELECTED", 403),
-        ("contact_not_available", "CONTACT_NOT_AVAILABLE", 404),
-        ("contact_credit_required", "CONTACT_CREDIT_REQUIRED", 402),
-    )
-    for needle, code, status in checks:
-        if needle in message:
-            return status, code
-    return 403, "CONTACT_UNLOCK_DENIED"
 
 
 class handler(BaseHTTPRequestHandler):
@@ -66,52 +9,13 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Cache-Control", "private, no-store, max-age=0")
         self.send_header("Pragma", "no-cache")
-        self.send_header("Vary", "Authorization")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Referrer-Policy", "no-referrer")
         self.end_headers()
         self.wfile.write(body)
 
     def do_POST(self):
-        token = _bearer(self.headers)
-        if not token:
-            self._json(401, {"status": "AUTHENTICATION_REQUIRED"})
-            return
-
-        try:
-            length = int(self.headers.get("Content-Length", "0"))
-        except ValueError:
-            length = 0
-        if length <= 0 or length > 2048:
-            self._json(400, {"status": "INVALID_REQUEST"})
-            return
-
-        try:
-            request_body = json.loads(self.rfile.read(length).decode("utf-8"))
-        except (UnicodeDecodeError, json.JSONDecodeError):
-            self._json(400, {"status": "INVALID_JSON"})
-            return
-
-        opportunity_id = str((request_body or {}).get("opportunity_id") or "").strip()
-        if len(opportunity_id) < 8 or len(opportunity_id) > 200:
-            self._json(400, {"status": "INVALID_OPPORTUNITY_ID"})
-            return
-
-        rpc_status, result = _rpc_unlock(token, opportunity_id)
-        if rpc_status >= 400 or not isinstance(result, dict) or not result.get("ok"):
-            status, code = _error_code(result)
-            if rpc_status == 503:
-                status, code = 503, "CONTACT_SERVICE_UNAVAILABLE"
-            self._json(status, {"status": code})
-            return
-
-        self._json(200, {
-            "status": "UNLOCKED",
-            "opportunity_id": opportunity_id,
-            "already_unlocked": bool(result.get("already_unlocked")),
-            "credits_remaining": result.get("credits_remaining"),
-            "route_type": result.get("route_type"),
-            "quality_score": result.get("quality_score"),
-            "quality_level": result.get("quality_level"),
-            "contact": result.get("contact") or {},
+        self._json(410, {
+            "status": "DIRECT_CONTACT_UNLOCK_DISABLED",
+            "message": "Use the controlled introduction request flow instead."
         })
