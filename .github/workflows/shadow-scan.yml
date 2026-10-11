@@ -9,6 +9,8 @@ on:
     paths:
       - 'src/**'
       - 'tests/**'
+      - 'sql/**'
+      - 'api/**'
       - '.github/workflows/shadow-scan.yml'
       - '.github/workflows/shadow-scan-trigger.txt'
 
@@ -145,6 +147,29 @@ jobs:
           if result.get('status')!='OK':
               raise SystemExit('private Supabase ingest did not confirm OK')
           print('PRIVATE_SUPABASE_SYNC_OK',result.get('result'))
+          PY
+      - name: Retry pending introduction verification queue
+        env:
+          INTRO_QUEUE_URL: https://yhzdqrqzjruduohypvqf.supabase.co/functions/v1/broker-introduction-queue
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from urllib.parse import urlencode
+          from urllib.request import Request, urlopen
+          request_url=os.environ['ACTIONS_ID_TOKEN_REQUEST_URL']
+          request_token=os.environ['ACTIONS_ID_TOKEN_REQUEST_TOKEN']
+          sep='&' if '?' in request_url else '?'
+          oidc_req=Request(request_url+sep+urlencode({'audience':'global-broker-introduction-queue'}),headers={'Authorization':'Bearer '+request_token})
+          with urlopen(oidc_req,timeout=20) as r:
+              oidc=json.loads(r.read().decode('utf-8'))['value']
+          payload=json.dumps({'limit':25},separators=(',',':')).encode('utf-8')
+          req=Request(os.environ['INTRO_QUEUE_URL'],data=payload,headers={'Authorization':'Bearer '+oidc,'Content-Type':'application/json'},method='POST')
+          with urlopen(req,timeout=45) as r:
+              result=json.loads(r.read().decode('utf-8'))
+          if result.get('status')!='OK':
+              raise SystemExit('introduction queue processor did not confirm OK')
+          print('INTRODUCTION_QUEUE_OK',result.get('result'))
           PY
       - name: Generate ephemeral internal CEO review
         run: python -m src.build_ceo_report data/latest-opportunities.private.json data/latest-ceo-report.json
