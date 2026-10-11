@@ -32,6 +32,37 @@ class CommercialBlockerTriageTests(unittest.TestCase):
         self.assertTrue(result["research_queue"][0]["human_approval_required"])
         self.assertFalse(result["external_outreach_enabled"])
 
+    def test_supplier_ready_case_is_prioritized_and_routed(self):
+        payload = {"opportunities": [
+            {
+                "id": "NO-SUPPLIER",
+                "source_url": "https://example.org/a",
+                "supplier_research": {"verified_supplier_count": 0},
+                "commercial_feasibility": {
+                    "calculation_ready": False,
+                    "blockers": ["quantity", "currency", "unit_price", "freight", "destination"],
+                    "missing_inputs": ["quantity", "currency", "unit_price", "freight", "destination"],
+                },
+            },
+            {
+                "id": "SUPPLIER-READY",
+                "source_url": "https://example.org/b",
+                "supplier_research": {"verified_supplier_count": 1},
+                "commercial_feasibility": {
+                    "calculation_ready": False,
+                    "blockers": ["unit_price", "freight"],
+                    "missing_inputs": ["unit_price", "freight"],
+                },
+            },
+        ]}
+        result = build(payload)
+        first = result["research_queue"][0]
+        self.assertEqual(first["opportunity_id"], "SUPPLIER-READY")
+        self.assertTrue(first["supplier_ready"])
+        self.assertEqual(first["next_agent"], "price_agent")
+        self.assertGreater(first["priority_score"], result["research_queue"][1]["priority_score"])
+        self.assertEqual(result["supplier_ready_blocked"], 1)
+
     def test_calculation_ready_does_not_enter_queue(self):
         result = build({"opportunities": [
             {"commercial_feasibility": {"calculation_ready": True, "blockers": []}}
