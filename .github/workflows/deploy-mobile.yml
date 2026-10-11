@@ -27,7 +27,7 @@ jobs:
           cp -r web/* public/
           if [ -f web/index.html ]; then
             cp web/index.html public/customer.html
-            sed -i 's#</body>#<script src="pricing-policy.js" defer></script><script src="contact-unlock-bridge.js" defer></script><script src="customer-portal.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html
+            sed -i 's#</body>#<script src="pricing-policy.js" defer></script><script src="introduction-bridge.js" defer></script><script src="customer-portal.js" defer></script><script src="customer-guidance.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html
           fi
           if [ -f web/app.html ]; then
             cp web/app.html public/dashboard.html
@@ -55,7 +55,7 @@ jobs:
                       continue
                   clean[k]=v
               clean['buyer_masked']=True
-              clean['buyer_display']='Doğrulanmış alıcı — giriş yaparak erişim kurallarını inceleyin'
+              clean['buyer_display']='Alıcı kimliği kontrollü tanıştırma ile paylaşılır'
               return clean
           if src.exists():
               data=json.loads(src.read_text(encoding='utf-8'))
@@ -99,12 +99,17 @@ jobs:
           fetch_page "privacy.html" /tmp/privacy.html
           fetch_page "terms.html" /tmp/terms.html
           fetch_page "data/latest-opportunities.json" /tmp/opportunities.json
-          fetch_page "contact-unlock-bridge.js" /tmp/contact-unlock-bridge.js
+          fetch_page "introduction-bridge.js" /tmp/introduction-bridge.js
+          fetch_page "customer-guidance.js" /tmp/customer-guidance.js
 
           grep -q "GLOBAL" /tmp/home.html
           grep -q "Fırsat" /tmp/customer.html
-          grep -q "contact-unlock-bridge.js" /tmp/customer.html
-          grep -q "broker-contact-unlock" /tmp/contact-unlock-bridge.js
+          grep -q "introduction-bridge.js" /tmp/customer.html
+          grep -q "customer-guidance.js" /tmp/customer.html
+          ! grep -q "contact-unlock-bridge.js" /tmp/customer.html
+          grep -q "request_introduction" /tmp/introduction-bridge.js
+          grep -q "broker-introduction-verify" /tmp/introduction-bridge.js
+          grep -q "BU BÖLÜM NE İŞE YARAR" /tmp/customer-guidance.js
           grep -q "/auth/v1/token?grant_type=password" /tmp/account.html
           grep -q "Gizlilik" /tmp/privacy.html
           grep -q "Kullanım koşulları" /tmp/terms.html
@@ -121,5 +126,7 @@ jobs:
               text=' '.join(map(str,row.keys())).lower()
               if 'buyer_name' in text or 'buyer-name' in text or 'email' in text or 'phone' in text or 'source_url' in text:
                   raise SystemExit('masked preview contains private fields')
+              if row.get('buyer_display')!='Alıcı kimliği kontrollü tanıştırma ile paylaşılır':
+                  raise SystemExit('customer preview buyer label is not neutral')
           print(f'CUSTOMER_ACCEPTANCE_OK masked_opportunities={len(rows)}')
           PY
