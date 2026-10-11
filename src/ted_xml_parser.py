@@ -45,23 +45,18 @@ def extract_ted_contacts(data: bytes) -> dict[str, str]:
     """Extract only explicit TED/eForms touchpoint contact values.
 
     The parser is namespace/schema tolerant, but intentionally conservative: it
-    accepts e-mail/telephone/URI/person values only from contact-like XML nodes.
-    This avoids treating arbitrary addresses or URLs elsewhere in a notice as the
-    buyer's direct contact details.
+    accepts e-mail/telephone/person values only from explicit contact field names,
+    and accepts HTTPS web addresses only from explicit internet-address fields.
+    It never promotes an arbitrary narrative e-mail or URL to buyer contact data.
     """
     root = ElementTree.fromstring(data)
     result: dict[str, str] = {}
-    contact_context = {
-        "contact", "touchpoint", "communication", "organisation", "organization",
-        "contractingparty", "buyer", "tenderingparty", "department", "office",
-    }
 
     for node in root.iter():
         name = _local_name(node.tag)
         value = _node_text(node)
         if not value:
             continue
-        ancestors_hint = any(h in name for h in contact_context)
 
         if "electronicmail" in name or name in {"email", "emailaddress", "emailuri"}:
             match = EMAIL_RE.search(value)
@@ -85,8 +80,11 @@ def extract_ted_contacts(data: bytes) -> dict[str, str]:
                 result["contact_evidence_source"] = "ted_xml_touchpoint"
             continue
 
-        if ancestors_hint and ("internetaddress" in name or name in {"websiteuri", "uri", "endpointuri"}):
-            if value.lower().startswith("https://") and "buyer_website" not in result:
+        if (
+            "internetaddress" in name
+            or name in {"websiteuri", "endpointuri", "buyerprofileuri"}
+        ) and "buyer_website" not in result:
+            if value.lower().startswith("https://"):
                 result["buyer_website"] = value.rstrip(".,;)")
                 result["contact_evidence_source"] = "ted_xml_touchpoint"
 
