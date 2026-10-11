@@ -27,7 +27,7 @@ jobs:
           cp -r web/* public/
           if [ -f web/index.html ]; then
             cp web/index.html public/customer.html
-            sed -i 's#</body>#<script src="pricing-policy.js" defer></script><script src="introduction-bridge.js" defer></script><script src="customer-portal.js" defer></script><script src="customer-guidance.js" defer></script><script src="customer-onboarding.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html
+            sed -i 's#</body>#<script src="pricing-policy.js" defer></script><script src="introduction-bridge.js" defer></script><script src="customer-portal.js" defer></script><script src="customer-truth-label.js" defer></script><script src="customer-guidance.js" defer></script><script src="customer-onboarding.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html
           fi
           if [ -f web/app.html ]; then
             cp web/app.html public/dashboard.html
@@ -100,17 +100,20 @@ jobs:
           fetch_page "terms.html" /tmp/terms.html
           fetch_page "data/latest-opportunities.json" /tmp/opportunities.json
           fetch_page "introduction-bridge.js" /tmp/introduction-bridge.js
+          fetch_page "customer-truth-label.js" /tmp/customer-truth-label.js
           fetch_page "customer-guidance.js" /tmp/customer-guidance.js
           fetch_page "customer-onboarding.js" /tmp/customer-onboarding.js
 
           grep -q "GLOBAL" /tmp/home.html
           grep -q "Fırsat" /tmp/customer.html
           grep -q "introduction-bridge.js" /tmp/customer.html
+          grep -q "customer-truth-label.js" /tmp/customer.html
           grep -q "customer-guidance.js" /tmp/customer.html
           grep -q "customer-onboarding.js" /tmp/customer.html
           ! grep -q "contact-unlock-bridge.js" /tmp/customer.html
           grep -q "request_introduction" /tmp/introduction-bridge.js
           grep -q "broker-introduction-verify" /tmp/introduction-bridge.js
+          grep -q "Alıcı kimliği kontrollü tanıştırma ile paylaşılır" /tmp/customer-truth-label.js
           grep -q "BU BÖLÜM NE İŞE YARAR" /tmp/customer-guidance.js
           grep -q "3 adımda kullanmaya başlayın" /tmp/customer-onboarding.js
           grep -q "/auth/v1/token?grant_type=password" /tmp/account.html
