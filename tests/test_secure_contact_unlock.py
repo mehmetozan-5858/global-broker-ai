@@ -16,7 +16,11 @@ class ControlledIntroductionTests(unittest.TestCase):
         self.assertIn("/functions/v1/broker-introduction-verify", code)
         self.assertIn('"request_id"', code)
         self.assertIn('"request_status"', code)
+        self.assertIn('"credit_refunded"', code)
         self.assertNotIn('"contact"', code)
+        self.assertNotIn('"route_type"', code)
+        self.assertNotIn('"verification_score"', code)
+        self.assertNotIn('"reason"', code)
         self.assertNotIn("latest-opportunities.json", code)
 
     def test_intro_rpc_is_idempotent_and_refundable(self):
@@ -50,6 +54,17 @@ class ControlledIntroductionTests(unittest.TestCase):
         self.assertIn("grant execute on function public.gb_process_introduction_queue(integer) to service_role", lower)
         self.assertNotIn("request.jwt.claim.role", lower)
         self.assertNotIn("return jsonb_build_object('contact'", lower)
+
+    def test_state_machine_blocks_status_jumps_and_centralizes_refunds(self):
+        sql = (ROOT / "sql/introduction_state_machine_hardening.sql").read_text(encoding="utf-8").lower()
+        self.assertIn("gb_apply_introduction_transition", sql)
+        self.assertIn("invalid_introduction_transition", sql)
+        self.assertIn("old_status='requested' and p_status in ('verifying','declined','expired','refunded')", sql)
+        self.assertIn("old_status='verifying' and p_status in ('buyer_consent_pending','approved','declined','expired','refunded')", sql)
+        self.assertIn("old_status='approved' and p_status in ('introduced','declined','expired','refunded')", sql)
+        self.assertIn("should_refund", sql)
+        self.assertIn("credit_refunded", sql)
+        self.assertNotIn("old_status='requested' and p_status='introduced'", sql)
 
 
 if __name__ == "__main__":
