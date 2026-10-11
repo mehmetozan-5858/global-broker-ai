@@ -14,6 +14,7 @@ from .deal_lifecycle import process_payload as process_deal_lifecycle
 from .gulf_sources import annotate_payload as annotate_gulf_sources
 from .launch_gate import evaluate as evaluate_launch
 from .launch_readiness_report import build as build_launch_readiness_report
+from .offer_candidate_queue import build as build_offer_candidate_queue
 from .offer_risk_gate import process_payload as process_offer_risk
 from .supplier_research import process_payload as process_supplier_research
 
@@ -27,6 +28,7 @@ def process(payload: dict) -> dict:
     build_commercial_blocker_triage(payload)        # source-backed commercial research queue
     build_commercial_research_agents(payload)       # Price/Logistics/Source Terms agent tasks
     process_offer_risk(payload)                     # A8 draft / risk gate
+    build_offer_candidate_queue(payload)            # internal-only human offer review queue
     build_agent_center(payload)                     # A9 measurable agent center + watchdog
     process_deal_lifecycle(payload)                 # A12 evidence-gated deal/payment lifecycle
     evaluate_launch(payload)                        # A10 fail-closed production gate
@@ -49,6 +51,8 @@ def main(path: str) -> None:
         "commercial_research_tasks": (payload.get("commercial_research_agents") or {}).get("task_count"),
         "commercial_research_agent_counts": (payload.get("commercial_research_agents") or {}).get("agent_task_counts"),
         "draft_ready": (payload.get("offer_risk_summary") or {}).get("internal_draft_ready"),
+        "offer_review_candidates": (payload.get("offer_candidate_queue") or {}).get("candidate_count"),
+        "offer_review_risk_cases": (payload.get("offer_candidate_queue") or {}).get("risk_review_required"),
         "deal_case_count": (payload.get("deal_lifecycle_summary") or {}).get("case_count"),
         "deal_state_counts": (payload.get("deal_lifecycle_summary") or {}).get("state_counts"),
         "launch_ready": (payload.get("launch_gate") or {}).get("launch_ready"),
