@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 from .agent_center import build as build_agent_center
+from .commercial_evidence_acceptance import process_payload as process_commercial_evidence
 from .commercial_feasibility import process_payload as process_feasibility
 from .commercial_blocker_triage import build as build_commercial_blocker_triage
 from .commercial_research_agents import build as build_commercial_research_agents
@@ -20,7 +21,8 @@ from .supplier_research import process_payload as process_supplier_research
 def process(payload: dict) -> dict:
     annotate_gulf_sources(payload)                  # A4 registry / truthfulness gate
     process_commercial_terms(payload)               # A5 commercial tender terms
-    process_supplier_research(payload)              # A6 source-backed research queue
+    process_supplier_research(payload)              # A6 source-backed supplier verification
+    process_commercial_evidence(payload)            # verified price/freight/source-term evidence acceptance
     process_feasibility(payload)                    # A7 calculation readiness
     build_commercial_blocker_triage(payload)        # source-backed commercial research queue
     build_commercial_research_agents(payload)       # Price/Logistics/Source Terms agent tasks
@@ -40,6 +42,8 @@ def main(path: str) -> None:
     print("REMAINING_PIPELINE", json.dumps({
         "gulf_live": (payload.get("gulf_sources") or {}).get("live_ingestion_verified"),
         "supplier_ready": (payload.get("supplier_research_summary") or {}).get("research_ready"),
+        "commercial_evidence_accepted": (payload.get("commercial_evidence_acceptance_summary") or {}).get("accepted"),
+        "commercial_evidence_rejected": (payload.get("commercial_evidence_acceptance_summary") or {}).get("rejected"),
         "commercial_ready": (payload.get("commercial_feasibility_summary") or {}).get("calculation_ready"),
         "commercial_blocker_counts": (payload.get("commercial_blocker_triage") or {}).get("blocker_counts"),
         "commercial_research_tasks": (payload.get("commercial_research_agents") or {}).get("task_count"),
