@@ -16,6 +16,8 @@ CONTACT_HINT_RE = re.compile(
 TEXT_KEYS = (
     "document_extracted_text",
     "source_excerpt",
+    "notice_text",
+    "description",
     "detail_original",
     "description-lot",
     "bid_description",
@@ -136,7 +138,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
             item["buyer_website"] = website
 
     item["contact_enrichment"] = {
-        "version": 1,
+        "version": 2,
         "status": "source_backed" if source_backed else ("route_only" if source_url else "missing"),
         "route_type": route,
         "direct_contact_available": direct,
@@ -163,7 +165,7 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
         enriched.append(row)
     payload["opportunities"] = enriched
     payload["contact_enrichment_summary"] = {
-        "version": 1,
+        "version": 2,
         "mode": "source_only_no_hallucination",
         "opportunities": len([x for x in enriched if isinstance(x, dict)]),
         "direct_contacts": direct,
