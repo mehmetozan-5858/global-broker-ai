@@ -29,8 +29,19 @@ class A5SourceTermsTests(unittest.TestCase):
         self.assertIn("ISO 9001", item["eligibility"])
         self.assertIn("lowest compliant", item["award_criteria"])
 
+    def test_notice_text_and_equals_separator_are_promoted(self):
+        item = {
+            "notice_text": "Requested Quantity = 120 pcs\nIncoterm = DDP\nDestination = Riyadh Central Warehouse"
+        }
+        result = extract(item)
+        self.assertEqual(result["extracted"], 3)
+        self.assertEqual(item["quantity"], "120 pcs")
+        self.assertEqual(item["delivery_terms"], "DDP")
+        self.assertEqual(item["delivery_location"], "Riyadh Central Warehouse")
+        self.assertEqual(item["a5_source_term_evidence"]["quantity"]["source_field"], "notice_text")
+
     def test_unlabelled_free_text_is_not_promoted(self):
-        item = {"document_extracted_text": "The buyer may need around 250 units and expects delivery quickly."}
+        item = {"notice_text": "The buyer may need around 250 units and expects delivery quickly."}
         result = extract(item)
         self.assertEqual(result["extracted"], 0)
         self.assertNotIn("quantity", item)
