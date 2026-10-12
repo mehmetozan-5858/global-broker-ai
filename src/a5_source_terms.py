@@ -23,8 +23,12 @@ SEP = r"\s*(?::|=|\-|–|—|：)\s*"
 
 PATTERNS = {
     "quantity": [
-        re.compile(rf"(?im)\b(?:quantity|qty|requested quantity|miktar|adet)\b{SEP}([^\n\r;]{{1,120}})"),
-        re.compile(rf"(?im)(?:الكمية|العدد){SEP}([^\n\r;]{{1,120}})"),
+        re.compile(rf"(?im)\b(?:quantity|qty|requested quantity|total quantity|contract quantity|tender quantity|miktar|talep edilen miktar|toplam miktar|adet)\b{SEP}([^\n\r;]{{1,120}})"),
+        re.compile(rf"(?im)(?:الكمية المطلوبة|إجمالي الكمية|الكمية|العدد){SEP}([^\n\r;]{{1,120}})"),
+    ],
+    "deadline": [
+        re.compile(rf"(?im)\b(?:submission deadline|bid deadline|tender deadline|closing date|closing deadline|response deadline|last date for submission|son teklif tarihi|teklif son tarihi|son başvuru tarihi|kapanış tarihi)\b{SEP}([^\n\r;]{{1,160}})"),
+        re.compile(rf"(?im)(?:آخر موعد لتقديم العطاءات|آخر موعد للتقديم|تاريخ إغلاق المناقصة|تاريخ الإغلاق|الموعد النهائي للتقديم){SEP}([^\n\r;]{{1,160}})"),
     ],
     "payment_terms": [
         re.compile(rf"(?im)\b(?:payment terms?|terms of payment|payment condition|ödeme şart(?:ı|ları)?|ödeme koşul(?:u|ları)?)\b{SEP}([^\n\r]{{2,300}})"),
