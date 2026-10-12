@@ -21,6 +21,8 @@ from .price_margin_gate import process_payload as process_price_margin
 from .pilot_dossiers import build as build_pilot_dossiers
 from .pilot_evidence import apply as apply_pilot_evidence
 from .pilot_evidence_nl import apply as apply_pilot_evidence_nl
+from .stage4_supplier_financial_gate import process_payload as process_stage4_supplier_financial
+from .stage4_completion import build as build_stage4_completion
 from .supplier_research import process_payload as process_supplier_research
 from .verification import sanitize_payload as sanitize_buyer_verification
 
@@ -33,12 +35,14 @@ def process(payload: dict) -> dict:
     process_commercial_terms(payload)               # A5 commercial tender terms
     build_data_completion_queue(payload)            # core source-data completion priority queue
     process_supplier_research(payload)              # A6 source-backed supplier verification
+    process_stage4_supplier_financial(payload)      # Stage 4 exact-spec financial eligibility
     process_commercial_evidence(payload)            # verified price/freight/source-term evidence acceptance
     process_feasibility(payload)                    # A7 calculation readiness
-    process_price_margin(payload)                   # Stage 4 verified quotes, expiry, gross spread
+    process_price_margin(payload)                   # Stage 4 verified quotes, metadata, expiry, gross spread
     build_commercial_blocker_triage(payload)        # source-backed commercial research queue
     build_commercial_research_agents(payload)       # Price/Logistics/Source Terms agent tasks
     build_pilot_dossiers(payload)                   # evidence-ranked first 10 real dossiers
+    build_stage4_completion(payload)                # Stage 4 engine vs live-data readiness
     process_offer_risk(payload)                     # A8 draft / risk gate
     build_offer_candidate_queue(payload)            # internal-only human offer review queue
     build_agent_center(payload)                     # A9 measurable agent center + watchdog
@@ -63,10 +67,14 @@ def main(path: str) -> None:
         "data_completion_rate_pct": (payload.get("data_completion_queue") or {}).get("completion_rate_pct"),
         "data_missing_field_counts": (payload.get("data_completion_queue") or {}).get("missing_field_counts"),
         "supplier_ready": (payload.get("supplier_research_summary") or {}).get("research_ready"),
+        "stage4_financially_eligible_suppliers": (payload.get("stage4_supplier_financial_summary") or {}).get("eligible_suppliers"),
         "commercial_evidence_accepted": (payload.get("commercial_evidence_acceptance_summary") or {}).get("accepted"),
         "commercial_evidence_rejected": (payload.get("commercial_evidence_acceptance_summary") or {}).get("rejected"),
         "stage4_price_ready": (payload.get("price_margin_summary") or {}).get("price_ready"),
         "stage4_gross_spread_ready": (payload.get("price_margin_summary") or {}).get("gross_spread_ready"),
+        "stage4_engine_complete": (payload.get("stage4_completion") or {}).get("engine_complete"),
+        "stage4_live_data_ready": (payload.get("stage4_completion") or {}).get("live_commercial_data_ready"),
+        "stage4_status": (payload.get("stage4_completion") or {}).get("status"),
         "pilot_dossiers_selected": (payload.get("pilot_dossier_summary") or {}).get("selected_count"),
         "pilot_dossiers_missing_evidence": (payload.get("pilot_dossier_summary") or {}).get("missing_evidence_counts"),
         "stage4_blockers": (payload.get("price_margin_summary") or {}).get("missing_or_invalid_counts"),
