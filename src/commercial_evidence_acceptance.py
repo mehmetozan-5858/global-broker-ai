@@ -5,7 +5,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 
-_ALLOWED_KINDS = {"unit_price", "freight", "quantity", "currency", "incoterm", "destination"}
+_ALLOWED_KINDS = {"unit_price", "selling_unit_price", "freight", "quantity", "currency", "incoterm", "destination"}
 _SOURCE_TERM_TYPES = {"official_notice", "source_document", "tender_document", "buyer_document"}
 
 
@@ -61,6 +61,25 @@ def _accept(item: dict[str, Any], evidence: dict[str, Any]) -> tuple[bool, str]:
         item.setdefault("quote_currency", currency)
         item.setdefault("verified_unit_price_source", source_url)
         item.setdefault("verified_unit_price_supplier", supplier)
+        validity = _text(evidence.get("valid_until"))
+        if validity:
+            from datetime import date
+            try:
+                date.fromisoformat(validity)
+            except ValueError:
+                return False, "invalid_quote_validity_date"
+            item.setdefault("quote_valid_until", validity)
+        return True, "accepted"
+
+    if kind == "selling_unit_price":
+        currency = _text(evidence.get("currency")).upper()
+        buyer_name = _text(evidence.get("buyer_name"))
+        if not currency or not buyer_name:
+            return False, "buyer_and_currency_required"
+        item.setdefault("verified_selling_unit_price", value)
+        item.setdefault("selling_currency", currency)
+        item.setdefault("verified_selling_price_source", source_url)
+        item.setdefault("selling_quote_buyer", buyer_name)
         return True, "accepted"
 
     if kind == "freight":
