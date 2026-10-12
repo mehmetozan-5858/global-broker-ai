@@ -17,6 +17,7 @@ from .launch_gate import evaluate as evaluate_launch
 from .launch_readiness_report import build as build_launch_readiness_report
 from .offer_candidate_queue import build as build_offer_candidate_queue
 from .offer_risk_gate import process_payload as process_offer_risk
+from .price_margin_gate import process_payload as process_price_margin
 from .supplier_research import process_payload as process_supplier_research
 
 
@@ -27,6 +28,7 @@ def process(payload: dict) -> dict:
     process_supplier_research(payload)              # A6 source-backed supplier verification
     process_commercial_evidence(payload)            # verified price/freight/source-term evidence acceptance
     process_feasibility(payload)                    # A7 calculation readiness
+    process_price_margin(payload)                   # Stage 4 verified quotes, expiry, gross spread
     build_commercial_blocker_triage(payload)        # source-backed commercial research queue
     build_commercial_research_agents(payload)       # Price/Logistics/Source Terms agent tasks
     process_offer_risk(payload)                     # A8 draft / risk gate
@@ -52,6 +54,9 @@ def main(path: str) -> None:
         "supplier_ready": (payload.get("supplier_research_summary") or {}).get("research_ready"),
         "commercial_evidence_accepted": (payload.get("commercial_evidence_acceptance_summary") or {}).get("accepted"),
         "commercial_evidence_rejected": (payload.get("commercial_evidence_acceptance_summary") or {}).get("rejected"),
+        "stage4_price_ready": (payload.get("price_margin_summary") or {}).get("price_ready"),
+        "stage4_gross_spread_ready": (payload.get("price_margin_summary") or {}).get("gross_spread_ready"),
+        "stage4_blockers": (payload.get("price_margin_summary") or {}).get("missing_or_invalid_counts"),
         "commercial_ready": (payload.get("commercial_feasibility_summary") or {}).get("calculation_ready"),
         "commercial_blocker_counts": (payload.get("commercial_blocker_triage") or {}).get("blocker_counts"),
         "commercial_research_tasks": (payload.get("commercial_research_agents") or {}).get("task_count"),
