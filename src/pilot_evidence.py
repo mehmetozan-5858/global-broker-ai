@@ -32,20 +32,19 @@ EVIDENCE: dict[str, dict[str, Any]] = {
             },
         ],
         "stage4_research": {
-            "status": "buyer_verified_supplier_spec_research",
+            "status": "blocked_pending_full_tender_documents",
             "researched_at": "2026-10-12",
             "tender_reference": "261039003553",
             "competition_number": "60021318",
             "product_scope": "Low-voltage electrical cable/spare parts for Al-Busaita purification plant, western coast",
             "quantity_status": "not_found_in_current_public_notice",
             "price_status": "not_quoted",
-            "document_access_gate": {
-                "status": "full_tender_document_required",
-                "public_notice_has_exact_spec": False,
-                "public_notice_has_quantity": False,
-                "payment_authorized": False,
-                "external_purchase_required": True,
-                "reason": "Public notice exposes category-level cable demand but not the exact conductor/core/cross-section/armour specification or lot quantity. Do not price until tender documents are obtained.",
+            "document_access": {
+                "status": "full_document_not_publicly_retrieved",
+                "public_notice_confirms_document_fee_sar": "200.00",
+                "automated_spec_extraction_allowed": False,
+                "reason": "Current public/visitor evidence does not expose the exact cable specification or quantity. Do not infer either from the title.",
+                "resolution": "Obtain the official Etimad tender package through an authorized access path before exact supplier matching or quote acceptance.",
             },
             "supplier_leads": [
                 {
@@ -54,82 +53,29 @@ EVIDENCE: dict[str, dict[str, Any]] = {
                     "status": "category_match_verified_exact_spec_pending",
                     "identity_evidence": "Official manufacturer product site.",
                     "product_evidence": "0.6/1 kV low-voltage power cables; Cu/Al; PVC/XLPE; armored or unarmored; IEC/BS standards listed.",
-                    "independent_qualification": None,
                 },
                 {
                     "name": "Riyadh Cables",
                     "url": "https://riyadh-cables.com/products/",
-                    "status": "category_match_independently_qualified_exact_spec_pending",
+                    "status": "category_match_verified_exact_spec_pending",
                     "identity_evidence": "Official manufacturer website and Riyadh manufacturing address.",
                     "product_evidence": "Official catalogue includes Low Voltage Cables (LV) product family.",
-                    "independent_qualification": {
-                        "authority": "Saudi Electricity Company",
-                        "url": "https://www.se.com.sa/-/media/sec/Our-Partners/Our-Suppliers/LIST-OF-QUALIFIED-MANUFACTURERS-SUPPLIERSS---March-2026.ashx",
-                        "scope": "LV Power cables",
-                        "specification": "11-SDMS-01",
-                        "effective_list": "March 2026",
-                        "note": "Independent industry qualification confirms LV cable manufacturing capability; it does not prove compliance with this Saudi Water Authority tender.",
-                    },
                 },
                 {
                     "name": "Pamukkale Kablo",
-                    "url": "https://www.pk.com.tr/en/Urunler.aspx",
-                    "status": "category_match_independently_certified_exact_spec_pending",
+                    "url": "https://www.pk.com.tr/en/Urunler.aspx?Id=13",
+                    "status": "category_match_verified_exact_spec_pending",
                     "identity_evidence": "Official manufacturer site identifies Denizli factory and export sales channel.",
-                    "product_evidence": "Official catalogue lists PVC/XLPE/HFFR low-voltage cables and export capability.",
-                    "independent_qualification": {
-                        "authority": "BASEC / TSE",
-                        "url": "https://www.basec.org.uk/customers/a1700/",
-                        "scope": "Low-voltage building wires and armoured power cables up to 1 kV; manufacturer certifications",
-                        "note": "Independent certification supports manufacturing capability only; exact tender specification remains pending.",
-                    },
-                },
-                {
-                    "name": "Jeddah Cables",
-                    "url": "https://www.se.com.sa/-/media/sec/Our-Partners/Our-Suppliers/LIST-OF-QUALIFIED-MANUFACTURERS-SUPPLIERSS---March-2026.ashx",
-                    "status": "independent_lv_qualification_exact_spec_pending",
-                    "identity_evidence": "Saudi Electricity Company prequalified manufacturer list.",
-                    "product_evidence": "Listed for LV Power cables, specification 11-SDMS-01.",
-                    "independent_qualification": {
-                        "authority": "Saudi Electricity Company",
-                        "scope": "LV Power cables",
-                        "specification": "11-SDMS-01",
-                        "effective_list": "March 2026",
-                    },
-                },
-                {
-                    "name": "DUCAB",
-                    "url": "https://www.se.com.sa/-/media/sec/Our-Partners/Our-Suppliers/LIST-OF-QUALIFIED-MANUFACTURERS-SUPPLIERSS---March-2026.ashx",
-                    "status": "independent_lv_qualification_exact_spec_pending",
-                    "identity_evidence": "Saudi Electricity Company prequalified manufacturer list.",
-                    "product_evidence": "Listed for LV Power cables, specification 11-SDMS-01.",
-                    "independent_qualification": {
-                        "authority": "Saudi Electricity Company",
-                        "scope": "LV Power cables",
-                        "specification": "11-SDMS-01",
-                        "effective_list": "March 2026",
-                    },
-                },
-                {
-                    "name": "Bahra Cables",
-                    "url": "https://www.se.com.sa/-/media/sec/Our-Partners/Our-Suppliers/LIST-OF-QUALIFIED-MANUFACTURERS-SUPPLIERSS---March-2026.ashx",
-                    "status": "independent_lv_qualification_exact_spec_pending",
-                    "identity_evidence": "Saudi Electricity Company prequalified manufacturer list.",
-                    "product_evidence": "Appears in Saudi Electricity Company cable manufacturer qualification lists; exact SWA tender match remains unproven.",
-                    "independent_qualification": {
-                        "authority": "Saudi Electricity Company",
-                        "scope": "cable manufacturer qualification",
-                        "effective_list": "March 2026",
-                    },
+                    "product_evidence": "Official catalogue lists XLPE insulated low-voltage cables including BS 5467 variants.",
                 },
             ],
             "next_required_evidence": [
-                "exact cable technical specification from full tender documents",
-                "quantity/lot size from full tender documents",
+                "exact cable technical specification from official tender documents",
+                "quantity/lot size",
                 "exact-spec supplier match",
                 "source-backed supplier quote with currency and validity",
             ],
-            "rule": "Category-level product evidence and third-party industry qualification do not count as exact supplier verification until the tender specification and quantity are available.",
+            "rule": "Category-level product evidence does not count as exact supplier verification until tender specification and quantity are available.",
         },
     }
 }
@@ -137,6 +83,7 @@ EVIDENCE: dict[str, dict[str, Any]] = {
 
 def apply(payload: dict[str, Any]) -> dict[str, Any]:
     applied = 0
+    blocked_docs = 0
     for row in payload.get("opportunities") or []:
         if not isinstance(row, dict):
             continue
@@ -146,9 +93,13 @@ def apply(payload: dict[str, Any]) -> dict[str, Any]:
             continue
         for key, value in overlay.items():
             row[key] = value
+        research = row.get("stage4_research") or {}
+        if (research.get("document_access") or {}).get("status") == "full_document_not_publicly_retrieved":
+            blocked_docs += 1
         applied += 1
     payload["pilot_evidence_summary"] = {
         "applied": applied,
+        "blocked_by_tender_document_access": blocked_docs,
         "source_backed_only": True,
         "no_price_or_quantity_inference": True,
     }
