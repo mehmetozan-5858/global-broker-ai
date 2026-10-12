@@ -194,7 +194,7 @@ jobs:
                   out={}
                   for k,v in value.items():
                       lk=str(k).lower()
-                      if lk in blocked_exact or 'contact' in lk or any(x in lk for x in ('email','phone','telephone','mobile','linkedin','contact_person','address')):
+                      if lk in blocked_exact or 'contact' in lk or any(x in lk for x in ('email','phone','telephone','mobile','linkedin','contact_person','address')) or lk.endswith('_price_source') or lk.endswith('_unit_price_source') or lk in ('verified_unit_price_supplier','selling_quote_buyer'):
                           continue
                       out[k]=scrub_value(v)
                   return out
@@ -205,6 +205,7 @@ jobs:
                   value=mailtel_re.sub('[redacted]',value)
               return value
           safe=scrub_value(data)
+          safe.pop('pilot_dossier_summary',None)  # internal research ranking only
           rows=[]
           for row in safe.get('opportunities') or []:
               if isinstance(row,dict):
