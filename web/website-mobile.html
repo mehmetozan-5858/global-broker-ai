@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="description" content="Global Broker: uluslararası fiziksel ürün alım talepleri, pazar araştırması ve tedarik fırsatları için geliştirme aşamasındaki B2B platformu.">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Global Broker">
 <title>Global Broker | Uluslararası B2B Ürün Fırsatları</title>
 <style>
 :root{--navy:#0e2c4b;--blue:#1558c9;--orange:#f3923c;--bg:#f6f9fd;--text:#11233a;--muted:#5c6f83;--line:#dce6f0;--white:#fff}
@@ -27,6 +33,10 @@ section{padding:64px 0;scroll-margin-top:90px}.section-alt{background:#fff;borde
 </main>
 <footer class="footer"><div class="container"><strong>GLOBAL BROKER</strong><div>Uluslararası ürün ticareti için araştırma ve değerlendirme platformu.</div><div style="margin-top:10px"><a href="/customer">Fırsat ekranı</a></div></div></footer>
 <script>
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}
+if((window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true){
+  if(location.pathname==='/') setTimeout(()=>location.replace('/app'),60);
+}
 const btn=document.getElementById('menuBtn'),nav=document.getElementById('mainNav');
 btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'✕':'☰'});
 nav.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰'}));
