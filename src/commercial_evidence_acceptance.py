@@ -26,7 +26,7 @@ def _https(value: Any) -> str | None:
     if not raw:
         return None
     parsed = urlparse(raw)
-    if parsed.scheme != "https" or not parsed.netloc:
+    if parsed.scheme != "https" or not parsed.netloc or parsed.username or parsed.password:
         return None
     return raw
 
@@ -41,6 +41,38 @@ def _verified_supplier_names(item: dict[str, Any]) -> set[str]:
     }
 
 
+def _positive(value: str) -> bool:
+    try:
+        amount = Decimal(value)
+        return amount.is_finite() and amount > 0
+    except (InvalidOperation, ValueError):
+        return False
+
+
+def _iso_date(value: Any) -> str | None:
+    raw = _text(value)
+    if not raw:
+        return None
+    try:
+        date.fromisoformat(raw)
+        return raw
+    except ValueError:
+        return None
+
+
+def _store_quote_metadata(item: dict[str, Any], evidence: dict[str, Any], prefix: str) -> None:
+    mapping = {
+        "quote_reference": f"{prefix}_quote_reference",
+        "quote_date": f"{prefix}_quote_date",
+        "price_unit": f"{prefix}_price_unit",
+        "quantity_basis": f"{prefix}_quantity_basis",
+    }
+    for source_key, target_key in mapping.items():
+        value = _text(evidence.get(source_key))
+        if value:
+            item.setdefault(target_key, value)
+
+
 def _accept(item: dict[str, Any], evidence: dict[str, Any]) -> tuple[bool, str]:
     kind = _text(evidence.get("kind")).casefold()
     value = _text(evidence.get("value"))
@@ -52,33 +84,33 @@ def _accept(item: dict[str, Any], evidence: dict[str, Any]) -> tuple[bool, str]:
     if not source_url:
         return False, "https_source_required"
 
-    if kind in {"unit_price", "selling_unit_price", "freight"}:
-        try:
-            amount = Decimal(value)
-            if not amount.is_finite() or amount <= 0:
-                return False, "positive_numeric_amount_required"
-        except (InvalidOperation, ValueError):
-            return False, "positive_numeric_amount_required"
+    if kind in {"unit_price", "selling_unit_price", "freight"} and not _positive(value):
+        return False, "positive_numeric_amount_required"
 
     if kind == "unit_price":
         supplier = _text(evidence.get("supplier_name"))
-        currency = _text(evidence.get("currency"))
+        currency = _text(evidence.get("currency")).upper()
         if not supplier or supplier.casefold() not in _verified_supplier_names(item):
             return False, "verified_supplier_required"
         if not currency:
             return False, "currency_required"
-        validity = _text(evidence.get("valid_until"))
-        if validity:
-            try:
-                date.fromisoformat(validity)
-            except ValueError:
-                return False, "invalid_quote_validity_date"
+        validity_raw = _text(evidence.get("valid_until"))
+        validity = _iso_date(validity_raw) if validity_raw else None
+        if validity_raw and not validity:
+            return False, "invalid_quote_validity_date"
+        quote_date_raw = _text(evidence.get("quote_date"))
+        if quote_date_raw and not _iso_date(quote_date_raw):
+            return False, "invalid_quote_date"
+        quantity_basis = _text(evidence.get("quantity_basis"))
+        if quantity_basis and not _positive(quantity_basis):
+            return False, "positive_quote_quantity_basis_required"
         item.setdefault("verified_unit_price", value)
         item.setdefault("quote_currency", currency)
         item.setdefault("verified_unit_price_source", source_url)
         item.setdefault("verified_unit_price_supplier", supplier)
         if validity:
             item.setdefault("quote_valid_until", validity)
+        _store_quote_metadata(item, evidence, "supplier")
         return True, "accepted"
 
     if kind == "selling_unit_price":
@@ -86,14 +118,21 @@ def _accept(item: dict[str, Any], evidence: dict[str, Any]) -> tuple[bool, str]:
         buyer_name = _text(evidence.get("buyer_name"))
         if not currency or not buyer_name:
             return False, "buyer_and_currency_required"
+        quote_date_raw = _text(evidence.get("quote_date"))
+        if quote_date_raw and not _iso_date(quote_date_raw):
+            return False, "invalid_quote_date"
+        quantity_basis = _text(evidence.get("quantity_basis"))
+        if quantity_basis and not _positive(quantity_basis):
+            return False, "positive_quote_quantity_basis_required"
         item.setdefault("verified_selling_unit_price", value)
         item.setdefault("selling_currency", currency)
         item.setdefault("verified_selling_price_source", source_url)
         item.setdefault("selling_quote_buyer", buyer_name)
+        _store_quote_metadata(item, evidence, "buyer")
         return True, "accepted"
 
     if kind == "freight":
-        currency = _text(evidence.get("currency"))
+        currency = _text(evidence.get("currency")).upper()
         origin = _text(evidence.get("origin"))
         destination = _text(evidence.get("destination"))
         if not currency or not origin or not destination:
@@ -162,7 +201,7 @@ def process_payload(payload: dict[str, Any]) -> dict[str, Any]:
             "fail_closed": True,
         }
 
-    summary = {
+    payload["commercial_evidence_acceptance_summary"] = {
         "opportunities": len(rows),
         "accepted": accepted,
         "rejected": rejected,
@@ -170,7 +209,7 @@ def process_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "rejection_reasons": dict(sorted(reasons.items())),
         "source_backed_only": True,
         "fail_closed": True,
-        "rule": "Commercial evidence is promoted only from HTTPS source-backed records; supplier pricing additionally requires a verified supplier and explicit currency.",
+        "stage4_quote_metadata_preserved": True,
+        "rule": "Commercial evidence is promoted only from HTTPS source-backed records; Stage 4 separately requires exact-spec supplier eligibility and complete quote metadata before price/margin readiness.",
     }
-    payload["commercial_evidence_acceptance_summary"] = summary
     return payload
