@@ -115,11 +115,22 @@ def process_payload(payload: dict, today: date | None = None) -> dict:
             continue
         research = item.get("supplier_research") or {}
         supplier_count = int(research.get("verified_supplier_count") or 0)
+        next_agent = ("Price Agent" if "verified_supplier_quote" in result["missing_or_invalid"]
+                      else "Quote Validity Agent" if any(x in result["missing_or_invalid"] for x in ("quote_valid_until", "quote_expired"))
+                      else "Buyer Price Agent" if any(x in result["missing_or_invalid"] for x in ("verified_selling_quote", "currency_mismatch"))
+                      else "Source Terms Agent")
         queue.append({
             "opportunity_id": item.get("id") or item.get("opportunity_id") or item.get("notice_id"),
             "product": item.get("product_name") or item.get("title_tr") or item.get("title_original"),
             "blockers": result["missing_or_invalid"],
-            "next_agent": "Price Agent" if "verified_supplier_quote" in result["missing_or_invalid"] else "Commercial Terms Agent",
+            "next_agent": next_agent,
+            "acceptance_criteria": [
+                "supplier quote: verified supplier, positive numeric unit price, currency, HTTPS source",
+                "supplier quote validity: explicit ISO date, not expired",
+                "buyer selling quote: positive numeric unit price, currency, named buyer, HTTPS source",
+                "matching currency and explicit quantity before gross spread",
+                "never label gross spread as net profit; human approval before external contact",
+            ],
             "priority": 100 + min(supplier_count, 3) * 10 - len(result["missing_or_invalid"]) * 5,
             "research_only": True,
             "external_outreach_enabled": False,
