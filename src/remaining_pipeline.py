@@ -19,11 +19,15 @@ from .offer_candidate_queue import build as build_offer_candidate_queue
 from .offer_risk_gate import process_payload as process_offer_risk
 from .price_margin_gate import process_payload as process_price_margin
 from .pilot_dossiers import build as build_pilot_dossiers
+from .pilot_evidence import apply as apply_pilot_evidence
 from .supplier_research import process_payload as process_supplier_research
+from .verification import sanitize_payload as sanitize_buyer_verification
 
 
 def process(payload: dict) -> dict:
     annotate_gulf_sources(payload)                  # A4 registry / truthfulness gate
+    apply_pilot_evidence(payload)                   # persistent source-backed pilot research
+    sanitize_buyer_verification(payload)            # re-evaluate buyer after authoritative pilot evidence
     process_commercial_terms(payload)               # A5 commercial tender terms
     build_data_completion_queue(payload)            # core source-data completion priority queue
     process_supplier_research(payload)              # A6 source-backed supplier verification
@@ -49,6 +53,8 @@ def main(path: str) -> None:
     p.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print("REMAINING_PIPELINE", json.dumps({
         "gulf_live": (payload.get("gulf_sources") or {}).get("live_ingestion_verified"),
+        "pilot_evidence_applied": (payload.get("pilot_evidence_summary") or {}).get("applied"),
+        "buyer_verified": (payload.get("buyer_verification_summary") or {}).get("verified"),
         "data_core_complete": (payload.get("data_completion_queue") or {}).get("core_complete"),
         "data_core_incomplete": (payload.get("data_completion_queue") or {}).get("core_incomplete"),
         "data_completion_rate_pct": (payload.get("data_completion_queue") or {}).get("completion_rate_pct"),
