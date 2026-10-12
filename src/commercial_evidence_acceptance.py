@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from collections import Counter
+from decimal import Decimal, InvalidOperation
+from datetime import date
 from typing import Any
 from urllib.parse import urlparse
 
@@ -50,6 +52,14 @@ def _accept(item: dict[str, Any], evidence: dict[str, Any]) -> tuple[bool, str]:
     if not source_url:
         return False, "https_source_required"
 
+    if kind in {"unit_price", "selling_unit_price", "freight"}:
+        try:
+            amount = Decimal(value)
+            if not amount.is_finite() or amount <= 0:
+                return False, "positive_numeric_amount_required"
+        except (InvalidOperation, ValueError):
+            return False, "positive_numeric_amount_required"
+
     if kind == "unit_price":
         supplier = _text(evidence.get("supplier_name"))
         currency = _text(evidence.get("currency"))
@@ -57,17 +67,17 @@ def _accept(item: dict[str, Any], evidence: dict[str, Any]) -> tuple[bool, str]:
             return False, "verified_supplier_required"
         if not currency:
             return False, "currency_required"
-        item.setdefault("verified_unit_price", value)
-        item.setdefault("quote_currency", currency)
-        item.setdefault("verified_unit_price_source", source_url)
-        item.setdefault("verified_unit_price_supplier", supplier)
         validity = _text(evidence.get("valid_until"))
         if validity:
-            from datetime import date
             try:
                 date.fromisoformat(validity)
             except ValueError:
                 return False, "invalid_quote_validity_date"
+        item.setdefault("verified_unit_price", value)
+        item.setdefault("quote_currency", currency)
+        item.setdefault("verified_unit_price_source", source_url)
+        item.setdefault("verified_unit_price_supplier", supplier)
+        if validity:
             item.setdefault("quote_valid_until", validity)
         return True, "accepted"
 
