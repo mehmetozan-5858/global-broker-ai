@@ -14,13 +14,20 @@ class TestBuyerVerification(unittest.TestCase):
         item = {"buyer-name": "Example Ministry", "buyer_verification": {"status": "verified", "evidence": []}}
         self.assertFalse(buyer_is_verified(item))
 
-    def test_explicit_verified_record_with_evidence_passes(self):
+    def test_authoritative_registry_evidence_passes(self):
         item = {
             "buyer-name": "Example Ministry",
-            "buyer_verification": {
-                "status": "verified",
-                "evidence": [{"source": "official_registry", "url": "https://example.test/registry"}],
-            },
+            "buyer-country": "Germany",
+            "source": "TED",
+            "source_url": "https://example.test/tender/123",
+            "buyer_registry_evidence": [
+                {
+                    "authority": "public_entity_registry",
+                    "url": "https://registry.example.gov/entity/123",
+                    "name_match": True,
+                    "country_match": True,
+                }
+            ],
         }
         sanitize_opportunity(item)
         self.assertTrue(item["buyer_verified"])
