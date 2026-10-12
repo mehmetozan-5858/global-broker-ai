@@ -1,1 +1,18 @@
-{"name":"Global Broker","short_name":"Global Broker","start_url":"/app","scope":"/","display":"standalone","background_color":"#071827","theme_color":"#071827","description":"Global Broker trade, sourcing, markets and opportunities control center"}
+{
+  "name": "Global Broker",
+  "short_name": "Global Broker",
+  "description": "Global Broker yönetici ve fırsat operasyon uygulaması",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#061725",
+  "theme_color": "#061725",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
