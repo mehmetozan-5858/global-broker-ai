@@ -5,6 +5,7 @@ import mimetypes
 import os
 
 from api.opportunities import handler as OpportunitiesHandler
+from api.admin_opportunities import handler as AdminOpportunitiesHandler
 from api.introduction import handler as IntroductionHandler
 from api.contact_unlock import handler as ContactUnlockHandler
 from api.private_room import handler as PrivateRoomHandler
@@ -27,7 +28,7 @@ ROUTES = {
 }
 
 
-class Handler(OpportunitiesHandler, PrivateRoomHandler, IntroductionHandler, ContactUnlockHandler):
+class Handler(AdminOpportunitiesHandler, OpportunitiesHandler, PrivateRoomHandler, IntroductionHandler, ContactUnlockHandler):
     server_version = "GlobalBrokerRender/1.0"
 
     def _serve_file(self, path: Path):
@@ -70,6 +71,8 @@ class Handler(OpportunitiesHandler, PrivateRoomHandler, IntroductionHandler, Con
 
     def do_GET(self):
         path = urlparse(self.path).path
+        if path == "/api/admin_opportunities":
+            return AdminOpportunitiesHandler.do_GET(self)
         if path in {"/api/opportunities", "/data/latest-opportunities.json"}:
             return OpportunitiesHandler.do_GET(self)
         if path == "/api/private_room":
