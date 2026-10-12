@@ -5,11 +5,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class OpsVisibilityTests(unittest.TestCase):
-    def test_customer_and_admin_shells_load_system_health(self):
+    def test_admin_shell_loads_system_health_and_customer_shell_stays_customer_only(self):
         customer = (ROOT / "web/customer-shell.html").read_text(encoding="utf-8")
         admin = (ROOT / "web/app-shell.html").read_text(encoding="utf-8")
-        self.assertIn("/web/system-health.js", customer)
         self.assertIn("/web/system-health.js", admin)
+        self.assertNotIn("/web/system-health.js", customer)
+        self.assertIn("/web/customer-portal.js", customer)
 
     def test_system_health_surfaces_watchdog_deals_and_launch_gate_truthfully(self):
         js = (ROOT / "web/system-health.js").read_text(encoding="utf-8")
