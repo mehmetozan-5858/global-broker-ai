@@ -18,6 +18,7 @@ from .launch_readiness_report import build as build_launch_readiness_report
 from .offer_candidate_queue import build as build_offer_candidate_queue
 from .offer_risk_gate import process_payload as process_offer_risk
 from .price_margin_gate import process_payload as process_price_margin
+from .pilot_dossiers import build as build_pilot_dossiers
 from .supplier_research import process_payload as process_supplier_research
 
 
@@ -31,6 +32,7 @@ def process(payload: dict) -> dict:
     process_price_margin(payload)                   # Stage 4 verified quotes, expiry, gross spread
     build_commercial_blocker_triage(payload)        # source-backed commercial research queue
     build_commercial_research_agents(payload)       # Price/Logistics/Source Terms agent tasks
+    build_pilot_dossiers(payload)                   # evidence-ranked first 10 real dossiers
     process_offer_risk(payload)                     # A8 draft / risk gate
     build_offer_candidate_queue(payload)            # internal-only human offer review queue
     build_agent_center(payload)                     # A9 measurable agent center + watchdog
@@ -56,6 +58,8 @@ def main(path: str) -> None:
         "commercial_evidence_rejected": (payload.get("commercial_evidence_acceptance_summary") or {}).get("rejected"),
         "stage4_price_ready": (payload.get("price_margin_summary") or {}).get("price_ready"),
         "stage4_gross_spread_ready": (payload.get("price_margin_summary") or {}).get("gross_spread_ready"),
+        "pilot_dossiers_selected": (payload.get("pilot_dossier_summary") or {}).get("selected_count"),
+        "pilot_dossiers_missing_evidence": (payload.get("pilot_dossier_summary") or {}).get("missing_evidence_counts"),
         "stage4_blockers": (payload.get("price_margin_summary") or {}).get("missing_or_invalid_counts"),
         "commercial_ready": (payload.get("commercial_feasibility_summary") or {}).get("calculation_ready"),
         "commercial_blocker_counts": (payload.get("commercial_blocker_triage") or {}).get("blocker_counts"),
