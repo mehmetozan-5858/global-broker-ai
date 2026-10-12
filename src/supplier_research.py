@@ -4,6 +4,9 @@ from typing import Any
 from urllib.parse import urlparse
 
 
+MIN_VERIFIED_SUPPLIERS = 3
+
+
 def _text(value: Any) -> str:
     if value is None:
         return ""
@@ -59,6 +62,51 @@ def _candidate_status(candidate: dict[str, Any], product: str) -> dict[str, Any]
     }
 
 
+def _priority(item: dict[str, Any], verified_count: int, ready: bool) -> int:
+    score = int(item.get("deal_score") or 0)
+    if ready:
+        score += 20
+    if verified_count:
+        score += min(verified_count, MIN_VERIFIED_SUPPLIERS) * 10
+    if item.get("buyer_verified"):
+        score += 15
+    if item.get("direct_contact_available"):
+        score += 10
+    return min(100, score)
+
+
+def _matching_task(item: dict[str, Any], result: dict[str, Any]) -> dict[str, Any] | None:
+    if not result.get("dossier_ready"):
+        return None
+    verified_count = int(result.get("verified_supplier_count") or 0)
+    needed = max(0, MIN_VERIFIED_SUPPLIERS - verified_count)
+    if needed == 0:
+        status = "minimum_verified_pool_ready"
+    elif verified_count:
+        status = "expand_verified_pool"
+    else:
+        status = "supplier_discovery_required"
+    return {
+        "status": status,
+        "priority": _priority(item, verified_count, True),
+        "product": result.get("product"),
+        "buyer_country": result.get("buyer_country"),
+        "verified_supplier_count": verified_count,
+        "target_verified_supplier_count": MIN_VERIFIED_SUPPLIERS,
+        "additional_verified_suppliers_needed": needed,
+        "search_query": result.get("search_query"),
+        "preferred_source_sequence": [
+            "TOBB Sanayi Veritabanı",
+            "TİM / ihracatçı birlikleri",
+            "üreticinin resmi web sitesi",
+            "ticaret/sanayi odası kayıtları",
+            "ürün katalogları ve resmi ihracatçı kaynakları",
+        ],
+        "verification_rule": "Firma adı + HTTPS resmi kaynak + ürün eşleşme kanıtı + şirket kimlik kanıtı olmadan tedarikçi doğrulanmış sayılmaz.",
+        "external_contact_authorized": False,
+    }
+
+
 def prepare(item: dict[str, Any]) -> dict[str, Any]:
     spec = item.get("specification_analysis") or {}
     product = _text(((item.get("field_evidence") or {}).get("product") or {}).get("value")) or _text(
@@ -85,6 +133,8 @@ def prepare(item: dict[str, Any]) -> dict[str, Any]:
         "search_query": f'"{product}" manufacturer exporter' if ready else None,
         "candidate_suppliers": candidates,
         "verified_supplier_count": verified_count,
+        "target_verified_supplier_count": MIN_VERIFIED_SUPPLIERS,
+        "supplier_pool_ready": verified_count >= MIN_VERIFIED_SUPPLIERS,
         "verification_required": True,
         "blocked_by_missing_fields": [] if ready else ["specification_evidence"],
         "rule": "A supplier is verified only when name, HTTPS source URL, product-match evidence and company identity evidence are all present and consistent.",
@@ -98,7 +148,10 @@ def process_payload(payload: dict[str, Any]) -> dict[str, Any]:
     ready = 0
     verified_suppliers = 0
     opportunities_with_verified_supplier = 0
-    for item in rows:
+    pool_ready = 0
+    queue: list[dict[str, Any]] = []
+
+    for index, item in enumerate(rows):
         if not isinstance(item, dict):
             continue
         result = prepare(item)
@@ -108,12 +161,30 @@ def process_payload(payload: dict[str, Any]) -> dict[str, Any]:
         verified_suppliers += count
         if count:
             opportunities_with_verified_supplier += 1
+        if result.get("supplier_pool_ready"):
+            pool_ready += 1
+        task = _matching_task(item, result)
+        if task:
+            task["opportunity_index"] = index
+            task["opportunity_title"] = _text(item.get("title_tr") or item.get("title_original")) or None
+            queue.append(task)
+
+    queue.sort(key=lambda task: (-int(task.get("priority") or 0), int(task.get("additional_verified_suppliers_needed") or 0)))
+    payload["supplier_matching_queue"] = {
+        "stage": 3,
+        "mode": "research_only_no_external_contact",
+        "task_count": len(queue),
+        "minimum_verified_suppliers_per_opportunity": MIN_VERIFIED_SUPPLIERS,
+        "tasks": queue,
+    }
     payload["supplier_research_summary"] = {
         "opportunities": len(rows),
         "research_ready": ready,
         "blocked": max(0, len(rows) - ready),
         "verified_suppliers": verified_suppliers,
         "opportunities_with_verified_supplier": opportunities_with_verified_supplier,
+        "opportunities_with_minimum_verified_pool": pool_ready,
+        "supplier_matching_tasks": len(queue),
         "mode": "source_verified_candidates",
     }
     return payload
