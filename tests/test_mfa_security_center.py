@@ -17,9 +17,9 @@ class MfaSecurityCenterTests(unittest.TestCase):
         self.assertIn("AAL2", html)
         self.assertIn("SMS sağlayıcısı", html)
 
-    def test_admin_gate_points_to_security_center_and_requires_aal2(self):
+    def test_admin_gate_redirects_to_security_center_and_requires_aal2(self):
         html = (ROOT / "web/app-shell.html").read_text(encoding="utf-8")
-        self.assertIn('href="/security"', html)
+        self.assertIn("location.replace('/security?next=/app')", html)
         self.assertIn("claims.aal!=='aal2'", html)
         self.assertIn("x.role==='admin'", html)
 
