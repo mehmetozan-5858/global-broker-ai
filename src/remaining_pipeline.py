@@ -10,6 +10,7 @@ from .commercial_feasibility import process_payload as process_feasibility
 from .commercial_blocker_triage import build as build_commercial_blocker_triage
 from .commercial_research_agents import build as build_commercial_research_agents
 from .commercial_terms import process_payload as process_commercial_terms
+from .data_completion_queue import build as build_data_completion_queue
 from .deal_lifecycle import process_payload as process_deal_lifecycle
 from .gulf_sources import annotate_payload as annotate_gulf_sources
 from .launch_gate import evaluate as evaluate_launch
@@ -22,6 +23,7 @@ from .supplier_research import process_payload as process_supplier_research
 def process(payload: dict) -> dict:
     annotate_gulf_sources(payload)                  # A4 registry / truthfulness gate
     process_commercial_terms(payload)               # A5 commercial tender terms
+    build_data_completion_queue(payload)            # core source-data completion priority queue
     process_supplier_research(payload)              # A6 source-backed supplier verification
     process_commercial_evidence(payload)            # verified price/freight/source-term evidence acceptance
     process_feasibility(payload)                    # A7 calculation readiness
@@ -43,6 +45,10 @@ def main(path: str) -> None:
     p.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print("REMAINING_PIPELINE", json.dumps({
         "gulf_live": (payload.get("gulf_sources") or {}).get("live_ingestion_verified"),
+        "data_core_complete": (payload.get("data_completion_queue") or {}).get("core_complete"),
+        "data_core_incomplete": (payload.get("data_completion_queue") or {}).get("core_incomplete"),
+        "data_completion_rate_pct": (payload.get("data_completion_queue") or {}).get("completion_rate_pct"),
+        "data_missing_field_counts": (payload.get("data_completion_queue") or {}).get("missing_field_counts"),
         "supplier_ready": (payload.get("supplier_research_summary") or {}).get("research_ready"),
         "commercial_evidence_accepted": (payload.get("commercial_evidence_acceptance_summary") or {}).get("accepted"),
         "commercial_evidence_rejected": (payload.get("commercial_evidence_acceptance_summary") or {}).get("rejected"),
