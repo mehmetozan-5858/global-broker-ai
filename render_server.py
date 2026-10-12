@@ -45,6 +45,8 @@ class Handler(AdminOpportunitiesHandler, OpportunitiesHandler, PrivateRoomHandle
         self.send_response(200)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(data)))
+        if resolved.name in {"sw.js", "manifest.webmanifest", "launch.html"}:
+            self.send_header("Cache-Control", "no-cache, max-age=0")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Referrer-Policy", "strict-origin-when-cross-origin")
         self.send_header("X-Frame-Options", "SAMEORIGIN")
@@ -71,6 +73,11 @@ class Handler(AdminOpportunitiesHandler, OpportunitiesHandler, PrivateRoomHandle
 
     def do_GET(self):
         path = urlparse(self.path).path
+        if path == "/healthz":
+            self.send_response(204)
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            return
         if path == "/api/admin_opportunities":
             return AdminOpportunitiesHandler.do_GET(self)
         if path in {"/api/opportunities", "/data/latest-opportunities.json"}:
