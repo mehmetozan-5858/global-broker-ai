@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071827">
 <meta name="robots" content="noindex,nofollow">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Global Broker">
 <title>Global Broker Yönetici Uygulaması</title>
 <style>html,body{margin:0;width:100%;height:100%;background:#061725;color:#e8f0f6;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden}#app{display:none;width:100%;height:100%;border:0;background:#061725}.gate{height:100%;display:grid;place-items:center;padding:24px}.gatebox{width:min(520px,100%);background:#0d2739;border:1px solid #24465d;border-radius:20px;padding:26px;box-shadow:0 20px 60px #0005}.brand{font-size:24px;font-weight:900}.brand span{color:#f3923c}.gate h1{font-size:22px;margin:20px 0 8px}.gate p{color:#aebfca;line-height:1.55}.gate a{display:inline-block;margin-top:12px;background:#f3923c;color:#071827;padding:11px 14px;border-radius:10px;text-decoration:none;font-weight:900}.bad{color:#ffb2b9!important}</style>
 </head>
@@ -13,6 +19,7 @@
 <iframe id="app" title="Global Broker Yönetici Uygulaması"></iframe>
 <script>
 (function(){
+  if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){});}
   var SB_URL='https://yhzdqrqzjruduohypvqf.supabase.co',SB_KEY='sb_publishable_fFtN0JmDBp8TP01lKJhTFQ_sx6mkt-w';
   var frame=document.getElementById('app'),gate=document.getElementById('gate'),status=document.getElementById('gateStatus'),accountLink=document.getElementById('accountLink');
   function deny(text,href,label){status.textContent=text;status.classList.add('bad');frame.style.display='none';gate.style.display='grid';if(href)accountLink.href=href;if(label)accountLink.textContent=label;}
