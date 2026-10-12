@@ -88,8 +88,17 @@ class handler(BaseHTTPRequestHandler):
             self._json(503, {"status": "OPPORTUNITY_FEED_UNAVAILABLE"})
             return
 
+        # The live feed currently stores rows under `items`, while older
+        # snapshots used `opportunities`. Support both schemas so historical
+        # and current data remain visible in the admin application.
+        source_rows = data.get("opportunities")
+        if not isinstance(source_rows, list):
+            source_rows = data.get("items")
+        if not isinstance(source_rows, list):
+            source_rows = []
+
         rows = []
-        for row in data.get("opportunities") or []:
+        for row in source_rows:
             if not isinstance(row, dict):
                 continue
             review = row.get("export_goods_review") or {}
