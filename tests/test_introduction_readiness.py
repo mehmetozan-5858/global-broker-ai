@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from src.introduction_readiness import introduction_preflight, missing_dossier_fields
+from src.public_opportunity_projection import project_public_opportunity
 
 
 class IntroductionReadinessTests(unittest.TestCase):
@@ -24,6 +25,21 @@ class IntroductionReadinessTests(unittest.TestCase):
             "source_name": "Official tender portal",
         }
         self.assertEqual([], missing_dossier_fields(item))
+
+    def test_newly_ingested_opportunity_is_always_classified(self):
+        # A new opportunity outside the original feed gets the same checks.
+        new_row = {
+            "id": "future-2027-001",
+            "title": "Araç parçası",
+            "country": "Germany",
+            "source_type": "TED",
+            "export_goods_review": {"status": "goods_candidate"},
+        }
+        projected = project_public_opportunity(new_row)
+        self.assertEqual("research_required", projected["dossier_status"])
+        self.assertIn("product_name", projected["missing_dossier_fields"])
+        self.assertIn("approx_quantity", projected["missing_dossier_fields"])
+        self.assertIn("deadline", projected["missing_dossier_fields"])
 
     def test_missing_feed_fails_closed(self):
         with patch("src.introduction_readiness._feed_path", return_value=None):
