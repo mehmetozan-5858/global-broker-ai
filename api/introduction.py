@@ -4,6 +4,8 @@ import os
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+from src.introduction_readiness import introduction_preflight
+
 SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://yhzdqrqzjruduohypvqf.supabase.co").rstrip("/")
 SUPABASE_KEY = os.environ.get("SUPABASE_PUBLISHABLE_KEY", "sb_publishable_fFtN0JmDBp8TP01lKJhTFQ_sx6mkt-w")
 
@@ -112,6 +114,12 @@ class handler(BaseHTTPRequestHandler):
         opportunity_id = str((request_body or {}).get("opportunity_id") or "").strip()
         if len(opportunity_id) < 8 or len(opportunity_id) > 200:
             self._json(400, {"status": "INVALID_OPPORTUNITY_ID"})
+            return
+
+        # Fail closed before the RPC can reserve or debit a contact credit.
+        preflight_status, preflight_code = introduction_preflight(opportunity_id)
+        if preflight_status != 200:
+            self._json(preflight_status, {"status": preflight_code})
             return
 
         rpc_status, result = _rpc(token, opportunity_id)
