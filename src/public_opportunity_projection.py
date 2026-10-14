@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from src.opportunity_identity import stable_opportunity_id
+from src.introduction_readiness import missing_dossier_fields
 
 BUYER_DISPLAY = "Alıcı kimliği kontrollü tanıştırma ile paylaşılır"
 
@@ -106,6 +107,11 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
         result["source_backed_fields"] = verified_count
     if isinstance(total_count, int) and total_count > 0:
         result["source_field_total"] = total_count
+    # Apply the same readiness policy to every future incoming opportunity,
+    # regardless of source, company, region, sector or feed size.
+    missing = missing_dossier_fields(result)
+    result["dossier_status"] = "research_required" if missing else "ready_for_review"
+    result["missing_dossier_fields"] = missing
     return result
 
 
