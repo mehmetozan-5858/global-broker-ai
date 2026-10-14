@@ -56,7 +56,7 @@ class IntroductionReadinessTests(unittest.TestCase):
             feed = Path(directory) / "feed.json"
             feed.write_text(json.dumps({"opportunities": [row]}), encoding="utf-8")
             with patch("src.introduction_readiness._feed_path", return_value=feed):
-                with patch("src.introduction_readiness.project_public_opportunity", return_value={
+                with patch("src.public_opportunity_projection.project_public_opportunity", return_value={
                     "opportunity_id": "known-id", "product_name": "Medikal ürün alımı",
                     "country": "Poland", "source_type": "TED",
                 }):
