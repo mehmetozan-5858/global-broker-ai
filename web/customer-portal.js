@@ -47,7 +47,7 @@ async function requestIntroduction(o,button,box){
     var r=await fetch('/api/introduction',{method:'POST',headers:{Authorization:'Bearer '+t,'Content-Type':'application/json'},body:JSON.stringify({opportunity_id:o.opportunity_id}),cache:'no-store'});
     var data=await r.json().catch(function(){return {}});
     if(!r.ok){
-      var messages={INTRODUCTION_CREDIT_REQUIRED:'Tanıştırma Krediniz kalmadı. Paketinizi yükseltebilirsiniz.',OPPORTUNITY_NOT_FOUND:'Fırsat doğrulama kuyruğunda. Kredi düşülmedi.',SECTOR_NOT_IN_PLAN:'Bu fırsat mevcut sektör paketinizin dışında.',COUNTRY_NOT_SELECTED:'Bu fırsat seçili ülke kapsamınızın dışında.',AUTHENTICATION_REQUIRED:'Oturumunuzu yenileyin.'};
+      var messages={INTRODUCTION_CREDIT_REQUIRED:'Tanıştırma Krediniz kalmadı. Paketinizi yükseltebilirsiniz.',OPPORTUNITY_NOT_FOUND:'Fırsat doğrulama kuyruğunda. Kredi düşülmedi.',OPPORTUNITY_DOSSIER_INCOMPLETE:'Bu dosyada kesin ürün, miktar, son tarih veya kaynak bilgisi eksik. Kredi düşülmedi.',OPPORTUNITY_FEED_UNAVAILABLE:'Fırsat doğrulama servisi geçici olarak kullanılamıyor. Kredi düşülmedi.',SECTOR_NOT_IN_PLAN:'Bu fırsat mevcut sektör paketinizin dışında.',COUNTRY_NOT_SELECTED:'Bu fırsat seçili ülke kapsamınızın dışında.',AUTHENTICATION_REQUIRED:'Oturumunuzu yenileyin.'};
       box.textContent=messages[data.status]||'Tanıştırma talebi şu anda oluşturulamadı.';
       button.disabled=false;button.textContent='Tanıştırma talebi gönder (1 kredi)';return;
     }
