@@ -57,7 +57,11 @@ def introduction_preflight(opportunity_id):
         return 503, "OPPORTUNITY_FEED_UNAVAILABLE"
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
-        rows = data.get("opportunities")\n        if not isinstance(rows, list):\n            rows = data.get("items")\n        if not isinstance(rows, list):\n            return 503, "OPPORTUNITY_FEED_UNAVAILABLE"
+        rows = data.get("opportunities")
+        if not isinstance(rows, list):
+            rows = data.get("items")
+        if not isinstance(rows, list):
+            return 503, "OPPORTUNITY_FEED_UNAVAILABLE"
         for row in rows:
             if not isinstance(row, dict):
                 continue
