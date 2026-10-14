@@ -117,7 +117,12 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
 
 def project_public_feed(data: dict[str, Any]) -> dict[str, Any]:
     rows = []
-    for row in data.get("opportunities") or []:
+    source_rows = data.get("opportunities")
+    if not isinstance(source_rows, list):
+        source_rows = data.get("items")
+    if not isinstance(source_rows, list):
+        source_rows = []
+    for row in source_rows:
         if not isinstance(row, dict):
             continue
         review = row.get("export_goods_review") if isinstance(row.get("export_goods_review"), dict) else {}
