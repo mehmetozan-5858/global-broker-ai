@@ -7,7 +7,6 @@ import json
 import re
 from pathlib import Path
 
-from src.public_opportunity_projection import project_public_opportunity
 
 _GENERIC_PRODUCTS = re.compile(
     r"^(?:araç (?:yedek )?parça(?:sı|ları)?|otomotiv (?:yedek )?parça(?:sı|ları)?|"
@@ -51,6 +50,8 @@ def introduction_preflight(opportunity_id):
 
     Fail closed if feed unavailable. Never include private row data in errors.
     """
+    from src.public_opportunity_projection import project_public_opportunity
+
     path = _feed_path()
     if path is None:
         return 503, "OPPORTUNITY_FEED_UNAVAILABLE"
