@@ -15,10 +15,14 @@
         "web": 2,
         "app": 2
       },
-      "status": "in_progress",
+      "status": "complete",
       "acceptance": "Web ana sayfası, müşteri portalı ve yönetici uygulamasından AI Visibility ön değerlendirmesine erişim.",
-      "evidence": {},
-      "note": "Web/portal/yönetici girişleri üretim a036dbe ile READY. Canlı içerik kontrolü bu oturumda HTTP 401 ile engelli."
+      "evidence": {
+        "tests": "395 Python tests + three contract tests in both repositories; AI Visibility CI and full web/mobile smoke passed. Production browser passed at 390px and 1280px.",
+        "deployment": "Broker e30732fa2a85de18fe8c56b9e9f759b125a170fc READY; AI Visibility 45725516c065376edb13e93a9d7e8277b9517223 READY.",
+        "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39319153315"
+      },
+      "note": "Canlı web, portal ve yönetici arayüzü girişleri doğrulandı; genel sayfaların özel oda API giriş noktasına düşmesi düzeltildi."
     },
     {
       "id": "P2",
@@ -30,9 +34,9 @@
       "status": "in_progress",
       "acceptance": "Yeni ve mevcut kayıtlar için alıcı, ürün, miktar/bütçe, tarih ve belge eksiklerinin tamamlanması; gerçek kayıtla doğrulama.",
       "evidence": {
-        "tests": "392 Python tests; 3 transfer contract tests in both repositories; AI Visibility full test suite and Next.js production build passed locally."
+        "tests": "395 Python tests; live shadow scan https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39318076335 succeeded."
       },
-      "note": "Kaynak alan adları ve eksik/veri türü kontrolleri düzeltildi; kimliksiz araştırma görevleri giderildi. Tam kaynaklı gerçek ticari dosya kabulü bekliyor."
+      "note": "Yeni taramada 80 kayıt; görünen 100 araştırma görevinde eksik fırsat kimliği 0. Çekirdek alanları tamam kayıt 1, gerçek fiyatı hazır dosya 0. Veri tamamlama kabulü henüz tamamlanmadı."
     },
     {
       "id": "P3",
@@ -65,12 +69,14 @@
         "web": 5,
         "app": 5
       },
-      "status": "in_progress",
+      "status": "complete",
       "acceptance": "Firma adı, sitesi, ülke ve sektörün kullanıcı incelemesiyle taşınması; iki yönlü akış, yetki ve yinelenen kayıt kontrolü.",
       "evidence": {
-        "tests": "392 Python tests; 3 transfer contract tests in both repositories; AI Visibility full test suite and Next.js production build passed locally."
+        "tests": "395 Python tests + three contract tests in both repositories; AI Visibility CI and full web/mobile smoke passed. Production browser passed at 390px and 1280px.",
+        "deployment": "Broker e30732fa2a85de18fe8c56b9e9f759b125a170fc READY; AI Visibility 45725516c065376edb13e93a9d7e8277b9517223 READY.",
+        "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39319153315"
       },
-      "note": "İki yönlü dört alanlı kullanıcı incelemeli firma aktarımı uygulandı; hesap/token aktarımı ve otomatik başvuru yok. İki üretim dağıtımı ve canlı kabul bekliyor."
+      "note": "Dört firma alanının iki yönlü aktarımı canlıda geçti. Kullanıcı incelemeden uygulanmıyor; başvuru/hesap oluşturulmuyor, token ve alıcı kayıtları taşınmıyor. Tekrar geçiş kayıt çoğaltmıyor çünkü aktarım veri tabanına yazmıyor."
     },
     {
       "id": "P6",
@@ -107,6 +113,21 @@
       "acceptance": "Mobil ve masaüstünde gerçek müşteriyle baştan sona kabul; açık kritik hata yok.",
       "evidence": {},
       "note": "Gerçek müşteriyle kabul oturumu ve canlı mobil/masaüstü onayı kaydedilmedi."
+    }
+  ],
+  "progress_history": [
+    {
+      "date": "2026-10-19",
+      "web": 70,
+      "app": 65,
+      "reason": "Sabit başlangıç tahmini"
+    },
+    {
+      "date": "2026-10-19",
+      "web": 77,
+      "app": 72,
+      "reason": "P1 (+2/+2) ve P5 (+5/+5) canlı doğrulama ile kapandı",
+      "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39319153315"
     }
   ]
 }
