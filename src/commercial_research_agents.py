@@ -3,6 +3,8 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
+from .opportunity_identity import stable_opportunity_id
+
 
 def _text(value: Any) -> str:
     if value is None:
@@ -76,7 +78,7 @@ def build(payload: dict[str, Any]) -> dict[str, Any]:
         if not unresolved:
             continue
 
-        oid = row.get("id") or row.get("opportunity_id") or row.get("publication-number") or row.get("notice_id")
+        oid = row.get("id") or row.get("opportunity_id") or row.get("publication-number") or row.get("notice_id") or stable_opportunity_id(row)
         product = _product(row)
         destination = _destination(row)
         suppliers = _verified_suppliers(row)

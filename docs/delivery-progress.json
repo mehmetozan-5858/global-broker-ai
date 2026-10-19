@@ -17,7 +17,8 @@
       },
       "status": "in_progress",
       "acceptance": "Web ana sayfası, müşteri portalı ve yönetici uygulamasından AI Visibility ön değerlendirmesine erişim.",
-      "evidence": {}
+      "evidence": {},
+      "note": "Web/portal/yönetici girişleri üretim a036dbe ile READY. Canlı içerik kontrolü bu oturumda HTTP 401 ile engelli."
     },
     {
       "id": "P2",
@@ -26,9 +27,12 @@
         "web": 5,
         "app": 8
       },
-      "status": "pending",
+      "status": "in_progress",
       "acceptance": "Yeni ve mevcut kayıtlar için alıcı, ürün, miktar/bütçe, tarih ve belge eksiklerinin tamamlanması; gerçek kayıtla doğrulama.",
-      "evidence": {}
+      "evidence": {
+        "tests": "392 Python tests; 3 transfer contract tests in both repositories; AI Visibility full test suite and Next.js production build passed locally."
+      },
+      "note": "Kaynak alan adları ve eksik/veri türü kontrolleri düzeltildi; kimliksiz araştırma görevleri giderildi. Tam kaynaklı gerçek ticari dosya kabulü bekliyor."
     },
     {
       "id": "P3",
@@ -37,9 +41,10 @@
         "web": 4,
         "app": 6
       },
-      "status": "pending",
+      "status": "blocked",
       "acceptance": "En az bir gerçek fırsatta kaynaklı tedarikçi ve şartname eşleşmesi.",
-      "evidence": {}
+      "evidence": {},
+      "note": "Gerçek fırsata uyan, kaynaklarla doğrulanmış tedarikçi kanıtı henüz yok. Mevcut eşleştirme kodu kanıt yerine sayılmaz."
     },
     {
       "id": "P4",
@@ -48,9 +53,10 @@
         "web": 5,
         "app": 6
       },
-      "status": "pending",
+      "status": "blocked",
       "acceptance": "Aynı fırsatta geçerli teklif, para birimi, teslim/navlun ve risk kanıtlarıyla hesaplama.",
-      "evidence": {}
+      "evidence": {},
+      "note": "Geçerli gerçek tedarikçi teklifi, miktar, para birimi ve navlun kanıtları henüz yok."
     },
     {
       "id": "P5",
@@ -59,9 +65,12 @@
         "web": 5,
         "app": 5
       },
-      "status": "pending",
+      "status": "in_progress",
       "acceptance": "Firma adı, sitesi, ülke ve sektörün kullanıcı incelemesiyle taşınması; iki yönlü akış, yetki ve yinelenen kayıt kontrolü.",
-      "evidence": {}
+      "evidence": {
+        "tests": "392 Python tests; 3 transfer contract tests in both repositories; AI Visibility full test suite and Next.js production build passed locally."
+      },
+      "note": "İki yönlü dört alanlı kullanıcı incelemeli firma aktarımı uygulandı; hesap/token aktarımı ve otomatik başvuru yok. İki üretim dağıtımı ve canlı kabul bekliyor."
     },
     {
       "id": "P6",
@@ -70,9 +79,10 @@
         "web": 4,
         "app": 3
       },
-      "status": "pending",
+      "status": "blocked",
       "acceptance": "Müşteri/yönetici giriş, kurtarma, MFA ve rol akışlarının canlı doğrulanması.",
-      "evidence": {}
+      "evidence": {},
+      "note": "Yönetici çift kurtarma için gerçek e-posta/telefon kayıtları ve SMS sağlayıcı doğrulaması bekliyor. Mevcut rol/MFA kapıları korunuyor."
     },
     {
       "id": "P7",
@@ -81,9 +91,10 @@
         "web": 3,
         "app": 3
       },
-      "status": "pending",
+      "status": "blocked",
       "acceptance": "Ödeme testi, hukuk, işletme iletişimi ve alan adı kanıtları.",
-      "evidence": {}
+      "evidence": {},
+      "note": "Gerçek ödeme testi, hukuki inceleme, doğrulanmış işletme iletişimi ve özel alan adı kanıtları bekliyor."
     },
     {
       "id": "P8",
@@ -92,9 +103,10 @@
         "web": 2,
         "app": 2
       },
-      "status": "pending",
+      "status": "blocked",
       "acceptance": "Mobil ve masaüstünde gerçek müşteriyle baştan sona kabul; açık kritik hata yok.",
-      "evidence": {}
+      "evidence": {},
+      "note": "Gerçek müşteriyle kabul oturumu ve canlı mobil/masaüstü onayı kaydedilmedi."
     }
   ]
 }

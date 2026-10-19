@@ -4,6 +4,37 @@ from src.data_completion_queue import build
 
 
 class DataCompletionQueueTests(unittest.TestCase):
+    def test_feed_aliases_do_not_create_false_missing_fields(self):
+        row = {"borrower": "Public Buyer", "title": "Industrial pumps", "qty": 12,
+               "responseDeadLine": "2026-12-31", "project_ctry_code": "DE",
+               "notice_url": "https://example.org/notice/123"}
+        self.assertEqual(build({"opportunities": [row]})["core_complete"], 1)
+
+    def test_missing_ids_stay_addressable_across_reordering(self):
+        a = {"title_original": "Pumps", "source": "official A"}
+        b = {"title_original": "Valves", "source": "official B"}
+        def ids(rows):
+            return {x["product"]: x["opportunity_id"] for x in build({"opportunities": rows})["queue"]}
+        first = ids([a,b])
+        self.assertEqual(first, ids([b,a]))
+        self.assertTrue(all(first.values()))
+        self.assertEqual(len(set(first.values())), 2)
+
+    def test_unknown_and_invalid_values_cannot_complete_a_record(self):
+        row = {"buyer_name": "Buyer", "product_name": "Pump", "quantity": False,
+               "deadline": "TBD", "country": "DE", "source_url": "https://"}
+        result = build({"opportunities": [row]})
+        self.assertEqual(result["core_complete"], 0)
+        self.assertEqual(set(result["queue"][0]["missing_core_fields"]),
+                         {"quantity_or_budget", "deadline", "official_source"})
+        for quantity in [0, -1, "0", {}]:
+            row["quantity"] = quantity
+            self.assertIn("quantity_or_budget", build({"opportunities": [row]})["queue"][0]["missing_core_fields"])
+
+    def test_project_title_is_not_buyer_identity(self):
+        row = {"project_name": "Bridge Project", "title": "Pumps"}
+        self.assertIn("buyer_identity", build({"opportunities": [row]})["queue"][0]["missing_core_fields"])
+
     def test_complete_and_incomplete_rows_are_counted(self):
         payload = {
             "opportunities": [

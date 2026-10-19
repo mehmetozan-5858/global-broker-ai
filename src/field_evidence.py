@@ -5,9 +5,11 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from .opportunity_identity import stable_opportunity_id
+
 
 def _text(value: Any) -> str:
-    if value is None:
+    if value is None or isinstance(value, bool):
         return ""
     if isinstance(value, str):
         return value.strip()
@@ -25,7 +27,7 @@ def _pick(item: dict[str, Any], keys: tuple[str, ...]) -> tuple[str, str | None]
     for key in keys:
         if key in item:
             value = _text(item.get(key))
-            if value:
+            if value and value.casefold() not in {"unknown", "pending", "tbd", "n/a", "bilinmiyor", "bekleniyor"}:
                 return value, key
     return "", None
 
@@ -97,7 +99,7 @@ def _research_queue_item(item: dict[str, Any]) -> dict[str, Any] | None:
     critical = [name for name in ("quantity", "deadline") if name in missing]
     coverage = (item.get("core_field_coverage") or {}).get("verified_or_source_backed", 0)
     return {
-        "opportunity_id": _text(item.get("id") or item.get("publication-number") or item.get("notice_id")) or None,
+        "opportunity_id": _text(item.get("id") or item.get("publication-number") or item.get("notice_id")) or stable_opportunity_id(item),
         "product": product,
         "buyer": buyer,
         "source_url": source_url or None,
