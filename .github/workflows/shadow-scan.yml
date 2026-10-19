@@ -40,6 +40,17 @@ jobs:
         run: python -m pip install --disable-pip-version-check pypdf==6.1.1
       - name: Run brokerage regression tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Verify current custom domain and protected admin boundary
+        timeout-minutes: 1
+        run: |
+          python - <<'PY'
+          import json,os
+          from src.custom_domain_probe import verify
+          result=verify()
+          with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as target:
+              target.write('GB_CUSTOM_DOMAIN_VERIFIED='+str(result['verified']).lower()+'\n')
+          print('CUSTOM_DOMAIN_VERIFICATION',json.dumps(result))
+          PY
       - name: Fetch, enrich, read source pages and documents, analyze specifications and verify live global opportunities
         env:
           SAM_API_KEY: ${{ secrets.SAM_API_KEY }}

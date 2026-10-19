@@ -107,10 +107,14 @@
         "web": 3,
         "app": 3
       },
-      "status": "blocked",
+      "status": "in_progress",
       "acceptance": "Ödeme testi, hukuk, işletme iletişimi ve alan adı kanıtları.",
-      "evidence": {},
-      "note": "Gerçek ödeme testi, hukuki inceleme, doğrulanmış işletme iletişimi ve özel alan adı kanıtları bekliyor."
+      "evidence": {
+        "tests": "426 Python tests + four recovery contracts; custom-domain probe requires HTTPS home marker, 204 health and 401 protected admin response. Redirects, wrong responses and TLS outages fail closed.",
+        "deployment": "Vercel domain broker.aivisibilityworks.com verified=true on project prj_1gJepl5RppSeL6jtruTG0W0I3uHb. PR #106 production ready; mobile and recovery/browser workflow passed.",
+        "live_verification": "HTTPS https://broker.aivisibilityworks.com/ and /progress returned 200; www.aivisibilityworks.com remained 200. Vercel domain verification and live requests observed 2026-10-20."
+      },
+      "note": "Özel alan adı tamam: broker.aivisibilityworks.com Broker üretim projesine verified=true bağlandı. HTTPS ana sayfa, ilerleme ekranı 200; korumalı admin uç noktası kimliksiz 401. Mevcut DNS üzerinden çalıştı; satın alma veya nameserver değişimi yapılmadı. Her tarama güncel HTTPS ve yetki kapısını kontrol eder. Gerçek ödeme testi, hukuki inceleme ve doğrulanmış işletme iletişimi hâlâ eksik."
     },
     {
       "id": "P8",
