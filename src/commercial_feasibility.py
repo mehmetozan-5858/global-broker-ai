@@ -64,6 +64,9 @@ def assess(item: dict[str, Any]) -> dict[str, Any]:
 
     missing = [name for name, fact in facts.items() if not fact["value"]]
     blockers: list[str] = []
+    if item.get("ted_lot_selection_required") is True:
+        missing.append("lot_selection")
+        blockers.append("lot_selection")
     for required in ("quantity", "currency", "unit_price", "freight", "destination"):
         if required in missing:
             blockers.append(required)

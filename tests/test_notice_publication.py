@@ -16,7 +16,7 @@ class NoticePublicationTests(unittest.TestCase):
         section=workflow.split('- name: Build public-safe masked feed',1)[1]
         match=re.search(r"python - <<'PY'\n(.*?)\n          PY",section,re.S)
         code=textwrap.dedent(match.group(1))
-        row={'estimated_value':'34000','budget_currency':'EUR','ted_lot_count':2,'ted_lot_selection_required':True,
+        row={'estimated_value':'34000','budget_currency':'EUR','ted_lot_count':2,'ted_lot_selection_required':False,
              'ted_lots':[{'description':'PRIVATE LOT CONTENT'}],
              'structured_source_evidence':{'estimated_value':{'value':'34000','currency':'EUR','inferred':False,
                 'source_path':'procurementproject/requestedtendertotal/estimatedoverallcontractamount','source_url':'https://private.example/doc'}}}
@@ -38,4 +38,4 @@ class NoticePublicationTests(unittest.TestCase):
         self.assertEqual(public['estimated_budget'],'34000')
         self.assertEqual(public['budget_currency'],'EUR')
         self.assertEqual(public['lot_count'],2)
-        self.assertTrue(public['lot_selection_required'])
+        self.assertFalse(public['lot_selection_required'])

@@ -91,6 +91,8 @@ def _quote_metadata(item: dict, prefix: str) -> list[str]:
 def assess(item: dict, today: date | None = None) -> dict:
     today = today or date.today()
     issues: list[str] = []
+    if item.get("ted_lot_selection_required") is True:
+        issues.append("lot_selection")
 
     buy = _positive(item.get("verified_unit_price"))
     buy_source = item.get("verified_unit_price_source")
@@ -122,6 +124,7 @@ def assess(item: dict, today: date | None = None) -> dict:
         issues.append("quantity")
 
     buy_blockers = {
+        "lot_selection",
         "verified_supplier_quote", "financially_eligible_exact_spec_supplier",
         "supplier_quote_reference", "supplier_quote_date", "supplier_price_unit",
         "supplier_quantity_basis", "quote_valid_until", "quote_expired",

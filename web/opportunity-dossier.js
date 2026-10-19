@@ -12,8 +12,8 @@ function city(o){return pick(o,['buyer-city','buyer_city','city','project_city',
 function buyer(o){return pick(o,['buyer-name','buyer_name','buyer','project_name'],'Alıcı bekleniyor')}
 function summary(o){return pick(o,['demand_summary_tr','detail_tr','description-lot','description','title_tr'],'Talep özeti bekleniyor')}
 function product(o){return pick(o,['product','product_name','product_category','cpv_description','classification-cpv','categories'],'Ürün ayrıştırması bekleniyor')}
-function quantity(o){return pick(o,['quantity-lot','quantity','estimated_quantity','volume'],'Miktar bekleniyor')}
-function budget(o){var value=pick(o,['estimated-value-lot','estimated_value','budget','amount','value'],'Bütçe bekleniyor');return String(value)+(o.budget_currency?' '+s(o.budget_currency):'')}
+function quantity(o){if(o.ted_lot_selection_required)return 'Kalem seçimi gerekiyor';return pick(o,['quantity-lot','quantity','estimated_quantity','volume'],'Miktar bekleniyor')}
+function budget(o){if(o.ted_lot_selection_required)return 'Kalem seçimi gerekiyor';var value=pick(o,['estimated-value-lot','estimated_value','budget','amount','value'],'Bütçe bekleniyor');return String(value)+(o.budget_currency?' '+s(o.budget_currency):'')}
 function deadline(o){return pick(o,['deadline-receipt-tender-date-lot','submission_deadline_date','deadline'],'Son tarih bekleniyor')}
 function delivery(o){return pick(o,['delivery_location','delivery-place','delivery_place','place-of-performance','place_of_performance'],'Teslim yeri bekleniyor')}
 function links(o){var ks=['url','source_url','notice_url','official_url','document_url','documents_url','tender_url'],out=[];ks.forEach(function(k){var v=s(o&&o[k]);if(/^https?:\/\//i.test(v)&&out.indexOf(v)<0)out.push(v)});return out}

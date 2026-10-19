@@ -151,6 +151,8 @@ def _country(row: dict[str, Any]) -> Any:
 
 def _missing(row: dict[str, Any]) -> list[str]:
     missing: list[str] = []
+    if row.get("ted_lot_selection_required") is True:
+        missing.append("lot_selection")
     if not _known(_buyer(row)):
         missing.append("buyer_identity")
     if not _known(_product(row)):
@@ -169,6 +171,7 @@ def _missing(row: dict[str, Any]) -> list[str]:
 
 def _next_agent(missing: list[str]) -> str:
     order = (
+        ("lot_selection", "specification_agent"),
         ("official_source", "source_research_agent"),
         ("buyer_identity", "buyer_research_agent"),
         ("product", "specification_agent"),

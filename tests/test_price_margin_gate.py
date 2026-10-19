@@ -38,6 +38,14 @@ class PriceMarginGateTests(unittest.TestCase):
         self.assertEqual(result["gross_product_spread"], "550.00")
         self.assertNotIn("net_profit", result)
 
+    def test_unselected_multiple_lots_block_even_valid_quotes(self):
+        row=example();row["ted_lot_selection_required"]=True
+        result=assess(row,date(2026,10,12))
+        self.assertFalse(result["price_ready"])
+        self.assertFalse(result["margin_ready"])
+        self.assertNotIn("gross_product_spread",result)
+        self.assertIn("lot_selection",result["missing_or_invalid"])
+
     def test_expired_quote_fails_closed(self):
         row = example()
         row["quote_valid_until"] = "2026-01-01"
