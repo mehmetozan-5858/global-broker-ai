@@ -76,3 +76,13 @@ TED `681487-2026` için iki gerçek üretici, resmî kimlik ve ürün kaynaklar�
 419 Python testi ve 390px/1280px ilerleme ekranı testi başarılı. Açılış raporundaki ödeme/hukuk/işletme grubunun gizlilik süzgecinde yanlışlıkla silinmesi, özel alanları açmadan grup anahtarı değiştirilerek düzeltildi.
 
 [Ürün/tedarik üretim taraması](https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39323642846): 73 kayıt, 73 kaynak ürün ayrıntısı, bir gerçek fırsatta 2 üretici kabiliyeti adayı. Tam şartname, teklif ve ticari kapılar açık sayılmadı. [Ekosistem ve üretici ekran testleri](https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39323642735) ve mobil yayın başarılı.
+
+## Hesap kurtarma ve özel yönetici dosyaları — 20 Ekim 2026
+
+Şifre sıfırlama isteği sonrası eksik olan yeni şifre kaydetme dönüşü tamamlandı. Doğrulama bağlantısındaki erişim/yenileme belirteçleri ağ isteğinden önce URLden temizlenir. Oturum Auth sunucusunda doğrulanmadan saklanmaz; şifre tekrarı ve en az 12 karakter kontrol edilir. Geçersiz bağlantı, geçersiz oturum, MFA hatası ve ağ hatası başarıya çevrilmez. TOTP doğrulamasından sonra yalnız izin verilen `/account` veya `/app` hedefine dönülür. Gerçek e-posta gönderimi ve gerçek parola değişikliği test edilmedi; redirect allowlist ve e-posta teslim kabulü hâlâ gerekli.
+
+Yönetici API maskelenmiş dosyayı tam dosya olarak sunuyordu. Kaynak artık özel veritabanındaki gerçek fırsat satırlarıdır. Anonim kullanıcıya kapalı public invoker RPC, ayrı özel şemadaki sınırlı helper üzerinden rol+AAL2 kontrolüyle çalışır; ham tablo erişimi verilmez, servis anahtarı tarayıcıya veya API koduna eklenmez. Özel kaynak yoksa 503 döner, maskeli dosya tam dosya yerine geçmez. Yerel dosya yalnız toplu telemetri için kullanılır.
+
+Veritabanında gerçek özel satırların erişim kontrolü SQL rol/claim simülasyonuyla doğrulandı; bu gerçek tarayıcı giriş kabulü değildir. Doğru admin+AAL2 özel alanları okudu; AAL1, başka kullanıcı ve anonim reddedildi. 423 Python testi, 4 Node sözleşme testi ve 390px/1280px parola yenileme tarayıcı testleri geçti. Testler bütün Auth isteklerini yakalar; gerçek hesaba e-posta göndermez veya şifre değiştirmez.
+
+Canlı ön kontrol: telefon doğrulaması ve çift kurtarma kaydı bulunmuyor; gerçek tedarikçi fiyatı/finansal uygunluk kaydı yok; Broker projesine yalnız doğrulanmış Vercel alt alan adı bağlı. P2/P6 teknik olarak ilerledi; tam kabul olmadığı için sabit %77/%72 puanları değişmedi.

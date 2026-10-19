@@ -8,6 +8,9 @@ on:
       - main
     paths:
       - 'src/**'
+      - 'api/**'
+      - 'sql/**'
+      - 'render_server.py'
       - 'tests/**'
       - 'web/**'
       - '.github/workflows/verified-brokerage-ci.yml'
@@ -15,6 +18,9 @@ on:
     branches: ["main"]
     paths:
       - 'src/**'
+      - 'api/**'
+      - 'sql/**'
+      - 'render_server.py'
       - 'tests/**'
       - 'web/**'
       - '.github/workflows/verified-brokerage-ci.yml'
@@ -49,4 +55,6 @@ jobs:
           node --check web/system-health.js
           node --check web/ecosystem-contract.js
           node --check web/ecosystem.js
+          node --check web/account-recovery.js
+          node --test tests/account-recovery.test.cjs
           node --test tests/ecosystem-handoff.test.cjs

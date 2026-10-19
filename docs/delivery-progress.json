@@ -92,10 +92,13 @@
         "web": 4,
         "app": 3
       },
-      "status": "blocked",
+      "status": "in_progress",
       "acceptance": "Müşteri/yönetici giriş, kurtarma, MFA ve rol akışlarının canlı doğrulanması.",
-      "evidence": {},
-      "note": "Yönetici çift kurtarma için gerçek e-posta/telefon kayıtları ve SMS sağlayıcı doğrulaması bekliyor. Mevcut rol/MFA kapıları korunuyor."
+      "evidence": {
+        "tests": "423 Python tests, 4 recovery contract tests and recovery browser checks at 390px/1280px. Expired links, invalid sessions, mismatch, MFA rejection and explicit reset redirect covered without sending real email or changing a real password.",
+        "database": "Private admin feed migration applied and SQL authorization matrix passed: AAL2+admin reads private source fields; AAL1, nonadmin and anonymous rejected; API roles retain no direct private-table access. Supabase advisor findings unchanged."
+      },
+      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı."
     },
     {
       "id": "P7",

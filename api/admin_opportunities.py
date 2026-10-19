@@ -31,6 +31,24 @@ def _supabase_json(path, token):
         return None
 
 
+def _private_feed(token):
+    req = Request(
+        SUPABASE_URL + '/rest/v1/rpc/gb_admin_opportunity_feed',
+        data=b'{"p_limit":500}',
+        headers={'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + token,
+                 'Accept':'application/json', 'Content-Type':'application/json'},
+        method='POST',
+    )
+    try:
+        with urlopen(req, timeout=12) as response:
+            result=json.loads(response.read().decode('utf-8'))
+        if not isinstance(result,dict) or not isinstance(result.get('opportunities'),list):
+            return None
+        return result
+    except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+        return None
+
+
 def _data_path():
     here = Path(__file__).resolve()
     for p in [
@@ -78,24 +96,21 @@ class handler(BaseHTTPRequestHandler):
             self._json(403, {"status": "ADMIN_AAL2_REQUIRED"})
             return
 
-        path = _data_path()
-        if not path:
-            self._json(503, {"status": "OPPORTUNITY_FEED_UNAVAILABLE"})
-            return
-        try:
-            data = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
-            self._json(503, {"status": "OPPORTUNITY_FEED_UNAVAILABLE"})
+        full = _private_feed(token)
+        if full is None:
+            self._json(503, {"status": "PRIVATE_OPPORTUNITY_FEED_UNAVAILABLE"})
             return
 
-        # The live feed currently stores rows under `items`, while older
-        # snapshots used `opportunities`. Support both schemas so historical
-        # and current data remain visible in the admin application.
-        source_rows = data.get("opportunities")
-        if not isinstance(source_rows, list):
-            source_rows = data.get("items")
-        if not isinstance(source_rows, list):
-            source_rows = []
+        path = _data_path()
+        data = {}
+        try:
+            if path:
+                data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            data = {}
+
+        # Use private database rows; the masked file supplies aggregate telemetry only.
+        source_rows = full['opportunities']
 
         rows = []
         for row in source_rows:
@@ -109,7 +124,7 @@ class handler(BaseHTTPRequestHandler):
                 break
 
         payload = dict(data) if isinstance(data, dict) else {}
-        payload["mode"] = "admin_authenticated_full_feed"
+        payload["mode"] = "admin_authenticated_private_feed"
         payload["opportunities"] = rows
         payload["count"] = len(rows)
         self._json(200, payload)
