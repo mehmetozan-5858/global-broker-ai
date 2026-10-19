@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 const contract=require('../web/ecosystem-contract.js');
-const broker='https://global-broker-ai-visibility2.vercel.app';
+const broker='https://global-broker-opal.vercel.app';
 (async()=>{
  const browser=await chromium.launch({headless:true});
  try{

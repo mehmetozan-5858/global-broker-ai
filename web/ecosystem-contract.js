@@ -1,7 +1,7 @@
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.BrokerEcosystem=factory();})(typeof globalThis!=='undefined'?globalThis:this,function(){
 'use strict';
 var sectors=['Otel / Konaklama','Restoran / Kafe','Sağlık','Hukuk','Emlak','Otomotiv','E-ticaret','Tekstil / Giyim','Eğitim','Turizm','B2B / Sanayi','Diğer'];
-var destinations={visibility:'https://www.aivisibilityworks.com/yeni-musteri',broker:'https://global-broker-ai-visibility2.vercel.app/web/ecosystem.html'};
+var destinations={visibility:'https://www.aivisibilityworks.com/yeni-musteri',broker:'https://global-broker-opal.vercel.app/web/ecosystem.html'};
 function text(v,max){return typeof v==='string'?v.replace(/[\u0000-\u001f\u007f]/g,'').trim().slice(0,max):'';}
 function website(v){var raw=text(v,300);if(!raw)return '';try{var u=new URL(raw);if(!/^https?:$/.test(u.protocol)||u.username||u.password||!u.hostname.includes('.')||/^(localhost|127\.|0\.|10\.|192\.168\.|169\.254\.)/.test(u.hostname)||/\.(local|internal)$/.test(u.hostname))return '';u.hash='';u.search='';return u.href;}catch(e){return '';}}
 function clean(v){v=v&&typeof v==='object'&&!Array.isArray(v)?v:{};return {businessName:text(v.businessName,160),website:website(v.website),country:text(v.country,120),sector:sectors.indexOf(v.sector)!==-1?v.sector:''};}

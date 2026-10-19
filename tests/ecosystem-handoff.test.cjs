@@ -10,7 +10,7 @@ test('round trip transfers only four reviewed fields, never tokens or contacts',
  assert.deepEqual(Object.keys(data.business).sort(),['businessName','country','sector','website']);
  assert.equal(data.business.businessName,fields.businessName);
  const back=new URL(contract.build(data.business,'broker'));
- assert.equal(back.origin,'https://global-broker-ai-visibility2.vercel.app');
+ assert.equal(back.origin,'https://global-broker-opal.vercel.app');
  assert.equal(contract.parse(back.hash).source,'ai-visibility');
 });
 test('invalid protocol, credentials, target and malformed fragments fail closed',()=>{
