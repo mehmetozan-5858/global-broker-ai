@@ -1,0 +1,6 @@
+const test=require('node:test'),assert=require('node:assert/strict');
+const recovery=require('../web/account-recovery.js');
+test('ordinary navigation never starts a recovery session',()=>{assert.deepEqual(recovery.parse('#section',''),{kind:'none'});assert.deepEqual(recovery.parse('#type=signup&access_token=not-recovery&refresh_token=not-recovery',''),{kind:'none'})});
+test('recovery requires both bounded credentials and explicit recovery type',()=>{assert.equal(recovery.parse('#type=recovery&access_token=fixture-only&refresh_token=fixture-refresh','').kind,'session');for(const hash of ['#type=recovery','#type=recovery&access_token=only-one','#type=recovery&access_token=a%20b&refresh_token=c'])assert.equal(recovery.parse(hash,'').kind,'expired')});
+test('expired links and unsupported PKCE codes fail closed',()=>{assert.equal(recovery.parse('#error=access_denied&error_code=otp_expired','').kind,'expired');assert.equal(recovery.parse('','?error=expired').kind,'expired');assert.equal(recovery.parse('','?code=unsupported-code').kind,'expired')});
+test('passwords require confirmation and minimum length before submission',()=>{assert.ok(recovery.passwordError('short','short'));assert.ok(recovery.passwordError('fixture-password-1','fixture-password-2'));assert.equal(recovery.passwordError('fixture-password-1','fixture-password-1'),'')});
