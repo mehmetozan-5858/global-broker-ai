@@ -55,3 +55,16 @@ Web **%77 → %77**, uygulama **%72 → %72**. P2 üzerinde üç üretim düzelt
 P3/P4 gerçek tedarikçi, teklif ve navlun; P6 kurtarma kanalları; P7 ödeme/hukuk/işletme/domain; P8 gerçek müşteri kabulü kanıtı gerektiriyor. Bu dış koşullar kod yazılarak tamamlanmış sayılmaz.
 
 [Son canlı kaynak taraması](https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39322312764) başarılı: 72 kayıt; XML/HTML erişimi sıfırken iki kaynak bütçesi önceki doğrulama tarihiyle korundu (`reused_notices=2`). Veri anlık görüntüsü `3f689f1`. Yönetici üst durum rozeti de seçilmemiş çok kalemli dosyayı hazır göstermez.
+
+## Ürün ayrıntısı ve tedarik araştırması — ikinci toplu çalışma
+
+Kaynak başlığındaki ayrıntılı ürün adı genel Türkçe kategori etiketinden ayrı korunur; arama ve müşteri kartı bu ayrıntıyı kullanır. 72 kayıtlık gerçek anlık görüntü üzerinde bütün mevcut fırsat kimlikleri korundu; 72 kaynak ürün başlığı kullanılabilir. Bilinen alıcı adı, URL, e-posta ve telefon ürün ayrıntısından çıkarılır.
+
+TED `681487-2026` için iki gerçek üretici, resmî kimlik ve ürün kaynaklarıyla araştırıldı. Beş kamusal teknik gereksinim için kabiliyet eşleşmesi ve kalan boşluklar yönetici dosyasında gösterilir. Müşteri yalnız aday sayısını ve tam şartname/teklif onayının beklediğini görür. Kayıt yalnız tam TED numarası, kaynak ve ürün kapsamı eşleşirse uygulanır. Üçlü havuz, birebir şartname ve fiyat/marj onayı verilmez.
+
+- FormFactor: https://www.formfactor.com/company/about-us/ ve https://www.formfactor.com/product/probe-systems/300-mm-systems/cm300xi-siph/
+- Optik/DC/RF platform kanıtı: https://www.formfactor.com/product/probe-systems/autonomous-assistants/autonomous-silicon-photonics/
+- ficonTEC: https://www.ficontec.com/imprint/ ve https://www.ficontec.com/capabilities/
+- İlan referansı: https://ted.europa.eu/en/notice/-/detail/681487-2026 (kaynak akışında mevcut teknik açıklamalar; son erişimde TED robot denetimi görüldü).
+
+417 Python testi ve 390px/1280px müşteri/yönetici tarayıcı kontrolleri geçti. P3 `blocked` durumundan `in_progress` durumuna geçti; eksiksiz şartname kabulü henüz yok. Web %77, uygulama %72; sabit puanlar değiştirilmedi.

@@ -101,6 +101,18 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
     for key, value in candidates.items():
         if value is not None:
             result[key] = value
+    detail = _scalar(row.get('public_product_detail'))
+    if detail:
+        result['product_detail'] = detail
+
+    research = row.get('supplier_research')
+    if isinstance(research, dict):
+        suppliers = research.get('candidate_suppliers')
+        if isinstance(suppliers, list):
+            capability = [s for s in suppliers if isinstance(s, dict) and s.get('verified') is True and s.get('match_level') == 'capability_only']
+            if capability:
+                result['supplier_capability_count'] = len(capability)
+                result['supplier_match_status'] = 'capability_only_exact_spec_pending'
 
     # Publish only an explicitly sourced notice estimate, never a supplier price.
     structured = row.get("structured_source_evidence")

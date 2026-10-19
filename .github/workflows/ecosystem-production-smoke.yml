@@ -2,7 +2,7 @@ name: Ecosystem Production Smoke
 on:
   push:
     branches: [main]
-    paths: ['web/**', 'src/**', 'pyproject.toml', 'vercel.json', 'tests/ecosystem-production-smoke.cjs', '.github/workflows/ecosystem-production-smoke.yml']
+    paths: ['web/**', 'src/**', 'pyproject.toml', 'vercel.json', 'tests/ecosystem-production-smoke.cjs', 'tests/supplier-capability-smoke.cjs', '.github/workflows/ecosystem-production-smoke.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -33,4 +33,6 @@ jobs:
           echo 'Production handoff asset is not reachable; acceptance remains incomplete.' >&2
           exit 1
       - name: Verify web and app ecosystem without external writes
-        run: node tests/ecosystem-production-smoke.cjs
+        run: |
+          node tests/ecosystem-production-smoke.cjs
+          node tests/supplier-capability-smoke.cjs

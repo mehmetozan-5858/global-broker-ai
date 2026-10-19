@@ -5,6 +5,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
+from src.product_detail import source_product_detail
 
 
 # Conservative CPV family labels. These are used only to make source codes readable;
@@ -211,6 +212,9 @@ def dossier_missing(dossier: dict[str, Any]) -> list[str]:
 
 
 def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
+    detail = source_product_detail(item)
+    if detail:
+        item['public_product_detail'] = detail
     cpv = readable_cpv(item)
     links = derive_links(item)
     budget = derive_budget(item)
