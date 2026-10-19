@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import re
 from decimal import Decimal, InvalidOperation
+from datetime import datetime
 import sys
 from pathlib import Path
 from typing import Any
@@ -133,6 +134,16 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
     if isinstance(row.get("ted_lots"), list):
         result["lot_count"] = len(row["ted_lots"])
         result["lot_selection_required"] = row.get("ted_lot_selection_required") is True
+
+    if row.get("notice_source_state") in {"current_document", "previously_verified_document"}:
+        verified = row.get("notice_source_verified_at")
+        try:
+            datetime.fromisoformat(str(verified))
+        except ValueError:
+            pass
+        else:
+            result["source_data_state"] = row["notice_source_state"]
+            result["source_verified_at"] = str(verified)[:40]
 
     verified_count = coverage.get("verified_or_source_backed")
     total_count = coverage.get("total")

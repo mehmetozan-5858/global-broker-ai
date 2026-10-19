@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from src import document_parser
+from src.notice_fact_cache import process as process_fact_cache
 from src.ted_xml_parser import extract_ted_contacts, is_xml_source, parse_ted_xml, extract_ted_lots, apply_ted_lots
 
 MIN_SOURCE_TEXT_CHARS = 160
@@ -197,6 +198,16 @@ def main() -> None:
     path = Path(sys.argv[1])
     payload = json.loads(path.read_text(encoding="utf-8"))
     payload = enrich_payload(payload)
+    cache_path = path.parent / "notice-facts-cache.json"
+    try:
+        cache = json.loads(cache_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        cache = {}
+    updated = process_fact_cache(payload.get("opportunities") or [], cache)
+    temporary = cache_path.with_suffix(".tmp")
+    temporary.write_text(json.dumps(updated, ensure_ascii=False, indent=2), encoding="utf-8")
+    temporary.replace(cache_path)
+    payload["notice_fact_cache"] = updated["last_scan"]
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     summary = payload.get("document_extraction") or {}
     print(
