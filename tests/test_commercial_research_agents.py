@@ -43,6 +43,14 @@ class CommercialResearchAgentsTests(unittest.TestCase):
         self.assertTrue(task["source_backed_only"])
         self.assertTrue(task["human_approval_required"])
 
+    def test_unidentified_rows_get_stable_task_reference(self):
+        row = {"title_original": "Pump", "source": "Official", "commercial_feasibility": {"missing_inputs": ["quantity", "freight"]}}
+        a = build({"opportunities": [row]})["tasks"]
+        b = build({"opportunities": [dict(row)]})["tasks"]
+        self.assertTrue(all(t["opportunity_id"] for t in a))
+        self.assertEqual([t["opportunity_id"] for t in a], [t["opportunity_id"] for t in b])
+        self.assertEqual(len(set(t["opportunity_id"] for t in a)), 1)
+
     def test_calculation_ready_rows_create_no_research_task(self):
         result = build({"opportunities": [{
             "id": "OP-3",

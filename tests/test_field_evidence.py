@@ -19,6 +19,12 @@ class FieldEvidenceTests(unittest.TestCase):
         self.assertEqual(item["field_evidence"]["quantity"]["status"],"source_backed")
         self.assertTrue(item["core_field_coverage"]["complete"])
 
+    def test_placeholder_and_boolean_are_not_source_evidence(self):
+        row = {"quantity": False, "deadline": "TBD", "country": "unknown"}
+        annotate(row)
+        for field in ["quantity", "deadline", "country"]:
+            self.assertEqual(row["field_evidence"][field]["status"], "missing")
+
     def test_missing_city_and_quantity_stay_missing(self):
         item={
             "title_original":"Saudi Arabia - supply 1000 chairs to Riyadh",

@@ -47,3 +47,6 @@ jobs:
           node --check web/today-tasks.js
           node --check web/task-center.js
           node --check web/system-health.js
+          node --check web/ecosystem-contract.js
+          node --check web/ecosystem.js
+          node --test tests/ecosystem-handoff.test.cjs

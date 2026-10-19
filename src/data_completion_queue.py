@@ -2,6 +2,9 @@ from __future__ import annotations
 
 from collections import Counter
 from typing import Any
+from urllib.parse import urlsplit
+
+from .opportunity_identity import stable_opportunity_id
 
 
 _BAD_TEXT = (
@@ -12,11 +15,14 @@ _BAD_TEXT = (
     "ayrıştırılmadı",
     "çıkarılmadı",
     "not started",
+    "n/a",
+    "tbd",
+    "kontrollü tanıştırma",
 )
 
 
 def _text(value: Any) -> str:
-    if value is None:
+    if value is None or isinstance(value, (bool, dict)):
         return ""
     if isinstance(value, (list, tuple)):
         return " ".join(_text(x) for x in value if x is not None).strip()
@@ -48,8 +54,13 @@ def _official_source(row: dict[str, Any]) -> str | None:
         "url",
     ):
         value = row.get(key)
-        if isinstance(value, str) and value.startswith("https://"):
-            return value
+        if isinstance(value, str):
+            try:
+                parsed = urlsplit(value)
+                if parsed.scheme == "https" and parsed.hostname and not parsed.username and not parsed.password:
+                    return value
+            except ValueError:
+                pass
     return None
 
 
@@ -62,7 +73,7 @@ def _buyer(row: dict[str, Any]) -> Any:
             "contracting_authority",
             "organization_name",
             "agency",
-            "project_name",
+            "borrower",
         ),
     )
 
@@ -70,7 +81,7 @@ def _buyer(row: dict[str, Any]) -> Any:
 def _product(row: dict[str, Any]) -> Any:
     field = row.get("field_evidence") or {}
     evidence = field.get("product") or {}
-    if _known(evidence.get("value")):
+    if evidence.get("status") == "source_backed" and evidence.get("inferred") is not True and _known(evidence.get("value")):
         return evidence.get("value")
     return _pick(
         row,
@@ -82,6 +93,8 @@ def _product(row: dict[str, Any]) -> Any:
             "title_tr",
             "title_original",
             "notice-title",
+            "title",
+            "bid_description",
         ),
     )
 
@@ -92,6 +105,9 @@ def _quantity_or_budget(row: dict[str, Any]) -> Any:
         (
             "quantity-lot",
             "quantity",
+            "requested_quantity",
+            "qty",
+            "contract_quantity",
             "estimated_quantity",
             "volume",
             "estimated-value-lot",
@@ -111,6 +127,8 @@ def _deadline(row: dict[str, Any]) -> Any:
             "submission_deadline_date",
             "deadline_date",
             "deadline",
+            "responseDeadLine",
+            "closing_date",
         ),
     )
 
@@ -125,6 +143,8 @@ def _country(row: dict[str, Any]) -> Any:
             "country_name",
             "country",
             "country_code",
+            "project_ctry_code",
+            "buyer_country_code",
         ),
     )
 
@@ -135,7 +155,8 @@ def _missing(row: dict[str, Any]) -> list[str]:
         missing.append("buyer_identity")
     if not _known(_product(row)):
         missing.append("product")
-    if not _known(_quantity_or_budget(row)):
+    quantity = _quantity_or_budget(row)
+    if not _known(quantity) or (isinstance(quantity, (int, float)) and quantity <= 0) or _text(quantity) in {"0", "0.0"}:
         missing.append("quantity_or_budget")
     if not _known(_deadline(row)):
         missing.append("deadline")
@@ -191,7 +212,8 @@ def build(payload: dict[str, Any]) -> dict[str, Any]:
                 "opportunity_id": row.get("opportunity_id")
                 or row.get("id")
                 or row.get("publication-number")
-                or row.get("notice_id"),
+                or row.get("notice_id")
+                or stable_opportunity_id(row),
                 "product": _product(row),
                 "country": _country(row),
                 "missing_core_fields": missing,
