@@ -23,7 +23,7 @@ class LaunchReadinessReportTests(unittest.TestCase):
         self.assertFalse(result["production_launch_ready"])
         self.assertEqual(result["mode"], "shadow")
         self.assertFalse(result["priority_gulf_sources"]["United Arab Emirates"]["live_this_scan"])
-        self.assertIn("payment_provider_tested", result["categories"]["legal_payment_contact"]["pending"])
+        self.assertIn("payment_provider_tested", result["categories"]["commercial_launch_conditions"]["pending"])
         self.assertIsNone(result["readiness_percent"])
 
     def test_missing_checks_are_fail_closed(self):
