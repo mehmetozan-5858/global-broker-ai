@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "notices": {
+    "681530-2026": {
+      "lot_count": 1,
+      "fields": {
+        "estimated_value": "600000",
+        "budget_currency": "EUR",
+        "submission_deadline_date": "2026-10-23"
+      },
+      "verified_at": "2026-10-19"
+    },
+    "681660-2026": {
+      "lot_count": 1,
+      "fields": {
+        "estimated_value": "349047.37",
+        "budget_currency": "EUR"
+      },
+      "verified_at": "2026-10-19"
+    }
+  }
+}
