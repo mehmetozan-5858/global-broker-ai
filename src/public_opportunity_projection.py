@@ -140,6 +140,9 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
         result["source_backed_fields"] = verified_count
     if isinstance(total_count, int) and total_count > 0:
         result["source_field_total"] = total_count
+    if result.get("lot_selection_required") is True:
+        for ambiguous in ("approx_quantity", "estimated_budget", "budget_currency"):
+            result.pop(ambiguous, None)
     return result
 
 

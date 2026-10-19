@@ -54,6 +54,18 @@ class TedStructuredLotTests(unittest.TestCase):
         self.assertEqual(row['quantity'],'5 C62')
         self.assertEqual(row['estimated_value'],'16000')
 
+    def test_multilot_ambiguity_blocks_core_and_financial_readiness(self):
+        from src.data_completion_queue import build
+        from src.commercial_feasibility import assess
+        row={'buyer_name':'Buyer','product_name':'Pumps','quantity':'10','deadline':'2026-12-15','country':'DE','source_url':'https://example.gov/tender',
+             'currency':'EUR','verified_unit_price':'10','verified_freight':'50','delivery_location':'Berlin',
+             'supplier_research':{'verified_supplier_count':1},'ted_lot_selection_required':True,'ted_lot_count':2}
+        result=build({'opportunities':[row]})
+        self.assertEqual(result['core_complete'],0)
+        self.assertEqual(result['queue'][0]['next_agent'],'specification_agent')
+        self.assertFalse(assess(row)['calculation_ready'])
+        self.assertNotIn('approx_quantity',project_public_opportunity(row))
+
     def test_invalid_numeric_and_date_values_stay_unknown(self):
         fields=extract_ted_lots(document(lot(quantity='NaN',budget='-4',deadline='2026-99-99')))[0]['fields']
         self.assertNotIn('quantity',fields)
