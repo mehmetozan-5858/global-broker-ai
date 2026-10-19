@@ -60,6 +60,14 @@ class TedStructuredLotTests(unittest.TestCase):
         self.assertNotIn('estimated_budget',fields)
         self.assertNotIn('deadline',fields)
 
+    def test_xml_date_timezone_is_preserved_as_source_without_guessing_a_time(self):
+        for raw in ['2026-12-15+02:00','2026-12-15Z']:
+            fact=extract_ted_lots(document(lot(deadline=raw)))[0]['fields']['deadline']
+            self.assertEqual(fact['value'],'2026-12-15')
+            self.assertEqual(fact['source_value'],raw)
+        fields=extract_ted_lots(document(lot(deadline='2026-12-15+99:99')))[0]['fields']
+        self.assertNotIn('deadline',fields)
+
     def test_existing_source_value_and_unproven_budget_are_not_overridden(self):
         row={'quantity':'20 units','estimated_value':'9000','budget_currency':'USD'}
         apply_ted_lots(row,extract_ted_lots(document(lot())),'https://ted.europa.eu/x')

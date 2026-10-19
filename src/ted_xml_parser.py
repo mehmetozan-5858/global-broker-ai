@@ -204,12 +204,18 @@ def extract_ted_lots(data: bytes) -> list[dict[str, Any]]:
                 fields["estimated_budget"] = {"value": _node_text(amount), "currency": currency, "source_path": path}
         path = "tenderingprocess/tendersubmissiondeadlineperiod/enddate"
         deadline = _value(node, path)
-        try:
-            date.fromisoformat(deadline)
-        except ValueError:
-            pass
-        else:
-            fields["deadline"] = {"value": deadline, "source_path": path}
+        match = re.fullmatch(r"(\d{4}-\d{2}-\d{2})(Z|[+-]\d{2}:\d{2})?", deadline)
+        valid_offset = True
+        if match and match.group(2) and match.group(2) != "Z":
+            hours, minutes = map(int, match.group(2)[1:].split(":"))
+            valid_offset = hours <= 14 and minutes < 60 and (hours < 14 or minutes == 0)
+        if match and valid_offset:
+            try:
+                date.fromisoformat(match.group(1))
+            except ValueError:
+                pass
+            else:
+                fields["deadline"] = {"value": match.group(1), "source_value": deadline, "source_path": path}
         if lot["lot_id"] and fields:
             lots.append(lot)
     return lots
