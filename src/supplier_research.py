@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 from urllib.parse import urlparse
+from src.product_detail import source_product_detail
+from src.supplier_capability_evidence import apply as apply_capability_evidence
 
 
 MIN_VERIFIED_SUPPLIERS = 3
@@ -108,6 +110,7 @@ def _matching_task(item: dict[str, Any], result: dict[str, Any]) -> dict[str, An
 
 
 def prepare(item: dict[str, Any]) -> dict[str, Any]:
+    apply_capability_evidence(item)
     spec = item.get("specification_analysis") or {}
     product = _text(((item.get("field_evidence") or {}).get("product") or {}).get("value")) or _text(
         item.get("product_name") or item.get("title_tr") or item.get("title_original")
@@ -116,21 +119,33 @@ def prepare(item: dict[str, Any]) -> dict[str, Any]:
         item.get("country") or item.get("buyer-country")
     )
     ready = bool(product) and bool(spec.get("supplier_sourcing_ready"))
+    search_product = source_product_detail(item) or product
 
     raw_candidates = item.get("supplier_candidates")
     candidates: list[dict[str, Any]] = []
     if ready and isinstance(raw_candidates, list):
         for candidate in raw_candidates[:20]:
             if isinstance(candidate, dict):
-                candidates.append(_candidate_status(candidate, product))
+                checked = _candidate_status(candidate, search_product)
+                # Retain the researched requirements and gaps, separately from
+                # verification of company identity/product category.
+                if candidate.get('match_level') == 'capability_only':
+                    checked.update({key: candidate.get(key) for key in (
+                        'identity_evidence_url', 'product_scope', 'capability_matches',
+                        'pending_requirements', 'requirement_source_url', 'notice_reference',
+                        'researched_at', 'match_level')})
+                    checked['exact_spec_match_verified'] = False
+                    checked['financial_evidence_eligible'] = False
+                candidates.append(checked)
 
     verified_count = sum(1 for candidate in candidates if candidate.get("verified"))
     result = {
         "status": "verified_supplier_available" if verified_count else ("research_ready" if ready else "specification_review_pending"),
         "dossier_ready": ready,
         "product": product or None,
+        "search_product": search_product or None,
         "buyer_country": country or None,
-        "search_query": f'"{product}" manufacturer exporter' if ready else None,
+        "search_query": f'"{search_product}" manufacturer exporter' if ready else None,
         "candidate_suppliers": candidates,
         "verified_supplier_count": verified_count,
         "target_verified_supplier_count": MIN_VERIFIED_SUPPLIERS,

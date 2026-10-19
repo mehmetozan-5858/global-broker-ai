@@ -47,10 +47,13 @@
         "web": 4,
         "app": 6
       },
-      "status": "blocked",
+      "status": "in_progress",
       "acceptance": "En az bir gerçek fırsatta kaynaklı tedarikçi ve şartname eşleşmesi.",
-      "evidence": {},
-      "note": "Gerçek fırsata uyan, kaynaklarla doğrulanmış tedarikçi kanıtı henüz yok. Mevcut eşleştirme kodu kanıt yerine sayılmaz."
+      "evidence": {
+        "tests": "417 Python tests; read-only capability browser regression passed at 390px/1280px. Replay on 72 records preserves all existing opportunity identities and source-specific product detail.",
+        "research": "TED 681487-2026: FormFactor CM300xi-SiPh and ficonTEC assembly capabilities mapped to five public requirements with official company/product URLs. Research date 2026-10-19. No exact-spec, quote or financial eligibility promoted."
+      },
+      "note": "İki gerçek üretici için kaynaklı ürün kabiliyeti eşleşmesi var. FormFactor için grating/edge coupling ve optik-elektrik ölçüm; ficonTEC için fiber-array attachment ve edge alignment kanıtları gösteriliyor. Teklif konfigürasyonunda 40 GHz, waveguide-loop/two-FAU ve tam ihale eklerinin uygunluğu doğrulanmadığından P3 kapanmadı. Yeni ilanlarda genel kategori yerine kaynak ürün adıyla araştırma yapılır; adaylar kategoriyle başka ilana taşınmaz."
     },
     {
       "id": "P4",
