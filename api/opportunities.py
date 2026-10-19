@@ -142,7 +142,12 @@ class handler(BaseHTTPRequestHandler):
         selected_countries = set(x.upper() for x in (pref.get("selected_countries") or []) if isinstance(x, str))
         all_sectors = bool(ent.get("all_sectors"))
         result = []
-        for row in data.get("opportunities") or []:
+        source_rows = data.get("opportunities")
+        if not isinstance(source_rows, list):
+            source_rows = data.get("items")
+        if not isinstance(source_rows, list):
+            source_rows = []
+        for row in source_rows:
             if not isinstance(row, dict):
                 continue
             if (row.get("export_goods_review") or {}).get("status") != "goods_candidate":
