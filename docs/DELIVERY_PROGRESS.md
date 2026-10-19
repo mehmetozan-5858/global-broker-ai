@@ -86,3 +86,11 @@ Yönetici API maskelenmiş dosyayı tam dosya olarak sunuyordu. Kaynak artık ö
 Veritabanında gerçek özel satırların erişim kontrolü SQL rol/claim simülasyonuyla doğrulandı; bu gerçek tarayıcı giriş kabulü değildir. Doğru admin+AAL2 özel alanları okudu; AAL1, başka kullanıcı ve anonim reddedildi. 423 Python testi, 4 Node sözleşme testi ve 390px/1280px parola yenileme tarayıcı testleri geçti. Testler bütün Auth isteklerini yakalar; gerçek hesaba e-posta göndermez veya şifre değiştirmez.
 
 Canlı ön kontrol: telefon doğrulaması ve çift kurtarma kaydı bulunmuyor; gerçek tedarikçi fiyatı/finansal uygunluk kaydı yok; Broker projesine yalnız doğrulanmış Vercel alt alan adı bağlı. P2/P6 teknik olarak ilerledi; tam kabul olmadığı için sabit %77/%72 puanları değişmedi.
+
+## Özel alan adı tamamlandı — 20 Ekim 2026
+
+https://broker.aivisibilityworks.com Global Broker üretim projesine eklendi ve Vercel tarafından doğrulandı. Mevcut Cloudflare DNS çözümlemesiyle HTTPS üzerinden Broker ana sayfası, ilerleme ekranı ve ilerleme API'si 200 döndü; AI Visibility ana sitesi de 200 kaldı. Alan adı satın alınmadı, DNS/nameserver veya e-posta kayıtları değiştirilmedi. Önceki teknik adres çalışmaya devam eder; mevcut hesapların origin tabanlı oturumunu korumak için yönlendirme eklenmedi.
+
+Her kaynak taraması alan adının HTTPS ana sayfasını, sağlık uç noktasını ve kimliksiz yönetici erişiminin 401 kalmasını tekrar doğrular. Başarısız okumada domain açılış kapısı false kalır. 426 Python testi geçti. P7 içindeki özel alan adı koşulu tamamlandı; ödeme/hukuk/işletme iletişimi kanıtı olmadığı için paketin tamamına puan verilmedi.
+
+Hesap/özel dosya düzeltmesi PR #106 üretimde: CI, mobil yayın ve şifre yenileme dahil tarayıcı kontrolleri başarılı. Gerçek parola değişikliği, SMS veya ödeme işlemi yapılmadı.
