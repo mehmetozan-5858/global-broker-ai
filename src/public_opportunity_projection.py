@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import re
+from decimal import Decimal, InvalidOperation
 import sys
 from pathlib import Path
 from typing import Any
@@ -99,6 +100,39 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
     for key, value in candidates.items():
         if value is not None:
             result[key] = value
+
+    # Publish only an explicitly sourced notice estimate, never a supplier price.
+    structured = row.get("structured_source_evidence")
+    fact = structured.get("estimated_value") if isinstance(structured, dict) else None
+    if isinstance(fact, dict) and fact.get("inferred") is False and fact.get("source_path") == "procurementproject/requestedtendertotal/estimatedoverallcontractamount":
+        amount = fact.get("value")
+        currency = fact.get("currency")
+        try:
+            positive = not isinstance(amount, bool) and Decimal(str(amount)).is_finite() and Decimal(str(amount)) > 0
+        except (InvalidOperation, ValueError):
+            positive = False
+        if positive and isinstance(currency, str) and re.fullmatch(r"[A-Z]{3}", currency) and str(row.get("estimated_value")) == str(amount) and row.get("budget_currency") == currency:
+            result["estimated_budget"] = str(amount)
+            result["budget_currency"] = currency
+    # The publication pipeline may retain this bounded public summary after it
+    # removes the private XML documents and provenance excerpts from its snapshot.
+    public_terms = row.get("public_source_terms")
+    if isinstance(public_terms, dict) and public_terms.get("kind") == "notice_estimate":
+        amount = public_terms.get("estimated_budget")
+        currency = public_terms.get("budget_currency")
+        try:
+            positive = not isinstance(amount, bool) and Decimal(str(amount)).is_finite() and Decimal(str(amount)) > 0
+        except (InvalidOperation, ValueError):
+            positive = False
+        if "estimated_budget" not in result and positive and isinstance(currency, str) and re.fullmatch(r"[A-Z]{3}", currency):
+            result["estimated_budget"] = str(amount)
+            result["budget_currency"] = currency
+    if type(row.get("ted_lot_count")) is int and row["ted_lot_count"] >= 0:
+        result["lot_count"] = row["ted_lot_count"]
+        result["lot_selection_required"] = row.get("ted_lot_selection_required") is True
+    if isinstance(row.get("ted_lots"), list):
+        result["lot_count"] = len(row["ted_lots"])
+        result["lot_selection_required"] = row.get("ted_lot_selection_required") is True
 
     verified_count = coverage.get("verified_or_source_backed")
     total_count = coverage.get("total")

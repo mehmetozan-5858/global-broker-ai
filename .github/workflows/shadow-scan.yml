@@ -181,11 +181,16 @@ jobs:
           src=Path('data/latest-opportunities.private.json')
           dst=Path('data/latest-opportunities.json')
           data=json.loads(src.read_text(encoding='utf-8'))
+          from src.public_opportunity_projection import project_public_opportunity
+          for row in data.get('opportunities') or []:
+              if isinstance(row,dict):
+                  approved=project_public_opportunity(row)
+                  row['public_source_terms']={'kind':'notice_estimate',**{k:approved[k] for k in ('estimated_budget','budget_currency') if k in approved}}
           blocked_exact={
               'email','e-mail','phone','telephone','mobile','contact','buyer','contact_email','contact_phone','buyer_email','buyer_phone','supplier_email','supplier_phone',
               'website','linkedin','address','street','postal_code','contact_person','representative','buyer-name','buyer_name','borrower','agency','department','office',
               'contracting_authority','organization_name','source_url','source-url','url','notice_url','detail_url','document_url','official_url','official_links','links',
-              'checked_pages','source_page','final_url','document_extracted_text','source_excerpt'
+              'checked_pages','source_page','final_url','document_extracted_text','source_excerpt','ted_lots','structured_source_evidence'
           }
           email_re=re.compile(r'(?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}')
           mailtel_re=re.compile(r'(?i)(mailto:|tel:)\S+')

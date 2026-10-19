@@ -1,13 +1,15 @@
 from __future__ import annotations
 
 import json
+import re
+from concurrent.futures import ThreadPoolExecutor
 import sys
 import urllib.parse
 from pathlib import Path
 from typing import Any
 
 from src import document_parser
-from src.ted_xml_parser import extract_ted_contacts, is_xml_source, parse_ted_xml
+from src.ted_xml_parser import extract_ted_contacts, is_xml_source, parse_ted_xml, extract_ted_lots, apply_ted_lots
 
 MIN_SOURCE_TEXT_CHARS = 160
 MAX_EXTRACTED_CHARS = document_parser.MAX_EXTRACTED_CHARS
@@ -23,7 +25,16 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
         if host == "ted.europa.eu" and (path.endswith("/xml") or path.endswith(".xml")):
             return url
     if source == "TED":
-        return next((u for u in urls if (urllib.parse.urlparse(u).hostname or "").lower() == "ted.europa.eu"), None)
+        publication = str(item.get("publication-number") or "")
+        if not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
+            for candidate in urls:
+                parsed = urllib.parse.urlparse(candidate)
+                match = re.search(r"/notice/(?:-/detail/)?([0-9]{1,8}-[0-9]{4})(?:/|$)", parsed.path)
+                if parsed.hostname == "ted.europa.eu" and match:
+                    publication = match.group(1)
+                    break
+        if re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
+            return "https://ted.europa.eu/en/notice/" + publication + "/xml"
     return None
 
 
@@ -39,14 +50,39 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
     attempt: dict[str, Any] = {"url": url, "status": "pending", "source": "ted_xml"}
 
     try:
-        data, content_type, final_url = document_parser._download(url, document_parser.MAX_SOURCE_PAGE_BYTES)
-        if not is_xml_source(data, content_type, final_url):
-            raise ValueError("ted_source_not_xml")
-        text, attachments = parse_ted_xml(data, final_url)
-        contacts = extract_ted_contacts(data)
-        if len(text) < MIN_SOURCE_TEXT_CHARS:
-            raise ValueError("insufficient_ted_xml_text")
+        try:
+            data, content_type, final_url = document_parser._download(url, document_parser.MAX_SOURCE_PAGE_BYTES)
+            if not is_xml_source(data, content_type, final_url):
+                raise ValueError("ted_source_not_xml")
+            text, attachments = parse_ted_xml(data, final_url)
+            contacts = extract_ted_contacts(data)
+            lots = extract_ted_lots(data)
+            if len(text) < MIN_SOURCE_TEXT_CHARS:
+                raise ValueError("insufficient_ted_xml_text")
+            kind = "ted_xml"
+        except Exception as xml_error:
+            attempt.update({"status": "failed", "error": type(xml_error).__name__ + ":" + str(xml_error)[:180]})
+            attempts.append(attempt)
+            # TED documents a rendered HTML download, distinct from its SPA detail page.
+            # It is a bounded second attempt, not an inferred replacement document.
+            parsed = urllib.parse.urlparse(url)
+            if parsed.hostname != "ted.europa.eu" or not parsed.path.endswith("/xml"):
+                raise
+            html_url = urllib.parse.urlunparse(parsed._replace(path=parsed.path[:-3] + "html", query="", fragment=""))
+            attempt = {"url": html_url, "status": "pending", "source": "ted_html_download"}
+            data, content_type, final_url = document_parser._download(html_url, document_parser.MAX_SOURCE_PAGE_BYTES)
+            if "html" not in content_type and not data.lstrip().lower().startswith((b"<!doctype html", b"<html")):
+                raise ValueError("ted_html_download_not_html")
+            if urllib.parse.urlparse(final_url).hostname != "ted.europa.eu":
+                raise ValueError("ted_document_origin_changed")
+            text, attachments = document_parser._parse_html_page(data, final_url)
+            publication = re.search(r"/notice/([^/]+)/html", parsed.path[:-3] + "html")
+            if not publication or publication.group(1) not in text or len(text) < MIN_SOURCE_TEXT_CHARS:
+                raise ValueError("ted_html_notice_identity_or_text_missing")
+            contacts, lots, kind = {}, [], "ted_html_download"
 
+        if lots:
+            apply_ted_lots(item, lots, final_url)
         existing = item.get("document_extracted_text")
         parts = [existing] if isinstance(existing, str) and existing.strip() else []
         parts.append(text)
@@ -79,7 +115,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
 
         attempt.update({
             "status": "parsed",
-            "kind": "ted_xml",
+            "kind": kind,
             "final_url": final_url,
             "content_type": content_type,
             "bytes": len(data),
@@ -94,14 +130,16 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "parsed_count": sum(1 for x in attempts if isinstance(x, dict) and x.get("status") == "parsed"),
             "attempts": attempts,
             "text_chars": len(merged),
-            "ted_xml_parsed": True,
+            "ted_xml_parsed": kind == "ted_xml",
+            "ted_html_parsed": kind == "ted_html_download",
             "ted_structured_contact_found": bool(contacts),
         })
         item["document_extraction"] = info
         return True
     except Exception as exc:
         attempt.update({"status": "failed", "error": type(exc).__name__ + ":" + str(exc)[:180]})
-        attempts.append(attempt)
+        if attempt not in attempts:
+            attempts.append(attempt)
         info["attempts"] = attempts
         if not item.get("document_extracted_text"):
             info["status"] = "attempted_no_text"
@@ -118,12 +156,17 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     attempted = 0
     parsed = 0
     structured_contacts = 0
-    for item in opportunities:
-        if not isinstance(item, dict) or not _ted_xml_url(item):
-            continue
-        attempted += 1
-        if enrich_opportunity(item):
-            parsed += 1
+    html_parsed = 0
+    lot_count = 0
+    candidates = [item for item in opportunities if isinstance(item, dict) and _ted_xml_url(item)]
+    attempted = len(candidates)
+    with ThreadPoolExecutor(max_workers=min(4, document_parser.MAX_WORKERS)) as executor:
+        results = list(executor.map(enrich_opportunity, candidates))
+    for item, success in zip(candidates, results):
+        if success:
+            parsed += int(bool((item.get("document_extraction") or {}).get("ted_xml_parsed")))
+            html_parsed += int(bool((item.get("document_extraction") or {}).get("ted_html_parsed")))
+            lot_count += len(item.get("ted_lots") or [])
             structured_contacts += int(bool((item.get("document_extraction") or {}).get("ted_structured_contact_found")))
 
     summary = payload.get("document_extraction")
@@ -134,6 +177,8 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "mode": "public_source_pages_documents_ted_xml_and_touchpoints",
         "ted_xml_attempted": attempted,
         "ted_xml_parsed": parsed,
+        "ted_html_parsed": html_parsed,
+        "ted_structured_lots": lot_count,
         "ted_structured_contacts": structured_contacts,
         "parsed_opportunities": sum(
             1
