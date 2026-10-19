@@ -41,3 +41,17 @@ Bu paket otomatik firma aktarımı veya ortak giriş sağlamaz; bunlar P5/P6 kap
 - Önemli üretim düzeltmesi: Python giriş noktası özel oda API'sinden mevcut uygulama yönlendiricisine alındı. Genel HTML/asset istekleri 200; kimliksiz özel oda/yönetici API istekleri 401 kalıyor. 395 Python testi geçti.
 - Yeni kaynak taramasında 80 kayıt, görünen 100 araştırma görevinde eksik fırsat kimliği 0. Tam çekirdek dosya 1; gerçek fiyatı hazır dosya 0. Bu sayılar teslimat yüzdesi değildir.
 - P2 kısmi; P3/P4 gerçek tedarikçi/teklif/navlun kanıtı bekliyor. P6 gerçek kurtarma kanalları, P7 ödeme/hukuk/iletişim/domain, P8 gerçek müşteri kabulü bekliyor. Otomatik test müşteri kabulü yerine sayılmadı; production launch gate kapalı.
+
+## Toplu tamamlama çalışması — 19 Ekim 2026
+
+Web **%77 → %77**, uygulama **%72 → %72**. P2 üzerinde üç üretim düzeltmesi yapıldı; tüm kayıtlar için kabul tamamlanmadığından puan eklenmedi.
+
+- PR #100: resmî TED XML/HTML belge okuma, kalem bazında miktar/bütçe/tarih, müşteriye güvenli ilan bütçesi. İlk gerçek taramada belge okunan kayıt 2→19, çekirdek dosya 1→2; 58 kalem ve 2 bütçe.
+- PR #101: seçilmemiş çok kalemli ilanlarda çekirdek dosya, fiyat/marj ve ticari hazır kapıları kapatıldı.
+- PR #102: kaynak kesintisinde yalnız aynı ilanın doğrulanmış temel alanlarını ilk doğrulama tarihiyle koruyan sınırlı önbellek. Yeni XML eski bilgiyi yeniler veya siler; teklifler/iletişim/raw belgeler önbelleğe girmez. İki gerçek kaynak bütçesi kesinti yeniden oynatımında korundu.
+- 411 Python testi geçti. Müşteri ve yönetici ekranlarının tarih ve kalem uyarıları 390px/1280px tarayıcı kontrolünde geçti. Bu yeniden oynatım gerçek müşteri kabulü değildir.
+- [Üretim ekosistem testi](https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39322312730) ve [mobil yayın kontrolü](https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39322312679) başarılı. Üretim sürümü `39fbf3a` READY.
+
+P3/P4 gerçek tedarikçi, teklif ve navlun; P6 kurtarma kanalları; P7 ödeme/hukuk/işletme/domain; P8 gerçek müşteri kabulü kanıtı gerektiriyor. Bu dış koşullar kod yazılarak tamamlanmış sayılmaz.
+
+[Son canlı kaynak taraması](https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39322312764) başarılı: 72 kayıt; XML/HTML erişimi sıfırken iki kaynak bütçesi önceki doğrulama tarihiyle korundu (`reused_notices=2`). Veri anlık görüntüsü `3f689f1`. Yönetici üst durum rozeti de seçilmemiş çok kalemli dosyayı hazır göstermez.
