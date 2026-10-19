@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "measurement": "Estimated delivery progress against a fixed weighted roadmap; not commercial launch readiness.",
   "baseline": {
     "web": 70,
@@ -50,8 +50,10 @@
       "status": "in_progress",
       "acceptance": "En az bir gerçek fırsatta kaynaklı tedarikçi ve şartname eşleşmesi.",
       "evidence": {
-        "tests": "417 Python tests; read-only capability browser regression passed at 390px/1280px. Replay on 72 records preserves all existing opportunity identities and source-specific product detail.",
-        "research": "TED 681487-2026: FormFactor CM300xi-SiPh and ficonTEC assembly capabilities mapped to five public requirements with official company/product URLs. Research date 2026-10-19. No exact-spec, quote or financial eligibility promoted."
+        "tests": "419 Python tests; supplier capability and progress browser tests passed at 390px/1280px; progress outage clears old values. All 72 existing identities preserved in replay; production retains gb_3c17c4831cb725308956c74d0e810225.",
+        "research": "TED 681487-2026: FormFactor CM300xi-SiPh and ficonTEC assembly capabilities mapped to five public requirements with official company/product URLs. Research date 2026-10-19. No exact-spec, quote or financial eligibility promoted.",
+        "deployment": "PR #104 merged d563d81ba6bbdd1cc0d4f0f0aa20e0f3462b1f98. Web/mobile published; production source scan 39323642846 successful; 73 records retain specific product details and one real opportunity has two researched capability candidates.",
+        "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39323642735"
       },
       "note": "İki gerçek üretici için kaynaklı ürün kabiliyeti eşleşmesi var. FormFactor için grating/edge coupling ve optik-elektrik ölçüm; ficonTEC için fiber-array attachment ve edge alignment kanıtları gösteriliyor. Teklif konfigürasyonunda 40 GHz, waveguide-loop/two-FAU ve tam ihale eklerinin uygunluğu doğrulanmadığından P3 kapanmadı. Yeni ilanlarda genel kategori yerine kaynak ürün adıyla araştırma yapılır; adaylar kategoriyle başka ilana taşınmaz."
     },

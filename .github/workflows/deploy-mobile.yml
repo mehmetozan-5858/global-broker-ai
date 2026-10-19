@@ -25,6 +25,7 @@ jobs:
         run: |
           mkdir -p public/data
           cp -r web/* public/
+          python -c "import json; from pathlib import Path; from src.delivery_progress import public_summary; Path('public/delivery-progress.json').write_text(json.dumps(public_summary(json.loads(Path('docs/delivery-progress.json').read_text())),ensure_ascii=False),encoding='utf-8')"
           if [ -f web/index.html ]; then
             cp web/index.html public/customer.html
             sed -i 's#</body>#<script src="pricing-policy.js" defer></script><script src="introduction-bridge.js" defer></script><script src="customer-portal.js" defer></script><script src="customer-truth-label.js" defer></script><script src="customer-guidance.js" defer></script><script src="customer-onboarding.js" defer></script><script src="customer-priority.js" defer></script></body>#' public/customer.html

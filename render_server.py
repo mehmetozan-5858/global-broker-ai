@@ -9,6 +9,7 @@ from api.admin_opportunities import handler as AdminOpportunitiesHandler
 from api.introduction import handler as IntroductionHandler
 from api.contact_unlock import handler as ContactUnlockHandler
 from api.private_room import handler as PrivateRoomHandler
+from api.delivery_progress import handler as DeliveryProgressHandler
 
 ROOT = Path(__file__).resolve().parent
 WEB = ROOT / "web"
@@ -25,6 +26,7 @@ ROUTES = {
     "/privacy": "privacy.html",
     "/terms": "terms.html",
     "/refund": "refund.html",
+    "/progress": "progress.html",
 }
 
 
@@ -73,6 +75,8 @@ class Handler(AdminOpportunitiesHandler, OpportunitiesHandler, PrivateRoomHandle
 
     def do_GET(self):
         path = urlparse(self.path).path
+        if path in {"/api/delivery_progress", "/delivery-progress.json", "/web/delivery-progress.json"}:
+            return DeliveryProgressHandler.do_GET(self)
         if path == "/healthz":
             self.send_response(204)
             self.send_header("Cache-Control", "no-store")

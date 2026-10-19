@@ -7,6 +7,20 @@ from pathlib import Path
 EVIDENCE = ("tests", "deployment", "live_verification")
 
 
+def public_summary(ledger: dict) -> dict:
+    """Publish only the roadmap, never opportunity/customer or recovery data."""
+    report = build(ledger)
+    return {
+        "date": ledger["date"],
+        "surfaces": report["surfaces"],
+        "next_package": report["next_package"],
+        "packages": [{key: p[key] for key in ("id", "title", "points", "status", "acceptance")}
+                     for p in ledger["packages"]],
+        "scope": "Web ve PWA uygulamasının sabit kapsamlı teslimat takibi. Ticari açılış oranı değildir.",
+        "completion_rule": "Puanlar test, üretim yayını ve canlı kabul kanıtı tamamlanınca eklenir.",
+    }
+
+
 def build(ledger: dict) -> dict:
     baseline = ledger["baseline"]
     packages = ledger["packages"]

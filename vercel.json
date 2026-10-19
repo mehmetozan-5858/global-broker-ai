@@ -17,7 +17,10 @@
     { "source": "/pricing", "destination": "/web/pricing.html" },
     { "source": "/privacy", "destination": "/web/privacy.html" },
     { "source": "/terms", "destination": "/web/terms.html" },
-    { "source": "/refund", "destination": "/web/refund.html" }
+    { "source": "/refund", "destination": "/web/refund.html" },
+    { "source": "/progress", "destination": "/web/progress.html" },
+    { "source": "/delivery-progress.json", "destination": "/api/delivery_progress" },
+    { "source": "/web/delivery-progress.json", "destination": "/api/delivery_progress" }
   ],
   "headers": [
     {

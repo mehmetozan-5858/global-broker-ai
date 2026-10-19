@@ -7,6 +7,7 @@ import unittest
 from pathlib import Path
 
 from src.public_opportunity_projection import project_public_opportunity
+from src.launch_readiness_report import build as launch_report
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -20,11 +21,13 @@ class NoticePublicationTests(unittest.TestCase):
              'ted_lots':[{'description':'PRIVATE LOT CONTENT'}],
              'structured_source_evidence':{'estimated_value':{'value':'34000','currency':'EUR','inferred':False,
                 'source_path':'procurementproject/requestedtendertotal/estimatedoverallcontractamount','source_url':'https://private.example/doc'}}}
+        payload={'opportunities':[row],'launch_gate':{'checks':{'payment_provider_tested':False}}}
+        launch_report(payload)
         with tempfile.TemporaryDirectory() as folder:
             previous=os.getcwd()
             try:
                 os.chdir(folder);Path('data').mkdir()
-                Path('data/latest-opportunities.private.json').write_text(json.dumps({'opportunities':[row]}))
+                Path('data/latest-opportunities.private.json').write_text(json.dumps(payload))
                 exec(compile(code,'public-publication-step','exec'),{})
                 output=Path('data/latest-opportunities.json').read_text()
             finally:
@@ -39,3 +42,6 @@ class NoticePublicationTests(unittest.TestCase):
         self.assertEqual(public['budget_currency'],'EUR')
         self.assertEqual(public['lot_count'],2)
         self.assertFalse(public['lot_selection_required'])
+        groups=json.loads(output)['launch_readiness_report']['categories']
+        self.assertIn('commercial_launch_conditions',groups)
+        self.assertIn('payment_provider_tested',groups['commercial_launch_conditions']['pending'])

@@ -18,7 +18,7 @@ CATEGORIES = {
         "durable_private_storage_configured",
         "admin_dual_recovery_ready",
     ),
-    "legal_payment_contact": (
+    "commercial_launch_conditions": (
         "legal_text_reviewed",
         "payment_provider_tested",
         "verified_business_contact",

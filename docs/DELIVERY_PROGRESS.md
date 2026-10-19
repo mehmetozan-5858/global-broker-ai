@@ -68,3 +68,11 @@ TED `681487-2026` için iki gerçek üretici, resmî kimlik ve ürün kaynaklar�
 - İlan referansı: https://ted.europa.eu/en/notice/-/detail/681487-2026 (kaynak akışında mevcut teknik açıklamalar; son erişimde TED robot denetimi görüldü).
 
 417 Python testi ve 390px/1280px müşteri/yönetici tarayıcı kontrolleri geçti. P3 `blocked` durumundan `in_progress` durumuna geçti; eksiksiz şartname kabulü henüz yok. Web %77, uygulama %72; sabit puanlar değiştirilmedi.
+
+## Canlı takip ekranı
+
+`/progress` veya `/web/progress.html` üzerinden web ve uygulama yüzdeleri, açık/tamamlanan paket filtresi ve her paketin kabul şartları okunabilir. Kaynak tek ilerleme kaydıdır; ödeme/hesap/fırsat verileri API yanıtına girmez. Mobil statik yayın da aynı kayıttan sınırlı JSON üretir. Veri erişilemez veya kayıt geçersizse eski yüzde güncelmiş gibi gösterilmez.
+
+419 Python testi ve 390px/1280px ilerleme ekranı testi başarılı. Açılış raporundaki ödeme/hukuk/işletme grubunun gizlilik süzgecinde yanlışlıkla silinmesi, özel alanları açmadan grup anahtarı değiştirilerek düzeltildi.
+
+[Ürün/tedarik üretim taraması](https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39323642846): 73 kayıt, 73 kaynak ürün ayrıntısı, bir gerçek fırsatta 2 üretici kabiliyeti adayı. Tam şartname, teklif ve ticari kapılar açık sayılmadı. [Ekosistem ve üretici ekran testleri](https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39323642735) ve mobil yayın başarılı.

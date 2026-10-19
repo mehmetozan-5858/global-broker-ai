@@ -34,6 +34,26 @@ class DeploymentEntrypointTests(unittest.TestCase):
                 self.assertEqual(response.status,200)
                 self.assertIn(marker,response.read())
 
+    def test_progress_is_public_read_only_and_omits_private_payloads(self):
+        for path in ('/api/delivery_progress', '/delivery-progress.json', '/web/delivery-progress.json'):
+            with urlopen(self.base+path) as response:
+                result=json.load(response)
+                self.assertEqual(response.headers['Cache-Control'],'no-store')
+            self.assertEqual(result['surfaces']['web']['current'],77)
+            self.assertEqual(result['surfaces']['app']['current'],72)
+            self.assertEqual(len(result['packages']),8)
+            self.assertEqual(set(result['packages'][0]),{'id','title','points','status','acceptance'})
+            for private in ('opportunities','email','phone','token','evidence'):
+                self.assertNotIn(private,result)
+
+    def test_progress_fails_closed_if_evidence_ledger_is_unavailable(self):
+        from unittest.mock import patch
+        with patch('api.delivery_progress.LEDGER', ROOT/'missing-ledger.json'):
+            with self.assertRaises(HTTPError) as error:
+                urlopen(self.base+'/delivery-progress.json')
+            self.assertEqual(error.exception.code,503)
+            self.assertEqual(json.load(error.exception),{'error':'progress_unavailable'})
+
     def test_private_data_still_requires_authentication(self):
         for route in ['/api/private_room','/api/admin_opportunities']:
             with self.subTest(route=route),self.assertRaises(HTTPError) as error:
