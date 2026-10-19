@@ -34,9 +34,11 @@
       "status": "in_progress",
       "acceptance": "Yeni ve mevcut kayıtlar için alıcı, ürün, miktar/bütçe, tarih ve belge eksiklerinin tamamlanması; gerçek kayıtla doğrulama.",
       "evidence": {
-        "tests": "395 Python tests; live shadow scan https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39318076335 succeeded."
+        "tests": "411 Python unittest tests passed; 25 related pytest tests passed in the preceding lot guard batch. Real-source replay and cache/date/lot-selection UI checks passed at 390px and 1280px.",
+        "deployment": "PR #100, #101 and #102 merged. Cache production 39fbf3ad7c0a39474156d5f8ab21a58e30dc21c6 READY (dpl_3cRvFyBM4e1S8nYzAzA8rViEKkG7); customer JS HTTP 200 and dated-cache label verified.",
+        "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39322312730; source/cache: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39322312764"
       },
-      "note": "Yeni taramada 80 kayıt; görünen 100 araştırma görevinde eksik fırsat kimliği 0. Çekirdek alanları tamam kayıt 1, gerçek fiyatı hazır dosya 0. Veri tamamlama kabulü henüz tamamlanmadı."
+      "note": "İlk iyileştirilmiş gerçek taramada belge okunan kayıt 2→19, çekirdek dosya 1→2; 11 XML, 6 HTML, 58 ihale kalemi, 2 kaynaklı bütçe. Sonraki kaynak kesintisinde 74 kayıt/1 çekirdek dosyaya geriledi. İki gerçek ilanın 19 Ekim tarihli kaynak bütçesi güvenli önbelleğe alındı; kesinti yeniden oynatımında ikisi de tarihleriyle korundu. Çok kalemli ilanlar fiyat/hazır kapılarından geçemiyor. Bütün kayıtlar tamamlanmadığı için P2 açık ve puan verilmedi. Son üretim taraması 39322312764 başarılı: 72 kayıt, XML/HTML erişimi 0 iken iki kaynak bütçesi özgün doğrulama tarihiyle korundu; reused_notices=2."
     },
     {
       "id": "P3",
@@ -128,6 +130,13 @@
       "app": 72,
       "reason": "P1 (+2/+2) ve P5 (+5/+5) canlı doğrulama ile kapandı",
       "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39319153315"
+    },
+    {
+      "date": "2026-10-19",
+      "web": 77,
+      "app": 72,
+      "reason": "P2 belge okuma, kalem güvenliği ve tarihli kaynak önbelleği geliştirildi; paket kabulü tamamlanmadığı için ek puan yok.",
+      "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/pull/102"
     }
   ]
 }
