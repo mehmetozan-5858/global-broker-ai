@@ -5,9 +5,11 @@ const contract=require('../web/ecosystem-contract.js');
 const broker='https://global-broker-opal.vercel.app';
 (async()=>{
  const browser=await chromium.launch({headless:true});
+ let lastPage;
  try{
   for(const width of [390,1280]){
    const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage();
+   lastPage=page;page.setDefaultTimeout(20000);
    const writes=[];
    await context.route('**/*',route=>{
     const req=route.request();
@@ -15,7 +17,9 @@ const broker='https://global-broker-opal.vercel.app';
     return route.continue();
    });
    const data={businessName:'Global Broker QA',website:'https://example.com/',country:'Türkiye',sector:'B2B / Sanayi'};
-   await page.goto(broker+'/',{waitUntil:'domcontentloaded'});
+   const homepage=await page.goto(broker+'/?ecosystemQA='+Date.now(),{waitUntil:'domcontentloaded'});
+   assert.equal(homepage.status(),200,'public homepage HTTP status');
+   await page.locator('#menuBtn').waitFor({state:'attached'});
    if(width===390)await page.getByRole('button',{name:'Menüyü aç'}).click();
    await page.getByRole('link',{name:'AI Visibility Ekosistemi'}).click();
    await page.getByRole('heading',{name:'Ticaret fırsatından dijital görünürlüğe'}).waitFor();
@@ -46,5 +50,5 @@ const broker='https://global-broker-opal.vercel.app';
    console.log('PRODUCTION_ECOSYSTEM_PASS width='+width+' profile_roundtrip=reviewed external_writes=blocked');
    await context.close();
   }
- }finally{await browser.close();}
+ }catch(error){if(lastPage&&!lastPage.isClosed())console.error('PUBLIC_PAGE_DIAGNOSTIC',await lastPage.title(),lastPage.url().split('#')[0]);throw error;}finally{await browser.close();}
 })().catch(error=>{console.error(error.message);process.exitCode=1;});
