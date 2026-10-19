@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "date": "2026-10-19",
+  "measurement": "Estimated delivery progress against a fixed weighted roadmap; not commercial launch readiness.",
+  "baseline": {
+    "web": 70,
+    "app": 65
+  },
+  "completion_rule": "A package earns its fixed points only after tests, production deployment and live behavior verification have evidence. Reopening a package removes its points.",
+  "packages": [
+    {
+      "id": "P1",
+      "title": "Ortak ekosistem girişleri",
+      "points": {
+        "web": 2,
+        "app": 2
+      },
+      "status": "in_progress",
+      "acceptance": "Web ana sayfası, müşteri portalı ve yönetici uygulamasından AI Visibility ön değerlendirmesine erişim.",
+      "evidence": {}
+    },
+    {
+      "id": "P2",
+      "title": "Kaynaklı fırsat dosyası",
+      "points": {
+        "web": 5,
+        "app": 8
+      },
+      "status": "pending",
+      "acceptance": "Yeni ve mevcut kayıtlar için alıcı, ürün, miktar/bütçe, tarih ve belge eksiklerinin tamamlanması; gerçek kayıtla doğrulama.",
+      "evidence": {}
+    },
+    {
+      "id": "P3",
+      "title": "Tedarikçi ve ürün uygunluğu",
+      "points": {
+        "web": 4,
+        "app": 6
+      },
+      "status": "pending",
+      "acceptance": "En az bir gerçek fırsatta kaynaklı tedarikçi ve şartname eşleşmesi.",
+      "evidence": {}
+    },
+    {
+      "id": "P4",
+      "title": "Gerçek fiyat, lojistik ve risk",
+      "points": {
+        "web": 5,
+        "app": 6
+      },
+      "status": "pending",
+      "acceptance": "Aynı fırsatta geçerli teklif, para birimi, teslim/navlun ve risk kanıtlarıyla hesaplama.",
+      "evidence": {}
+    },
+    {
+      "id": "P5",
+      "title": "AI Visibility firma aktarımı",
+      "points": {
+        "web": 5,
+        "app": 5
+      },
+      "status": "pending",
+      "acceptance": "Firma adı, sitesi, ülke ve sektörün kullanıcı incelemesiyle taşınması; iki yönlü akış, yetki ve yinelenen kayıt kontrolü.",
+      "evidence": {}
+    },
+    {
+      "id": "P6",
+      "title": "Hesap ve güvenli erişim",
+      "points": {
+        "web": 4,
+        "app": 3
+      },
+      "status": "pending",
+      "acceptance": "Müşteri/yönetici giriş, kurtarma, MFA ve rol akışlarının canlı doğrulanması.",
+      "evidence": {}
+    },
+    {
+      "id": "P7",
+      "title": "Ticari açılış koşulları",
+      "points": {
+        "web": 3,
+        "app": 3
+      },
+      "status": "pending",
+      "acceptance": "Ödeme testi, hukuk, işletme iletişimi ve alan adı kanıtları.",
+      "evidence": {}
+    },
+    {
+      "id": "P8",
+      "title": "Gerçek kullanıcı kabulü",
+      "points": {
+        "web": 2,
+        "app": 2
+      },
+      "status": "pending",
+      "acceptance": "Mobil ve masaüstünde gerçek müşteriyle baştan sona kabul; açık kritik hata yok.",
+      "evidence": {}
+    }
+  ]
+}
