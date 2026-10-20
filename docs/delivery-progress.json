@@ -114,10 +114,16 @@
           "status": "complete",
           "deployment": "PR #130–#133; 95925ef920042b0fbb9b477b0382e50b04c61b9f production READY. CI, mobile and production browser workflow passed.",
           "tests": "486 Python + 25 JavaScript tests. Production asset flows with intercepted synthetic Auth/MFA/RPC passed at 390px/1280px: login, rejected MFA, successful MFA, existing AAL2, invalid server session, external redirect rejection, missing refresh credentials and initialization readiness.",
-          "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39420822104"
+          "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39420822104",
+          "owner_confirmation": {
+            "date": "2026-10-20T15:19:00+03:00",
+            "method": "Owner-provided iPhone Safari screenshots in conversation",
+            "observed": "After entering the code, the production quote page shows administrator access verified and the empty quotation form.",
+            "limits": "Confirms real owner MFA return and form access only; no quote submission, SMS recovery, password recovery or customer acceptance observed."
+          }
         }
       },
-      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı. 20 Ekim 2026 son canlı toplu kontrolde yönetici e-postası doğrulanmış, 1 TOTP faktörü doğrulanmış, doğrulanmış yönetici telefonu 0; kişisel değerler rapora yazılmadı. Teklif ekranından giriş/MFA sonrası güvenli dönüş tamamlandı. Oturum kontrolü bitmeden giriş düğmesi etkinleşmez; geçerli AAL2 yeniden kod istemeden döner, yenileme bilgisi eksikse yeniden giriş istenir. Yalnız /account, /app ve /quote-evidence hedefleri izinli; URLde belirteç/kod taşınmaz. Şifre kurtarma tamamlanmadan yönlendirme yok. Bu sentetik tarayıcı kabulü gerçek yönetici SMS/e-posta kurtarma veya müşteri kabulü değildir."
+      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı. 20 Ekim 2026 son canlı toplu kontrolde yönetici e-postası doğrulanmış, 1 TOTP faktörü doğrulanmış, doğrulanmış yönetici telefonu 0; kişisel değerler rapora yazılmadı. Teklif ekranından giriş/MFA sonrası güvenli dönüş tamamlandı. Oturum kontrolü bitmeden giriş düğmesi etkinleşmez; geçerli AAL2 yeniden kod istemeden döner, yenileme bilgisi eksikse yeniden giriş istenir. Yalnız /account, /app ve /quote-evidence hedefleri izinli; URLde belirteç/kod taşınmaz. Şifre kurtarma tamamlanmadan yönlendirme yok. Bu sentetik tarayıcı kabulü gerçek yönetici SMS/e-posta kurtarma veya müşteri kabulü değildir. Kullanıcının 20 Ekim 2026 saat 15:19 (İstanbul) iPhone Safari ekran görüntüleri kod sonrası gerçek yönetici erişimini ve boş teklif formuna dönüşü doğruladı. Formdaki örnek tutarlar kayıtlı teklif değildir; teklif kaydı veya kurtarma kabulü yapılmadı."
     },
     {
       "id": "P7",
@@ -225,6 +231,13 @@
       "app": 72,
       "reason": "P6: teklif → giriş → MFA → teklife güvenli dönüş ve başlangıçta boşa giden giriş tıklaması düzeltildi; eksik yenileme bilgisi döngüsü engellendi. 486 Python + 25 JS ve canlı mobil/masaüstü akış testleri geçti. Gerçek kurtarma/SMS kabulü açık; ek puan yok.",
       "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39420822104"
+    },
+    {
+      "date": "2026-10-20",
+      "web": 77,
+      "app": 72,
+      "reason": "P6: kullanıcının gerçek iPhone Safari oturumunda kod sonrası yönetici teklif formuna erişim ekran görüntüleriyle doğrulandı. Kurtarma/SMS ve paket kabulü açık olduğundan ek puan yok.",
+      "evidence": "Owner-provided screenshots in conversation, 2026-10-20 15:19 Europe/Istanbul"
     }
   ],
   "operating_model": {

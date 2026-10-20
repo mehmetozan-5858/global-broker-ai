@@ -11,3 +11,7 @@ Giriş düğmesi HTMLde başlangıçta devre dışı; kurtarma/oturum başlangı
 Web yeniden yazımlarında hesap dosyaları /web/ altında açık adresten yüklenir; mobil statik paket hazırlığında uygun yerel dosya yollarına dönüştürülür. Gerçek paketleme bloğuyla 5 yerel hesap/güvenlik/teklif scripti doğrulandı.
 
 Web %77 / uygulama %72. P6 bağımsız telefon/SMS ve gerçek kurtarma kabulünü bekler; bu teknik akış gerçek kullanıcı veya müşteri kabulü yerine geçmez.
+
+## Gerçek yönetici cihazında doğrulama
+
+20 Ekim 2026 saat 15:19 (Europe/Istanbul), kullanıcı konuşmada iPhone Safari ekran görüntüleri paylaştı. Kod girdikten sonra broker.aivisibilityworks.com üzerindeki Teklif kanıtları sayfasında “Yönetici erişimi doğrulandı” mesajı ve boş teklif formu görülüyor. Bu, gerçek yönetici MFA dönüşü ve form erişiminin görsel kabulüdür. Kaydetme işlemi görülmedi; 1250.50/USD/25 alanları örnek yer tutuculardır. Gerçek teklif, SMS/parola kurtarma veya gerçek müşteri kabulü olarak sayılmaz. P6 açık, web %77 / uygulama %72 kalır.
