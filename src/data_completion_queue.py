@@ -206,6 +206,7 @@ def build(payload: dict[str, Any]) -> dict[str, Any]:
 
     for row in rows:
         missing = _missing(row)
+        row["data_completion"] = {"core_complete": not missing, "missing_fields": missing, "source_backed_only": True}
         counts.update(missing)
         if not missing:
             complete += 1

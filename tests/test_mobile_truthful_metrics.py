@@ -11,7 +11,8 @@ class TruthfulMobileMetricsTests(unittest.TestCase):
 
     def test_completeness_not_mislabeled_as_verified_supplier(self):
         s = APP.read_text(encoding="utf-8")
-        self.assertIn("Dosyası %70+", s)
+        self.assertIn("İnsan incelemesine hazır", s)
+        self.assertIn("evidenceState(o).ready", s)
         self.assertNotIn("Tedarikçiye Hazır", s)
         self.assertNotIn("Tedarikçi aramaya hazır", s)
 

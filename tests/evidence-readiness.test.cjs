@@ -1,0 +1,13 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const {assess}=require('../web/evidence-readiness.js');
+const now=new Date('2026-10-20T10:00:00Z');
+function complete(){return {data_completion:{core_complete:true},deadline_normalized:'2026-11-30',buyer_verification:{status:'verified'},specification_analysis:{supplier_sourcing_ready:true},supplier_research:{candidate_suppliers:[{verified:true,financial_evidence_eligible:true,exact_spec_match_verified:true}]},price_margin_gate:{price_ready:true,margin_ready:true,quote_valid_until:'2026-10-30'},commercial_feasibility:{landed_cost_ready:true},offer_risk_gate:{draft_offer_ready:true,risk_review_required:false,risk_flags:[]}}}
+test('coverage, nonempty prices and status strings never authorize readiness',()=>{const r=assess({buyer_verified:true,supplier_status:'verified',workflow:{opportunity_dossier:{completeness_percent:100},pricing_margin:{supplier_quote:99},logistics:{status:'unverified'},risk:{status:'review_pending'}}},now);assert.equal(r.ready,false);assert.equal(r.quote,false);assert.equal(r.logistics,false);assert.equal(r.risk,false)});
+test('unselected lots block complete-looking records',()=>{const r=assess({...complete(),ted_lot_selection_required:true},now);assert.equal(r.ready,false);assert.match(r.next,/Kalem/)});
+test('expired or unknown deadline blocks readiness',()=>{for(const d of ['2026-10-19',null,'2026-02-30'])assert.equal(assess({...complete(),deadline_normalized:d},now).ready,false)});
+test('expired quote is blocked even with a stale true server flag',()=>{const o=complete();o.price_margin_gate.quote_valid_until='2026-10-19';const r=assess(o,now);assert.equal(r.quote,false);assert.equal(r.ready,false);assert.match(r.next,/teklif/)});
+test('category verification does not establish exact-spec supplier eligibility',()=>{const o=complete();delete o.supplier_research.candidate_suppliers[0].exact_spec_match_verified;assert.equal(assess(o,now).ready,false)});
+test('each missing authoritative gate fails closed',()=>{for(const k of ['data_completion','buyer_verification','specification_analysis','supplier_research','price_margin_gate','commercial_feasibility','offer_risk_gate']){const o=complete();delete o[k];assert.equal(assess(o,now).ready,false,k)}});
+test('risk flags are blocking even when draft gate passed',()=>{const o=complete();o.offer_risk_gate.risk_flags=['single_verified_supplier'];assert.equal(assess(o,now).ready,false)});
+test('complete evidence permits internal review only',()=>{const r=assess(complete(),now);assert.equal(r.ready,true);assert.equal(r.externalActionAuthorized,false);assert.match(r.next,/İnsan/)});
