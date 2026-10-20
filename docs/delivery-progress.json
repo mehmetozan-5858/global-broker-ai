@@ -127,9 +127,15 @@
             "observed": "After entering the code, the production quote page shows administrator access verified and the empty quotation form.",
             "limits": "Confirms real owner MFA return and form access only; no quote submission, SMS recovery, password recovery or customer acceptance observed."
           }
+        },
+        "mfa_actions": {
+          "status": "complete",
+          "deployment": "PR #137 / 8656f27ace64920fc7933ca369c844b59480809f production READY; CI and mobile deployment passed.",
+          "tests": "486 Python and 35 JavaScript tests passed. Actual inline security script regressions cover session readiness, malformed code, duplicate challenge/enrollment, retry after network rejection and secret cleanup. Production mobile/desktop flow passed with intercepted Auth/MFA requests: malformed code, offline retry, rejected code, successful return and safe-session checks. No real factor, password, email or phone changed.",
+          "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39434531665"
         }
       },
-      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı. 20 Ekim 2026 son canlı toplu kontrolde yönetici e-postası doğrulanmış, 1 TOTP faktörü doğrulanmış, doğrulanmış yönetici telefonu 0; kişisel değerler rapora yazılmadı. Teklif ekranından giriş/MFA sonrası güvenli dönüş tamamlandı. Oturum kontrolü bitmeden giriş düğmesi etkinleşmez; geçerli AAL2 yeniden kod istemeden döner, yenileme bilgisi eksikse yeniden giriş istenir. Yalnız /account, /app ve /quote-evidence hedefleri izinli; URLde belirteç/kod taşınmaz. Şifre kurtarma tamamlanmadan yönlendirme yok. Bu sentetik tarayıcı kabulü gerçek yönetici SMS/e-posta kurtarma veya müşteri kabulü değildir. Kullanıcının 20 Ekim 2026 saat 15:19 (İstanbul) iPhone Safari ekran görüntüleri kod sonrası gerçek yönetici erişimini ve boş teklif formuna dönüşü doğruladı. Formdaki örnek tutarlar kayıtlı teklif değildir; teklif kaydı veya kurtarma kabulü yapılmadı."
+      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı. 20 Ekim 2026 son canlı toplu kontrolde yönetici e-postası doğrulanmış, 1 TOTP faktörü doğrulanmış, doğrulanmış yönetici telefonu 0; kişisel değerler rapora yazılmadı. Teklif ekranından giriş/MFA sonrası güvenli dönüş tamamlandı. Oturum kontrolü bitmeden giriş düğmesi etkinleşmez; geçerli AAL2 yeniden kod istemeden döner, yenileme bilgisi eksikse yeniden giriş istenir. Yalnız /account, /app ve /quote-evidence hedefleri izinli; URLde belirteç/kod taşınmaz. Şifre kurtarma tamamlanmadan yönlendirme yok. Bu sentetik tarayıcı kabulü gerçek yönetici SMS/e-posta kurtarma veya müşteri kabulü değildir. Kullanıcının 20 Ekim 2026 saat 15:19 (İstanbul) iPhone Safari ekran görüntüleri kod sonrası gerçek yönetici erişimini ve boş teklif formuna dönüşü doğruladı. Formdaki örnek tutarlar kayıtlı teklif değildir; teklif kaydı veya kurtarma kabulü yapılmadı. PR #137: MFA işlemleri başlangıç doğrulaması bitmeden açılmaz; aynı anda tek işlem çalışır. Altı haneli olmayan kod challenge isteği oluşturmaz; ağ hatası mesajı gösterilir ve tekrar deneme açılır. Yeni QR doğrulama beklerken ikinci kurulum engellenir; başarı sonrası kod/QR/kurulum anahtarı ekrandan temizlenir. Canlı sayfa dosyalarıyla 390px/1280px sentetik Auth/MFA testi geçti. Bu teknik kabul gerçek SMS/e-posta kurtarma yerine geçmez; P6 açık kalır."
     },
     {
       "id": "P7",
@@ -251,6 +257,13 @@
       "app": 72,
       "reason": "P4: iPhone tarih alanı taşması ve hatalı girişlerin genel hataya düşmesi düzeltildi; 486 Python + 30 JS, Chromium/WebKit ve mobil dağıtım geçti. Gerçek teklif/navlun kabulü açık; ek puan yok.",
       "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39422199632"
+    },
+    {
+      "date": "2026-10-20",
+      "web": 77,
+      "app": 72,
+      "reason": "P6: yinelenen MFA işlemleri ve ağ hatasında yanıtsız kalma düzeltildi; 486 Python + 35 JavaScript, mobil dağıtım ve canlı tarayıcı kontrolleri geçti. Gerçek kurtarma/SMS kabulü açık; ek puan yok.",
+      "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39434531665"
     }
   ],
   "operating_model": {
