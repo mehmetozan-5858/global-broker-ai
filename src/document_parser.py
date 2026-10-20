@@ -295,7 +295,8 @@ def _try_attachment(url: str, attempts: list[dict[str, Any]], extracted_parts: l
     attempts.append(attempt)
 
 
-def _world_bank_notice(item: dict[str, Any], attempts: list[dict[str, Any]], parts: list[str]) -> bool:
+def _world_bank_notice(item: dict[str, Any], attempts: list[dict[str, Any]], parts: list[str],
+                       discovered: list[str] | None = None) -> bool:
     """Read only an exact-ID official notice, never arbitrary API search hits."""
     identity = item.get("id")
     if item.get("source") != "WORLD_BANK" or not isinstance(identity, str) or not re.fullmatch(r"OP[0-9]{8}", identity):
@@ -317,7 +318,7 @@ def _world_bank_notice(item: dict[str, Any], attempts: list[dict[str, Any]], par
         body = matches[0].get("notice_text")
         if not isinstance(body, str) or len(body) > MAX_EXTRACTED_CHARS:
             raise ValueError("world_bank_notice_text_missing_or_too_large")
-        text, _ = _parse_html_page(body.encode("utf-8"), final_url)
+        text, found = _parse_html_page(body.encode("utf-8"), final_url)
         if len(text) < 160:
             raise ValueError("insufficient_world_bank_notice_text")
         _append_text(parts, text)
@@ -327,7 +328,12 @@ def _world_bank_notice(item: dict[str, Any], attempts: list[dict[str, Any]], par
         # while refusing automatic promotion of a single aggregate scope.
         if re.search(r"\blots?\b", text, re.I):
             item["source_lot_selection_required"] = True
+        if discovered is not None:
+            for link in found:
+                if link not in discovered and link not in _candidate_urls(item):
+                    discovered.append(link)
         attempt.update({"status": "parsed", "kind": "source_page", "format": "world_bank_notice_json",
+                        "discovered_attachments": len(found),
                         "final_url": final_url, "content_type": content_type, "bytes": len(data), "extracted_chars": len(text)})
     except Exception as exc:
         attempt.update({"status": "failed", "error": type(exc).__name__ + ":" + str(exc)[:180]})
@@ -346,7 +352,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     for url in attachments:
         _try_attachment(url, attempts, extracted_parts)
 
-    world_bank_read = _world_bank_notice(item, attempts, source_page_parts)
+    world_bank_read = _world_bank_notice(item, attempts, source_page_parts, discovered_attachments)
     for url in ([] if world_bank_read else source_pages):
         page_attempt: dict[str, Any] = {"url": url, "status": "pending", "source": "source_page"}
         try:
