@@ -20,6 +20,7 @@
     { "source": "/refund", "destination": "/web/refund.html" },
     { "source": "/progress", "destination": "/web/progress.html" },
     { "source": "/contact", "destination": "/web/contact.html" },
+    { "source": "/quote-evidence", "destination": "/web/quote-evidence.html" },
     { "source": "/delivery-progress.json", "destination": "/api/delivery_progress" },
     { "source": "/web/delivery-progress.json", "destination": "/api/delivery_progress" }
   ],
