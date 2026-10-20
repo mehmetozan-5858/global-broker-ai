@@ -43,3 +43,36 @@ test('admin opportunity cards use stable IDs, never titles or public introductio
 });
 
 test('duplicate opportunity titles cannot change a stable card identity',()=>{const {api}=dossier({});const a={id:'gb_a',title_tr:'Same title'},b={id:'gb_b',title_tr:'Same title'};api.setRows([a,b]);const card=id=>({dataset:{opportunityId:id},querySelector:()=>({textContent:'Same title'}),textContent:'Same title'});assert.equal(api.cardMatch(card('gb_b')).row,b);assert.equal(api.cardMatch(card('gb_b')).trusted,true);assert.equal(api.cardMatch(card('gb_missing')).row,undefined)});
+test('financial projection hides expired, missing and unselected-lot evidence',()=>{
+ const {financials}=require('../web/evidence-readiness.js');
+ for(const row of [{workflow:priced().workflow},{...priced(),ted_lot_selection_required:true},{...priced(),price_margin_gate:{price_ready:true,margin_ready:true,quote_valid_until:'2020-01-01'}}])assert.ok(Object.values(financials(row)).every(v=>v===null));
+ const row=priced();row.price_margin_gate.margin_ready=false;assert.deepEqual(financials(row),{supplier_quote:11111,sell_price:null,gross_margin:null,commission:null});
+});
+test('financial projection rejects malformed amounts while retaining real losses and zero commission',()=>{
+ const {financials}=require('../web/evidence-readiness.js'),row=priced();
+ row.workflow.pricing_margin.gross_margin=-33;row.workflow.pricing_margin.commission=0;assert.equal(financials(row).gross_margin,-33);assert.equal(financials(row).commission,0);
+ for(const value of [true,{},[],NaN,Infinity,'NaN','1e9','12,34','',-1,0]){row.workflow.pricing_margin.supplier_quote=value;assert.ok(Object.values(financials(row)).every(v=>v===null),String(value));}
+ row.workflow.pricing_margin.supplier_quote='11111.00';row.workflow.pricing_margin.sell_price=null;assert.equal(financials(row).supplier_quote,'11111.00');assert.equal(financials(row).commission,null);
+});
+function financialSurface(file,row,shared=true){
+ const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),nodes={};
+ const html=fs.readFileSync(path.join(__dirname,'../web/'+file),'utf8');let code=html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];
+ const window={};if(shared)window.GBEvidenceReadiness=require('../web/evidence-readiness.js');
+ const context={window,URL,Date,document:{getElementById:id=>nodes[id]||(nodes[id]={innerHTML:'',style:{}})}};
+ if(file==='app.html')code=code.replace(/E\('q'\)\.addEventListener[\s\S]*$/,'');
+ else code=code.replace('renderCards();load();','window.testRows=function(rows){DATA={opportunities:rows}};');
+ vm.createContext(context);vm.runInContext(code,context);if(file==='index.html')window.testRows([row]);
+ return key=>{if(file==='app.html')return context.specificCard(key,row);window.openCard(key,key);return nodes.pc.innerHTML};
+}
+test('web and app pricing, commission and payment views hide unsupported financial values',()=>{
+ for(const file of ['app.html','index.html'])for(const row of [{workflow:priced().workflow}, {...priced(),price_margin_gate:{price_ready:true,margin_ready:true,quote_valid_until:'2020-01-01'}}]){
+  const view=financialSurface(file,row);for(const key of ['pricing','commission','payments'])for(const value of ['11111','22222','33333','44444'])assert.ok(!view(key).includes(value),file+': '+key+': '+value);
+ }
+});
+test('web and app show evidence-backed values, keep losses visible and fail closed without the shared module',()=>{
+ for(const file of ['app.html','index.html']){
+  const row=priced();row.workflow.pricing_margin.gross_margin=-33333;const view=financialSurface(file,row);for(const value of ['11111','22222','-33333','44444'])assert.ok(view('pricing').includes(value));
+  assert.ok(view('payments').includes('-33333'));assert.ok(view('commission').includes('44444'));
+  const missing=financialSurface(file,row,false);for(const key of ['pricing','commission','payments'])for(const value of ['11111','22222','33333','44444'])assert.ok(!missing(key).includes(value));
+ }
+});
