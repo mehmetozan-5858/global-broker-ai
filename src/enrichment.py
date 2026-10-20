@@ -140,6 +140,8 @@ def derive_product_name(item: dict[str, Any], cpv: list[dict[str, str]]) -> str:
 
 
 def derive_quantity(item: dict[str, Any]) -> str:
+    if item.get("ted_lot_selection_required") is True:
+        return ""
     quantity = first(item, ["quantity", "quantity-lot", "estimated_quantity", "volume"])
     unit = first(item, ["quantity-unit-lot", "unit", "quantity_unit"])
     if quantity and unit and unit.lower() not in quantity.lower():
@@ -148,6 +150,19 @@ def derive_quantity(item: dict[str, Any]) -> str:
 
 
 def derive_budget(item: dict[str, Any]) -> dict[str, str | None]:
+    if item.get("ted_lot_selection_required") is True:
+        return {"value": None, "currency": None}
+    evidence = item.get("structured_source_evidence") or {}
+    fact = evidence.get("estimated_value") if isinstance(evidence, dict) else None
+    if isinstance(fact, dict) and fact.get("inferred") is False:
+        # Preserve the already matched amount/currency pair; raw search arrays
+        # and procedure-level currencies must not overwrite a scoped fact.
+        if str(item.get("estimated_value")) == str(fact.get("value")) and item.get("budget_currency") == fact.get("currency"):
+            return {"value": str(fact["value"]), "currency": fact["currency"]}
+        return {"value": None, "currency": None}
+    if item.get("source") == "TED":
+        # Search arrays without an accepted scoped fact remain raw evidence.
+        return {"value": None, "currency": None}
     value = first(
         item,
         [
@@ -160,7 +175,7 @@ def derive_budget(item: dict[str, Any]) -> dict[str, str | None]:
             "value",
         ],
     )
-    currency = first(item, ["estimated-value-cur-proc", "currency-lot", "currency", "currency_code"])
+    currency = first(item, ["budget_currency", "estimated-value-cur-lot", "estimated-value-cur-proc", "currency-lot", "currency", "currency_code"])
     return {"value": value or None, "currency": currency or None}
 
 
@@ -182,8 +197,8 @@ def derive_delivery(item: dict[str, Any]) -> str:
 
 def derive_links(item: dict[str, Any]) -> list[str]:
     keys = [
-        "links",
         "source_url",
+        "links",
         "url",
         "notice_url",
         "official_url",
