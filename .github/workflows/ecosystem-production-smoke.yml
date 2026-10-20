@@ -43,6 +43,7 @@ jobs:
           node tests/auth-return-smoke.cjs
           node tests/membership-smoke.cjs
           node tests/customer-dossier-smoke.cjs
+          node tests/rfq-draft-smoke.cjs
 
       - name: Wait for evidence readiness asset and verify production UI
         run: |
