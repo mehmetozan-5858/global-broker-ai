@@ -36,7 +36,7 @@ CATEGORY_HINTS = {
 def ted_search(query: str, limit: int = 100):
     body=json.dumps({
         "query":query,
-        "fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","classification-cpv","description-lot","quantity-lot","procedure-type","contract-nature","links","identifier-lot","estimated-value-lot","estimated-value-cur-lot","form-type"],
+        "fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","classification-cpv","description-lot","quantity-lot","procedure-type","contract-nature","links","identifier-lot","estimated-value-lot","estimated-value-cur-lot","form-type","document-url-lot"],
         "page":1,"limit":limit,"scope":"ACTIVE","checkQuerySyntax":False,"paginationMode":"PAGE_NUMBER","onlyLatestVersions":False
     }).encode()
     req=urllib.request.Request(TED_URL,data=body,headers={"Content-Type":"application/json","Accept":"*/*"})

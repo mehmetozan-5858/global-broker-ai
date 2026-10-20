@@ -86,7 +86,7 @@ def _source_page_urls(item: dict[str, Any]) -> list[str]:
 def _public_http_url(url: str) -> bool:
     try:
         parsed = urllib.parse.urlparse(url)
-        if parsed.scheme not in {"http", "https"} or not parsed.hostname:
+        if parsed.scheme not in {"http", "https"} or not parsed.hostname or parsed.username or parsed.password:
             return False
         host = parsed.hostname.lower()
         if host in {"localhost", "localhost.localdomain"} or host.endswith(".local"):
@@ -104,6 +104,13 @@ def _public_http_url(url: str) -> bool:
         return False
 
 
+class _PublicRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if not _public_http_url(newurl):
+            raise ValueError("redirected_to_non_public_url")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 def _download(url: str, max_bytes: int = MAX_DOCUMENT_BYTES) -> tuple[bytes, str, str]:
     if not _public_http_url(url):
         raise ValueError("non_public_or_unresolvable_url")
@@ -114,7 +121,7 @@ def _download(url: str, max_bytes: int = MAX_DOCUMENT_BYTES) -> tuple[bytes, str
             "Accept": "text/html,application/xhtml+xml,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,*/*;q=0.5",
         },
     )
-    with urllib.request.urlopen(request, timeout=TIMEOUT_SECONDS) as response:
+    with urllib.request.build_opener(_PublicRedirectHandler()).open(request, timeout=TIMEOUT_SECONDS) as response:
         final_url = response.geturl()
         if not _public_http_url(final_url):
             raise ValueError("redirected_to_non_public_url")
@@ -277,23 +284,29 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     for url in source_pages:
         page_attempt: dict[str, Any] = {"url": url, "status": "pending", "source": "source_page"}
         try:
-            data, content_type, final_url = _download(url, MAX_SOURCE_PAGE_BYTES)
-            if "html" not in content_type and not content_type.startswith("text/"):
-                raise ValueError("source_page_not_html")
-            page_text, found = _parse_html_page(data, final_url)
-            if len(page_text) >= 160:
-                _append_text(extracted_parts, page_text)
-                page_attempt.update({
-                    "status": "parsed",
-                    "kind": "source_page",
-                    "final_url": final_url,
-                    "content_type": content_type,
-                    "bytes": len(data),
-                    "extracted_chars": len(page_text),
-                    "discovered_attachments": len(found),
-                })
+            limit = MAX_DOCUMENT_BYTES if url == item.get("document_url") else MAX_SOURCE_PAGE_BYTES
+            data, content_type, final_url = _download(url, limit)
+            found = []
+            if content_type in {"application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"} or data.startswith(b"%PDF"):
+                document_text, kind = _parse(data, content_type, final_url)
+                if len(document_text) < 80:
+                    raise ValueError("insufficient_extractable_text")
+                _append_text(extracted_parts, document_text)
+                page_attempt.update({"status":"parsed", "source":"linked_document", "kind":kind,
+                    "final_url":final_url, "content_type":content_type, "bytes":len(data), "extracted_chars":len(document_text)})
             else:
-                page_attempt.update({"status": "failed", "error": "insufficient_source_page_text"})
+                if "html" not in content_type and not content_type.startswith("text/"):
+                    raise ValueError("source_page_not_html")
+                page_text, found = _parse_html_page(data, final_url)
+                if len(page_text) >= 160:
+                    _append_text(extracted_parts, page_text)
+                    page_attempt.update({
+                        "status": "parsed", "kind": "source_page", "final_url": final_url,
+                        "content_type": content_type, "bytes": len(data), "extracted_chars": len(page_text),
+                        "discovered_attachments": len(found),
+                    })
+                else:
+                    page_attempt.update({"status": "failed", "error": "insufficient_source_page_text"})
             for found_url in found:
                 if found_url not in attachments and found_url not in discovered_attachments:
                     discovered_attachments.append(found_url)

@@ -115,7 +115,13 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
         # before the identity-checked official document is included.
         parts = [text]
         if isinstance(existing, str) and existing.strip() and existing != text:
-            parts.append(existing)
+            parsed_attachment = any(
+                isinstance(entry, dict) and entry.get("status") == "parsed"
+                and entry.get("kind") in {"pdf", "docx"}
+                and entry.get("source") in {"linked_document", "attachment"}
+                for entry in attempts
+            )
+            parts = [existing, text] if parsed_attachment else [text, existing]
         existing_urls = {
             a.get("url") for a in attempts if isinstance(a, dict) and a.get("status") == "parsed"
         }

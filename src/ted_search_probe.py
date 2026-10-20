@@ -12,7 +12,7 @@ def main():
     rows=result.get("notices",result.get("results",[]))
     if not isinstance(rows,list) or not rows:
         raise RuntimeError("TED search did not return live notices")
-    stats={"rows":len(rows),"single_lot":0,"multiple_lots":0,"unresolved_lots":0,"source_budgets":0,"official_notice_links":0,"budgets_preserved_through_dossier":0,"form_types":{}}
+    stats={"rows":len(rows),"single_lot":0,"multiple_lots":0,"unresolved_lots":0,"source_budgets":0,"official_notice_links":0,"budgets_preserved_through_dossier":0,"form_types":{},"notices_with_document_links":0}
     for raw in rows:
         form=raw.get("form-type")
         if isinstance(form,list) and form and all(isinstance(v,str) for v in form) and len(set(form))==1:
@@ -27,6 +27,7 @@ def main():
         stats["unresolved_lots"]+=int(count==0)
         stats["source_budgets"]+=int("estimated_value" in row)
         stats["official_notice_links"]+=int(bool(row.get("source_url")))
+        stats["notices_with_document_links"]+=int(bool(row.get("ted_document_link_count")))
         amount=row.get("estimated_value")
         currency=row.get("budget_currency")
         enrich_opportunity(row)

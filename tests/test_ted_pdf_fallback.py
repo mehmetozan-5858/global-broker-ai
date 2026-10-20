@@ -67,4 +67,13 @@ class TedPdfFallbackTests(unittest.TestCase):
         urls=document_parser._collect_urls('https://example.test/a.pdf https://example.test/b.pdf')
         self.assertEqual(urls,['https://example.test/a.pdf','https://example.test/b.pdf'])
 
+    def test_already_parsed_technical_attachment_keeps_its_text_priority(self):
+        row=self.item()
+        row['document_extracted_text']='Technical attachment specification. '*2000
+        row['document_extraction']={'attempts':[{'source':'linked_document','kind':'pdf','status':'parsed'}]}
+        with patch.object(document_parser,'_download',side_effect=self.download),patch.object(document_parser,'_parse_pdf',return_value=TEXT):
+            self.assertTrue(ted_xml_enricher.enrich_opportunity(row))
+        self.assertTrue(row['document_extracted_text'].startswith('Technical attachment specification.'))
+        self.assertEqual(row['document_extraction']['parsed_count'],2)
+
 if __name__=='__main__':unittest.main()

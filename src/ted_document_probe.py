@@ -7,6 +7,7 @@ from datetime import date, timedelta
 from src.broker import ted_search
 from src.ted_search_fields import apply_search_fields, notice_context
 from src.ted_xml_enricher import enrich_opportunity
+from src import document_parser
 
 
 def main():
@@ -15,14 +16,22 @@ def main():
     rows=[apply_search_fields(dict(row,source='TED')) for row in result.get('notices',result.get('results',[])) if isinstance(row,dict)]
     selected=[row for row in rows if (notice_context(row) or {}).get('call_for_tenders') is True][:2]
     if not selected:raise RuntimeError('No current competition notices available for document probe')
+    def read(row):
+        document_parser.enrich_opportunity(row)
+        if (row.get('document_extraction') or {}).get('parsed_count',0) > 0:
+            return True
+        return enrich_opportunity(row)
     with ThreadPoolExecutor(max_workers=2) as workers:
-        success=list(workers.map(enrich_opportunity,selected))
+        success=list(workers.map(read,selected))
     counts=Counter()
     for row in selected:
         info=row.get('document_extraction') or {}
         for kind in ('xml','html','pdf'):
             counts[kind+'_parsed']+=int(info.get('ted_'+kind+'_parsed') is True)
         for attempt in info.get('attempts') or []:
+            if attempt.get('status')=='parsed':
+                counts['linked_documents_parsed']+=int(attempt.get('source')=='linked_document')
+                counts['portal_pages_parsed']+=int(attempt.get('source')=='source_page')
             if attempt.get('status')=='failed':
                 raw=str(attempt.get('error') or 'unknown')
                 code=re.search(r'HTTP Error ([0-9]{3})',raw)
