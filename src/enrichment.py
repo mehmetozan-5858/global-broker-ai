@@ -198,6 +198,9 @@ def derive_delivery(item: dict[str, Any]) -> str:
 def derive_links(item: dict[str, Any]) -> list[str]:
     keys = [
         "source_url",
+        "document_url",
+        "documents_url",
+        "official_links",
         "links",
         "url",
         "notice_url",

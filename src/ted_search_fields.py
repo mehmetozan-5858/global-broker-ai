@@ -1,6 +1,7 @@
 """Bounded TED Search facts; arrays never establish associations between lots."""
 from __future__ import annotations
 import re
+from urllib.parse import urlsplit
 from datetime import date
 from decimal import Decimal, InvalidOperation
 
@@ -42,12 +43,28 @@ def notice_context(item):
             "label_tr": labels.get(form, "İlan türü doğrulanmalı — araştırma kaydı")}
 
 def apply_search_fields(item):
+    # Raw portal URLs must not survive under an unknown public-snapshot key.
+    raw_documents = item.pop("document-url-lot", None)
     publication = _one(item.get("publication-number"))
     if item.get("source") != "TED" or not publication or not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
         return item
     source = "https://ted.europa.eu/en/notice/-/detail/" + publication
     item.setdefault("source_url", source)
     item["notice_context"] = notice_context(item)
+    documents = []
+    for value in _values(raw_documents)[:30]:
+        try:
+            link = urlsplit(value)
+            if link.scheme == "https" and link.hostname and not link.username and not link.password and not any(c.isspace() for c in value):
+                documents.append(value)
+        except ValueError:
+            continue
+    if documents:
+        existing = item.get("official_links")
+        existing = existing if isinstance(existing, list) else []
+        item["official_links"] = list(dict.fromkeys(existing + documents))[:30]
+        item.setdefault("document_url", documents[0])
+        item["ted_document_link_count"] = len(documents)
     ids = _values(item.get("identifier-lot"))
     if any(not re.fullmatch(r"LOT-[A-Za-z0-9_-]+", v) for v in ids):
         item["ted_lot_selection_required"] = True

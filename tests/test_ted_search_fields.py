@@ -17,7 +17,7 @@ class TedSearchFieldsTests(unittest.TestCase):
             broker.ted_search("publication-date >= 20261001", 5)
             request = fetch.call_args.args[0]
             fields = json.loads(request.data)["fields"]
-            self.assertTrue({"identifier-lot","estimated-value-lot","estimated-value-cur-lot","form-type"} <= set(fields))
+            self.assertTrue({"identifier-lot","estimated-value-lot","estimated-value-cur-lot","form-type","document-url-lot"} <= set(fields))
 
     def test_single_lot_budget_is_source_estimate_not_supplier_price(self):
         row = apply_search_fields(sample())
