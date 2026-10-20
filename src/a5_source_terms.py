@@ -119,7 +119,7 @@ def extract(item: dict[str, Any]) -> dict[str, Any]:
                         candidates.setdefault(value.casefold(), (value, source_field))
         if not candidates:
             continue
-        if item.get("ted_lot_selection_required") is True:
+        if item.get("ted_lot_selection_required") is True or item.get("source_lot_selection_required") is True:
             review[target] = "lot_selection_required"
             continue
         if len(candidates) != 1:

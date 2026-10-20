@@ -229,7 +229,12 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     source_page_ready = source_page_parsed and extracted_ready
     specification_ready = structured_ready or narrative_ready or document_ready or source_page_ready
 
-    if structured_ready:
+    if item.get("source_lot_selection_required") is True:
+        specification_ready = False
+
+    if item.get("source_lot_selection_required") is True:
+        status = "lot_selection_required"
+    elif structured_ready:
         status = "structured_specification_analyzed"
     elif document_ready:
         status = "source_document_analyzed"

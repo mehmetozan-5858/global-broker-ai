@@ -295,6 +295,44 @@ def _try_attachment(url: str, attempts: list[dict[str, Any]], extracted_parts: l
     attempts.append(attempt)
 
 
+def _world_bank_notice(item: dict[str, Any], attempts: list[dict[str, Any]], parts: list[str]) -> bool:
+    """Read only an exact-ID official notice, never arbitrary API search hits."""
+    identity = item.get("id")
+    if item.get("source") != "WORLD_BANK" or not isinstance(identity, str) or not re.fullmatch(r"OP[0-9]{8}", identity):
+        return False
+    query = urllib.parse.urlencode({"format": "json", "rows": 2, "qterm": identity, "fl": "id,notice_text"})
+    url = "https://search.worldbank.org/api/v2/procnotices?" + query
+    attempt = {"url": url, "status": "pending", "source": "source_page", "notice_id": identity}
+    try:
+        data, content_type, final_url = _download(url, MAX_SOURCE_PAGE_BYTES)
+        final = urllib.parse.urlsplit(final_url)
+        if final.scheme != "https" or final.hostname != "search.worldbank.org" or final.path != "/api/v2/procnotices":
+            raise ValueError("unexpected_world_bank_api_origin")
+        payload = json.loads(data)
+        rows = payload.get("procnotices", {})
+        rows = list(rows.values()) if isinstance(rows, dict) else rows
+        matches = [row for row in rows if isinstance(row, dict) and row.get("id") == identity] if isinstance(rows, list) else []
+        if len(matches) != 1:
+            raise ValueError("world_bank_notice_id_not_unique")
+        body = matches[0].get("notice_text")
+        if not isinstance(body, str) or len(body) > MAX_EXTRACTED_CHARS:
+            raise ValueError("world_bank_notice_text_missing_or_too_large")
+        text, _ = _parse_html_page(body.encode("utf-8"), final_url)
+        if len(text) < 160:
+            raise ValueError("insufficient_world_bank_notice_text")
+        _append_text(parts, text)
+        # A notice may describe several lots. Keep the text available for review
+        # while refusing automatic promotion of a single aggregate scope.
+        if re.search(r"\blots?\b", text, re.I):
+            item["source_lot_selection_required"] = True
+        attempt.update({"status": "parsed", "kind": "source_page", "format": "world_bank_notice_json",
+                        "final_url": final_url, "content_type": content_type, "bytes": len(data), "extracted_chars": len(text)})
+    except Exception as exc:
+        attempt.update({"status": "failed", "error": type(exc).__name__ + ":" + str(exc)[:180]})
+    attempts.append(attempt)
+    return attempt["status"] == "parsed"
+
+
 def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     attachments = _candidate_urls(item)
     source_pages = _source_page_urls(item)
@@ -306,7 +344,8 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     for url in attachments:
         _try_attachment(url, attempts, extracted_parts)
 
-    for url in source_pages:
+    world_bank_read = _world_bank_notice(item, attempts, source_page_parts)
+    for url in ([] if world_bank_read else source_pages):
         page_attempt: dict[str, Any] = {"url": url, "status": "pending", "source": "source_page"}
         try:
             limit = MAX_DOCUMENT_BYTES if url == item.get("document_url") else MAX_SOURCE_PAGE_BYTES
