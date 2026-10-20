@@ -109,9 +109,15 @@
       "acceptance": "Müşteri/yönetici giriş, kurtarma, MFA ve rol akışlarının canlı doğrulanması.",
       "evidence": {
         "tests": "423 Python tests, 4 recovery contract tests and recovery browser checks at 390px/1280px. Expired links, invalid sessions, mismatch, MFA rejection and explicit reset redirect covered without sending real email or changing a real password.",
-        "database": "Private admin feed migration applied and SQL authorization matrix passed: AAL2+admin reads private source fields; AAL1, nonadmin and anonymous rejected; API roles retain no direct private-table access. Supabase advisor findings unchanged."
+        "database": "Private admin feed migration applied and SQL authorization matrix passed: AAL2+admin reads private source fields; AAL1, nonadmin and anonymous rejected; API roles retain no direct private-table access. Supabase advisor findings unchanged.",
+        "login_return": {
+          "status": "complete",
+          "deployment": "PR #130–#133; 95925ef920042b0fbb9b477b0382e50b04c61b9f production READY. CI, mobile and production browser workflow passed.",
+          "tests": "486 Python + 25 JavaScript tests. Production asset flows with intercepted synthetic Auth/MFA/RPC passed at 390px/1280px: login, rejected MFA, successful MFA, existing AAL2, invalid server session, external redirect rejection, missing refresh credentials and initialization readiness.",
+          "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39420822104"
+        }
       },
-      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı. 20 Ekim 2026 son canlı toplu kontrolde yönetici e-postası doğrulanmış, 1 TOTP faktörü doğrulanmış, doğrulanmış yönetici telefonu 0; kişisel değerler rapora yazılmadı."
+      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı. 20 Ekim 2026 son canlı toplu kontrolde yönetici e-postası doğrulanmış, 1 TOTP faktörü doğrulanmış, doğrulanmış yönetici telefonu 0; kişisel değerler rapora yazılmadı. Teklif ekranından giriş/MFA sonrası güvenli dönüş tamamlandı. Oturum kontrolü bitmeden giriş düğmesi etkinleşmez; geçerli AAL2 yeniden kod istemeden döner, yenileme bilgisi eksikse yeniden giriş istenir. Yalnız /account, /app ve /quote-evidence hedefleri izinli; URLde belirteç/kod taşınmaz. Şifre kurtarma tamamlanmadan yönlendirme yok. Bu sentetik tarayıcı kabulü gerçek yönetici SMS/e-posta kurtarma veya müşteri kabulü değildir."
     },
     {
       "id": "P7",
@@ -212,6 +218,13 @@
       "app": 72,
       "reason": "P4 özel teklif girişi ve taramadan bağımsız kalıcı inceleme kuyruğu tamamlandı; SQL yetki/tekrar deneme ve canlı mobil/masaüstü kontrolleri geçti. Gerçek teklif 0 ve tam ticari kabul yok; sabit puan eklenmedi.",
       "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/pull/128"
+    },
+    {
+      "date": "2026-10-20",
+      "web": 77,
+      "app": 72,
+      "reason": "P6: teklif → giriş → MFA → teklife güvenli dönüş ve başlangıçta boşa giden giriş tıklaması düzeltildi; eksik yenileme bilgisi döngüsü engellendi. 486 Python + 25 JS ve canlı mobil/masaüstü akış testleri geçti. Gerçek kurtarma/SMS kabulü açık; ek puan yok.",
+      "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39420822104"
     }
   ],
   "operating_model": {
