@@ -15,6 +15,21 @@ function assess(o,now){
  var steps=[[!sourceContext,'Yeni ihale çağrısını araştır; mevcut ilan türünü incele','Source Agent','dosya'],[lots,'Kalem seçimini ve kapsamını doğrula','Specification Agent','dosya'],[!state.core,'Kaynaklı dosyanın eksik alanlarını tamamla','Opportunity Agent','dosya'],[!state.live,'Güncel son tarihi kaynaktan doğrula','Source Agent','dosya'],[!state.buyer,'Alıcı kimliğini bağımsız kaynaktan doğrula','Buyer Agent','buyer'],[!state.specification,'Şartnameyi ve ürün kapsamını doğrula','Specification Agent','dosya'],[!state.supplier,'Tam şartnameye uygun tedarikçiyi doğrula','Supplier Agent','supplier'],[!state.quote,'Geçerli gerçek tedarikçi teklifini tamamla','Price Agent','price'],[!state.margin,'Alıcı fiyatı, para birimi ve miktarı doğrula','Price Agent','price'],[!state.logistics,'Kaynaklı navlun, teslim ve maliyetleri tamamla','Logistics Agent','logistics'],[!state.risk,'Risk ve ticari koşulları incele','Risk Agent','risk']];
  state.task=steps.find(function(s){return s[0]})||[true,'İnsan ticari onayı bekleniyor','CEO / Human Review','human'];state.task=state.task.slice(1);state.next=state.task[0];return state;
 }
-root.GBEvidenceReadiness={assess:assess};
+function financials(o,now){
+ var state=assess(o,now),pm=((o||{}).workflow||{}).pricing_margin||{},result={supplier_quote:null,sell_price:null,gross_margin:null,commission:null};
+ function amount(value,minimum){
+  if(typeof value!=='number'&&typeof value!=='string')return null;
+  var text=String(value).trim();if(!text||text.length>80||!/^[-]?\d+(\.\d+)?$/.test(text)||!Number.isFinite(Number(text))||Number(text)<minimum)return null;
+  return typeof value==='number'?value:text;
+ }
+ if(!state.quote||state.lotSelection)return result;
+ var buy=amount(pm.supplier_quote,0),sell=amount(pm.sell_price,0);
+ if(buy===null||Number(buy)<=0)return result;
+ result.supplier_quote=buy;
+ if(!state.margin||sell===null||Number(sell)<=0)return result;
+ result.sell_price=sell;result.gross_margin=amount(pm.gross_margin,-Infinity);result.commission=amount(pm.commission,0);
+ return result;
+}
+root.GBEvidenceReadiness={assess:assess,financials:financials};
 if(typeof module==='object'&&module.exports)module.exports=root.GBEvidenceReadiness;
 })(typeof window==='object'?window:globalThis);
