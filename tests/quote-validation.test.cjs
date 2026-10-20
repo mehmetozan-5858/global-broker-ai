@@ -36,3 +36,11 @@ test('malformed or duplicate opportunity identifiers cannot revive older context
  for(const search of ['?opportunity=','?opportunity=https://evil.invalid','?opportunity=a&opportunity=b','?opportunity=%3Cscript%3E','?opportunity='+('a'.repeat(201))])assert.equal(requestedOpportunity(search,saved,1001),'');
  for(const value of ['broken','null','{}','[]'])assert.equal(requestedOpportunity('',value,1001),'');
 });
+
+test('freight needs distinct endpoints and supported transport scope',()=>{
+ const freight={...quote,party:'freight',origin:'Fixture A',destination:'Fixture B',incoterm:'DAP',transport_mode:'road',amount_basis:'shipment_total'};
+ assert.deepEqual(validateQuote(freight,today),{});
+ for(const name of ['origin','destination','incoterm','transport_mode'])assert.ok(validateQuote({...freight,[name]:''},today)[name]);
+ assert.ok(Object.keys(validateQuote({...freight,destination:'fixture a'},today)).length);
+ for(const [name,value] of [['incoterm','UNKNOWN'],['transport_mode','unknown']])assert.ok(validateQuote({...freight,[name]:value},today)[name]);
+});

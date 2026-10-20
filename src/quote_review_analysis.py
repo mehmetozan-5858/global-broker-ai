@@ -12,9 +12,9 @@ def analyze(context: dict, today: date | None = None) -> dict:
     item = deepcopy(context['opportunity'])
     # Rebuild quote fields from current review events, never stale prior projections.
     for key in list(item):
-        if key.startswith(('verified_unit_price', 'verified_selling', 'supplier_quote_', 'supplier_price_', 'supplier_quantity_', 'buyer_quote_', 'buyer_price_', 'buyer_quantity_')) or key in {'quote_currency', 'quote_valid_until', 'selling_currency', 'selling_quote_buyer', 'commercial_evidence_submissions'}:
+        if key.startswith(('verified_unit_price', 'verified_selling', 'supplier_quote_', 'supplier_price_', 'supplier_quantity_', 'buyer_quote_', 'buyer_price_', 'buyer_quantity_')) or key in {'quote_currency', 'quote_valid_until', 'selling_currency', 'selling_quote_buyer', 'commercial_evidence_submissions','verified_freight','verified_freight_source','freight_currency','freight_origin'}:
             item.pop(key)
-    by_party = {'supplier': [], 'buyer': []}
+    by_party = {'supplier': [], 'buyer': [], 'freight': []}
     excluded = {'expired_or_invalid': 0, 'not_reviewed': 0}
     for row in context.get('quotes', []):
         review, q = row.get('review') or {}, row.get('quote') or {}
@@ -38,6 +38,9 @@ def analyze(context: dict, today: date | None = None) -> dict:
         if not quotes:
             continue
         q = quotes[0]
+        if party == 'freight':
+            submissions.append({'kind':'freight','value':q['amount'],'currency':q['currency'],'source_url':q['source_url'],'origin':q['origin'],'destination':q['destination'],'transport_mode':q['transport_mode']})
+            continue
         submissions.append({'kind': 'unit_price' if party == 'supplier' else 'selling_unit_price',
             'value': q['amount'], 'currency': q['currency'], 'source_url': q['source_url'],
             'supplier_name' if party == 'supplier' else 'buyer_name': q['counterparty'],
@@ -71,7 +74,29 @@ def analyze(context: dict, today: date | None = None) -> dict:
         for key in list(gate):
             if key.startswith(('gross_', 'negative_spread')):
                 gate.pop(key)
-    return {'status': 'analysis_only', 'price_gate': gate,
+    freight = by_party['freight'][0] if len(by_party['freight']) == 1 else None
+    logistics = {'evidence_ready':False,'blockers':[],'landed_cost_ready':False,'net_profit_calculated':False}
+    if not freight:
+        logistics['blockers'].append('single_reviewed_freight_quote')
+    if not buy or not gate['price_ready']:
+        logistics['blockers'].append('valid_supplier_quote')
+    if freight:
+        if freight.get('amount_basis') != 'shipment_total':
+            logistics['blockers'].append('shipment_total_required')
+        if not requested or quantity(freight.get('quantity')) != requested:
+            logistics['blockers'].append('freight_quantity_scope')
+        if buy and freight.get('currency') != buy.get('currency'):
+            logistics['blockers'].append('freight_currency_match')
+        if buy and str(freight.get('price_unit','')).strip().casefold() != str(buy.get('price_unit','')).strip().casefold():
+            logistics['blockers'].append('freight_unit_match')
+        if not quantity(item.get('verified_freight')):
+            logistics['blockers'].append('source_backed_freight')
+    logistics['evidence_ready'] = not logistics['blockers']
+    if logistics['evidence_ready']:
+        logistics.update(freight_total=freight['amount'],currency=freight['currency'],origin=freight['origin'],destination=freight['destination'],incoterm=freight['incoterm'])
+        logistics['goods_plus_freight_subtotal'] = str(Decimal(buy['amount'])*requested+Decimal(freight['amount']))
+        logistics['excluded_costs'] = ['duty','tax','insurance','fees','financing','fx']
+    return {'status': 'analysis_only', 'price_gate': gate, 'logistics_gate':logistics,
         'evidence': item.get('commercial_evidence_acceptance', {'results': [], 'accepted_count': 0, 'rejected_count': 0}),
         'ambiguous_parties': ambiguous, 'excluded': excluded,
         'commercial_approval': False, 'external_actions_enabled': False, 'persisted_prices': False}

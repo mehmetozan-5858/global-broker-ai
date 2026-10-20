@@ -57,6 +57,23 @@ const base=process.env.GB_QUOTE_BASE||'https://broker.aivisibilityworks.com';
   console.log('QUOTE_EVIDENCE_UI_PASS engine='+engine.name()+' width='+width+' validation=passed date_layout=contained retry=same_request status=pending_review external_writes=blocked');
   await context.close();
  }
+ const freightContext=await browser.newContext({viewport:{width:390,height:900}}),freightPage=await freightContext.newPage();
+ await freightPage.addInitScript(()=>localStorage.setItem('gb_access_token','synthetic-freight-fixture'));
+ const freightQuotes=[];let freightBody;
+ await freightPage.route('**/rest/v1/rpc/gb_quote_evidence_workspace',r=>r.fulfill({json:{opportunities:[{id:'fixture-opportunity',title:'Synthetic freight scope'}],quotes:freightQuotes}}));
+ await freightPage.route('**/rest/v1/rpc/gb_submit_quote_evidence',r=>{freightBody=r.request().postDataJSON();freightQuotes.push({request_id:freightBody.p_request_id,opportunity_id:freightBody.p_opportunity_id,quote:freightBody.p_quote,status:'pending_review'});return r.fulfill({json:{status:'pending_review'}})});
+ await freightPage.goto(base+'/quote-evidence');await freightPage.locator('#quoteForm').waitFor({state:'visible'});
+ await freightPage.locator('#opportunity').selectOption('fixture-opportunity');
+ await freightPage.locator('#quoteForm [name=party]').selectOption('freight');
+ await freightPage.locator('#freightFields').waitFor({state:'visible'});assert.equal(await freightPage.locator('#amountTitle').innerText(),'Toplam navlun bedeli');
+ for(const [name,value] of Object.entries({counterparty:'SYNTHETIC Carrier',reference:'NOT-REAL',quote_date:new Date().toISOString().slice(0,10),valid_until:'2099-12-31',amount:'250',currency:'USD',quantity:'100',price_unit:'piece',source_url:'https://example.invalid/freight',origin:'Fixture A',destination:'Fixture B'}))await freightPage.locator('#quoteForm [name="'+name+'"]').fill(value);
+ await freightPage.locator('[name=incoterm]').selectOption('DAP');await freightPage.locator('[name=transport_mode]').selectOption('road');
+ await freightPage.locator('#save').click();await freightPage.getByText(/Kaydedildi. İnceleme bekliyor/).waitFor();await freightPage.locator('#quotes article').waitFor();
+ assert.equal(Object.keys(freightBody.p_quote).length,15);assert.equal(freightBody.p_quote.amount_basis,'shipment_total');assert.equal(freightBody.p_quote.amount,'250');
+ assert.match(await freightPage.locator('#quotes').innerText(),/Toplam navlun/);assert.match(await freightPage.locator('#quotes').innerText(),/Fixture A/);
+ assert.equal(await freightPage.locator('#freightFields').isVisible(),false);assert.ok(await freightPage.locator('[name=origin]').isDisabled());
+ assert.ok(await freightPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ console.log('FREIGHT_EVIDENCE_UI_PASS engine='+engine.name()+' amount_basis=shipment_total fields=15 reset=disabled layout=contained external_writes=blocked');await freightContext.close();
  const unknown=await browser.newContext(),unknownPage=await unknown.newPage();await unknownPage.addInitScript(()=>localStorage.setItem('gb_access_token','synthetic-quote-browser-fixture'));await unknownPage.route('**/rest/v1/rpc/**',r=>r.fulfill({json:{opportunities:[{id:'fixture-other',title:'Other opportunity'}],quotes:[]}}));await unknownPage.goto(base+'/quote-evidence?opportunity=fixture-archived');await unknownPage.getByText(/İstenen fırsat güncel listede bulunamadı/).waitFor();assert.equal(await unknownPage.locator('#opportunity').inputValue(),'');assert.equal(await unknownPage.evaluate(()=>sessionStorage.getItem('gb_quote_opportunity')),null);await unknown.close();
  for(const authenticated of [false,true]){
   const context=await browser.newContext(),page=await context.newPage();
