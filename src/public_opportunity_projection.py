@@ -144,6 +144,10 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
     # The publication pipeline may retain this bounded public summary after it
     # removes the private XML documents and provenance excerpts from its snapshot.
     public_terms = row.get("public_source_terms")
+    if not isinstance(public_terms, dict) and row.get("buyer_masked") is True and row.get("goods_status") == "goods_candidate":
+        # A previous projection contains the validated notice estimate only.
+        public_terms = {"kind": "notice_estimate", "estimated_budget": row.get("estimated_budget"),
+                        "budget_currency": row.get("budget_currency")}
     if isinstance(public_terms, dict) and public_terms.get("kind") == "notice_estimate":
         amount = public_terms.get("estimated_budget")
         currency = public_terms.get("budget_currency")

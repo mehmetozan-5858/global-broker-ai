@@ -111,9 +111,10 @@ class PublicOpportunityProjectionTests(unittest.TestCase):
         row = self.sample()
         row.update(source="TED", **{"form-type":"result"})
         row["public_product_detail"] = "Industrial machine scope"
+        row["public_source_terms"] = {"kind":"notice_estimate","estimated_budget":"500","budget_currency":"EUR"}
         first = project_public_opportunity(row)
         second = project_public_opportunity(first)
-        for key in ("goods_status","approx_quantity","source_backed_fields","source_field_total","product_detail","notice_context"):
+        for key in ("goods_status","approx_quantity","source_backed_fields","source_field_total","product_detail","notice_context","estimated_budget","budget_currency"):
             self.assertEqual(second[key], first[key])
         self.assertTrue(second["notice_context"]["research_only"])
         self.assertNotIn("Secret Buyer", str(second))
