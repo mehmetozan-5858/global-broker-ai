@@ -16,6 +16,7 @@ class OfficialDocumentLinkTests(unittest.TestCase):
         self.assertEqual(document_parser._source_page_urls(row),[row['document_url']])
         self.assertNotIn('buyer.example.test',str(project_public_opportunity(row)))
         self.assertEqual(row['ted_document_link_count'],1)
+        self.assertEqual(row['official_links'][:2],[row['source_url'],row['document_url']])
 
     def test_invalid_notice_cannot_leave_unknown_raw_url_key(self):
         row={'source':'TED','publication-number':'invalid','document-url-lot':'https://buyer.example.test/private'}
