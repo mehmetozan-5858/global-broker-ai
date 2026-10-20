@@ -11,3 +11,7 @@ Bu karar bir işletim tercihini kaydeder. Hukuki işletme türü, vergi/fatura k
 Kurumsala geçişte işletmeci kimliği, iletişim bilgileri, faturalama ve ödeme kayıtları ile ilgili metinler birlikte güncellenir. Mevcut kullanıcı/fırsat kimlikleri korunur.
 
 İlerleme puanları bu tercih nedeniyle değişmez; sabit paket kabul kuralları geçerlidir.
+
+## İletişim tercihi — 20 Ekim 2026
+
+Kullanıcı kararı: kişisel e-posta ve telefon hesap güvenliği için özel tutulur. Müşteri iletişimi platformdaki “Bize ulaşın” formundan alınır; mesajlar sunucu tarafında mevcut yönetici e-posta ayarına yönlendirilir. Kişisel adres/telefon HTML, JavaScript veya genel API yanıtında gösterilmez. Gelen mesajlar özel gelen kutusunda saklanır; e-posta hatası başarılı iletim olarak gösterilmez.

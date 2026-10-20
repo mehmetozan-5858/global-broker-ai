@@ -19,6 +19,7 @@
     { "source": "/terms", "destination": "/web/terms.html" },
     { "source": "/refund", "destination": "/web/refund.html" },
     { "source": "/progress", "destination": "/web/progress.html" },
+    { "source": "/contact", "destination": "/web/contact.html" },
     { "source": "/delivery-progress.json", "destination": "/api/delivery_progress" },
     { "source": "/web/delivery-progress.json", "destination": "/api/delivery_progress" }
   ],
