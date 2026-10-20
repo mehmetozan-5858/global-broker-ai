@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from src import document_parser
+from src.ted_search_fields import notice_context
 from src.notice_fact_cache import process as process_fact_cache
 from src.ted_xml_parser import extract_ted_contacts, is_xml_source, parse_ted_xml, extract_ted_lots, apply_ted_lots
 
@@ -39,6 +40,46 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
     return None
 
 
+def _fallback_document(xml_url: str, item: dict, attempts: list):
+    parsed = urllib.parse.urlparse(xml_url)
+    match = re.search(r"/notice/([0-9]{1,8}-[0-9]{4})/xml$", parsed.path)
+    if parsed.hostname != "ted.europa.eu" or not match:
+        raise ValueError("ted_fallback_notice_identity_missing")
+    publication = match.group(1)
+    formats = [("html", "ted_html_download")]
+    if (notice_context(item) or {}).get("call_for_tenders") is True:
+        formats.append(("pdf", "ted_pdf_download"))
+    last_error = None
+    for suffix, kind in formats:
+        url = urllib.parse.urlunparse(parsed._replace(path=parsed.path[:-3] + suffix, query="", fragment=""))
+        attempt = {"url": url, "status": "pending", "source": kind}
+        try:
+            limit = document_parser.MAX_DOCUMENT_BYTES if suffix == "pdf" else document_parser.MAX_SOURCE_PAGE_BYTES
+            data, content_type, final_url = document_parser._download(url, limit)
+            if urllib.parse.urlparse(final_url).hostname != "ted.europa.eu":
+                raise ValueError("ted_document_origin_changed")
+            if suffix == "pdf":
+                if not data.startswith(b"%PDF"):
+                    raise ValueError("ted_pdf_download_not_pdf")
+                if not re.search(r"/notice/(?:-/detail/)?" + re.escape(publication) + r"(?:/|$)", urllib.parse.urlparse(final_url).path):
+                    raise ValueError("ted_pdf_notice_url_changed")
+                text = document_parser._parse_pdf(data)
+                attachments = []
+            else:
+                if "html" not in content_type and not data.lstrip().lower().startswith((b"<!doctype html", b"<html")):
+                    raise ValueError("ted_html_download_not_html")
+                text, attachments = document_parser._parse_html_page(data, final_url)
+            identity_text = text[:1000] if suffix == "pdf" else text
+            if not re.search(r"(?<![0-9])" + re.escape(publication) + r"(?![0-9])", identity_text) or len(text) < MIN_SOURCE_TEXT_CHARS:
+                raise ValueError("ted_document_notice_identity_or_text_missing")
+            return data, content_type, final_url, text, attachments, kind, attempt
+        except Exception as error:
+            last_error = error
+            attempt.update({"status": "failed", "error": type(error).__name__ + ":" + str(error)[:180]})
+            attempts.append(attempt)
+    raise last_error or ValueError("ted_fallback_unavailable")
+
+
 def enrich_opportunity(item: dict[str, Any]) -> bool:
     url = _ted_xml_url(item)
     if not url:
@@ -64,29 +105,17 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
         except Exception as xml_error:
             attempt.update({"status": "failed", "error": type(xml_error).__name__ + ":" + str(xml_error)[:180]})
             attempts.append(attempt)
-            # TED documents a rendered HTML download, distinct from its SPA detail page.
-            # It is a bounded second attempt, not an inferred replacement document.
-            parsed = urllib.parse.urlparse(url)
-            if parsed.hostname != "ted.europa.eu" or not parsed.path.endswith("/xml"):
-                raise
-            html_url = urllib.parse.urlunparse(parsed._replace(path=parsed.path[:-3] + "html", query="", fragment=""))
-            attempt = {"url": html_url, "status": "pending", "source": "ted_html_download"}
-            data, content_type, final_url = document_parser._download(html_url, document_parser.MAX_SOURCE_PAGE_BYTES)
-            if "html" not in content_type and not data.lstrip().lower().startswith((b"<!doctype html", b"<html")):
-                raise ValueError("ted_html_download_not_html")
-            if urllib.parse.urlparse(final_url).hostname != "ted.europa.eu":
-                raise ValueError("ted_document_origin_changed")
-            text, attachments = document_parser._parse_html_page(data, final_url)
-            publication = re.search(r"/notice/([^/]+)/html", parsed.path[:-3] + "html")
-            if not publication or publication.group(1) not in text or len(text) < MIN_SOURCE_TEXT_CHARS:
-                raise ValueError("ted_html_notice_identity_or_text_missing")
-            contacts, lots, kind = {}, [], "ted_html_download"
+            data, content_type, final_url, text, attachments, kind, attempt = _fallback_document(url, item, attempts)
+            contacts, lots = {}, []
 
         if lots:
             apply_ted_lots(item, lots, final_url)
         existing = item.get("document_extracted_text")
-        parts = [existing] if isinstance(existing, str) and existing.strip() else []
-        parts.append(text)
+        # A long generic page must not consume the entire extraction budget
+        # before the identity-checked official document is included.
+        parts = [text]
+        if isinstance(existing, str) and existing.strip() and existing != text:
+            parts.append(existing)
         existing_urls = {
             a.get("url") for a in attempts if isinstance(a, dict) and a.get("status") == "parsed"
         }
@@ -133,18 +162,20 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "text_chars": len(merged),
             "ted_xml_parsed": kind == "ted_xml",
             "ted_html_parsed": kind == "ted_html_download",
+            "ted_pdf_parsed": kind == "ted_pdf_download",
             "ted_structured_contact_found": bool(contacts),
         })
         item["document_extraction"] = info
         return True
     except Exception as exc:
-        attempt.update({"status": "failed", "error": type(exc).__name__ + ":" + str(exc)[:180]})
         if attempt not in attempts:
+            attempt.update({"status": "failed", "error": type(exc).__name__ + ":" + str(exc)[:180]})
             attempts.append(attempt)
         info["attempts"] = attempts
         if not item.get("document_extracted_text"):
             info["status"] = "attempted_no_text"
         info["ted_xml_parsed"] = False
+        info["ted_pdf_parsed"] = False
         item["document_extraction"] = info
         return False
 
@@ -158,6 +189,7 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     parsed = 0
     structured_contacts = 0
     html_parsed = 0
+    pdf_parsed = 0
     lot_count = 0
     candidates = [item for item in opportunities if isinstance(item, dict) and _ted_xml_url(item)]
     attempted = len(candidates)
@@ -167,6 +199,7 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
         if success:
             parsed += int(bool((item.get("document_extraction") or {}).get("ted_xml_parsed")))
             html_parsed += int(bool((item.get("document_extraction") or {}).get("ted_html_parsed")))
+            pdf_parsed += int(bool((item.get("document_extraction") or {}).get("ted_pdf_parsed")))
             lot_count += len(item.get("ted_lots") or [])
             structured_contacts += int(bool((item.get("document_extraction") or {}).get("ted_structured_contact_found")))
 
@@ -174,11 +207,12 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(summary, dict):
         summary = {}
     summary.update({
-        "version": max(int(summary.get("version") or 0), 4),
-        "mode": "public_source_pages_documents_ted_xml_and_touchpoints",
+        "version": max(int(summary.get("version") or 0), 5),
+        "mode": "public_source_pages_documents_ted_xml_html_pdf_and_touchpoints",
         "ted_xml_attempted": attempted,
         "ted_xml_parsed": parsed,
         "ted_html_parsed": html_parsed,
+        "ted_pdf_parsed": pdf_parsed,
         "ted_structured_lots": lot_count,
         "ted_structured_contacts": structured_contacts,
         "parsed_opportunities": sum(
