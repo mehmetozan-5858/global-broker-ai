@@ -117,7 +117,14 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
     # Publish only an explicitly sourced notice estimate, never a supplier price.
     structured = row.get("structured_source_evidence")
     fact = structured.get("estimated_value") if isinstance(structured, dict) else None
-    if isinstance(fact, dict) and fact.get("inferred") is False and fact.get("source_path") == "procurementproject/requestedtendertotal/estimatedoverallcontractamount":
+    search_budget = (
+        isinstance(fact, dict) and fact.get("source_path") == "ted_search.estimated-value-lot"
+        and row.get("source") == "TED" and row.get("ted_lot_count") == 1
+        and row.get("ted_lot_selection_required") is False
+        and row.get("ted_search_lot_ids") == [fact.get("lot_id")]
+        and fact.get("source_url") == "https://ted.europa.eu/en/notice/-/detail/" + str(row.get("publication-number") or "")
+    )
+    if isinstance(fact, dict) and fact.get("inferred") is False and (search_budget or fact.get("source_path") == "procurementproject/requestedtendertotal/estimatedoverallcontractamount"):
         amount = fact.get("value")
         currency = fact.get("currency")
         try:

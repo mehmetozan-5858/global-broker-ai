@@ -9,6 +9,7 @@ if __package__:
     from .exportable_goods import classify as classify_exportable_goods
 else:
     from exportable_goods import classify as classify_exportable_goods
+from src.ted_search_fields import apply_search_fields
 from datetime import date, timedelta
 from urllib.error import HTTPError
 
@@ -35,7 +36,7 @@ CATEGORY_HINTS = {
 def ted_search(query: str, limit: int = 100):
     body=json.dumps({
         "query":query,
-        "fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","classification-cpv","description-lot","quantity-lot","procedure-type","contract-nature","links"],
+        "fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","classification-cpv","description-lot","quantity-lot","procedure-type","contract-nature","links","identifier-lot","estimated-value-lot","estimated-value-cur-lot"],
         "page":1,"limit":limit,"scope":"ACTIVE","checkQuerySyntax":False,"paginationMode":"PAGE_NUMBER","onlyLatestVersions":False
     }).encode()
     req=urllib.request.Request(TED_URL,data=body,headers={"Content-Type":"application/json","Accept":"*/*"})
@@ -407,6 +408,7 @@ def main():
         item["offer_status"]="shadow_not_sent"
         item["commission_status"]="pending_deal_value_and_agreement"
         item["export_goods_review"]=classify_exportable_goods(item)
+        apply_search_fields(item)
         out.append(item)
     # Add US federal opportunities when the official SAM.gov API key is available.
     for n in sam_search(100):
