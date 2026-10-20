@@ -82,6 +82,18 @@ class DocumentParserTests(unittest.TestCase):
         self.assertTrue(out["opportunities"][0]["document_extraction"]["reused_from_last_known_good"])
         self.assertEqual(out["document_extraction"]["reused_last_known_good"], 1)
 
+    def test_long_portal_cannot_push_discovered_pdf_out_of_text_budget(self):
+        item = {"source_url": "https://example.test/tender"}
+        page = ("<html><body><p>" + ("Portal listing content. " * 2500) + "</p><a href='/spec.pdf'>PDF</a></body></html>").encode()
+        technical = "Technical specification: measurement accuracy must be 0.1 mg. " * 3
+        def download(url, max_bytes=document_parser.MAX_DOCUMENT_BYTES):
+            return (page, "text/html", url) if url.endswith("/tender") else (b"%PDF-test", "application/pdf", url)
+        with patch.object(document_parser, "_download", side_effect=download), patch.object(document_parser, "_parse", return_value=(technical, "pdf")):
+            document_parser.enrich_opportunity(item)
+        self.assertTrue(item["document_extracted_text"].startswith(technical))
+        self.assertLessEqual(len(item["document_extracted_text"]), document_parser.MAX_EXTRACTED_CHARS)
+        self.assertTrue(analyze_opportunity(item)["specification_analysis"]["document_parsed"])
+
     def test_parsed_document_can_make_specification_source_backed_and_ready(self):
         item = {
             "document_url": "https://example.com/spec.pdf",
@@ -89,7 +101,9 @@ class DocumentParserTests(unittest.TestCase):
                 "Technical specification requires equipment capacity minimum 500 units. "
                 "Quantity 20 pieces. Delivery destination Ankara. ISO 9001 certificate required."
             ),
-            "document_extraction": {"parsed_count": 1},
+            "document_extraction": {"parsed_count": 1, "attempts": [{
+                "url": "https://example.com/spec.pdf", "source": "attachment", "kind": "pdf", "status": "parsed",
+            }]},
         }
         analyze_opportunity(item)
         spec = item["specification_analysis"]

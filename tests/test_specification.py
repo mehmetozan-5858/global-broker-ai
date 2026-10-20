@@ -4,6 +4,76 @@ from src.specification import analyze_opportunity, analyze_payload
 
 
 class SpecificationEvidenceTests(unittest.TestCase):
+    def extracted_item(self, attempts):
+        return {
+            "source_url": "https://example.test/tender",
+            "document_extracted_text": (
+                "Technical equipment requirements include minimum capacity, measurement accuracy, "
+                "stainless steel material and compatible accessories. Delivery of 25 units is required."
+            ),
+            "document_extraction": {"parsed_count": sum(a.get("status") == "parsed" for a in attempts), "attempts": attempts},
+            "dossier": {}, "workflow": {},
+        }
+
+    def test_page_read_is_not_a_parsed_attachment(self):
+        item = self.extracted_item([{"url": "https://example.test/tender", "kind": "source_page", "status": "parsed"}])
+        item["document_url"] = "https://example.test/spec.pdf"
+        spec = analyze_opportunity(item)["specification_analysis"]
+        self.assertFalse(spec["document_parsed"])
+        self.assertTrue(spec["source_page_parsed"])
+        self.assertEqual(spec["status"], "source_page_analyzed")
+        self.assertTrue(spec["attachment_requires_parsing"])
+        self.assertEqual(spec["unparsed_attachment_count"], 1)
+
+    def test_discovered_pdf_is_retained_in_private_specification_links(self):
+        item = self.extracted_item([{"url": "https://example.test/files/spec.pdf", "kind": "pdf", "status": "parsed"}])
+        spec = analyze_opportunity(item)["specification_analysis"]
+        self.assertTrue(spec["document_parsed"])
+        self.assertEqual(spec["parsed_document_count"], 1)
+        self.assertIn({"url": "https://example.test/files/spec.pdf", "kind": "pdf", "parse_status": "parsed"}, spec["documents"])
+        self.assertEqual(item["dossier"]["document_links"], spec["documents"])
+
+    def test_one_good_pdf_does_not_mark_failed_attachment_complete(self):
+        item = self.extracted_item([
+            {"url": "https://example.test/good.pdf", "kind": "pdf", "status": "parsed"},
+            {"url": "https://example.test/missing.pdf", "status": "failed"},
+        ])
+        spec = analyze_opportunity(item)["specification_analysis"]
+        self.assertTrue(spec["document_parsed"])
+        self.assertTrue(spec["attachment_requires_parsing"])
+        self.assertTrue(item["workflow"]["specification_analysis"]["attachment_requires_parsing"])
+        self.assertEqual(spec["unparsed_attachment_count"], 1)
+
+    def test_dynamic_pdf_uses_parser_kind_and_deduplicates_redirect(self):
+        item = self.extracted_item([{"url": "https://example.test/download?id=5", "final_url": "https://example.test/content/5", "kind": "pdf", "status": "parsed"}])
+        item["document_url"] = "https://example.test/download?id=5"
+        spec = analyze_opportunity(item)["specification_analysis"]
+        self.assertEqual(spec["parsed_document_count"], 1)
+        self.assertEqual(sum(d["kind"] == "pdf" for d in spec["documents"]), 1)
+        self.assertFalse(spec["attachment_requires_parsing"])
+
+    def test_legacy_total_without_provenance_does_not_prove_pdf_read(self):
+        item = self.extracted_item([])
+        item["document_url"] = "https://example.test/spec.pdf"
+        item["document_extraction"] = {"parsed_count": 1}
+        spec = analyze_opportunity(item)["specification_analysis"]
+        self.assertFalse(spec["document_parsed"])
+        self.assertFalse(spec["supplier_sourcing_ready"])
+
+    def test_pdf_url_returning_html_does_not_count_as_pdf(self):
+        item = self.extracted_item([{"url": "https://example.test/spec.pdf", "kind": "source_page", "status": "parsed"}])
+        spec = analyze_opportunity(item)["specification_analysis"]
+        self.assertFalse(spec["document_parsed"])
+        self.assertTrue(spec["attachment_requires_parsing"])
+
+    def test_payload_separates_page_and_document_counts(self):
+        page = self.extracted_item([{"url": "https://example.test/tender", "kind": "source_page", "status": "parsed"}])
+        pdf = self.extracted_item([{"url": "https://example.test/spec.pdf", "kind": "pdf", "status": "parsed"}])
+        result = analyze_payload({"opportunities": [page, pdf]})["specification_analysis"]
+        self.assertEqual(result["parsed_document_opportunities"], 1)
+        self.assertEqual(result["parsed_source_page_opportunities"], 1)
+        self.assertEqual(result["parsed_attachments"], 1)
+
     def test_structured_specification_is_sourcing_ready(self):
         item = {
             "technical-specification": "Accuracy 0.1 mg; ISO 9001 certificate required.",
