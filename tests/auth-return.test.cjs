@@ -1,0 +1,5 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const nav=require('../web/auth-return.js');
+test('known destinations survive login and MFA links',()=>{for(const target of ['/app','/account','/quote-evidence']){assert.equal(nav.next('?next='+encodeURIComponent(target)),target);assert.equal(nav.next(new URL(nav.security(target),'https://example.invalid').search),target);assert.equal(nav.next(new URL(nav.account(target),'https://example.invalid').search),target)}});
+test('external, encoded and malformed destinations are rejected',()=>{for(const value of ['https://evil.invalid','//evil.invalid','/\\evil.invalid','/quote-evidence?token=secret','/quote-evidence#access_token=secret','/quote-evidence/../app','/quote-evidence%00','%2Fquote-evidence','/unknown','javascript:alert(1)']){assert.equal(nav.next('?next='+encodeURIComponent(value)),null,value);assert.equal(nav.security(value),'/security');assert.equal(nav.account(value),'/account')}});
+test('navigation without an explicit return destination stays put',()=>{assert.equal(nav.next(''),null);assert.equal(nav.next('?code=fixture'),null);assert.equal(nav.next('?next='),null)});

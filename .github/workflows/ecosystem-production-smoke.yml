@@ -2,7 +2,7 @@ name: Ecosystem Production Smoke
 on:
   push:
     branches: [main]
-    paths: ['web/**', 'src/**', 'pyproject.toml', 'vercel.json', 'tests/ecosystem-production-smoke.cjs', 'tests/supplier-capability-smoke.cjs', 'tests/progress-smoke.cjs', 'tests/account-recovery-smoke.cjs', 'tests/contact-smoke.cjs', 'tests/evidence-readiness-smoke.cjs', 'tests/quote-evidence-smoke.cjs', 'api/**', 'sql/**', 'render_server.py', '.github/workflows/ecosystem-production-smoke.yml']
+    paths: ['web/**', 'src/**', 'pyproject.toml', 'vercel.json', 'tests/ecosystem-production-smoke.cjs', 'tests/supplier-capability-smoke.cjs', 'tests/progress-smoke.cjs', 'tests/account-recovery-smoke.cjs', 'tests/contact-smoke.cjs', 'tests/evidence-readiness-smoke.cjs', 'tests/quote-evidence-smoke.cjs', 'tests/auth-return-smoke.cjs', 'api/**', 'sql/**', 'render_server.py', '.github/workflows/ecosystem-production-smoke.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -40,6 +40,7 @@ jobs:
           node tests/account-recovery-smoke.cjs
           node tests/contact-smoke.cjs
           node tests/quote-evidence-smoke.cjs
+          node tests/auth-return-smoke.cjs
 
       - name: Wait for evidence readiness asset and verify production UI
         run: |
