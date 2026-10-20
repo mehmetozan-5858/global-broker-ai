@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
+from .ted_search_fields import notice_context
 
 
 def _bool_status(container: dict[str, Any], truthy_statuses: set[str]) -> bool:
@@ -31,6 +32,9 @@ def evaluate(item: dict[str, Any]) -> dict[str, Any]:
     )
 
     blockers: list[str] = []
+    context = notice_context(item)
+    if context is not None and context["call_for_tenders"] is not True:
+        blockers.append("not_current_tender_call")
     if not goods_ok:
         blockers.append("physical_goods")
     if not buyer_ok:

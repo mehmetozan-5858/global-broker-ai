@@ -8,7 +8,8 @@ import json
 from src.enrichment import enrich_opportunity
 from src.supplier_research import prepare
 from src.public_opportunity_projection import project_public_opportunity
-r={'source':'TED','publication-number':'681487-2026','opportunity_id':'existing-identity','title_original':'Denmark – Machines and apparatus for testing and measuring – One Photonic Wafer Probe Station and one Photonic Assembly Station','title_tr':'Makine / ekipman alımı','product_name':'Makine / ekipman alımı','specification_analysis':{'supplier_sourcing_ready':True},'export_goods_review':{'status':'goods_candidate'}}
+# Synthetic result-notice context exercises the research-only customer label.
+r={'source':'TED','form-type':'result','publication-number':'681487-2026','opportunity_id':'existing-identity','title_original':'Denmark – Machines and apparatus for testing and measuring – One Photonic Wafer Probe Station and one Photonic Assembly Station','title_tr':'Makine / ekipman alımı','product_name':'Makine / ekipman alımı','specification_analysis':{'supplier_sourcing_ready':True},'export_goods_review':{'status':'goods_candidate'}}
 enrich_opportunity(r)
 prepare(r)
 print(json.dumps({'admin':r,'public':project_public_opportunity(r)}))
@@ -23,6 +24,8 @@ print(json.dumps({'admin':r,'public':project_public_opportunity(r)}))
    await page.setViewportSize({width,height:900});await page.goto('https://fixture.invalid/');
    await page.addScriptTag({path:path.join(root,'web/customer-portal.js')});
    await page.getByRole('heading',{name:fixture.public.product_detail,exact:true}).waitFor();
+   await page.getByText('Sonuç ilanı — yeni alım çağrısı değil',{exact:true}).first().waitFor();
+   if(!await page.getByRole('button',{name:'Araştırma kaydı',exact:true}).isDisabled())throw Error('historical notice introduction enabled');
    await page.getByText('2 üreticinin ürün kabiliyeti kaynakla eşleşti; tam şartname ve teklif onayı bekleniyor',{exact:true}).waitFor();
    if((await page.locator('body').innerText()).includes('FormFactor'))throw Error('supplier identity in public projection');
    await page.goto('https://fixture.invalid/');
