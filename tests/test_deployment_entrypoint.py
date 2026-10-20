@@ -42,7 +42,10 @@ class DeploymentEntrypointTests(unittest.TestCase):
             self.assertEqual(result['surfaces']['web']['current'],77)
             self.assertEqual(result['surfaces']['app']['current'],72)
             self.assertEqual(len(result['packages']),8)
-            self.assertEqual(set(result['packages'][0]),{'id','title','points','status','acceptance'})
+            self.assertEqual(set(result['packages'][0]),{'id','title','points','status','acceptance','steps'})
+            for package in result['packages']:
+                for step in package['steps']:
+                    self.assertLessEqual(set(step), {'id','title','category','status','blocker'})
             for private in ('opportunities','email','phone','token','evidence'):
                 self.assertNotIn(private,result)
 

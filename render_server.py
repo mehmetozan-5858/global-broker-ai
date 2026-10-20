@@ -11,6 +11,7 @@ from api.contact_unlock import handler as ContactUnlockHandler
 from api.private_room import handler as PrivateRoomHandler
 from api.delivery_progress import handler as DeliveryProgressHandler
 from api.contact import handler as ContactHandler
+from api.quote_analysis import handler as QuoteAnalysisHandler
 
 ROOT = Path(__file__).resolve().parent
 WEB = ROOT / "web"
@@ -33,7 +34,7 @@ ROUTES = {
 }
 
 
-class Handler(ContactHandler, AdminOpportunitiesHandler, OpportunitiesHandler, PrivateRoomHandler, IntroductionHandler, ContactUnlockHandler):
+class Handler(ContactHandler, QuoteAnalysisHandler, AdminOpportunitiesHandler, OpportunitiesHandler, PrivateRoomHandler, IntroductionHandler, ContactUnlockHandler):
     server_version = "GlobalBrokerRender/1.0"
 
     def _serve_file(self, path: Path):
@@ -97,6 +98,8 @@ class Handler(ContactHandler, AdminOpportunitiesHandler, OpportunitiesHandler, P
 
     def do_POST(self):
         path = urlparse(self.path).path
+        if path == "/api/quote_analysis":
+            return QuoteAnalysisHandler.do_POST(self)
         if path == "/api/contact":
             return ContactHandler.do_POST(self)
         if path == "/api/introduction":

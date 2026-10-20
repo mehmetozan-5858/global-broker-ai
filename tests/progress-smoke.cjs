@@ -11,6 +11,7 @@ const root=path.resolve(__dirname,'..');
   for(const width of [390,1280]){
    await page.setViewportSize({width,height:900});await page.goto('http://127.0.0.1:'+port+'/progress');
    await page.getByText('%77',{exact:true}).waitFor();await page.getByText('%72',{exact:true}).waitFor();
+   await page.getByText(/Yol haritasındaki yazılım adımları: [0-9]+ \/ 13 tamamlandı/).waitFor();await page.getByText('Gerçek veri / kullanım kabulü: 0 / 6 tamamlandı',{exact:true}).waitFor();
    if(await page.locator('#packages details').count()!==8)throw Error('missing packages');
    await page.getByLabel('Göster').selectOption('complete');
    if(await page.locator('#packages details').count()!==2)throw Error('complete count');
@@ -23,6 +24,7 @@ const root=path.resolve(__dirname,'..');
   }
   await page.route('**/delivery-progress.json',r=>r.fulfill({status:503,json:{error:'progress_unavailable'}}));
   await page.getByRole('button',{name:'Durumu yenile'}).click();await page.getByText('Güncel ilerleme kaydı alınamadı. Yenile düğmesiyle tekrar deneyin.',{exact:true}).waitFor();
+  if(await page.locator('#stepProgress').isVisible())throw Error('stale step counts displayed');
   if(await page.locator('.percent').count())throw Error('stale percentage displayed as current');
   console.log('PROGRESS_OUTAGE_FAIL_CLOSED_PASS');
  }finally{if(browser)await browser.close();server.kill()}
