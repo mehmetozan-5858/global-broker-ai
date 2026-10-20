@@ -1,6 +1,55 @@
 {
   "version": 1,
   "notices": {
+    "685652-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-09"
+      },
+      "verified_at": "2026-10-20T18:03:55.225663+00:00"
+    },
+    "685673-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-09"
+      },
+      "verified_at": "2026-10-20T18:03:55.225663+00:00"
+    },
+    "685675-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-06"
+      },
+      "verified_at": "2026-10-20T18:03:55.225663+00:00"
+    },
+    "685713-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-10-28"
+      },
+      "verified_at": "2026-10-20T18:03:55.225663+00:00"
+    },
+    "685736-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-10-21"
+      },
+      "verified_at": "2026-10-20T18:03:55.225663+00:00"
+    },
+    "685769-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-06"
+      },
+      "verified_at": "2026-10-20T18:03:55.225663+00:00"
+    },
+    "685780-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-10-26"
+      },
+      "verified_at": "2026-10-20T18:03:55.225663+00:00"
+    },
     "681530-2026": {
       "lot_count": 1,
       "fields": {
@@ -21,6 +70,6 @@
   },
   "last_scan": {
     "reused_notices": 0,
-    "refreshed_notices": 0
+    "refreshed_notices": 7
   }
 }
