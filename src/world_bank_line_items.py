@@ -25,7 +25,9 @@ def parse(text):
     lines = [" ".join(line.split()) for line in text.splitlines() if line.strip()]
     starts = [i for i in range(len(lines) - 4)
               if tuple(line.casefold() for line in lines[i:i+5]) == HEADERS]
-    if len(starts) != 1:
+    core_headers = sum(tuple(line.casefold() for line in lines[i:i+4]) == HEADERS[1:]
+                       for i in range(len(lines) - 3))
+    if len(starts) != 1 or core_headers != 1:
         return []
     rows, seen, lots = [], set(), {}
     current = None
@@ -46,6 +48,9 @@ def parse(text):
         if current is None or cursor + 4 > len(lines):
             return []
         product, amount, unit, destination = lines[cursor:cursor+4]
+        if any(value.casefold().startswith(ENDINGS) or value.casefold() in HEADERS
+               for value in (product, amount, unit, destination)):
+            return []
         if (not _safe(product, 180) or not NUMBER.fullmatch(amount)
                 or unit.casefold() not in UNITS or not _safe(destination, 80)
                 or not re.fullmatch(r"[^\W\d_][^\d@:/\\]{1,79}", destination)):
