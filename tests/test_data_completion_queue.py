@@ -4,6 +4,13 @@ from src.data_completion_queue import build
 
 
 class DataCompletionQueueTests(unittest.TestCase):
+    def test_each_row_carries_recomputed_core_gate(self):
+        row = {"data_completion": {"core_complete": True}, "ted_lot_selection_required": True}
+        build({"opportunities": [row]})
+        self.assertFalse(row["data_completion"]["core_complete"])
+        self.assertIn("lot_selection", row["data_completion"]["missing_fields"])
+        self.assertTrue(row["data_completion"]["source_backed_only"])
+
     def test_feed_aliases_do_not_create_false_missing_fields(self):
         row = {"borrower": "Public Buyer", "title": "Industrial pumps", "qty": 12,
                "responseDeadLine": "2026-12-31", "project_ctry_code": "DE",

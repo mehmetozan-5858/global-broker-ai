@@ -18,8 +18,8 @@ This document separates code completion from production/commercial launch readin
 - **Admin dual recovery:** email + phone recovery enrollment has not been completed and the SMS provider is not verified. The database enrollment record must show both channels verified and enabled before this gate can pass.
 - **Legal review:** Privacy, Terms and Refund pages are drafts until reviewed for the actual operating entity, customer geography, tax/invoicing and brokerage model.
 - **Payment:** no provider or bank-payment production flow may be marked tested without a real test transaction, source reference and reconciled record.
-- **Business contact:** a production support/legal contact must be verified before public commercial launch.
-- **Custom domain:** a non-`vercel.app` production domain must be registered, attached and verified before the custom-domain gate passes.
+- **Business contact:** the platform contact form and private owner email forwarding passed production verification on 20 October 2026 (run 39372843723); legal-contact acceptance for the actual individual operating model remains pending.
+- **Custom domain:** broker.aivisibilityworks.com is attached, verified, and probed over HTTPS; retain the current-scan health and unauthorized-admin checks.
 - **Customer acceptance:** automated tests do not count as real-customer acceptance. A real acceptance session must be recorded explicitly.
 - **Gulf launch attestation:** current-scan evidence and explicit launch attestation are both required; an environment flag alone cannot substitute for live scan evidence.
 

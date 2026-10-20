@@ -94,3 +94,11 @@ https://broker.aivisibilityworks.com Global Broker üretim projesine eklendi ve 
 Her kaynak taraması alan adının HTTPS ana sayfasını, sağlık uç noktasını ve kimliksiz yönetici erişiminin 401 kalmasını tekrar doğrular. Başarısız okumada domain açılış kapısı false kalır. 426 Python testi geçti. P7 içindeki özel alan adı koşulu tamamlandı; ödeme/hukuk/işletme iletişimi kanıtı olmadığı için paketin tamamına puan verilmedi.
 
 Hesap/özel dosya düzeltmesi PR #106 üretimde: CI, mobil yayın ve şifre yenileme dahil tarayıcı kontrolleri başarılı. Gerçek parola değişikliği, SMS veya ödeme işlemi yapılmadı.
+
+## İletişim ve tutarlı kanıt kapıları — 20 Ekim 2026
+
+Web %77, uygulama %72. İletişim formundan mevcut özel yönetici e-postasına tek sistem testi kabul edildi; aynı kimlikle tekrar gönderim ikinci e-posta oluşturmadı. Canlı kanıt: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39372843723 . Bu gerçek müşteri kabulü değildir.
+
+Yönetici uygulamasındaki %70 doluluk eşiği artık ticari hazırlık yerine geçmez. Sunucunun her kayıtta yeniden hesapladığı temel kaynak kapısı, kalem seçimi, güncel son tarih, bağımsız alıcı doğrulaması, tam şartname tedarikçisi, geçerli teklif, alıcı fiyatı, landed cost ve risk kapıları ortak görünümde kullanılır. CEO sıralaması, günlük görev, fırsat kartı, hazır sayacı ve güvenli işlem kartı aynı kanıtlara bakar. Tam temel dosya yalnız “Kaynak dosyası tam” olarak adlandırılır; dış işlem yetkisi doğurmaz. Eksik veya eski biçimli kanıt hazır kabul edilmez.
+
+Kalan paketlerin dış kanıtları değişmedi: kaynakta eksik fırsat alanları; tam şartname tedarikçi teyidi; gerçek geçerli teklif/navlun/risk; telefon/SMS kurtarma; bireysel işletme modelinin hukuki ve ödeme kabulü; gerçek müşteri testi. Bunlar otomatik testle tamamlanmış sayılamaz.

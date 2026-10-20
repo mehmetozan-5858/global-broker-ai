@@ -112,9 +112,10 @@
       "evidence": {
         "tests": "426 Python tests + four recovery contracts; custom-domain probe requires HTTPS home marker, 204 health and 401 protected admin response. Redirects, wrong responses and TLS outages fail closed.",
         "deployment": "Vercel domain broker.aivisibilityworks.com verified=true on project prj_1gJepl5RppSeL6jtruTG0W0I3uHb. PR #106 production ready; mobile and recovery/browser workflow passed.",
-        "live_verification": "HTTPS https://broker.aivisibilityworks.com/ and /progress returned 200; www.aivisibilityworks.com remained 200. Vercel domain verification and live requests observed 2026-10-20."
+        "live_verification": "HTTPS https://broker.aivisibilityworks.com/ and /progress returned 200; www.aivisibilityworks.com remained 200. Vercel domain verification and live requests observed 2026-10-20.",
+        "contact": "Private contact form live; owner mailbox provider acceptance and deduplicated retry passed: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39372843723"
       },
-      "note": "Özel alan adı tamam: broker.aivisibilityworks.com Broker üretim projesine verified=true bağlandı. HTTPS ana sayfa, ilerleme ekranı 200; korumalı admin uç noktası kimliksiz 401. Mevcut DNS üzerinden çalıştı; satın alma veya nameserver değişimi yapılmadı. Her tarama güncel HTTPS ve yetki kapısını kontrol eder. Gerçek ödeme testi, hukuki inceleme ve doğrulanmış işletme iletişimi hâlâ eksik. Kullanıcı kararı (20 Ekim 2026): başlangıç bireysel yürütülecek, ileride kurumsala geçilecek. Şirket türü, faturalama ve doğrulanmış iletişim bilgileri ayrı açık kabul adımlarıdır."
+      "note": "Özel alan adı tamam: broker.aivisibilityworks.com Broker üretim projesine verified=true bağlandı. HTTPS ana sayfa, ilerleme ekranı 200; korumalı admin uç noktası kimliksiz 401. Mevcut DNS üzerinden çalıştı; satın alma veya nameserver değişimi yapılmadı. Her tarama güncel HTTPS ve yetki kapısını kontrol eder. Gerçek ödeme testi, hukuki inceleme ve hukuki iletişim kabulü hâlâ eksik. Kullanıcı kararı (20 Ekim 2026): başlangıç bireysel yürütülecek, ileride kurumsala geçilecek. Şirket türü, faturalama ve doğrulanmış iletişim bilgileri ayrı açık kabul adımlarıdır. Müşteri iletişim formu ve mevcut özel yönetici e-postasına yönlendirme 20 Ekim 2026 tarihinde canlıda doğrulandı; kişisel telefon/e-posta yayımlanmadı. Bu sistem testi ödeme, hukuki inceleme veya gerçek müşteri kabulü değildir."
     },
     {
       "id": "P8",

@@ -57,5 +57,7 @@ jobs:
           node --check web/ecosystem.js
           node --check web/account-recovery.js
           node --check web/contact.js
+          node --check web/evidence-readiness.js
+          node --test tests/evidence-readiness.test.cjs
           node --test tests/account-recovery.test.cjs
           node --test tests/ecosystem-handoff.test.cjs
