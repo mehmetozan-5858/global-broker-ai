@@ -1,6 +1,6 @@
 from __future__ import annotations
 # Shadow scan trigger: SAM-enabled validation.
-import json, os, urllib.request, urllib.parse
+import json, os, re, urllib.request, urllib.parse
 try:
     from src.opportunity_quality import assess
 except ModuleNotFoundError:
@@ -257,7 +257,7 @@ def score(row):
 
 def world_bank_search(limit: int = 200):
     """Public World Bank procurement notices. Fail closed: no synthetic rows."""
-    params=urllib.parse.urlencode({"format":"json","rows":limit,"os":0,"srce":"both","srt":"submission_deadline_date","order":"desc","apilang":"en","fl":"id,url,notice_type,publication_date,project_id,bid_description,procurement_category,procurement_method,deadline_date,country_code,country_name,sector,project_name"})
+    params=urllib.parse.urlencode({"format":"json","rows":limit,"os":0,"srce":"both","srt":"submission_deadline_date","order":"desc","apilang":"en","fl":"id,notice_type,noticedate,notice_status,submission_deadline_date,project_ctry_name,project_id,project_name,bid_description,procurement_group,procurement_method_name,contact_organization"})
     req=urllib.request.Request(WORLD_BANK_URL+"?"+params,headers={"User-Agent":"GlobalBrokerAI/1.0","Accept":"application/json"})
     try:
         with urllib.request.urlopen(req,timeout=40) as r:
@@ -270,10 +270,17 @@ def world_bank_search(limit: int = 200):
 
 def normalize_world_bank(n):
     title=text_of(n.get("bid_description") or n.get("notice_title") or n.get("description") or n.get("title"))
-    country=text_of(n.get("country_name") or n.get("project_ctry_name") or n.get("country") or n.get("regionname"))
-    deadline=text_of(n.get("deadline_date") or n.get("submission_deadline_date") or n.get("deadline") or n.get("closing_date"))
-    buyer=text_of(n.get("borrower") or n.get("agency") or n.get("project_name"))
+    country=text_of(n.get("project_ctry_name") or n.get("country_name") or n.get("country") or n.get("regionname"))
+    deadline=text_of(n.get("submission_deadline_date") or n.get("deadline_date") or n.get("deadline") or n.get("closing_date"))
+    buyer=text_of(n.get("contact_organization") or n.get("borrower") or n.get("agency"))
     item=dict(n)
+    # A multi-country project region is not an individual procurement country.
+    regions={"africa","western and central africa","eastern and southern africa","east asia and pacific","europe and central asia","latin america and caribbean","middle east and north africa","south asia","world","regional","caribbean","pacific islands","oecs countries"}
+    if country.strip().casefold() in regions:
+        item["world_bank_project_region"]=country
+        for key in ("country_name","project_ctry_name","country","country_code"):
+            item.pop(key,None)
+        country=""
     item["title_original"]=title
     item["title_tr"]=auto_translate_tr(title) or title
     item["detail_original"]=text_of(n.get("bid_description") or n.get("notice_text") or n.get("description") or title)
@@ -285,7 +292,15 @@ def normalize_world_bank(n):
     item["categories"]=categories(item["detail_original"])
     item["classification-cpv"]=text_of(n.get("procurement_category") or n.get("sector"))
     item["procedure-type"]=text_of(n.get("procurement_method") or n.get("notice_type"))
-    item["source_url"]=text_of(n.get("url"))
+    notice_id=text_of(n.get("id")).strip()
+    # The official dataset documents OP identifiers in this canonical notice URL.
+    # Constructing its address does not claim that its document has been read.
+    item["source_url"]=("https://projects.worldbank.org/en/projects-operations/procurement-detail/"+notice_id) if re.fullmatch(r"OP[0-9]{8}",notice_id) else ""
+    item["world_bank_source_fields"]={"buyer":"contact_organization" if n.get("contact_organization") else "borrower" if n.get("borrower") else "agency" if n.get("agency") else None,"country":"project_ctry_name" if n.get("project_ctry_name") and country else None,"deadline":"submission_deadline_date" if n.get("submission_deadline_date") else None,"source_url":"canonical_notice_id" if item["source_url"] else None}
+    if n.get("noticedate"):
+        item["publication_date"]=text_of(n["noticedate"])
+    if n.get("procurement_method_name"):
+        item["procedure-type"]=text_of(n["procurement_method_name"])
     item["source"]="WORLD_BANK"
     item["region_hint"]="GLOBAL_WORLD_BANK"
     item["mode"]="shadow"
