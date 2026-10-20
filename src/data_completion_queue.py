@@ -168,7 +168,7 @@ def _country(row: dict[str, Any]) -> Any:
 
 def _missing(row: dict[str, Any]) -> list[str]:
     missing: list[str] = []
-    if row.get("ted_lot_selection_required") is True:
+    if row.get("ted_lot_selection_required") is True or row.get("source_lot_selection_required") is True:
         missing.append("lot_selection")
     if not _known(_buyer(row)):
         missing.append("buyer_identity")
