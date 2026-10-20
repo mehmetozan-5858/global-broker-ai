@@ -29,10 +29,11 @@ def relay(row,ip,secret):
     raw=json.dumps(row,ensure_ascii=False,separators=(',',':')).encode()
     timestamp=str(int(time.time()))
     signature=hmac.new(secret.encode(),timestamp.encode()+b'\n'+raw,hashlib.sha256).hexdigest()
-    request=Request(RELAY,data=raw,method='POST',headers={'Content-Type':'application/json','X-Broker-Timestamp':timestamp,'X-Broker-Signature':signature})
+    request=Request(RELAY,data=raw,method='POST',headers={'Content-Type':'application/json','X-Broker-Timestamp':timestamp,'X-Broker-Signature':signature,'User-Agent':'GlobalBrokerContact/1.0'})
     try:response=urlopen(request,timeout=45)
     except HTTPError as error:response=error
     with response:
+        print('broker-contact relay-status',response.status,flush=True)
         result=json.loads(response.read(16000))
         if response.status in (200,202) and result.get('id')==row['id'] and result.get('state') in ('email_accepted','queued'):
             return response.status,{'ok':True,'id':row['id'],'state':result['state']}
@@ -57,8 +58,12 @@ class handler(BaseHTTPRequestHandler):
         try:row=validate(json.loads(self.rfile.read(size)))
         except (ValueError,UnicodeDecodeError):return self._contact_json(400,{'error':'invalid-contact'})
         secret=os.getenv('BROKER_CONTACT_RELAY_SECRET','')
-        if len(secret)<32:return self._contact_json(503,{'error':'contact-unavailable'})
+        if len(secret)<32:
+            print('broker-contact relay-not-configured',flush=True)
+            return self._contact_json(503,{'error':'contact-unavailable'})
         ip=(self.headers.get('x-vercel-forwarded-for') or self.headers.get('x-forwarded-for') or self.client_address[0]).split(',')[0].strip()[:120]
         try:status,result=relay(row,ip,secret)
-        except (URLError,TimeoutError,OSError,ValueError,TypeError):status,result=503,{'error':'contact-unavailable'}
+        except (URLError,TimeoutError,OSError,ValueError,TypeError) as error:
+            print('broker-contact relay-error',type(error).__name__,flush=True)
+            status,result=503,{'error':'contact-unavailable'}
         return self._contact_json(status,result)
