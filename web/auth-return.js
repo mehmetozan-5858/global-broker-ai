@@ -1,5 +1,5 @@
 (function(root){'use strict';
-var allowed=['/account','/app','/quote-evidence'];
+var allowed=['/account','/app','/quote-evidence','/membership'];
 function safe(value){return allowed.indexOf(value)>=0?value:null}
 function next(search){return safe(new URLSearchParams(search||'').get('next'))}
 function path(base,target){target=safe(target);return target?base+'?next='+encodeURIComponent(target):base}

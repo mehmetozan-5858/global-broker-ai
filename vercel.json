@@ -6,6 +6,7 @@
     }
   },
   "rewrites": [
+    { "source": "/membership", "destination": "/web/membership.html" },
     { "source": "/data/latest-opportunities.json", "destination": "/api/opportunities" },
     { "source": "/", "destination": "/web/website-mobile.html" },
     { "source": "/website.html", "destination": "/web/website-mobile.html" },
