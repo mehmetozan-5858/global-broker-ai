@@ -107,7 +107,9 @@ def process(rows: list[dict], cache: dict, now: str | None = None) -> dict:
         row['notice_cached_fields'] = filled
         row['ted_lot_count'] = 1
         row['ted_lot_selection_required'] = False
-        if row.get('estimated_value') == saved['fields'].get('estimated_value') and row.get('budget_currency') == saved['fields'].get('budget_currency'):
+        if ('estimated_value' in saved['fields'] and 'budget_currency' in saved['fields']
+                and row.get('estimated_value') == saved['fields']['estimated_value']
+                and row.get('budget_currency') == saved['fields']['budget_currency']):
             row['public_source_terms'] = {'kind':'notice_estimate','estimated_budget':row['estimated_value'],'budget_currency':row['budget_currency']}
         reused += 1
     entries = dict(sorted(entries.items(), key=lambda pair: pair[1]['verified_at'], reverse=True)[:1000])
