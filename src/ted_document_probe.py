@@ -14,7 +14,8 @@ def main():
     end=date.today();start=end-timedelta(days=14)
     result=ted_search(f'publication-date >= {start:%Y%m%d} AND publication-date <= {end:%Y%m%d}',25)
     rows=[apply_search_fields(dict(row,source='TED')) for row in result.get('notices',result.get('results',[])) if isinstance(row,dict)]
-    selected=[row for row in rows if (notice_context(row) or {}).get('call_for_tenders') is True][:2]
+    candidates=[row for row in rows if (notice_context(row) or {}).get('call_for_tenders') is True]
+    selected=sorted(candidates,key=lambda row:bool(row.get('ted_document_link_count')),reverse=True)[:2]
     if not selected:raise RuntimeError('No current competition notices available for document probe')
     def read(row):
         document_parser.enrich_opportunity(row)
@@ -42,6 +43,6 @@ def main():
                     kind+='_'+reason
                 counts['error_'+('HTTP_'+code.group(1) if code else kind)]+=1
         assert 'verified_unit_price' not in row and row.get('buyer_verified') is not True
-    print('TED_DOCUMENT_SOURCE_PROBE',json.dumps({'attempted':len(selected),'parsed':sum(success),'no_text':len(selected)-sum(success),**dict(counts)},sort_keys=True))
+    print('TED_DOCUMENT_SOURCE_PROBE',json.dumps({'attempted':len(selected),'selected_with_document_links':sum(bool(row.get('ted_document_link_count')) for row in selected),'parsed':sum(success),'no_text':len(selected)-sum(success),**dict(counts)},sort_keys=True))
 
 if __name__=='__main__':main()
