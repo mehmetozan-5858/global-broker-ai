@@ -61,6 +61,63 @@ class PublicOpportunityProjectionTests(unittest.TestCase):
         self.assertNotIn("agent_center", feed)
         self.assertEqual(feed["opportunities"][0]["buyer_display"], BUYER_DISPLAY)
 
+    def test_scope_review_removes_flat_price_and_quantity_without_inventing_lot_count(self):
+        row = self.sample()
+        row.update(source_lot_selection_required=True, public_source_terms={"kind":"notice_estimate", "estimated_budget":"500", "budget_currency":"USD"})
+        out = project_public_opportunity(row)
+        self.assertTrue(out["lot_selection_required"])
+        self.assertNotIn("approx_quantity", out)
+        self.assertNotIn("estimated_budget", out)
+        self.assertNotIn("lot_count", out)
+        self.assertIn("lot_selection", out["dossier_missing_fields"])
+
+    def test_source_review_metadata_never_includes_document_or_private_missing_notes(self):
+        row = self.sample()
+        row["document_extraction"] = {"parsed_count":1,"attempts":[{"status":"parsed","format":"world_bank_notice_json","url":"https://private.example/notice"}]}
+        row["data_completion"] = {"missing_fields":["quantity_or_budget","deadline","Secret buyer email@example.test",{"note":"private"}]}
+        out = project_public_opportunity(row)
+        self.assertEqual(out["source_text_status"], "official_notice_read")
+        self.assertEqual(out["dossier_missing_fields"], ["quantity_or_budget","deadline"])
+        self.assertNotIn("private.example", str(out))
+        self.assertNotIn("email@example.test", str(out))
+        self.assertNotIn("secret full notice", str(out))
+
+    def test_safe_review_metadata_survives_feed_then_api_projection(self):
+        row = self.sample()
+        row.update(source_lot_selection_required=True, ted_lot_count=2)
+        row["document_extraction"] = {"parsed_count":1}
+        row["data_completion"] = {"missing_fields":["quantity_or_budget"]}
+        first = project_public_opportunity(row)
+        second = project_public_opportunity(first)
+        for key in ("source_text_status","dossier_missing_fields","lot_selection_required","lot_count"):
+            self.assertEqual(second[key], first[key])
+        self.assertNotIn("approx_quantity", second)
+
+    def test_read_count_without_text_or_boolean_count_is_not_read_confirmation(self):
+        for extraction in ({"parsed_count":1}, {"parsed_count":True}, {"parsed_count":"1"}):
+            row = self.sample(); row["document_extraction"] = extraction
+            if extraction["parsed_count"] == 1 and type(extraction["parsed_count"]) is int:
+                row.pop("document_extracted_text")
+            self.assertEqual(project_public_opportunity(row)["source_text_status"], "pending")
+
+    def test_unknown_or_malformed_review_metadata_is_dropped(self):
+        for status in ({"private":"secret"}, ["read"], "approved", True):
+            row = self.sample(); row["source_text_status"] = status
+            self.assertNotIn("source_text_status", project_public_opportunity(row))
+        row = self.sample(); row["source_lot_selection_required"] = "true"
+        self.assertNotIn("lot_selection_required", project_public_opportunity(row))
+
+    def test_masked_feed_keeps_customer_fields_and_result_notice_restriction(self):
+        row = self.sample()
+        row.update(source="TED", **{"form-type":"result"})
+        row["public_product_detail"] = "Industrial machine scope"
+        first = project_public_opportunity(row)
+        second = project_public_opportunity(first)
+        for key in ("goods_status","approx_quantity","source_backed_fields","source_field_total","product_detail","notice_context"):
+            self.assertEqual(second[key], first[key])
+        self.assertTrue(second["notice_context"]["research_only"])
+        self.assertNotIn("Secret Buyer", str(second))
+
 
 if __name__ == "__main__":
     unittest.main()
