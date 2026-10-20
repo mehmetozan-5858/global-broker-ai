@@ -21,7 +21,7 @@ jobs:
       - name: Install read-only browser test runner
         run: |
           npm install --no-save --package-lock=false playwright
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium webkit
       - name: Wait for reviewed handoff deployment
         run: |
           for attempt in $(seq 1 18); do
