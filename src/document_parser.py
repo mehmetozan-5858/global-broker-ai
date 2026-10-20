@@ -321,6 +321,8 @@ def _world_bank_notice(item: dict[str, Any], attempts: list[dict[str, Any]], par
         if len(text) < 160:
             raise ValueError("insufficient_world_bank_notice_text")
         _append_text(parts, text)
+        from src.world_bank_line_items import annotate as annotate_line_items
+        annotate_line_items(item, text, final_url)
         # A notice may describe several lots. Keep the text available for review
         # while refusing automatic promotion of a single aggregate scope.
         if re.search(r"\blots?\b", text, re.I):

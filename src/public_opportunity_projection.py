@@ -170,6 +170,14 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
         result["lot_selection_required"] = True
     if "lot_count" not in result and type(row.get("lot_count")) is int and row["lot_count"] > 0:
         result["lot_count"] = row["lot_count"]
+    if row.get("source") == "WORLD_BANK" and type(row.get("source_lot_count")) is int and 0 < row["source_lot_count"] <= 64:
+        result["lot_count"] = row["source_lot_count"]
+    line_items = row.get("source_line_items")
+    evidence = row.get("source_line_items_evidence")
+    if isinstance(line_items, list) and isinstance(evidence, dict) and evidence.get("method") == "explicit_notice_table" and 0 < len(line_items) <= 64:
+        result["source_line_item_count"] = len(line_items)
+    elif type(row.get("source_line_item_count")) is int and 0 < row["source_line_item_count"] <= 64:
+        result["source_line_item_count"] = row["source_line_item_count"]
     extraction = row.get("document_extraction")
     if isinstance(extraction, dict):
         attempts = extraction.get("attempts")

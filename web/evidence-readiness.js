@@ -6,7 +6,7 @@ function assess(o,now){
  var today=(now||new Date()).toISOString().slice(0,10);
  function date(v){return typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&!isNaN(Date.parse(v))&&new Date(v).toISOString().slice(0,10)===v?v:null}
  var deadline=date(o.deadline_normalized),expiry=date(price.quote_valid_until);
- var lots=o.ted_lot_selection_required===true;
+ var lots=o.ted_lot_selection_required===true||o.source_lot_selection_required===true;
  var sourceContext=o.source!=="TED"||(o.notice_context||{}).call_for_tenders===true;
  var state={core:core.core_complete===true&&!lots,live:!!deadline&&deadline>=today,buyer:buyer.verified===true||['verified','source_verified'].includes(buyer.status),supplier:(o.supplier_research||{}).candidate_suppliers instanceof Array&&(o.supplier_research.candidate_suppliers).some(function(c){return c.verified===true&&c.financial_evidence_eligible===true&&c.exact_spec_match_verified===true}),quote:price.price_ready===true&&!!expiry&&expiry>=today,margin:price.margin_ready===true,logistics:feasibility.landed_cost_ready===true,risk:offer.draft_offer_ready===true&&offer.risk_review_required===false&&Array.isArray(offer.risk_flags)&&offer.risk_flags.length===0,specification:spec.supplier_sourcing_ready===true,lotSelection:lots,externalActionAuthorized:false};
  state.ready=sourceContext&&state.core&&state.live&&state.buyer&&state.specification&&state.supplier&&state.quote&&state.margin&&state.logistics&&state.risk;
