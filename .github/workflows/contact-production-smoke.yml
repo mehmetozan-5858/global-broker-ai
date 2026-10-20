@@ -1,0 +1,26 @@
+name: Contact Owner Mailbox Smoke
+on:
+  push:
+    branches: [main]
+    paths: ['tests/contact-production-smoke.cjs', '.github/workflows/contact-production-smoke.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: broker-contact-owner-smoke
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser runner
+        run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Verify one owner email and deduplicated retry
+        run: node tests/contact-production-smoke.cjs
