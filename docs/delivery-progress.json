@@ -149,9 +149,15 @@
           "deployment": "PR #141 / c518a1afad457fc260b813a8728137e9ee1dddf5 production READY; CI and mobile deployment passed.",
           "tests": "486 Python + 44 JavaScript tests. Shared numeric projection and actual web/app render regressions cover expired/missing evidence, unselected lots, malformed/nonfinite values, absent shared module, quote-only evidence, negative margins and zero commission. Production Chromium (390/1280px) and WebKit (390px) passed 24 financial-view scenarios across app.html/index.html and pricing/commission/payment desks with intercepted synthetic feeds; no real quote or payment created.",
           "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39439289957"
+        },
+        "quote_review_analysis": {
+          "status": "complete",
+          "tests": "496 Python + 44 JavaScript tests passed. Both rolled-back SQL authorization matrices passed; no persisted test quotes or reviews. Chromium 320/390/1280px and WebKit 390px review checks passed: required document checks, one audit event after ambiguous 503/retry, stale revision rejection, safe note text and analysis-only preview. Live anonymous preview request returned 401; direct table/anon RPC access denied. Progress UI and outage clearing passed at 390/1280px.",
+          "deployment": "PR #143 / a34c04f820d4676b35a69475d406d0f930f5a8ef and test correction #144 / 3d3be48d38e8fabd5bb6713125a809844beb395a production READY; CI and mobile passed.",
+          "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39443691329"
         }
       },
-      "note": "Geçerli gerçek tedarikçi teklifi, miktar, para birimi ve navlun kanıtları henüz yok. Fırsat detay ekranı ortak kaynak/tarih/şartname/tedarikçi/teklif/lojistik/risk kapılarına bağlandı. Süresi geçmiş veya doğrulanmamış fiyat ile türetilmiş satış fiyatı, brüt marj ve komisyon bu ekranda geçerli tutar gibi gösterilmez. Bu arayüz doğrulaması gerçek teklif veya ticari kabul yerine geçmez; P4 engelli kalır. Özel teklif kayıt ekranı tamamlandı: yönetici+AAL2, güncel fırsata bağlı alış/satış kaydı, kaynak URL ve tüm teklif metadatası, taramadan ayrı kalıcı saklama, aynı istekle güvenli tekrar. Bütün kayıtlar pending_review; kabul motoruna doğrulanmış fiyat olarak otomatik aktarılmaz. 20 Ekim 2026 canlı kontrolde gerçek kayıtlı teklif 0; P4 gerçek geçerli teklif/navlun/inceleme kanıtını bekler. PR #135: mobil tarih alanı taşması düzeltildi. Gerçek takvim tarihi/tarih sırası, pozitif sınırlı ondalık fiyat-miktar ve güvenli HTTPS belge bağlantısı kaydetmeden önce kontrol edilir; hata alan bazında gösterilir, form korunur. Süresi geçmiş kanıt arşivlenebilir; geçerli ticari fiyat olarak kabul edilmez. 320/390/1280px Chromium ve 390px WebKit üretim testleri geçti; gerçek teklif/navlun kabulü hâlâ açık. PR #139: yönetici fırsat kartları/dosyasından ilgili fırsata teklif kaydı açılır. Aynı başlıkta iki kayıt sabit özel kimlikle ayrılır; belirsiz başlık eşleşmesinden teklif bağlantısı verilmez. Giriş/MFA boyunca yalnız süreli fırsat kimliği taşınır; sunucunun yetkili listesinde eşleşmeyen kimlikte seçim boş bırakılır. Fırsat adı/kimliği formda ve geçmişte görünür, kayıttan sonra seçim korunur; fiyat veya gerçek teklif otomatik üretilmez. PR #141: web, yönetici uygulaması ve dosya fiyat görünümü aynı kanıtlı tutar süzgecini kullanır. Süresi geçmiş/doğrulanmamış teklif ile belirsiz kalem kapsamı tutar göstermez; alış/satış kanıtı tamamlanmadan satış, marj ve komisyon gösterilmez. Geçerli kaynaklı negatif marj gizlenmez; sıfır komisyon desteklenir. Doğrulanmamış serbest metin komisyon potansiyeli hesaplanan tutar gibi gösterilmez. Bunlar arayüz kontrolleridir; fiyat kabulü, tahsilat veya net kâr kanıtı değildir.",
+      "note": "Geçerli gerçek tedarikçi teklifi, miktar, para birimi ve navlun kanıtları henüz yok. Fırsat detay ekranı ortak kaynak/tarih/şartname/tedarikçi/teklif/lojistik/risk kapılarına bağlandı. Süresi geçmiş veya doğrulanmamış fiyat ile türetilmiş satış fiyatı, brüt marj ve komisyon bu ekranda geçerli tutar gibi gösterilmez. Bu arayüz doğrulaması gerçek teklif veya ticari kabul yerine geçmez; P4 engelli kalır. Özel teklif kayıt ekranı tamamlandı: yönetici+AAL2, güncel fırsata bağlı alış/satış kaydı, kaynak URL ve tüm teklif metadatası, taramadan ayrı kalıcı saklama, aynı istekle güvenli tekrar. Bütün kayıtlar pending_review; kabul motoruna doğrulanmış fiyat olarak otomatik aktarılmaz. 20 Ekim 2026 canlı kontrolde gerçek kayıtlı teklif 0; P4 gerçek geçerli teklif/navlun/inceleme kanıtını bekler. PR #135: mobil tarih alanı taşması düzeltildi. Gerçek takvim tarihi/tarih sırası, pozitif sınırlı ondalık fiyat-miktar ve güvenli HTTPS belge bağlantısı kaydetmeden önce kontrol edilir; hata alan bazında gösterilir, form korunur. Süresi geçmiş kanıt arşivlenebilir; geçerli ticari fiyat olarak kabul edilmez. 320/390/1280px Chromium ve 390px WebKit üretim testleri geçti; gerçek teklif/navlun kabulü hâlâ açık. PR #139: yönetici fırsat kartları/dosyasından ilgili fırsata teklif kaydı açılır. Aynı başlıkta iki kayıt sabit özel kimlikle ayrılır; belirsiz başlık eşleşmesinden teklif bağlantısı verilmez. Giriş/MFA boyunca yalnız süreli fırsat kimliği taşınır; sunucunun yetkili listesinde eşleşmeyen kimlikte seçim boş bırakılır. Fırsat adı/kimliği formda ve geçmişte görünür, kayıttan sonra seçim korunur; fiyat veya gerçek teklif otomatik üretilmez. PR #141: web, yönetici uygulaması ve dosya fiyat görünümü aynı kanıtlı tutar süzgecini kullanır. Süresi geçmiş/doğrulanmamış teklif ile belirsiz kalem kapsamı tutar göstermez; alış/satış kanıtı tamamlanmadan satış, marj ve komisyon gösterilmez. Geçerli kaynaklı negatif marj gizlenmez; sıfır komisyon desteklenir. Doğrulanmamış serbest metin komisyon potansiyeli hesaplanan tutar gibi gösterilmez. Bunlar arayüz kontrolleridir; fiyat kabulü, tahsilat veya net kâr kanıtı değildir. PR #143/#144: gerekçeli teklif incelemesi ve analiz önizlemesi tamamlandı. Yönetici+AAL2, üç belge/kapsam/tutar kontrolü, değişmez özgün teklif, eklemeli karar geçmişi, aynı istekte tek olay ve eski sürüm reddi doğrulandı. Yalnız son kabul kararı analizde kullanılır; ret/iptal ve süresi geçmiş kanıtlar dışlanır. Birden çok aynı-taraf teklifinde ilk kayıt seçilmez; miktar/birim kapsamı uyuşmazsa hesap engellenir. Analiz geçici kopyada çalışır; fiyatları kalıcı yazmaz, ticari onay veya para hareketi oluşturmaz. Gerçek kayıtlı teklif/karar 0; P4 gerçek ticari kabulü bekler.",
       "steps": [
         {
           "id": "quote_intake",
@@ -182,7 +188,12 @@
           "id": "quote_review",
           "title": "Gerekçeli teklif incelemesi ve analiz önizlemesi",
           "category": "software",
-          "status": "in_progress"
+          "status": "complete",
+          "evidence": {
+            "tests": "496 Python + 44 JavaScript tests passed. Both rolled-back SQL authorization matrices passed; no persisted test quotes or reviews. Chromium 320/390/1280px and WebKit 390px review checks passed: required document checks, one audit event after ambiguous 503/retry, stale revision rejection, safe note text and analysis-only preview. Live anonymous preview request returned 401; direct table/anon RPC access denied. Progress UI and outage clearing passed at 390/1280px.",
+            "deployment": "PR #143 / a34c04f820d4676b35a69475d406d0f930f5a8ef and test correction #144 / 3d3be48d38e8fabd5bb6713125a809844beb395a production READY; CI and mobile passed.",
+            "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39443691329"
+          }
         },
         {
           "id": "logistics_intake",
@@ -499,6 +510,13 @@
       "app": 72,
       "reason": "P4: fiyat, komisyon ve ödeme sekmelerinin ham/eski tutarları göstermesi düzeltildi; web/uygulama/dosya ortak kanıtlı tutar görünümüne bağlandı. 486 Python + 44 JS ve 24 Chromium/WebKit senaryosu geçti. Gerçek teklif/navlun ve ticari kabul açık; ek puan yok.",
       "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39439289957"
+    },
+    {
+      "date": "2026-10-20",
+      "web": 77,
+      "app": 72,
+      "reason": "P4 ana işlevi: sürümlü gerekçeli teklif incelemesi ve yetkili analiz önizlemesi tamamlandı. 496 Python + 44 JS, SQL yetki/sürüm/tekrar deneme ve Chromium/WebKit geçti. Yeni takipte kalan yol haritasındaki yazılım adımları 11/13, gerçek kabul 0/6. Paket puanları gerçek kabul eksikleri nedeniyle değişmedi.",
+      "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39443691329"
     }
   ],
   "operating_model": {
