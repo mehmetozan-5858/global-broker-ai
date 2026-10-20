@@ -94,3 +94,54 @@ class WorldBankNoticeReaderTests(unittest.TestCase):
         self.assertEqual(row['document_extraction']['parsed_count'], 1)
         self.assertEqual(row['document_extraction']['attempts'][0]['status'], 'failed')
         self.assertEqual(row['document_extraction']['attempts'][1]['status'], 'parsed')
+
+    def test_notice_attachments_are_read_with_origin_and_remain_private(self):
+        row = self.row()
+        link = 'https://documents.example.invalid/specification.txt'
+        body = self.body + '<a href="' + link + '">Technical specification</a>'
+        detail = ('Technical specification: exact model and delivery requirements. ' * 5).encode()
+        response = self.response([{'id': self.identity, 'notice_text': body}])
+        with patch.object(document_parser, '_download', side_effect=[response, (detail, 'text/plain', link)]) as download:
+            document_parser.enrich_opportunity(row)
+        self.assertEqual(download.call_count, 2)
+        extraction = row['document_extraction']
+        self.assertEqual(extraction['discovered_attachment_count'], 1)
+        self.assertEqual(extraction['parsed_count'], 2)
+        self.assertEqual(extraction['attempts'][1]['discovered_from'], extraction['attempts'][0]['url'])
+        self.assertTrue(row['document_extracted_text'].startswith(detail.decode().strip()))
+        public = json.dumps(project_public_opportunity(row))
+        self.assertNotIn(link, public)
+        self.assertNotIn('document_extracted_text', public)
+        self.assertNotIn('verified_unit_price', row)
+
+    def test_discovery_deduplicates_existing_documents_and_caps_new_ones(self):
+        row = self.row()
+        existing = 'https://documents.example.invalid/existing.txt'
+        row['document_url'] = existing
+        links = [existing] + ['https://documents.example.invalid/file%d.pdf' % i for i in range(8)]
+        body = self.body + ''.join('<a href="%s">Document</a>' % link for link in links * 2)
+        found = []
+        with patch.object(document_parser, '_download', return_value=self.response([{'id': self.identity, 'notice_text': body}])):
+            self.assertTrue(document_parser._world_bank_notice(row, [], [], found))
+        self.assertNotIn(existing, found)
+        self.assertEqual(len(found), len(set(found)))
+        self.assertLessEqual(len(found), document_parser.MAX_DISCOVERED_ATTACHMENTS)
+
+    def test_failed_attachment_does_not_claim_specification_read(self):
+        row = self.row()
+        body = self.body + '<a href="http://127.0.0.1/private.pdf">Document</a>'
+        response = self.response([{'id': self.identity, 'notice_text': body}])
+        with patch.object(document_parser, '_download', side_effect=[response, ValueError('non_public_or_unresolvable_url')]):
+            document_parser.enrich_opportunity(row)
+        attempts = row['document_extraction']['attempts']
+        self.assertEqual(attempts[0]['status'], 'parsed')
+        self.assertEqual(attempts[1]['status'], 'failed')
+        self.assertEqual(row['document_extraction']['parsed_count'], 1)
+        self.assertNotIn('verified_unit_price', row)
+
+    def test_wrong_notice_cannot_supply_attachment_links(self):
+        found = []
+        body = self.body + '<a href="https://documents.example.invalid/private.pdf">Document</a>'
+        with patch.object(document_parser, '_download', return_value=self.response([{'id': 'OP00000001', 'notice_text': body}])):
+            self.assertFalse(document_parser._world_bank_notice(self.row(), [], [], found))
+        self.assertEqual(found, [])
