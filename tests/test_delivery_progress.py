@@ -3,7 +3,7 @@ import json
 import unittest
 from pathlib import Path
 
-from src.delivery_progress import build
+from src.delivery_progress import build, public_summary
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -40,5 +40,23 @@ class DeliveryProgressTests(unittest.TestCase):
 
     def test_duplicate_ids_rejected(self):
         self.ledger["packages"].append(copy.deepcopy(self.ledger["packages"][0]))
+        with self.assertRaises(ValueError):
+            build(self.ledger)
+
+    def test_step_progress_never_awards_package_points_or_exposes_private_evidence(self):
+        self.ledger['packages'][0]['steps'] = [{'id': 'fixture', 'title': 'Fixture software', 'category': 'software', 'status': 'complete',
+            'evidence': {'tests': 'PRIVATE_SENTINEL', 'deployment': 'READY', 'live_verification': 'checked'}}]
+        result = public_summary(self.ledger)
+        self.assertEqual(result['surfaces']['web']['current'], 70)
+        self.assertNotIn('PRIVATE_SENTINEL', json.dumps(result))
+        self.assertGreater(result['step_summary']['software']['complete'], 0)
+
+    def test_completed_step_requires_all_evidence_and_duplicate_ids_are_rejected(self):
+        step = {'id': 'fixture', 'title': 'Fixture', 'category': 'software', 'status': 'complete', 'evidence': {'tests': 'local only'}}
+        self.ledger['packages'][0]['steps'] = [step]
+        with self.assertRaises(ValueError):
+            build(self.ledger)
+        step['status'] = 'pending'
+        self.ledger['packages'][0]['steps'].append(copy.deepcopy(step))
         with self.assertRaises(ValueError):
             build(self.ledger)

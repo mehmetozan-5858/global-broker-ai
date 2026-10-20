@@ -2,6 +2,7 @@
 const {chromium,webkit}=require('playwright'),assert=require('node:assert/strict');
 const base=process.env.GB_QUOTE_BASE||'https://broker.aivisibilityworks.com';
 (async()=>{for(const engine of [chromium,webkit]){const browser=await engine.launch();try{
+ const probe=await browser.newContext();const anonymous=await probe.request.post(base+'/api/quote_analysis',{data:{opportunity_id:'fixture'}});assert.equal(anonymous.status(),401);assert.match(anonymous.headers()['cache-control'],/no-store/);await probe.close();
  for(const width of (engine===webkit?[390]:[320,390,1280])){
   const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage();
   await page.addInitScript(()=>localStorage.setItem('gb_access_token','synthetic-quote-browser-fixture'));
@@ -43,6 +44,16 @@ const base=process.env.GB_QUOTE_BASE||'https://broker.aivisibilityworks.com';
   assert.ok((await page.locator('#quotes').innerText()).includes(values.counterparty));
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   assert.deepEqual(await page.evaluate(()=>Object.keys(localStorage)),['gb_access_token']);
+  const reviewCalls=[];let reviewEvents=0;
+  await page.route('**/rest/v1/rpc/gb_review_quote_evidence',r=>{const body=r.request().postDataJSON();reviewCalls.push(body);if(body.p_decision==='rejected')return r.fulfill({status:409,json:{code:'40001'}});if(!quotes[0].review){quotes[0].review={review_id:body.p_review_id,revision:1,decision:body.p_decision,note:body.p_note,checks:body.p_checks};quotes[0].review_count=++reviewEvents;return r.fulfill({status:503,json:{}})}return r.fulfill({json:{review_id:body.p_review_id,revision:1,decision:body.p_decision,duplicate:true}})});
+  let review=page.locator('#quotes article form');await review.locator('select').selectOption('accepted_for_analysis');await review.locator('textarea').fill('SYNTHETIC review note <img src=x onerror=alert(1)>');await review.getByRole('button').click();await page.getByText(/Analize kabul için belge/).waitFor();assert.equal(reviewCalls.length,0);
+  for(const check of await review.locator('input[type=checkbox]').all())await check.check();
+  await review.getByRole('button').click();await page.waitForFunction(()=>document.getElementById('status').textContent.includes('İşlem tamamlanamadı'));assert.ok((await review.locator('textarea').inputValue()).includes('SYNTHETIC'));
+  await review.getByRole('button').click();await page.waitForFunction(()=>document.getElementById('status').textContent.includes('İnceleme kararı kaydedildi'));assert.equal(reviewCalls[0].p_review_id,reviewCalls[1].p_review_id);assert.equal(reviewEvents,1);assert.equal(await page.locator('#quotes img').count(),0);
+  await page.route('**/api/quote_analysis',r=>{assert.deepEqual(r.request().postDataJSON(),{opportunity_id:'fixture-opportunity'});return r.fulfill({json:{status:'analysis_only',price_gate:{price_ready:false,margin_ready:false,missing_or_invalid:['financially_eligible_exact_spec_supplier']},ambiguous_parties:[],persisted_prices:false}})});
+  await page.getByRole('button',{name:'Bu fırsatın inceleme analizini aç'}).click();await page.getByText(/Analiz önizlemesi: geçerli alış teklifi henüz yok/).waitFor();
+  await page.locator('#quotes details').evaluate(e=>e.open=true);review=page.locator('#quotes article form');await review.locator('select').selectOption('rejected');await review.locator('textarea').fill('SYNTHETIC stale review note retained');await review.getByRole('button').click();await page.getByText(/Başka bir karar eklenmiş/).waitFor();assert.equal(await review.locator('textarea').inputValue(),'SYNTHETIC stale review note retained');assert.equal(reviewEvents,1);
+  console.log('QUOTE_REVIEW_UI_PASS engine='+engine.name()+' width='+width+' checks_required=true retry=one_event stale_review=blocked preview=analysis_only external_writes=blocked');
   console.log('QUOTE_EVIDENCE_UI_PASS engine='+engine.name()+' width='+width+' validation=passed date_layout=contained retry=same_request status=pending_review external_writes=blocked');
   await context.close();
  }

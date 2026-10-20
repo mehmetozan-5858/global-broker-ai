@@ -22,7 +22,20 @@
         "deployment": "Broker e30732fa2a85de18fe8c56b9e9f759b125a170fc READY; AI Visibility 45725516c065376edb13e93a9d7e8277b9517223 READY.",
         "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39319153315"
       },
-      "note": "Canlı web, portal ve yönetici arayüzü girişleri doğrulandı; genel sayfaların özel oda API giriş noktasına düşmesi düzeltildi."
+      "note": "Canlı web, portal ve yönetici arayüzü girişleri doğrulandı; genel sayfaların özel oda API giriş noktasına düşmesi düzeltildi.",
+      "steps": [
+        {
+          "id": "ecosystem",
+          "title": "Ekosistem girişleri",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "tests": "395 Python tests + three contract tests in both repositories; AI Visibility CI and full web/mobile smoke passed. Production browser passed at 390px and 1280px.",
+            "deployment": "Broker e30732fa2a85de18fe8c56b9e9f759b125a170fc READY; AI Visibility 45725516c065376edb13e93a9d7e8277b9517223 READY.",
+            "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39319153315"
+          }
+        }
+      ]
     },
     {
       "id": "P2",
@@ -38,7 +51,27 @@
         "deployment": "PR #123 (7966dce) production READY. CI, mobile, ecosystem smoke and full scan 39397283582 passed; masked snapshot 37be24a19a63b9642c03326468807b7a1a658e1c.",
         "live_verification": "Source scan: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39397283582; browser: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39397283858"
       },
-      "note": "20 Ekim 2026 son tarama: 70 kayıt, 5 tam temel kaynak dosyası, 11 yayımlanan ilan bütçesi. Önceki b46b8b5 anlık görüntüsündeki 11 bütçeli dosyanın eksik dosya para birimleri 11→0; düzleştirilmiş çok-kalem miktar/bütçe dosyaları 8→0. Kaynak bütçesi, para birimi ve kapsam birlikte korunur; çelişkili bütçe çekirdek dosyayı tamamlamaz. TED türleri: 17 competition, 21 result, 1 planning; 22 kayıt araştırma olarak etiketli, tanıştırma düğmesi ve iç teklif hazırlık kapısı kapalıdır. Competition kodu tek başına güncel tarih veya ticari onay değildir. Kayıtlar türleri nedeniyle silinmedi; kaynak tarama kümesi değişkendir. Tam şartname ve gerçek tedarikçi fiyatı hazır kayıt 0; P2 tüm kabul şartları karşılanmadığından açık ve puansızdır. Son belge erişimi taraması (PR #119): değişken kaynak kümesinde 62 kayıt; 16 kayıtta özel resmî belge bağlantısı, 10 portal sayfası ve 2 fırsatta toplam 4 PDF eki okundu. 5 temel kaynak dosyası ve 11 ilan bütçesi korunuyor. Kamuya açık çıktıda ham document-url-lot veya özel belge bağlantısı anahtarı 0; özel senkronizasyon ve gizlilik kapısı geçti. Doğrudan TED XML/HTML/PDF okuması hâlâ 0; alternatif ihale portalları ayrı okunuyor. Bu taramada güncel Körfez kapsamı doğrulanmadı; dünya çapında canlı kapsam veya tam teknik şartname/gerçek fiyat kabulü yapılmadı. Paket açık; web %77 / uygulama %72. PR #121 sonrası tarama: 66 kayıt; 16 resmî belge bağlantılı kayıt, 10 kaynak sayfası, 2 fırsatta 4 PDF eki. PDF metni uzun portal metninden önce korunur; gerçek ek okuması ayrı URL/tür kanıtıyla sayılır, okunmamış ek başka PDF nedeniyle tamamlanmaz. 5 temel dosya ve 11 ilan bütçesi korunur; gerçek fiyat hazır kayıt 0. Körfez kaynakları bu son taramada yeniden doğrulandı; önceki kesintiyle karıştırılmamalıdır. Paket kabulü tamamlanmadı. PR #123 sonrası son tarama: değişken kaynak kümesinde 69 kayıt, 16 belge bağlantılı kayıt, 13 kaynak sayfası ve 2 fırsatta 4 PDF eki; 5 temel dosya, 11 ilan bütçesi ve 0 gerçek fiyat hazır kayıt. Açık etiketli yeni ticari alan 0; bu taramada çelişki/kalem kapsamı nedeniyle bekletilen aday alan da 0. Yeni korumaların başarısı sentetik regresyonlarda, kaynak akışının çalışması gerçek taramada doğrulandı; ikisi karıştırılmadı. Çelişkili değerler ve seçilmemiş kalemler otomatik alan dolduramaz; yapılandırılmış alan önceliği ve tekrar işlemde kaynak izi korunur. Tüm dosya ve ticari kabul şartları tamamlanmadığından ek puan yok."
+      "note": "20 Ekim 2026 son tarama: 70 kayıt, 5 tam temel kaynak dosyası, 11 yayımlanan ilan bütçesi. Önceki b46b8b5 anlık görüntüsündeki 11 bütçeli dosyanın eksik dosya para birimleri 11→0; düzleştirilmiş çok-kalem miktar/bütçe dosyaları 8→0. Kaynak bütçesi, para birimi ve kapsam birlikte korunur; çelişkili bütçe çekirdek dosyayı tamamlamaz. TED türleri: 17 competition, 21 result, 1 planning; 22 kayıt araştırma olarak etiketli, tanıştırma düğmesi ve iç teklif hazırlık kapısı kapalıdır. Competition kodu tek başına güncel tarih veya ticari onay değildir. Kayıtlar türleri nedeniyle silinmedi; kaynak tarama kümesi değişkendir. Tam şartname ve gerçek tedarikçi fiyatı hazır kayıt 0; P2 tüm kabul şartları karşılanmadığından açık ve puansızdır. Son belge erişimi taraması (PR #119): değişken kaynak kümesinde 62 kayıt; 16 kayıtta özel resmî belge bağlantısı, 10 portal sayfası ve 2 fırsatta toplam 4 PDF eki okundu. 5 temel kaynak dosyası ve 11 ilan bütçesi korunuyor. Kamuya açık çıktıda ham document-url-lot veya özel belge bağlantısı anahtarı 0; özel senkronizasyon ve gizlilik kapısı geçti. Doğrudan TED XML/HTML/PDF okuması hâlâ 0; alternatif ihale portalları ayrı okunuyor. Bu taramada güncel Körfez kapsamı doğrulanmadı; dünya çapında canlı kapsam veya tam teknik şartname/gerçek fiyat kabulü yapılmadı. Paket açık; web %77 / uygulama %72. PR #121 sonrası tarama: 66 kayıt; 16 resmî belge bağlantılı kayıt, 10 kaynak sayfası, 2 fırsatta 4 PDF eki. PDF metni uzun portal metninden önce korunur; gerçek ek okuması ayrı URL/tür kanıtıyla sayılır, okunmamış ek başka PDF nedeniyle tamamlanmaz. 5 temel dosya ve 11 ilan bütçesi korunur; gerçek fiyat hazır kayıt 0. Körfez kaynakları bu son taramada yeniden doğrulandı; önceki kesintiyle karıştırılmamalıdır. Paket kabulü tamamlanmadı. PR #123 sonrası son tarama: değişken kaynak kümesinde 69 kayıt, 16 belge bağlantılı kayıt, 13 kaynak sayfası ve 2 fırsatta 4 PDF eki; 5 temel dosya, 11 ilan bütçesi ve 0 gerçek fiyat hazır kayıt. Açık etiketli yeni ticari alan 0; bu taramada çelişki/kalem kapsamı nedeniyle bekletilen aday alan da 0. Yeni korumaların başarısı sentetik regresyonlarda, kaynak akışının çalışması gerçek taramada doğrulandı; ikisi karıştırılmadı. Çelişkili değerler ve seçilmemiş kalemler otomatik alan dolduramaz; yapılandırılmış alan önceliği ve tekrar işlemde kaynak izi korunur. Tüm dosya ve ticari kabul şartları tamamlanmadığından ek puan yok.",
+      "steps": [
+        {
+          "id": "source_reader",
+          "title": "Kaynak ve PDF okuma, çelişki kontrolleri",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "tests": "486 Python tests and 16 JavaScript tests passed. Seven new regressions cover conflicting values within/across sources, repeated equal values, unselected lots, structured aliases and citation replay. Production ecosystem browser checks passed at 390px/1280px.",
+            "deployment": "PR #123 (7966dce) production READY. CI, mobile, ecosystem smoke and full scan 39397283582 passed; masked snapshot 37be24a19a63b9642c03326468807b7a1a658e1c.",
+            "live_verification": "Source scan: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39397283582; browser: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39397283858"
+          }
+        },
+        {
+          "id": "live_dossiers",
+          "title": "Gerçek fırsat dosyalarının kapsam kabulü",
+          "category": "live_acceptance",
+          "status": "blocked",
+          "blocker": "Kaynaklarda eksik alan ve belge var; bütün dosyalar doğrulanmadı."
+        }
+      ]
     },
     {
       "id": "P3",
@@ -55,7 +88,27 @@
         "deployment": "PR #104 merged d563d81ba6bbdd1cc0d4f0f0aa20e0f3462b1f98. Web/mobile published; production source scan 39323642846 successful; 73 records retain specific product details and one real opportunity has two researched capability candidates.",
         "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39323642735"
       },
-      "note": "İki gerçek üretici için kaynaklı ürün kabiliyeti eşleşmesi var. FormFactor için grating/edge coupling ve optik-elektrik ölçüm; ficonTEC için fiber-array attachment ve edge alignment kanıtları gösteriliyor. Teklif konfigürasyonunda 40 GHz, waveguide-loop/two-FAU ve tam ihale eklerinin uygunluğu doğrulanmadığından P3 kapanmadı. Yeni ilanlarda genel kategori yerine kaynak ürün adıyla araştırma yapılır; adaylar kategoriyle başka ilana taşınmaz."
+      "note": "İki gerçek üretici için kaynaklı ürün kabiliyeti eşleşmesi var. FormFactor için grating/edge coupling ve optik-elektrik ölçüm; ficonTEC için fiber-array attachment ve edge alignment kanıtları gösteriliyor. Teklif konfigürasyonunda 40 GHz, waveguide-loop/two-FAU ve tam ihale eklerinin uygunluğu doğrulanmadığından P3 kapanmadı. Yeni ilanlarda genel kategori yerine kaynak ürün adıyla araştırma yapılır; adaylar kategoriyle başka ilana taşınmaz.",
+      "steps": [
+        {
+          "id": "supplier_research",
+          "title": "Kaynaklı tedarikçi kabiliyeti araştırması",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "tests": "419 Python tests; supplier capability and progress browser tests passed at 390px/1280px; progress outage clears old values. All 72 existing identities preserved in replay; production retains gb_3c17c4831cb725308956c74d0e810225.",
+            "deployment": "PR #104 merged d563d81ba6bbdd1cc0d4f0f0aa20e0f3462b1f98. Web/mobile published; production source scan 39323642846 successful; 73 records retain specific product details and one real opportunity has two researched capability candidates.",
+            "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39323642735"
+          }
+        },
+        {
+          "id": "exact_spec",
+          "title": "Gerçek fırsatta tam şartname eşleşmesi",
+          "category": "live_acceptance",
+          "status": "blocked",
+          "blocker": "Tam teknik uygunluk kanıtı bekleniyor."
+        }
+      ]
     },
     {
       "id": "P4",
@@ -98,7 +151,54 @@
           "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39439289957"
         }
       },
-      "note": "Geçerli gerçek tedarikçi teklifi, miktar, para birimi ve navlun kanıtları henüz yok. Fırsat detay ekranı ortak kaynak/tarih/şartname/tedarikçi/teklif/lojistik/risk kapılarına bağlandı. Süresi geçmiş veya doğrulanmamış fiyat ile türetilmiş satış fiyatı, brüt marj ve komisyon bu ekranda geçerli tutar gibi gösterilmez. Bu arayüz doğrulaması gerçek teklif veya ticari kabul yerine geçmez; P4 engelli kalır. Özel teklif kayıt ekranı tamamlandı: yönetici+AAL2, güncel fırsata bağlı alış/satış kaydı, kaynak URL ve tüm teklif metadatası, taramadan ayrı kalıcı saklama, aynı istekle güvenli tekrar. Bütün kayıtlar pending_review; kabul motoruna doğrulanmış fiyat olarak otomatik aktarılmaz. 20 Ekim 2026 canlı kontrolde gerçek kayıtlı teklif 0; P4 gerçek geçerli teklif/navlun/inceleme kanıtını bekler. PR #135: mobil tarih alanı taşması düzeltildi. Gerçek takvim tarihi/tarih sırası, pozitif sınırlı ondalık fiyat-miktar ve güvenli HTTPS belge bağlantısı kaydetmeden önce kontrol edilir; hata alan bazında gösterilir, form korunur. Süresi geçmiş kanıt arşivlenebilir; geçerli ticari fiyat olarak kabul edilmez. 320/390/1280px Chromium ve 390px WebKit üretim testleri geçti; gerçek teklif/navlun kabulü hâlâ açık. PR #139: yönetici fırsat kartları/dosyasından ilgili fırsata teklif kaydı açılır. Aynı başlıkta iki kayıt sabit özel kimlikle ayrılır; belirsiz başlık eşleşmesinden teklif bağlantısı verilmez. Giriş/MFA boyunca yalnız süreli fırsat kimliği taşınır; sunucunun yetkili listesinde eşleşmeyen kimlikte seçim boş bırakılır. Fırsat adı/kimliği formda ve geçmişte görünür, kayıttan sonra seçim korunur; fiyat veya gerçek teklif otomatik üretilmez. PR #141: web, yönetici uygulaması ve dosya fiyat görünümü aynı kanıtlı tutar süzgecini kullanır. Süresi geçmiş/doğrulanmamış teklif ile belirsiz kalem kapsamı tutar göstermez; alış/satış kanıtı tamamlanmadan satış, marj ve komisyon gösterilmez. Geçerli kaynaklı negatif marj gizlenmez; sıfır komisyon desteklenir. Doğrulanmamış serbest metin komisyon potansiyeli hesaplanan tutar gibi gösterilmez. Bunlar arayüz kontrolleridir; fiyat kabulü, tahsilat veya net kâr kanıtı değildir."
+      "note": "Geçerli gerçek tedarikçi teklifi, miktar, para birimi ve navlun kanıtları henüz yok. Fırsat detay ekranı ortak kaynak/tarih/şartname/tedarikçi/teklif/lojistik/risk kapılarına bağlandı. Süresi geçmiş veya doğrulanmamış fiyat ile türetilmiş satış fiyatı, brüt marj ve komisyon bu ekranda geçerli tutar gibi gösterilmez. Bu arayüz doğrulaması gerçek teklif veya ticari kabul yerine geçmez; P4 engelli kalır. Özel teklif kayıt ekranı tamamlandı: yönetici+AAL2, güncel fırsata bağlı alış/satış kaydı, kaynak URL ve tüm teklif metadatası, taramadan ayrı kalıcı saklama, aynı istekle güvenli tekrar. Bütün kayıtlar pending_review; kabul motoruna doğrulanmış fiyat olarak otomatik aktarılmaz. 20 Ekim 2026 canlı kontrolde gerçek kayıtlı teklif 0; P4 gerçek geçerli teklif/navlun/inceleme kanıtını bekler. PR #135: mobil tarih alanı taşması düzeltildi. Gerçek takvim tarihi/tarih sırası, pozitif sınırlı ondalık fiyat-miktar ve güvenli HTTPS belge bağlantısı kaydetmeden önce kontrol edilir; hata alan bazında gösterilir, form korunur. Süresi geçmiş kanıt arşivlenebilir; geçerli ticari fiyat olarak kabul edilmez. 320/390/1280px Chromium ve 390px WebKit üretim testleri geçti; gerçek teklif/navlun kabulü hâlâ açık. PR #139: yönetici fırsat kartları/dosyasından ilgili fırsata teklif kaydı açılır. Aynı başlıkta iki kayıt sabit özel kimlikle ayrılır; belirsiz başlık eşleşmesinden teklif bağlantısı verilmez. Giriş/MFA boyunca yalnız süreli fırsat kimliği taşınır; sunucunun yetkili listesinde eşleşmeyen kimlikte seçim boş bırakılır. Fırsat adı/kimliği formda ve geçmişte görünür, kayıttan sonra seçim korunur; fiyat veya gerçek teklif otomatik üretilmez. PR #141: web, yönetici uygulaması ve dosya fiyat görünümü aynı kanıtlı tutar süzgecini kullanır. Süresi geçmiş/doğrulanmamış teklif ile belirsiz kalem kapsamı tutar göstermez; alış/satış kanıtı tamamlanmadan satış, marj ve komisyon gösterilmez. Geçerli kaynaklı negatif marj gizlenmez; sıfır komisyon desteklenir. Doğrulanmamış serbest metin komisyon potansiyeli hesaplanan tutar gibi gösterilmez. Bunlar arayüz kontrolleridir; fiyat kabulü, tahsilat veya net kâr kanıtı değildir.",
+      "steps": [
+        {
+          "id": "quote_intake",
+          "title": "Özel teklif kayıt ekranı",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "status": "complete",
+            "url": "https://broker.aivisibilityworks.com/quote-evidence",
+            "deployment": "PR #128 / 1dfbe801b52588f7d33a183099cbcd18e94f2f59 production READY; CI, mobile and browser checks passed.",
+            "tests": "486 Python + 21 JavaScript; live rolled-back SQL assertions for role/AAL2, one-record retries, changed retries, invalid inputs and direct table denial. Intercepted browser checks passed at 390px/1280px, including retry after 503 and denied sessions. Persisted test quotes=0; no new advisor finding.",
+            "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39418132416",
+            "form_validation": {
+              "status": "complete",
+              "deployment": "PR #135 / f8ba5dbd5a811751b9a0e84ddc1d66b97bb60d03 production READY; CI, mobile deployment and browser smoke passed.",
+              "tests": "486 Python + 30 JavaScript tests. Intercepted Chromium checks at 320/390/1280px and WebKit at 390px verified date controls fit inside labels/form, invalid evidence makes no submission RPC, drafts remain, retries reuse the same request and quotes remain pending review.",
+              "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39422199632"
+            },
+            "opportunity_context": {
+              "status": "complete",
+              "deployment": "PR #139 / 89679fe73e0f3c49204b522d30cb2697bfefdafb production READY; CI and production browser checks passed.",
+              "tests": "486 Python + 40 JavaScript tests. Chromium 320/390/1280px and WebKit 390px quote flows passed with intercepted RPCs; duplicate-title dossier navigation uses the stable private ID, missing IDs remain unselected, selection remains after save, and opportunity context survives login/MFA at 390/1280px. No real quote submitted.",
+              "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39435820036"
+            }
+          }
+        },
+        {
+          "id": "quote_review",
+          "title": "Gerekçeli teklif incelemesi ve analiz önizlemesi",
+          "category": "software",
+          "status": "in_progress"
+        },
+        {
+          "id": "logistics_intake",
+          "title": "Kaynaklı navlun / teslim kanıtı kayıt akışı",
+          "category": "software",
+          "status": "pending",
+          "blocker": "Kullanılabilir lojistik kayıt ve inceleme ekranı tamamlanmalı."
+        },
+        {
+          "id": "real_trade_case",
+          "title": "Gerçek teklif, navlun ve risk kabulü",
+          "category": "live_acceptance",
+          "status": "blocked",
+          "blocker": "Aynı fırsata ait geçerli gerçek ticari belgeler bekleniyor."
+        }
+      ]
     },
     {
       "id": "P5",
@@ -114,7 +214,20 @@
         "deployment": "Broker e30732fa2a85de18fe8c56b9e9f759b125a170fc READY; AI Visibility 45725516c065376edb13e93a9d7e8277b9517223 READY.",
         "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39319153315"
       },
-      "note": "Dört firma alanının iki yönlü aktarımı canlıda geçti. Kullanıcı incelemeden uygulanmıyor; başvuru/hesap oluşturulmuyor, token ve alıcı kayıtları taşınmıyor. Tekrar geçiş kayıt çoğaltmıyor çünkü aktarım veri tabanına yazmıyor."
+      "note": "Dört firma alanının iki yönlü aktarımı canlıda geçti. Kullanıcı incelemeden uygulanmıyor; başvuru/hesap oluşturulmuyor, token ve alıcı kayıtları taşınmıyor. Tekrar geçiş kayıt çoğaltmıyor çünkü aktarım veri tabanına yazmıyor.",
+      "steps": [
+        {
+          "id": "company_handoff",
+          "title": "İki yönlü firma aktarımı",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "tests": "395 Python tests + three contract tests in both repositories; AI Visibility CI and full web/mobile smoke passed. Production browser passed at 390px and 1280px.",
+            "deployment": "Broker e30732fa2a85de18fe8c56b9e9f759b125a170fc READY; AI Visibility 45725516c065376edb13e93a9d7e8277b9517223 READY.",
+            "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39319153315"
+          }
+        }
+      ]
     },
     {
       "id": "P6",
@@ -147,7 +260,45 @@
           "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39434531665"
         }
       },
-      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı. 20 Ekim 2026 son canlı toplu kontrolde yönetici e-postası doğrulanmış, 1 TOTP faktörü doğrulanmış, doğrulanmış yönetici telefonu 0; kişisel değerler rapora yazılmadı. Teklif ekranından giriş/MFA sonrası güvenli dönüş tamamlandı. Oturum kontrolü bitmeden giriş düğmesi etkinleşmez; geçerli AAL2 yeniden kod istemeden döner, yenileme bilgisi eksikse yeniden giriş istenir. Yalnız /account, /app ve /quote-evidence hedefleri izinli; URLde belirteç/kod taşınmaz. Şifre kurtarma tamamlanmadan yönlendirme yok. Bu sentetik tarayıcı kabulü gerçek yönetici SMS/e-posta kurtarma veya müşteri kabulü değildir. Kullanıcının 20 Ekim 2026 saat 15:19 (İstanbul) iPhone Safari ekran görüntüleri kod sonrası gerçek yönetici erişimini ve boş teklif formuna dönüşü doğruladı. Formdaki örnek tutarlar kayıtlı teklif değildir; teklif kaydı veya kurtarma kabulü yapılmadı. PR #137: MFA işlemleri başlangıç doğrulaması bitmeden açılmaz; aynı anda tek işlem çalışır. Altı haneli olmayan kod challenge isteği oluşturmaz; ağ hatası mesajı gösterilir ve tekrar deneme açılır. Yeni QR doğrulama beklerken ikinci kurulum engellenir; başarı sonrası kod/QR/kurulum anahtarı ekrandan temizlenir. Canlı sayfa dosyalarıyla 390px/1280px sentetik Auth/MFA testi geçti. Bu teknik kabul gerçek SMS/e-posta kurtarma yerine geçmez; P6 açık kalır."
+      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı. 20 Ekim 2026 son canlı toplu kontrolde yönetici e-postası doğrulanmış, 1 TOTP faktörü doğrulanmış, doğrulanmış yönetici telefonu 0; kişisel değerler rapora yazılmadı. Teklif ekranından giriş/MFA sonrası güvenli dönüş tamamlandı. Oturum kontrolü bitmeden giriş düğmesi etkinleşmez; geçerli AAL2 yeniden kod istemeden döner, yenileme bilgisi eksikse yeniden giriş istenir. Yalnız /account, /app ve /quote-evidence hedefleri izinli; URLde belirteç/kod taşınmaz. Şifre kurtarma tamamlanmadan yönlendirme yok. Bu sentetik tarayıcı kabulü gerçek yönetici SMS/e-posta kurtarma veya müşteri kabulü değildir. Kullanıcının 20 Ekim 2026 saat 15:19 (İstanbul) iPhone Safari ekran görüntüleri kod sonrası gerçek yönetici erişimini ve boş teklif formuna dönüşü doğruladı. Formdaki örnek tutarlar kayıtlı teklif değildir; teklif kaydı veya kurtarma kabulü yapılmadı. PR #137: MFA işlemleri başlangıç doğrulaması bitmeden açılmaz; aynı anda tek işlem çalışır. Altı haneli olmayan kod challenge isteği oluşturmaz; ağ hatası mesajı gösterilir ve tekrar deneme açılır. Yeni QR doğrulama beklerken ikinci kurulum engellenir; başarı sonrası kod/QR/kurulum anahtarı ekrandan temizlenir. Canlı sayfa dosyalarıyla 390px/1280px sentetik Auth/MFA testi geçti. Bu teknik kabul gerçek SMS/e-posta kurtarma yerine geçmez; P6 açık kalır.",
+      "steps": [
+        {
+          "id": "login_mfa",
+          "title": "Giriş, MFA ve güvenli dönüş",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "status": "complete",
+            "deployment": "PR #130–#133; 95925ef920042b0fbb9b477b0382e50b04c61b9f production READY. CI, mobile and production browser workflow passed.",
+            "tests": "486 Python + 25 JavaScript tests. Production asset flows with intercepted synthetic Auth/MFA/RPC passed at 390px/1280px: login, rejected MFA, successful MFA, existing AAL2, invalid server session, external redirect rejection, missing refresh credentials and initialization readiness.",
+            "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39420822104",
+            "owner_confirmation": {
+              "date": "2026-10-20T15:19:00+03:00",
+              "method": "Owner-provided iPhone Safari screenshots in conversation",
+              "observed": "After entering the code, the production quote page shows administrator access verified and the empty quotation form.",
+              "limits": "Confirms real owner MFA return and form access only; no quote submission, SMS recovery, password recovery or customer acceptance observed."
+            }
+          }
+        },
+        {
+          "id": "password_form",
+          "title": "Şifre kurtarma yazılım akışı",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "tests": "Recovery contract and synthetic browser checks passed.",
+            "deployment": "PR #141 / c518a1afad457fc260b813a8728137e9ee1dddf5 production READY; CI and mobile deployment passed.",
+            "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39439289957"
+          }
+        },
+        {
+          "id": "recovery_acceptance",
+          "title": "Gerçek e-posta ve telefon kurtarma kabulü",
+          "category": "live_acceptance",
+          "status": "blocked",
+          "blocker": "Gerçek kurtarma bağlantısı ve telefon/SMS doğrulaması bekleniyor."
+        }
+      ]
     },
     {
       "id": "P7",
@@ -164,7 +315,45 @@
         "live_verification": "HTTPS https://broker.aivisibilityworks.com/ and /progress returned 200; www.aivisibilityworks.com remained 200. Vercel domain verification and live requests observed 2026-10-20.",
         "contact": "Private contact form live; owner mailbox provider acceptance and deduplicated retry passed: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39372843723"
       },
-      "note": "Özel alan adı tamam: broker.aivisibilityworks.com Broker üretim projesine verified=true bağlandı. HTTPS ana sayfa, ilerleme ekranı 200; korumalı admin uç noktası kimliksiz 401. Mevcut DNS üzerinden çalıştı; satın alma veya nameserver değişimi yapılmadı. Her tarama güncel HTTPS ve yetki kapısını kontrol eder. Gerçek ödeme testi, hukuki inceleme ve hukuki iletişim kabulü hâlâ eksik. Kullanıcı kararı (20 Ekim 2026): başlangıç bireysel yürütülecek, ileride kurumsala geçilecek. Şirket türü, faturalama ve doğrulanmış iletişim bilgileri ayrı açık kabul adımlarıdır. Müşteri iletişim formu ve mevcut özel yönetici e-postasına yönlendirme 20 Ekim 2026 tarihinde canlıda doğrulandı; kişisel telefon/e-posta yayımlanmadı. Bu sistem testi ödeme, hukuki inceleme veya gerçek müşteri kabulü değildir."
+      "note": "Özel alan adı tamam: broker.aivisibilityworks.com Broker üretim projesine verified=true bağlandı. HTTPS ana sayfa, ilerleme ekranı 200; korumalı admin uç noktası kimliksiz 401. Mevcut DNS üzerinden çalıştı; satın alma veya nameserver değişimi yapılmadı. Her tarama güncel HTTPS ve yetki kapısını kontrol eder. Gerçek ödeme testi, hukuki inceleme ve hukuki iletişim kabulü hâlâ eksik. Kullanıcı kararı (20 Ekim 2026): başlangıç bireysel yürütülecek, ileride kurumsala geçilecek. Şirket türü, faturalama ve doğrulanmış iletişim bilgileri ayrı açık kabul adımlarıdır. Müşteri iletişim formu ve mevcut özel yönetici e-postasına yönlendirme 20 Ekim 2026 tarihinde canlıda doğrulandı; kişisel telefon/e-posta yayımlanmadı. Bu sistem testi ödeme, hukuki inceleme veya gerçek müşteri kabulü değildir.",
+      "steps": [
+        {
+          "id": "domain",
+          "title": "Özel alan adı ve HTTPS",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "tests": "426 Python tests + four recovery contracts; custom-domain probe requires HTTPS home marker, 204 health and 401 protected admin response. Redirects, wrong responses and TLS outages fail closed.",
+            "deployment": "Vercel domain broker.aivisibilityworks.com verified=true on project prj_1gJepl5RppSeL6jtruTG0W0I3uHb. PR #106 production ready; mobile and recovery/browser workflow passed.",
+            "live_verification": "HTTPS https://broker.aivisibilityworks.com/ and /progress returned 200; www.aivisibilityworks.com remained 200. Vercel domain verification and live requests observed 2026-10-20."
+          }
+        },
+        {
+          "id": "contact",
+          "title": "Özel iletişim formu ve e-posta yönlendirme",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "tests": "Contact fixtures and owner mailbox provider acceptance passed.",
+            "deployment": "PR #141 / c518a1afad457fc260b813a8728137e9ee1dddf5 production READY; CI and mobile deployment passed.",
+            "live_verification": "Private contact form live; owner mailbox provider acceptance and deduplicated retry passed: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39372843723"
+          }
+        },
+        {
+          "id": "billing_integration",
+          "title": "Ödeme / faturalama entegrasyonu",
+          "category": "software",
+          "status": "in_progress",
+          "blocker": "Sağlayıcı ve bireysel işletme hesabı kabulü doğrulanmalı."
+        },
+        {
+          "id": "commercial_acceptance",
+          "title": "Ödeme, faturalama ve hukuki kabul",
+          "category": "live_acceptance",
+          "status": "blocked",
+          "blocker": "Gerçek ödeme ve işletme koşulları doğrulanmadı."
+        }
+      ]
     },
     {
       "id": "P8",
@@ -176,7 +365,27 @@
       "status": "blocked",
       "acceptance": "Mobil ve masaüstünde gerçek müşteriyle baştan sona kabul; açık kritik hata yok.",
       "evidence": {},
-      "note": "Gerçek müşteriyle kabul oturumu ve canlı mobil/masaüstü onayı kaydedilmedi."
+      "note": "Gerçek müşteriyle kabul oturumu ve canlı mobil/masaüstü onayı kaydedilmedi.",
+      "steps": [
+        {
+          "id": "browser_suite",
+          "title": "Web ve uygulama akışlarının tarayıcı doğrulaması",
+          "category": "software",
+          "status": "complete",
+          "evidence": {
+            "tests": "486 Python + 44 JavaScript tests. Shared numeric projection and actual web/app render regressions cover expired/missing evidence, unselected lots, malformed/nonfinite values, absent shared module, quote-only evidence, negative margins and zero commission. Production Chromium (390/1280px) and WebKit (390px) passed 24 financial-view scenarios across app.html/index.html and pricing/commission/payment desks with intercepted synthetic feeds; no real quote or payment created.",
+            "deployment": "PR #141 / c518a1afad457fc260b813a8728137e9ee1dddf5 production READY; CI and mobile deployment passed.",
+            "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39439289957"
+          }
+        },
+        {
+          "id": "customer_acceptance",
+          "title": "Gerçek müşteriyle uçtan uca kabul",
+          "category": "live_acceptance",
+          "status": "blocked",
+          "blocker": "Gerçek müşteri kabul oturumu bekleniyor."
+        }
+      ]
     }
   ],
   "progress_history": [

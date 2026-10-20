@@ -14,8 +14,10 @@ def public_summary(ledger: dict) -> dict:
         "date": ledger["date"],
         "surfaces": report["surfaces"],
         "next_package": report["next_package"],
-        "packages": [{key: p[key] for key in ("id", "title", "points", "status", "acceptance")}
-                     for p in ledger["packages"]],
+        "step_summary": report["step_summary"],
+        "packages": [{**{key: p[key] for key in ("id", "title", "points", "status", "acceptance")},
+                      "steps": [{key: step[key] for key in ("id", "title", "category", "status", "blocker") if key in step}
+                                for step in p.get("steps", [])]} for p in ledger["packages"]],
         "scope": "Web ve PWA uygulamasının sabit kapsamlı teslimat takibi. Ticari açılış oranı değildir.",
         "completion_rule": "Puanlar test, üretim yayını ve canlı kabul kanıtı tamamlanınca eklenir.",
     }
@@ -24,11 +26,22 @@ def public_summary(ledger: dict) -> dict:
 def build(ledger: dict) -> dict:
     baseline = ledger["baseline"]
     packages = ledger["packages"]
-    result = {"measurement": ledger["measurement"], "surfaces": {}, "next_package": None}
+    result = {"measurement": ledger["measurement"], "surfaces": {}, "next_package": None,
+              "step_summary": {key: {"complete": 0, "total": 0} for key in ("software", "live_acceptance")}}
     ids = [p["id"] for p in packages]
     if len(ids) != len(set(ids)):
         raise ValueError("Duplicate package IDs")
     for p in packages:
+        step_ids = set()
+        for step in p.get("steps", []):
+            category = step.get("category")
+            if category not in result["step_summary"] or step.get("status") not in {"pending", "in_progress", "complete", "blocked"} or step.get("id") in step_ids:
+                raise ValueError("Invalid or duplicate step")
+            step_ids.add(step["id"])
+            if step["status"] == "complete" and not all(isinstance(step.get("evidence", {}).get(k), str) and step["evidence"][k].strip() for k in EVIDENCE):
+                raise ValueError("Completed step requires tests, deployment and live evidence")
+            result["step_summary"][category]["total"] += 1
+            result["step_summary"][category]["complete"] += int(step["status"] == "complete")
         if p["status"] not in {"pending", "in_progress", "complete", "blocked"}:
             raise ValueError("Unknown package status")
         if p["status"] == "complete" and not all(
