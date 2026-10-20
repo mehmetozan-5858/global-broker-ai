@@ -76,3 +76,6 @@ test('web and app show evidence-backed values, keep losses visible and fail clos
   const missing=financialSurface(file,row,false);for(const key of ['pricing','commission','payments'])for(const value of ['11111','22222','33333','44444'])assert.ok(!missing(key).includes(value));
  }
 });
+
+test('source-table scope blocks complete-looking evidence without a TED flag',()=>{const r=assess({...complete(),source_lot_selection_required:true},now);assert.equal(r.ready,false);assert.equal(r.lotSelection,true);assert.match(r.next,/Kalem/)});
+test('source line items remain separated and escaped in the admin dossier',()=>{const r=priced();r.source_lot_selection_required=true;r.source_line_items=[{lot_id:'1',lot_label:'North',product:'Cable <script>bad()</script>',quantity:'27840',unit:'m',destination:'Mzuzu'},{lot_id:'2',lot_label:'Central',product:'Copper cable',quantity:'63075',unit:'m',destination:'Lilongwe'}];const {html}=dossier(r);assert.match(html,/27840 m/);assert.match(html,/63075 m/);assert.match(html,/Mzuzu/);assert.match(html,/Lilongwe/);assert(!html.includes('<script>bad()'));assert(!html.includes('İnsan incelemesine hazır'));assert(!html.includes('11111'))});

@@ -11,6 +11,8 @@ rows=[]
 for identity,source,changes in [('scope','WORLD_BANK',{'source_lot_selection_required':True}),('result','TED',{'form-type':'result','ted_lot_count':2,'ted_lot_selection_required':True}),('pending','WORLD_BANK',{})]:
  r={'id':'fixture-'+identity,'product_name':'Fixture '+identity,'source':source,'country_code':'DE','country_name':'Germany','quantity':'999 units','export_goods_review':{'status':'goods_candidate'},'data_completion':{'missing_fields':['quantity_or_budget','deadline','PRIVATE-MISSING-NOTE']},'buyer_name':'PRIVATE-BUYER','document_extracted_text':'PRIVATE-DOCUMENT fixture@example.invalid','document_extraction':{'parsed_count':0 if identity=='pending' else 1,'attempts':[{'status':'parsed','format':'world_bank_notice_json'}] if identity=='scope' else []}}
  r.update(changes)
+ if identity=='scope':
+  r.update(source_line_items=[{'product':'PRIVATE-LINE-PRODUCT','quantity':'25'},{'product':'PRIVATE-LINE-PRODUCT','quantity':'50'}],source_line_items_evidence={'method':'explicit_notice_table'})
  rows.append(project(project(r)))
 print(json.dumps(rows))
 `],{cwd:root,encoding:'utf8'}));
@@ -42,11 +44,12 @@ print(json.dumps(rows))
     await page.addScriptTag({content:deployed});
     await page.getByRole('heading',{name:'Fixture scope',exact:true}).waitFor();
     await page.getByText('Ayrıntılı resmî ilan metni okundu',{exact:true}).waitFor();
+    await page.getByText('2 ürün satırı ayrı okundu; kapsam seçimi gerekiyor',{exact:true}).waitFor();
     await page.getByText('Kaynak okuması doğrulanamadı',{exact:true}).waitFor();
     await page.getByText('Alım kalemi kapsamı inceleme bekliyor; toplam miktar ve bütçe doğrulanmadı',{exact:true}).waitFor();
     if(!await page.getByRole('button',{name:'Araştırma kaydı',exact:true}).isDisabled())throw Error('result notice request enabled');
     const text=await page.locator('body').innerText();
-    for(const privateText of ['PRIVATE-BUYER','PRIVATE-DOCUMENT','PRIVATE-MISSING-NOTE','fixture@example','0 ayrı kalem'])if(text.includes(privateText))throw Error('unsafe or invented customer text');
+    for(const privateText of ['PRIVATE-BUYER','PRIVATE-DOCUMENT','PRIVATE-MISSING-NOTE','PRIVATE-LINE-PRODUCT','fixture@example','0 ayrı kalem'])if(text.includes(privateText))throw Error('unsafe or invented customer text');
     if((await page.locator('.cp-card').filter({has:page.getByRole('heading',{name:'Fixture scope',exact:true})}).innerText()).includes('999 units'))throw Error('scope quantity leaked');
     if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('horizontal overflow '+name+' '+width);
     console.log('CUSTOMER_DOSSIER_UI_PASS',name,width);
