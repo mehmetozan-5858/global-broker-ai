@@ -136,6 +136,12 @@ def _download(url: str, max_bytes: int = MAX_DOCUMENT_BYTES) -> tuple[bytes, str
         return data, content_type, final_url
 
 
+def _normalize_lines(text: str) -> str:
+    # Preserve source field boundaries; flattening them can turn multiple
+    # labelled values into one apparently unambiguous commercial fact.
+    return "\n".join(" ".join(line.split()) for line in text.splitlines() if line.strip())
+
+
 def _parse_pdf(data: bytes) -> str:
     try:
         from pypdf import PdfReader
@@ -146,7 +152,7 @@ def _parse_pdf(data: bytes) -> str:
     total = 0
     for page in reader.pages[:MAX_PDF_PAGES]:
         raw = page.extract_text() or ""
-        text = " ".join(raw.split())
+        text = _normalize_lines(raw)
         if not text:
             continue
         remaining = MAX_EXTRACTED_CHARS - total
@@ -161,20 +167,36 @@ def _parse_docx(data: bytes) -> str:
     with zipfile.ZipFile(io.BytesIO(data)) as archive:
         xml = archive.read("word/document.xml")
     root = ElementTree.fromstring(xml)
-    texts = [node.text or "" for node in root.iter() if node.tag.endswith("}t")]
-    return " ".join(" ".join(texts).split())[:MAX_EXTRACTED_CHARS]
+    namespace = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+    paragraphs = []
+    for paragraph in root.iter(namespace + "p"):
+        parts = []
+        for node in paragraph.iter():
+            if node.tag == namespace + "t":
+                parts.append(node.text or "")
+            elif node.tag in {namespace + "br", namespace + "cr"}:
+                parts.append("\n")
+            elif node.tag == namespace + "tab":
+                parts.append(" ")
+        paragraphs.append("".join(parts))
+    return _normalize_lines("\n".join(paragraphs))[:MAX_EXTRACTED_CHARS]
 
 
 def _parse_text(data: bytes) -> str:
     for encoding in ("utf-8", "utf-16", "latin-1"):
         try:
-            return " ".join(data.decode(encoding).split())[:MAX_EXTRACTED_CHARS]
+            return _normalize_lines(data.decode(encoding))[:MAX_EXTRACTED_CHARS]
         except UnicodeDecodeError:
             continue
     return ""
 
 
 class _TenderHTMLParser(HTMLParser):
+    BLOCK_TAGS = {"p", "div", "section", "article", "header", "footer", "main",
+                  "h1", "h2", "h3", "h4", "h5", "h6", "li", "ul", "ol",
+                  "table", "tr", "td", "th", "dl", "dt", "dd", "blockquote",
+                  "pre", "br", "hr"}
+
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.text_parts: list[str] = []
@@ -186,6 +208,8 @@ class _TenderHTMLParser(HTMLParser):
         if tag in {"script", "style", "noscript", "svg"}:
             self._skip_depth += 1
             return
+        if not self._skip_depth and tag in self.BLOCK_TAGS:
+            self.text_parts.append("\n")
         if tag == "a":
             for key, value in attrs:
                 if key.lower() == "href" and value:
@@ -194,12 +218,12 @@ class _TenderHTMLParser(HTMLParser):
     def handle_endtag(self, tag: str) -> None:
         if tag.lower() in {"script", "style", "noscript", "svg"} and self._skip_depth:
             self._skip_depth -= 1
+        if not self._skip_depth and tag.lower() in self.BLOCK_TAGS:
+            self.text_parts.append("\n")
 
     def handle_data(self, data: str) -> None:
         if not self._skip_depth:
-            cleaned = " ".join(data.split())
-            if cleaned:
-                self.text_parts.append(cleaned)
+            self.text_parts.append(data)
 
 
 def _decode_html(data: bytes) -> str:
@@ -214,8 +238,7 @@ def _decode_html(data: bytes) -> str:
 def _parse_html_page(data: bytes, base_url: str) -> tuple[str, list[str]]:
     parser = _TenderHTMLParser()
     parser.feed(_decode_html(data))
-    visible = " ".join(parser.text_parts)
-    visible = " ".join(visible.split())[:MAX_EXTRACTED_CHARS]
+    visible = _normalize_lines("".join(parser.text_parts))[:MAX_EXTRACTED_CHARS]
     attachments: list[str] = []
     seen: set[str] = set()
     for href in parser.hrefs:

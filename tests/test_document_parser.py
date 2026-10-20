@@ -1,11 +1,62 @@
+import io
+import sys
+import types
+import zipfile
 import unittest
 from unittest.mock import patch
 
 from src import document_parser
+from src.a5_source_terms import extract
 from src.specification import analyze_opportunity
 
 
 class DocumentParserTests(unittest.TestCase):
+    def test_html_block_and_table_boundaries_keep_fields_separate(self):
+        html = b"<p>Quantity: <b>25</b> pcs</p><table><tr><td>Submission deadline:</td><td>2026-12-01</td></tr></table><div>Payment terms: 30 days<br>Delivery location: Ankara</div>"
+        text, _ = document_parser._parse_html_page(html, "https://example.test")
+        row = {"document_extracted_text": text}
+        extract(row)
+        self.assertEqual(row["quantity"], "25 pcs")
+        self.assertEqual(row["deadline"], "2026-12-01")
+        self.assertEqual(row["payment_terms"], "30 days")
+        self.assertEqual(row["delivery_location"], "Ankara")
+
+    def test_html_separate_conflicting_quantities_require_review(self):
+        text, _ = document_parser._parse_html_page(b"<p>Quantity: 25 pcs</p><p>Submission deadline: 2026-12-01</p><p>Quantity: 50 pcs</p>", "https://example.test")
+        row = {"document_extracted_text": text}
+        result = extract(row)
+        self.assertNotIn("quantity", row)
+        self.assertEqual(result["review_required"]["quantity"], "conflicting_labeled_values")
+
+    def test_plain_text_line_endings_keep_fields_separate(self):
+        for encoding in ("utf-8", "utf-16"):
+            row = {"document_extracted_text": document_parser._parse_text("Quantity: 25 pcs\r\nSubmission deadline: 2026-12-01".encode(encoding))}
+            extract(row)
+            self.assertEqual(row["quantity"], "25 pcs")
+            self.assertEqual(row["deadline"], "2026-12-01")
+
+    def test_docx_paragraphs_and_run_breaks_keep_fields_separate(self):
+        xml = b'<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:t>Quantity: </w:t></w:r><w:r><w:t>25 pcs</w:t></w:r></w:p><w:p><w:r><w:t>Submission deadline: 2026-12-01</w:t><w:br/><w:t>Payment terms: 30 days</w:t></w:r></w:p></w:body></w:document>'
+        data = io.BytesIO()
+        with zipfile.ZipFile(data, "w") as archive:
+            archive.writestr("word/document.xml", xml)
+        row = {"document_extracted_text": document_parser._parse_docx(data.getvalue())}
+        extract(row)
+        self.assertEqual(row["quantity"], "25 pcs")
+        self.assertEqual(row["deadline"], "2026-12-01")
+        self.assertEqual(row["payment_terms"], "30 days")
+
+    def test_pdf_lines_keep_conflicting_quantities_separate(self):
+        page = types.SimpleNamespace(extract_text=lambda: "Quantity: 25 pcs\nQuantity: 50 pcs\nSubmission deadline: 2026-12-01")
+        module = types.SimpleNamespace(PdfReader=lambda data: types.SimpleNamespace(pages=[page]))
+        with patch.dict(sys.modules, {"pypdf": module}):
+            text = document_parser._parse_pdf(b"fixture")
+        row = {"document_extracted_text": text}
+        result = extract(row)
+        self.assertNotIn("quantity", row)
+        self.assertEqual(result["review_required"]["quantity"], "conflicting_labeled_values")
+        self.assertEqual(row["deadline"], "2026-12-01")
+
     def test_only_supported_document_extensions_are_candidates(self):
         item = {
             "official_links": [
