@@ -14,5 +14,6 @@ test('account waits for initialization before enabling login, then preserves the
  for(const id of ['login','signup','reset'])assert.equal(element(id).disabled,true,id);
  ready(false);await new Promise(setImmediate);
  for(const id of ['login','signup','reset'])assert.equal(element(id).disabled,false,id);
+ vm.runInContext("S.token='fixture';S.refresh='';continueToRequestedPage()",context);assert.equal(assigned.length,0);assert.match(element('status').textContent,/yeniden giriş/);
  await element('login').onclick();assert.deepEqual(assigned,['/security?next=%2Fquote-evidence']);
 });
