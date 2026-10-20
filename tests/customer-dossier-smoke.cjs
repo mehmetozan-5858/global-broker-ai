@@ -27,13 +27,13 @@ print(json.dumps(rows))
  for(const [name,engine,widths] of [['chromium',chromium,[320,390,1280]],['webkit',webkit,[390]]]){
   const browser=await engine.launch();
   try{
-   const page=await browser.newPage();
+   const page=await browser.newPage();let feedMode='success',feedReads=0;
    await page.addInitScript(()=>localStorage.setItem('gb_access_token','synthetic-fixture-only'));
    await page.route('**/*',route=>{
     const url=route.request().url();
     if(url.includes('/rpc/my_broker_access'))return route.fulfill({json:{entitlement:{all_sectors:true,plan_id:'fixture'},preferences:{}}});
     if(url.includes('/rpc/my_introduction_requests'))return route.fulfill({json:[]});
-    if(url.includes('/data/latest-opportunities.json'))return route.fulfill({json:{opportunities:fixtures}});
+    if(url.includes('/data/latest-opportunities.json')){feedReads++;if(feedMode==='network')return route.abort();if(typeof feedMode==='number')return route.fulfill({status:feedMode,json:{status:'PRIVATE-SERVER-TRACE'}});if(feedMode==='malformed')return route.fulfill({json:{private:'PRIVATE-SERVER-TRACE'}});return route.fulfill({json:{opportunities:feedMode==='empty'?[]:fixtures}});}
     if(route.request().method()!=='GET')throw Error('unexpected write request');
     return route.fulfill({contentType:'text/html',body:'<html lang="tr"><meta name="viewport" content="width=device-width,initial-scale=1"><body style="margin:0;background:#061725;color:white;font-family:system-ui"><div><section id="cards"></section></div></body></html>'});
    });
@@ -50,6 +50,22 @@ print(json.dumps(rows))
     if((await page.locator('.cp-card').filter({has:page.getByRole('heading',{name:'Fixture scope',exact:true})}).innerText()).includes('999 units'))throw Error('scope quantity leaked');
     if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('horizontal overflow '+name+' '+width);
     console.log('CUSTOMER_DOSSIER_UI_PASS',name,width);
+    for(const [mode,title] of [[401,'Yeniden giriş yapın'],[403,'Hesap erişiminizi kontrol edin'],[429,'İstek sınırına ulaşıldı'],[503,'Fırsatlar yüklenemedi'],['network','Fırsatlar yüklenemedi'],['malformed','Fırsatlar yüklenemedi']]){
+     feedMode=mode;await page.goto('https://fixture.invalid/');await page.addScriptTag({content:deployed});
+     await page.getByRole('heading',{name:title,exact:true}).waitFor();
+     const errorText=await page.locator('body').innerText();
+     if(errorText.includes('PRIVATE-SERVER-TRACE')||errorText.includes('Bu filtrelerle eşleşen fırsat yok'))throw Error('failed load rendered as empty or exposed diagnostics');
+     if(await page.locator('.cp-card').count())throw Error('stale cards retained after failed load');
+     if(mode===401&&await page.getByRole('link',{name:'Hesabınıza giriş yapın'}).getAttribute('href')!=='/account?next=%2Fcustomer')throw Error('customer login return lost');
+    }
+    const beforeRetry=feedReads;feedMode='success';await page.getByRole('button',{name:'Yeniden dene',exact:true}).click();
+    await page.getByRole('heading',{name:'Fixture scope',exact:true}).waitFor();
+    if(feedReads!==beforeRetry+1)throw Error('retry issued duplicate reads');
+    feedMode='empty';await page.goto('https://fixture.invalid/');await page.addScriptTag({content:deployed});
+    await page.getByText('Bu filtrelerle eşleşen fırsat yok.',{exact:true}).waitFor();
+    if((await page.locator('body').innerText()).includes('Fırsatlar yüklenemedi'))throw Error('successful empty response rendered as failure');
+    if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('load-state overflow '+name+' '+width);
+    console.log('CUSTOMER_FEED_RECOVERY_PASS',name,width);feedMode='success';
    }
   }finally{await browser.close()}
  }
