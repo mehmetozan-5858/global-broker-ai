@@ -71,9 +71,16 @@
           "tests": "486 Python tests and 21 JavaScript tests passed, including five new detail-render regressions. Complete-looking legacy states, expired quotes, absent shared module and negative badges fail closed; complete synthetic evidence permits internal review only.",
           "deployment": "PR #125 a5abb78 and #126 1a9bb68 production READY; CI, mobile and production ecosystem smoke passed.",
           "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39400978117"
+        },
+        "quote_intake": {
+          "status": "complete",
+          "url": "https://broker.aivisibilityworks.com/quote-evidence",
+          "deployment": "PR #128 / 1dfbe801b52588f7d33a183099cbcd18e94f2f59 production READY; CI, mobile and browser checks passed.",
+          "tests": "486 Python + 21 JavaScript; live rolled-back SQL assertions for role/AAL2, one-record retries, changed retries, invalid inputs and direct table denial. Intercepted browser checks passed at 390px/1280px, including retry after 503 and denied sessions. Persisted test quotes=0; no new advisor finding.",
+          "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39418132416"
         }
       },
-      "note": "Geçerli gerçek tedarikçi teklifi, miktar, para birimi ve navlun kanıtları henüz yok. Fırsat detay ekranı ortak kaynak/tarih/şartname/tedarikçi/teklif/lojistik/risk kapılarına bağlandı. Süresi geçmiş veya doğrulanmamış fiyat ile türetilmiş satış fiyatı, brüt marj ve komisyon bu ekranda geçerli tutar gibi gösterilmez. Bu arayüz doğrulaması gerçek teklif veya ticari kabul yerine geçmez; P4 engelli kalır."
+      "note": "Geçerli gerçek tedarikçi teklifi, miktar, para birimi ve navlun kanıtları henüz yok. Fırsat detay ekranı ortak kaynak/tarih/şartname/tedarikçi/teklif/lojistik/risk kapılarına bağlandı. Süresi geçmiş veya doğrulanmamış fiyat ile türetilmiş satış fiyatı, brüt marj ve komisyon bu ekranda geçerli tutar gibi gösterilmez. Bu arayüz doğrulaması gerçek teklif veya ticari kabul yerine geçmez; P4 engelli kalır. Özel teklif kayıt ekranı tamamlandı: yönetici+AAL2, güncel fırsata bağlı alış/satış kaydı, kaynak URL ve tüm teklif metadatası, taramadan ayrı kalıcı saklama, aynı istekle güvenli tekrar. Bütün kayıtlar pending_review; kabul motoruna doğrulanmış fiyat olarak otomatik aktarılmaz. 20 Ekim 2026 canlı kontrolde gerçek kayıtlı teklif 0; P4 gerçek geçerli teklif/navlun/inceleme kanıtını bekler."
     },
     {
       "id": "P5",
@@ -104,7 +111,7 @@
         "tests": "423 Python tests, 4 recovery contract tests and recovery browser checks at 390px/1280px. Expired links, invalid sessions, mismatch, MFA rejection and explicit reset redirect covered without sending real email or changing a real password.",
         "database": "Private admin feed migration applied and SQL authorization matrix passed: AAL2+admin reads private source fields; AAL1, nonadmin and anonymous rejected; API roles retain no direct private-table access. Supabase advisor findings unchanged."
       },
-      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı."
+      "note": "Şifre yenilemede eksik yeni şifre kaydetme akışı eklendi; bağlantı belirteçleri URLden temizlenir, oturum sunucuda doğrulanır ve MFA gereksinimi korunur. Canlı kontrolde doğrulanmış TOTP var; telefon doğrulaması ve çift kurtarma kaydı yok. Gerçek e-posta teslimi/redirect ve telefon/SMS kabulü tamamlanmadığı için paket kapanmadı. 20 Ekim 2026 son canlı toplu kontrolde yönetici e-postası doğrulanmış, 1 TOTP faktörü doğrulanmış, doğrulanmış yönetici telefonu 0; kişisel değerler rapora yazılmadı."
     },
     {
       "id": "P7",
@@ -198,6 +205,13 @@
       "app": 72,
       "reason": "P3/P4: fırsat detayının eski durum-yazısı temelli hazır kontrolü kaldırıldı; geçersiz fiyat ve türetilmiş tutarlar gizlenir. 486 Python + 21 JS ve 390px/1280px canlı kontroller geçti. Gerçek teklif kabulü yok; ek puan yok.",
       "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/pull/125"
+    },
+    {
+      "date": "2026-10-20",
+      "web": 77,
+      "app": 72,
+      "reason": "P4 özel teklif girişi ve taramadan bağımsız kalıcı inceleme kuyruğu tamamlandı; SQL yetki/tekrar deneme ve canlı mobil/masaüstü kontrolleri geçti. Gerçek teklif 0 ve tam ticari kabul yok; sabit puan eklenmedi.",
+      "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/pull/128"
     }
   ],
   "operating_model": {
