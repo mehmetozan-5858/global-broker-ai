@@ -276,6 +276,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     source_pages = _source_page_urls(item)
     attempts: list[dict[str, Any]] = []
     extracted_parts: list[str] = []
+    source_page_parts: list[str] = []
     discovered_attachments: list[str] = []
 
     for url in attachments:
@@ -299,7 +300,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
                     raise ValueError("source_page_not_html")
                 page_text, found = _parse_html_page(data, final_url)
                 if len(page_text) >= 160:
-                    _append_text(extracted_parts, page_text)
+                    _append_text(source_page_parts, page_text)
                     page_attempt.update({
                         "status": "parsed", "kind": "source_page", "final_url": final_url,
                         "content_type": content_type, "bytes": len(data), "extracted_chars": len(page_text),
@@ -318,7 +319,9 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         origin = next((x["url"] for x in attempts if x.get("source") == "source_page" and x.get("status") == "parsed"), None)
         _try_attachment(url, attempts, extracted_parts, origin)
 
-    merged = "\n\n".join(extracted_parts)[:MAX_EXTRACTED_CHARS]
+    # A long listing must not consume the text budget before a discovered
+    # technical attachment. Preserve document text before generic page text.
+    merged = "\n\n".join(extracted_parts + source_page_parts)[:MAX_EXTRACTED_CHARS]
     candidate_count = len(attachments) + len(source_pages)
     parsed_count = sum(1 for x in attempts if x.get("status") == "parsed")
     item["document_extraction"] = {

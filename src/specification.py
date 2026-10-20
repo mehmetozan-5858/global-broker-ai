@@ -90,10 +90,7 @@ def unique_strings(values: list[str]) -> list[str]:
 def collect_urls(value: Any) -> list[str]:
     urls: list[str] = []
     if isinstance(value, str):
-        if value.startswith(("http://", "https://")):
-            urls.append(value)
-        else:
-            urls.extend(re.findall(r"https?://[^\s\]\[\)\(\"'<>]+", value))
+        urls.extend(re.findall(r"https?://[^\s\]\[\)\(\"'<>]+", value))
     elif isinstance(value, list):
         for entry in value:
             urls.extend(collect_urls(entry))
@@ -113,11 +110,37 @@ def document_links(item: dict[str, Any]) -> list[dict[str, str]]:
         low = url.lower().split("?", 1)[0]
         if low.endswith(".pdf"):
             kind = "pdf"
-        elif low.endswith((".doc", ".docx", ".xls", ".xlsx", ".zip")):
+        elif low.endswith((".doc", ".docx", ".txt", ".xls", ".xlsx", ".zip")):
             kind = "attachment"
         else:
             kind = "source_page"
         out.append({"url": url, "kind": kind})
+    # Discovered and dynamic-download attachments may not occur in the original
+    # notice links. Keep their actual parser provenance in the private dossier.
+    extraction = item.get("document_extraction") or {}
+    attempts = (extraction.get("attempts") or []) if isinstance(extraction, dict) else []
+    for attempt in attempts:
+        if not isinstance(attempt, dict):
+            continue
+        urls = collect_urls(attempt.get("final_url") or attempt.get("url"))
+        if len(urls) != 1:
+            continue
+        url = urls[0]
+        entry = next((d for d in out if d["url"] in {url, attempt.get("url")}), None)
+        if entry is None:
+            low = url.lower().split("?", 1)[0]
+            kind = "pdf" if low.endswith(".pdf") else ("attachment" if low.endswith((".doc", ".docx", ".txt", ".xls", ".xlsx", ".zip")) else "source_page")
+            entry = {"url": url, "kind": kind}
+            out.append(entry)
+        if attempt.get("status") == "parsed":
+            kind = attempt.get("kind")
+            if kind in {"pdf", "docx", "text", "ted_pdf_download"}:
+                entry["kind"] = "pdf" if kind in {"pdf", "ted_pdf_download"} else "attachment"
+                entry["parse_status"] = "parsed"
+            elif entry.get("parse_status") != "parsed":
+                entry["parse_status"] = "source_page_only" if entry["kind"] in {"pdf", "attachment"} else "parsed"
+        elif entry.get("parse_status") != "parsed":
+            entry["parse_status"] = "failed"
     return out
 
 
@@ -185,17 +208,26 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         for s in evidence_by_keywords(sentences, KEYWORDS["eligibility"], 6)
     ]
 
-    has_attachment = any(d["kind"] in {"pdf", "attachment"} for d in docs)
     extraction = item.get("document_extraction") if isinstance(item.get("document_extraction"), dict) else {}
-    document_parsed = bool(document_fields) and extraction.get("parsed_count", 0) > 0
+    parsed_document_count = sum(d["kind"] in {"pdf", "attachment"} and d.get("parse_status") == "parsed" for d in docs)
+    pending_attachment_count = sum(d["kind"] in {"pdf", "attachment"} and d.get("parse_status") != "parsed" for d in docs)
+    document_parsed = bool(document_fields) and parsed_document_count > 0
+    source_page_parsed = bool(document_fields) and any(
+        isinstance(a, dict) and a.get("status") == "parsed"
+        and a.get("kind") in {"source_page", "ted_xml", "ted_html_download"}
+        for a in (extraction.get("attempts") or [])
+    )
     structured_ready = bool(structured_technical)
     narrative_ready = _meaningful_narrative(narrative_fields, technical_hits) and bool(
         quantity_evidence or delivery_evidence or eligibility_evidence or detected_standards
     )
-    document_ready = document_parsed and _meaningful_narrative(document_fields, technical_hits) and bool(
+    extracted_hits = evidence_by_keywords([s for f in document_fields for s in SENTENCE_RE.split(f["text"])], KEYWORDS["technical"])
+    extracted_ready = _meaningful_narrative(document_fields, extracted_hits) and bool(
         quantity_evidence or delivery_evidence or eligibility_evidence or detected_standards
     )
-    specification_ready = structured_ready or narrative_ready or document_ready
+    document_ready = document_parsed and extracted_ready
+    source_page_ready = source_page_parsed and extracted_ready
+    specification_ready = structured_ready or narrative_ready or document_ready or source_page_ready
 
     if structured_ready:
         status = "structured_specification_analyzed"
@@ -203,6 +235,8 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         status = "source_document_analyzed"
     elif narrative_ready:
         status = "source_description_analyzed"
+    elif source_page_ready:
+        status = "source_page_analyzed"
     elif docs:
         status = "document_analysis_pending"
     elif narrative_fields:
@@ -213,7 +247,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     if structured_technical:
         technical_evidence = structured_technical[:10]
     else:
-        origin = "source_document_candidate" if document_parsed else "source_text_candidate"
+        origin = "source_document_candidate" if document_parsed else ("source_page_candidate" if source_page_parsed else "source_text_candidate")
         technical_evidence = [{"field": origin, "text": s} for s in technical_hits][:10]
 
     analysis = {
@@ -223,6 +257,9 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         "structured_specification_present": structured_ready,
         "document_text_present": bool(document_fields),
         "document_parsed": document_parsed,
+        "source_page_parsed": source_page_parsed,
+        "parsed_document_count": parsed_document_count,
+        "unparsed_attachment_count": pending_attachment_count,
         "technical_evidence": technical_evidence,
         "quantity_evidence": quantity_evidence[:10],
         "delivery_evidence": delivery_evidence[:10],
@@ -230,7 +267,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         "award_evidence": award_fields[:10],
         "standards": detected_standards,
         "documents": docs,
-        "attachment_requires_parsing": has_attachment and not document_parsed,
+        "attachment_requires_parsing": pending_attachment_count > 0,
         "source_excerpt": "\n".join(sentences[:12])[:6000] or None,
     }
     item["specification_analysis"] = analysis
@@ -264,7 +301,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
             "technical_evidence_count": len(analysis["technical_evidence"]),
             "document_count": len(docs),
             "document_parsed": document_parsed,
-            "attachment_requires_parsing": has_attachment and not document_parsed,
+            "attachment_requires_parsing": pending_attachment_count > 0,
         }
         dossier_flow = workflow.get("opportunity_dossier")
         if isinstance(dossier_flow, dict) and not specification_ready:
@@ -285,6 +322,9 @@ def analyze_payload(payload: dict[str, Any]) -> dict[str, Any]:
     insufficient = 0
     attachments = 0
     parsed_documents = 0
+    parsed_pages = 0
+    parsed_attachments = 0
+    pending_attachments = 0
     for item in opportunities:
         if not isinstance(item, dict):
             continue
@@ -301,8 +341,11 @@ def analyze_payload(payload: dict[str, Any]) -> dict[str, Any]:
             attachments += 1
         if spec.get("document_parsed"):
             parsed_documents += 1
+        parsed_pages += bool(spec.get("source_page_parsed"))
+        parsed_attachments += spec.get("parsed_document_count", 0)
+        pending_attachments += spec.get("unparsed_attachment_count", 0)
     payload["specification_analysis"] = {
-        "version": 3,
+        "version": 4,
         "mode": "source_evidence_plus_public_documents",
         "analyzed_count": analyzed,
         "supplier_sourcing_ready": ready,
@@ -310,6 +353,9 @@ def analyze_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "insufficient_source_detail": insufficient,
         "attachments_requiring_parser": attachments,
         "parsed_document_opportunities": parsed_documents,
+        "parsed_source_page_opportunities": parsed_pages,
+        "parsed_attachments": parsed_attachments,
+        "unparsed_attachments": pending_attachments,
     }
     return payload
 
