@@ -1,6 +1,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const {validateQuote}=require('../web/quote-evidence.js');
+const {requestedOpportunity}=require('../web/quote-evidence.js');
 const today='2026-10-20';
 const quote={counterparty:'Fixture only',reference:'TEST',price_unit:'piece',amount:'10.50',quantity:'25',currency:'usd',quote_date:'2026-10-19',valid_until:'2026-10-20',source_url:'https://example.invalid/quote'};
 test('valid and expired evidence can enter review, without approving a quote',()=>{
@@ -23,4 +24,15 @@ test('rejects credentialed, insecure, malformed and whitespace document URLs',()
 test('requires nonblank metadata and a three-letter currency code',()=>{
  for(const name of ['counterparty','reference','price_unit'])assert.ok(validateQuote({...quote,[name]:'  '},today)[name]);
  for(const currency of ['US','123','USDT',''])assert.ok(validateQuote({...quote,currency},today).currency);
+});
+test('requested opportunity survives authentication only within its bounded lifetime',()=>{
+ const now=1000000,saved=JSON.stringify({id:'gb_fixture',at:now-1000});
+ assert.equal(requestedOpportunity('?opportunity=gb_new',saved,now),'gb_new');
+ assert.equal(requestedOpportunity('',saved,now),'gb_fixture');
+ for(const at of [now-900001,now+1,'1000000',null])assert.equal(requestedOpportunity('',JSON.stringify({id:'gb_fixture',at}),now),'');
+});
+test('malformed or duplicate opportunity identifiers cannot revive older context',()=>{
+ const saved=JSON.stringify({id:'gb_old',at:1000});
+ for(const search of ['?opportunity=','?opportunity=https://evil.invalid','?opportunity=a&opportunity=b','?opportunity=%3Cscript%3E','?opportunity='+('a'.repeat(201))])assert.equal(requestedOpportunity(search,saved,1001),'');
+ for(const value of ['broken','null','{}','[]'])assert.equal(requestedOpportunity('',value,1001),'');
 });

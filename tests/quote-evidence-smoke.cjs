@@ -8,7 +8,11 @@ const base=process.env.GB_QUOTE_BASE||'https://broker.aivisibilityworks.com';
   const calls=[],quotes=[];let attempts=0;
   await page.route('**/rest/v1/rpc/gb_quote_evidence_workspace',r=>r.fulfill({json:{opportunities:[{id:'fixture-opportunity',title:'Synthetic pump opportunity'}],quotes}}));
   await page.route('**/rest/v1/rpc/gb_submit_quote_evidence',r=>{const body=r.request().postDataJSON();calls.push(body);if(++attempts===1)return r.fulfill({status:503,json:{}});quotes.push({request_id:body.p_request_id,opportunity_id:body.p_opportunity_id,quote:body.p_quote,status:'pending_review'});return r.fulfill({json:{request_id:body.p_request_id,status:'pending_review'}})});
-  await page.goto(base+'/quote-evidence?fixture='+Date.now(),{waitUntil:'domcontentloaded'});
+  if(width===390){
+   await page.route('**/data/latest-opportunities.json*',r=>r.fulfill({json:{opportunities:[{id:'fixture-other',title_tr:'Duplicate synthetic title'},{id:'fixture-opportunity',title_tr:'Duplicate synthetic title'}]}}));
+   await page.goto(base+'/web/app.html',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.FILTERED&&FILTERED.length===2);await page.evaluate(()=>openTab('opps'));await page.addScriptTag({url:base+'/web/opportunity-dossier.js'});
+   await page.locator('[data-opportunity-id="fixture-opportunity"] .gbd-open').click();const link=page.getByRole('link',{name:'Bu fırsata teklif kaydet →'});assert.equal(new URL(await link.getAttribute('href')).searchParams.get('opportunity'),'fixture-opportunity');await link.click();
+  }else await page.goto(base+'/quote-evidence?fixture='+Date.now(),{waitUntil:'domcontentloaded'});
   await page.locator('#quoteForm').waitFor({state:'visible'});
   await page.locator('#opportunity').selectOption('fixture-opportunity');
   const values={counterparty:'<img src=x onerror=alert(1)>',reference:'SYNTHETIC-NOT-A-REAL-QUOTE',quote_date:new Date().toISOString().slice(0,10),valid_until:'2099-12-31',amount:'10.50',currency:'usd',quantity:'25',price_unit:'piece',source_url:'https://example.invalid/quote'};
@@ -33,7 +37,7 @@ const base=process.env.GB_QUOTE_BASE||'https://broker.aivisibilityworks.com';
   await page.waitForFunction(()=>document.getElementById('status').textContent.includes('Kaydedildi'));
   await page.locator('#quotes article').waitFor();
   assert.equal(calls.length,2);assert.equal(calls[0].p_request_id,calls[1].p_request_id);
-  assert.equal(calls[1].p_quote.currency,'USD');assert.equal(quotes.length,1);
+  assert.equal(await page.locator('#opportunity').inputValue(),'fixture-opportunity');assert.match(await page.locator('#quotes').innerText(),/Synthetic pump opportunity/);assert.equal(calls[1].p_quote.currency,'USD');assert.equal(quotes.length,1);
   assert.match(await page.locator('#quotes').innerText(),/İnceleme bekliyor/);
   assert.equal(await page.locator('#quotes img').count(),0);
   assert.ok((await page.locator('#quotes').innerText()).includes(values.counterparty));
@@ -42,6 +46,7 @@ const base=process.env.GB_QUOTE_BASE||'https://broker.aivisibilityworks.com';
   console.log('QUOTE_EVIDENCE_UI_PASS engine='+engine.name()+' width='+width+' validation=passed date_layout=contained retry=same_request status=pending_review external_writes=blocked');
   await context.close();
  }
+ const unknown=await browser.newContext(),unknownPage=await unknown.newPage();await unknownPage.addInitScript(()=>localStorage.setItem('gb_access_token','synthetic-quote-browser-fixture'));await unknownPage.route('**/rest/v1/rpc/**',r=>r.fulfill({json:{opportunities:[{id:'fixture-other',title:'Other opportunity'}],quotes:[]}}));await unknownPage.goto(base+'/quote-evidence?opportunity=fixture-archived');await unknownPage.getByText(/İstenen fırsat güncel listede bulunamadı/).waitFor();assert.equal(await unknownPage.locator('#opportunity').inputValue(),'');assert.equal(await unknownPage.evaluate(()=>sessionStorage.getItem('gb_quote_opportunity')),null);await unknown.close();
  for(const authenticated of [false,true]){
   const context=await browser.newContext(),page=await context.newPage();
   if(authenticated)await page.addInitScript(()=>localStorage.setItem('gb_access_token','synthetic-aal1'));
