@@ -7,9 +7,11 @@ const fixture=JSON.parse(execFileSync('python3',['-c',`
 import json
 from src.enrichment import enrich_opportunity
 from src.supplier_research import prepare
+from src.ted_search_fields import apply_search_fields
 from src.public_opportunity_projection import project_public_opportunity
 # Synthetic result-notice context exercises the research-only customer label.
 r={'source':'TED','form-type':'result','publication-number':'681487-2026','opportunity_id':'existing-identity','title_original':'Denmark – Machines and apparatus for testing and measuring – One Photonic Wafer Probe Station and one Photonic Assembly Station','title_tr':'Makine / ekipman alımı','product_name':'Makine / ekipman alımı','specification_analysis':{'supplier_sourcing_ready':True},'export_goods_review':{'status':'goods_candidate'}}
+apply_search_fields(r)
 enrich_opportunity(r)
 prepare(r)
 print(json.dumps({'admin':r,'public':project_public_opportunity(r)}))
@@ -33,7 +35,7 @@ print(json.dumps({'admin':r,'public':project_public_opportunity(r)}))
    await page.addScriptTag({path:path.join(root,'web/evidence-readiness.js')});
    await page.addScriptTag({path:path.join(root,'web/opportunity-dossier.js')});
    await page.getByRole('button',{name:'Dosyayı aç →'}).click();
-   await page.locator('.gbd-state').getByText('Sonuç ilanı — yeni alım çağrısı değil',{exact:true}).waitFor();
+   if(await page.locator('.gbd-state').textContent()!=='Sonuç ilanı — yeni alım çağrısı değil')throw Error('dossier notice label: '+await page.locator('.gbd-state').textContent());
    await page.getByText('FormFactor, Inc.',{exact:true}).waitFor();
    await page.getByText('ficonTEC Service GmbH',{exact:true}).waitFor();
    if(await page.getByRole('link',{name:'Üretici kaynağı',exact:true}).count()!==5)throw Error('missing requirement source links');
