@@ -5,6 +5,52 @@ from src.commercial_terms import analyze as analyze_commercial_terms
 
 
 class A5SourceTermsTests(unittest.TestCase):
+    def test_conflicting_values_in_one_document_remain_unknown(self):
+        item = {"document_extracted_text": "Quantity: 25 pcs\nQuantity: 50 pcs"}
+        result = extract(item)
+        self.assertNotIn("quantity", item)
+        self.assertEqual(result["review_required"]["quantity"], "conflicting_labeled_values")
+
+    def test_conflict_across_source_blocks_is_not_first_match_wins(self):
+        item = {"document_extracted_text": "Payment terms: 30 days", "notice_text": "Payment terms: 60 days"}
+        result = extract(item)
+        self.assertNotIn("payment_terms", item)
+        self.assertIn("payment_terms", result["review_required"])
+
+    def test_repeated_equal_values_are_not_a_conflict(self):
+        item = {"document_extracted_text": "Quantity: 25 pcs\nQuantity: 25 pcs"}
+        self.assertEqual(extract(item)["extracted"], 1)
+        self.assertEqual(item["quantity"], "25 pcs")
+
+    def test_unselected_lots_do_not_promote_flat_terms(self):
+        item = {"ted_lot_selection_required": True, "document_extracted_text": "Quantity: 25 pcs\nDelivery location: Ankara"}
+        result = extract(item)
+        self.assertNotIn("quantity", item)
+        self.assertNotIn("delivery_location", item)
+        self.assertEqual(set(result["review_required"].values()), {"lot_selection_required"})
+
+    def test_structured_aliases_prevent_competing_text_fields(self):
+        item = {"quantity-lot": "100 pcs", "deadline-receipt-tender-date-lot": "2026-12-01", "selection-criteria": "ISO 9001", "document_extracted_text": "Quantity: 999 pcs\nSubmission deadline: 2026-12-31\nEligibility: Any bidder"}
+        self.assertEqual(extract(item)["extracted"], 0)
+        self.assertNotIn("quantity", item)
+        self.assertNotIn("deadline", item)
+        self.assertNotIn("eligibility", item)
+
+    def test_repeat_preserves_provenance_without_counting_a_new_fact(self):
+        item = {"document_extracted_text": "Quantity: 25 pcs"}
+        extract(item)
+        before = dict(item["a5_source_term_evidence"])
+        self.assertEqual(extract(item)["extracted"], 0)
+        self.assertEqual(item["a5_source_term_evidence"], before)
+        self.assertTrue(analyze_commercial_terms(item)["terms"]["quantity"]["extracted_from_labeled_source_text"])
+
+    def test_changed_fact_does_not_keep_an_old_citation(self):
+        item = {"document_extracted_text": "Quantity: 25 pcs"}
+        extract(item)
+        item["quantity"] = "100 pcs"
+        extract(item)
+        self.assertNotIn("quantity", item["a5_source_term_evidence"])
+
     def test_explicit_english_labels_are_promoted(self):
         item = {
             "document_extracted_text": """
