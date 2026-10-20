@@ -84,6 +84,9 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
         "sector_id": sector_id or infer_sector(row),
     }
     context = notice_context(row)
+    previous_context = row.get("notice_context")
+    if "form-type" not in row and isinstance(previous_context, dict) and (row.get("source") == "TED" or row.get("source_name") == "TED"):
+        context = notice_context({"source": "TED", "form-type": previous_context.get("form_type")})
     if context is not None:
         result["notice_context"] = context
 
@@ -91,21 +94,21 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
         "product_name": _evidence_value(row, "product") or _pick(row, ("product_name", "product", "title_tr", "title_original", "notice-title", "title")),
         "country": _evidence_value(row, "country") or _pick(row, ("buyer-country", "country_name", "project_ctry_name", "country", "country_code")),
         "country_code": _pick(row, ("country_code", "buyer_country_code")),
-        "approx_quantity": _evidence_value(row, "quantity") or _pick(row, ("quantity-lot", "quantity", "requested_quantity", "qty")),
+        "approx_quantity": _evidence_value(row, "quantity") or _pick(row, ("quantity-lot", "quantity", "requested_quantity", "qty", "approx_quantity")),
         "deadline": _evidence_value(row, "deadline") or _pick(row, ("deadline-receipt-tender-date-lot", "responseDeadLine", "deadline_date", "submission_deadline_date", "deadline", "closing_date")),
         "delivery_term": _pick(row, ("incoterm", "delivery_term", "delivery_terms", "delivery_condition")),
         "opportunity_type": _pick(row, ("opportunity_type", "notice_type", "procurement_method", "type")),
         "verification_category": _pick(row, ("verification_category", "verification_status")) or _scalar(verification.get("status")),
         "source_type": _pick(row, ("source_type", "portal_family")),
         "source_name": _pick(row, ("source", "source_name")),
-        "goods_status": _scalar(review.get("status")),
+        "goods_status": _scalar(review.get("status")) or ("goods_candidate" if row.get("goods_status") == "goods_candidate" else None),
         "published_at": _pick(row, ("published_at", "publication_date", "date", "created_at")),
         "status": _pick(row, ("status", "opportunity_status")),
     }
     for key, value in candidates.items():
         if value is not None:
             result[key] = value
-    detail = _scalar(row.get('public_product_detail'))
+    detail = _scalar(row.get('public_product_detail') or row.get('product_detail'))
     if detail:
         result['product_detail'] = detail
 
@@ -141,6 +144,10 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
     # The publication pipeline may retain this bounded public summary after it
     # removes the private XML documents and provenance excerpts from its snapshot.
     public_terms = row.get("public_source_terms")
+    if not isinstance(public_terms, dict) and row.get("buyer_masked") is True and row.get("goods_status") == "goods_candidate":
+        # A previous projection contains the validated notice estimate only.
+        public_terms = {"kind": "notice_estimate", "estimated_budget": row.get("estimated_budget"),
+                        "budget_currency": row.get("budget_currency")}
     if isinstance(public_terms, dict) and public_terms.get("kind") == "notice_estimate":
         amount = public_terms.get("estimated_budget")
         currency = public_terms.get("budget_currency")
@@ -158,18 +165,46 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
         result["lot_count"] = len(row["ted_lots"])
         result["lot_selection_required"] = row.get("ted_lot_selection_required") is True
 
-    if row.get("notice_source_state") in {"current_document", "previously_verified_document"}:
-        verified = row.get("notice_source_verified_at")
+    # Customer-safe review metadata contains enums only, never source excerpts.
+    if row.get("source_lot_selection_required") is True or row.get("ted_lot_selection_required") is True or row.get("lot_selection_required") is True:
+        result["lot_selection_required"] = True
+    if "lot_count" not in result and type(row.get("lot_count")) is int and row["lot_count"] > 0:
+        result["lot_count"] = row["lot_count"]
+    extraction = row.get("document_extraction")
+    if isinstance(extraction, dict):
+        attempts = extraction.get("attempts")
+        attempts = attempts if isinstance(attempts, list) else []
+        official_notice = any(isinstance(a, dict) and a.get("status") == "parsed"
+                              and a.get("format") == "world_bank_notice_json" for a in attempts)
+        parsed = type(extraction.get("parsed_count")) is int and extraction["parsed_count"] > 0
+        has_text = isinstance(row.get("document_extracted_text"), str) and bool(row["document_extracted_text"].strip())
+        result["source_text_status"] = ("official_notice_read" if official_notice else "source_text_read") if parsed and has_text else "pending"
+    elif isinstance(row.get("source_text_status"), str) and row.get("source_text_status") in {"official_notice_read", "source_text_read", "pending"}:
+        # Projection runs again at the authenticated API boundary.
+        result["source_text_status"] = row["source_text_status"]
+    completion = row.get("data_completion")
+    missing = completion.get("missing_fields") if isinstance(completion, dict) else row.get("dossier_missing_fields")
+    if isinstance(missing, list):
+        allowed_missing = ("lot_selection", "buyer_identity", "product", "quantity_or_budget", "deadline", "country", "official_source")
+        result["dossier_missing_fields"] = [key for key in allowed_missing if key in missing]
+    if result.get("lot_selection_required") is True:
+        missing = result.setdefault("dossier_missing_fields", [])
+        if "lot_selection" not in missing:
+            missing.insert(0, "lot_selection")
+
+    source_state = row.get("notice_source_state", row.get("source_data_state"))
+    if isinstance(source_state, str) and source_state in {"current_document", "previously_verified_document"}:
+        verified = row.get("notice_source_verified_at", row.get("source_verified_at"))
         try:
             datetime.fromisoformat(str(verified))
         except ValueError:
             pass
         else:
-            result["source_data_state"] = row["notice_source_state"]
+            result["source_data_state"] = source_state
             result["source_verified_at"] = str(verified)[:40]
 
-    verified_count = coverage.get("verified_or_source_backed")
-    total_count = coverage.get("total")
+    verified_count = coverage.get("verified_or_source_backed", row.get("source_backed_fields"))
+    total_count = coverage.get("total", row.get("source_field_total"))
     if isinstance(verified_count, int) and verified_count >= 0:
         result["source_backed_fields"] = verified_count
     if isinstance(total_count, int) and total_count > 0:

@@ -85,6 +85,8 @@ def _data_path():
 
 
 def _sector_for(row):
+    if isinstance(row.get("sector_id"), str) and row["sector_id"] in SECTOR_KEYWORDS:
+        return row["sector_id"]
     hay = " ".join([
         _text(row.get("product_name")), _text(row.get("product")), _text(row.get("title_tr")), _text(row.get("title_original")),
         _text(row.get("bid_description")), _text(row.get("notice-title")), _text(row.get("title")), _text(row.get("demand_summary_tr")),
@@ -145,7 +147,9 @@ class handler(BaseHTTPRequestHandler):
         for row in data.get("opportunities") or []:
             if not isinstance(row, dict):
                 continue
-            if (row.get("export_goods_review") or {}).get("status") != "goods_candidate":
+            review = row.get("export_goods_review")
+            goods_status = review.get("status") if isinstance(review, dict) and "status" in review else row.get("goods_status")
+            if goods_status != "goods_candidate":
                 continue
             sector = _sector_for(row)
             if not all_sectors and (not selected_sectors or sector not in selected_sectors):
