@@ -12,8 +12,14 @@ def main():
     rows=result.get("notices",result.get("results",[]))
     if not isinstance(rows,list) or not rows:
         raise RuntimeError("TED search did not return live notices")
-    stats={"rows":len(rows),"single_lot":0,"multiple_lots":0,"unresolved_lots":0,"source_budgets":0,"official_notice_links":0,"budgets_preserved_through_dossier":0}
+    stats={"rows":len(rows),"single_lot":0,"multiple_lots":0,"unresolved_lots":0,"source_budgets":0,"official_notice_links":0,"budgets_preserved_through_dossier":0,"form_types":{}}
     for raw in rows:
+        form=raw.get("form-type")
+        if isinstance(form,list) and form and all(isinstance(v,str) for v in form) and len(set(form))==1:
+            form=form[0]
+        if not isinstance(form,str) or form not in {"bri","competition","completion","consultation","cont-modif","dir-awa-pre","planning","result"}:
+            form="unknown"
+        stats["form_types"][form]=stats["form_types"].get(form,0)+1
         row=apply_search_fields(dict(raw,source="TED"))
         count=row.get("ted_lot_count",0)
         stats["single_lot"]+=int(count==1)
