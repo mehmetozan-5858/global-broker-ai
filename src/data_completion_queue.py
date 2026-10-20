@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import Counter
+from decimal import Decimal, InvalidOperation
 from typing import Any
 from urllib.parse import urlsplit
 
@@ -100,6 +101,22 @@ def _product(row: dict[str, Any]) -> Any:
 
 
 def _quantity_or_budget(row: dict[str, Any]) -> Any:
+    if row.get("source") == "TED":
+        quantity = _pick(row, ("quantity-lot", "quantity", "requested_quantity", "qty", "contract_quantity", "estimated_quantity", "volume"))
+        if quantity is not None:
+            return quantity
+        source = row.get("structured_source_evidence") or {}
+        fact = source.get("estimated_value") if isinstance(source, dict) else None
+        if not isinstance(fact, dict) or fact.get("inferred") is not False:
+            return None
+        value, currency = row.get("estimated_value"), row.get("budget_currency")
+        try:
+            valid = not isinstance(value, bool) and Decimal(str(value)).is_finite() and Decimal(str(value)) > 0
+        except (InvalidOperation, ValueError):
+            valid = False
+        if valid and str(value) == str(fact.get("value")) and currency == fact.get("currency") and isinstance(currency, str) and len(currency) == 3 and currency.isupper() and currency.isalpha():
+            return value
+        return None
     return _pick(
         row,
         (
