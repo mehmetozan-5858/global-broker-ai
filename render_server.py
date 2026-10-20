@@ -29,6 +29,7 @@ ROUTES = {
     "/refund": "refund.html",
     "/progress": "progress.html",
     "/contact": "contact.html",
+    "/quote-evidence": "quote-evidence.html",
 }
 
 
