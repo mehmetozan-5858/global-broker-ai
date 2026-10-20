@@ -26,7 +26,12 @@ def main():
             if attempt.get('status')=='failed':
                 raw=str(attempt.get('error') or 'unknown')
                 code=re.search(r'HTTP Error ([0-9]{3})',raw)
-                counts['error_'+('HTTP_'+code.group(1) if code else raw.split(':',1)[0])]+=1
+                kind=raw.split(':',1)[0]
+                reason=raw.split(':',1)[1] if ':' in raw else ''
+                safe_reasons={'non_public_or_unresolvable_url','redirected_to_non_public_url','document_too_large','ted_source_not_xml','ted_html_download_not_html','ted_pdf_download_not_pdf','ted_document_origin_changed','ted_pdf_notice_url_changed','ted_document_notice_identity_or_text_missing','insufficient_ted_xml_text'}
+                if kind=='ValueError' and reason in safe_reasons:
+                    kind+='_'+reason
+                counts['error_'+('HTTP_'+code.group(1) if code else kind)]+=1
         assert 'verified_unit_price' not in row and row.get('buyer_verified') is not True
     print('TED_DOCUMENT_SOURCE_PROBE',json.dumps({'attempted':len(selected),'parsed':sum(success),'no_text':len(selected)-sum(success),**dict(counts)},sort_keys=True))
 
