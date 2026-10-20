@@ -13,15 +13,15 @@ test('risk flags are blocking even when draft gate passed',()=>{const o=complete
 test('complete evidence permits internal review only',()=>{const r=assess(complete(),now);assert.equal(r.ready,true);assert.equal(r.externalActionAuthorized,false);assert.match(r.next,/İnsan/)});
 test('historical or unclassified TED notice cannot become a current offer',()=>{for(const context of [undefined,{form_type:'result',call_for_tenders:false,label_tr:'Sonuç ilanı'}]){const r=assess({...complete(),source:'TED',notice_context:context},now);assert.equal(r.ready,false);assert.match(r.next,/Yeni ihale çağrısı/)}assert.equal(assess({...complete(),source:'TED',notice_context:{call_for_tenders:true}},now).ready,true)});
 
-function dossier(row,shared=true){
+function dossier(row,shared=true,hostId='content'){
  const fs=require('node:fs'),vm=require('node:vm');
  const api=require('../web/evidence-readiness.js');
  let source=fs.readFileSync(require('node:path').join(__dirname,'../web/opportunity-dossier.js'),'utf8');
- source=source.replace(/\nload\(\);\n\}\)\(\);\s*$/, '\nwindow.testDossier={render:render,statusClass:statusClass};\n})();');
+ source=source.replace(/\nload\(\);\n\}\)\(\);\s*$/, '\nwindow.testDossier={render:render,statusClass:statusClass,cardMatch:cardMatch,setRows:function(rows){ROWS=rows}};\n})();');
  const window={scrollTo(){}};if(shared)window.GBEvidenceReadiness=api;
  vm.runInNewContext(source,{window,URL,Date});
- const host={innerHTML:'',querySelector:()=>null};
- window.testDossier.render(row,host,null,()=>{});
+ const host={id:hostId,innerHTML:'',querySelector:()=>null};
+ window.testDossier.render(row,host,null,()=>{},hostId==='content');
  return {html:host.innerHTML,api:window.testDossier};
 }
 function priced(){const r=complete();r.deadline_normalized='2099-12-31';r.price_margin_gate.quote_valid_until='2099-12-31';r.workflow={pricing_margin:{supplier_quote:11111,sell_price:22222,gross_margin:33333,commission:44444},logistics:{status:'unverified'},risk:{status:'review_pending'}};return r;}
@@ -30,3 +30,16 @@ test('detail dossier hides expired quote and derived amounts despite stale gates
 test('detail dossier allows evidence-backed internal review without trade authority',()=>{const {html}=dossier(priced());assert.match(html,/İnsan incelemesine hazır/);for(const value of ['11111','22222','33333','44444'])assert(html.includes(value));assert.match(html,/İnsan onayı zorunlu/)});
 test('detail dossier fails closed when shared evidence module is absent',()=>{const {html}=dossier(priced(),false);assert.match(html,/Kanıt doğrulaması bekleniyor/);assert(!html.includes('11111'))});
 test('negative status names cannot produce a positive detail badge',()=>{const {api}=dossier({});for(const value of ['unverified','not_verified','expired','invalid','review_pending'])assert.notEqual(api.statusClass(value),'good');assert.equal(api.statusClass('verified'),'good')});
+test('admin dossier links only a stable opportunity ID to private quote intake',()=>{
+ const {html}=dossier({id:'gb_fixture:lot-1',title_tr:'Fixture'});assert.match(html,/quote-evidence\?opportunity=gb_fixture%3Alot-1/);assert.match(html,/target="_top">Bu fırsata teklif kaydet/);
+ for(const id of [undefined,'','https://evil.invalid','a" onclick="bad'])assert.ok(!dossier({id}).html.includes('quote-evidence?'));
+ assert.ok(!dossier({id:'gb_fixture'},true,'pc').html.includes('quote-evidence?'));
+});
+test('admin opportunity cards use stable IDs, never titles or public introduction IDs',()=>{
+ const fs=require('node:fs'),vm=require('node:vm');const source=fs.readFileSync(require('node:path').join(__dirname,'../web/app.html'),'utf8');
+ const context={encodeURIComponent};vm.createContext(context);vm.runInContext(source.match(/^function quoteAction\(o\).*$/m)[0],context);
+ assert.match(context.quoteAction({id:'gb_fixture',title_tr:'Other title'}),/opportunity=gb_fixture/);
+ assert.equal(context.quoteAction({opportunity_id:'public-request-id'}),'');assert.equal(context.quoteAction({id:'bad" onclick="alert(1)'}),'');
+});
+
+test('duplicate opportunity titles cannot change a stable card identity',()=>{const {api}=dossier({});const a={id:'gb_a',title_tr:'Same title'},b={id:'gb_b',title_tr:'Same title'};api.setRows([a,b]);const card=id=>({dataset:{opportunityId:id},querySelector:()=>({textContent:'Same title'}),textContent:'Same title'});assert.equal(api.cardMatch(card('gb_b')).row,b);assert.equal(api.cardMatch(card('gb_b')).trusted,true);assert.equal(api.cardMatch(card('gb_missing')).row,undefined)});
