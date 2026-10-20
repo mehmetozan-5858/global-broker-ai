@@ -12,3 +12,21 @@ test('each missing authoritative gate fails closed',()=>{for(const k of ['data_c
 test('risk flags are blocking even when draft gate passed',()=>{const o=complete();o.offer_risk_gate.risk_flags=['single_verified_supplier'];assert.equal(assess(o,now).ready,false)});
 test('complete evidence permits internal review only',()=>{const r=assess(complete(),now);assert.equal(r.ready,true);assert.equal(r.externalActionAuthorized,false);assert.match(r.next,/İnsan/)});
 test('historical or unclassified TED notice cannot become a current offer',()=>{for(const context of [undefined,{form_type:'result',call_for_tenders:false,label_tr:'Sonuç ilanı'}]){const r=assess({...complete(),source:'TED',notice_context:context},now);assert.equal(r.ready,false);assert.match(r.next,/Yeni ihale çağrısı/)}assert.equal(assess({...complete(),source:'TED',notice_context:{call_for_tenders:true}},now).ready,true)});
+
+function dossier(row,shared=true){
+ const fs=require('node:fs'),vm=require('node:vm');
+ const api=require('../web/evidence-readiness.js');
+ let source=fs.readFileSync(require('node:path').join(__dirname,'../web/opportunity-dossier.js'),'utf8');
+ source=source.replace(/\nload\(\);\n\}\)\(\);\s*$/, '\nwindow.testDossier={render:render,statusClass:statusClass};\n})();');
+ const window={scrollTo(){}};if(shared)window.GBEvidenceReadiness=api;
+ vm.runInNewContext(source,{window,URL,Date});
+ const host={innerHTML:'',querySelector:()=>null};
+ window.testDossier.render(row,host,null,()=>{});
+ return {html:host.innerHTML,api:window.testDossier};
+}
+function priced(){const r=complete();r.deadline_normalized='2099-12-31';r.price_margin_gate.quote_valid_until='2099-12-31';r.workflow={pricing_margin:{supplier_quote:11111,sell_price:22222,gross_margin:33333,commission:44444},logistics:{status:'unverified'},risk:{status:'review_pending'}};return r;}
+test('detail dossier does not promote legacy statuses or display unsupported amounts',()=>{const r={buyer_verified:true,supplier_status:'verified',workflow:priced().workflow};const {html}=dossier(r);assert(!html.includes('Hazır inceleme'));assert(!html.includes('Ticari veri güçlü'));for(const value of ['11111','22222','33333','44444'])assert(!html.includes(value));assert.match(html,/Geçerli gerçek teklif bekleniyor/)});
+test('detail dossier hides expired quote and derived amounts despite stale gates',()=>{const r=priced();r.price_margin_gate.quote_valid_until='2020-01-01';const {html}=dossier(r);for(const value of ['11111','22222','33333','44444'])assert(!html.includes(value));assert(!html.includes('İnsan incelemesine hazır'))});
+test('detail dossier allows evidence-backed internal review without trade authority',()=>{const {html}=dossier(priced());assert.match(html,/İnsan incelemesine hazır/);for(const value of ['11111','22222','33333','44444'])assert(html.includes(value));assert.match(html,/İnsan onayı zorunlu/)});
+test('detail dossier fails closed when shared evidence module is absent',()=>{const {html}=dossier(priced(),false);assert.match(html,/Kanıt doğrulaması bekleniyor/);assert(!html.includes('11111'))});
+test('negative status names cannot produce a positive detail badge',()=>{const {api}=dossier({});for(const value of ['unverified','not_verified','expired','invalid','review_pending'])assert.notEqual(api.statusClass(value),'good');assert.equal(api.statusClass('verified'),'good')});

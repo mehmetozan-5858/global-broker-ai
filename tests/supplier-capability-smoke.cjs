@@ -30,9 +30,10 @@ print(json.dumps({'admin':r,'public':project_public_opportunity(r)}))
    if((await page.locator('body').innerText()).includes('FormFactor'))throw Error('supplier identity in public projection');
    await page.goto('https://fixture.invalid/');
    await page.evaluate(row=>{window.__GB_OPPORTUNITY_ROWS=[row];document.body.innerHTML='<div id="content"><article class="opp"><h3></h3></article></div>';document.querySelector('h3').textContent=row.title_tr;},fixture.admin);
+   await page.addScriptTag({path:path.join(root,'web/evidence-readiness.js')});
    await page.addScriptTag({path:path.join(root,'web/opportunity-dossier.js')});
    await page.getByRole('button',{name:'Dosyayı aç →'}).click();
-   await page.locator('.gbd-state').getByText('Tam şartname onayı bekleniyor',{exact:true}).waitFor();
+   await page.locator('.gbd-state').getByText('Sonuç ilanı — yeni alım çağrısı değil',{exact:true}).waitFor();
    await page.getByText('FormFactor, Inc.',{exact:true}).waitFor();
    await page.getByText('ficonTEC Service GmbH',{exact:true}).waitFor();
    if(await page.getByRole('link',{name:'Üretici kaynağı',exact:true}).count()!==5)throw Error('missing requirement source links');
