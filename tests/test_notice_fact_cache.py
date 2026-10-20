@@ -48,3 +48,19 @@ class NoticeFactCacheTests(unittest.TestCase):
         self.assertEqual(result['notices']['681530-2026']['fields']['estimated_value'],'500000')
         self.assertNotIn('submission_deadline_date',result['notices']['681530-2026']['fields'])
         self.assertEqual(result['notices']['681530-2026']['verified_at'],'2026-10-20T12:00:00+00:00')
+
+    def test_partial_cache_without_budget_does_not_create_estimate_or_abort_batch(self):
+        for fields in [{'quantity': '25 pieces'}, {'submission_deadline_date': '2026-10-23'},
+                       {'quantity': '25 pieces', 'estimated_value': '600', 'budget_currency': ''}]:
+            with self.subTest(fields=fields):
+                saved = cache()
+                saved['notices']['681530-2026']['fields'] = fields
+                row = notice()
+                second = notice()
+                result = process([row, second], saved)
+                self.assertEqual(result['last_scan']['reused_notices'], 2)
+                for candidate in (row, second):
+                    self.assertNotIn('estimated_value', candidate)
+                    self.assertNotIn('budget_currency', candidate)
+                    self.assertNotIn('public_source_terms', candidate)
+                    self.assertEqual(candidate['notice_source_verified_at'], DATE)
