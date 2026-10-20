@@ -10,6 +10,7 @@ import urllib.parse
 import urllib.request
 import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
@@ -326,6 +327,8 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     parsed_count = sum(1 for x in attempts if x.get("status") == "parsed")
     item["document_extraction"] = {
         "status": "parsed" if merged else ("attempted_no_text" if candidate_count else "no_supported_document"),
+        "checked_at": datetime.now(timezone.utc).isoformat(),
+        "refresh_policy": "every_scan",
         "source_backed_only": True,
         "candidate_count": candidate_count,
         "source_page_count": len(source_pages),
@@ -341,53 +344,21 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     return item
 
 
-def _opportunity_key(item: dict[str, Any]) -> str:
-    for key in ("id", "notice-id", "notice_id", "source_url", "url"):
-        value = item.get(key)
-        if value:
-            return str(value)
-    return ""
-
-
-def _reuse_last_good(item: dict[str, Any], previous_map: dict[str, dict[str, Any]]) -> bool:
-    key = _opportunity_key(item)
-    old = previous_map.get(key) if key else None
-    if not isinstance(old, dict):
-        return False
-    old_text = old.get("document_extracted_text")
-    old_info = old.get("document_extraction")
-    if not isinstance(old_text, str) or len(old_text) < 80 or not isinstance(old_info, dict) or old_info.get("status") != "parsed":
-        return False
-    item["document_extracted_text"] = old_text[:MAX_EXTRACTED_CHARS]
-    info = dict(old_info)
-    info["reused_from_last_known_good"] = True
-    item["document_extraction"] = info
-    return True
-
-
 def enrich_payload(payload: dict[str, Any], fallback_payload: dict[str, Any] | None = None) -> dict[str, Any]:
     opportunities = payload.get("opportunities")
     if not isinstance(opportunities, list):
         return payload
 
-    previous_map: dict[str, dict[str, Any]] = {}
-    if isinstance(fallback_payload, dict):
-        old_items = fallback_payload.get("opportunities")
-        if isinstance(old_items, list):
-            for old in old_items:
-                if isinstance(old, dict):
-                    key = _opportunity_key(old)
-                    if key:
-                        previous_map[key] = old
-
+    # Keep the fallback argument for callers, but never treat a previous scan's
+    # document as current evidence. Amendments may retain the same ID and URL.
     to_fetch: list[dict[str, Any]] = []
-    reused = 0
     for item in opportunities:
         if not isinstance(item, dict):
             continue
-        if _reuse_last_good(item, previous_map):
-            reused += 1
-        elif _all_urls(item):
+        # Clear evidence even when a caller supplies already enriched rows.
+        item.pop("document_extracted_text", None)
+        item.pop("document_extraction", None)
+        if _all_urls(item):
             to_fetch.append(item)
         else:
             enrich_opportunity(item)
@@ -417,13 +388,14 @@ def enrich_payload(payload: dict[str, Any], fallback_payload: dict[str, Any] | N
         discovered += int(info.get("discovered_attachment_count") or 0)
 
     payload["document_extraction"] = {
-        "version": 2,
+        "version": 3,
+        "refresh_policy": "every_scan",
         "mode": "public_source_pages_and_documents",
         "attempted_opportunities": attempted,
         "parsed_opportunities": parsed,
         "source_pages_parsed": pages_parsed,
         "discovered_attachments": discovered,
-        "reused_last_known_good": reused,
+        "reused_last_known_good": 0,
     }
     return payload
 

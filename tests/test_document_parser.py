@@ -67,20 +67,44 @@ class DocumentParserTests(unittest.TestCase):
         self.assertEqual(info["parsed_count"], 2)
         self.assertIn("Technical specification", item["document_extracted_text"])
 
-    def test_last_good_extraction_is_reused_without_network(self):
-        current = {"opportunities": [{"id": "opp-1", "source_url": "https://example.com/tender"}]}
-        previous = {
-            "opportunities": [{
-                "id": "opp-1",
-                "document_extracted_text": "Technical specification " + ("x" * 120),
-                "document_extraction": {"status": "parsed", "parsed_count": 1, "candidate_count": 1},
-            }]
-        }
-        with patch.object(document_parser, "enrich_opportunity") as enrich:
+    def test_same_id_and_url_are_refetched_for_amendments(self):
+        url = "https://example.com/spec.pdf"
+        old_text = "Quantity: 20 pieces. " * 10
+        new_text = "Quantity: 25 pieces. " * 10
+        previous = {"opportunities": [{"id": "opp-1", "document_url": url,
+            "document_extracted_text": old_text,
+            "document_extraction": {"status": "parsed", "parsed_count": 1}}]}
+        current = {"opportunities": [{"id": "opp-1", "document_url": url}]}
+        with patch.object(document_parser, "_download", return_value=(b"%PDF-test", "application/pdf", url)) as download, patch.object(document_parser, "_parse", return_value=(new_text, "pdf")):
             out = document_parser.enrich_payload(current, previous)
-        enrich.assert_not_called()
-        self.assertTrue(out["opportunities"][0]["document_extraction"]["reused_from_last_known_good"])
-        self.assertEqual(out["document_extraction"]["reused_last_known_good"], 1)
+        download.assert_called_once()
+        row = out["opportunities"][0]
+        self.assertEqual(row["document_extracted_text"], new_text)
+        self.assertEqual(row["document_extraction"]["refresh_policy"], "every_scan")
+        self.assertIn("checked_at", row["document_extraction"])
+        self.assertEqual(out["document_extraction"]["reused_last_known_good"], 0)
+
+    def test_failed_refresh_never_restores_old_document_evidence(self):
+        old = {"id": "opp-1", "document_url": "https://example.com/spec.pdf",
+            "document_extracted_text": "Technical specification ISO 9001 " * 10,
+            "document_extraction": {"status": "parsed", "parsed_count": 1}}
+        current = {"opportunities": [dict(old)]}
+        with patch.object(document_parser, "_download", side_effect=TimeoutError("source unavailable")):
+            document_parser.enrich_payload(current, {"opportunities": [old]})
+        row = current["opportunities"][0]
+        self.assertNotIn("document_extracted_text", row)
+        self.assertEqual(row["document_extraction"]["status"], "attempted_no_text")
+        self.assertEqual(row["document_extraction"]["parsed_count"], 0)
+        self.assertFalse(analyze_opportunity(row)["specification_analysis"]["document_parsed"])
+
+    def test_removed_source_cannot_keep_old_document_evidence(self):
+        row = {"id": "opp-1", "document_extracted_text": "Old evidence " * 20,
+               "document_extraction": {"status": "parsed", "parsed_count": 1}}
+        with patch.object(document_parser, "_download") as download:
+            document_parser.enrich_payload({"opportunities": [row]})
+        download.assert_not_called()
+        self.assertNotIn("document_extracted_text", row)
+        self.assertEqual(row["document_extraction"]["status"], "no_supported_document")
 
     def test_long_portal_cannot_push_discovered_pdf_out_of_text_budget(self):
         item = {"source_url": "https://example.test/tender"}
