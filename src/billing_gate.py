@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any
+import re
 
 
 @dataclass(frozen=True)
@@ -25,15 +26,15 @@ class BillingDecision:
 def decide(*, provider_verified: bool, legal_entity_verified: bool, invoice_flow_verified: bool,
            refund_terms_reviewed: bool, customer_terms_accepted: bool) -> BillingDecision:
     blockers: list[str] = []
-    if not provider_verified:
+    if provider_verified is not True:
         blockers.append("payment_provider")
-    if not legal_entity_verified:
+    if legal_entity_verified is not True:
         blockers.append("legal_entity")
-    if not invoice_flow_verified:
+    if invoice_flow_verified is not True:
         blockers.append("invoice_flow")
-    if not refund_terms_reviewed:
+    if refund_terms_reviewed is not True:
         blockers.append("refund_terms")
-    if not customer_terms_accepted:
+    if customer_terms_accepted is not True:
         blockers.append("customer_terms")
     return BillingDecision(
         status="ready" if not blockers else "blocked",
@@ -47,10 +48,15 @@ def decide(*, provider_verified: bool, legal_entity_verified: bool, invoice_flow
 def payment_record(*, provider_reference: str | None, amount: str | None, currency: str | None,
                    provider_verified: bool) -> dict[str, Any]:
     """Record only externally confirmed payment facts; never fabricate paid status."""
-    confirmed = bool(provider_verified and provider_reference and amount and currency)
+    reference = provider_reference.strip() if isinstance(provider_reference, str) else ''
+    valid_reference = bool(reference and len(reference) <= 200 and not any(ord(c) < 32 or ord(c) == 127 for c in reference))
+    valid_amount = bool(isinstance(amount, str) and re.fullmatch(r"[0-9]{1,12}(?:\.[0-9]{1,6})?", amount)
+                        and any(c in "123456789" for c in amount))
+    valid_currency = bool(isinstance(currency, str) and re.fullmatch(r"[A-Z]{3}", currency))
+    confirmed = provider_verified is True and valid_reference and valid_amount and valid_currency
     return {
         "status": "confirmed" if confirmed else "unconfirmed",
-        "provider_reference": provider_reference if confirmed else None,
+        "provider_reference": reference if confirmed else None,
         "amount": amount if confirmed else None,
         "currency": currency if confirmed else None,
         "source_backed": confirmed,

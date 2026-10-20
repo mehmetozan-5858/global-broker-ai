@@ -136,6 +136,16 @@ class DealLifecycleA12Tests(unittest.TestCase):
         self.assertFalse(result["commission_ledger"]["repeat_transaction_in_scope"])
         self.assertIn("commission_entitlement", result["blockers"])
 
+    def test_malformed_payment_cannot_unlock_the_deal_room(self):
+        for changes in [dict(provider_verified='false'), dict(provider_amount='-100'), dict(provider_amount='0'), dict(provider_currency='123')]:
+            payment = dict(provider_reference='PAY-FIXTURE', provider_amount='100', provider_currency='USD', provider_verified=True)
+            payment.update(changes)
+            result = evaluate(agreement=self.agreement(), access=self.access(access_fee_required=True, access_paid=True),
+                              evidence=self.evidence(), **payment)
+            self.assertEqual(result['state'], 'terms_signed')
+            self.assertIn('confirmed_access_payment', result['blockers'])
+            self.assertFalse(result['provider_payment']['source_backed'])
+
 
 if __name__ == "__main__":
     unittest.main()
