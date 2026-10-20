@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from src.opportunity_identity import stable_opportunity_id
+from src.ted_search_fields import notice_context
 
 BUYER_DISPLAY = "Alıcı kimliği kontrollü tanıştırma ile paylaşılır"
 
@@ -82,6 +83,9 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
         "buyer_display": BUYER_DISPLAY,
         "sector_id": sector_id or infer_sector(row),
     }
+    context = notice_context(row)
+    if context is not None:
+        result["notice_context"] = context
 
     candidates = {
         "product_name": _evidence_value(row, "product") or _pick(row, ("product_name", "product", "title_tr", "title_original", "notice-title", "title")),

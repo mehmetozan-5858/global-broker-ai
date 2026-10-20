@@ -21,12 +21,33 @@ def _positive(value):
     except (InvalidOperation, ValueError):
         return False
 
+def notice_context(item):
+    if item.get("source") != "TED":
+        return None
+    form = _one(item.get("form-type"))
+    labels = {
+        "competition": "İhale çağrısı — son tarih ayrıca doğrulanmalı",
+        "result": "Sonuç ilanı — yeni alım çağrısı değil",
+        "completion": "Tamamlanmış sözleşme bildirimi",
+        "cont-modif": "Sözleşme değişikliği — yeni alım çağrısı değil",
+        "planning": "Ön bilgi / planlama — başvuru çağrısı değil",
+        "consultation": "Pazar istişaresi — ihale çağrısı değil",
+        "dir-awa-pre": "Doğrudan alım ön bildirimi — açık ihale çağrısı değil",
+        "bri": "İşletme kaydı — alım çağrısı değil",
+    }
+    if form not in labels:
+        form = "unknown"
+    return {"form_type": form, "call_for_tenders": form == "competition",
+            "research_only": form != "competition",
+            "label_tr": labels.get(form, "İlan türü doğrulanmalı — araştırma kaydı")}
+
 def apply_search_fields(item):
     publication = _one(item.get("publication-number"))
     if item.get("source") != "TED" or not publication or not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
         return item
     source = "https://ted.europa.eu/en/notice/-/detail/" + publication
     item.setdefault("source_url", source)
+    item["notice_context"] = notice_context(item)
     ids = _values(item.get("identifier-lot"))
     if any(not re.fullmatch(r"LOT-[A-Za-z0-9_-]+", v) for v in ids):
         item["ted_lot_selection_required"] = True
