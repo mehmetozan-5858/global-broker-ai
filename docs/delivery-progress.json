@@ -335,9 +335,15 @@
         "tests": "426 Python tests + four recovery contracts; custom-domain probe requires HTTPS home marker, 204 health and 401 protected admin response. Redirects, wrong responses and TLS outages fail closed.",
         "deployment": "Vercel domain broker.aivisibilityworks.com verified=true on project prj_1gJepl5RppSeL6jtruTG0W0I3uHb. PR #106 production ready; mobile and recovery/browser workflow passed.",
         "live_verification": "HTTPS https://broker.aivisibilityworks.com/ and /progress returned 200; www.aivisibilityworks.com remained 200. Vercel domain verification and live requests observed 2026-10-20.",
-        "contact": "Private contact form live; owner mailbox provider acceptance and deduplicated retry passed: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39372843723"
+        "contact": "Private contact form live; owner mailbox provider acceptance and deduplicated retry passed: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39372843723",
+        "membership_requests": {
+          "status": "complete",
+          "tests": "506 Python and 46 JavaScript tests passed. Rolled-back SQL checks confirmed verified-account requirements, owner isolation, idempotent and changed retries, server catalog amounts, no invoice and unchanged entitlements. Production intercepted membership browser checks passed Chromium 320/390/1280px and WebKit 390px; no persisted fixture users or requests.",
+          "deployment": "PR #149 / ef60703ad43ee23a723af527e10c3c542675ec0f production READY; CI, mobile and source scan passed.",
+          "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39456145326"
+        }
       },
-      "note": "Özel alan adı tamam: broker.aivisibilityworks.com Broker üretim projesine verified=true bağlandı. HTTPS ana sayfa, ilerleme ekranı 200; korumalı admin uç noktası kimliksiz 401. Mevcut DNS üzerinden çalıştı; satın alma veya nameserver değişimi yapılmadı. Her tarama güncel HTTPS ve yetki kapısını kontrol eder. Gerçek ödeme testi, hukuki inceleme ve hukuki iletişim kabulü hâlâ eksik. Kullanıcı kararı (20 Ekim 2026): başlangıç bireysel yürütülecek, ileride kurumsala geçilecek. Şirket türü, faturalama ve doğrulanmış iletişim bilgileri ayrı açık kabul adımlarıdır. Müşteri iletişim formu ve mevcut özel yönetici e-postasına yönlendirme 20 Ekim 2026 tarihinde canlıda doğrulandı; kişisel telefon/e-posta yayımlanmadı. Bu sistem testi ödeme, hukuki inceleme veya gerçek müşteri kabulü değildir.",
+      "note": "Özel alan adı tamam: broker.aivisibilityworks.com Broker üretim projesine verified=true bağlandı. HTTPS ana sayfa, ilerleme ekranı 200; korumalı admin uç noktası kimliksiz 401. Mevcut DNS üzerinden çalıştı; satın alma veya nameserver değişimi yapılmadı. Her tarama güncel HTTPS ve yetki kapısını kontrol eder. Gerçek ödeme testi, hukuki inceleme ve hukuki iletişim kabulü hâlâ eksik. Kullanıcı kararı (20 Ekim 2026): başlangıç bireysel yürütülecek, ileride kurumsala geçilecek. Şirket türü, faturalama ve doğrulanmış iletişim bilgileri ayrı açık kabul adımlarıdır. Müşteri iletişim formu ve mevcut özel yönetici e-postasına yönlendirme 20 Ekim 2026 tarihinde canlıda doğrulandı; kişisel telefon/e-posta yayımlanmadı. Bu sistem testi ödeme, hukuki inceleme veya gerçek müşteri kabulü değildir. PR #149: fiyatlandırma ve hesap ekranı özel üyelik talebine bağlandı. Sunucu katalog tutarı, USD, politika ve talep kabulü sürümünü belirler; kullanıcı yalnız kendi kayıtlarını görür. Aynı paket ve tekrar istek çift kayıt oluşturmaz. Mevcut ücretli yetki değiştirilmez; ödeme alınmaz, abonelik veya fatura oluşturulmaz. Yazılım listesindeki son ödeme/faturalama adımı hâlâ açık; oranlar web %77 / uygulama %72, yazılım 12/13.",
       "steps": [
         {
           "id": "domain",
@@ -366,7 +372,7 @@
           "title": "Ödeme / faturalama entegrasyonu",
           "category": "software",
           "status": "in_progress",
-          "blocker": "Sağlayıcı ve bireysel işletme hesabı kabulü doğrulanmalı."
+          "blocker": "Üyelik talebi ve özel kayıt hazır; Broker sağlayıcı bağlantısı, tahsilat ve fatura akışı henüz tamamlanmadı."
         },
         {
           "id": "commercial_acceptance",
