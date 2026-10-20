@@ -41,10 +41,7 @@ ATTACHMENT_EXTENSIONS = (".pdf", ".docx", ".txt")
 def _collect_urls(value: Any) -> list[str]:
     out: list[str] = []
     if isinstance(value, str):
-        if value.startswith(("http://", "https://")):
-            out.append(value)
-        else:
-            out.extend(re.findall(r"https?://[^\s\]\[\)\(\"'<>]+", value))
+        out.extend(re.findall(r"https?://[^\s\]\[\)\(\"'<>]+", value))
     elif isinstance(value, list):
         for entry in value:
             out.extend(_collect_urls(entry))
