@@ -1,5 +1,6 @@
 import copy
 from datetime import date
+from decimal import Decimal
 import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
@@ -71,3 +72,36 @@ class QuoteReviewAnalysisTests(unittest.TestCase):
         result = analyze(context, date(2026, 10, 20))
         self.assertFalse(result['price_gate']['price_ready'])
         self.assertIn('supplier_quantity_scope_mismatch', result['price_gate']['missing_or_invalid'])
+
+    def freight_context(self):
+        context = self.context()
+        quote = dict(context['quotes'][0]['quote'], party='freight', amount='250', origin='Fixture origin',
+                     destination='Fixture destination', incoterm='DAP', transport_mode='road', amount_basis='shipment_total')
+        context['quotes'].append({'quote':quote, 'review':copy.deepcopy(context['quotes'][0]['review'])})
+        return context
+
+    def test_freight_is_a_shipment_total_and_never_net_profit(self):
+        context = self.freight_context(); original = copy.deepcopy(context)
+        gate = analyze(context, date(2026, 10, 20))['logistics_gate']
+        self.assertTrue(gate['evidence_ready'])
+        self.assertEqual(Decimal(gate['goods_plus_freight_subtotal']), Decimal('1500'))
+        self.assertFalse(gate['landed_cost_ready']); self.assertFalse(gate['net_profit_calculated'])
+        self.assertIn('insurance', gate['excluded_costs'])
+        self.assertEqual(context, original)
+
+    def test_freight_scope_must_match_without_currency_or_unit_conversion(self):
+        for field, value in [('quantity','50'),('currency','EUR'),('price_unit','kg'),('amount_basis','unit')]:
+            context = self.freight_context(); context['quotes'][2]['quote'][field] = value
+            gate = analyze(context, date(2026, 10, 20))['logistics_gate']
+            self.assertFalse(gate['evidence_ready'], field)
+            self.assertNotIn('goods_plus_freight_subtotal', gate)
+
+    def test_expired_revoked_or_ambiguous_freight_cannot_be_counted(self):
+        for kind in ('expired','revoked','duplicate'):
+            context = self.freight_context()
+            if kind == 'expired': context['quotes'][2]['quote']['valid_until'] = '2026-10-19'
+            elif kind == 'revoked': context['quotes'][2]['review']['decision'] = 'rejected'
+            else: context['quotes'].append(copy.deepcopy(context['quotes'][2]))
+            context['opportunity']['verified_freight'] = '999'
+            gate = analyze(context, date(2026, 10, 20))['logistics_gate']
+            self.assertFalse(gate['evidence_ready']); self.assertNotIn('goods_plus_freight_subtotal', gate)

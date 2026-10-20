@@ -11,3 +11,23 @@ Kararlar özel tabloda eklemeli saklanır. Özgün teklif değiştirilmez. İste
 İlerleme ekranı sabit paket yüzdesini korur; kalan yol haritasındaki yazılım adımlarını ve gerçek veri/kullanım kabulünü ayrı sayar. Bu alt adım sayımı tüm uygulama için yeni bir yüzde değildir. Tamamlanan alt adımlar test, üretim dağıtımı ve canlı doğrulama kanıtı gerektirir; özel kanıt metinleri public özete aktarılmaz.
 
 Doğrulama: geri alınan SQL yetki/tekrar/sürüm/iptal/son-karar testleri; Python analizi ve auth aktarımı; yakalanmış RPC/API kullanan mobil/masaüstü/WebKit arayüz testleri. Gerçek teklif veya inceleme kararı test amacıyla kalıcı bırakılmaz.
+
+## Freight evidence
+
+The same private MFA-protected inbox also accepts `party=freight`. Its amount is
+always `amount_basis=shipment_total`, the entire shipment cost rather than a unit
+price. The additional required fields are origin, destination, Incoterm and
+transport mode. Quantity and price unit describe the cargo covered by the quote.
+Supplier and buyer payloads retain their original ten-field contract.
+
+Freight records use the same immutable intake, idempotent request IDs, append-only
+review decisions and revision conflict checks. Only one current accepted freight
+quote may enter an analysis. Quantity must cover the requested cargo, its unit
+must match the supplier quote, and currency must match without an assumed FX
+conversion. Missing, expired, revoked or ambiguous evidence blocks the calculation.
+
+The analysis can show a goods-plus-freight subtotal. This excludes duty, tax,
+insurance, fees, financing and FX; it never establishes landed cost, net profit,
+commercial approval or authority to contact a carrier. No payment or shipment is
+initiated. SQL authorization fixtures are rolled back; browser fixtures intercept
+all quotation writes.
