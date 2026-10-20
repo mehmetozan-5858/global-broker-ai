@@ -17,3 +17,5 @@ test('account waits for initialization before enabling login, then preserves the
  vm.runInContext("S.token='fixture';S.refresh='';continueToRequestedPage()",context);assert.equal(assigned.length,0);assert.match(element('status').textContent,/yeniden giriş/);
  await element('login').onclick();assert.deepEqual(assigned,['/security?next=%2Fquote-evidence']);
 });
+
+test('membership can return safely after account login',()=>{assert.equal(require('../web/auth-return.js').next('?next=/membership'),'/membership')});

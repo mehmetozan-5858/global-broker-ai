@@ -25,6 +25,7 @@ ROUTES = {
     "/account": "account.html",
     "/security": "security.html",
     "/pricing": "pricing.html",
+    "/membership": "membership.html",
     "/privacy": "privacy.html",
     "/terms": "terms.html",
     "/refund": "refund.html",
