@@ -66,8 +66,14 @@
       },
       "status": "blocked",
       "acceptance": "Aynı fırsatta geçerli teklif, para birimi, teslim/navlun ve risk kanıtlarıyla hesaplama.",
-      "evidence": {},
-      "note": "Geçerli gerçek tedarikçi teklifi, miktar, para birimi ve navlun kanıtları henüz yok."
+      "evidence": {
+        "interface_verification": {
+          "tests": "486 Python tests and 21 JavaScript tests passed, including five new detail-render regressions. Complete-looking legacy states, expired quotes, absent shared module and negative badges fail closed; complete synthetic evidence permits internal review only.",
+          "deployment": "PR #125 a5abb78 and #126 1a9bb68 production READY; CI, mobile and production ecosystem smoke passed.",
+          "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39400978117"
+        }
+      },
+      "note": "Geçerli gerçek tedarikçi teklifi, miktar, para birimi ve navlun kanıtları henüz yok. Fırsat detay ekranı ortak kaynak/tarih/şartname/tedarikçi/teklif/lojistik/risk kapılarına bağlandı. Süresi geçmiş veya doğrulanmamış fiyat ile türetilmiş satış fiyatı, brüt marj ve komisyon bu ekranda geçerli tutar gibi gösterilmez. Bu arayüz doğrulaması gerçek teklif veya ticari kabul yerine geçmez; P4 engelli kalır."
     },
     {
       "id": "P5",
@@ -185,6 +191,13 @@
       "app": 72,
       "reason": "P2: ticari alan çıkarımına çelişki ve kalem kapsamı kapısı, yapılandırılmış alan önceliği ve kaynak izi koruması eklendi. 486 Python + 16 JS ve canlı tarama geçti; yeni gerçek ticari alan bulunmadı, ek puan yok.",
       "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/pull/123"
+    },
+    {
+      "date": "2026-10-20",
+      "web": 77,
+      "app": 72,
+      "reason": "P3/P4: fırsat detayının eski durum-yazısı temelli hazır kontrolü kaldırıldı; geçersiz fiyat ve türetilmiş tutarlar gizlenir. 486 Python + 21 JS ve 390px/1280px canlı kontroller geçti. Gerçek teklif kabulü yok; ek puan yok.",
+      "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/pull/125"
     }
   ],
   "operating_model": {
