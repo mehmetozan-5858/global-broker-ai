@@ -5,10 +5,11 @@ const base=process.env.GB_QUOTE_BASE||'https://broker.aivisibilityworks.com';
  const probe=await browser.newContext();const anonymous=await probe.request.post(base+'/api/quote_analysis',{data:{opportunity_id:'fixture'}});assert.equal(anonymous.status(),401);assert.match(anonymous.headers()['cache-control'],/no-store/);await probe.close();
  for(const width of (engine===webkit?[390]:[320,390,1280])){
   const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage();
-  await page.addInitScript(()=>localStorage.setItem('gb_access_token','synthetic-quote-browser-fixture'));
+  await page.addInitScript(()=>{localStorage.setItem('gb_access_token','synthetic-quote-browser-fixture');const original=window.setTimeout;window.setTimeout=function(fn,ms,...args){return original(fn,ms===15000?500:ms,...args)}});
   const calls=[],quotes=[];let attempts=0;
   await page.route('**/rest/v1/rpc/gb_quote_evidence_workspace',r=>r.fulfill({json:{opportunities:[{id:'fixture-opportunity',title:'Synthetic pump opportunity'}],quotes}}));
-  await page.route('**/rest/v1/rpc/gb_submit_quote_evidence',r=>{const body=r.request().postDataJSON();calls.push(body);if(++attempts===1)return r.fulfill({status:503,json:{}});quotes.push({request_id:body.p_request_id,opportunity_id:body.p_opportunity_id,quote:body.p_quote,status:'pending_review'});return r.fulfill({json:{request_id:body.p_request_id,status:'pending_review'}})});
+  await page.route('**/rest/v1/rpc/gb_submit_quote_evidence',r=>{const body=r.request().postDataJSON();calls.push(body);if(++attempts===1)return; // Simulate a stalled submission; the client must abort and allow retry.
+quotes.push({request_id:body.p_request_id,opportunity_id:body.p_opportunity_id,quote:body.p_quote,status:'pending_review'});return r.fulfill({json:{request_id:body.p_request_id,status:'pending_review'}})});
   if(width===390){
    await page.route('**/data/latest-opportunities.json*',r=>r.fulfill({json:{opportunities:[{id:'fixture-other',title_tr:'Duplicate synthetic title'},{id:'fixture-opportunity',title_tr:'Duplicate synthetic title'}]}}));
    await page.goto(base+'/web/app.html',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.FILTERED&&FILTERED.length===2);await page.evaluate(()=>openTab('opps'));await page.addScriptTag({url:base+'/web/opportunity-dossier.js'});
@@ -32,7 +33,8 @@ const base=process.env.GB_QUOTE_BASE||'https://broker.aivisibilityworks.com';
    return field.left>=label.left-1&&field.right<=label.right+1&&field.right<box.right;
   }),'date control must fit its label and padded form');
   await page.locator('#save').click();
-  await page.waitForFunction(()=>document.getElementById('status').textContent.includes('İşlem tamamlanamadı'));
+  await page.waitForFunction(()=>document.getElementById('status').textContent.includes('Yanıt zaman aşımına uğradı'));
+  assert.equal(await page.locator('[name=reference]').inputValue(),values.reference);assert.equal(await page.locator('#save').isDisabled(),false);
   assert.equal(quotes.length,0);
   await page.locator('#save').click();
   await page.waitForFunction(()=>document.getElementById('status').textContent.includes('Kaydedildi'));
