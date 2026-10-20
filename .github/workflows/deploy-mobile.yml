@@ -42,7 +42,7 @@ jobs:
           from pathlib import Path
           for page in Path('public').glob('*.html'):
               content=page.read_text(encoding='utf-8')
-              for asset in ('ecosystem.html','ecosystem-contract.js','ecosystem.js'):
+              for asset in ('ecosystem.html','ecosystem-contract.js','ecosystem.js','pricing-policy.js','account-recovery.js','auth-return.js','quote-evidence.js'):
                   content=content.replace('/web/'+asset,asset)
               if page.name=='ecosystem.html':
                   for route,target in {'/':'index.html','/customer':'customer.html','/app':'https://global-broker-opal.vercel.app/app','/privacy':'privacy.html','/terms':'terms.html'}.items():

@@ -19,15 +19,15 @@ async function routes(page,valid=true){
   await page.goto(base+'/quote-evidence',{waitUntil:'domcontentloaded'});await page.locator('#signin').waitFor({state:'visible'});
   const login=page.getByRole('link',{name:'Hesabınıza giriş yapın'});assert.equal(new URL(await login.getAttribute('href'),base).searchParams.get('next'),'/quote-evidence');await login.click();
   await page.locator('#email').fill('fixture@example.invalid');await page.locator('#password').fill('fixture-password-not-real');await page.locator('#login').click();
-  await page.waitForURL(u=>u.pathname==='/security'&&u.searchParams.get('next')==='/quote-evidence');await page.locator('#challenge').waitFor({state:'visible'});
+  try{await page.waitForURL(u=>u.pathname==='/security'&&u.searchParams.get('next')==='/quote-evidence',{waitUntil:'domcontentloaded'})}catch(error){console.error('AUTH_RETURN_DIAGNOSTIC',JSON.stringify({url:page.url(),status:await page.locator('#status').textContent().catch(()=>''),scripts:await page.locator('script[src]').evaluateAll(es=>es.map(e=>e.src))}));throw error}await page.locator('#challenge').waitFor({state:'visible'});
   assert.equal(new URL(page.url()).searchParams.get('next'),'/quote-evidence');
   await page.locator('#challengeCode').fill('111111');await page.locator('#verifyExisting').click();await page.getByText(/Kod doğrulanamadı/).waitFor();assert.equal(new URL(page.url()).pathname,'/security');
-  await page.locator('#challengeCode').fill('222222');await page.locator('#verifyExisting').click();await page.waitForURL('**/quote-evidence');await page.locator('#quoteForm').waitFor({state:'visible'});
+  await page.locator('#challengeCode').fill('222222');await page.locator('#verifyExisting').click();await page.waitForURL('**/quote-evidence',{waitUntil:'domcontentloaded'});await page.locator('#quoteForm').waitFor({state:'visible'});
   assert.equal(new URL(page.url()).search,'');assert.equal(new URL(page.url()).hash,'');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   console.log('AUTH_QUOTE_RETURN_PASS width='+width+' invalid_mfa_blocked=true external_writes=blocked');await context.close();
  }
  const context=await browser.newContext(),page=await context.newPage();await routes(page);await page.addInitScript(()=>{localStorage.setItem('gb_access_token','fixture-aal2');localStorage.setItem('gb_refresh_token','fixture-refresh')});
- await page.goto(base+'/security?next=/quote-evidence');await page.waitForURL('**/quote-evidence');await page.locator('#quoteForm').waitFor({state:'visible'});
+ await page.goto(base+'/security?next=/quote-evidence');await page.waitForURL('**/quote-evidence',{waitUntil:'domcontentloaded'});await page.locator('#quoteForm').waitFor({state:'visible'});
  await page.goto(base+'/security?next='+encodeURIComponent('https://evil.invalid'));await page.getByText('MFA doğrulandı. Bu oturum AAL2 seviyesinde.',{exact:true}).waitFor();assert.equal(new URL(page.url()).origin,base);assert.equal(new URL(page.url()).pathname,'/security');await context.close();
  const denied=await browser.newContext(),bad=await denied.newPage();await routes(bad,false);await bad.addInitScript(()=>{localStorage.setItem('gb_access_token','fixture-aal2');localStorage.setItem('gb_refresh_token','fixture-refresh')});await bad.goto(base+'/security?next=/quote-evidence');await bad.getByText(/Oturum doğrulanamadı. Hesabım ekranından/).waitFor();assert.equal(new URL(bad.url()).pathname,'/security');await denied.close();
  console.log('AUTH_RETURN_VERIFIED_SESSION_AND_SAFE_DESTINATION_PASS');
