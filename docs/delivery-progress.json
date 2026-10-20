@@ -34,11 +34,11 @@
       "status": "in_progress",
       "acceptance": "Yeni ve mevcut kayıtlar için alıcı, ürün, miktar/bütçe, tarih ve belge eksiklerinin tamamlanması; gerçek kayıtla doğrulama.",
       "evidence": {
-        "tests": "443 Python tests and 15 JS tests passed; production 390px/1280px ecosystem/readiness smoke passed. Live official TED Search contract probe: 25 notices, 16 single lots, 9 multiple lots, 7 source budgets.",
-        "deployment": "PR #112 merged 4f21b5e4ef497ff82e05aeaed42aee43aa84177f READY. Live scan 39378062481 synced 76 rows to private Supabase. Published masked data b46b8b55a4994c98ea2cd695854085c22dad3289.",
-        "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39378062481; source probe: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39377925733; web/mobile: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39378062386"
+        "tests": "455 Python tests and 16 JS tests passed. Live source probe preserved 7/7 scoped budgets through dossier/public projection. Browser smoke at 390px/1280px verified result-notice label and disabled research-only introduction, plus shared readiness guards.",
+        "deployment": "PR #114 (21e5123), #115 (e98831f) and #116 (98adcda) production READY. Full source scan 39382134054 succeeded; published masked data 6dfe198272d30c0772f9c930c0eb4def95a492b7.",
+        "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39382134054; browser: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39382134125; source: https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39382134006"
       },
-      "note": "20 Ekim 2026 güncel tarama: 76 kayıt; temel kaynak dosyası tamamlanan 0→5; miktar/bütçe eksikliği 75→57. Yayımlanan maskeli veride 11 açık tek-kalem ilan bütçesi var; seçilmemiş çok kalemle bütçe çakışması 0, yayımlanan alıcı adı 0. TED arama isteğine resmî bütçe, para birimi ve kalem kimlikleri eklendi; tekrarlı tek tarih normalleştirildi. Çok kalemli 16 ilan kapsam doğrulaması bekliyor. Tam şartname/gerçek tedarikçi fiyatı ve marj hazır kayıt 0. 71 kaynak dosyası eksik olduğundan P2 açık; sabit puan kazanılmadı."
+      "note": "20 Ekim 2026 son tarama: 70 kayıt, 5 tam temel kaynak dosyası, 11 yayımlanan ilan bütçesi. Önceki b46b8b5 anlık görüntüsündeki 11 bütçeli dosyanın eksik dosya para birimleri 11→0; düzleştirilmiş çok-kalem miktar/bütçe dosyaları 8→0. Kaynak bütçesi, para birimi ve kapsam birlikte korunur; çelişkili bütçe çekirdek dosyayı tamamlamaz. TED türleri: 17 competition, 21 result, 1 planning; 22 kayıt araştırma olarak etiketli, tanıştırma düğmesi ve iç teklif hazırlık kapısı kapalıdır. Competition kodu tek başına güncel tarih veya ticari onay değildir. Kayıtlar türleri nedeniyle silinmedi; kaynak tarama kümesi değişkendir. Tam şartname ve gerçek tedarikçi fiyatı hazır kayıt 0; P2 tüm kabul şartları karşılanmadığından açık ve puansızdır."
     },
     {
       "id": "P3",
@@ -157,6 +157,13 @@
       "app": 72,
       "reason": "P2: kaynaktan 11 tek-kalem ilan bütçesi, 5 tam temel dosya; miktar/bütçe eksikleri 75→57. Paketin bütün kabulü tamamlanmadı; puan eklenmedi.",
       "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39378062481"
+    },
+    {
+      "date": "2026-10-20",
+      "web": 77,
+      "app": 72,
+      "reason": "P2 veri bütünlüğü ve ilan türü ayrımı: 11 dosyanın para birimi tamamlandı, 8 yanlış çok-kalem dosyası düzeltildi; son taramada 22 TED araştırma ilanı çağrıdan ayrıldı. Bütün paket kabulü yok; ek puan yok.",
+      "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/pull/116"
     }
   ],
   "operating_model": {
