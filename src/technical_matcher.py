@@ -8,6 +8,7 @@ import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlsplit, parse_qs
 
 from src.manufacturer_catalog import refresh
 from src.technical_requirements import extract_document
@@ -30,6 +31,19 @@ def _current_scopes(item: dict) -> list[dict]:
         return []
     parsed = {a.get('url') for a in extraction.get('attempts', []) if isinstance(a, dict)
               and a.get('status') == 'parsed' and a.get('kind') in {'pdf', 'docx', 'text'}}
+    for attempt in extraction['attempts']:
+        if not isinstance(attempt, dict) or attempt.get('status') != 'parsed' or attempt.get('format') != 'world_bank_notice_json':
+            continue
+        try:
+            url = urlsplit(attempt.get('url', ''))
+            if (item.get('source') == 'WORLD_BANK' and attempt.get('notice_id') == item.get('id')
+                    and url.scheme == 'https' and url.hostname == 'search.worldbank.org'
+                    and not url.username and not url.password and url.port in (None, 443)
+                    and url.path == '/api/v2/procnotices'
+                    and parse_qs(url.query).get('qterm') == [item.get('id')]):
+                parsed.add(attempt['url'])
+        except (ValueError, TypeError):
+            continue
     text = item.get('document_extracted_text') or ''
     if not isinstance(text, str):
         return []
@@ -90,7 +104,7 @@ def process_payload(payload: dict, catalogs: list[dict] | None = None) -> dict:
     rows = [r for r in payload.get('opportunities', []) if isinstance(r, dict)]
     prepared = [(row, _current_scopes(row)) for row in rows]
     if catalogs is None:
-        catalogs = refresh() if any(scopes for _, scopes in prepared) else []
+        catalogs = refresh() if any(s.get('product_family') == 'urban_cng_bus' for _, scopes in prepared for s in scopes) else []
     task_counts = Counter()
     compared_scopes = 0
     structured_scopes = 0
@@ -106,24 +120,28 @@ def process_payload(payload: dict, catalogs: list[dict] | None = None) -> dict:
                 continue
             scope = versions[0]
             models = []
-            for catalog in catalogs[:12]:
+            relevant_catalogs = [c for c in catalogs[:12] if c.get('product_family', 'urban_cng_bus') == scope.get('product_family')]
+            for catalog in relevant_catalogs:
                 clauses = [compare_clause(c, catalog) for c in scope['clauses']]
                 models.append({'manufacturer': catalog['manufacturer'], 'model': catalog['model'],
                                'source_url': catalog['url'], 'checked_at': catalog.get('checked_at'),
                                'clause_results': clauses, 'exact_spec_match_verified': False,
                                'financial_evidence_eligible': False})
-            has_catalog = any(c.get('status') == 'read' and _fresh(c.get('checked_at')) and c.get('facts') for c in catalogs[:12])
-            results.append({'scope': name, 'status': 'partial_research_only' if has_catalog else 'catalog_refresh_required', 'coverage': 'partial',
+            has_catalog = any(c.get('status') == 'read' and _fresh(c.get('checked_at')) and c.get('facts') for c in relevant_catalogs)
+            results.append({'scope': name, 'status': 'partial_research_only' if has_catalog else ('catalog_refresh_required' if relevant_catalogs else 'manufacturer_research_required'), 'coverage': 'partial',
+                            'requirements': scope['clauses'], 'product_family': scope['product_family'],
                             'other_requirements_not_automated': True, 'models': models})
             structured_scopes += 1
             compared_scopes += bool(has_catalog)
         status = ('partial_research_only' if any(s['status'] == 'partial_research_only' for s in results) else
-                  'catalog_refresh_required' if results else 'requirements_not_structured')
+                  'catalog_refresh_required' if any(s['status'] == 'catalog_refresh_required' for s in results) else
+                  'manufacturer_research_required' if results else 'requirements_not_structured')
         row['technical_comparison'] = {
             'status': status, 'scopes': results, 'human_review_required': True,
             'lot_selection_required': row.get('source_lot_selection_required') is True or row.get('ted_lot_selection_required') is True,
             'exact_spec_match_verified': False, 'external_contact_authorized': False,
-            'next_action': 'review_clause_gaps_and_unmodeled_requirements' if results else 'structure_current_source_requirements',
+            'next_action': ('find_official_product_family_catalog' if status == 'manufacturer_research_required' else
+                            'review_clause_gaps_and_unmodeled_requirements' if results else 'structure_current_source_requirements'),
         }
         task_counts[status] += 1
     payload['technical_comparison_summary'] = {
@@ -131,7 +149,7 @@ def process_payload(payload: dict, catalogs: list[dict] | None = None) -> dict:
         'task_counts': dict(task_counts), 'catalog_pages_read': sum(c.get('status') == 'read' for c in catalogs),
         'catalog_pages_failed': sum(c.get('status') != 'read' for c in catalogs),
         'exact_spec_approvals': 0, 'external_actions_enabled': False,
-        'supported_extractor': 'explicit_two_column_italian_urban_bus_first_lot',
+        'supported_extractor': 'explicit_two_column_italian_urban_bus_first_lot_and_repeated_lot_goods_table',
         'supported_catalog_registry': 'two_rosero_models_and_indcar_cng_family',
     }
     return payload

@@ -24,3 +24,8 @@ test('comparison escapes model values and rejects unsafe source URLs',()=>{
 test('no structured comparison does not fabricate a model result',()=>{
  assert.ok(!render({status:'requirements_not_structured',scopes:[]}).includes('Otomatik teknik ön karşılaştırma'));
 });
+test('new product family shows minimum source requirement with no borrowed model approval',()=>{
+ const html=render({scopes:[{scope:'LOT 2 / Truck <x>',status:'manufacturer_research_required',requirements:[{field:'tank_capacity_l',expected:{min:4000},source_url:'https://example.test/notice'}],models:[]}]});
+ for(const text of ['Truck &lt;x&gt;','En az 4000 litre','üretici kanıtı araştırılmalı','karşılaştırma yapılmadı','İhale kanıtı'])assert.ok(html.includes(text),text);
+ assert.ok(!html.includes('Kaynakta destekleniyor'));
+});

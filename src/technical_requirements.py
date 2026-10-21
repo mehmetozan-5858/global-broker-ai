@@ -17,6 +17,10 @@ def extract_document(url: str, text: str) -> list[dict]:
             return []
     except ValueError:
         return []
+    from src.lot_goods_requirements import extract as extract_lot_goods
+    lot_goods = extract_lot_goods(url, text)
+    if lot_goods:
+        return lot_goods
     lines = [' '.join(s.split()) for s in text.splitlines() if s.strip()]
     headers = [s for s in lines if s.startswith('Caratteristica LOTTO ')]
     if len(headers) != 1 or len(re.findall(r'\bLOTTO\s+\d+', headers[0])) != 2:

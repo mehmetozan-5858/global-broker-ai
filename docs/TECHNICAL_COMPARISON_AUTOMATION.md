@@ -50,3 +50,31 @@ read-once tests plus three rendering/link-escaping tests. A captured real Livorn
 PDF yielded one explicit lot scope and five clauses. Local catalogue network
 resolution was unavailable and correctly produced zero comparisons with current
 catalogue evidence; post-merge production scan is the separate live verification.
+
+## Repeated lot/goods table support
+
+The source worker also handles a second explicit layout: repeated reference/LOT
+headers followed by Description of Goods / Unit / Amount rows. For fire truck
+products explicitly stating CAPACITY OF AT LEAST ... LITERS, it extracts only
+the minimum tank capacity. Each product has a separate scope even within the
+same lot. Product quantities are retained separately and never added together.
+Dimensions mentioned in other product names are not interpreted as truck length.
+
+Sequential lots, a consistent reference, complete rows, Number units, positive
+integer quantities and a numbered paragraph ending the table are required.
+Ambiguous, duplicated, damaged or truncated tables remain unstructured. No buyer,
+notice ID, city or capacity is hardcoded. The same parser runs for existing and
+future notices during the scheduled source scan. Exact-ID official World Bank
+API text now participates in source-backed requirement extraction and same-run
+replay, with the same freshness and failed-refresh protections as attachments.
+
+Catalogues are isolated by product family. A fire truck requirement cannot be
+compared with the current bus registry. Until a suitable official manufacturer
+registry exists, its status is manufacturer_research_required with zero model
+comparisons. The admin dossier displays the minimum requirement and official
+notice link, explicitly stating that manufacturer evidence is missing. This
+expands requirement extraction, not verified supplier coverage or acceptance.
+
+A read-only replay against current OP00473154 extracted three product scopes:
+lot 3 has minimum 4,000 L / 7 units and minimum 3,000 L / 3 units; lot 4 has
+minimum 5,000 L / 8 units. No quantities or lots were combined.
