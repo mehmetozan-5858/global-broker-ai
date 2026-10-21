@@ -377,6 +377,10 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         documents.extend((url, text) for text in parts)
 
     world_bank_read = _world_bank_notice(item, attempts, source_page_parts, discovered_attachments, attachment_labels)
+    source_requirement_scopes = []
+    if world_bank_read:
+        notice_url = next(a["url"] for a in attempts if a.get("format") == "world_bank_notice_json")
+        source_requirement_scopes = extract_requirements(notice_url, source_page_parts[0])
     for link in discovered_attachments:
         origin = next((a["url"] for a in attempts if a.get("status") == "parsed"), None)
         if origin:
@@ -460,7 +464,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     merged = "\n\n".join([text for _, text in documents] + source_page_parts)[:MAX_EXTRACTED_CHARS]
     # Extract per-document clauses before losing the URL/text association.
     item["technical_requirement_scopes"] = [scope for url, text in documents
-        for scope in extract_requirements(url, text)]
+        for scope in extract_requirements(url, text)] + source_requirement_scopes
     candidate_count = len(attachments) + len(source_pages)
     parsed_count = sum(1 for x in attempts if x.get("status") == "parsed" and x.get("source") != "document_index")
     item["document_extraction"] = {

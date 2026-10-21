@@ -42,7 +42,7 @@ def parse(profile: dict, text: str) -> list[dict]:
 
 
 def _read(profile: dict) -> dict:
-    result = {**profile, 'facts': [], 'status': 'unavailable',
+    result = {**profile, 'product_family': 'urban_cng_bus', 'facts': [], 'status': 'unavailable',
               'checked_at': datetime.now(timezone.utc).isoformat()}
     try:
         data, kind, final_url = document_parser._download(profile['url'], 1024 * 1024)

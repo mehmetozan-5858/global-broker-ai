@@ -44,7 +44,7 @@
   }
   function technicalComparison(result){
     if(!result||!Array.isArray(result.scopes)||!result.scopes.length)return '';
-    var labels={length_mm:'Uzunluk',passenger_capacity:'Toplam yolcu',vehicle_class:'Araç sınıfı',emission:'Emisyon',fuel:'Yakıt'};
+    var labels={tank_capacity_l:'Asgari tank kapasitesi',length_mm:'Uzunluk',passenger_capacity:'Toplam yolcu',vehicle_class:'Araç sınıfı',emission:'Emisyon',fuel:'Yakıt'};
     var states={source_supported:'Kaynakta destekleniyor; tam onay değil',conflict:'Koşulla çelişiyor',configuration_confirmation_required:'Teklif konfigürasyonu teyit edilmeli',catalog_unavailable:'Üretici kaynağı okunamadı',conflicting_catalog_evidence:'Üretici belgelerinde çelişki var'};
     function source(url,label){
       try{var u=new URL(url);if(u.protocol!=='https:'||u.username||u.password)return '';
@@ -54,6 +54,7 @@
     function expected(c){
       var v=c.expected;
       if(c.field==='length_mm'&&v&&typeof v==='object'&&Number.isFinite(v.min)&&Number.isFinite(v.max))return (v.min/1000)+'–'+(v.max/1000)+' m';
+      if(c.field==='tank_capacity_l'&&v&&Number.isFinite(v.min))return 'En az '+v.min+' litre';
       return {M3_CLASS_I:'M3 / Sınıf I',EURO6_STEP_E:'Euro 6 Step E',CNG:'CNG'}[v]||String(v===undefined?'':v).slice(0,80);
     }
     var html='<details class="section"><summary><b>Otomatik teknik ön karşılaştırma</b></summary><div class="note">Kapsam kısmi; diğer zorunlu maddeler ve üretici onayı bekleniyor.</div>';
@@ -61,6 +62,13 @@
     result.scopes.slice(0,4).forEach(function(scope){
       if(!scope||typeof scope!=='object')return;
       html+='<div class="label">'+esc(String(scope.scope||'İnceleme kapsamı'))+'</div>';
+      if(scope.status==='manufacturer_research_required'){
+        html+='<div class="note">Bu ürün ailesi için üretici kanıtı araştırılmalı; karşılaştırma yapılmadı.</div><ul>';
+        (Array.isArray(scope.requirements)?scope.requirements:[]).slice(0,10).forEach(function(c){
+          if(c&&typeof c==='object')html+='<li>'+esc(labels[c.field]||'Şartname maddesi')+': '+esc(expected(c))+source(c.source_url,'İhale kanıtı')+'</li>';
+        });
+        html+='</ul>';
+      }
       (Array.isArray(scope.models)?scope.models:[]).slice(0,3).forEach(function(model){
         if(!model||typeof model!=='object')return;
         html+='<div class="section"><b>'+esc(String(model.manufacturer||''))+' — '+esc(String(model.model||''))+'</b><ul>';
