@@ -32,6 +32,18 @@ jobs:
           done
           echo 'Production handoff asset is not reachable; acceptance remains incomplete.' >&2
           exit 1
+      - name: Wait for matching ecosystem contract
+        run: |
+          deployed_contract=$(mktemp)
+          trap 'rm -f "$deployed_contract"' EXIT
+          for attempt in $(seq 1 18); do
+            if curl -fsS --max-time 15 "https://broker.aivisibilityworks.com/web/ecosystem-contract.js?deploymentQA=$GITHUB_RUN_ID" -o "$deployed_contract" && cmp -s web/ecosystem-contract.js "$deployed_contract"; then
+              exit 0
+            fi
+            sleep 10
+          done
+          echo 'Production ecosystem contract differs from the tested revision.' >&2
+          exit 1
       - name: Wait for matching quote UI deployment
         run: |
           deployed_quote=$(mktemp)
