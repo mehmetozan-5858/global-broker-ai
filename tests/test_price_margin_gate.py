@@ -46,6 +46,21 @@ class PriceMarginGateTests(unittest.TestCase):
         self.assertNotIn("gross_product_spread",result)
         self.assertIn("lot_selection",result["missing_or_invalid"])
 
+    def test_world_bank_scope_blocks_valid_quotes_and_clears_previous_spread(self):
+        row = example()
+        self.assertTrue(assess(row, date(2026, 10, 12))["margin_ready"])
+        row["source"] = "WORLD_BANK"
+        row["source_lot_selection_required"] = True
+        payload = {"opportunities": [row]}
+        process_payload(payload, date(2026, 10, 12))
+        gate = row["price_margin_gate"]
+        self.assertFalse(gate["price_ready"])
+        self.assertFalse(gate["margin_ready"])
+        self.assertNotIn("gross_product_spread", gate)
+        self.assertIn("lot_selection", gate["missing_or_invalid"])
+        self.assertEqual(payload["price_margin_summary"]["price_ready"], 0)
+        self.assertEqual(payload["price_margin_summary"]["gross_spread_ready"], 0)
+
     def test_expired_quote_fails_closed(self):
         row = example()
         row["quote_valid_until"] = "2026-01-01"
