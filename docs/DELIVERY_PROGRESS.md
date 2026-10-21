@@ -102,3 +102,15 @@ Web %77, uygulama %72. İletişim formundan mevcut özel yönetici e-postasına 
 Yönetici uygulamasındaki %70 doluluk eşiği artık ticari hazırlık yerine geçmez. Sunucunun her kayıtta yeniden hesapladığı temel kaynak kapısı, kalem seçimi, güncel son tarih, bağımsız alıcı doğrulaması, tam şartname tedarikçisi, geçerli teklif, alıcı fiyatı, landed cost ve risk kapıları ortak görünümde kullanılır. CEO sıralaması, günlük görev, fırsat kartı, hazır sayacı ve güvenli işlem kartı aynı kanıtlara bakar. Tam temel dosya yalnız “Kaynak dosyası tam” olarak adlandırılır; dış işlem yetkisi doğurmaz. Eksik veya eski biçimli kanıt hazır kabul edilmez.
 
 Kalan paketlerin dış kanıtları değişmedi: kaynakta eksik fırsat alanları; tam şartname tedarikçi teyidi; gerçek geçerli teklif/navlun/risk; telefon/SMS kurtarma; bireysel işletme modelinin hukuki ve ödeme kabulü; gerçek müşteri testi. Bunlar otomatik testle tamamlanmış sayılamaz.
+
+## Açık paket ile sıradaki yazılım işi — 21 Ekim 2026
+
+Sabit paket puanları değiştirilmedi. P2'nin eksik kaynak/kabul koşulları,
+P3/P4'ün gerçek teknik teyit ve ticari belge koşulları ayrı kalır.
+`next_package` ilk açık paketi, `next_software_step` ise engelli veya gerçek
+kabul bekleyen adımları atlayarak sıradaki açık yazılım adımını gösterir.
+Bu ayrım bitmiş adımlara yeni puan vermez, kabul koşullarını kaldırmaz.
+Mevcut kayıtta 13 yazılım adımının 12'si tamamlanmış; açık yazılım adımı
+P7 ödeme sağlayıcısı / tahsilat / fatura entegrasyonudur. Bu sayım bütün
+uygulamanın tamamlanma yüzdesi değildir. Paddle itirazı yanıt bekliyor;
+bu kayıt yeni mesaj, şifre değişikliği veya gerçek ödeme başlatmaz.
