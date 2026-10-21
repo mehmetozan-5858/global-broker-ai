@@ -125,13 +125,16 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
         existing_urls = {
             a.get("url") for a in attempts if isinstance(a, dict) and a.get("status") == "parsed"
         }
+        attachment_parts: list[str] = []
         for attachment_url in attachments[:document_parser.MAX_DISCOVERED_ATTACHMENTS]:
             if attachment_url in existing_urls:
                 continue
             document_parser._try_attachment(
-                attachment_url, attempts, parts, discovered_from=final_url
+                attachment_url, attempts, attachment_parts, discovered_from=final_url
             )
-        merged = "\n\n".join(parts)[:MAX_EXTRACTED_CHARS]
+        # Newly discovered specifications have their own budget while being read.
+        # Merge them before notice/page context so a full notice cannot hide them.
+        merged = "\n\n".join(attachment_parts + parts)[:MAX_EXTRACTED_CHARS]
         item["document_extracted_text"] = merged
 
         # Structured TED touchpoint fields are stronger evidence than generic text
