@@ -96,6 +96,7 @@ jobs:
           scan_step verification 180 python -m src.verification "$NEXT"
           scan_step sales_priority 90 python -m src.sales_priority "$NEXT"
           scan_step remaining_pipeline 30 python -m src.remaining_pipeline "$NEXT"
+          scan_step technical_comparison 120 python -m src.technical_matcher "$NEXT"
       - name: Validate enriched live output
         run: |
           set -euo pipefail
