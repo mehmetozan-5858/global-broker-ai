@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 const contract=require('../web/ecosystem-contract.js');
-const broker='https://global-broker-opal.vercel.app';
+const broker='https://broker.aivisibilityworks.com';
 (async()=>{
  const browser=await chromium.launch({headless:true});
  let lastPage;
@@ -27,6 +27,11 @@ const broker='https://global-broker-opal.vercel.app';
    for(const key of ['businessName','website','country'])await page.locator('[name='+key+']').fill(data[key]);
    await page.locator('[name=sector]').selectOption(data.sector);
    await page.getByRole('button',{name:'Bilgilerimle AI Visibility’ye geç'}).click();
+   const navigation=page.getByRole('navigation',{name:'Ekosistem geçişleri'});
+   await navigation.waitFor();
+   assert.equal(await navigation.getByRole('link',{name:'Global Broker'}).getAttribute('href'),contract.links.brokerPortal);
+   assert.equal(await navigation.getByRole('link',{name:'Firma aktarımı'}).getAttribute('href'),contract.links.transfer);
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
    const incoming=page.getByRole('region',{name:'Global Broker firma bilgileri'});
    await incoming.waitFor();
    assert.equal(await page.getByLabel('İşletme adı',{exact:true}).inputValue(),'');
