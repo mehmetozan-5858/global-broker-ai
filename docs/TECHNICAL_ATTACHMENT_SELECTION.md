@@ -28,3 +28,21 @@ Live source diagnosis on 21 October 2026 found 38 TED records, eight with source
 text; direct TED XML/HTML/PDF attempts returned non-document/challenge pages.
 This change does not bypass those source restrictions or promise a count
 increase where the source publishes no usable document.
+
+## Shared text budget across document origins
+
+A direct or extensionless linked document previously consumed the full shared
+40,000-character buffer before later discovered technical attachments were read.
+Each document now gets its own bounded extraction buffer. The final merge ranks
+all successfully read documents together, using filename and discovered anchor
+labels, before appending notice/page context and applying the 40,000-character
+cap. Equal priorities preserve read order. Duplicate direct links can gain their
+technical label from the page without a second download.
+
+Three additional regressions cover full direct and linked documents hiding a
+later technical attachment, label promotion of an already read direct link, and
+failed technical downloads retaining only current successfully read content.
+The first two tests fail in three cases against the previous implementation.
+Validation: 571 Python tests and 85 JavaScript tests pass locally. The refresh
+policy remains every scan, including existing records; no last-scan evidence is
+reused and no commercial completion or fixed delivery percentage is awarded.

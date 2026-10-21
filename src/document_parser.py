@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
-from src.document_links import is_attachment_url, select as select_attachments, filename as attachment_filename, EXTENSIONS
+from src.document_links import is_attachment_url, select as select_attachments, filename as attachment_filename, priority as attachment_priority, EXTENSIONS
 from xml.etree import ElementTree
 
 MAX_DOCUMENT_BYTES = 8 * 1024 * 1024
@@ -246,7 +246,7 @@ def _decode_html(data: bytes) -> str:
     return data.decode("utf-8", errors="ignore")
 
 
-def _parse_html_page(data: bytes, base_url: str) -> tuple[str, list[str]]:
+def _parse_html_page(data: bytes, base_url: str, attachment_labels: dict[str, str] | None = None) -> tuple[str, list[str]]:
     parser = _TenderHTMLParser()
     parser.feed(_decode_html(data))
     visible = _normalize_lines("".join(parser.text_parts))[:MAX_EXTRACTED_CHARS]
@@ -258,6 +258,9 @@ def _parse_html_page(data: bytes, base_url: str) -> tuple[str, list[str]]:
             continue
         if _is_attachment_url(absolute):
             candidates.append((absolute, link["label"]))
+            if attachment_labels is not None and (absolute not in attachment_labels or
+                    attachment_priority(absolute, link["label"]) < attachment_priority(absolute, attachment_labels[absolute])):
+                attachment_labels[absolute] = link["label"]
     return visible, select_attachments(candidates, MAX_DISCOVERED_ATTACHMENTS)
 
 
@@ -307,7 +310,7 @@ def _try_attachment(url: str, attempts: list[dict[str, Any]], extracted_parts: l
 
 
 def _world_bank_notice(item: dict[str, Any], attempts: list[dict[str, Any]], parts: list[str],
-                       discovered: list[str] | None = None) -> bool:
+                       discovered: list[str] | None = None, attachment_labels: dict[str, str] | None = None) -> bool:
     """Read only an exact-ID official notice, never arbitrary API search hits."""
     identity = item.get("id")
     if item.get("source") != "WORLD_BANK" or not isinstance(identity, str) or not re.fullmatch(r"OP[0-9]{8}", identity):
@@ -329,7 +332,7 @@ def _world_bank_notice(item: dict[str, Any], attempts: list[dict[str, Any]], par
         body = matches[0].get("notice_text")
         if not isinstance(body, str) or len(body) > MAX_EXTRACTED_CHARS:
             raise ValueError("world_bank_notice_text_missing_or_too_large")
-        text, found = _parse_html_page(body.encode("utf-8"), final_url)
+        text, found = _parse_html_page(body.encode("utf-8"), final_url, attachment_labels)
         if len(text) < 160:
             raise ValueError("insufficient_world_bank_notice_text")
         _append_text(parts, text)
@@ -356,14 +359,17 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     attachments = _candidate_urls(item)
     source_pages = _source_page_urls(item)
     attempts: list[dict[str, Any]] = []
-    extracted_parts: list[str] = []
+    documents: list[tuple[str, str]] = []
+    attachment_labels: dict[str, str] = {}
     source_page_parts: list[str] = []
     discovered_attachments: list[str] = []
 
     for url in attachments:
-        _try_attachment(url, attempts, extracted_parts)
+        parts: list[str] = []
+        _try_attachment(url, attempts, parts)
+        documents.extend((url, text) for text in parts)
 
-    world_bank_read = _world_bank_notice(item, attempts, source_page_parts, discovered_attachments)
+    world_bank_read = _world_bank_notice(item, attempts, source_page_parts, discovered_attachments, attachment_labels)
     for url in ([] if world_bank_read else source_pages):
         page_attempt: dict[str, Any] = {"url": url, "status": "pending", "source": "source_page"}
         try:
@@ -374,13 +380,13 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
                 document_text, kind = _parse(data, content_type, final_url)
                 if len(document_text) < 80:
                     raise ValueError("insufficient_extractable_text")
-                _append_text(extracted_parts, document_text)
+                documents.append((final_url, document_text))
                 page_attempt.update({"status":"parsed", "source":"linked_document", "kind":kind,
                     "final_url":final_url, "content_type":content_type, "bytes":len(data), "extracted_chars":len(document_text)})
             else:
                 if "html" not in content_type and not content_type.startswith("text/"):
                     raise ValueError("source_page_not_html")
-                page_text, found = _parse_html_page(data, final_url)
+                page_text, found = _parse_html_page(data, final_url, attachment_labels)
                 if len(page_text) >= 160:
                     _append_text(source_page_parts, page_text)
                     page_attempt.update({
@@ -399,11 +405,15 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
 
     for url in discovered_attachments[:MAX_DISCOVERED_ATTACHMENTS]:
         origin = next((x["url"] for x in attempts if x.get("source") == "source_page" and x.get("status") == "parsed"), None)
-        _try_attachment(url, attempts, extracted_parts, origin)
+        parts = []
+        _try_attachment(url, attempts, parts, origin)
+        documents.extend((url, text) for text in parts)
 
-    # A long listing must not consume the text budget before a discovered
-    # technical attachment. Preserve document text before generic page text.
-    merged = "\n\n".join(extracted_parts + source_page_parts)[:MAX_EXTRACTED_CHARS]
+    # Read each document with its own bounded budget, then rank across direct,
+    # linked and discovered documents. A direct generic attachment must not
+    # exhaust the shared budget before a later discovered technical annex.
+    documents.sort(key=lambda entry: attachment_priority(entry[0], attachment_labels.get(entry[0], "")))
+    merged = "\n\n".join([text for _, text in documents] + source_page_parts)[:MAX_EXTRACTED_CHARS]
     candidate_count = len(attachments) + len(source_pages)
     parsed_count = sum(1 for x in attempts if x.get("status") == "parsed")
     item["document_extraction"] = {
