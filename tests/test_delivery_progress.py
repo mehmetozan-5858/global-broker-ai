@@ -60,3 +60,21 @@ class DeliveryProgressTests(unittest.TestCase):
         self.ledger['packages'][0]['steps'].append(copy.deepcopy(step))
         with self.assertRaises(ValueError):
             build(self.ledger)
+
+    def test_next_software_step_skips_external_acceptance_and_blocked_work(self):
+        for p in self.ledger['packages']:
+            p['steps'] = []
+        self.ledger['packages'][0]['steps'] = [
+            {'id': 'external', 'title': 'External', 'category': 'live_acceptance', 'status': 'blocked'},
+            {'id': 'blocked', 'title': 'Blocked', 'category': 'software', 'status': 'blocked'}]
+        self.ledger['packages'][1]['steps'] = [
+            {'id': 'action', 'title': 'Action', 'category': 'software', 'status': 'in_progress',
+             'evidence': {'private': 'PRIVATE_SENTINEL'}}]
+        result = public_summary(self.ledger)
+        self.assertEqual(result['next_package'], 'P1')
+        self.assertEqual(result['next_software_step'],
+                         {'package_id': 'P2', 'step_id': 'action', 'title': 'Action'})
+        self.assertNotIn('PRIVATE_SENTINEL', json.dumps(result))
+        self.assertEqual(result['surfaces']['web']['current'], 70)
+        self.ledger['packages'][1]['steps'][0]['status'] = 'blocked'
+        self.assertIsNone(build(self.ledger)['next_software_step'])

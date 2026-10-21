@@ -15,6 +15,7 @@ def public_summary(ledger: dict) -> dict:
         "surfaces": report["surfaces"],
         "next_package": report["next_package"],
         "step_summary": report["step_summary"],
+        "next_software_step": report["next_software_step"],
         "packages": [{**{key: p[key] for key in ("id", "title", "points", "status", "acceptance")},
                       "steps": [{key: step[key] for key in ("id", "title", "category", "status", "blocker") if key in step}
                                 for step in p.get("steps", [])]} for p in ledger["packages"]],
@@ -27,6 +28,7 @@ def build(ledger: dict) -> dict:
     baseline = ledger["baseline"]
     packages = ledger["packages"]
     result = {"measurement": ledger["measurement"], "surfaces": {}, "next_package": None,
+              "next_software_step": None,
               "step_summary": {key: {"complete": 0, "total": 0} for key in ("software", "live_acceptance")}}
     ids = [p["id"] for p in packages]
     if len(ids) != len(set(ids)):
@@ -40,6 +42,13 @@ def build(ledger: dict) -> dict:
             step_ids.add(step["id"])
             if step["status"] == "complete" and not all(isinstance(step.get("evidence", {}).get(k), str) and step["evidence"][k].strip() for k in EVIDENCE):
                 raise ValueError("Completed step requires tests, deployment and live evidence")
+            if (p["status"] != "complete" and category == "software"
+                    and step["status"] in {"pending", "in_progress"}
+                    and result["next_software_step"] is None):
+                result["next_software_step"] = {
+                    "package_id": p["id"], "step_id": step["id"],
+                    "title": step["title"],
+                }
             result["step_summary"][category]["total"] += 1
             result["step_summary"][category]["complete"] += int(step["status"] == "complete")
         if p["status"] not in {"pending", "in_progress", "complete", "blocked"}:
