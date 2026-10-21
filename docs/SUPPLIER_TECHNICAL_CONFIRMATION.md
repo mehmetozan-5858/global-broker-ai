@@ -1,6 +1,13 @@
 # Supplier technical confirmation workpack — 21 October 2026
 
-Status: PREPARED / NOT SENT. No supplier response, quotation, technical approval or purchase order exists in this workpack. This is a review aid for the notice-bound research already held in the application.
+Status: REQUESTS SUBMITTED / AWAITING RESPONSES. No supplier response, quotation, technical approval or purchase order exists in this workpack. This is a review aid for the notice-bound research already held in the application.
+
+## Submission record — 21 October 2026
+
+- ficonTEC: the owner reported sending the prepared email. No independent delivery acknowledgment or supplier reply has been observed.
+- FormFactor: the owner submitted the official sales form and supplied its successful-submission screen (IMG_5729.png). Earlier validation failure is not treated as a successful submission.
+- The messages below are reference drafts. The later form/email wording provided in the conversation may differ; this document is not a verified copy of the sent messages.
+- Do not resend either request merely because responses have not yet been received. No automatic follow-up has been authorized.
 
 ## Evidence and missing acceptance
 

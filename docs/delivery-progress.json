@@ -100,10 +100,26 @@
         "deployment": "PR #104 merged d563d81ba6bbdd1cc0d4f0f0aa20e0f3462b1f98. Web/mobile published; production source scan 39323642846 successful; 73 records retain specific product details and one real opportunity has two researched capability candidates.",
         "live_verification": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39323642735",
         "technical_confirmation_workpack": {
-          "status": "prepared_not_sent",
+          "status": "requests_submitted_awaiting_responses",
           "path": "docs/SUPPLIER_TECHNICAL_CONFIRMATION.md",
           "date": "2026-10-21",
-          "limits": "Separate technical clarification and quotation drafts exist. Exact offered 40 GHz and two-FAU/waveguide-loop configurations, complete current tender annexes and actual supplier responses remain unverified. No outreach or exact-spec approval created."
+          "limits": "Submitted inquiries only: no actual supplier quotation, offered configuration confirmation, full specification acceptance, purchase order or payment. No automatic follow-up authorized.",
+          "outreach": [
+            {
+              "supplier": "ficonTEC Service GmbH",
+              "channel": "email",
+              "date": "2026-10-21",
+              "status": "sent_owner_reported",
+              "evidence": "Owner explicitly reported sending the prepared inquiry in conversation. Recipient delivery and supplier response are not independently confirmed."
+            },
+            {
+              "supplier": "FormFactor, Inc.",
+              "channel": "official_sales_form",
+              "date": "2026-10-21",
+              "status": "submission_acknowledged",
+              "evidence": "Owner screenshot IMG_5729.png shows the official form success message. Previous missing province validation was corrected; only the final success is counted."
+            }
+          ]
         }
       },
       "note": "İki gerçek üretici için kaynaklı ürün kabiliyeti eşleşmesi var. FormFactor için grating/edge coupling ve optik-elektrik ölçüm; ficonTEC için fiber-array attachment ve edge alignment kanıtları gösteriliyor. Teklif konfigürasyonunda 40 GHz, waveguide-loop/two-FAU ve tam ihale eklerinin uygunluğu doğrulanmadığından P3 kapanmadı. Yeni ilanlarda genel kategori yerine kaynak ürün adıyla araştırma yapılır; adaylar kategoriyle başka ilana taşınmaz.",
@@ -605,6 +621,13 @@
       "app": 72,
       "reason": "556 Python +73 JS, kaynak taraması ve Chromium/WebKit doğrulandı. Gerçek kurtarma e-postası teslimi doğrulandı; kullanıcı mevcut şifresini koruyor. Tam kurtarma, teklif ve ticari kabul eksikleri nedeniyle paket puanları değişmedi.",
       "evidence": "https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/39549938414"
+    },
+    {
+      "date": "2026-10-21",
+      "web": 77,
+      "app": 72,
+      "reason": "Tedarikçi teyit/fiyat talepleri dışarı iletildi: ficonTEC için kullanıcı gönderim beyanı, FormFactor için başarılı form ekranı var. Yanıt, gerçek teklif ve tam şartname kabulü henüz yok; puan eklenmedi.",
+      "evidence": "Owner confirmation and official FormFactor success screenshot IMG_5729.png in conversation."
     }
   ],
   "operating_model": {
