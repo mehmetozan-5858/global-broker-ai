@@ -166,7 +166,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
         info.update({
             "status": "parsed",
             "source_backed_only": True,
-            "parsed_count": sum(1 for x in attempts if isinstance(x, dict) and x.get("status") == "parsed"),
+            "parsed_count": sum(1 for x in attempts if isinstance(x, dict) and x.get("status") == "parsed" and x.get("source") != "document_index"),
             "attempts": attempts,
             "text_chars": len(merged),
             "ted_xml_parsed": kind == "ted_xml",
