@@ -1,4 +1,5 @@
 import unittest
+from datetime import date
 from src.pilot_dossiers import build
 
 
@@ -68,3 +69,50 @@ class PilotDossiersTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PilotFreshnessTests(unittest.TestCase):
+    def row(self, identity, deadline):
+        return {"id": identity, "deadline": deadline, "product_name": "Pump", "quantity": "25",
+                "source_url": "https://official.example/tender", "buyer_name": "Buyer", "country": "NLD"}
+
+    def test_current_notice_outranks_better_filled_expired_notice_without_deleting_it(self):
+        expired = self.row("old", "2026-10-20")
+        expired.update(buyer_verified=True, specification_analysis={"supplier_sourcing_ready": True},
+                       supplier_research={"verified_supplier_count": 1}, price_margin_gate={"price_ready": True})
+        current = {"id": "current", "deadline": "2026-10-21"}
+        result = build({"opportunities": [expired, current]}, today=date(2026, 10, 21))
+        summary = result["pilot_dossier_summary"]
+        self.assertEqual(summary["first_ten"][0]["opportunity_id"], "current")
+        self.assertEqual(summary["opportunities_reviewed"], 2)
+        self.assertEqual(summary["fully_evidenced_count"], 0)
+        self.assertIn("current_deadline", expired["commercial_dossier"]["missing_evidence"])
+
+    def test_result_notice_with_future_date_is_research_only(self):
+        result = self.row("result", "2026-12-01")
+        result.update(source="TED", **{"form-type": "result"})
+        current = {"id": "current", "deadline": "2026-11-01"}
+        summary = build({"opportunities": [result, current]}, today=date(2026, 10, 21))["pilot_dossier_summary"]
+        self.assertEqual(summary["first_ten"][0]["opportunity_id"], "current")
+        self.assertIn("call_for_tenders", result["commercial_dossier"]["missing_evidence"])
+
+    def test_unselected_lots_block_flat_quantity_and_specification(self):
+        for flag in ("source_lot_selection_required", "ted_lot_selection_required"):
+            row = self.row("lot", "2026-11-01")
+            row[flag] = True
+            row["specification_analysis"] = {"supplier_sourcing_ready": True}
+            summary = build({"opportunities": [row]}, today=date(2026, 10, 21))["pilot_dossier_summary"]
+            dossier = row["commercial_dossier"]
+            for missing in ("lot_selection", "quantity", "exact_specification"):
+                self.assertIn(missing, dossier["missing_evidence"])
+            self.assertFalse(dossier["exact_specification_ready"])
+            self.assertIn("select and verify one lot", summary["first_ten"][0]["next_step"])
+
+    def test_unknown_deadline_and_normalized_deadline(self):
+        row = self.row("unknown", "bad-date")
+        build({"opportunities": [row]}, today=date(2026, 10, 21))
+        self.assertEqual(row["commercial_dossier"]["freshness_status"], "deadline_unknown_review")
+        row["deadline_normalized"] = "2026-11-01"
+        build({"opportunities": [row]}, today=date(2026, 10, 21))
+        self.assertNotIn("current_deadline", row["commercial_dossier"]["missing_evidence"])
+        self.assertFalse(row["commercial_dossier"]["external_outreach_enabled"])

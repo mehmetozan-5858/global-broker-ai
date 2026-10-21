@@ -2,6 +2,9 @@
 from __future__ import annotations
 from collections import Counter
 from typing import Any
+from datetime import date
+from src.opportunity_quality import parse_deadline
+from src.ted_search_fields import notice_context
 
 
 def _present(value: Any) -> bool:
@@ -50,7 +53,8 @@ def _spec_ready(row: dict) -> bool:
     )
 
 
-def build(payload: dict) -> dict:
+def build(payload: dict, today: date | None = None) -> dict:
+    today = today or date.today()
     rows = [r for r in (payload.get("opportunities") or []) if isinstance(r, dict)]
     ranked = []
     missing_counts: Counter[str] = Counter()
@@ -65,12 +69,22 @@ def build(payload: dict) -> dict:
         quantity = _first(row, "quantity-lot", "quantity", "requested_quantity", "qty", "estimated_quantity")
         deadline = _first(row, "deadline-receipt-tender-date-lot", "submission_deadline_date", "deadline_date", "deadline")
         country = _first(row, "buyer-country", "country_name", "country", "country_code")
-        spec_ready = _spec_ready(row)
+        scope_pending = row.get("source_lot_selection_required") is True or row.get("ted_lot_selection_required") is True
+        spec_ready = _spec_ready(row) and not scope_pending
+        deadline = _first(row, "deadline_normalized", "deadline-receipt-tender-date-lot", "submission_deadline_date", "deadline_date", "deadline")
+        parsed_deadline = parse_deadline(deadline)
+        current = parsed_deadline is not None and parsed_deadline >= today
+        context = notice_context(row)
+        research_notice = bool(context and context.get("research_only"))
+        freshness = "deadline_unknown_review" if parsed_deadline is None else "expired" if not current else "open_by_date_only"
         missing = [k for k, v in {
             "source_url": bool(source and str(source).startswith("https://")),
             "product": _present(product),
             "buyer_name": _present(buyer_name),
-            "quantity": _present(quantity),
+            "quantity": _present(quantity) and not scope_pending,
+            "lot_selection": not scope_pending,
+            "current_deadline": current,
+            "call_for_tenders": not research_notice,
             "deadline": _present(deadline),
             "country": _present(country),
             "exact_specification": spec_ready,
@@ -92,8 +106,16 @@ def build(payload: dict) -> dict:
             "exact_specification_ready": spec_ready,
             "human_review_required": True,
             "external_outreach_enabled": False,
+            "freshness_status": freshness,
+            "research_notice": research_notice,
         }
-        if "source_url" in missing or "buyer_name" in missing:
+        if research_notice:
+            next_step = "research notice only; locate a current call for tenders"
+        elif not current:
+            next_step = "verify a current submission deadline before quotation work"
+        elif scope_pending:
+            next_step = "select and verify one lot scope before quotation work"
+        elif "source_url" in missing or "buyer_name" in missing:
             next_step = "verify official source and buyer"
         elif "exact_specification" in missing:
             next_step = "extract exact technical specification from procurement documents"
@@ -109,8 +131,9 @@ def build(payload: dict) -> dict:
             "priority_score": max(0, score),
             "missing_evidence": missing,
             "next_step": next_step,
+            "current_call_by_date_only": current and not research_notice,
         })
-    ranked.sort(key=lambda x: (-x["priority_score"], len(x["missing_evidence"]), x["opportunity_index"]))
+    ranked.sort(key=lambda x: (not x["current_call_by_date_only"], -x["priority_score"], len(x["missing_evidence"]), x["opportunity_index"]))
     payload["pilot_dossier_summary"] = {
         "opportunities_reviewed": len(rows),
         "pilot_target": 10,
