@@ -91,7 +91,7 @@ def _quote_metadata(item: dict, prefix: str) -> list[str]:
 def assess(item: dict, today: date | None = None) -> dict:
     today = today or date.today()
     issues: list[str] = []
-    if item.get("ted_lot_selection_required") is True:
+    if item.get("ted_lot_selection_required") is True or item.get("source_lot_selection_required") is True:
         issues.append("lot_selection")
 
     buy = _positive(item.get("verified_unit_price"))

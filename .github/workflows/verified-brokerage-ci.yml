@@ -59,8 +59,6 @@ jobs:
           node --check web/contact.js
           node --check web/quote-evidence.js
           node --check web/auth-return.js
-          node --test tests/auth-return.test.cjs tests/quote-validation.test.cjs tests/security-actions.test.cjs tests/customer-feed-state.test.cjs
           node --check web/evidence-readiness.js
-          node --test tests/evidence-readiness.test.cjs
-          node --test tests/account-recovery.test.cjs
-          node --test tests/ecosystem-handoff.test.cjs
+      - name: Run every JavaScript regression test
+        run: node --test tests/*.test.cjs
