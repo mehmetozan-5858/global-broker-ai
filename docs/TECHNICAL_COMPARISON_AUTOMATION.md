@@ -1,0 +1,52 @@
+# Partial technical comparison worker
+
+The source worker now extracts clause records while each successfully parsed
+attachment is still associated with its own URL. The first supported layout is
+an explicit two-column Italian urban-CNG-bus requirement table. It extracts only
+the first explicit lot column: length range, total passengers, class, emission
+and fuel. Header/row ambiguity, duplicate tables, unsupported units and uncertain
+values remain unstructured. The other lot is never inferred or selected.
+
+This is deliberately partial coverage: every other specification, evaluation,
+commercial and eligibility condition still needs review. It contains no notice
+ID, buyer name or fixed 7–8 m/27-passenger requirement binding; values are read
+from recognized source rows. Other formats/product families receive a pending
+structure-review task rather than fabricated clauses.
+
+`technical_matcher` runs automatically after the existing remaining pipeline on
+every Shadow Scan. It replays clauses against the current retained source text
+and parsed attachment provenance. The source record and manufacturer observations
+must be fresh within one hour for this same-run comparison. Prior scopes or
+caller-edited clause values are not reused after a failed/changed source refresh.
+
+Only when supported scopes exist, refresh three approved official model pages
+once per scan, concurrently: Rošero FCLEI, Rošero FCLLI and INDCAR Mobi City CNG
+family. This is a bounded registry, not autonomous worldwide supplier discovery.
+Only the two Rošero model tables currently yield exact millimetre dimensions.
+Optional CNG or family availability requires offered-configuration confirmation;
+passenger count, emission and class remain unknown without corresponding model
+proof. A numeric length must agree with its mm quote; boolean/NaN/infinity,
+changed model paths, wrong variants, conflicting values and failed/stale catalogues
+cannot produce supported evidence. INDCAR family evidence cannot become a
+specific model/configuration match.
+
+Per-clause results distinguish source-supported values, conflicts, configuration
+confirmation, missing evidence and unavailable catalogues. The existing admin
+tender dossier renders supported scope/model results and safe source links, with
+explicit partial-coverage and lot-review warnings. Unknown formats show no model
+result. Manufacturer and clause values are escaped; unsafe/credentialed links
+are omitted. Private quotes, URLs and comparison fields remain excluded by the
+public allowlist projection.
+
+This worker never changes supplier verification, exact-spec approval, financial
+eligibility, source lot-selection flags, quotations, payment or launch gates.
+All comparisons require human review and carry zero exact-spec approvals even
+when a limited clause is source-supported. No messages, catalogue forms or bids
+are sent. No new LLM calls or paid service were added.
+
+Validation: 590 Python and 88 JavaScript tests locally, including ten extraction,
+source replay, scope/unit/model isolation, freshness, failed catalog, privacy and
+read-once tests plus three rendering/link-escaping tests. A captured real Livorno
+PDF yielded one explicit lot scope and five clauses. Local catalogue network
+resolution was unavailable and correctly produced zero comparisons with current
+catalogue evidence; post-merge production scan is the separate live verification.

@@ -42,6 +42,41 @@
     var html=evidence(items);
     return '<div class="section"><div class="label">'+esc(label)+'</div><div class="value">'+(html?'<ul>'+html+'</ul>':'Kaynakta doğrulanamadı / Türkçe inceleme bekliyor')+'</div></div>';
   }
+  function technicalComparison(result){
+    if(!result||!Array.isArray(result.scopes)||!result.scopes.length)return '';
+    var labels={length_mm:'Uzunluk',passenger_capacity:'Toplam yolcu',vehicle_class:'Araç sınıfı',emission:'Emisyon',fuel:'Yakıt'};
+    var states={source_supported:'Kaynakta destekleniyor; tam onay değil',conflict:'Koşulla çelişiyor',configuration_confirmation_required:'Teklif konfigürasyonu teyit edilmeli',catalog_unavailable:'Üretici kaynağı okunamadı',conflicting_catalog_evidence:'Üretici belgelerinde çelişki var'};
+    function source(url,label){
+      try{var u=new URL(url);if(u.protocol!=='https:'||u.username||u.password)return '';
+        return ' <a target="_blank" rel="noopener noreferrer" href="'+esc(u.href)+'">'+esc(label)+'</a>';
+      }catch(e){return ''}
+    }
+    function expected(c){
+      var v=c.expected;
+      if(c.field==='length_mm'&&v&&typeof v==='object'&&Number.isFinite(v.min)&&Number.isFinite(v.max))return (v.min/1000)+'–'+(v.max/1000)+' m';
+      return {M3_CLASS_I:'M3 / Sınıf I',EURO6_STEP_E:'Euro 6 Step E',CNG:'CNG'}[v]||String(v===undefined?'':v).slice(0,80);
+    }
+    var html='<details class="section"><summary><b>Otomatik teknik ön karşılaştırma</b></summary><div class="note">Kapsam kısmi; diğer zorunlu maddeler ve üretici onayı bekleniyor.</div>';
+    if(result.lot_selection_required===true)html+='<div class="note">Lot seçimi incelemesi açık; farklı lotların sonuçları birleştirilmez.</div>';
+    result.scopes.slice(0,4).forEach(function(scope){
+      if(!scope||typeof scope!=='object')return;
+      html+='<div class="label">'+esc(String(scope.scope||'İnceleme kapsamı'))+'</div>';
+      (Array.isArray(scope.models)?scope.models:[]).slice(0,3).forEach(function(model){
+        if(!model||typeof model!=='object')return;
+        html+='<div class="section"><b>'+esc(String(model.manufacturer||''))+' — '+esc(String(model.model||''))+'</b><ul>';
+        (Array.isArray(model.clause_results)?model.clause_results:[]).slice(0,10).forEach(function(c){
+          if(!c||typeof c!=='object')return;
+          html+='<li>'+esc(labels[c.field]||'Şartname maddesi')+': '+esc(expected(c))+' · '+esc(states[c.status]||'Belge / teyit bekleniyor');
+          html+=source(c.requirement_source_url,'İhale kanıtı');
+          var facts=Array.isArray(c.catalog_evidence)?c.catalog_evidence:[];
+          if(facts[0])html+=source(facts[0].source_url,'Üretici kanıtı');
+          html+='</li>';
+        });
+        html+='</ul></div>';
+      });
+    });
+    return html+'</details>';
+  }
   function dossier(o){
     var spec=o&&o.specification_analysis||{};
     var extraction=o&&o.document_extraction||{};
@@ -70,6 +105,7 @@
     html+=block('Miktar / adet kanıtları',spec.quantity_evidence);
     html+=block('Teslim şartlarına ilişkin kaynak bulguları',spec.delivery_evidence);
     html+=block('Değerlendirme / ihale kriterleri',spec.award_evidence);
+    html+=technicalComparison(o&&o.technical_comparison);
     html+=row('İstenen belge listesi',value(o,['required_documents','documents_required','submission_documents']));
     html+='<div class="section"><div class="label">Kaynak ve ek belgeler</div><div class="value">';
     if(src&&/^https?:\/\//.test(src))html+='<a target="_blank" rel="noopener noreferrer" href="'+esc(src)+'">İlan kaynağını aç</a> ';

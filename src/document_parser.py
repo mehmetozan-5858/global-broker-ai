@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 from src.document_links import is_attachment_url, select as select_attachments, filename as attachment_filename, priority as attachment_priority, EXTENSIONS
 from src.source_navigation import document_indexes, same_origin
+from src.technical_requirements import extract_document as extract_requirements
 from xml.etree import ElementTree
 
 MAX_DOCUMENT_BYTES = 8 * 1024 * 1024
@@ -457,6 +458,9 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     # exhaust the shared budget before a later discovered technical annex.
     documents.sort(key=lambda entry: attachment_priority(entry[0], attachment_labels.get(entry[0], "")))
     merged = "\n\n".join([text for _, text in documents] + source_page_parts)[:MAX_EXTRACTED_CHARS]
+    # Extract per-document clauses before losing the URL/text association.
+    item["technical_requirement_scopes"] = [scope for url, text in documents
+        for scope in extract_requirements(url, text)]
     candidate_count = len(attachments) + len(source_pages)
     parsed_count = sum(1 for x in attempts if x.get("status") == "parsed" and x.get("source") != "document_index")
     item["document_extraction"] = {
@@ -493,6 +497,7 @@ def enrich_payload(payload: dict[str, Any], fallback_payload: dict[str, Any] | N
         # Clear evidence even when a caller supplies already enriched rows.
         item.pop("document_extracted_text", None)
         item.pop("document_extraction", None)
+        item.pop("technical_requirement_scopes", None)
         if _all_urls(item):
             to_fetch.append(item)
         else:
