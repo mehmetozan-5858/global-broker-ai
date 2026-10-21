@@ -15,6 +15,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 from src.document_links import is_attachment_url, select as select_attachments, filename as attachment_filename, priority as attachment_priority, EXTENSIONS
+from src.source_navigation import document_indexes, same_origin
 from xml.etree import ElementTree
 
 MAX_DOCUMENT_BYTES = 8 * 1024 * 1024
@@ -23,6 +24,7 @@ MAX_EXTRACTED_CHARS = 40000
 MAX_PDF_PAGES = 80
 MAX_SOURCE_PAGES_PER_OPPORTUNITY = 1
 MAX_DISCOVERED_ATTACHMENTS = 3
+MAX_DOCUMENT_INDEX_PAGES = 1
 MAX_WORKERS = 8
 TIMEOUT_SECONDS = 12
 USER_AGENT = "GlobalBrokerAI/1.0 tender-document-reader"
@@ -246,10 +248,12 @@ def _decode_html(data: bytes) -> str:
     return data.decode("utf-8", errors="ignore")
 
 
-def _parse_html_page(data: bytes, base_url: str, attachment_labels: dict[str, str] | None = None) -> tuple[str, list[str]]:
+def _parse_html_page(data: bytes, base_url: str, attachment_labels: dict[str, str] | None = None, indexes: list[str] | None = None) -> tuple[str, list[str]]:
     parser = _TenderHTMLParser()
     parser.feed(_decode_html(data))
     visible = _normalize_lines("".join(parser.text_parts))[:MAX_EXTRACTED_CHARS]
+    if indexes is not None:
+        indexes.extend(url for url in document_indexes(parser.links, base_url) if url not in indexes)
     candidates: list[tuple[str, str]] = []
     for link in parser.links:
         try:
@@ -363,6 +367,8 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     attachment_labels: dict[str, str] = {}
     source_page_parts: list[str] = []
     discovered_attachments: list[str] = []
+    attachment_origins: dict[str, str] = {}
+    indexes: list[str] = []
 
     for url in attachments:
         parts: list[str] = []
@@ -370,6 +376,10 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         documents.extend((url, text) for text in parts)
 
     world_bank_read = _world_bank_notice(item, attempts, source_page_parts, discovered_attachments, attachment_labels)
+    for link in discovered_attachments:
+        origin = next((a["url"] for a in attempts if a.get("status") == "parsed"), None)
+        if origin:
+            attachment_origins[link] = origin
     for url in ([] if world_bank_read else source_pages):
         page_attempt: dict[str, Any] = {"url": url, "status": "pending", "source": "source_page"}
         try:
@@ -386,7 +396,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
             else:
                 if "html" not in content_type and not content_type.startswith("text/"):
                     raise ValueError("source_page_not_html")
-                page_text, found = _parse_html_page(data, final_url, attachment_labels)
+                page_text, found = _parse_html_page(data, final_url, attachment_labels, indexes)
                 if len(page_text) >= 160:
                     _append_text(source_page_parts, page_text)
                     page_attempt.update({
@@ -399,12 +409,45 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
             for found_url in found:
                 if found_url not in attachments and found_url not in discovered_attachments:
                     discovered_attachments.append(found_url)
+                    attachment_origins[found_url] = final_url
         except Exception as exc:
             page_attempt.update({"status": "failed", "error": type(exc).__name__ + ":" + str(exc)[:180]})
         attempts.append(page_attempt)
 
-    for url in discovered_attachments[:MAX_DISCOVERED_ATTACHMENTS]:
-        origin = next((x["url"] for x in attempts if x.get("source") == "source_page" and x.get("status") == "parsed"), None)
+    # One explicitly linked parent/index page, one hop only. Its text may
+    # describe several lots, so use it for discovery and never merge it as
+    # commercial/technical evidence. Successful downloads retain their own URL.
+    index_attempts = 0
+    visited = {a.get("url") for a in attempts} | {a.get("final_url") for a in attempts}
+    for index_url in indexes:
+        if index_url in visited or index_attempts >= MAX_DOCUMENT_INDEX_PAGES:
+            continue
+        index_attempts += 1
+        visited.add(index_url)
+        attempt = {"url": index_url, "source": "document_index", "status": "pending"}
+        try:
+            data, content_type, final_url = _download(index_url, MAX_SOURCE_PAGE_BYTES)
+            if not same_origin(index_url, final_url):
+                raise ValueError("document_index_origin_changed")
+            if "html" not in content_type:
+                raise ValueError("document_index_not_html")
+            _, found = _parse_html_page(data, final_url, attachment_labels)
+            for link in found:
+                if link not in attachments and link not in discovered_attachments:
+                    discovered_attachments.append(link)
+                    attachment_origins[link] = final_url
+            attempt.update({"status": "parsed", "kind": "document_index", "final_url": final_url,
+                            "bytes": len(data), "discovered_attachments": len(found)})
+        except Exception as exc:
+            attempt.update({"status": "failed", "error": type(exc).__name__ + ":" + str(exc)[:180]})
+        attempts.append(attempt)
+
+    discovered_attachments = select_attachments(
+        [(link, attachment_labels.get(link, "")) for link in discovered_attachments],
+        MAX_DISCOVERED_ATTACHMENTS,
+    )
+    for url in discovered_attachments:
+        origin = attachment_origins.get(url)
         parts = []
         _try_attachment(url, attempts, parts, origin)
         documents.extend((url, text) for text in parts)
@@ -415,7 +458,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     documents.sort(key=lambda entry: attachment_priority(entry[0], attachment_labels.get(entry[0], "")))
     merged = "\n\n".join([text for _, text in documents] + source_page_parts)[:MAX_EXTRACTED_CHARS]
     candidate_count = len(attachments) + len(source_pages)
-    parsed_count = sum(1 for x in attempts if x.get("status") == "parsed")
+    parsed_count = sum(1 for x in attempts if x.get("status") == "parsed" and x.get("source") != "document_index")
     item["document_extraction"] = {
         "status": "parsed" if merged else ("attempted_no_text" if candidate_count else "no_supported_document"),
         "checked_at": datetime.now(timezone.utc).isoformat(),
@@ -423,6 +466,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         "source_backed_only": True,
         "candidate_count": candidate_count,
         "source_page_count": len(source_pages),
+        "document_index_count": index_attempts,
         "discovered_attachment_count": len(discovered_attachments),
         "parsed_count": parsed_count,
         "attempts": attempts,

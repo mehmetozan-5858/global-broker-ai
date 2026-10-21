@@ -5,7 +5,8 @@ import re
 import urllib.parse
 
 EXTENSIONS = ('.pdf', '.docx', '.txt')
-TECHNICAL = re.compile(r'(?i)(?:\btechnical\b|\bspec(?:ification|ifications)?\b|\brequirements?\b|\bannex\b|\bleistungsverzeichnis\b|\blastenheft\b|\bspezifikation\b|\bspecyfikacja\b|\bswz\b|\bcctp\b|\bcahier\b|şartname|sartname)')
+TECHNICAL = re.compile(r'(?i)(?:\btechnical\b|\bspec(?:ification|ifications)?\b|\brequirements?\b|\bannex\b|\bleistungsverzeichnis\b|\blastenheft\b|\bspezifikation\b|\bspecyfikacja\b|\bswz\b|\bcctp\b|\bcahier\b|\bcapitolato\b|\btecnico\b|şartname|sartname)')
+SUPPORTING = re.compile(r'(?i)(?:\bcriteri\b|\bevaluation criteria\b|\baward criteria\b)')
 GENERAL = re.compile(r'(?i)\b(?:privacy|cookies?|gdpr|accessibility|datenschutz)\b')
 
 
@@ -31,9 +32,11 @@ def is_attachment_url(url: str) -> bool:
 
 def priority(url: str, label: str = '') -> int:
     hint = (filename(url) + ' ' + label).replace('_', ' ').replace('-', ' ')
+    if SUPPORTING.search(hint):
+        return 1
     if TECHNICAL.search(hint):
         return 0
-    return 2 if GENERAL.search(hint) else 1
+    return 3 if GENERAL.search(hint) else 2
 
 
 def select(candidates: list[tuple[str, str]], limit: int) -> list[str]:
