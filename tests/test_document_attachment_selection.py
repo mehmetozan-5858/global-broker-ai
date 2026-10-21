@@ -62,6 +62,73 @@ class AttachmentSelectionTests(unittest.TestCase):
         self.assertNotIn('verified_unit_price', item)
         self.assertIsNot(item.get('buyer_verified'), True)
 
+    def test_discovered_technical_label_precedes_full_direct_or_linked_document(self):
+        for linked in (False, True):
+            with self.subTest(linked=linked):
+                generic = 'https://example.test/general.txt'
+                notice = 'https://example.test/notice'
+                annex = 'https://example.test/attachment.txt'
+                spec = 'Technical requirements: flow 250 litres per minute. ' * 5
+                item = {'document_url': notice, 'official_links': [generic]}
+                if linked:
+                    item = {'document_url': generic, 'official_links': [notice]}
+                    # The document is served from a URL without an extension.
+                    generic = 'https://example.test/download'
+                    item['document_url'] = generic
+                def download(url, *args):
+                    if url == generic:
+                        return ('General administrative content. ' * 2000).encode(), ('application/pdf' if linked else 'text/plain'), url
+                    if url == annex:
+                        return spec.encode(), 'text/plain', url
+                    return ('<p>' + 'Notice context. ' * 20 + '</p><a href="' + annex + '">Technical specification</a>').encode(), 'text/html', url
+                # A linked binary document occupies the single page slot; allow
+                # the separate notice page in this fixture to exercise both.
+                with patch.object(document_parser, '_download', side_effect=download), patch.object(
+                    document_parser, '_parse_pdf', return_value='General administrative content. ' * 2000
+                ), patch.object(document_parser, 'MAX_SOURCE_PAGES_PER_OPPORTUNITY', 2):
+                    document_parser.enrich_opportunity(item)
+                text = item['document_extracted_text']
+                self.assertTrue(text.startswith(spec.strip()))
+                self.assertEqual(len(text), 40000)
+                self.assertEqual(item['document_extraction']['text_chars'], len(text))
+                attempt = next(a for a in item['document_extraction']['attempts'] if a['url'] == annex)
+                self.assertEqual(attempt['discovered_from'], notice)
+                self.assertNotIn('verified_unit_price', item)
+
+    def test_direct_attachment_uses_discovered_label_without_second_download(self):
+        first = 'https://example.test/a.txt'
+        second = 'https://example.test/b.txt'
+        notice = 'https://example.test/notice'
+        item = {'document_url': notice, 'official_links': [first, second]}
+        spec = 'Exact technical requirements from second document. ' * 5
+        def download(url, *args):
+            if url == first:
+                return ('Generic administrative content. ' * 2000).encode(), 'text/plain', url
+            if url == second:
+                return spec.encode(), 'text/plain', url
+            return ('<p>' + 'Notice context. ' * 20 + '</p><a href="' + second + '">Technical specification</a>').encode(), 'text/html', url
+        with patch.object(document_parser, '_download', side_effect=download) as reader:
+            document_parser.enrich_opportunity(item)
+        self.assertTrue(item['document_extracted_text'].startswith(spec.strip()))
+        self.assertEqual(sum(call.args[0] == second for call in reader.call_args_list), 1)
+        self.assertEqual(item['document_extraction']['discovered_attachment_count'], 0)
+
+    def test_failed_discovered_specification_retains_current_generic_text(self):
+        generic = 'https://example.test/general.txt'
+        notice = 'https://example.test/notice'
+        item = {'document_url': notice, 'official_links': [generic]}
+        text = 'Current administrative document. ' * 2000
+        def download(url, *args):
+            if url == generic:
+                return text.encode(), 'text/plain', url
+            if url == notice:
+                return ('<p>' + 'Notice context. ' * 20 + '</p><a href="/spec.txt">Technical specification</a>').encode(), 'text/html', url
+            raise TimeoutError('source timeout')
+        with patch.object(document_parser, '_download', side_effect=download):
+            document_parser.enrich_opportunity(item)
+        self.assertEqual(item['document_extracted_text'], text[:40000])
+        self.assertEqual(item['document_extraction']['attempts'][-1]['status'], 'failed')
+
     def test_login_html_is_never_counted_as_a_parsed_attachment(self):
         url = 'https://example.test/download?filename=spec.pdf'
         item = {'document_url': url}
