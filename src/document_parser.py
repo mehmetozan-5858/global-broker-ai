@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
+from src.document_links import is_attachment_url, select as select_attachments, filename as attachment_filename, EXTENSIONS
 from xml.etree import ElementTree
 
 MAX_DOCUMENT_BYTES = 8 * 1024 * 1024
@@ -36,7 +37,7 @@ URL_KEYS = [
     "official_links",
     "links",
 ]
-ATTACHMENT_EXTENSIONS = (".pdf", ".docx", ".txt")
+ATTACHMENT_EXTENSIONS = EXTENSIONS
 
 
 def _collect_urls(value: Any) -> list[str]:
@@ -73,11 +74,11 @@ def _all_urls(item: dict[str, Any]) -> list[str]:
 
 
 def _is_attachment_url(url: str) -> bool:
-    return urllib.parse.urlparse(url).path.lower().endswith(ATTACHMENT_EXTENSIONS)
+    return is_attachment_url(url)
 
 
 def _candidate_urls(item: dict[str, Any]) -> list[str]:
-    return [url for url in _all_urls(item) if _is_attachment_url(url)][:6]
+    return select_attachments([(url, "") for url in _all_urls(item) if _is_attachment_url(url)], 6)
 
 
 def _source_page_urls(item: dict[str, Any]) -> list[str]:
@@ -201,6 +202,8 @@ class _TenderHTMLParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.text_parts: list[str] = []
         self.hrefs: list[str] = []
+        self.links: list[dict[str, str]] = []
+        self._active_link: dict[str, str] | None = None
         self._skip_depth = 0
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
@@ -210,12 +213,18 @@ class _TenderHTMLParser(HTMLParser):
             return
         if not self._skip_depth and tag in self.BLOCK_TAGS:
             self.text_parts.append("\n")
-        if tag == "a":
-            for key, value in attrs:
-                if key.lower() == "href" and value:
-                    self.hrefs.append(value)
+        if tag == "a" and not self._skip_depth:
+            attributes = {key.lower(): value for key, value in attrs}
+            href = attributes.get("href")
+            self._active_link = None
+            if href:
+                self.hrefs.append(href)
+                self._active_link = {"href": href, "label": attributes.get("title") or ""}
+                self.links.append(self._active_link)
 
     def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "a":
+            self._active_link = None
         if tag.lower() in {"script", "style", "noscript", "svg"} and self._skip_depth:
             self._skip_depth -= 1
         if not self._skip_depth and tag.lower() in self.BLOCK_TAGS:
@@ -224,6 +233,8 @@ class _TenderHTMLParser(HTMLParser):
     def handle_data(self, data: str) -> None:
         if not self._skip_depth:
             self.text_parts.append(data)
+            if self._active_link is not None:
+                self._active_link["label"] = (self._active_link["label"] + " " + data)[:1000]
 
 
 def _decode_html(data: bytes) -> str:
@@ -239,21 +250,21 @@ def _parse_html_page(data: bytes, base_url: str) -> tuple[str, list[str]]:
     parser = _TenderHTMLParser()
     parser.feed(_decode_html(data))
     visible = _normalize_lines("".join(parser.text_parts))[:MAX_EXTRACTED_CHARS]
-    attachments: list[str] = []
-    seen: set[str] = set()
-    for href in parser.hrefs:
-        absolute = urllib.parse.urljoin(base_url, href)
-        if absolute in seen or not _is_attachment_url(absolute):
+    candidates: list[tuple[str, str]] = []
+    for link in parser.links:
+        try:
+            absolute = urllib.parse.urljoin(base_url, link["href"])
+        except ValueError:
             continue
-        seen.add(absolute)
-        attachments.append(absolute)
-        if len(attachments) >= MAX_DISCOVERED_ATTACHMENTS:
-            break
-    return visible, attachments
+        if _is_attachment_url(absolute):
+            candidates.append((absolute, link["label"]))
+    return visible, select_attachments(candidates, MAX_DISCOVERED_ATTACHMENTS)
 
 
 def _parse(data: bytes, content_type: str, url: str) -> tuple[str, str]:
-    path = urllib.parse.urlparse(url).path.lower()
+    path = (attachment_filename(url) or urllib.parse.urlparse(url).path).lower()
+    if "html" in content_type or data.lstrip().lower().startswith((b"<!doctype html", b"<html")):
+        raise ValueError("attachment_is_html")
     if content_type == "application/pdf" or path.endswith(".pdf") or data.startswith(b"%PDF"):
         return _parse_pdf(data), "pdf"
     if content_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" or path.endswith(".docx"):
