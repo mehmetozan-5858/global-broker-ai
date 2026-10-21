@@ -36,3 +36,13 @@ test('shared workspace links use fixed official hosts and preserve role boundari
  }
  assert.equal(new URL(contract.build(fields,'broker')).pathname,'/web/ecosystem.html');
 });
+
+test('saved account handoff projects only reviewed business fields',()=>{
+ const account={client:{id:'private-id',name:'ACME',domain:'example.com/path?token=secret#private',email:'hidden@example.com'},profile:{country:'Germany',sector:'B2B / Sanayi',phone:'private'},payments:[{amount:123}],access_token:'secret'};
+ const fields=contract.fromAccount(account);
+ assert.deepEqual(fields,{businessName:'ACME',website:'https://example.com/path',country:'Germany',sector:'B2B / Sanayi'});
+ assert.deepEqual(contract.parse(new URL(contract.build(fields,'broker')).hash).business,fields);
+ assert.deepEqual(contract.fromAccount(null),{businessName:'',website:'',country:'',sector:''});
+ assert.equal(contract.fromAccount({client:{name:'ACME',domain:'javascript:alert(1)'},profile:{sector:'unmapped'}}).website,'');
+ assert.equal(contract.fromAccount({client:{name:'ACME'},profile:{sector:'unmapped'}}).sector,'');
+});
