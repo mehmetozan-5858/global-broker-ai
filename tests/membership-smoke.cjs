@@ -4,6 +4,7 @@ const base=process.env.GB_MEMBERSHIP_BASE||'https://broker.aivisibilityworks.com
 (async()=>{for(const engine of [chromium,webkit]){const browser=await engine.launch();try{
 for(const width of (engine===webkit?[390]:[320,390,1280])){
  const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage();
+ await page.route('**/functions/v1/broker-billing-sandbox/**',r=>r.fulfill({status:404,json:{error:'sandbox_unavailable'}}));
  await page.addInitScript(()=>localStorage.setItem('gb_access_token','synthetic-membership-fixture'));
  const catalog=[{id:'sector',name:'Sector Access',amount_minor:8900,currency:'USD'},{id:'multi',name:'Multi-Sector',amount_minor:17900,currency:'USD'},{id:'global',name:'Global Access',amount_minor:34900,currency:'USD'}],rows=[],calls=[];
  await page.route('**/rest/v1/rpc/gb_membership_workspace',r=>r.fulfill({json:{checkout_enabled:false,current_plan:'free',catalog,requests:rows}}));
