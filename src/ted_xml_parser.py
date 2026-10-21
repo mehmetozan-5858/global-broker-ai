@@ -6,6 +6,7 @@ from datetime import date
 from decimal import Decimal, InvalidOperation
 from typing import Iterable, Any
 from xml.etree import ElementTree
+from src.document_links import is_attachment_url, select as select_attachments
 
 MAX_EXTRACTED_CHARS = 40000
 ATTACHMENT_EXTENSIONS = (".pdf", ".docx", ".txt")
@@ -19,11 +20,7 @@ def _clean_text(parts: Iterable[str]) -> str:
 
 
 def _looks_like_attachment(value: str) -> bool:
-    try:
-        path = urllib.parse.urlparse(value.strip()).path.lower()
-    except Exception:
-        return False
-    return path.endswith(ATTACHMENT_EXTENSIONS)
+    return is_attachment_url(value.strip())
 
 
 def _local_name(tag: Any) -> str:
@@ -106,8 +103,7 @@ def parse_ted_xml(data: bytes, base_url: str) -> tuple[str, list[str]]:
         raise ValueError("html_is_not_ted_xml")
     text = _clean_text(root.itertext())
 
-    links: list[str] = []
-    seen: set[str] = set()
+    links: list[tuple[str, str]] = []
     for node in root.iter():
         candidates = list(node.attrib.values())
         if node.text:
@@ -118,14 +114,14 @@ def parse_ted_xml(data: bytes, base_url: str) -> tuple[str, list[str]]:
             raw = raw.strip()
             if not raw:
                 continue
-            absolute = urllib.parse.urljoin(base_url, raw)
-            if absolute in seen or not _looks_like_attachment(absolute):
+            try:
+                absolute = urllib.parse.urljoin(base_url, raw)
+            except ValueError:
                 continue
-            seen.add(absolute)
-            links.append(absolute)
-            if len(links) >= 3:
-                return text, links
-    return text, links
+            if not _looks_like_attachment(absolute):
+                continue
+            links.append((absolute, node.text or ""))
+    return text, select_attachments(links, 3)
 
 
 def is_xml_source(data: bytes, content_type: str, url: str) -> bool:

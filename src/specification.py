@@ -5,6 +5,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
+from src.document_links import filename as attachment_filename
 
 
 STANDARD_RE = re.compile(r"\b(?:ISO\s*\d{3,6}(?::\d{4})?|EN\s*\d{2,6}(?:[-:]\d+)*|CE\b|IEC\s*\d{3,6}|ASTM\s*[A-Z]?\d{2,5})\b", re.I)
@@ -107,7 +108,7 @@ def document_links(item: dict[str, Any]) -> list[dict[str, str]]:
     links = unique_strings(found)
     out: list[dict[str, str]] = []
     for url in links:
-        low = url.lower().split("?", 1)[0]
+        low = (attachment_filename(url) or url.split("?", 1)[0]).lower()
         if low.endswith(".pdf"):
             kind = "pdf"
         elif low.endswith((".doc", ".docx", ".txt", ".xls", ".xlsx", ".zip")):
@@ -128,7 +129,7 @@ def document_links(item: dict[str, Any]) -> list[dict[str, str]]:
         url = urls[0]
         entry = next((d for d in out if d["url"] in {url, attempt.get("url")}), None)
         if entry is None:
-            low = url.lower().split("?", 1)[0]
+            low = (attachment_filename(url) or url.split("?", 1)[0]).lower()
             kind = "pdf" if low.endswith(".pdf") else ("attachment" if low.endswith((".doc", ".docx", ".txt", ".xls", ".xlsx", ".zip")) else "source_page")
             entry = {"url": url, "kind": kind}
             out.append(entry)

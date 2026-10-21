@@ -67,7 +67,7 @@ class DocumentParserTests(unittest.TestCase):
         }
         self.assertEqual(
             document_parser._candidate_urls(item),
-            ["https://example.com/tender.pdf", "https://example.com/spec.docx"],
+            ["https://example.com/spec.docx", "https://example.com/tender.pdf"],
         )
         self.assertEqual(document_parser._source_page_urls(item), ["https://example.com/info.html"])
 
