@@ -8,6 +8,25 @@ from src.specification import analyze_opportunity
 
 
 class AttachmentSelectionTests(unittest.TestCase):
+    def test_multilingual_technical_annex_beats_generic_three_document_budget(self):
+        labels = (
+            "Pliego de prescripciones técnicas",
+            "Memorial descritivo",
+            "Termo de referência",
+            "Technische specificaties",
+            "Caiet de sarcini",
+        )
+        for label in labels:
+            with self.subTest(label=label):
+                html = ('<html><p>' + 'Official notice. ' * 20 + '</p>'
+                        + ''.join(f'<a href="/general{i}.pdf">Generic form</a>' for i in range(3))
+                        + '<a href="/critical.pdf">' + label + '</a></html>')
+                _, selected = document_parser._parse_html_page(
+                    html.encode("utf-8"), "https://example.test/notice"
+                )
+                self.assertEqual(selected[0], "https://example.test/critical.pdf")
+                self.assertEqual(len(selected), 3)
+
     def test_late_technical_html_attachment_survives_three_link_budget(self):
         body = ('<html><p>' + 'Source context. ' * 20 + '</p>'
                 '<a href="/privacy.pdf">Privacy policy</a>'
