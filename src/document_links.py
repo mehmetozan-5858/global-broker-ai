@@ -5,7 +5,7 @@ import re
 import urllib.parse
 
 EXTENSIONS = ('.pdf', '.docx', '.txt')
-TECHNICAL = re.compile(r'(?i)(?:\btechnical\b|\bspec(?:ification|ifications)?\b|\brequirements?\b|\bannex\b|\bleistungsverzeichnis\b|\blastenheft\b|\bspezifikation\b|\bspecyfikacja\b|\bswz\b|\bcctp\b|\bcahier\b|\bcapitolato\b|\btecnico\b|şartname|sartname)')
+TECHNICAL = re.compile(r'(?i)(?:\btechnical\b|\bspec(?:ification|ifications)?\b|\brequirements?\b|\bannex\b|\bleistungsverzeichnis\b|\blastenheft\b|\bspezifikation\b|\bspecyfikacja\b|\bswz\b|\bcctp\b|\bcahier\b|\bcapitolato\b|\btecnico\b|şartname|sartname|\bpliego\b|\bprescripciones\b|\bmemorial\s+descritivo\b|\btermo\s+de\s+refer[eê]ncia\b|\btechnische\s+specificaties\b|\bcaiet\s+de\s+sarcini\b)')
 SUPPORTING = re.compile(r'(?i)(?:\bcriteri\b|\bevaluation criteria\b|\baward criteria\b)')
 GENERAL = re.compile(r'(?i)\b(?:privacy|cookies?|gdpr|accessibility|datenschutz)\b')
 
