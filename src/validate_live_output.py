@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from urllib.parse import urlsplit
 from pathlib import Path
 from typing import Any
 
@@ -14,6 +15,22 @@ SUPPORTED_SPEC_MODES = {"source_evidence_only", "source_evidence_plus_public_doc
 def is_readable_product(value: Any) -> bool:
     text = str(value or "").strip()
     return bool(text) and not bool(NUMERIC_ONLY.fullmatch(text))
+
+
+def is_usable_source_link(value: Any) -> bool:
+    if not isinstance(value, str):
+        return False
+    try:
+        parsed = urlsplit(value.strip())
+        return (
+            parsed.scheme.lower() in {"http", "https"}
+            and bool(parsed.hostname)
+            and parsed.username is None
+            and parsed.password is None
+            and not any(char.isspace() for char in parsed.netloc)
+        )
+    except ValueError:
+        return False
 
 
 def validate(payload: dict[str, Any]) -> dict[str, Any]:
@@ -55,9 +72,7 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
                 readable_product_count += 1
             links = dossier.get("official_links")
             if isinstance(links, list) and any(
-                isinstance(link, str)
-                and link.strip().lower().startswith(("https://", "http://"))
-                for link in links
+                is_usable_source_link(link) for link in links
             ):
                 source_link_count += 1
 

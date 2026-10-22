@@ -24,6 +24,11 @@ class ShadowScanInputIntegrityTests(unittest.TestCase):
         for links, expected in (
             ([""], 0),
             (["javascript:alert(1)"], 0),
+            (["https://"], 0),
+            (["https:///missing-host"], 0),
+            (["https://user:secret@example.org/file"], 0),
+            (["https://bad host.example/file"], 0),
+            (["https://[invalid/file"], 0),
             ([None, "not-a-url"], 0),
             ([" https://example.org/tender/123 "], 1),
             (["http://example.org/tender/123"], 1),
