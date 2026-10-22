@@ -21,18 +21,25 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
     source = str(item.get("source") or item.get("source_name") or "").upper()
     urls = document_parser._all_urls(item)
     for url in urls:
-        parsed = urllib.parse.urlparse(url)
-        path = parsed.path.lower().rstrip("/")
-        host = (parsed.hostname or "").lower()
+        try:
+            parsed = urllib.parse.urlparse(url)
+            path = parsed.path.lower().rstrip("/")
+            host = (parsed.hostname or "").lower()
+        except (TypeError, ValueError):
+            continue
         if host == "ted.europa.eu" and (path.endswith("/xml") or path.endswith(".xml")):
             return url
     if source == "TED":
         publication = str(item.get("publication-number") or "")
         if not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
             for candidate in urls:
-                parsed = urllib.parse.urlparse(candidate)
+                try:
+                    parsed = urllib.parse.urlparse(candidate)
+                    host = parsed.hostname
+                except (TypeError, ValueError):
+                    continue
                 match = re.search(r"/notice/(?:-/detail/)?([0-9]{1,8}-[0-9]{4})(?:/|$)", parsed.path)
-                if parsed.hostname == "ted.europa.eu" and match:
+                if host == "ted.europa.eu" and match:
                     publication = match.group(1)
                     break
         if re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
