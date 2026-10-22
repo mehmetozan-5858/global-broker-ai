@@ -509,12 +509,27 @@ def enrich_payload(payload: dict[str, Any], fallback_payload: dict[str, Any] | N
 
     if to_fetch:
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            futures = [executor.submit(enrich_opportunity, item) for item in to_fetch]
+            futures = {executor.submit(enrich_opportunity, item): item for item in to_fetch}
             for future in as_completed(futures):
                 try:
                     future.result()
-                except Exception:
-                    pass
+                except Exception as exc:
+                    # A worker failure must not silently erase missing-document
+                    # evidence or leave partially written text marked as parsed.
+                    item = futures[future]
+                    item.pop("document_extracted_text", None)
+                    item.pop("technical_requirement_scopes", None)
+                    item["document_extraction"] = {
+                        "status": "attempted_no_text",
+                        "checked_at": datetime.now(timezone.utc).isoformat(),
+                        "refresh_policy": "every_scan",
+                        "source_backed_only": True,
+                        "candidate_count": len(_candidate_urls(item)) + len(_source_page_urls(item)),
+                        "parsed_count": 0,
+                        "attempts": [{"source": "document_worker", "status": "failed",
+                                      "error": type(exc).__name__}],
+                        "text_chars": 0,
+                    }
 
     attempted = 0
     parsed = 0

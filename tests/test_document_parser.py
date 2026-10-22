@@ -135,6 +135,25 @@ class DocumentParserTests(unittest.TestCase):
         self.assertIn("checked_at", row["document_extraction"])
         self.assertEqual(out["document_extraction"]["reused_last_known_good"], 0)
 
+    def test_unexpected_worker_crash_does_not_leave_partial_document_evidence(self):
+        url = "https://example.test/spec.pdf"
+        row = {"id": "opp-1", "document_url": url,
+               "document_extracted_text": "stale data",
+               "document_extraction": {"status": "parsed", "parsed_count": 1}}
+        def crash(item):
+            item["document_extracted_text"] = "partial unverified text"
+            item["technical_requirement_scopes"] = [{"unsafe": "partial"}]
+            raise RuntimeError("simulated unexpected worker crash")
+        with patch.object(document_parser, "enrich_opportunity", side_effect=crash):
+            document_parser.enrich_payload({"opportunities": [row]})
+        self.assertNotIn("document_extracted_text", row)
+        self.assertNotIn("technical_requirement_scopes", row)
+        self.assertEqual(row["document_extraction"]["status"], "attempted_no_text")
+        self.assertEqual(row["document_extraction"]["parsed_count"], 0)
+        self.assertEqual(row["document_extraction"]["attempts"][0]["source"], "document_worker")
+        self.assertEqual(row["document_extraction"]["attempts"][0]["status"], "failed")
+        self.assertNotIn("simulated unexpected", str(row["document_extraction"]))
+
     def test_failed_refresh_never_restores_old_document_evidence(self):
         old = {"id": "opp-1", "document_url": "https://example.com/spec.pdf",
             "document_extracted_text": "Technical specification ISO 9001 " * 10,
