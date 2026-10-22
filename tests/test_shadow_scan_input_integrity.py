@@ -16,6 +16,28 @@ class ShadowScanInputIntegrityTests(unittest.TestCase):
                         "specification_analysis": {"mode": "source_evidence_only"},
                     })
 
+    def test_source_links_count_only_valid_http_candidates(self):
+        base = {
+            "enrichment": {"mode": "source_only_no_hallucination"},
+            "specification_analysis": {"mode": "source_evidence_only"},
+        }
+        for links, expected in (
+            ([""], 0),
+            (["javascript:alert(1)"], 0),
+            ([None, "not-a-url"], 0),
+            ([" https://example.org/tender/123 "], 1),
+            (["http://example.org/tender/123"], 1),
+        ):
+            with self.subTest(links=links):
+                payload = {
+                    **base,
+                    "opportunities": [{
+                        "dossier": {"product_name": "Medical supplies", "official_links": links},
+                        "specification_analysis": {"status": "document_analysis_pending"},
+                    }],
+                }
+                self.assertEqual(validate(payload)["with_official_links"], expected)
+
     def test_empty_scan_remains_valid_for_existing_downstream_checks(self):
         result = validate({
             "opportunities": [],
