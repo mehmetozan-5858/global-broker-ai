@@ -8,6 +8,17 @@ from src.specification import analyze_opportunity
 
 
 class AttachmentSelectionTests(unittest.TestCase):
+    def test_technical_specification_with_award_criteria_label_stays_first(self):
+        candidates = [
+            ("https://example.test/evaluation.pdf", "Evaluation criteria"),
+            ("https://example.test/award.pdf", "Award criteria"),
+            ("https://example.test/general.pdf", "General"),
+            ("https://example.test/technical.pdf", "Technical specification and award criteria"),
+        ]
+        selected = document_links.select(candidates, 3)
+        self.assertEqual(selected[0], "https://example.test/technical.pdf")
+        self.assertNotIn("https://example.test/general.pdf", selected)
+
     def test_multilingual_technical_annex_beats_generic_three_document_budget(self):
         labels = (
             "Pliego de prescripciones técnicas",
