@@ -54,7 +54,11 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
             if is_readable_product(dossier.get("product_name")):
                 readable_product_count += 1
             links = dossier.get("official_links")
-            if isinstance(links, list) and links:
+            if isinstance(links, list) and any(
+                isinstance(link, str)
+                and link.strip().lower().startswith(("https://", "http://"))
+                for link in links
+            ):
                 source_link_count += 1
 
         spec = item.get("specification_analysis")
