@@ -45,9 +45,9 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
     specification_attachment_pending = 0
     specification_sourcing_ready = 0
 
-    for item in opportunities:
+    for index, item in enumerate(opportunities):
         if not isinstance(item, dict):
-            continue
+            raise AssertionError(f"malformed opportunity at index {index}: expected object")
         dossier = item.get("dossier")
         if isinstance(dossier, dict):
             dossier_count += 1
