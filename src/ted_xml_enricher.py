@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from collections import Counter
 import re
 from concurrent.futures import ThreadPoolExecutor
 import sys
@@ -196,6 +197,28 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
         return False
 
 
+# Fixed classification avoids storing exception text, arbitrary URLs or tokens in
+# aggregate scan diagnostics. An unrecognized error stays explicitly unknown.
+TED_FAILURE_MARKERS = (
+    "ted_source_not_xml",
+    "insufficient_ted_xml_text",
+    "ted_document_notice_identity_or_text_missing",
+    "ted_pdf_download_not_pdf",
+    "ted_html_download_not_html",
+    "unexpected_world_bank_api_origin",
+)
+
+
+def _failure_category(attempt: dict[str, Any]) -> str:
+    error = attempt.get("error")
+    if not isinstance(error, str):
+        return "unknown"
+    for marker in TED_FAILURE_MARKERS:
+        if marker in error:
+            return marker
+    return "other"
+
+
 def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     opportunities = payload.get("opportunities")
     if not isinstance(opportunities, list):
@@ -207,11 +230,19 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     html_parsed = 0
     pdf_parsed = 0
     lot_count = 0
+    failure_counts: Counter[str] = Counter()
     candidates = [item for item in opportunities if isinstance(item, dict) and _ted_xml_url(item)]
     attempted = len(candidates)
     with ThreadPoolExecutor(max_workers=min(4, document_parser.MAX_WORKERS)) as executor:
         results = list(executor.map(enrich_opportunity, candidates))
     for item, success in zip(candidates, results):
+        attempts = (item.get("document_extraction") or {}).get("attempts") or []
+        if not success:
+            failed = [entry for entry in attempts if isinstance(entry, dict)
+                      and entry.get("status") == "failed"
+                      and entry.get("source") in {"ted_xml", "ted_html_download", "ted_pdf_download"}]
+            category = _failure_category(failed[-1]) if failed else "unknown"
+            failure_counts[category] += 1
         if success:
             parsed += int(bool((item.get("document_extraction") or {}).get("ted_xml_parsed")))
             html_parsed += int(bool((item.get("document_extraction") or {}).get("ted_html_parsed")))
@@ -231,6 +262,8 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "ted_pdf_parsed": pdf_parsed,
         "ted_structured_lots": lot_count,
         "ted_structured_contacts": structured_contacts,
+        "ted_document_failures": dict(sorted(failure_counts.items())),
+        "ted_document_failed_notices": sum(failure_counts.values()),
         "parsed_opportunities": sum(
             1
             for item in opportunities
@@ -264,7 +297,9 @@ def main() -> None:
         "TED_XML_SUMMARY "
         f"attempted={summary.get('ted_xml_attempted', 0)} "
         f"parsed={summary.get('ted_xml_parsed', 0)} "
-        f"structured_contacts={summary.get('ted_structured_contacts', 0)}",
+        f"structured_contacts={summary.get('ted_structured_contacts', 0)} "
+        f"failed={summary.get('ted_document_failed_notices', 0)} "
+        f"reasons={json.dumps(summary.get('ted_document_failures', {}), sort_keys=True)}",
         file=sys.stderr,
     )
 
