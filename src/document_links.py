@@ -32,10 +32,10 @@ def is_attachment_url(url: str) -> bool:
 
 def priority(url: str, label: str = '') -> int:
     hint = (filename(url) + ' ' + label).replace('_', ' ').replace('-', ' ')
-    if SUPPORTING.search(hint):
-        return 1
     if TECHNICAL.search(hint):
         return 0
+    if SUPPORTING.search(hint):
+        return 1
     return 3 if GENERAL.search(hint) else 2
 
 
