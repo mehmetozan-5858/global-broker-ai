@@ -165,6 +165,18 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
         result["lot_count"] = len(row["ted_lots"])
         result["lot_selection_required"] = row.get("ted_lot_selection_required") is True
 
+    # Publish only fixed review reason codes, never private document text or URLs.
+    analysis = row.get("specification_analysis")
+    reasons = analysis.get("document_coverage_blockers") if isinstance(analysis, dict) else None
+    if reasons is None and row.get("buyer_masked") is True:
+        # Preserve vetted enum codes when re-projecting an already public feed.
+        reasons = row.get("document_coverage_blockers")
+    allowed_reasons = ("source_text_truncated", "attachment_candidates_skipped")
+    if isinstance(reasons, list):
+        approved_reasons = [code for code in allowed_reasons if code in reasons]
+        if approved_reasons:
+            result["document_coverage_blockers"] = approved_reasons
+
     # Customer-safe review metadata contains enums only, never source excerpts.
     if row.get("source_lot_selection_required") is True or row.get("ted_lot_selection_required") is True or row.get("lot_selection_required") is True:
         result["lot_selection_required"] = True
