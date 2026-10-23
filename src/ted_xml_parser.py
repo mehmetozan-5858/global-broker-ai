@@ -128,7 +128,13 @@ def is_xml_source(data: bytes, content_type: str, url: str) -> bool:
     content_type = (content_type or "").lower()
     path = urllib.parse.urlparse(url).path.lower().rstrip("/")
     prefix = data.lstrip()[:80].lower()
-    if b"<!doctype html" in prefix or prefix.startswith(b"<html"):
+    # TED can return an API error or SPA shell at a URL ending in /xml.
+    # The URL suffix alone must not turn JSON, text or HTML into evidence.
+    if (b"<!doctype html" in prefix or prefix.startswith(b"<html")
+            or prefix.startswith((b"{", b"[", b"<!doctype", b"<script"))
+            or "json" in content_type or "html" in content_type):
+        return False
+    if not prefix.startswith(b"<"):
         return False
     return (
         "xml" in content_type
