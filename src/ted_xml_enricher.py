@@ -169,7 +169,8 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             )
         # Newly discovered specifications have their own budget while being read.
         # Merge them before notice/page context so a full notice cannot hide them.
-        merged = "\n\n".join(attachment_parts + parts)[:MAX_EXTRACTED_CHARS]
+        full_text = "\n\n".join(attachment_parts + parts)
+        merged = full_text[:MAX_EXTRACTED_CHARS]
         item["document_extracted_text"] = merged
 
         # Structured TED touchpoint fields are stronger evidence than generic text
@@ -204,6 +205,8 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "parsed_count": sum(1 for x in attempts if isinstance(x, dict) and x.get("status") == "parsed" and x.get("source") != "document_index"),
             "attempts": attempts,
             "text_chars": len(merged),
+            "text_truncated": len(full_text) > MAX_EXTRACTED_CHARS,
+            "omitted_chars": max(0, len(full_text) - MAX_EXTRACTED_CHARS),
             "ted_xml_parsed": kind == "ted_xml",
             "ted_html_parsed": kind == "ted_html_download",
             "ted_pdf_parsed": kind == "ted_pdf_download",
