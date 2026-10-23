@@ -121,7 +121,7 @@ def parse_ted_xml(data: bytes, base_url: str) -> tuple[str, list[str]]:
             if not _looks_like_attachment(absolute):
                 continue
             links.append((absolute, node.text or ""))
-    return text, select_attachments(links, 3)
+    return text, select_attachments(links, 6)
 
 
 def is_xml_source(data: bytes, content_type: str, url: str) -> bool:
