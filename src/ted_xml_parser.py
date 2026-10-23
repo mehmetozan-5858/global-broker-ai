@@ -99,8 +99,13 @@ def parse_ted_xml(data: bytes, base_url: str) -> tuple[str, list[str]]:
     are returned.
     """
     root = ElementTree.fromstring(data)
-    if _local_name(root.tag) in {"html", "body"}:
+    # A well-formed XML error envelope or HTML-like page is not a TED notice.
+    # Keep the parser permissive across eForms schemas but require a notice root.
+    root_name = _local_name(root.tag)
+    if root_name in {"html", "body"}:
         raise ValueError("html_is_not_ted_xml")
+    if not (root_name == "notice" or root_name.endswith("notice")):
+        raise ValueError("ted_xml_notice_root_missing")
     text = _clean_text(root.itertext())
 
     links: list[tuple[str, str]] = []
