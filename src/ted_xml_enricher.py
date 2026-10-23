@@ -247,6 +247,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
 # aggregate scan diagnostics. An unrecognized error stays explicitly unknown.
 TED_FAILURE_MARKERS = (
     "ted_source_not_xml",
+    "ted_xml_notice_root_missing",
     "ted_document_notice_redirect_mismatch",
     "ted_document_origin_changed",
     "insufficient_ted_xml_text",
