@@ -54,8 +54,9 @@ class AttachmentSelectionTests(unittest.TestCase):
                + ''.join(f'<a href="https://example.test/general{i}.pdf">General</a>' for i in range(3))
                + '<a href="https://example.test/download?filename=spec.docx">Technical specification</a></notice>')
         _, links = ted_xml_parser.parse_ted_xml(xml.encode(), 'https://ted.europa.eu/en/notice/1-2026/xml')
-        self.assertEqual(len(links), 3)
+        self.assertEqual(len(links), 4)
         self.assertEqual(links[0], 'https://example.test/download?filename=spec.docx')
+        self.assertEqual(len(links[:document_parser.MAX_DISCOVERED_ATTACHMENTS]), 3)
 
     def test_duplicate_link_retains_strongest_label_and_stable_ties(self):
         candidates = [('https://example.test/a.pdf', 'Guide'), ('https://example.test/b.pdf', 'General'),
