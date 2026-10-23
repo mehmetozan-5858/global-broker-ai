@@ -272,6 +272,11 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     pdf_parsed = 0
     lot_count = 0
     failure_counts: Counter[str] = Counter()
+    failure_stages: dict[str, Counter[str]] = {
+        "ted_xml": Counter(),
+        "ted_html_download": Counter(),
+        "ted_pdf_download": Counter(),
+    }
     candidates = [item for item in opportunities if isinstance(item, dict) and _ted_xml_url(item)]
     attempted = len(candidates)
     with ThreadPoolExecutor(max_workers=min(4, document_parser.MAX_WORKERS)) as executor:
@@ -284,6 +289,10 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
                       and entry.get("source") in {"ted_xml", "ted_html_download", "ted_pdf_download"}]
             category = _failure_category(failed[-1]) if failed else "unknown"
             failure_counts[category] += 1
+            # Preserve all attempted formats: a PDF fallback failure must not
+            # hide the XML or HTML error that preceded it.
+            for entry in failed:
+                failure_stages[entry["source"]][_failure_category(entry)] += 1
         if success:
             parsed += int(bool((item.get("document_extraction") or {}).get("ted_xml_parsed")))
             html_parsed += int(bool((item.get("document_extraction") or {}).get("ted_html_parsed")))
@@ -304,6 +313,10 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "ted_structured_lots": lot_count,
         "ted_structured_contacts": structured_contacts,
         "ted_document_failures": dict(sorted(failure_counts.items())),
+        "ted_document_failure_stages": {
+            key: dict(sorted(counter.items()))
+            for key, counter in failure_stages.items()
+        },
         "ted_document_failed_notices": sum(failure_counts.values()),
         "parsed_opportunities": sum(
             1
@@ -340,7 +353,8 @@ def main() -> None:
         f"parsed={summary.get('ted_xml_parsed', 0)} "
         f"structured_contacts={summary.get('ted_structured_contacts', 0)} "
         f"failed={summary.get('ted_document_failed_notices', 0)} "
-        f"reasons={json.dumps(summary.get('ted_document_failures', {}), sort_keys=True)}",
+        f"reasons={json.dumps(summary.get('ted_document_failures', {}), sort_keys=True)} "
+        f"stages={json.dumps(summary.get('ted_document_failure_stages', {}), sort_keys=True)}",
         file=sys.stderr,
     )
 
