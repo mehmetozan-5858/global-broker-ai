@@ -229,12 +229,21 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     document_ready = document_parsed and extracted_ready
     source_page_ready = source_page_parsed and extracted_ready
     specification_ready = structured_ready or narrative_ready or document_ready or source_page_ready
+    # A clipped source or skipped official annex can conceal mandatory clauses.
+    # Do not promote partial document coverage to sourcing-ready evidence.
+    truncated_text = extraction.get("text_truncated") is True
+    skipped_candidates = max(0, int(extraction.get("attachment_candidates_omitted") or 0))
+    document_coverage_incomplete = truncated_text or skipped_candidates > 0
+    if document_coverage_incomplete:
+        specification_ready = False
 
     if item.get("source_lot_selection_required") is True:
         specification_ready = False
 
     if item.get("source_lot_selection_required") is True:
         status = "lot_selection_required"
+    elif document_coverage_incomplete:
+        status = "document_coverage_incomplete"
     elif structured_ready:
         status = "structured_specification_analyzed"
     elif document_ready:
@@ -266,6 +275,9 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         "source_page_parsed": source_page_parsed,
         "parsed_document_count": parsed_document_count,
         "unparsed_attachment_count": pending_attachment_count,
+        "document_coverage_incomplete": document_coverage_incomplete,
+        "text_truncated": truncated_text,
+        "attachment_candidates_omitted": skipped_candidates,
         "technical_evidence": technical_evidence,
         "quantity_evidence": quantity_evidence[:10],
         "delivery_evidence": delivery_evidence[:10],
@@ -308,6 +320,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
             "document_count": len(docs),
             "document_parsed": document_parsed,
             "attachment_requires_parsing": pending_attachment_count > 0,
+            "document_coverage_incomplete": document_coverage_incomplete,
         }
         dossier_flow = workflow.get("opportunity_dossier")
         if isinstance(dossier_flow, dict) and not specification_ready:
