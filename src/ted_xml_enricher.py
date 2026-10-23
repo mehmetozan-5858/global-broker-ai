@@ -36,7 +36,9 @@ def _verify_ted_redirect(requested_url: str, final_url: str) -> None:
         raise ValueError("ted_document_origin_changed")
     requested_id = _ted_notice_id(requested_url)
     final_id = _ted_notice_id(final_url)
-    if requested_id and final_id and requested_id != final_id:
+    if requested_id and final_id != requested_id:
+        # A generic TED landing page (no notice ID) is not evidence of
+        # the requested notice, even when the redirect stays on TED.
         raise ValueError("ted_document_notice_redirect_mismatch")
 
 
