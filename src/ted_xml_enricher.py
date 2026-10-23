@@ -57,7 +57,9 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
             continue
         if host == "ted.europa.eu" and (path.endswith("/xml") or path.endswith(".xml")):
             link_id = _ted_notice_id(url)
-            if expected_id and link_id and link_id != expected_id:
+            # Never select an unidentifiable XML URL or a different notice.
+            # Otherwise the document could be attributed to the wrong tender.
+            if not link_id or (expected_id and link_id != expected_id):
                 continue
             return url
     if source == "TED":
