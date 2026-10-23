@@ -461,7 +461,8 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     # linked and discovered documents. A direct generic attachment must not
     # exhaust the shared budget before a later discovered technical annex.
     documents.sort(key=lambda entry: attachment_priority(entry[0], attachment_labels.get(entry[0], "")))
-    merged = "\n\n".join([text for _, text in documents] + source_page_parts)[:MAX_EXTRACTED_CHARS]
+    full_text = "\n\n".join([text for _, text in documents] + source_page_parts)
+    merged = full_text[:MAX_EXTRACTED_CHARS]
     # Extract per-document clauses before losing the URL/text association.
     item["technical_requirement_scopes"] = [scope for url, text in documents
         for scope in extract_requirements(url, text)] + source_requirement_scopes
@@ -479,6 +480,8 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         "parsed_count": parsed_count,
         "attempts": attempts,
         "text_chars": len(merged),
+        "text_truncated": len(full_text) > MAX_EXTRACTED_CHARS,
+        "omitted_chars": max(0, len(full_text) - MAX_EXTRACTED_CHARS),
     }
     if merged:
         item["document_extracted_text"] = merged
