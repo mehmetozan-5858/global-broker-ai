@@ -54,27 +54,19 @@ jobs:
           from pathlib import Path
           src=Path('data/latest-opportunities.json')
           out=Path('public/data/latest-opportunities.json')
-          blocked_exact={
-              'email','e-mail','phone','telephone','mobile','contact','contact_email','contact_phone','buyer_email','buyer_phone','supplier_email','supplier_phone',
-              'website','linkedin','address','street','postal_code','contact_person','representative','buyer-name','buyer_name','borrower','agency','department','office',
-              'contracting_authority','organization_name','source_url','source-url','url','notice_url','detail_url','document_url'
-          }
-          def scrub(row):
-              clean={}
-              for k,v in row.items():
-                  lk=str(k).lower()
-                  if lk in blocked_exact or any(x in lk for x in ('email','phone','telephone','mobile','linkedin','contact_person','address')):
-                      continue
-                  clean[k]=v
-              clean['buyer_masked']=True
-              clean['buyer_display']='Alıcı kimliği kontrollü tanıştırma ile paylaşılır'
-              return clean
+          from src.public_opportunity_projection import project_public_opportunity
+          # Re-project even if the checked-in feed was previously masked.
+          # Denylist filtering can leak nested or newly introduced private keys.
           if src.exists():
               data=json.loads(src.read_text(encoding='utf-8'))
               rows=[]
               for row in data.get('opportunities') or []:
-                  if isinstance(row,dict) and (row.get('export_goods_review') or {}).get('status')=='goods_candidate':
-                      rows.append(scrub(row))
+                  if not isinstance(row,dict):
+                      continue
+                  review=row.get('export_goods_review')
+                  goods=(isinstance(review,dict) and review.get('status')=='goods_candidate') or row.get('goods_status')=='goods_candidate'
+                  if goods:
+                      rows.append(project_public_opportunity(row))
                   if len(rows)>=100:
                       break
               out.write_text(json.dumps({'mode':'public_preview_masked','opportunities':rows},ensure_ascii=False),encoding='utf-8')
@@ -145,8 +137,10 @@ jobs:
               raise SystemExit('public feed is not masked preview mode')
           rows=data.get('opportunities') or []
           for row in rows:
-              if (row.get('export_goods_review') or {}).get('status')!='goods_candidate':
+              if row.get('goods_status')!='goods_candidate':
                   raise SystemExit('public customer feed contains a non-goods record')
+              if any(key in row for key in ('supplier_research','document_extraction','document_extracted_text','field_evidence','export_goods_review')):
+                  raise SystemExit('private analysis field leaked to public preview')
               text=' '.join(map(str,row.keys())).lower()
               if 'buyer_name' in text or 'buyer-name' in text or 'email' in text or 'phone' in text or 'source_url' in text:
                   raise SystemExit('masked preview contains private fields')
