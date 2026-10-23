@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 import sys
 import urllib.parse
 from pathlib import Path
+from xml.etree import ElementTree
 from typing import Any
 
 from src import document_parser
@@ -132,6 +133,10 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             if not is_xml_source(data, content_type, final_url):
                 raise ValueError("ted_source_not_xml")
             text, attachments = parse_ted_xml(data, final_url)
+            # The XML parser itself caps text before the final merge.
+            xml_parts = [" ".join(part.split()) for part in ElementTree.fromstring(data).itertext() if part]
+            xml_length = len(" ".join(part for part in xml_parts if part))
+            xml_omitted_chars = max(0, xml_length - MAX_EXTRACTED_CHARS)
             contacts = extract_ted_contacts(data)
             lots = extract_ted_lots(data)
             if len(text) < MIN_SOURCE_TEXT_CHARS:
@@ -142,6 +147,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             attempts.append(attempt)
             data, content_type, final_url, text, attachments, kind, attempt = _fallback_document(url, item, attempts)
             contacts, lots = {}, []
+            xml_omitted_chars = 0
 
         if lots:
             apply_ted_lots(item, lots, final_url)
@@ -169,7 +175,8 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             )
         # Newly discovered specifications have their own budget while being read.
         # Merge them before notice/page context so a full notice cannot hide them.
-        merged = "\n\n".join(attachment_parts + parts)[:MAX_EXTRACTED_CHARS]
+        full_text = "\n\n".join(attachment_parts + parts)
+        merged = full_text[:MAX_EXTRACTED_CHARS]
         item["document_extracted_text"] = merged
 
         # Structured TED touchpoint fields are stronger evidence than generic text
@@ -204,6 +211,8 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "parsed_count": sum(1 for x in attempts if isinstance(x, dict) and x.get("status") == "parsed" and x.get("source") != "document_index"),
             "attempts": attempts,
             "text_chars": len(merged),
+            "text_truncated": len(full_text) > MAX_EXTRACTED_CHARS or xml_omitted_chars > 0,
+            "omitted_chars": max(0, len(full_text) - MAX_EXTRACTED_CHARS) + xml_omitted_chars,
             "ted_xml_parsed": kind == "ted_xml",
             "ted_html_parsed": kind == "ted_html_download",
             "ted_pdf_parsed": kind == "ted_pdf_download",
