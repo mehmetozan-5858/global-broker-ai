@@ -233,7 +233,12 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     # Do not promote partial document coverage to sourcing-ready evidence.
     truncated_text = extraction.get("text_truncated") is True
     skipped_candidates = max(0, int(extraction.get("attachment_candidates_omitted") or 0))
-    document_coverage_incomplete = truncated_text or skipped_candidates > 0
+    coverage_blockers = []
+    if truncated_text:
+        coverage_blockers.append("source_text_truncated")
+    if skipped_candidates:
+        coverage_blockers.append("attachment_candidates_skipped")
+    document_coverage_incomplete = bool(coverage_blockers)
     if document_coverage_incomplete:
         specification_ready = False
 
@@ -276,6 +281,11 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         "parsed_document_count": parsed_document_count,
         "unparsed_attachment_count": pending_attachment_count,
         "document_coverage_incomplete": document_coverage_incomplete,
+        "document_coverage_blockers": coverage_blockers,
+        "document_coverage_message": (
+            "Official document coverage is incomplete; review truncated text or skipped attachments before sourcing."
+            if coverage_blockers else None
+        ),
         "text_truncated": truncated_text,
         "attachment_candidates_omitted": skipped_candidates,
         "technical_evidence": technical_evidence,
@@ -293,6 +303,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     dossier = item.get("dossier") if isinstance(item.get("dossier"), dict) else None
     if dossier is not None:
         dossier["specification_status"] = status
+        dossier["document_coverage_blockers"] = list(coverage_blockers)
         dossier["specification_sourcing_ready"] = specification_ready
         dossier["standards"] = detected_standards
         dossier["document_links"] = docs
@@ -304,6 +315,8 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
             dossier["missing_fields"] = _append_unique(dossier.get("missing_fields"), "specification_evidence")
 
     supplier = item.get("supplier_research")
+    if isinstance(supplier, dict):
+        supplier["document_coverage_blockers"] = list(coverage_blockers)
     if isinstance(supplier, dict) and not specification_ready:
         supplier["dossier_ready"] = False
         supplier["status"] = "specification_review_pending"
@@ -321,6 +334,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
             "document_parsed": document_parsed,
             "attachment_requires_parsing": pending_attachment_count > 0,
             "document_coverage_incomplete": document_coverage_incomplete,
+            "document_coverage_blockers": list(coverage_blockers),
         }
         dossier_flow = workflow.get("opportunity_dossier")
         if isinstance(dossier_flow, dict) and not specification_ready:
