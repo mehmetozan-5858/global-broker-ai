@@ -167,7 +167,8 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             a.get("url") for a in attempts if isinstance(a, dict) and a.get("status") == "parsed"
         }
         attachment_parts: list[str] = []
-        for attachment_url in attachments[:document_parser.MAX_DISCOVERED_ATTACHMENTS]:
+        selected_attachments = attachments[:document_parser.MAX_DISCOVERED_ATTACHMENTS]
+        for attachment_url in selected_attachments:
             if attachment_url in existing_urls:
                 continue
             document_parser._try_attachment(
@@ -202,6 +203,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "bytes": len(data),
             "extracted_chars": len(text),
             "discovered_attachments": len(attachments),
+            "attachment_candidates_omitted": max(0, len(attachments) - len(selected_attachments)),
             "structured_contact_found": bool(contacts),
         })
         attempts.append(attempt)
@@ -213,6 +215,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "text_chars": len(merged),
             "text_truncated": len(full_text) > MAX_EXTRACTED_CHARS or xml_omitted_chars > 0,
             "omitted_chars": max(0, len(full_text) - MAX_EXTRACTED_CHARS) + xml_omitted_chars,
+            "attachment_candidates_omitted": max(0, len(attachments) - len(selected_attachments)),
             "ted_xml_parsed": kind == "ted_xml",
             "ted_html_parsed": kind == "ted_html_download",
             "ted_pdf_parsed": kind == "ted_pdf_download",
