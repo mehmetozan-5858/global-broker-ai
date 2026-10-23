@@ -18,9 +18,33 @@ MIN_SOURCE_TEXT_CHARS = 160
 MAX_EXTRACTED_CHARS = document_parser.MAX_EXTRACTED_CHARS
 
 
+TED_NOTICE_ID_RE = re.compile(r"/notice/(?:-/detail/)?([0-9]{1,8}-[0-9]{4})(?:/|$)")
+
+
+def _ted_notice_id(url: str) -> str | None:
+    parsed = urllib.parse.urlparse(url)
+    if parsed.hostname != "ted.europa.eu":
+        return None
+    match = TED_NOTICE_ID_RE.search(parsed.path)
+    return match.group(1) if match else None
+
+
+def _verify_ted_redirect(requested_url: str, final_url: str) -> None:
+    """Reject off-site or cross-notice redirects before trusting any document."""
+    if urllib.parse.urlparse(final_url).hostname != "ted.europa.eu":
+        raise ValueError("ted_document_origin_changed")
+    requested_id = _ted_notice_id(requested_url)
+    final_id = _ted_notice_id(final_url)
+    if requested_id and final_id and requested_id != final_id:
+        raise ValueError("ted_document_notice_redirect_mismatch")
+
+
 def _ted_xml_url(item: dict[str, Any]) -> str | None:
     source = str(item.get("source") or item.get("source_name") or "").upper()
     urls = document_parser._all_urls(item)
+    expected_id = str(item.get("publication-number") or "")
+    if not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", expected_id):
+        expected_id = ""
     for url in urls:
         try:
             parsed = urllib.parse.urlparse(url)
@@ -29,6 +53,9 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
         except (TypeError, ValueError):
             continue
         if host == "ted.europa.eu" and (path.endswith("/xml") or path.endswith(".xml")):
+            link_id = _ted_notice_id(url)
+            if expected_id and link_id and link_id != expected_id:
+                continue
             return url
     if source == "TED":
         publication = str(item.get("publication-number") or "")
@@ -64,8 +91,7 @@ def _fallback_document(xml_url: str, item: dict, attempts: list):
         try:
             limit = document_parser.MAX_DOCUMENT_BYTES if suffix == "pdf" else document_parser.MAX_SOURCE_PAGE_BYTES
             data, content_type, final_url = document_parser._download(url, limit)
-            if urllib.parse.urlparse(final_url).hostname != "ted.europa.eu":
-                raise ValueError("ted_document_origin_changed")
+            _verify_ted_redirect(url, final_url)
             if suffix == "pdf":
                 if not data.startswith(b"%PDF"):
                     raise ValueError("ted_pdf_download_not_pdf")
@@ -102,6 +128,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
     try:
         try:
             data, content_type, final_url = document_parser._download(url, document_parser.MAX_SOURCE_PAGE_BYTES)
+            _verify_ted_redirect(url, final_url)
             if not is_xml_source(data, content_type, final_url):
                 raise ValueError("ted_source_not_xml")
             text, attachments = parse_ted_xml(data, final_url)
@@ -201,6 +228,8 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
 # aggregate scan diagnostics. An unrecognized error stays explicitly unknown.
 TED_FAILURE_MARKERS = (
     "ted_source_not_xml",
+    "ted_document_notice_redirect_mismatch",
+    "ted_document_origin_changed",
     "insufficient_ted_xml_text",
     "ted_document_notice_identity_or_text_missing",
     "ted_pdf_download_not_pdf",
