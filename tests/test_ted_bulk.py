@@ -39,6 +39,9 @@ class BulkTests(unittest.TestCase):
         self.assertTrue(item['document_extraction']['ted_xml_parsed'])
         self.assertEqual(item['document_extraction']['attempts'][-1]['source_package_sha256'], notice.package_sha256)
         self.assertNotIn('buyer_verified', item)
+        padded = {'source':'TED', 'publication-number':'00000123-2026'}
+        with patch('src.document_parser._download', side_effect=AssertionError('no-direct-fetch')):
+            self.assertTrue(enrich_opportunity(padded, bulk_notice=notice))
         other = {'source':'TED', 'publication-number':'999-2026'}
         with patch('src.document_parser._download', side_effect=AssertionError('no-fallback')):
             self.assertFalse(enrich_opportunity(other, bulk_notice=notice))

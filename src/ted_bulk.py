@@ -61,7 +61,9 @@ class BulkNotice:
         validate_notice(self.data, expected, self.edition)
         if not re.fullmatch('[a-f0-9]{64}', self.package_sha256):
             raise ValueError('invalid-package-digest')
-        return self.data, 'application/xml', f'https://ted.europa.eu/en/notice/{self.publication}/xml'
+        # Keep the caller's valid zero padding in the evidence URL so the
+        # existing exact requested-URL redirect check stays intact.
+        return self.data, 'application/xml', f'https://ted.europa.eu/en/notice/{expected}/xml'
 
 
 def select_daily_notices(compressed, edition, expected):
