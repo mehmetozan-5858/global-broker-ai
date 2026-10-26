@@ -49,6 +49,8 @@ def apply_bulk_fallback(candidates, results, *, fetcher=None, enricher=None):
                 raise ValueError('incomplete-bulk-result')
             # Validate the entire selected set before mutating any row.
             for identity, notice in notices.items():
+                if notice.edition != edition:
+                    raise ValueError('bulk-edition-request-mismatch')
                 notice.verified_payload(identity)
         except Exception:
             report['packages_failed'] += 1

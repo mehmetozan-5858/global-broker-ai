@@ -354,6 +354,8 @@ def enrich_payload(payload: dict[str, Any], *, bulk_enabled: bool = False) -> di
     payload["document_extraction"] = summary
     if bulk_summary is not None:
         summary['ted_bulk_fallback'] = bulk_summary
+    else:
+        summary.pop('ted_bulk_fallback', None)
     return payload
 
 

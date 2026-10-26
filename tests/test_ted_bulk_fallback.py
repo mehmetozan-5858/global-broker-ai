@@ -18,7 +18,7 @@ def notice(identity, edition):
 
 class BatchFallbackTests(unittest.TestCase):
     def test_disabled_pipeline_does_not_fetch_packages(self):
-        payload={'opportunities':[row(123)]}
+        payload={'opportunities':[row(123)],'document_extraction':{'ted_bulk_fallback':{'notices_recovered':999}}}
         with patch('src.ted_xml_enricher.enrich_opportunity', return_value=False), \
              patch('src.ted_bulk_fallback.fetch_daily_notices') as fetch:
             enrich_payload(payload)
@@ -55,7 +55,9 @@ class BatchFallbackTests(unittest.TestCase):
         for fetcher in (Mock(side_effect=ValueError('source failed')),
                         Mock(return_value={'123-2026':notice('123-2026','197/2026')}),
                         Mock(return_value={'123-2026':notice('999-2026','197/2026'),
-                                           '124-2026':notice('124-2026','197/2026')})):
+                                           '124-2026':notice('124-2026','197/2026')}),
+                        Mock(return_value={'123-2026':notice('123-2026','198/2026'),
+                                           '124-2026':notice('124-2026','198/2026')})):
             rows=[row(123),row(124)];results=[False,False]
             report=apply_bulk_fallback(rows,results,fetcher=fetcher)
             self.assertEqual(report['packages_failed'],1)
