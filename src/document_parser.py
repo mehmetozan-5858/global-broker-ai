@@ -250,6 +250,10 @@ def _decode_html(data: bytes) -> str:
 
 
 def _parse_html_page(data: bytes, base_url: str, attachment_labels: dict[str, str] | None = None, indexes: list[str] | None = None) -> tuple[str, list[str]]:
+    from src.source_access_barrier import html_access_barrier
+    barrier = html_access_barrier(data, base_url)
+    if barrier:
+        raise ValueError(barrier)
     parser = _TenderHTMLParser()
     parser.feed(_decode_html(data))
     visible = _normalize_lines("".join(parser.text_parts))[:MAX_EXTRACTED_CHARS]
