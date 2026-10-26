@@ -119,7 +119,7 @@ def _fallback_document(xml_url: str, item: dict, attempts: list):
     raise last_error or ValueError("ted_fallback_unavailable")
 
 
-def enrich_opportunity(item: dict[str, Any]) -> bool:
+def enrich_opportunity(item: dict[str, Any], *, bulk_notice=None) -> bool:
     url = _ted_xml_url(item)
     if not url:
         return False
@@ -135,7 +135,14 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
 
     try:
         try:
-            data, content_type, final_url = document_parser._download(url, document_parser.MAX_SOURCE_PAGE_BYTES)
+            if bulk_notice is None:
+                data, content_type, final_url = document_parser._download(url, document_parser.MAX_SOURCE_PAGE_BYTES)
+            else:
+                data, content_type, final_url = bulk_notice.verified_payload(item.get('publication-number'))
+                from src.ted_bulk import daily_url
+                attempt.update({'source_package_url': daily_url(bulk_notice.edition),
+                                'source_package_sha256': bulk_notice.package_sha256,
+                                'source_channel': 'official_daily_xml_package'})
             _verify_ted_redirect(url, final_url)
             if not is_xml_source(data, content_type, final_url):
                 raise ValueError("ted_source_not_xml")
@@ -150,6 +157,9 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
                 raise ValueError("insufficient_ted_xml_text")
             kind = "ted_xml"
         except Exception as xml_error:
+            if bulk_notice is not None:
+                # A wrong/corrupt package must never become a successful fallback.
+                raise
             attempt.update({"status": "failed", "error": type(xml_error).__name__ + ":" + str(xml_error)[:180]})
             attempts.append(attempt)
             data, content_type, final_url, text, attachments, kind, attempt = _fallback_document(url, item, attempts)
