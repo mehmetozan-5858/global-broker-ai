@@ -16,6 +16,6 @@ def html_access_barrier(data, url):
     if host=='cloud.3p.eu':
         if path=='/web/country.aspx' and 'btnbenl' in text and '__dopostback' in text:
             return 'source_country_selection_required'
-        if path=='/web/information.aspx' and 'gebruiksvoorwaarden' in text:
-            return 'source_terms_review_required'
+        if path=='/web/information.aspx' and 'checkinfo' in text and 'niet te identificeren' in text:
+            return 'source_anonymous_choice_required'
     return None

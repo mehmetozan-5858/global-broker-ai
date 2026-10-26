@@ -10,7 +10,7 @@ class BarrierTests(unittest.TestCase):
                ('https://cloud.3p.eu/Web/Country.aspx',
                 '<html>btnBENL __doPostBack <a href="privacy.pdf">privacy</a></html>','source_country_selection_required'),
                ('https://cloud.3p.eu/Web/Information.aspx',
-                '<html>Online gebruiksvoorwaarden <a href="terms.pdf">terms</a></html>','source_terms_review_required')]
+                '<html>checkInfo Ik wens mij niet te identificeren <a href="terms.pdf">terms</a></html>','source_anonymous_choice_required')]
         for url,html,reason in cases:
             with self.subTest(reason=reason),self.assertRaisesRegex(ValueError,reason):
                 _parse_html_page(html.encode(),url)
