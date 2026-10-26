@@ -2,9 +2,9 @@
 from datetime import date, timedelta
 import json
 from src.broker import ted_search
-from src.ted_bulk import fetch_daily_notices, publication
+from src.ted_bulk import publication
 from src.ted_search_fields import apply_search_fields, notice_context
-from src.ted_xml_enricher import enrich_opportunity
+from src.ted_xml_enricher import enrich_payload
 
 
 def main():
@@ -16,31 +16,22 @@ def main():
                   key=lambda row: bool(row.get('ted_document_link_count')), reverse=True)[:2]
     if not rows:
         raise RuntimeError('no-bulk-probe-notices')
-    groups = {}
-    for row in rows:
-        edition = row.get('ojs-number')
-        if isinstance(edition, list) and len(edition) == 1:
-            edition = edition[0]
-        if not isinstance(edition, str):
-            raise ValueError('missing-official-ojs-metadata')
-        groups.setdefault(edition, []).append(row)
+    payload = enrich_payload({'opportunities': rows}, bulk_enabled=True)
     outcomes = []
-    for edition, members in groups.items():
-        notices = fetch_daily_notices(edition, [row['publication-number'] for row in members])
-        for row in members:
-            identity = publication(row['publication-number'])
-            notice = notices[identity]
-            ok = enrich_opportunity(row, bulk_notice=notice)
-            info = row.get('document_extraction', {})
-            outcomes.append({'publication': identity, 'ojs': edition,
-                             'official_xml_parsed': ok and info.get('ted_xml_parsed') is True,
-                             'text_chars': info.get('text_chars', 0), 'package_sha256': notice.package_sha256,
-                             'linked_documents_parsed': sum(a.get('status') == 'parsed' and a.get('source') in {'attachment', 'linked_document'}
-                                                           for a in info.get('attempts', [])),
-                             'commercial_approval': row.get('buyer_verified') is True})
+    for row in rows:
+        identity = publication(row['publication-number'])
+        info = row.get('document_extraction', {})
+        parsed = [a for a in info.get('attempts', []) if a.get('status') == 'parsed']
+        outcomes.append({'publication': identity, 'ojs': row.get('ojs-number'),
+                         'official_xml_parsed': info.get('ted_xml_parsed') is True,
+                         'text_chars': info.get('text_chars', 0),
+                         'package_sha256': next((a['source_package_sha256'] for a in parsed if a.get('source_package_sha256')), None),
+                         'linked_documents_parsed': sum(a.get('source') in {'attachment', 'linked_document'} for a in parsed),
+                         'commercial_approval': row.get('buyer_verified') is True})
     passed = all(o['official_xml_parsed'] and not o['commercial_approval'] for o in outcomes)
     print('TED_BULK_NOTICE_PROBE', json.dumps({'official_notice_acceptance': passed,
-          'technical_annex_acceptance': False, 'outcomes': outcomes}, sort_keys=True), flush=True)
+          'technical_annex_acceptance': False, 'batch': payload['document_extraction'].get('ted_bulk_fallback'),
+          'outcomes': outcomes}, sort_keys=True), flush=True)
     if not passed:
         raise SystemExit('Official bulk notice gate failed')
 

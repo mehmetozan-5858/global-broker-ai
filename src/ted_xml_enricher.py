@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from collections import Counter
 import re
 from concurrent.futures import ThreadPoolExecutor
@@ -278,7 +279,7 @@ def _failure_category(attempt: dict[str, Any]) -> str:
     return "other"
 
 
-def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
+def enrich_payload(payload: dict[str, Any], *, bulk_enabled: bool = False) -> dict[str, Any]:
     opportunities = payload.get("opportunities")
     if not isinstance(opportunities, list):
         return payload
@@ -299,6 +300,10 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     attempted = len(candidates)
     with ThreadPoolExecutor(max_workers=min(4, document_parser.MAX_WORKERS)) as executor:
         results = list(executor.map(enrich_opportunity, candidates))
+    bulk_summary = None
+    if bulk_enabled is True:
+        from src.ted_bulk_fallback import apply_bulk_fallback
+        bulk_summary = apply_bulk_fallback(candidates, results)
     for item, success in zip(candidates, results):
         extraction = item.get("document_extraction")
         attempts = extraction.get("attempts") if isinstance(extraction, dict) else []
@@ -347,6 +352,8 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
         ),
     })
     payload["document_extraction"] = summary
+    if bulk_summary is not None:
+        summary['ted_bulk_fallback'] = bulk_summary
     return payload
 
 
@@ -355,7 +362,7 @@ def main() -> None:
         raise SystemExit("usage: python -m src.ted_xml_enricher <json-file>")
     path = Path(sys.argv[1])
     payload = json.loads(path.read_text(encoding="utf-8"))
-    payload = enrich_payload(payload)
+    payload = enrich_payload(payload, bulk_enabled=os.environ.get('GB_TED_BULK_FALLBACK') == '1')
     cache_path = path.parent / "notice-facts-cache.json"
     try:
         cache = json.loads(cache_path.read_text(encoding="utf-8"))

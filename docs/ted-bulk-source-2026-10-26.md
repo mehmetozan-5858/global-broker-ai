@@ -56,3 +56,29 @@ annex. Real portal/document discovery and complete annex reading remain open.
 No automatic sourcing/price/lot approval, Vercel deployment, production write,
 budget change or provider call occurred. Do not close the total TED acceptance
 gate from this partial but real source improvement.
+
+## Regular scan integration candidate
+
+The existing `enrich_payload` pipeline now supports an explicit
+`bulk_enabled=True` fallback after ordinary notice reads fail. CLI enablement is
+`GB_TED_BULK_FALLBACK=1`; otherwise no package fetch occurs. The staged shadow
+scan workflow supplies that flag. The workflow/main production ref has not
+been merged or activated.
+
+Fallback groups only failed notices with valid explicit OJS metadata. At most
+two editions and ten rows per edition are processed, serially, with exactly
+one package request per edition; duplicate notice IDs share that request.
+Already successful reads are untouched. Missing metadata, year mismatches,
+limits, package errors and identity mismatches never become successful reads.
+The whole selected package result is validated before any row is mutated.
+Telemetry records attempted/failed packages, recovered/skipped notice counts.
+These bounds deliberately leave excess notices open for a later scan/review.
+
+The real-source bulk probe now exercises this same payload pipeline rather
+than only calling the standalone package reader. It still explicitly reports
+technical_annex_acceptance=false and does not write opportunity data.
+
+Six additional regression tests cover disabled behavior, shared edition/ID,
+hard bounds, bad metadata, package atomicity and actual summary recounting.
+**All 664 Python tests passed locally.** Remote exact-head evidence is recorded
+in issue #202; fixture results are not live annex acceptance.
