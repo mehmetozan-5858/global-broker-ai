@@ -3,6 +3,7 @@ import json
 from xml.etree import ElementTree as ET
 from src import document_parser
 from src.ted_bulk import fetch_daily_notices
+from src.specification import analyze_opportunity
 
 PUBLICATION = '702997-2026'
 PORTAL = 'https://zakazky.krajbezkorupce.cz/vz00047078'
@@ -25,13 +26,21 @@ def main():
               and a.get('discovered_from') == 'https://zakazky.krajbezkorupce.cz/contract_display_47078.html'
               and a.get('extracted_chars', 0) >= 80 and len(a.get('sha256', '')) == 64]
     main_pdf = any(a.get('kind') == 'pdf' for a in annexes)
-    passed = len(latest) == 1 and main_pdf and not row.get('buyer_verified')
+    analyze_opportunity(row)
+    analysis = row['specification_analysis']
+    passed = len(latest) == 1 and main_pdf and not row.get('buyer_verified') and not analysis['supplier_sourcing_ready']
     # Technical read evidence only; never infer all portal attachments read,
     # authoritative version selection, specification compliance or commerce.
     print('TED_ANNEX_PROBE', json.dumps({'publication': PUBLICATION,
         'package_sha256': notice.package_sha256, 'notice_linked_portal': PORTAL,
         'sample_document_and_technical_annex_read': passed,
         'all_documents_read': False, 'commercial_approval': False,
+        'supplier_sourcing_ready': analysis['supplier_sourcing_ready'],
+        'document_coverage_blockers': analysis['document_coverage_blockers'],
+        'attachment_candidates_observed': info.get('attachment_candidates_observed'),
+        'attachment_candidates_omitted': info.get('attachment_candidates_omitted'),
+        'attachment_candidates_unsupported': info.get('attachment_candidates_unsupported'),
+        'document_version_groups': info.get('document_version_groups'),
         'attempts': attempts}, sort_keys=True), flush=True)
     if not passed:
         raise SystemExit('Notice-linked technical annex sample gate failed')

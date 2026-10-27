@@ -255,6 +255,10 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         coverage_blockers.append("source_text_truncated")
     if skipped_candidates:
         coverage_blockers.append("attachment_candidates_skipped")
+    if _safe_omitted_attachment_count(extraction.get('attachment_candidates_failed')):
+        coverage_blockers.append('attachment_downloads_failed')
+    if extraction.get('document_versions_review_required') is not None and extraction.get('document_versions_review_required') is not False:
+        coverage_blockers.append('document_versions_require_review')
     document_coverage_incomplete = bool(coverage_blockers)
     if document_coverage_incomplete:
         specification_ready = False
@@ -300,7 +304,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         "document_coverage_incomplete": document_coverage_incomplete,
         "document_coverage_blockers": coverage_blockers,
         "document_coverage_message": (
-            "Official document coverage is incomplete; review truncated text or skipped attachments before sourcing."
+            "Official document coverage is incomplete; review missing text, attachments and document versions before sourcing."
             if coverage_blockers else None
         ),
         "text_truncated": truncated_text,

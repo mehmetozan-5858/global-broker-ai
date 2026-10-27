@@ -12,6 +12,7 @@ from xml.etree import ElementTree
 from typing import Any
 
 from src import document_parser
+from src.specification import _safe_omitted_attachment_count as _safe_previous_omissions
 from src.ted_search_fields import notice_context
 from src.notice_fact_cache import process as process_fact_cache
 from src.ted_xml_parser import extract_ted_contacts, is_xml_source, parse_ted_xml, extract_ted_lots, apply_ted_lots
@@ -231,9 +232,12 @@ def enrich_opportunity(item: dict[str, Any], *, bulk_notice=None) -> bool:
             "parsed_count": sum(1 for x in attempts if isinstance(x, dict) and x.get("status") == "parsed" and x.get("source") != "document_index"),
             "attempts": attempts,
             "text_chars": len(merged),
-            "text_truncated": len(full_text) > MAX_EXTRACTED_CHARS or xml_omitted_chars > 0,
-            "omitted_chars": max(0, len(full_text) - MAX_EXTRACTED_CHARS) + xml_omitted_chars,
-            "attachment_candidates_omitted": max(0, len(attachments) - len(selected_attachments)),
+            "text_truncated": info.get('text_truncated') is True or len(full_text) > MAX_EXTRACTED_CHARS or xml_omitted_chars > 0,
+            "omitted_chars": (_safe_previous_omissions(info.get('omitted_chars'))
+                              + max(0, len(full_text) - MAX_EXTRACTED_CHARS) + xml_omitted_chars),
+            "attachment_candidates_omitted": max(
+                _safe_previous_omissions(info.get('attachment_candidates_omitted')),
+                len(attachments) - len(selected_attachments)),
             "ted_xml_parsed": kind == "ted_xml",
             "ted_html_parsed": kind == "ted_html_download",
             "ted_pdf_parsed": kind == "ted_pdf_download",
