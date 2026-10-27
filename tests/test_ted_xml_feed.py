@@ -42,7 +42,7 @@ class TedXmlFeedTests(unittest.TestCase):
         self.assertEqual(item["document_extraction"]["parsed_count"], 1)
 
     def test_short_or_invalid_xml_does_not_open_gate(self):
-        item = {"source": "TED", "source_url": "https://ted.europa.eu/en/notice/1/xml"}
+        item = {"source": "TED", "source_url": "https://ted.europa.eu/en/notice/681487-2026/xml"}
         with patch.object(
             ted_xml_enricher.document_parser,
             "_download",
