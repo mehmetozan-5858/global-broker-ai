@@ -18,6 +18,12 @@ def filename(url: str) -> str:
         path = urllib.parse.unquote(parsed.path).rsplit('/', 1)[-1]
         if path.lower().endswith(EXTENSIONS):
             return path
+        # E-ZAK's explicitly linked public download URLs encode the extension
+        # as a final slug token. Display/login/redirect endpoints do not match.
+        ezak = re.fullmatch(r'/document_[0-9]+/([a-f0-9]{32}-[a-z0-9_-]{1,240})-(pdf|docx|txt)',
+                            urllib.parse.unquote(parsed.path), re.I)
+        if ezak and parsed.scheme == 'https' and not parsed.query and not parsed.fragment:
+            return ezak[1] + '.' + ezak[2].lower()
         for key, value in urllib.parse.parse_qsl(parsed.query, max_num_fields=30):
             if key.lower() in {'filename', 'file_name', 'download', 'file'} and not any(c in value for c in '/\\\x00\r\n') and value.lower().endswith(EXTENSIONS):
                 return value
@@ -32,7 +38,7 @@ def is_attachment_url(url: str) -> bool:
 
 def priority(url: str, label: str = '') -> int:
     hint = (filename(url) + ' ' + label).replace('_', ' ').replace('-', ' ')
-    if TECHNICAL.search(hint):
+    if TECHNICAL.search(hint) or re.search(r'\b(?:technick[aáéý]|specifikace)\b', hint, re.I):
         return 0
     if SUPPORTING.search(hint):
         return 1

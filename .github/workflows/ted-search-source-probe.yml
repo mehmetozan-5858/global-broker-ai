@@ -48,3 +48,16 @@ jobs:
         run: python -m pip install --disable-pip-version-check pypdf==6.1.1
       - name: Verify two official notice XMLs through documented daily packages
         run: python -m src.ted_bulk_probe
+
+  technical-annex-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install existing pinned document reader
+        run: python -m pip install --disable-pip-version-check pypdf==6.1.1
+      - name: Read notice-linked real tender PDF and technical DOCX
+        run: python -m src.ted_annex_probe

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import io
+import hashlib
 import ipaddress
 import json
 import re
@@ -169,7 +170,14 @@ def _parse_pdf(data: bytes) -> str:
 
 def _parse_docx(data: bytes) -> str:
     with zipfile.ZipFile(io.BytesIO(data)) as archive:
-        xml = archive.read("word/document.xml")
+        members = archive.infolist()
+        matches = [m for m in members if m.filename == 'word/document.xml']
+        if len(members) > 1024 or len(matches) != 1 or matches[0].file_size > MAX_DOCUMENT_BYTES or matches[0].flag_bits & 1:
+            raise ValueError('invalid_docx_xml_or_archive_limit')
+        with archive.open(matches[0]) as stream:
+            xml = stream.read(MAX_DOCUMENT_BYTES + 1)
+        if len(xml) > MAX_DOCUMENT_BYTES or re.search(br'<!\s*(?:DOCTYPE|ENTITY)', xml, re.I):
+            raise ValueError('invalid_docx_xml_or_archive_limit')
     root = ElementTree.fromstring(xml)
     namespace = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
     paragraphs = []
@@ -311,6 +319,7 @@ def _try_attachment(url: str, attempts: list[dict[str, Any]], extracted_parts: l
             "final_url": final_url,
             "content_type": content_type,
             "bytes": len(data),
+            "sha256": hashlib.sha256(data).hexdigest(),
             "extracted_chars": len(document_text),
         })
     except Exception as exc:
