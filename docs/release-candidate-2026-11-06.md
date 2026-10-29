@@ -2,6 +2,8 @@
 
 Status: **PREPARATION ONLY — NOT DEPLOYED / NOT COMMERCIALLY READY**.
 
+Latest local publication/security evidence and remaining gates: [29 October checkpoint](release-evidence-2026-10-29.md). Baseline counts below are historical, not current acceptance.
+
 ## Deployment control
 - Stage changes in this branch and review in a draft PR. Do **not** merge into `main` until the final release approval.
 - Vercel team spend cap is not changed; projects may remain paused. Do not resume or trigger a paid production build without explicit user approval.
