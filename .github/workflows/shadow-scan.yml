@@ -31,6 +31,7 @@ jobs:
       GB_AUTH_READY: "true"
       GB_PRIVATE_STORAGE_READY: "true"
       GB_GULF_LIVE_VERIFIED: "true"
+      GB_TED_BULK_FALLBACK: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -187,54 +188,7 @@ jobs:
         run: python -m src.build_ceo_report data/latest-opportunities.private.json data/latest-ceo-report.json
       - name: Build public-safe masked feed
         run: |
-          python - <<'PY'
-          import json,re
-          from pathlib import Path
-          src=Path('data/latest-opportunities.private.json')
-          dst=Path('data/latest-opportunities.json')
-          data=json.loads(src.read_text(encoding='utf-8'))
-          from src.public_opportunity_projection import project_public_opportunity
-          for row in data.get('opportunities') or []:
-              if isinstance(row,dict):
-                  approved=project_public_opportunity(row)
-                  row['public_source_terms']={'kind':'notice_estimate',**{k:approved[k] for k in ('estimated_budget','budget_currency') if k in approved}}
-          blocked_exact={
-              'email','e-mail','phone','telephone','mobile','contact','buyer','contact_email','contact_phone','buyer_email','buyer_phone','supplier_email','supplier_phone',
-              'website','linkedin','address','street','postal_code','contact_person','representative','buyer-name','buyer_name','borrower','agency','department','office',
-              'contracting_authority','organization_name','source_url','source-url','url','notice_url','detail_url','document_url','official_url','official_links','links',
-              'checked_pages','source_page','final_url','document_extracted_text','source_excerpt','ted_lots','structured_source_evidence'
-          }
-          email_re=re.compile(r'(?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}')
-          mailtel_re=re.compile(r'(?i)(mailto:|tel:)\S+')
-          def scrub_value(value):
-              if isinstance(value, dict):
-                  out={}
-                  for k,v in value.items():
-                      lk=str(k).lower()
-                      if lk in blocked_exact or 'contact' in lk or any(x in lk for x in ('email','phone','telephone','mobile','linkedin','contact_person','address')) or lk.endswith('_price_source') or lk.endswith('_unit_price_source') or lk in ('verified_unit_price_supplier','selling_quote_buyer'):
-                          continue
-                      out[k]=scrub_value(v)
-                  return out
-              if isinstance(value, list):
-                  return [scrub_value(x) for x in value]
-              if isinstance(value,str):
-                  value=email_re.sub('[redacted]',value)
-                  value=mailtel_re.sub('[redacted]',value)
-              return value
-          safe=scrub_value(data)
-          safe.pop('pilot_dossier_summary',None)  # internal research ranking only
-          rows=[]
-          for row in safe.get('opportunities') or []:
-              if isinstance(row,dict):
-                  row['buyer_masked']=True
-                  row['buyer_display']='Alıcı kimliği kontrollü tanıştırma ile paylaşılır'
-                  rows.append(row)
-          safe['opportunities']=rows
-          safe['mode']='public_masked_feed'
-          safe['privacy_notice']='Direct buyer identity, contact details, evidence excerpts and direct source URLs are not published in the public feed.'
-          dst.write_text(json.dumps(safe,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-          print(f'PUBLIC_MASKED_FEED opportunities={len(rows)}')
-          PY
+          python -m src.public_opportunity_projection data/latest-opportunities.private.json data/latest-opportunities.json
           rm -f data/latest-opportunities.private.json data/latest-opportunities.next.json data/latest-ceo-report.json
       - name: Verify no restricted fields are published
         run: |
@@ -243,7 +197,7 @@ jobs:
           from pathlib import Path
           raw=Path('data/latest-opportunities.json').read_text(encoding='utf-8')
           data=json.loads(raw)
-          if data.get('mode')!='public_masked_feed':
+          if data.get('mode')!='public_allowlist_feed':
               raise SystemExit('public feed mode is not masked')
           forbidden=('email','phone','telephone','mobile','linkedin','contact_person','buyer_name','buyer-name','source_url','notice_url','detail_url','document_url','official_url','checked_pages','source_page','final_url')
           def walk(v,path='root'):
