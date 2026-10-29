@@ -26,6 +26,10 @@ jobs:
         run: |
           python -c "import json; assert json.load(open('vercel.json'))['git']['deploymentEnabled'] is False"
           test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - name: Verify Python and JavaScript regressions at the exact candidate
+        run: |
+          python -m unittest discover -s tests -p 'test_*.py' -v
+          node --test tests/*.test.cjs
       - name: Checkout pinned public AI Visibility contract
         uses: actions/checkout@v4
         with:

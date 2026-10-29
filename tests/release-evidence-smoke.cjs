@@ -1,6 +1,5 @@
 /* Isolated browser acceptance. All remote requests are mocked or rejected. */
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
 const path = require('node:path');
 const {spawn, execFileSync} = require('node:child_process');
 const {chromium} = require('playwright');
@@ -64,7 +63,8 @@ async function noOverflow(page, label) {
         unexpected.push(req.method() + ' ' + url.origin + url.pathname);
         return route.abort();
       });
-      await page.addInitScript(() => localStorage.setItem('gb_access_token', 'fixture-only'));
+      await page.goto(base + '/privacy');
+      await page.evaluate(() => localStorage.setItem('gb_access_token', 'fixture-only'));
       for (const language of ['tr', 'en']) {
         for (const [state, heading] of [['success', 'Fixture equipment'], [401, 'Yeniden giriş yapın'], [403, 'Hesap erişiminizi kontrol edin'], [429, 'İstek sınırına ulaşıldı'], [503, 'Fırsatlar yüklenemedi'], ['network', 'Fırsatlar yüklenemedi'], ['malformed', 'Fırsatlar yüklenemedi'], ['empty', null]]) {
           mode = state;
