@@ -47,6 +47,17 @@ jobs:
         env:
           AI_VISIBILITY_ROOT: ${{ github.workspace }}/.peer-visibility
         run: node tests/release-evidence-smoke.cjs
+      - name: Build pinned AI Visibility without production credentials
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+        run: |
+          npm ci --prefix .peer-visibility --ignore-scripts
+          npm --prefix .peer-visibility run build
+      - name: Verify both applications through real local UIs
+        env:
+          AI_VISIBILITY_ROOT: ${{ github.workspace }}/.peer-visibility
+          NEXT_TELEMETRY_DISABLED: '1'
+        run: node tests/cross-app-handoff-smoke.cjs
   source-sample:
     runs-on: ubuntu-latest
     timeout-minutes: 4
