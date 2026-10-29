@@ -4,6 +4,7 @@ from xml.etree import ElementTree as ET
 from src import document_parser
 from src.ted_bulk import fetch_daily_notices
 from src.specification import analyze_opportunity
+from src.annex_review_summary import review_summary
 
 PUBLICATION = '702997-2026'
 PORTAL = 'https://zakazky.krajbezkorupce.cz/vz00047078'
@@ -28,6 +29,7 @@ def main():
     main_pdf = any(a.get('kind') == 'pdf' for a in annexes)
     analyze_opportunity(row)
     analysis = row['specification_analysis']
+    print('TED_ANNEX_REVIEW_QUEUE', json.dumps(review_summary(info), sort_keys=True), flush=True)
     passed = len(latest) == 1 and main_pdf and not row.get('buyer_verified') and not analysis['supplier_sourcing_ready']
     # Technical read evidence only; never infer all portal attachments read,
     # authoritative version selection, specification compliance or commerce.
