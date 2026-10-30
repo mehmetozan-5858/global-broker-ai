@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import json
 import os
+import time
+import threading
+import urllib.error
 from collections import Counter
 import re
 from concurrent.futures import ThreadPoolExecutor
@@ -19,6 +22,54 @@ from src.ted_xml_parser import extract_ted_contacts, is_xml_source, parse_ted_xm
 
 MIN_SOURCE_TEXT_CHARS = 160
 MAX_EXTRACTED_CHARS = document_parser.MAX_EXTRACTED_CHARS
+
+
+# A single gate shares pacing across all TED document workers.
+_TED_RATE_LOCK = threading.Lock()
+_TED_NEXT_REQUEST = 0.0
+_TED_MIN_INTERVAL = 1.0
+
+
+def _download_ted(url: str, limit: int):
+    global _TED_NEXT_REQUEST
+    for retry in range(3):
+        with _TED_RATE_LOCK:
+            delay = max(0.0, _TED_NEXT_REQUEST - time.monotonic())
+            if delay:
+                time.sleep(delay)
+            _TED_NEXT_REQUEST = time.monotonic() + _TED_MIN_INTERVAL
+        try:
+            return document_parser._download(url, limit)
+        except urllib.error.HTTPError as error:
+            if error.code != 429 or retry == 2:
+                raise
+            raw = (error.headers.get("Retry-After") if error.headers else "") or ""
+            # Cap untrusted server delays and total retry budget; never log body.
+            wait = min(8.0, max(float(2 ** retry), float(raw))) if raw.isdecimal() else float(2 ** retry)
+            time.sleep(wait)
+    raise ValueError("ted_retry_exhausted")
+
+
+def _api_xml_link(item: dict[str, Any]) -> str | None:
+    links = item.get("links")
+    if not isinstance(links, dict):
+        return None
+    xml = links.get("xml")
+    if not isinstance(xml, dict):
+        return None
+    url = xml.get("MUL")
+    if not isinstance(url, str):
+        return None
+    parsed = urllib.parse.urlparse(url)
+    expected = str(item.get("publication-number") or "")
+    if parsed.scheme != "https" or parsed.hostname != "ted.europa.eu":
+        return None
+    identity = _ted_notice_id(url)
+    if not identity or (expected and identity != expected):
+        return None
+    if not parsed.path.lower().endswith("/xml"):
+        return None
+    return url
 
 
 TED_NOTICE_ID_RE = re.compile(r"/notice/(?:-/detail/)?([0-9]{1,8}-[0-9]{4})(?:/|$)")
@@ -46,6 +97,9 @@ def _verify_ted_redirect(requested_url: str, final_url: str) -> None:
 
 def _ted_xml_url(item: dict[str, Any]) -> str | None:
     source = str(item.get("source") or item.get("source_name") or "").upper()
+    api_link = _api_xml_link(item)
+    if api_link:
+        return api_link
     urls = document_parser._all_urls(item)
     expected_id = str(item.get("publication-number") or "")
     if not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", expected_id):
@@ -88,7 +142,7 @@ def _fallback_document(xml_url: str, item: dict, attempts: list):
     if parsed.hostname != "ted.europa.eu" or not match:
         raise ValueError("ted_fallback_notice_identity_missing")
     publication = match.group(1)
-    formats = [("html", "ted_html_download")]
+    formats = []  # HTML shells are not accepted as official notice evidence.
     if (notice_context(item) or {}).get("call_for_tenders") is True:
         formats.append(("pdf", "ted_pdf_download"))
     last_error = None
@@ -138,7 +192,7 @@ def enrich_opportunity(item: dict[str, Any], *, bulk_notice=None) -> bool:
     try:
         try:
             if bulk_notice is None:
-                data, content_type, final_url = document_parser._download(url, document_parser.MAX_SOURCE_PAGE_BYTES)
+                data, content_type, final_url = _download_ted(url, document_parser.MAX_SOURCE_PAGE_BYTES)
             else:
                 data, content_type, final_url = bulk_notice.verified_payload(item.get('publication-number'))
                 from src.ted_bulk import daily_url
