@@ -1,6 +1,48 @@
 {
   "version": 1,
   "notices": {
+    "715121-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2028-09-30"
+      },
+      "verified_at": "2026-10-30T22:16:57.470486+00:00"
+    },
+    "715195-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2028-09-30"
+      },
+      "verified_at": "2026-10-30T22:16:57.470486+00:00"
+    },
+    "715210-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2028-09-30"
+      },
+      "verified_at": "2026-10-30T22:16:57.470486+00:00"
+    },
+    "715243-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2028-09-30"
+      },
+      "verified_at": "2026-10-30T22:16:57.470486+00:00"
+    },
+    "715256-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-20"
+      },
+      "verified_at": "2026-10-30T22:16:57.470486+00:00"
+    },
+    "715309-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-17"
+      },
+      "verified_at": "2026-10-30T22:16:57.470486+00:00"
+    },
     "700369-2026": {
       "lot_count": 1,
       "fields": {
@@ -147,6 +189,6 @@
   },
   "last_scan": {
     "reused_notices": 0,
-    "refreshed_notices": 0
+    "refreshed_notices": 6
   }
 }
