@@ -1,0 +1,28 @@
+name: Broker Paddle Sandbox Checks
+on:
+  pull_request:
+    branches: [main, ci/release-evidence-no-deploy-20261029]
+    paths:
+      - 'supabase/functions/broker-billing-sandbox/**'
+      - 'scripts/broker-paddle-preflight.mjs'
+      - 'tests/**'
+      - '.github/workflows/broker-paddle-sandbox-checks.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify deployment lock and all JavaScript regressions
+        run: |
+          node -e "if(require('./vercel.json').git.deploymentEnabled!==false)process.exit(1)"
+          node --check scripts/broker-paddle-preflight.mjs
+          node --test tests/*.test.cjs

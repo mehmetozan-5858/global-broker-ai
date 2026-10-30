@@ -1,3 +1,4 @@
+import {matchesSandboxPrice} from './catalog.mjs';
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const id=(prefix,value)=>typeof value==='string'&&new RegExp('^'+prefix+'_[a-z0-9]{26}$').test(value);
 const PLANS={sector:8900,multi:17900,global:34900};
@@ -92,7 +93,7 @@ export function createHandler({env,fetchImpl=fetch,now=Date.now}={}){
    const price=conf.catalog[intent.plan_id];
    const catalogResponse=await call('https://sandbox-api.paddle.com/prices/'+price.price_id,{headers:{Authorization:'Bearer '+env.GB_BROKER_SANDBOX_API_KEY,'Paddle-Version':'1'}});
    const catalogData=(await catalogResponse.json())?.data;
-   if(!catalogResponse.ok||catalogData?.id!==price.price_id||catalogData.product_id!==price.product_id||catalogData.status!=='active'||catalogData.unit_price?.amount!==String(intent.amount_minor)||catalogData.unit_price?.currency_code!=='USD'||catalogData.billing_cycle?.interval!=='month'||catalogData.billing_cycle?.frequency!==1)throw Error('provider_catalog_mismatch');
+   if(!catalogResponse.ok||!matchesSandboxPrice(catalogData,{...price,amount_minor:intent.amount_minor}))throw Error('provider_catalog_mismatch');
    claim=await rpc('gb_claim_sandbox_billing',{p_intent_id:intent.intent_id,p_price_id:price.price_id,p_product_id:price.product_id});
    const result=transactionId=>json(200,{environment:'sandbox',transaction_id:transactionId,client_token:env.GB_BROKER_SANDBOX_CLIENT_TOKEN,production_access_changed:false});
    if(claim.claimed!==true)return claim.state==='created'&&id('txn',claim.transaction_id)?result(claim.transaction_id):json(409,{error:'creation_requires_review'});

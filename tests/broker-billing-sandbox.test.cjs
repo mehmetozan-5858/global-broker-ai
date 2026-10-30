@@ -12,7 +12,7 @@ function fixture({failProvider=false,failBinding=false,claimLost=false}={}){
   if(url.endsWith('/auth/v1/user'))return Response.json({id:user,email_confirmed_at:'2026-01-01'});
   if(url.includes('gb_prepare_sandbox_billing'))return Response.json({intent_id:intent,plan_id:'sector',amount_minor:8900,currency:'USD',state});
   if(url.includes('gb_claim_sandbox_billing')){if(state!=='prepared')return Response.json({claimed:false,state,transaction_id:state==='created'?'txn_'+suffix:null});state='creating';if(claimLost)throw Error('ambiguous_claim');return Response.json({claimed:true,claim_id:claim});}
-  if(url.startsWith('https://sandbox-api.paddle.com/prices/'))return Response.json({data:{id:'pri_'+suffix,product_id:'pro_'+suffix,status:'active',unit_price:{amount:'8900',currency_code:'USD'},billing_cycle:{interval:'month',frequency:1}}});
+  if(url.startsWith('https://sandbox-api.paddle.com/prices/'))return Response.json({data:{id:'pri_'+suffix,product_id:'pro_'+suffix,status:'active',unit_price:{amount:'8900',currency_code:'USD'},billing_cycle:{interval:'month',frequency:1},trial_period:null,unit_price_overrides:[],tax_mode:'internal',quantity:{minimum:1,maximum:100}}});
   if(url==='https://sandbox-api.paddle.com/transactions'){providerCalls++;if(failProvider)throw Error('ambiguous_provider');return Response.json({data:{id:'txn_'+suffix}})}
   if(url.includes('gb_finish_sandbox_billing')){const body=JSON.parse(options.body);if(failBinding&&body.p_transaction_id)throw Error('binding_unavailable');if(state!=='creating')return Response.json({}, {status:409});state=body.p_transaction_id?'created':'uncertain';return Response.json({stored:true})}
   if(url.includes('gb_record_sandbox_billing'))return Response.json({recorded:true,production_access_changed:false});
@@ -82,4 +82,16 @@ test('provider price metadata is checked before creating a transaction',async()=
  const {createHandler}=await mod,f=fixture();
  const handle=createHandler({env,fetchImpl:async(url,options)=>url.startsWith('https://sandbox-api.paddle.com/prices/')?Response.json({data:{id:'pri_'+suffix,product_id:'pro_'+suffix,status:'active',unit_price:{amount:'1',currency_code:'USD'},billing_cycle:{interval:'month',frequency:1}}}):f.fetchImpl(url,options)});
  assert.equal((await handle(req('checkout',{request_id:request}))).status,503);assert.equal(f.providerCalls,0);assert.equal(f.calls.some(c=>c.url.includes('gb_claim_sandbox_billing')),false);
+});
+
+test('trial, country override and uncertain tax totals stop before claim or transaction',async()=>{
+ const {createHandler}=await mod;
+ for(const mutate of [p=>p.trial_period={interval:'day',frequency:14},p=>p.unit_price_overrides=[{country_codes:['DE'],unit_price:{amount:'1',currency_code:'EUR'}}],p=>p.tax_mode='external',p=>delete p.trial_period]){
+  const f=fixture();
+  const value={id:'pri_'+suffix,product_id:'pro_'+suffix,status:'active',unit_price:{amount:'8900',currency_code:'USD'},billing_cycle:{interval:'month',frequency:1},trial_period:null,unit_price_overrides:[],tax_mode:'internal',quantity:{minimum:1,maximum:100}};
+  mutate(value);
+  const handle=createHandler({env,fetchImpl:(url,options)=>url.startsWith('https://sandbox-api.paddle.com/prices/')?Promise.resolve(Response.json({data:value})):f.fetchImpl(url,options)});
+  assert.equal((await handle(req('checkout',{request_id:request}))).status,503);
+  assert.equal(f.providerCalls,0);assert.equal(f.calls.some(c=>c.url.includes('gb_claim_sandbox_billing')),false);
+ }
 });
