@@ -131,6 +131,12 @@ def _download(url: str, max_bytes: int = MAX_DOCUMENT_BYTES) -> tuple[bytes, str
         final_url = response.geturl()
         if not _public_http_url(final_url):
             raise ValueError("redirected_to_non_public_url")
+        # TED can return a WAF interstitial with HTTP 202 instead of XML/PDF.
+        # Never pass the challenge body to the document parser or logs.
+        if urllib.parse.urlparse(final_url).hostname == "ted.europa.eu" and (
+            response.status == 202 or response.headers.get("x-amzn-waf-action")
+        ):
+            raise ValueError("ted_waf_challenge")
         content_type = (response.headers.get("Content-Type") or "").split(";", 1)[0].strip().lower()
         content_length = response.headers.get("Content-Length")
         if content_length and int(content_length) > max_bytes:
