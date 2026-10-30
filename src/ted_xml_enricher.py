@@ -5,6 +5,8 @@ import os
 import time
 import threading
 import urllib.error
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from collections import Counter
 import re
 from concurrent.futures import ThreadPoolExecutor
@@ -46,9 +48,20 @@ def _download_ted(url: str, limit: int):
             if error.code != 429 or retry == 2:
                 raise
             raw = (error.headers.get("Retry-After") if error.headers else "") or ""
-            # Cap untrusted server delays and total retry budget; never log body.
-            wait = min(8.0, max(float(2 ** retry), float(raw))) if raw.isdecimal() else float(2 ** retry)
-            time.sleep(wait)
+            # Both delta-seconds and HTTP-date are valid Retry-After forms.
+            # Ignore invalid inputs; never let a remote header force an
+            # unbounded wait or expose the response body in logs.
+            requested_wait = 0.0
+            if raw.isdecimal():
+                requested_wait = min(8.0, float(raw[:8]))
+            elif raw:
+                try:
+                    date = parsedate_to_datetime(raw)
+                    if date.tzinfo is not None:
+                        requested_wait = max(0.0, (date - datetime.now(timezone.utc)).total_seconds())
+                except (TypeError, ValueError, OverflowError):
+                    pass
+            time.sleep(min(8.0, max(float(2 ** retry), requested_wait)))
     raise ValueError("ted_retry_exhausted")
 
 
