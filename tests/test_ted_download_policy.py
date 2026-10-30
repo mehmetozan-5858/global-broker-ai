@@ -22,6 +22,11 @@ class TedDownloadPolicyTests(unittest.TestCase):
             self.assertEqual(ted._ted_xml_url(item),
                              "https://ted.europa.eu/en/notice/756345-2026/xml")
 
+    def test_official_pdf_link_language_and_notice(self):
+        item = {"links": {"pdf": {"ENG": "https://ted.europa.eu/en/notice/756345-2026/pdf"}}}
+        self.assertEqual(ted._api_pdf_link(item, "756345-2026"), item["links"]["pdf"]["ENG"])
+        self.assertIsNone(ted._api_pdf_link(item, "111111-2026"))
+
     def test_rate_limit_retries_then_succeeds(self):
         error = urllib.error.HTTPError("https://ted.europa.eu/", 429, "Too Many Requests",
                                       {"Retry-After": "2"}, None)
