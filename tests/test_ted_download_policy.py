@@ -36,6 +36,14 @@ class TedDownloadPolicyTests(unittest.TestCase):
         self.assertEqual(result[0], b"<x/>")
         self.assertEqual(download.call_count, 2)
 
+    def test_http_date_retry_after_is_bounded(self):
+        error = urllib.error.HTTPError("https://ted.europa.eu/", 429, "Too Many Requests",
+                                      {"Retry-After": "Wed, 01 Jan 2099 00:00:00 GMT"}, None)
+        with patch.object(ted.document_parser, "_download", side_effect=[error, (b"<x/>", "application/xml", "ok")]), \\
+             patch.object(ted.time, "sleep") as sleep, patch.object(ted.time, "monotonic", return_value=0):
+            ted._download_ted("https://ted.europa.eu/en/notice/756345-2026/xml", 2048)
+        self.assertIn(8.0, [call.args[0] for call in sleep.call_args_list])
+
     def test_retries_are_bounded(self):
         error = urllib.error.HTTPError("https://ted.europa.eu/", 429, "Too Many Requests",
                                       {"Retry-After": "99999"}, None)
