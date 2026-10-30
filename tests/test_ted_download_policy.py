@@ -41,7 +41,8 @@ class TedDownloadPolicyTests(unittest.TestCase):
         self.assertEqual(download.call_count, 3)
 
     def test_no_html_fallback(self):
-        with patch.object(ted, "_download_ted", return_value=(b"%PDF", "application/pdf", "https://ted.europa.eu/en/notice/756345-2026/pdf")) as download, \
+        with patch.object(ted, "notice_context", return_value={"call_for_tenders": True}), \
+             patch.object(ted, "_download_ted", return_value=(b"%PDF", "application/pdf", "https://ted.europa.eu/en/notice/756345-2026/pdf")) as download, \
              patch.object(ted.document_parser, "_parse_pdf", return_value="756345-2026 " + "a" * 170):
             ted._fallback_document("https://ted.europa.eu/en/notice/756345-2026/xml",
                                    {"source": "TED", "notice_context": {"call_for_tenders": True}}, [])
