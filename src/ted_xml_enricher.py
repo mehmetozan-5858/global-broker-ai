@@ -33,13 +33,15 @@ _TED_MIN_INTERVAL = 1.0
 def _download_ted(url: str, limit: int):
     global _TED_NEXT_REQUEST
     for retry in range(3):
-        with _TED_RATE_LOCK:
-            delay = max(0.0, _TED_NEXT_REQUEST - time.monotonic())
-            if delay:
-                time.sleep(delay)
-            _TED_NEXT_REQUEST = time.monotonic() + _TED_MIN_INTERVAL
         try:
-            return document_parser._download(url, limit)
+            with _TED_RATE_LOCK:
+                delay = max(0.0, _TED_NEXT_REQUEST - time.monotonic())
+                if delay:
+                    time.sleep(delay)
+                _TED_NEXT_REQUEST = time.monotonic() + _TED_MIN_INTERVAL
+                # Hold the gate through the response: no overlapping TED
+                # document fetches, even when the pipeline has four workers.
+                return document_parser._download(url, limit)
         except urllib.error.HTTPError as error:
             if error.code != 429 or retry == 2:
                 raise
