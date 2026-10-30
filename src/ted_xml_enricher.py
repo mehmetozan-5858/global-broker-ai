@@ -95,6 +95,23 @@ def _verify_ted_redirect(requested_url: str, final_url: str) -> None:
         raise ValueError("ted_document_notice_redirect_mismatch")
 
 
+def _api_pdf_link(item: dict[str, Any], publication: str) -> str | None:
+    links = item.get("links")
+    pdfs = links.get("pdf") if isinstance(links, dict) else None
+    if not isinstance(pdfs, dict):
+        return None
+    for lang in ("ENG", "MUL"):
+        url = pdfs.get(lang)
+        if not isinstance(url, str):
+            continue
+        parsed = urllib.parse.urlparse(url)
+        if (parsed.scheme == "https" and parsed.hostname == "ted.europa.eu"
+                and parsed.path.lower().endswith("/pdf")
+                and _ted_notice_id(url) == publication):
+            return url
+    return None
+
+
 def _ted_xml_url(item: dict[str, Any]) -> str | None:
     source = str(item.get("source") or item.get("source_name") or "").upper()
     api_link = _api_xml_link(item)
@@ -147,7 +164,7 @@ def _fallback_document(xml_url: str, item: dict, attempts: list):
         formats.append(("pdf", "ted_pdf_download"))
     last_error = None
     for suffix, kind in formats:
-        url = urllib.parse.urlunparse(parsed._replace(path=parsed.path[:-3] + suffix, query="", fragment=""))
+        url = (_api_pdf_link(item, publication) if suffix == "pdf" else None) or urllib.parse.urlunparse(parsed._replace(path=parsed.path[:-3] + suffix, query="", fragment=""))
         attempt = {"url": url, "status": "pending", "source": kind}
         try:
             limit = document_parser.MAX_DOCUMENT_BYTES if suffix == "pdf" else document_parser.MAX_SOURCE_PAGE_BYTES
