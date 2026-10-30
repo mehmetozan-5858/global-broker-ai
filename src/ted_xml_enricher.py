@@ -261,6 +261,7 @@ def enrich_opportunity(item: dict[str, Any], *, bulk_notice=None) -> bool:
 # Fixed classification avoids storing exception text, arbitrary URLs or tokens in
 # aggregate scan diagnostics. An unrecognized error stays explicitly unknown.
 TED_FAILURE_MARKERS = (
+    "ted_waf_challenge",
     "ted_source_not_xml",
     "ted_xml_notice_root_missing",
     "ted_document_notice_redirect_mismatch",
