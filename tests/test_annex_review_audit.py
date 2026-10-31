@@ -20,6 +20,24 @@ class BoundedAuditTests(unittest.TestCase):
         self.assertEqual(result['formula_cells'], 1)
         self.assertEqual(result['text_chars'], len('Source quantity') + len('=1+1'))
         self.assertFalse(result['text_truncated'])
+        self.assertTrue(result['formula_review_required'])
+        self.assertFalse(result['formula_evaluation_performed'])
+        self.assertFalse(result['formula_approval'])
+
+    def test_formula_free_sheet_requires_no_formula_review(self):
+        try:
+            from openpyxl import Workbook
+        except ImportError:
+            self.skipTest('openpyxl is installed by the dedicated audit job')
+        workbook = Workbook()
+        workbook.active['A1'] = 12
+        output = io.BytesIO()
+        workbook.save(output)
+        workbook.close()
+        result = spreadsheet(output.getvalue())
+        self.assertEqual(result['formula_cells'], 0)
+        self.assertFalse(result['formula_review_required'])
+        self.assertFalse(result['formula_approval'])
 
     def test_fake_legacy_word_and_oversized_data_rejected(self):
         with self.assertRaisesRegex(ValueError, 'magic'):
