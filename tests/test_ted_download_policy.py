@@ -59,7 +59,8 @@ class TedDownloadPolicyTests(unittest.TestCase):
              patch.object(ted.document_parser, "_parse_pdf", return_value="756345-2026 " + "a" * 170):
             ted._fallback_document("https://ted.europa.eu/en/notice/756345-2026/xml",
                                    {"source": "TED", "notice_context": {"call_for_tenders": True}}, [])
-            self.assertTrue(all("/html" not in call.args[0] for call in download.call_args_list))
+            self.assertEqual(download.call_count, 1)
+            self.assertTrue(all(call.args[0].endswith("/pdf") for call in download.call_args_list))
 
 
 if __name__ == "__main__":
