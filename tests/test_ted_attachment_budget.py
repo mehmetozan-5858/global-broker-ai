@@ -31,7 +31,10 @@ class TedAttachmentBudgetTests(unittest.TestCase):
                         accepted = ted_xml_enricher.enrich_opportunity(item)
                     if fallback:
                         self.assertFalse(accepted)
-                        self.assertNotIn('document_extracted_text',item)
+                        if existing:
+                            self.assertTrue(item['document_extracted_text'].startswith('Old generic page.'))
+                        else:
+                            self.assertNotIn('document_extracted_text',item)
                         continue
                     self.assertTrue(accepted)
                     text = item['document_extracted_text']
