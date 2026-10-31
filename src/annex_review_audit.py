@@ -100,7 +100,10 @@ def spreadsheet(data):
     finally:
         workbook.close()
     return {'text_chars': min(chars, reader.MAX_EXTRACTED_CHARS),
-            'text_truncated': truncated, 'formula_cells': formulas}
+            'text_truncated': truncated, 'formula_cells': formulas,
+            'formula_review_required': formulas > 0,
+            'formula_evaluation_performed': False,
+            'formula_approval': False}
 
 
 def audit_bytes(kind, data, content_type, final_url):
@@ -142,6 +145,8 @@ def main():
             if record['text_chars'] < 20:
                 raise ValueError('audit_extractable_text_missing')
             record.update(status='read_for_review', sha256=hashlib.sha256(data).hexdigest(), bytes=len(data))
+            if kind == 'xlsx' and record.get('formula_cells', 0) > 0:
+                record['technical_acceptance'] = 'blocked_formula_review'
         except (ValueError, OSError, RuntimeError, subprocess.SubprocessError, zipfile.BadZipFile):
             record['status'] = 'manual_review_required'
         records.append(record)
