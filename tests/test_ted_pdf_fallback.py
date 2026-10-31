@@ -54,7 +54,7 @@ class TedPdfFallbackTests(unittest.TestCase):
         for form in ['result',None]:
             with patch.object(document_parser,'_download',side_effect=ValueError('offline')) as fetch:
                 self.assertFalse(ted_xml_enricher.enrich_opportunity(self.item(form)))
-                self.assertEqual(fetch.call_count,2)
+                self.assertEqual(fetch.call_count,1)
 
     def test_official_text_is_not_truncated_behind_a_long_generic_page(self):
         row=self.item();row['document_extracted_text']='generic '*10000
