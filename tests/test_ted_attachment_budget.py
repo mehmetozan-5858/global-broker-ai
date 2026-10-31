@@ -28,7 +28,15 @@ class TedAttachmentBudgetTests(unittest.TestCase):
                     with patch.object(document_parser, '_download', side_effect=download), patch.object(
                         ted_xml_enricher, 'parse_ted_xml', return_value=(notice[:40000], [attachment])
                     ):
-                        self.assertTrue(ted_xml_enricher.enrich_opportunity(item))
+                        accepted = ted_xml_enricher.enrich_opportunity(item)
+                    if fallback:
+                        self.assertFalse(accepted)
+                        if existing:
+                            self.assertTrue(item['document_extracted_text'].startswith('Old generic page.'))
+                        else:
+                            self.assertNotIn('document_extracted_text',item)
+                        continue
+                    self.assertTrue(accepted)
                     text = item['document_extracted_text']
                     self.assertTrue(text.startswith(spec.strip()))
                     self.assertLessEqual(len(text), 40000)

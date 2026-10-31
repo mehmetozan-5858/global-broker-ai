@@ -18,11 +18,11 @@ class TedPdfFallbackTests(unittest.TestCase):
         with patch.object(document_parser,'_download',side_effect=self.download) as fetch,patch.object(document_parser,'_parse_pdf',return_value=TEXT):
             self.assertTrue(ted_xml_enricher.enrich_opportunity(row))
         info=row['document_extraction']
-        self.assertEqual(fetch.call_count,3)
+        self.assertEqual(fetch.call_count,2)
         self.assertTrue(info['ted_pdf_parsed'])
         self.assertFalse(info['ted_xml_parsed'])
         self.assertEqual(info['parsed_count'],1)
-        self.assertEqual([x['source'] for x in info['attempts']],['ted_xml','ted_html_download','ted_pdf_download'])
+        self.assertEqual([x['source'] for x in info['attempts']],['ted_xml','ted_pdf_download'])
         self.assertNotIn('ted_lots',row)
         self.assertNotIn('verified_unit_price',row)
         self.assertNotIn('contact_email',row)
@@ -54,7 +54,7 @@ class TedPdfFallbackTests(unittest.TestCase):
         for form in ['result',None]:
             with patch.object(document_parser,'_download',side_effect=ValueError('offline')) as fetch:
                 self.assertFalse(ted_xml_enricher.enrich_opportunity(self.item(form)))
-                self.assertEqual(fetch.call_count,2)
+                self.assertEqual(fetch.call_count,1)
 
     def test_official_text_is_not_truncated_behind_a_long_generic_page(self):
         row=self.item();row['document_extracted_text']='generic '*10000
