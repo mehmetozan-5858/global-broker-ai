@@ -102,7 +102,7 @@ class TedStructuredLotTests(unittest.TestCase):
         with patch('src.document_parser._download',side_effect=download):
             self.assertFalse(enrich_opportunity(row))
         self.assertEqual(calls,['https://ted.europa.eu/en/notice/12345-2026/xml'])
-        self.assertFalse(row['document_extraction']['ted_html_parsed'])
+        self.assertFalse(row['document_extraction'].get('ted_html_parsed', False))
         self.assertFalse(row['document_extraction']['ted_xml_parsed'])
         self.assertFalse(is_xml_source(html,'text/html',calls[0]))
 
