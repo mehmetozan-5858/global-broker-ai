@@ -2,6 +2,11 @@ from __future__ import annotations
 
 import json
 import os
+import time
+import threading
+import urllib.error
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from collections import Counter
 import re
 from concurrent.futures import ThreadPoolExecutor
@@ -19,6 +24,67 @@ from src.ted_xml_parser import extract_ted_contacts, is_xml_source, parse_ted_xm
 
 MIN_SOURCE_TEXT_CHARS = 160
 MAX_EXTRACTED_CHARS = document_parser.MAX_EXTRACTED_CHARS
+
+
+# A single gate shares pacing across all TED document workers.
+_TED_RATE_LOCK = threading.Lock()
+_TED_NEXT_REQUEST = 0.0
+_TED_MIN_INTERVAL = 1.0
+
+
+def _download_ted(url: str, limit: int):
+    global _TED_NEXT_REQUEST
+    for retry in range(3):
+        try:
+            with _TED_RATE_LOCK:
+                delay = max(0.0, _TED_NEXT_REQUEST - time.monotonic())
+                if delay:
+                    time.sleep(delay)
+                _TED_NEXT_REQUEST = time.monotonic() + _TED_MIN_INTERVAL
+                # Hold the gate through the response: no overlapping TED
+                # document fetches, even when the pipeline has four workers.
+                return document_parser._download(url, limit)
+        except urllib.error.HTTPError as error:
+            if error.code != 429 or retry == 2:
+                raise
+            raw = (error.headers.get("Retry-After") if error.headers else "") or ""
+            # Both delta-seconds and HTTP-date are valid Retry-After forms.
+            # Ignore invalid inputs; never let a remote header force an
+            # unbounded wait or expose the response body in logs.
+            requested_wait = 0.0
+            if raw.isdecimal():
+                requested_wait = min(8.0, float(raw[:8]))
+            elif raw:
+                try:
+                    date = parsedate_to_datetime(raw)
+                    if date.tzinfo is not None:
+                        requested_wait = max(0.0, (date - datetime.now(timezone.utc)).total_seconds())
+                except (TypeError, ValueError, OverflowError):
+                    pass
+            time.sleep(min(8.0, max(float(2 ** retry), requested_wait)))
+    raise ValueError("ted_retry_exhausted")
+
+
+def _api_xml_link(item: dict[str, Any]) -> str | None:
+    links = item.get("links")
+    if not isinstance(links, dict):
+        return None
+    xml = links.get("xml")
+    if not isinstance(xml, dict):
+        return None
+    url = xml.get("MUL")
+    if not isinstance(url, str):
+        return None
+    parsed = urllib.parse.urlparse(url)
+    expected = str(item.get("publication-number") or "")
+    if parsed.scheme != "https" or parsed.hostname != "ted.europa.eu":
+        return None
+    identity = _ted_notice_id(url)
+    if not identity or (expected and identity != expected):
+        return None
+    if not parsed.path.lower().endswith("/xml"):
+        return None
+    return url
 
 
 TED_NOTICE_ID_RE = re.compile(r"/notice/(?:-/detail/)?([0-9]{1,8}-[0-9]{4})(?:/|$)")
@@ -44,8 +110,28 @@ def _verify_ted_redirect(requested_url: str, final_url: str) -> None:
         raise ValueError("ted_document_notice_redirect_mismatch")
 
 
+def _api_pdf_link(item: dict[str, Any], publication: str) -> str | None:
+    links = item.get("links")
+    pdfs = links.get("pdf") if isinstance(links, dict) else None
+    if not isinstance(pdfs, dict):
+        return None
+    for lang in ("ENG", "MUL"):
+        url = pdfs.get(lang)
+        if not isinstance(url, str):
+            continue
+        parsed = urllib.parse.urlparse(url)
+        if (parsed.scheme == "https" and parsed.hostname == "ted.europa.eu"
+                and parsed.path.lower().endswith("/pdf")
+                and _ted_notice_id(url) == publication):
+            return url
+    return None
+
+
 def _ted_xml_url(item: dict[str, Any]) -> str | None:
     source = str(item.get("source") or item.get("source_name") or "").upper()
+    api_link = _api_xml_link(item)
+    if api_link:
+        return api_link
     urls = document_parser._all_urls(item)
     expected_id = str(item.get("publication-number") or "")
     if not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", expected_id):
@@ -88,12 +174,12 @@ def _fallback_document(xml_url: str, item: dict, attempts: list):
     if parsed.hostname != "ted.europa.eu" or not match:
         raise ValueError("ted_fallback_notice_identity_missing")
     publication = match.group(1)
-    formats = [("html", "ted_html_download")]
+    formats = []  # HTML shells are not accepted as official notice evidence.
     if (notice_context(item) or {}).get("call_for_tenders") is True:
         formats.append(("pdf", "ted_pdf_download"))
     last_error = None
     for suffix, kind in formats:
-        url = urllib.parse.urlunparse(parsed._replace(path=parsed.path[:-3] + suffix, query="", fragment=""))
+        url = (_api_pdf_link(item, publication) if suffix == "pdf" else None) or urllib.parse.urlunparse(parsed._replace(path=parsed.path[:-3] + suffix, query="", fragment=""))
         attempt = {"url": url, "status": "pending", "source": kind}
         try:
             limit = document_parser.MAX_DOCUMENT_BYTES if suffix == "pdf" else document_parser.MAX_SOURCE_PAGE_BYTES
@@ -138,7 +224,7 @@ def enrich_opportunity(item: dict[str, Any], *, bulk_notice=None) -> bool:
     try:
         try:
             if bulk_notice is None:
-                data, content_type, final_url = document_parser._download(url, document_parser.MAX_SOURCE_PAGE_BYTES)
+                data, content_type, final_url = _download_ted(url, document_parser.MAX_SOURCE_PAGE_BYTES)
             else:
                 data, content_type, final_url = bulk_notice.verified_payload(item.get('publication-number'))
                 from src.ted_bulk import daily_url
@@ -261,6 +347,7 @@ def enrich_opportunity(item: dict[str, Any], *, bulk_notice=None) -> bool:
 # Fixed classification avoids storing exception text, arbitrary URLs or tokens in
 # aggregate scan diagnostics. An unrecognized error stays explicitly unknown.
 TED_FAILURE_MARKERS = (
+    "ted_waf_challenge",
     "ted_source_not_xml",
     "ted_xml_notice_root_missing",
     "ted_document_notice_redirect_mismatch",
