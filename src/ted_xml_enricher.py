@@ -183,7 +183,7 @@ def _fallback_document(xml_url: str, item: dict, attempts: list):
         attempt = {"url": url, "status": "pending", "source": kind}
         try:
             limit = document_parser.MAX_DOCUMENT_BYTES if suffix == "pdf" else document_parser.MAX_SOURCE_PAGE_BYTES
-            data, content_type, final_url = document_parser._download(url, limit)
+            data, content_type, final_url = _download_ted(url, limit)
             _verify_ted_redirect(url, final_url)
             if suffix == "pdf":
                 if not data.startswith(b"%PDF"):
