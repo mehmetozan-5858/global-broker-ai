@@ -41,6 +41,25 @@ class BulkFallbackReleaseBoundaryTests(unittest.TestCase):
         self.assertTrue(row["document_extraction"]["document_versions_review_required"])
         self.assertEqual(row["document_extraction"]["attachment_candidates_omitted"], 1)
 
+    def test_real_enricher_recovers_official_bulk_after_direct_waf(self):
+        identity, edition = "123-2026", "197/2026"
+        xml = (f"<ContractNotice><NoticePublicationID>{identity}</NoticePublicationID>"
+               f"<GazetteID>{edition}</GazetteID><Description>"
+               + "Verified official procurement source description. " * 12
+               + "</Description></ContractNotice>").encode()
+        notice = BulkNotice(identity, edition, xml, "a" * 64)
+        row = {"source": "TED", "publication-number": identity,
+               "ojs-number": edition, "sourcing": False, "commercial_approval": False}
+        with patch("src.ted_xml_enricher._download_ted",
+                   side_effect=ValueError("ted_waf_challenge")), \
+             patch("src.ted_bulk_fallback.fetch_daily_notices",
+                   return_value={identity: notice}):
+            result = enrich_payload({"opportunities": [row]}, bulk_enabled=True)
+        self.assertEqual(result["document_extraction"]["ted_bulk_fallback"]["notices_recovered"], 1)
+        self.assertTrue(row["document_extraction"]["ted_xml_parsed"])
+        self.assertFalse(row["sourcing"])
+        self.assertFalse(row["commercial_approval"])
+
     def test_default_does_not_fetch_official_package(self):
         row = {"source": "TED", "publication-number": "123-2026",
                "ojs-number": "197/2026", "sourcing": False}
