@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import unittest
 from src.annex_audit_evidence_gate import reconcile_annex_audit
 
@@ -10,7 +11,7 @@ class AnnexAuditEvidenceGateTests(unittest.TestCase):
             "attachment_inventory_entries_omitted": 0,
             "attachment_inventory": [
                 {"kind": "pdf", "status": "parsed"},
-                {"kind": "xlsx", "status": "unsupported"},
+                {"kind": "xlsx", "status": "unsupported", "url": "https://example.org/annex.xlsx"},
             ],
         }
         self.audit = {
@@ -18,7 +19,8 @@ class AnnexAuditEvidenceGateTests(unittest.TestCase):
             "ordinary_reader_limits_unchanged": True,
             "audited_remaining": [{
                 "index": 1, "format": "xlsx", "status": "read_for_review",
-                "sha256": "a" * 64, "bytes": 100, "text_chars": 25,
+                "sha256": "a" * 64,
+                "source_url_sha256": hashlib.sha256(b"https://example.org/annex.xlsx").hexdigest(), "bytes": 100, "text_chars": 25,
                 "text_truncated": False, "formula_cells": 13,
                 "formula_evaluation_performed": False,
                 "formula_approval": False, "formula_review_required": True,
@@ -51,7 +53,7 @@ class AnnexAuditEvidenceGateTests(unittest.TestCase):
                 self.assertFalse(reconcile_annex_audit(self.extraction, audit)["audit_evidence_valid"])
         for key, value in [("index", 2), ("index", True), ("format", "doc"), ("sha256", "no"),
                            ("formula_approval", True), ("text_truncated", True),
-                           ("formula_evaluation_performed", True)]:
+                           ("formula_evaluation_performed", True), ("source_url_sha256", "b" * 64)]:
             audit = copy.deepcopy(self.audit)
             audit["audited_remaining"][0][key] = value
             with self.subTest(key=key):
