@@ -136,7 +136,8 @@ def main():
     records = []
     for index, entry in enumerate(pending, 1):
         kind = entry.get('kind')
-        record = {'index': index, 'format': kind, 'status': 'unread'}
+        record = {'index': index, 'format': kind, 'status': 'unread',
+                  'source_url_sha256': hashlib.sha256(entry['url'].encode('utf-8')).hexdigest()}
         try:
             # Same public-DNS/redirect and per-document byte guards as the scan.
             data, content_type, final_url = reader._download(entry['url'])
