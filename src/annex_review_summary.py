@@ -37,5 +37,6 @@ def review_summary(extraction):
         'all_observed_attachments_parsed': complete_inventory and all(status == 'parsed' for _, status in counts),
         'full_text_review_required': info.get('text_truncated') is True,
         'document_version_review_required': info.get('document_versions_review_required') is not False,
+        'pending_by_format': [{'format': kind, 'count': sum(count for (fmt, status), count in counts.items() if fmt == kind and status != 'parsed')} for kind in sorted({fmt for fmt, status in counts if status != 'parsed'})],
         'commercial_approval': False,
     }
