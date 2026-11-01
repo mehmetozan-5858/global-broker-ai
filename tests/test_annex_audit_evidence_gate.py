@@ -59,6 +59,23 @@ class AnnexAuditEvidenceGateTests(unittest.TestCase):
             with self.subTest(key=key):
                 self.assertFalse(reconcile_annex_audit(self.extraction, audit)["audit_evidence_valid"])
 
+
+    def test_changed_source_url_cannot_reuse_old_audit_proof(self):
+        extraction = copy.deepcopy(self.extraction)
+        extraction["attachment_inventory"][1]["url"] = "https://example.org/replacement.xlsx"
+        result = reconcile_annex_audit(extraction, self.audit)
+        self.assertFalse(result["audit_evidence_valid"])
+        self.assertFalse(result["supplier_sourcing_ready"])
+        self.assertFalse(result["commercial_approval"])
+
+    def test_valid_url_hash_is_not_commercial_or_content_attestation(self):
+        result = reconcile_annex_audit(self.extraction, self.audit)
+        self.assertTrue(result["audit_evidence_valid"])
+        self.assertTrue(result["formula_review_required"])
+        self.assertTrue(result["revision_review_required"])
+        self.assertFalse(result["all_mandatory_requirements_reviewed"])
+        self.assertFalse(result["commercial_approval"])
+
     def test_missing_inventory_and_mismatched_counts_rejected(self):
         self.assertFalse(reconcile_annex_audit({}, self.audit)["audit_evidence_valid"])
         extraction = copy.deepcopy(self.extraction)
