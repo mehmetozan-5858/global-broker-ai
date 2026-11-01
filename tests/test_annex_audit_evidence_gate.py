@@ -42,13 +42,14 @@ class AnnexAuditEvidenceGateTests(unittest.TestCase):
             ("commercial_approval", True), ("supplier_sourcing_ready", True),
             ("applicable_revision_selected", True),
             ("ordinary_reader_limits_unchanged", False),
+            ("ordinary_reader_parsed", True),
             ("audited_remaining", []),
         ]:
             audit = copy.deepcopy(self.audit)
             audit[field] = value
             with self.subTest(field=field):
                 self.assertFalse(reconcile_annex_audit(self.extraction, audit)["audit_evidence_valid"])
-        for key, value in [("index", 2), ("format", "doc"), ("sha256", "no"),
+        for key, value in [("index", 2), ("index", True), ("format", "doc"), ("sha256", "no"),
                            ("formula_approval", True), ("text_truncated", True),
                            ("formula_evaluation_performed", True)]:
             audit = copy.deepcopy(self.audit)
