@@ -4,6 +4,7 @@ Audit metadata is deliberately kept separate from ordinary extraction. The resul
 is suitable only for a review queue, never for sourcing or commercial release.
 """
 import re
+import hashlib
 
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 ALLOWED = {"doc", "docx", "pdf", "xlsx", "txt"}
@@ -46,6 +47,11 @@ def reconcile_annex_audit(extraction, audit):
         if not isinstance(record, dict) or type(record.get("index")) is not int or record["index"] != index or record.get("format") != original.get("kind"):
             return result
         if record.get("status") != "read_for_review" or not isinstance(record.get("sha256"), str) or not SHA256.fullmatch(record["sha256"]):
+            return result
+        if not isinstance(original.get("url"), str) or not original["url"].startswith("https://"):
+            return result
+        expected_source_digest = hashlib.sha256(original["url"].encode("utf-8")).hexdigest()
+        if record.get("source_url_sha256") != expected_source_digest:
             return result
         if record["format"] not in ALLOWED or type(record.get("bytes")) is not int or not 0 < record["bytes"] <= 8 * 1024 * 1024:
             return result
