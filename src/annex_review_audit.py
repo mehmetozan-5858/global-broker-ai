@@ -18,6 +18,7 @@ from xml.etree import ElementTree as ET
 from src import document_parser as reader
 from src.ted_annex_probe import PUBLICATION, PORTAL
 from src.ted_bulk import fetch_daily_notices
+from src.annex_audit_evidence_gate import reconcile_annex_audit
 
 MAX_REMAINING = 7
 MAX_EXPANDED = 64 * 1024 * 1024
@@ -150,12 +151,15 @@ def main():
         except (ValueError, OSError, RuntimeError, subprocess.SubprocessError, zipfile.BadZipFile):
             record['status'] = 'manual_review_required'
         records.append(record)
+    # Evidence is scoped to this exact scan, and remains review-only.
+    audit = {'publication': PUBLICATION,
+             'ordinary_reader_parsed': len(inventory) - len(pending), 'audited_remaining': records,
+             'ordinary_reader_limits_unchanged': True, 'all_mandatory_requirements_reviewed': False,
+             'applicable_revision_selected': False, 'supplier_sourcing_ready': False,
+             'commercial_approval': False}
+    audit['review_evidence_gate'] = reconcile_annex_audit(row['document_extraction'], audit)
     # Safe metadata only: no filenames, links, source text, counterparties or cells.
-    print('BOUNDED_ANNEX_AUDIT', json.dumps({'publication': PUBLICATION,
-        'ordinary_reader_parsed': len(inventory) - len(pending), 'audited_remaining': records,
-        'ordinary_reader_limits_unchanged': True, 'all_mandatory_requirements_reviewed': False,
-        'applicable_revision_selected': False, 'supplier_sourcing_ready': False,
-        'commercial_approval': False}, sort_keys=True), flush=True)
+    print('BOUNDED_ANNEX_AUDIT', json.dumps(audit, sort_keys=True), flush=True)
 
 
 if __name__ == '__main__':
