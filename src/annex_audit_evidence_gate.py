@@ -37,13 +37,13 @@ def reconcile_annex_audit(extraction, audit):
     records = audit.get("audited_remaining")
     if not isinstance(records, list) or len(records) != len(pending):
         return result
-    if audit.get("ordinary_reader_parsed") != len(inventory) - len(pending):
+    if type(audit.get("ordinary_reader_parsed")) is not int or audit["ordinary_reader_parsed"] != len(inventory) - len(pending):
         return result
     if audit.get("ordinary_reader_limits_unchanged") is not True:
         return result
     formula = False
     for index, (original, record) in enumerate(zip(pending, records), 1):
-        if not isinstance(record, dict) or record.get("index") != index or record.get("format") != original.get("kind"):
+        if not isinstance(record, dict) or type(record.get("index")) is not int or record["index"] != index or record.get("format") != original.get("kind"):
             return result
         if record.get("status") != "read_for_review" or not isinstance(record.get("sha256"), str) or not SHA256.fullmatch(record["sha256"]):
             return result
