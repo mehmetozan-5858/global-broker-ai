@@ -60,6 +60,28 @@ class BulkFallbackReleaseBoundaryTests(unittest.TestCase):
         self.assertFalse(row["sourcing"])
         self.assertFalse(row["commercial_approval"])
 
+    def test_wrong_bulk_identity_fails_closed_after_direct_waf(self):
+        requested, edition = "123-2026", "197/2026"
+        xml = (f"<ContractNotice><NoticePublicationID>999-2026</NoticePublicationID>"
+               f"<GazetteID>{edition}</GazetteID><Description>"
+               + "Unrelated notice text must not be attributed to the requested tender. " * 8
+               + "</Description></ContractNotice>").encode()
+        forged = BulkNotice(requested, edition, xml, "a" * 64)
+        row = {"source": "TED", "publication-number": requested,
+               "ojs-number": edition, "sourcing": False, "commercial_approval": False}
+        with patch("src.ted_xml_enricher._download_ted",
+                   side_effect=ValueError("ted_waf_challenge")), \
+             patch("src.ted_bulk_fallback.fetch_daily_notices",
+                   return_value={requested: forged}):
+            result = enrich_payload({"opportunities": [row]}, bulk_enabled=True)
+        summary = result["document_extraction"]
+        self.assertEqual(summary["ted_bulk_fallback"]["packages_failed"], 1)
+        self.assertEqual(summary["ted_bulk_fallback"]["notices_recovered"], 0)
+        self.assertEqual(summary["ted_document_failed_notices"], 1)
+        self.assertFalse(row.get("document_extraction", {}).get("ted_xml_parsed"))
+        self.assertFalse(row["sourcing"])
+        self.assertFalse(row["commercial_approval"])
+
     def test_default_does_not_fetch_official_package(self):
         row = {"source": "TED", "publication-number": "123-2026",
                "ojs-number": "197/2026", "sourcing": False}
