@@ -1,6 +1,83 @@
 {
   "version": 1,
   "notices": {
+    "718719-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-04"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718722-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2028-11-30"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718726-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-16"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718732-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-20"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718763-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-24"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718783-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-17"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718827-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-17"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718846-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-19"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718874-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-19"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718888-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-17"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
+    "718900-2026": {
+      "lot_count": 1,
+      "fields": {
+        "submission_deadline_date": "2026-11-16"
+      },
+      "verified_at": "2026-11-02T05:58:29.487192+00:00"
+    },
     "715121-2026": {
       "lot_count": 1,
       "fields": {
@@ -189,6 +266,6 @@
   },
   "last_scan": {
     "reused_notices": 0,
-    "refreshed_notices": 0
+    "refreshed_notices": 11
   }
 }
