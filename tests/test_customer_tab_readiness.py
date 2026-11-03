@@ -13,7 +13,7 @@ class CustomerTabReadinessTests(unittest.TestCase):
 
     def test_all_customer_navigation_tabs_have_help(self):
         source = (ROOT / "web/customer-tab-readiness.js").read_text(encoding="utf-8")
-        for key in ("agents", "opps", "report", "settings", "markets"):
+        for key in ("agents", "opps", "report", "settings", "markets", "buyers", "suppliers", "pricing", "logistics", "trade", "risk", "communication", "negotiation", "contract", "commission", "payments"):
             self.assertIn(key + ":{", source)
         self.assertIn("typeof window.openCard==='function'", source)
         self.assertIn("if(!host)return", source)
