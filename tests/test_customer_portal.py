@@ -45,6 +45,16 @@ class CustomerPortalTests(unittest.TestCase):
         self.assertIn("htmlText(e.contact_credits_remaining==null?'Sınırsız':e.contact_credits_remaining)",js)
         self.assertNotIn("'Aktif sektörler: '+selectedNames",js)
 
+    def test_empty_states_are_distinct_and_result_limit_is_disclosed(self):
+        js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
+        self.assertIn("var goodsRows=sourceRows.filter(isGoods)",js)
+        self.assertIn("rows=goodsRows.filter(allowedByPlan)",js)
+        self.assertIn("Şu anda gösterilebilir fiziksel ürün fırsatı yok.",js)
+        self.assertIn("Seçtiğiniz sektör ve ülkelerde fırsat bulunamadı.",js)
+        self.assertIn("Bu filtrelerle eşleşen fırsat yok.",js)
+        self.assertIn("İlk 100 fırsat gösteriliyor.",js)
+        self.assertIn("filtered.length>100",js)
+
     def test_deploy_injects_customer_portal_and_ci_checks_syntax(self):
         deploy=(ROOT/".github/workflows/deploy-mobile.yml").read_text(encoding="utf-8")
         ci=(ROOT/".github/workflows/verified-brokerage-ci.yml").read_text(encoding="utf-8")
