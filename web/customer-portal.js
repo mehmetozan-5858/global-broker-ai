@@ -76,7 +76,9 @@ async function requestIntroduction(o,button,box){
 }
 
 function mount(rows){
-  rows=(rows||[]).filter(isGoods).filter(allowedByPlan);
+  var sourceRows=Array.isArray(rows)?rows:[];
+  var goodsRows=sourceRows.filter(isGoods);
+  rows=goodsRows.filter(allowedByPlan);
   var cards=document.getElementById('cards');if(!cards)return;
   var old=document.getElementById('customerSearch');if(old)old.remove();
   var e=entitlement(),p=preferences(),policy=pricing();
@@ -90,7 +92,8 @@ function mount(rows){
     var q=query.value.trim().toLocaleLowerCase('tr'),c=countrySel.value,minCoverage=Number(qualitySel.value||0);
     var filtered=rows.filter(function(o){var hay=(product(o)+' '+country(o)+' '+source(o)).toLocaleLowerCase('tr');return (!q||hay.indexOf(q)>=0)&&(!c||country(o)===c)&&coverage(o)>=minCoverage}).sort(function(a,b){var d=coverage(b)-coverage(a);return d||product(a).localeCompare(product(b),'tr')});
     count.textContent=filtered.length+' fırsat';results.textContent='';
-    if(!filtered.length){var empty=document.createElement('div');empty.className='cp-empty';if(!e.all_sectors&&!(p.selected_sectors||[]).length)empty.innerHTML='<b>Henüz sektör seçmediniz.</b><br>Hesabım ekranından sektör kümenizi seçtiğinizde uygun fırsatlar burada görünür.';else empty.innerHTML='<b>Bu filtrelerle eşleşen fırsat yok.</b><br>Ürün aramasını temizleyin, ülke filtresini genişletin veya daha sonra yeniden kontrol edin.';results.appendChild(empty);return}
+    if(!filtered.length){var empty=document.createElement('div');empty.className='cp-empty';if(!e.all_sectors&&!(p.selected_sectors||[]).length)empty.innerHTML='<b>Henüz sektör seçmediniz.</b><br>Hesabım ekranından sektör kümenizi seçtiğinizde uygun fırsatlar burada görünür.';else if(!goodsRows.length)empty.innerHTML='<b>Şu anda gösterilebilir fiziksel ürün fırsatı yok.</b><br>Kaynak doğrulaması tamamlanan uygun kayıtlar olduğunda burada görünür. Bu durum bir bağlantı hatası değildir.';else if(!rows.length)empty.innerHTML='<b>Seçtiğiniz sektör ve ülkelerde fırsat bulunamadı.</b><br>Hesabım ekranından tercihlerinizi gözden geçirebilir veya daha sonra yeniden kontrol edebilirsiniz.';else empty.innerHTML='<b>Bu filtrelerle eşleşen fırsat yok.</b><br>Ürün aramasını temizleyin, ülke filtresini genişletin veya kaynak kapsamı eşiğini düşürün.';results.appendChild(empty);return}
+    if(filtered.length>100){var limitNote=document.createElement('p');limitNote.className='cp-contact-msg';limitNote.textContent='İlk 100 fırsat gösteriliyor. Daha dar ürün, ülke veya kaynak kapsamı filtresi kullanın.';results.appendChild(limitNote);}
     filtered.slice(0,100).forEach(function(o){
       var card=document.createElement('article');card.className='cp-card';
       var top=document.createElement('div');top.className='cp-card-top';var title=document.createElement('h3');title.textContent=product(o);top.appendChild(title);var badge=document.createElement('span');badge.className='cp-badge';badge.textContent=(policy&&policy.sectorClusters&&policy.sectorClusters[sectorOf(o)]?policy.sectorClusters[sectorOf(o)].name:'Fiziksel ürün');top.appendChild(badge);card.appendChild(top);
