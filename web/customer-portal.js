@@ -67,12 +67,19 @@ async function requestIntroduction(o,button,box){
       box.textContent=messages[data.status]||'Tanıştırma talebi şu anda oluşturulamadı.';
       button.disabled=false;button.textContent='Tanıştırma talebi gönder (1 kredi)';return;
     }
-    requestState[o.opportunity_id]={request_id:data.request_id,opportunity_id:o.opportunity_id,status:data.request_status||'requested'};
+    var validStatuses=['requested','verifying','buyer_consent_pending','approved','introduced','declined','expired','refunded'];
+    if(!data||data.status!=='INTRODUCTION_REQUESTED'||typeof data.request_id!=='string'||!data.request_id.trim()||
+       data.opportunity_id!==o.opportunity_id||validStatuses.indexOf(data.request_status)<0||
+       !(data.credits_remaining==null||(Number.isInteger(data.credits_remaining)&&data.credits_remaining>=0))){
+      box.textContent='Talebin sonucu doğrulanamadı. Tekrar göndermeden önce sayfayı yenileyerek talep durumunu kontrol edin.';
+      button.disabled=true;button.textContent='Talep durumu kontrol edilmeli';return;
+    }
+    requestState[o.opportunity_id]={request_id:data.request_id,opportunity_id:o.opportunity_id,status:data.request_status};
     if(accessState&&accessState.entitlement)accessState.entitlement.contact_credits_remaining=data.credits_remaining;
     var credit=document.getElementById('cpCredits');if(credit)credit.textContent=data.credits_remaining==null?'Sınırsız':String(data.credits_remaining);
     box.className='cp-intro-status';box.textContent=data.already_requested?'Mevcut talep: '+statusLabel(data.request_status):'Tanıştırma talebiniz alındı. Alıcı ve erişim yolu doğrulanacak; uygun değilse kredi iade edilecek.';
     button.textContent=statusLabel(data.request_status||'requested');button.disabled=true;
-  }catch(e){box.textContent='Bağlantı hatası nedeniyle tanıştırma talebi gönderilemedi.';button.disabled=false;button.textContent='Tanıştırma talebi gönder (1 kredi)'}
+  }catch(e){box.textContent='Bağlantı kesildi; talebin ulaşıp ulaşmadığı bilinmiyor. Tekrar göndermeden önce sayfayı yenileyip talep durumunu kontrol edin.';button.disabled=true;button.textContent='Talep durumu kontrol edilmeli'}
 }
 
 function mount(rows){
