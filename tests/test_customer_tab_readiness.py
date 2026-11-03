@@ -26,7 +26,7 @@ class CustomerTabReadinessTests(unittest.TestCase):
         deploy = (ROOT / ".github/workflows/deploy-mobile.yml").read_text(encoding="utf-8")
         for value in ("0", "5", "6"):
             self.assertIn('value="' + value + '"', portal)
-            self.assertIn('data-q=\\\"' + value + '\\\"', quick)
+            self.assertIn('data-q="' + value + '"', quick)
         self.assertIn("addScript(d,'/web/customer-priority.js')", shell)
         self.assertIn('<script src="customer-priority.js" defer></script>', deploy)
 
