@@ -37,6 +37,14 @@ class CustomerPortalTests(unittest.TestCase):
         self.assertNotIn('Math.random',js)
         self.assertNotIn('fake',js.lower())
 
+    def test_account_labels_are_escaped_before_html_rendering(self):
+        js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
+        self.assertIn("function htmlText(v)",js)
+        self.assertIn("htmlText(selectedNames)",js)
+        self.assertIn("htmlText(String(e.plan_id||'free').toUpperCase())",js)
+        self.assertIn("htmlText(e.contact_credits_remaining==null?'Sınırsız':e.contact_credits_remaining)",js)
+        self.assertNotIn("'Aktif sektörler: '+selectedNames",js)
+
     def test_deploy_injects_customer_portal_and_ci_checks_syntax(self):
         deploy=(ROOT/".github/workflows/deploy-mobile.yml").read_text(encoding="utf-8")
         ci=(ROOT/".github/workflows/verified-brokerage-ci.yml").read_text(encoding="utf-8")
