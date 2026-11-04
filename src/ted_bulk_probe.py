@@ -34,6 +34,19 @@ def notice_only_acceptance(outcomes):
     )
 
 
+def summarize_attempt_evidence(info):
+    """Keep official XML provenance separate from parsed attachment counts."""
+    attempts = info.get('attempts') if isinstance(info, dict) else None
+    valid = [a for a in attempts if isinstance(a, dict) and a.get('status') == 'parsed'] if isinstance(attempts, list) else []
+    bulk = [a for a in valid if a.get('source') == 'ted_xml'
+            and a.get('source_channel') == 'official_daily_xml_package']
+    return {
+        'source_channel': 'official_daily_xml_package' if bulk else None,
+        'package_sha256': next((a.get('source_package_sha256') for a in bulk if a.get('source_package_sha256')), None),
+        'linked_documents_parsed': sum(a.get('source') in {'attachment', 'linked_document'} for a in valid),
+    }
+
+
 def main():
     end = date.today()
     start = end - timedelta(days=14)
@@ -47,17 +60,14 @@ def main():
     outcomes = []
     for row in rows:
         identity = publication(row['publication-number'])
-        info = row.get('document_extraction', {})
-        parsed = [a for a in info.get('attempts', [])
-                  if isinstance(a, dict) and a.get('status') == 'parsed'
-                  and a.get('source') == 'ted_xml'
-                  and a.get('source_channel') == 'official_daily_xml_package']
+        info = row.get('document_extraction')
+        evidence = summarize_attempt_evidence(info)
         outcomes.append({'publication': identity, 'ojs': row.get('ojs-number'),
-                         'official_xml_parsed': info.get('ted_xml_parsed') is True,
-                         'source_channel': 'official_daily_xml_package' if parsed else None,
-                         'text_chars': info.get('text_chars', 0),
-                         'package_sha256': next((a.get('source_package_sha256') for a in parsed if a.get('source_package_sha256')), None),
-                         'linked_documents_parsed': sum(a.get('source') in {'attachment', 'linked_document'} for a in parsed),
+                         'official_xml_parsed': isinstance(info, dict) and info.get('ted_xml_parsed') is True,
+                         'source_channel': evidence['source_channel'],
+                         'text_chars': info.get('text_chars', 0) if isinstance(info, dict) else 0,
+                         'package_sha256': evidence['package_sha256'],
+                         'linked_documents_parsed': evidence['linked_documents_parsed'],
                          'commercial_approval': row.get('buyer_verified') is True})
     passed = notice_only_acceptance(outcomes)
     print('TED_BULK_NOTICE_PROBE', json.dumps({'official_notice_acceptance': passed,
