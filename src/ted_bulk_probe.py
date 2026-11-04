@@ -7,6 +7,28 @@ from src.ted_search_fields import apply_search_fields, notice_context
 from src.ted_xml_enricher import enrich_payload
 
 
+def notice_only_acceptance(outcomes):
+    """Accept official notice metadata only; never infer linked-annex approval.
+
+    The direct-document and technical-annex release gates remain independent.
+    """
+    import re
+    if not isinstance(outcomes, list) or not outcomes:
+        return False
+    return all(
+        isinstance(item, dict)
+        and isinstance(item.get('publication'), str)
+        and bool(re.fullmatch(r'[1-9][0-9]{0,7}-[0-9]{4}', item['publication']))
+        and item.get('official_xml_parsed') is True
+        and isinstance(item.get('text_chars'), int)
+        and item['text_chars'] > 0
+        and isinstance(item.get('package_sha256'), str)
+        and bool(re.fullmatch(r'[a-f0-9]{64}', item['package_sha256']))
+        and item.get('commercial_approval') is False
+        for item in outcomes
+    )
+
+
 def main():
     end = date.today()
     start = end - timedelta(days=14)
@@ -28,7 +50,7 @@ def main():
                          'package_sha256': next((a['source_package_sha256'] for a in parsed if a.get('source_package_sha256')), None),
                          'linked_documents_parsed': sum(a.get('source') in {'attachment', 'linked_document'} for a in parsed),
                          'commercial_approval': row.get('buyer_verified') is True})
-    passed = all(o['official_xml_parsed'] and not o['commercial_approval'] for o in outcomes)
+    passed = notice_only_acceptance(outcomes)
     print('TED_BULK_NOTICE_PROBE', json.dumps({'official_notice_acceptance': passed,
           'technical_annex_acceptance': False, 'batch': payload['document_extraction'].get('ted_bulk_fallback'),
           'outcomes': outcomes}, sort_keys=True), flush=True)
