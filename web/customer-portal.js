@@ -11,7 +11,7 @@ var loading=false;
 async function readJSON(url,options){var controller=new AbortController(),timer=setTimeout(function(){controller.abort()},15000);try{var response=await fetch(url,Object.assign({},options,{signal:controller.signal}));var data;try{data=await response.json()}catch(error){if(response.ok)throw error}return {ok:response.ok,status:response.status,data:data}}finally{clearTimeout(timer)}}
 async function rpc(name,body){var t=token();if(!t)throw {status:401};var result=await readJSON(SB_URL+'/rest/v1/rpc/'+name,{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+t,'Content-Type':'application/json'},body:JSON.stringify(body||{}),cache:'no-store'});if(!result.ok)throw {status:result.status};return result.data}
 async function loadAccess(){return rpc('my_broker_access',{})}
-async function loadRequests(){var rows=await rpc('my_introduction_requests',{});requestState={};(Array.isArray(rows)?rows:[]).forEach(function(r){if(r&&r.opportunity_id)requestState[r.opportunity_id]=r});return requestState}
+async function loadRequests(){var rows=await rpc('my_introduction_requests',{});if(!Array.isArray(rows))throw new Error('request_history_unavailable');var next=Object.create(null);rows.forEach(function(r){if(!r||typeof r!=='object'||typeof r.opportunity_id!=='string'||!r.opportunity_id.trim()||typeof r.status!=='string'||!r.status.trim())throw new Error('request_history_invalid');if(Object.prototype.hasOwnProperty.call(next,r.opportunity_id))throw new Error('request_history_duplicate');next[r.opportunity_id]=r});requestState=next;return requestState}
 
 function txt(v){return v==null?'':String(v).trim()}
 function htmlText(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
@@ -133,7 +133,7 @@ async function loadPortal(){
   if(loading)return;loading=true;requestState={};loadState('loading');
   try{
     if(!token())throw {status:401};
-    var results=await Promise.all([loadAccess(),loadRequests().catch(function(){requestState={};return {}})]);
+    var results=await Promise.all([loadAccess(),loadRequests()]);
     accessState=results[0];if(!accessState||!accessState.entitlement||typeof accessState.entitlement!=='object'||Array.isArray(accessState.entitlement))throw new Error('access');
     var feed=await readJSON('/data/latest-opportunities.json?t='+Date.now(),{cache:'no-store'});
     if(!feed.ok)throw {status:feed.status};
