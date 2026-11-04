@@ -34,10 +34,16 @@ def notice_only_acceptance(outcomes):
     )
 
 
-def summarize_attempt_evidence(info):
-    """Keep official XML provenance separate from parsed attachment counts."""
+def summarize_attempt_evidence(info, *, new_attempt_offset=0):
+    """Use only newly executed attempts for official XML provenance.
+
+    Search/cache metadata may contain forged historic attempt records.
+    """
     attempts = info.get('attempts') if isinstance(info, dict) else None
-    valid = [a for a in attempts if isinstance(a, dict) and a.get('status') == 'parsed'] if isinstance(attempts, list) else []
+    if type(new_attempt_offset) is not int or new_attempt_offset < 0:
+        return {'source_channel': None, 'package_sha256': None, 'linked_documents_parsed': 0}
+    valid = [a for a in attempts[new_attempt_offset:]
+             if isinstance(a, dict) and a.get('status') == 'parsed'] if isinstance(attempts, list) else []
     bulk = [a for a in valid if a.get('source') == 'ted_xml'
             and a.get('source_channel') == 'official_daily_xml_package']
     return {
@@ -56,12 +62,20 @@ def main():
                   key=lambda row: bool(row.get('ted_document_link_count')), reverse=True)[:2]
     if not rows:
         raise RuntimeError('no-bulk-probe-notices')
+    # Record the imported attempt boundary before any direct/bulk source work.
+    # Imported rows must never contribute official evidence to this probe.
+    prior_attempt_counts = []
+    for row in rows:
+        info = row.get('document_extraction')
+        attempts = info.get('attempts') if isinstance(info, dict) else None
+        prior_attempt_counts.append(sum(isinstance(a, dict) for a in attempts)
+                                    if isinstance(attempts, list) else 0)
     payload = enrich_payload({'opportunities': rows}, bulk_enabled=True)
     outcomes = []
-    for row in rows:
+    for row, prior_count in zip(rows, prior_attempt_counts):
         identity = publication(row['publication-number'])
         info = row.get('document_extraction')
-        evidence = summarize_attempt_evidence(info)
+        evidence = summarize_attempt_evidence(info, new_attempt_offset=prior_count)
         outcomes.append({'publication': identity, 'ojs': row.get('ojs-number'),
                          'official_xml_parsed': isinstance(info, dict) and info.get('ted_xml_parsed') is True,
                          'source_channel': evidence['source_channel'],
