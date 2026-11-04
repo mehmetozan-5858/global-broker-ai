@@ -36,6 +36,11 @@ class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
     def test_boolean_text_count_is_not_a_real_document_length(self):
         self.assertFalse(notice_only_acceptance([{**self.valid, 'text_chars': True}]))
 
+    def test_duplicate_publications_do_not_count_as_two_notices(self):
+        self.assertFalse(notice_only_acceptance([self.valid, dict(self.valid)]))
+        second = {**self.valid, 'publication': '718664-2026'}
+        self.assertTrue(notice_only_acceptance([self.valid, second]))
+
     def test_one_invalid_notice_rejects_whole_batch(self):
         self.assertFalse(notice_only_acceptance([self.valid, {**self.valid, 'package_sha256': ''}]))
 
