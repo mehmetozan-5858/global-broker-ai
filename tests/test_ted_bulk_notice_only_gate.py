@@ -1,6 +1,6 @@
 """Offline tests: official bulk notice metadata is NOT commercial or annex evidence."""
 import unittest
-from src.ted_bulk_probe import notice_only_acceptance, summarize_attempt_evidence
+from src.ted_bulk_gate import notice_only_acceptance, summarize_attempt_evidence
 
 
 class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
