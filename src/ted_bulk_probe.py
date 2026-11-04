@@ -24,6 +24,7 @@ def notice_only_acceptance(outcomes):
         and isinstance(item.get('publication'), str)
         and bool(re.fullmatch(r'[1-9][0-9]{0,7}-[0-9]{4}', item['publication']))
         and item.get('official_xml_parsed') is True
+        and item.get('source_channel') == 'official_daily_xml_package'
         and type(item.get('text_chars')) is int
         and item['text_chars'] > 0
         and isinstance(item.get('package_sha256'), str)
@@ -47,11 +48,15 @@ def main():
     for row in rows:
         identity = publication(row['publication-number'])
         info = row.get('document_extraction', {})
-        parsed = [a for a in info.get('attempts', []) if a.get('status') == 'parsed']
+        parsed = [a for a in info.get('attempts', [])
+                  if isinstance(a, dict) and a.get('status') == 'parsed'
+                  and a.get('source') == 'ted_xml'
+                  and a.get('source_channel') == 'official_daily_xml_package']
         outcomes.append({'publication': identity, 'ojs': row.get('ojs-number'),
                          'official_xml_parsed': info.get('ted_xml_parsed') is True,
+                         'source_channel': 'official_daily_xml_package' if parsed else None,
                          'text_chars': info.get('text_chars', 0),
-                         'package_sha256': next((a['source_package_sha256'] for a in parsed if a.get('source_package_sha256')), None),
+                         'package_sha256': next((a.get('source_package_sha256') for a in parsed if a.get('source_package_sha256')), None),
                          'linked_documents_parsed': sum(a.get('source') in {'attachment', 'linked_document'} for a in parsed),
                          'commercial_approval': row.get('buyer_verified') is True})
     passed = notice_only_acceptance(outcomes)
