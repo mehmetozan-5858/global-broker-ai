@@ -20,7 +20,7 @@ def notice_only_acceptance(outcomes):
         and isinstance(item.get('publication'), str)
         and bool(re.fullmatch(r'[1-9][0-9]{0,7}-[0-9]{4}', item['publication']))
         and item.get('official_xml_parsed') is True
-        and isinstance(item.get('text_chars'), int)
+        and type(item.get('text_chars')) is int
         and item['text_chars'] > 0
         and isinstance(item.get('package_sha256'), str)
         and bool(re.fullmatch(r'[a-f0-9]{64}', item['package_sha256']))
