@@ -55,6 +55,15 @@ class CustomerPortalTests(unittest.TestCase):
         self.assertIn("İlk 100 fırsat gösteriliyor.",js)
         self.assertIn("filtered.length>100",js)
 
+    def test_empty_results_offer_safe_recovery_actions(self):
+        js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
+        self.assertIn("Filtreleri temizle",js)
+        self.assertIn("query.value='';countrySel.value='';qualitySel.value='0'",js)
+        self.assertIn("reset.onclick=function()",js)
+        self.assertIn("settings.href='/account'",js)
+        self.assertIn("settings.target='_top'",js)
+        self.assertNotIn("window.location.reload()",js)
+
     def test_deploy_injects_customer_portal_and_ci_checks_syntax(self):
         deploy=(ROOT/".github/workflows/deploy-mobile.yml").read_text(encoding="utf-8")
         ci=(ROOT/".github/workflows/verified-brokerage-ci.yml").read_text(encoding="utf-8")
