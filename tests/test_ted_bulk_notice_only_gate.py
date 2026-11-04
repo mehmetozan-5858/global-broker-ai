@@ -1,6 +1,6 @@
 """Offline tests: official bulk notice metadata is NOT commercial or annex evidence."""
 import unittest
-from src.ted_bulk_probe import notice_only_acceptance
+from src.ted_bulk_probe import notice_only_acceptance, summarize_attempt_evidence
 
 
 class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
@@ -45,6 +45,38 @@ class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
         self.assertFalse(notice_only_acceptance([self.valid, dict(self.valid)]))
         second = {**self.valid, 'publication': '718664-2026'}
         self.assertTrue(notice_only_acceptance([self.valid, second]))
+
+    def test_bulk_and_linked_documents_are_independent(self):
+        info = {'attempts': [
+            {'status': 'parsed', 'source': 'ted_xml', 'source_channel': 'official_daily_xml_package',
+             'source_package_sha256': 'a' * 64},
+            {'status': 'parsed', 'source': 'linked_document'},
+            {'status': 'parsed', 'source': 'attachment'},
+            {'status': 'failed', 'source': 'linked_document'},
+        ]}
+        result = summarize_attempt_evidence(info)
+        self.assertEqual(result['source_channel'], 'official_daily_xml_package')
+        self.assertEqual(result['package_sha256'], 'a' * 64)
+        self.assertEqual(result['linked_documents_parsed'], 2)
+
+    def test_linked_documents_cannot_become_official_xml_digest(self):
+        info = {'attempts': [
+            {'status': 'parsed', 'source': 'linked_document',
+             'source_package_sha256': 'b' * 64},
+        ]}
+        self.assertEqual(summarize_attempt_evidence(info), {
+            'source_channel': None, 'package_sha256': None,
+            'linked_documents_parsed': 1,
+        })
+
+    def test_malformed_attempt_metadata_fails_closed_without_crashing(self):
+        for info in (None, {}, {'attempts': None}, {'attempts': 'parsed'},
+                     {'attempts': {'status': 'parsed'}}, {'attempts': [None, 7, 'parsed']}):
+            with self.subTest(info=info):
+                self.assertEqual(summarize_attempt_evidence(info), {
+                    'source_channel': None, 'package_sha256': None,
+                    'linked_documents_parsed': 0,
+                })
 
     def test_one_invalid_notice_rejects_whole_batch(self):
         self.assertFalse(notice_only_acceptance([self.valid, {**self.valid, 'package_sha256': ''}]))
