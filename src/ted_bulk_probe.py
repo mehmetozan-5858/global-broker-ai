@@ -15,6 +15,10 @@ def notice_only_acceptance(outcomes):
     import re
     if not isinstance(outcomes, list) or not outcomes:
         return False
+    # A repeated publication must not count as two independently verified notices.
+    identities = [item.get('publication') for item in outcomes if isinstance(item, dict)]
+    if len(identities) != len(outcomes) or len(set(map(str, identities))) != len(identities):
+        return False
     return all(
         isinstance(item, dict)
         and isinstance(item.get('publication'), str)
