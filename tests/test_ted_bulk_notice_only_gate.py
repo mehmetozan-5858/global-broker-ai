@@ -6,7 +6,7 @@ from src.ted_bulk_probe import notice_only_acceptance
 class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
     def setUp(self):
         self.valid = {'publication': '718662-2026', 'official_xml_parsed': True,
-                      'text_chars': 3616, 'package_sha256': 'a' * 64,
+                      'text_chars': 3616, 'source_channel': 'official_daily_xml_package', 'package_sha256': 'a' * 64,
                       'linked_documents_parsed': 0, 'commercial_approval': False}
 
     def test_valid_digest_and_notice_metadata_pass_only_notice_gate(self):
@@ -35,6 +35,11 @@ class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
 
     def test_boolean_text_count_is_not_a_real_document_length(self):
         self.assertFalse(notice_only_acceptance([{**self.valid, 'text_chars': True}]))
+
+    def test_unverified_source_channel_rejected(self):
+        for channel in (None, '', 'ted_xml', 'linked_document', 'source_page'):
+            with self.subTest(channel=channel):
+                self.assertFalse(notice_only_acceptance([{**self.valid, 'source_channel': channel}]))
 
     def test_duplicate_publications_do_not_count_as_two_notices(self):
         self.assertFalse(notice_only_acceptance([self.valid, dict(self.valid)]))
