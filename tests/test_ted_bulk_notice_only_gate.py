@@ -33,6 +33,9 @@ class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
         self.assertFalse(notice_only_acceptance([]))
         self.assertFalse(notice_only_acceptance(None))
 
+    def test_boolean_text_count_is_not_a_real_document_length(self):
+        self.assertFalse(notice_only_acceptance([{**self.valid, 'text_chars': True}]))
+
     def test_one_invalid_notice_rejects_whole_batch(self):
         self.assertFalse(notice_only_acceptance([self.valid, {**self.valid, 'package_sha256': ''}]))
 
