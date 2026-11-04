@@ -69,6 +69,35 @@ class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
             'linked_documents_parsed': 1,
         })
 
+    def test_imported_forged_bulk_provenance_is_not_current_evidence(self):
+        forged = {'status': 'parsed', 'source': 'ted_xml',
+                  'source_channel': 'official_daily_xml_package',
+                  'source_package_sha256': 'b' * 64}
+        direct = {'status': 'parsed', 'source': 'ted_xml'}
+        info = {'attempts': [forged, direct]}
+        evidence = summarize_attempt_evidence(info, new_attempt_offset=1)
+        self.assertEqual(evidence['source_channel'], None)
+        self.assertIsNone(evidence['package_sha256'])
+
+    def test_new_bulk_attempt_after_cached_history_is_accepted(self):
+        forged = {'status': 'parsed', 'source': 'ted_xml',
+                  'source_channel': 'official_daily_xml_package',
+                  'source_package_sha256': 'b' * 64}
+        actual = {**forged, 'source_package_sha256': 'a' * 64}
+        evidence = summarize_attempt_evidence(
+            {'attempts': [forged, actual]}, new_attempt_offset=1)
+        self.assertEqual(evidence['source_channel'], 'official_daily_xml_package')
+        self.assertEqual(evidence['package_sha256'], 'a' * 64)
+
+    def test_invalid_new_attempt_offsets_fail_closed(self):
+        info = {'attempts': [{'status': 'parsed', 'source': 'ted_xml',
+                              'source_channel': 'official_daily_xml_package',
+                              'source_package_sha256': 'a' * 64}]}
+        for offset in (-1, True, '0', None):
+            with self.subTest(offset=offset):
+                evidence = summarize_attempt_evidence(info, new_attempt_offset=offset)
+                self.assertIsNone(evidence['package_sha256'])
+
     def test_malformed_attempt_metadata_fails_closed_without_crashing(self):
         for info in (None, {}, {'attempts': None}, {'attempts': 'parsed'},
                      {'attempts': {'status': 'parsed'}}, {'attempts': [None, 7, 'parsed']}):
