@@ -6,6 +6,10 @@ Never sets annex/commercial acceptance flags and never contacts TED.
 Usage: python -m src.ted_offline_archive_acceptance <file.tar.gz> <edition> <notice> [<notice>...]
 """
 import hashlib
+import gzip
+import tarfile
+import zlib
+from xml.etree import ElementTree
 import json
 from pathlib import Path
 import sys
@@ -42,7 +46,7 @@ def main():
         raise SystemExit('usage: python -m src.ted_offline_archive_acceptance <archive.tar.gz> <S/YYYY> <notice> [notice...]')
     try:
         result = inspect_archive(sys.argv[1], sys.argv[2], sys.argv[3:])
-    except (OSError, ValueError, TypeError, EOFError) as exc:
+    except (OSError, ValueError, TypeError, EOFError, tarfile.TarError, zlib.error, ElementTree.ParseError) as exc:
         print(json.dumps({'ok': False, 'error': type(exc).__name__, 'notice_only_acceptance': False,
                           'linked_annexes_validated': False, 'commercial_approval': False}), flush=True)
         raise SystemExit(1)
