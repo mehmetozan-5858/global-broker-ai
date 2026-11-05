@@ -29,7 +29,7 @@ class OfflineArchiveAcceptanceTests(unittest.TestCase):
     def test_structural_success_still_does_not_grant_official_or_commercial_acceptance(self):
         with tempfile.TemporaryDirectory() as d:
             file=Path(d)/'daily.gz'
-            file.write_bytes(b'fake-downloaded-bytes')
+            file.write_bytes(b'\x1f\x8bmock-archive-only-for-parser-test')
             with patch('src.ted_offline_archive_acceptance.select_daily_notices',
                        return_value={'718662-2026':object()}):
                 result=inspect_archive(file,'215/2026',['718662-2026'])
@@ -45,13 +45,22 @@ class OfflineArchiveAcceptanceTests(unittest.TestCase):
     def test_mismatched_or_missing_selected_notice_never_accepts(self):
         with tempfile.TemporaryDirectory() as d:
             file=Path(d)/'daily.gz'
-            file.write_bytes(b'local-archive-with-unverified-origin')
+            file.write_bytes(b'\x1f\x8bmock-unverified-origin')
             for selected in ({}, {'111111-2026': object()}, {'718662-2026': object(), '111111-2026': object()}):
                 with self.subTest(selected=selected):
                     with patch('src.ted_offline_archive_acceptance.select_daily_notices',
                                return_value=selected):
                         with self.assertRaisesRegex(ValueError, 'archive-notice-identity-mismatch'):
                             inspect_archive(file, '215/2026', ['718662-2026'])
+
+    def test_invalid_gzip_header_fails_before_parser(self):
+        with tempfile.TemporaryDirectory() as d:
+            file=Path(d)/'invalid.gz'
+            file.write_bytes(b'not-an-official-gzip')
+            with patch('src.ted_offline_archive_acceptance.select_daily_notices') as parser:
+                with self.assertRaisesRegex(ValueError, 'invalid-archive-gzip-header'):
+                    inspect_archive(file, '215/2026', ['718662-2026'])
+                parser.assert_not_called()
 
     def test_garbage_archive_is_rejected_by_real_parser(self):
         with tempfile.TemporaryDirectory() as d:
