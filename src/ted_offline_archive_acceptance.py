@@ -30,7 +30,8 @@ def inspect_archive(path, edition, notice_ids):
         'package_sha256': hashlib.sha256(compressed).hexdigest(),
         'archive_size_bytes': len(compressed),
         'notice_xml_validated': sorted(selected),
-        'notice_only_acceptance': True,
+        'offline_notice_structure_validated': True,
+        'notice_only_acceptance': False, # needs independently confirmed source origin
         'linked_annexes_validated': False,
         'commercial_approval': False,
     }
