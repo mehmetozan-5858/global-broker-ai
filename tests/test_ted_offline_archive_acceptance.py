@@ -42,5 +42,24 @@ class OfflineArchiveAcceptanceTests(unittest.TestCase):
                              'https://ted.europa.eu/packages/daily/202600215')
 
 
+    def test_mismatched_or_missing_selected_notice_never_accepts(self):
+        with tempfile.TemporaryDirectory() as d:
+            file=Path(d)/'daily.gz'
+            file.write_bytes(b'local-archive-with-unverified-origin')
+            for selected in ({}, {'111111-2026': object()}, {'718662-2026': object(), '111111-2026': object()}):
+                with self.subTest(selected=selected):
+                    with patch('src.ted_offline_archive_acceptance.select_daily_notices',
+                               return_value=selected):
+                        with self.assertRaisesRegex(ValueError, 'archive-notice-identity-mismatch'):
+                            inspect_archive(file, '215/2026', ['718662-2026'])
+
+    def test_garbage_archive_is_rejected_by_real_parser(self):
+        with tempfile.TemporaryDirectory() as d:
+            file=Path(d)/'daily.gz'
+            file.write_bytes(b'not-a-gzip-or-tar')
+            with self.assertRaises((OSError, ValueError, EOFError)):
+                inspect_archive(file, '215/2026', ['718662-2026'])
+
+
 if __name__=='__main__':
     unittest.main()
