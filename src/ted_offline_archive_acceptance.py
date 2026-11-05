@@ -27,6 +27,11 @@ def inspect_archive(path, edition, notice_ids):
     if not 0 < size <= MAX_COMPRESSED:
         raise ValueError('invalid-archive-size')
     compressed = file.read_bytes()
+    # Guard file swaps between stat/read and reject any non-gzip input early.
+    if not 0 < len(compressed) <= MAX_COMPRESSED:
+        raise ValueError('invalid-archive-size')
+    if not compressed.startswith(b'\x1f\x8b'):
+        raise ValueError('invalid-archive-gzip-header')
     selected = select_daily_notices(compressed, edition, notices)
     if set(selected) != set(notices):
         raise ValueError('archive-notice-identity-mismatch')
