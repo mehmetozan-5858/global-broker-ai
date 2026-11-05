@@ -1,6 +1,6 @@
 """Offline tests: official bulk notice metadata is NOT commercial or annex evidence."""
 import unittest
-from src.ted_bulk_gate import notice_only_acceptance, summarize_attempt_evidence
+from src.ted_bulk_gate import notice_only_acceptance, summarize_attempt_evidence, historic_attempt_offset
 
 
 class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
@@ -97,6 +97,27 @@ class BulkNoticeOnlyAcceptanceTests(unittest.TestCase):
             with self.subTest(offset=offset):
                 evidence = summarize_attempt_evidence(info, new_attempt_offset=offset)
                 self.assertIsNone(evidence['package_sha256'])
+
+    def test_non_dict_historic_entries_cannot_shift_new_attempt_boundary(self):
+        old = {'status': 'parsed', 'source': 'ted_xml',
+               'source_channel': 'official_daily_xml_package',
+               'source_package_sha256': 'b' * 64}
+        imported = {'attempts': [None, old, 'corrupt']}
+        offset = historic_attempt_offset(imported)
+        self.assertEqual(offset, 3)
+        self.assertEqual(summarize_attempt_evidence(imported, new_attempt_offset=offset), {
+            'source_channel': None, 'package_sha256': None,
+            'linked_documents_parsed': 0,
+        })
+        newest = {'status': 'parsed', 'source': 'ted_xml',
+                  'source_channel': 'official_daily_xml_package',
+                  'source_package_sha256': 'a' * 64}
+        actual = summarize_attempt_evidence(
+            {'attempts': imported['attempts'] + [newest]}, new_attempt_offset=offset)
+        self.assertEqual(actual['package_sha256'], 'a' * 64)
+        self.assertIsNone(summarize_attempt_evidence(imported,
+            new_attempt_offset=offset)['package_sha256'])
+        self.assertEqual(historic_attempt_offset({'attempts': 'malformed'}), 0)
 
     def test_malformed_attempt_metadata_fails_closed_without_crashing(self):
         for info in (None, {}, {'attempts': None}, {'attempts': 'parsed'},
