@@ -28,6 +28,8 @@ def inspect_archive(path, edition, notice_ids):
         raise ValueError('invalid-archive-size')
     compressed = file.read_bytes()
     selected = select_daily_notices(compressed, edition, notices)
+    if set(selected) != set(notices):
+        raise ValueError('archive-notice-identity-mismatch')
     return {
         'archive_origin_verified': False,  # filesystem cannot authenticate the download
         'official_url_expected': official_url,
