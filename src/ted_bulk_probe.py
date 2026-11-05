@@ -23,8 +23,9 @@ def main():
     for row in rows:
         info = row.get('document_extraction')
         attempts = info.get('attempts') if isinstance(info, dict) else None
-        prior_attempt_counts.append(sum(isinstance(a, dict) for a in attempts)
-                                    if isinstance(attempts, list) else 0)
+        # Offset uses the FULL imported list length, including malformed entries.
+        # Counting only dicts can expose an old digest after a non-dict entry.
+        prior_attempt_counts.append(len(attempts) if isinstance(attempts, list) else 0)
     payload = enrich_payload({'opportunities': rows}, bulk_enabled=True)
     outcomes = []
     for row, prior_count in zip(rows, prior_attempt_counts):
