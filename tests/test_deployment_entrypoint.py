@@ -29,7 +29,8 @@ class DeploymentEntrypointTests(unittest.TestCase):
     def test_public_pages_and_handoff_assets_are_reachable(self):
         for route,marker in [('/',b'GLOBAL'),('/web/ecosystem.html',b'businessTransfer'),
                              ('/web/ecosystem.js',b'transferFields'),('/customer',b'iframe'),
-                             ('/account',b'Global Broker')]:
+                             ('/account',b'Global Broker'),('/app',b'authorize'),
+                             ('/contact',b'contact')]:
             with self.subTest(route=route),urlopen(self.base+route) as response:
                 self.assertEqual(response.status,200)
                 self.assertIn(marker,response.read())
@@ -58,7 +59,8 @@ class DeploymentEntrypointTests(unittest.TestCase):
             self.assertEqual(json.load(error.exception),{'error':'progress_unavailable'})
 
     def test_private_data_still_requires_authentication(self):
-        for route in ['/api/private_room','/api/admin_opportunities']:
+        for route in ['/api/private_room','/api/admin_opportunities',
+                      '/api/opportunities','/data/latest-opportunities.json']:
             with self.subTest(route=route),self.assertRaises(HTTPError) as error:
                 urlopen(self.base+route)
             self.assertEqual(error.exception.code,401)
