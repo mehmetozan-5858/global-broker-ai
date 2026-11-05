@@ -27,6 +27,13 @@ def notice_only_acceptance(outcomes):
     )
 
 
+
+def historic_attempt_offset(info):
+    """Skip every imported history slot, including malformed non-dict entries."""
+    attempts = info.get('attempts') if isinstance(info, dict) else None
+    return len(attempts) if isinstance(attempts, list) else 0
+
+
 def summarize_attempt_evidence(info, *, new_attempt_offset=0):
     """Use only newly executed attempts for official XML provenance.
 
