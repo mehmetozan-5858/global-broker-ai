@@ -5,7 +5,7 @@ from src.broker import ted_search
 from src.ted_bulk import publication
 from src.ted_search_fields import apply_search_fields, notice_context
 from src.ted_xml_enricher import enrich_payload
-from src.ted_bulk_gate import notice_only_acceptance, summarize_attempt_evidence
+from src.ted_bulk_gate import notice_only_acceptance, summarize_attempt_evidence, historic_attempt_offset
 
 
 def main():
@@ -22,10 +22,7 @@ def main():
     prior_attempt_counts = []
     for row in rows:
         info = row.get('document_extraction')
-        attempts = info.get('attempts') if isinstance(info, dict) else None
-        # Offset uses the FULL imported list length, including malformed entries.
-        # Counting only dicts can expose an old digest after a non-dict entry.
-        prior_attempt_counts.append(len(attempts) if isinstance(attempts, list) else 0)
+        prior_attempt_counts.append(historic_attempt_offset(info))
     payload = enrich_payload({'opportunities': rows}, bulk_enabled=True)
     outcomes = []
     for row, prior_count in zip(rows, prior_attempt_counts):
