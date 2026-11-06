@@ -9,7 +9,6 @@ import hashlib
 from html.parser import HTMLParser
 import json
 from pathlib import Path
-import re
 from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin, urlparse, unquote
 from urllib.request import Request, build_opener, HTTPRedirectHandler
@@ -92,9 +91,9 @@ def sync(output):
                 raise ValueError("Error or challenge envelope is not an annex")
             if data.startswith(b"%PDF-"):
                 kind = "pdf"
-            elif data.startswith(b"PK\\x03\\x04"):
+            elif data.startswith(bytes.fromhex("504b0304")):
                 kind = "zip-based-office"
-            elif data.startswith(b"\\xd0\\xcf\\x11\\xe0"):
+            elif data.startswith(bytes.fromhex("d0cf11e0")):
                 kind = "legacy-office"
             else:
                 raise ValueError("Unknown document signature")
