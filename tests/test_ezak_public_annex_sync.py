@@ -20,11 +20,18 @@ class EzakDiscoveryTests(unittest.TestCase):
                 self.assertFalse(mod.official_url(url))
 
     def test_relative_documents_and_duplicates(self):
-        html = b'<html><a href="/document/123">PDF</a><a href="/document/123">again</a><a href="https://evil.test/file.pdf">bad</a><a href="/docs/annex.xlsx">xlsx</a></html>'
+        html = b'<html><a href="/document_download_123">PDF</a><a href="/document_download_123">again</a><a href="https://evil.test/file.pdf">bad</a><a href="/docs/annex.xlsx">xlsx</a></html>'
         self.assertEqual(mod.discover(html), [
             "https://zakazky.krajbezkorupce.cz/docs/annex.xlsx",
-            "https://zakazky.krajbezkorupce.cz/document/123",
+            "https://zakazky.krajbezkorupce.cz/document_download_123",
         ])
+
+    def test_navigation_links_are_not_treated_as_annexes(self):
+        html = b'<html><a href="/documentation/help">help</a><a href="/file_manager">files</a><a href="/contract_display_47078.html">notice</a></html>'
+        self.assertEqual(mod.discover(html), [])
+
+    def test_invalid_port_is_rejected(self):
+        self.assertFalse(mod.official_url("https://zakazky.krajbezkorupce.cz:bad/doc.pdf"))
 
     def test_empty_or_js_only_index_fails_to_discover(self):
         self.assertEqual(mod.discover(b"<html><script>loadDocuments()</script></html>"), [])
