@@ -8,6 +8,7 @@ import argparse
 import hashlib
 from html.parser import HTMLParser
 import json
+import re
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin, urlparse, unquote
@@ -35,7 +36,10 @@ class Links(HTMLParser):
 
 def official_url(url):
     parsed = urlparse(url)
-    return parsed.scheme == "https" and parsed.hostname == HOST and not parsed.username and not parsed.password and parsed.port in (None, 443)
+    try:
+        return parsed.scheme == "https" and parsed.hostname == HOST and not parsed.username and not parsed.password and parsed.port in (None, 443)
+    except ValueError:
+        return False
 
 
 class OfficialRedirects(HTTPRedirectHandler):
@@ -70,7 +74,9 @@ def discover(index_html, index_url=BASE):
         if not official_url(url):
             continue
         path = unquote(urlparse(url).path).lower()
-        if any(path.endswith(ext) for ext in EXTENSIONS) or "download" in path or "document" in path or "file" in path:
+        # E-ZAK uses extensionless download endpoints. Avoid unrelated navigation
+        # such as documentation/help pages; only known download URL patterns.
+        if any(path.endswith(ext) for ext in EXTENSIONS) or re.search(r"/(?:download|document_download|file_download)(?:/|_|\\.|$)", path):
             found[url] = True
     return sorted(found)
 
@@ -82,6 +88,8 @@ def sync(output):
     urls = discover(index, final_url)
     if not urls:
         raise ValueError("No public annex links detected: manual source review required")
+    # Discovery is not a complete annex inventory: even a successful download
+    # must not be interpreted as evidence that all revisions were collected.
     output.mkdir(parents=True, exist_ok=True)
     records = []
     for i, url in enumerate(urls):
