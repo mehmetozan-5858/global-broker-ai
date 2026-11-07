@@ -34,6 +34,23 @@ class DailyPackageTests(unittest.TestCase):
                 archive.writestr("00718662_2026.xml", "<Notice><ID>718662-2026</ID></Notice>")
             self.assertTrue(mod.inspect(path, "718662-2026")["xml_parsed"])
 
+    def test_incidental_publication_text_does_not_verify_notice_identity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "daily.zip"
+            with zipfile.ZipFile(path, "w") as archive:
+                archive.writestr("718662_2026.xml",
+                    "<Notice><ID>718664-2026</ID><Description>718662-2026</Description></Notice>")
+            with self.assertRaisesRegex(ValueError, "structured XML"):
+                mod.inspect(path, "718662-2026")
+
+    def test_namespaced_notice_id_is_accepted(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "daily.zip"
+            with zipfile.ZipFile(path, "w") as archive:
+                archive.writestr("00718662_2026.xml",
+                    '<Notice xmlns="urn:example"><ID>718662-2026</ID></Notice>')
+            self.assertTrue(mod.inspect(path, "718662-2026")["notice_identity_verified"])
+
     def test_unrelated_notice_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "daily.zip"
