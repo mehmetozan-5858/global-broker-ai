@@ -47,7 +47,9 @@ def fetch(year, issue, output):
     if not data:
         raise ValueError("empty archive")
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_bytes(data)
+    # Preserve prior evidence; never silently replace an existing archive.
+    with output.open("xb") as destination:
+        destination.write(data)
     return {"source": url, "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
             "official_archive_downloaded": True, "notice_verified": False,
             "annexes_complete": False, "commercial_approval": False}
