@@ -53,8 +53,11 @@ def inspect(archive_path, publication):
         if not isinstance(root.tag, str):
             raise ValueError("invalid XML root")
         # Filename alone cannot establish that the XML belongs to the notice.
-        if publication.encode("ascii") not in data:
-            raise ValueError("notice identity absent from XML content")
+        identity_tags = {"ID", "PublicationNumber", "PublicationNumberID", "NoticePublicationID", "NoticeId", "NoticeID"}
+        identity_values = [str(node.text or "").strip() for node in root.iter()
+                           if isinstance(node.tag, str) and node.tag.rsplit("}", 1)[-1] in identity_tags]
+        if publication not in identity_values:
+            raise ValueError("notice identity absent from structured XML fields")
         return hashlib.sha256(data).hexdigest()
 
     if zipfile.is_zipfile(io.BytesIO(raw)):
