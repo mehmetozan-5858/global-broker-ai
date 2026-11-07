@@ -1,6 +1,6 @@
 """Review-only official TED daily XML package inspector (local archive, no network).
 
-Official daily package URL pattern: https://ted.europa.eu/packages/daily/YYYYNNNNN
+Official daily package URL pattern: https://ted.europa.eu/packages/notice/daily/YYYYNNNNN
 Download the archive through an authorized runner first. This tool neither
 downloads nor approves notices; it checks archive safety and XML identity.
 """
@@ -53,7 +53,7 @@ def inspect(archive_path, publication):
         if not isinstance(root.tag, str):
             raise ValueError("invalid XML root")
         # Filename alone cannot establish that the XML belongs to the notice.
-        identity_tags = {"ID", "PublicationNumber", "PublicationNumberID", "NoticePublicationID", "NoticeId", "NoticeID"}
+        identity_tags = {"NoticePublicationID", "PublicationNumber", "PublicationNumberID"}
         identity_values = [str(node.text or "").strip() for node in root.iter()
                            if isinstance(node.tag, str) and node.tag.rsplit("}", 1)[-1] in identity_tags]
         if publication not in identity_values:
