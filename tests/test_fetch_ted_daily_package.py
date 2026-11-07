@@ -13,7 +13,7 @@ spec.loader.exec_module(mod)
 
 class Response:
     status = 200
-    url = "https://ted.europa.eu/packages/notice/daily/202600216"
+    url = "https://ted.europa.eu/packages/daily/202600216"
 
     def __init__(self, payload):
         self.payload = payload
@@ -30,7 +30,7 @@ class Response:
 
 class DailyDownloadTests(unittest.TestCase):
     def test_official_url_only(self):
-        self.assertTrue(mod.official("https://ted.europa.eu/packages/notice/daily/202600216"))
+        self.assertTrue(mod.official("https://ted.europa.eu/packages/daily/202600216"))
         for url in ("http://ted.europa.eu/a", "https://ted.europa.eu.evil.test/a",
                     "https://user@ted.europa.eu/a", "https://ted.europa.eu:bad/a"):
             self.assertFalse(mod.official(url))
