@@ -51,6 +51,14 @@ class DailyPackageTests(unittest.TestCase):
                     '<Notice xmlns="urn:example"><NoticePublicationID>718662-2026</NoticePublicationID></Notice>')
             self.assertTrue(mod.inspect(path, "718662-2026")["notice_identity_verified"])
 
+    def test_archive_over_limit_rejected_before_parsing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "too-large.bin"
+            with path.open("wb") as output:
+                output.truncate(mod.MAX_ARCHIVE_BYTES + 1)
+            with self.assertRaisesRegex(ValueError, "archive size"):
+                mod.inspect(path, "718662-2026")
+
     def test_unrelated_notice_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "daily.zip"
