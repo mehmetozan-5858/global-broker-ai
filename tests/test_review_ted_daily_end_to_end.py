@@ -18,7 +18,7 @@ class DailyEndToEndTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             with patch.object(mod, "fetch", return_value={"sha256": "a" * 64}) as fetch, patch.object(
                 mod, "inspect", return_value={"package_sha256": "a" * 64,
-                "notice_xml_sha256": "b" * 64, "xml_parsed": True,
+                "publication_number": "718662-2026", "notice_xml_sha256": "b" * 64, "xml_parsed": True,
                 "notice_identity_verified": True}) as inspect:
                 result = mod.run(2026, 216, "718662-2026", Path(tmp))
                 fetch.assert_called_once()
@@ -31,9 +31,20 @@ class DailyEndToEndTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             with patch.object(mod, "fetch", return_value={"sha256": "a" * 64}), patch.object(
                 mod, "inspect", return_value={"package_sha256": "b" * 64,
-                "notice_xml_sha256": "c" * 64, "xml_parsed": True,
+                "publication_number": "718662-2026", "notice_xml_sha256": "c" * 64, "xml_parsed": True,
                 "notice_identity_verified": True}):
                 with self.assertRaisesRegex(ValueError, "hash mismatch"):
+                    mod.run(2026, 216, "718662-2026", Path(tmp))
+                self.assertFalse((Path(tmp) / "review-evidence.json").exists())
+
+    def test_wrong_notice_identity_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(mod, "fetch", return_value={"sha256": "a" * 64}), patch.object(
+                mod, "inspect", return_value={"package_sha256": "a" * 64,
+                "publication_number": "718664-2026",
+                "notice_xml_sha256": "b" * 64, "xml_parsed": True,
+                "notice_identity_verified": True}):
+                with self.assertRaisesRegex(ValueError, "identity"):
                     mod.run(2026, 216, "718662-2026", Path(tmp))
                 self.assertFalse((Path(tmp) / "review-evidence.json").exists())
 
