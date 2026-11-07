@@ -32,9 +32,9 @@ class Redirects(HTTPRedirectHandler):
 def fetch(year, issue, output):
     if not 2000 <= year <= 2100 or not 1 <= issue <= 366:
         raise ValueError("invalid OJ S issue")
-    # TED's official public example uses /packages/daily/YYYYNNNNN. 
+    # TED's documented URL format uses /packages/notice/daily/YYYYNNNNN; live response is unverified. 
     # Publication numbers are NOT OJ S issue numbers.
-    url = f"https://ted.europa.eu/packages/daily/{year:04d}{issue:05d}"
+    url = f"https://ted.europa.eu/packages/notice/daily/{year:04d}{issue:05d}"
     opener = build_opener(Redirects())
     with opener.open(Request(url, headers={"User-Agent": "GlobalBrokerEvidenceReview/1.0"}), timeout=25) as response:
         if response.status != 200 or not official(response.url):
