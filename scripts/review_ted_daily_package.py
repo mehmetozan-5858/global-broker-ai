@@ -23,7 +23,8 @@ MAX_EXPANDED_BYTES = 180_000_000
 def inspect(archive_path, publication):
     if not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
         raise ValueError("invalid publication number")
-    raw = Path(archive_path).read_bytes()
+    with Path(archive_path).open("rb") as source:
+        raw = source.read(MAX_ARCHIVE_BYTES + 1)
     if not raw or len(raw) > MAX_ARCHIVE_BYTES:
         raise ValueError("archive size outside bounds")
     digest = hashlib.sha256(raw).hexdigest()
