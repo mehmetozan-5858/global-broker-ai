@@ -43,7 +43,7 @@ def fetch(year, issue, output):
             raise ValueError("package exceeds bounded download limit")
         if not (data.startswith(bytes.fromhex("504b0304")) or data.startswith(bytes.fromhex("1f8b"))):
             raise ValueError("unexpected package signature; HTTP challenge or error envelope")
-    output.parent.mkdir(parents=True, exist_ok=True)
+    if not data:\n        raise ValueError("empty archive")\n    output.parent.mkdir(parents=True, exist_ok=True)
     output.write_bytes(data)
     return {"source": url, "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
             "official_archive_downloaded": True, "notice_verified": False,
