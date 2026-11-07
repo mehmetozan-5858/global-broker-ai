@@ -105,5 +105,4 @@ if __name__ == "__main__":
     try:
         print(json.dumps(inspect(args.archive, args.publication), sort_keys=True))
     except (ValueError, OSError, ElementTree.ParseError, tarfile.TarError, zipfile.BadZipFile) as error:
-        parser.exit(2, f"TED daily package review blocked: {type(error).__name__}: {error}
-")
+        parser.exit(2, f"TED daily package review blocked: {type(error).__name__}: {error}\\n")
