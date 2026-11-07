@@ -27,7 +27,9 @@ def inspect(archive_path, publication):
     if not raw or len(raw) > MAX_ARCHIVE_BYTES:
         raise ValueError("archive size outside bounds")
     digest = hashlib.sha256(raw).hexdigest()
-    number, year = publication.split("-")\n    # TED eForms uses eight-digit zero-padded publication numbers.\n    expected_names = {f"{int(number):08d}_{year}.xml", f"{int(number):06d}_{year}.xml"}
+    number, year = publication.split("-")
+    # TED eForms uses eight-digit zero-padded publication numbers.
+    expected_names = {f"{int(number):08d}_{year}.xml", f"{int(number):06d}_{year}.xml"}
     matches = []
     total = 0
 
@@ -50,7 +52,10 @@ def inspect(archive_path, publication):
         root = ElementTree.fromstring(data)
         if not isinstance(root.tag, str):
             raise ValueError("invalid XML root")
-        # Filename alone cannot establish that the XML belongs to the notice.\n        if publication.encode("ascii") not in data:\n            raise ValueError("notice identity absent from XML content")\n        return hashlib.sha256(data).hexdigest()
+        # Filename alone cannot establish that the XML belongs to the notice.
+        if publication.encode("ascii") not in data:
+            raise ValueError("notice identity absent from XML content")
+        return hashlib.sha256(data).hexdigest()
 
     if zipfile.is_zipfile(io.BytesIO(raw)):
         with zipfile.ZipFile(io.BytesIO(raw)) as z:
@@ -100,4 +105,5 @@ if __name__ == "__main__":
     try:
         print(json.dumps(inspect(args.archive, args.publication), sort_keys=True))
     except (ValueError, OSError, ElementTree.ParseError, tarfile.TarError, zipfile.BadZipFile) as error:
-        parser.exit(2, f"TED daily package review blocked: {type(error).__name__}: {error}\n")
+        parser.exit(2, f"TED daily package review blocked: {type(error).__name__}: {error}
+")
