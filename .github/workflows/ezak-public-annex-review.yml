@@ -1,0 +1,56 @@
+name: E-ZAK public annex review (manual only)
+
+# Deliberately no schedule or push trigger. The official source has not yet
+# passed a real acquisition acceptance test; no production deployment.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ezak-public-annex-review
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Offline safety regression
+        run: |
+          python -m unittest discover -s tests -p 'test_ezak_*.py'
+      - name: Fetch official public annexes (review only)
+        id: collect
+        continue-on-error: true
+        run: |
+          python scripts/ezak_public_annex_sync.py --output "$RUNNER_TEMP/ezak-47078"
+      - name: Produce redacted acquisition summary
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path(os.environ["RUNNER_TEMP"]) / "ezak-47078" / "manifest.json"
+          if not path.is_file():
+              print("Official acquisition: BLOCKED (no manifest)")
+          else:
+              data = json.loads(path.read_text(encoding="utf-8"))
+              rows = data.get("records", [])
+              print(f"Official acquisition: {len(rows)} discovered links, {sum('error' in r for r in rows)} failed")
+              print("Acceptance: BLOCKED pending full annex and amendment reconciliation")
+          PY
+      - name: Enforce fail-closed review outcome
+        if: always()
+        shell: bash
+        run: |
+          if [ "${{ steps.collect.outcome }}" != "success" ]; then
+            echo "Official acquisition failed; review remains blocked"
+            exit 1
+          fi
+          echo "Acquisition may have succeeded; manual completeness/revision review still required"
