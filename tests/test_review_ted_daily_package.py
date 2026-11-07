@@ -27,7 +27,14 @@ class DailyPackageTests(unittest.TestCase):
             self.assertFalse(result["source_completeness_verified"])
             self.assertFalse(result["commercial_approval"])
 
-    def test_eforms_zero_padded_filename(self):\n        with tempfile.TemporaryDirectory() as tmp:\n            path = Path(tmp) / "daily.zip"\n            with zipfile.ZipFile(path, "w") as archive:\n                archive.writestr("00718662_2026.xml", "<Notice><ID>718662-2026</ID></Notice>")\n            self.assertTrue(mod.inspect(path, "718662-2026")["xml_parsed"])\n\n    def test_unrelated_notice_is_rejected(self):
+    def test_eforms_zero_padded_filename(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "daily.zip"
+            with zipfile.ZipFile(path, "w") as archive:
+                archive.writestr("00718662_2026.xml", "<Notice><ID>718662-2026</ID></Notice>")
+            self.assertTrue(mod.inspect(path, "718662-2026")["xml_parsed"])
+
+    def test_unrelated_notice_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "daily.zip"
             with zipfile.ZipFile(path, "w") as archive:
