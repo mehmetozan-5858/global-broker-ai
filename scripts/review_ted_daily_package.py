@@ -27,7 +27,7 @@ def inspect(archive_path, publication):
     if not raw or len(raw) > MAX_ARCHIVE_BYTES:
         raise ValueError("archive size outside bounds")
     digest = hashlib.sha256(raw).hexdigest()
-    expected_name = publication.replace("-", "_") + ".xml"
+    number, year = publication.split("-")\n    # TED eForms uses eight-digit zero-padded publication numbers.\n    expected_names = {f"{int(number):08d}_{year}.xml", f"{int(number):06d}_{year}.xml"}
     matches = []
     total = 0
 
@@ -42,7 +42,7 @@ def inspect(archive_path, publication):
         total += size
         if total > MAX_EXPANDED_BYTES:
             raise ValueError("expanded archive exceeds limit")
-        return parts[-1].lower() == expected_name.lower()
+        return parts[-1].lower() in expected_names
 
     def validate_xml(data):
         if b"<!DOCTYPE" in data.upper() or b"<!ENTITY" in data.upper():
