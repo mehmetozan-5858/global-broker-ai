@@ -19,6 +19,8 @@ def run(year, issue, publication, output_dir):
     archive = output_dir / f"ted-oj-s-{year}-{issue:03d}.tar.gz"
     acquisition = fetch(year, issue, archive)
     evidence = inspect(archive, publication)
+    if evidence.get("publication_number") != publication or not evidence.get("notice_identity_verified") or not evidence.get("xml_parsed"):
+        raise ValueError("notice identity or XML parse evidence missing")
     if evidence["package_sha256"] != acquisition["sha256"]:
         raise ValueError("archive hash mismatch between acquisition and inspection")
     result = {
