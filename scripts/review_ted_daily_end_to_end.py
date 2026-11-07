@@ -33,7 +33,9 @@ def run(year, issue, publication, output_dir):
         "annexes_complete": False, "commercial_approval": False,
         "release_accepted": False,
     }
-    (output_dir / "review-evidence.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
+    # Preserve earlier evidence; reruns must use a new output directory.
+    with (output_dir / "review-evidence.json").open("x", encoding="utf-8") as evidence_file:
+        json.dump(result, evidence_file, indent=2)
     return result
 
 
