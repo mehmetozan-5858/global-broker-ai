@@ -61,5 +61,4 @@ if __name__ == "__main__":
     try:
         print(json.dumps(fetch(args.year, args.issue, args.output), sort_keys=True))
     except (OSError, ValueError) as error:
-        parser.exit(2, f"TED daily download blocked: {type(error).__name__}: {error}
-")
+        parser.exit(2, f"TED daily download blocked: {type(error).__name__}: {error}\\n")
