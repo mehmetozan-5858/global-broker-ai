@@ -16,7 +16,12 @@ def run(year, issue, publication, output_dir):
     if not publication.endswith(f"-{year}"):
         raise ValueError("publication year does not match OJ S year")
     output_dir = Path(output_dir)
+    # Reject reruns before making a network request or creating any evidence file.
+    if (output_dir / "review-evidence.json").exists():
+        raise FileExistsError("review evidence already exists; choose a fresh output directory")
     archive = output_dir / f"ted-oj-s-{year}-{issue:03d}.tar.gz"
+    if archive.exists():
+        raise FileExistsError("daily archive already exists; choose a fresh output directory")
     acquisition = fetch(year, issue, archive)
     evidence = inspect(archive, publication)
     if evidence.get("publication_number") != publication or not evidence.get("notice_identity_verified") or not evidence.get("xml_parsed"):
