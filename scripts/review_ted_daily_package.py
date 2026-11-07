@@ -50,7 +50,7 @@ def inspect(archive_path, publication):
         root = ElementTree.fromstring(data)
         if not isinstance(root.tag, str):
             raise ValueError("invalid XML root")
-        return hashlib.sha256(data).hexdigest()
+        # Filename alone cannot establish that the XML belongs to the notice.\n        if publication.encode("ascii") not in data:\n            raise ValueError("notice identity absent from XML content")\n        return hashlib.sha256(data).hexdigest()
 
     if zipfile.is_zipfile(io.BytesIO(raw)):
         with zipfile.ZipFile(io.BytesIO(raw)) as z:
