@@ -45,6 +45,16 @@ class DailyDownloadTests(unittest.TestCase):
             self.assertFalse(result["notice_verified"])
             self.assertFalse(result["commercial_approval"])
 
+    def test_existing_archive_is_never_overwritten(self):
+        payload = bytes.fromhex("504b0304") + b"new"
+        with tempfile.TemporaryDirectory() as tmp, patch.object(mod, "build_opener") as builder:
+            builder.return_value.open.return_value = Response(payload)
+            path = Path(tmp) / "daily.zip"
+            path.write_bytes(b"previous-evidence")
+            with self.assertRaises(FileExistsError):
+                mod.fetch(2026, 216, path)
+            self.assertEqual(path.read_bytes(), b"previous-evidence")
+
     def test_html_challenge_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(mod, "build_opener") as builder:
             builder.return_value.open.return_value = Response(b"<html>please wait</html>")
