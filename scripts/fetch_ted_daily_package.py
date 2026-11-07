@@ -41,7 +41,7 @@ def fetch(year, issue, output):
         data = response.read(MAX_BYTES + 1)
         if len(data) > MAX_BYTES:
             raise ValueError("package exceeds bounded download limit")
-        if not (data.startswith(b"PK\\x03\\x04") or data.startswith(bytes.fromhex("1f8b"))):
+        if not (data.startswith(bytes.fromhex("504b0304")) or data.startswith(bytes.fromhex("1f8b"))):
             raise ValueError("unexpected package signature; HTTP challenge or error envelope")
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_bytes(data)
