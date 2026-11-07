@@ -59,6 +59,13 @@ class DailyEndToEndTests(unittest.TestCase):
                 inspect.assert_not_called()
             self.assertEqual(evidence_path.read_text(encoding="utf-8"), "previous-review")
 
+    def test_malformed_publication_rejected_before_network(self):
+        for publication in ("garbage-2026", "../718662-2026", "718662-2026-extra", ""):
+            with self.subTest(publication=publication), patch.object(mod, "fetch") as fetch:
+                with self.assertRaisesRegex(ValueError, "invalid publication"):
+                    mod.run(2026, 216, publication, Path("/tmp/not-used"))
+                fetch.assert_not_called()
+
     def test_mismatched_year_rejected_before_network(self):
         with patch.object(mod, "fetch") as fetch:
             with self.assertRaisesRegex(ValueError, "year"):
