@@ -6,6 +6,7 @@ publication number is a different identifier. This tool does not infer the issue
 """
 import argparse
 import json
+import re
 from pathlib import Path
 
 from fetch_ted_daily_package import fetch
@@ -13,6 +14,8 @@ from review_ted_daily_package import inspect
 
 
 def run(year, issue, publication, output_dir):
+    if not isinstance(publication, str) or not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
+        raise ValueError("invalid publication number")
     if not publication.endswith(f"-{year}"):
         raise ValueError("publication year does not match OJ S year")
     output_dir = Path(output_dir)
