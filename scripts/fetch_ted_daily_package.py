@@ -43,7 +43,9 @@ def fetch(year, issue, output):
             raise ValueError("package exceeds bounded download limit")
         if not (data.startswith(bytes.fromhex("504b0304")) or data.startswith(bytes.fromhex("1f8b"))):
             raise ValueError("unexpected package signature; HTTP challenge or error envelope")
-    if not data:\n        raise ValueError("empty archive")\n    output.parent.mkdir(parents=True, exist_ok=True)
+    if not data:
+        raise ValueError("empty archive")
+    output.parent.mkdir(parents=True, exist_ok=True)
     output.write_bytes(data)
     return {"source": url, "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
             "official_archive_downloaded": True, "notice_verified": False,
@@ -59,4 +61,5 @@ if __name__ == "__main__":
     try:
         print(json.dumps(fetch(args.year, args.issue, args.output), sort_keys=True))
     except (OSError, ValueError) as error:
-        parser.exit(2, f"TED daily download blocked: {type(error).__name__}: {error}\n")
+        parser.exit(2, f"TED daily download blocked: {type(error).__name__}: {error}
+")
