@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: mehmetozan-5858/ai-visibility
-          ref: dcbba5f2e158e2bfa4e1d02e5045c46068fe4d3f
+          ref: d59a10b8de3c21dbd4bbd7d28c5376ada97eca15
           path: .peer-visibility
           persist-credentials: false
       - name: Install isolated browser runner

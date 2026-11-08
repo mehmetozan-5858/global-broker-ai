@@ -72,12 +72,17 @@ async function noOverflow(page, label) {
           await page.setContent('<html lang="'+language+'"><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;font-family:system-ui"><main><section id="cards"></section></main></body></html>');
           await page.addScriptTag({path: path.join(root, 'web/customer-portal.js')});
           if (heading) await page.getByRole('heading', {name: heading, exact: true}).waitFor();
-          else await page.getByText('Bu filtrelerle eşleşen fırsat yok.', {exact: true}).waitFor();
+          else await page.getByText('Şu anda gösterilebilir fiziksel ürün fırsatı yok.', {exact: true}).waitFor();
           const body = await page.locator('body').innerText();
           for (const secret of ['PRIVATE-BUYER', 'PRIVATE-DOCUMENT', 'PRIVATE-TRACE', '999 units']) assert.equal(body.includes(secret), false);
           if (state === 'success') {
             const warnings = language === 'tr' ? ['Resmî belge metni eksik okundu', 'Bazı resmî teknik ekler incelenemedi', 'Bazı resmî belgeler okunamadı', 'Birden fazla belge sürümü bulundu'] : ['Official document text is incomplete', 'Some official annexes have not been reviewed', 'Some official documents could not be read', 'Multiple document versions were found'];
             for (const warning of warnings) assert(body.includes(warning), language+' missing '+warning);
+            // Empty source data is distinct from an active filter with no matches.
+            await page.locator('#cpQuery').fill('fixture-no-matching-product-92847');
+            await page.getByText('Bu filtrelerle eşleşen fırsat yok.', {exact: true}).waitFor();
+            await page.getByRole('button', {name:'Filtreleri temizle',exact:true}).click();
+            await page.getByRole('heading', {name:'Fixture equipment',exact:true}).waitFor();
           }
           await noOverflow(page, 'customer '+width+' '+language+' '+state);
         }
