@@ -3,6 +3,7 @@ name: Verified Brokerage CI
 on:
   push:
     branches:
+      - fix/ted-waf-challenge-classification-20261030
       - feat/verified-brokerage-pipeline
       - feat/broker-ceo-sales-current-main
       - main

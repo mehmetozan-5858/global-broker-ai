@@ -1,0 +1,74 @@
+"""Offline source-chain acceptance: local bytes are never official provenance by themselves."""
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+from src.ted_offline_archive_acceptance import inspect_archive
+
+
+class OfflineArchiveAcceptanceTests(unittest.TestCase):
+    def test_rejects_missing_or_empty_archive_without_network(self):
+        with tempfile.TemporaryDirectory() as d:
+            with self.assertRaises(OSError):
+                inspect_archive(Path(d)/'missing.gz', '215/2026', ['718662-2026'])
+            empty=Path(d)/'empty.gz'
+            empty.write_bytes(b'')
+            with self.assertRaisesRegex(ValueError, 'invalid-archive-size'):
+                inspect_archive(empty, '215/2026', ['718662-2026'])
+
+    def test_rejects_invalid_edition_and_duplicate_notices(self):
+        with tempfile.TemporaryDirectory() as d:
+            file=Path(d)/'daily.gz'
+            file.write_bytes(b'garbage')
+            with self.assertRaises(ValueError):
+                inspect_archive(file,'000/2026',['718662-2026'])
+            with self.assertRaises(ValueError):
+                inspect_archive(file,'215/2026',['718662-2026','718662-2026'])
+
+    def test_structural_success_still_does_not_grant_official_or_commercial_acceptance(self):
+        with tempfile.TemporaryDirectory() as d:
+            file=Path(d)/'daily.gz'
+            file.write_bytes(b'\x1f\x8bmock-archive-only-for-parser-test')
+            with patch('src.ted_offline_archive_acceptance.select_daily_notices',
+                       return_value={'718662-2026':object()}):
+                result=inspect_archive(file,'215/2026',['718662-2026'])
+            self.assertFalse(result['archive_origin_verified'])
+            self.assertTrue(result['offline_notice_structure_validated'])
+            self.assertFalse(result['notice_only_acceptance'])
+            self.assertFalse(result['linked_annexes_validated'])
+            self.assertFalse(result['commercial_approval'])
+            self.assertEqual(result['official_url_expected'],
+                             'https://ted.europa.eu/packages/daily/202600215')
+
+
+    def test_mismatched_or_missing_selected_notice_never_accepts(self):
+        with tempfile.TemporaryDirectory() as d:
+            file=Path(d)/'daily.gz'
+            file.write_bytes(b'\x1f\x8bmock-unverified-origin')
+            for selected in ({}, {'111111-2026': object()}, {'718662-2026': object(), '111111-2026': object()}):
+                with self.subTest(selected=selected):
+                    with patch('src.ted_offline_archive_acceptance.select_daily_notices',
+                               return_value=selected):
+                        with self.assertRaisesRegex(ValueError, 'archive-notice-identity-mismatch'):
+                            inspect_archive(file, '215/2026', ['718662-2026'])
+
+    def test_invalid_gzip_header_fails_before_parser(self):
+        with tempfile.TemporaryDirectory() as d:
+            file=Path(d)/'invalid.gz'
+            file.write_bytes(b'not-an-official-gzip')
+            with patch('src.ted_offline_archive_acceptance.select_daily_notices') as parser:
+                with self.assertRaisesRegex(ValueError, 'invalid-archive-gzip-header'):
+                    inspect_archive(file, '215/2026', ['718662-2026'])
+                parser.assert_not_called()
+
+    def test_garbage_archive_is_rejected_by_real_parser(self):
+        with tempfile.TemporaryDirectory() as d:
+            file=Path(d)/'daily.gz'
+            file.write_bytes(b'not-a-gzip-or-tar')
+            with self.assertRaises((OSError, ValueError, EOFError)):
+                inspect_archive(file, '215/2026', ['718662-2026'])
+
+
+if __name__=='__main__':
+    unittest.main()
