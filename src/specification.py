@@ -183,6 +183,23 @@ def _append_unique(values: Any, value: str) -> list[str]:
     return out
 
 
+
+def _safe_omitted_attachment_count(value: Any) -> int:
+    """Treat invalid coverage metadata as unknown/incomplete, never as cleared."""
+    if value is None:
+        return 0
+    if type(value) is int:
+        return value if value >= 0 else 1
+    if isinstance(value, str):
+        value = value.strip()
+        # Bounded decimal input prevents untrusted massive integers from aborting scan.
+        if value.isascii() and value.isdecimal() and len(value) <= 9:
+            return int(value)
+    # Bool, float, negative, malformed, or unbounded metadata is not proof
+    # all official attachments were reviewed. Retain the sourcing review gate.
+    return 1
+
+
 def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     sentences = source_sentences(item)
     structured_technical = first_values(item, STRUCTURED_TECH_KEYS)
@@ -232,7 +249,7 @@ def analyze_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     # A clipped source or skipped official annex can conceal mandatory clauses.
     # Do not promote partial document coverage to sourcing-ready evidence.
     truncated_text = extraction.get("text_truncated") is True
-    skipped_candidates = max(0, int(extraction.get("attachment_candidates_omitted") or 0))
+    skipped_candidates = _safe_omitted_attachment_count(extraction.get("attachment_candidates_omitted"))
     coverage_blockers = []
     if truncated_text:
         coverage_blockers.append("source_text_truncated")
