@@ -37,6 +37,33 @@ class CustomerPortalTests(unittest.TestCase):
         self.assertNotIn('Math.random',js)
         self.assertNotIn('fake',js.lower())
 
+    def test_account_labels_are_escaped_before_html_rendering(self):
+        js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
+        self.assertIn("function htmlText(v)",js)
+        self.assertIn("htmlText(selectedNames)",js)
+        self.assertIn("htmlText(String(e.plan_id||'free').toUpperCase())",js)
+        self.assertIn("htmlText(e.contact_credits_remaining==null?'Sınırsız':e.contact_credits_remaining)",js)
+        self.assertNotIn("'Aktif sektörler: '+selectedNames",js)
+
+    def test_empty_states_are_distinct_and_result_limit_is_disclosed(self):
+        js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
+        self.assertIn("var goodsRows=sourceRows.filter(isGoods)",js)
+        self.assertIn("rows=goodsRows.filter(allowedByPlan)",js)
+        self.assertIn("Şu anda gösterilebilir fiziksel ürün fırsatı yok.",js)
+        self.assertIn("Seçtiğiniz sektör ve ülkelerde fırsat bulunamadı.",js)
+        self.assertIn("Bu filtrelerle eşleşen fırsat yok.",js)
+        self.assertIn("İlk 100 fırsat gösteriliyor.",js)
+        self.assertIn("filtered.length>100",js)
+
+    def test_empty_results_offer_safe_recovery_actions(self):
+        js=(ROOT/"web/customer-portal.js").read_text(encoding="utf-8")
+        self.assertIn("Filtreleri temizle",js)
+        self.assertIn("query.value='';countrySel.value='';qualitySel.value='0'",js)
+        self.assertIn("reset.onclick=function()",js)
+        self.assertIn("settings.href='/account'",js)
+        self.assertIn("settings.target='_top'",js)
+        self.assertNotIn("window.location.reload()",js)
+
     def test_deploy_injects_customer_portal_and_ci_checks_syntax(self):
         deploy=(ROOT/".github/workflows/deploy-mobile.yml").read_text(encoding="utf-8")
         ci=(ROOT/".github/workflows/verified-brokerage-ci.yml").read_text(encoding="utf-8")
