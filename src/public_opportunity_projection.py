@@ -171,7 +171,8 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
     if reasons is None and row.get("buyer_masked") is True:
         # Preserve vetted enum codes when re-projecting an already public feed.
         reasons = row.get("document_coverage_blockers")
-    allowed_reasons = ("source_text_truncated", "attachment_candidates_skipped")
+    allowed_reasons = ("source_text_truncated", "attachment_candidates_skipped",
+                       "attachment_downloads_failed", "document_versions_require_review")
     if isinstance(reasons, list):
         approved_reasons = [code for code in allowed_reasons if code in reasons]
         if approved_reasons:

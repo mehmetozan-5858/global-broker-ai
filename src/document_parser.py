@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import io
+import hashlib
 import ipaddress
 import json
 import re
@@ -169,7 +170,14 @@ def _parse_pdf(data: bytes) -> str:
 
 def _parse_docx(data: bytes) -> str:
     with zipfile.ZipFile(io.BytesIO(data)) as archive:
-        xml = archive.read("word/document.xml")
+        members = archive.infolist()
+        matches = [m for m in members if m.filename == 'word/document.xml']
+        if len(members) > 1024 or len(matches) != 1 or matches[0].file_size > MAX_DOCUMENT_BYTES or matches[0].flag_bits & 1:
+            raise ValueError('invalid_docx_xml_or_archive_limit')
+        with archive.open(matches[0]) as stream:
+            xml = stream.read(MAX_DOCUMENT_BYTES + 1)
+        if len(xml) > MAX_DOCUMENT_BYTES or re.search(br'<!\s*(?:DOCTYPE|ENTITY)', xml, re.I):
+            raise ValueError('invalid_docx_xml_or_archive_limit')
     root = ElementTree.fromstring(xml)
     namespace = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
     paragraphs = []
@@ -249,9 +257,16 @@ def _decode_html(data: bytes) -> str:
     return data.decode("utf-8", errors="ignore")
 
 
-def _parse_html_page(data: bytes, base_url: str, attachment_labels: dict[str, str] | None = None, indexes: list[str] | None = None) -> tuple[str, list[str]]:
+def _parse_html_page(data: bytes, base_url: str, attachment_labels: dict[str, str] | None = None, indexes: list[str] | None = None, coverage: dict | None = None) -> tuple[str, list[str]]:
+    from src.source_access_barrier import html_access_barrier
+    barrier = html_access_barrier(data, base_url)
+    if barrier:
+        raise ValueError(barrier)
     parser = _TenderHTMLParser()
     parser.feed(_decode_html(data))
+    if coverage is not None:
+        from src.document_coverage import observe
+        observe(parser.links, base_url, coverage)
     visible = _normalize_lines("".join(parser.text_parts))[:MAX_EXTRACTED_CHARS]
     if indexes is not None:
         indexes.extend(url for url in document_indexes(parser.links, base_url) if url not in indexes)
@@ -307,6 +322,7 @@ def _try_attachment(url: str, attempts: list[dict[str, Any]], extracted_parts: l
             "final_url": final_url,
             "content_type": content_type,
             "bytes": len(data),
+            "sha256": hashlib.sha256(data).hexdigest(),
             "extracted_chars": len(document_text),
         })
     except Exception as exc:
@@ -370,6 +386,9 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
     discovered_attachments: list[str] = []
     attachment_origins: dict[str, str] = {}
     indexes: list[str] = []
+    from src.document_coverage import observe, summarize
+    coverage: dict = {}
+    observe([{'href': url} for url in _all_urls(item)], '', coverage)
 
     for url in attachments:
         parts: list[str] = []
@@ -401,7 +420,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
             else:
                 if "html" not in content_type and not content_type.startswith("text/"):
                     raise ValueError("source_page_not_html")
-                page_text, found = _parse_html_page(data, final_url, attachment_labels, indexes)
+                page_text, found = _parse_html_page(data, final_url, attachment_labels, indexes, coverage)
                 if len(page_text) >= 160:
                     _append_text(source_page_parts, page_text)
                     page_attempt.update({
@@ -436,7 +455,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
                 raise ValueError("document_index_origin_changed")
             if "html" not in content_type:
                 raise ValueError("document_index_not_html")
-            _, found = _parse_html_page(data, final_url, attachment_labels)
+            _, found = _parse_html_page(data, final_url, attachment_labels, coverage=coverage)
             for link in found:
                 if link not in attachments and link not in discovered_attachments:
                     discovered_attachments.append(link)
@@ -482,6 +501,7 @@ def enrich_opportunity(item: dict[str, Any]) -> dict[str, Any]:
         "text_chars": len(merged),
         "text_truncated": len(full_text) > MAX_EXTRACTED_CHARS,
         "omitted_chars": max(0, len(full_text) - MAX_EXTRACTED_CHARS),
+        **summarize(coverage, attempts),
     }
     if merged:
         item["document_extracted_text"] = merged
