@@ -43,6 +43,10 @@ def main():
                     kind+='_'+reason
                 counts['error_'+('HTTP_'+code.group(1) if code else kind)]+=1
         assert 'verified_unit_price' not in row and row.get('buyer_verified') is not True
-    print('TED_DOCUMENT_SOURCE_PROBE',json.dumps({'attempted':len(selected),'selected_with_document_links':sum(bool(row.get('ted_document_link_count')) for row in selected),'parsed':sum(success),'no_text':len(selected)-sum(success),**dict(counts)},sort_keys=True))
+    parsed=sum(success)
+    print('TED_DOCUMENT_SOURCE_PROBE',json.dumps({'attempted':len(selected),'selected_with_document_links':sum(bool(row.get('ted_document_link_count')) for row in selected),'parsed':parsed,'no_text':len(selected)-parsed,'minimum_document_gate':'passed' if parsed else 'failed','full_attachment_acceptance':False,**dict(counts)},sort_keys=True))
+    # A green job must establish at least one extracted document. This is still
+    # not full annex coverage, official-format success, or commercial acceptance.
+    return 0 if parsed else 1
 
-if __name__=='__main__':main()
+if __name__=='__main__':raise SystemExit(main())

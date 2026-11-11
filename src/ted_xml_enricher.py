@@ -36,7 +36,9 @@ def _verify_ted_redirect(requested_url: str, final_url: str) -> None:
         raise ValueError("ted_document_origin_changed")
     requested_id = _ted_notice_id(requested_url)
     final_id = _ted_notice_id(final_url)
-    if requested_id and final_id and requested_id != final_id:
+    if requested_id and final_id != requested_id:
+        # A generic TED landing page (no notice ID) is not evidence of
+        # the requested notice, even when the redirect stays on TED.
         raise ValueError("ted_document_notice_redirect_mismatch")
 
 
@@ -55,7 +57,9 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
             continue
         if host == "ted.europa.eu" and (path.endswith("/xml") or path.endswith(".xml")):
             link_id = _ted_notice_id(url)
-            if expected_id and link_id and link_id != expected_id:
+            # Never select an unidentifiable XML URL or a different notice.
+            # Otherwise the document could be attributed to the wrong tender.
+            if not link_id or (expected_id and link_id != expected_id):
                 continue
             return url
     if source == "TED":
@@ -123,7 +127,10 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
     info = item.get("document_extraction")
     if not isinstance(info, dict):
         info = {}
-    attempts = list(info.get("attempts") or [])
+    # Imported or cached extraction metadata is untrusted. A string/dict
+    # must never become an iterable of bogus attempts or crash enrichment.
+    previous_attempts = info.get("attempts")
+    attempts = [entry for entry in previous_attempts if isinstance(entry, dict)] if isinstance(previous_attempts, list) else []
     attempt: dict[str, Any] = {"url": url, "status": "pending", "source": "ted_xml"}
 
     try:
@@ -240,6 +247,7 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
 # aggregate scan diagnostics. An unrecognized error stays explicitly unknown.
 TED_FAILURE_MARKERS = (
     "ted_source_not_xml",
+    "ted_xml_notice_root_missing",
     "ted_document_notice_redirect_mismatch",
     "ted_document_origin_changed",
     "insufficient_ted_xml_text",
@@ -282,7 +290,10 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     with ThreadPoolExecutor(max_workers=min(4, document_parser.MAX_WORKERS)) as executor:
         results = list(executor.map(enrich_opportunity, candidates))
     for item, success in zip(candidates, results):
-        attempts = (item.get("document_extraction") or {}).get("attempts") or []
+        extraction = item.get("document_extraction")
+        attempts = extraction.get("attempts") if isinstance(extraction, dict) else []
+        if not isinstance(attempts, list):
+            attempts = []
         if not success:
             failed = [entry for entry in attempts if isinstance(entry, dict)
                       and entry.get("status") == "failed"
