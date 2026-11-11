@@ -123,7 +123,10 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
     info = item.get("document_extraction")
     if not isinstance(info, dict):
         info = {}
-    attempts = list(info.get("attempts") or [])
+    # Imported or cached extraction metadata is untrusted. A string/dict
+    # must never become an iterable of bogus attempts or crash enrichment.
+    previous_attempts = info.get("attempts")
+    attempts = [entry for entry in previous_attempts if isinstance(entry, dict)] if isinstance(previous_attempts, list) else []
     attempt: dict[str, Any] = {"url": url, "status": "pending", "source": "ted_xml"}
 
     try:
@@ -282,7 +285,10 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     with ThreadPoolExecutor(max_workers=min(4, document_parser.MAX_WORKERS)) as executor:
         results = list(executor.map(enrich_opportunity, candidates))
     for item, success in zip(candidates, results):
-        attempts = (item.get("document_extraction") or {}).get("attempts") or []
+        extraction = item.get("document_extraction")
+        attempts = extraction.get("attempts") if isinstance(extraction, dict) else []
+        if not isinstance(attempts, list):
+            attempts = []
         if not success:
             failed = [entry for entry in attempts if isinstance(entry, dict)
                       and entry.get("status") == "failed"
