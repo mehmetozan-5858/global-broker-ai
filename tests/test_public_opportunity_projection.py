@@ -51,6 +51,26 @@ class PublicOpportunityProjectionTests(unittest.TestCase):
         row["brand_new_private_agent_output"] = {"contact": "secret"}
         self.assertNotIn("brand_new_private_agent_output", project_public_opportunity(row))
 
+    def test_numeric_source_quantity_survives_projection_without_type_error(self):
+        row = self.sample()
+        row['field_evidence']['quantity']['value'] = 12
+        self.assertEqual(project_public_feed({'opportunities': [row]})['opportunities'][0]['approx_quantity'], 12)
+
+    def test_contact_values_in_approved_fields_are_omitted_in_feed_and_reprojection(self):
+        for value in ('mailto:private@example.test', 'TEL:+49123456', 'tel:',
+                      'Equipment — private@example.test'):
+            with self.subTest(value=value):
+                row = self.sample()
+                row['public_product_detail'] = value
+                row['field_evidence']['product']['value'] = value
+                row['product_name'] = value
+                row['sector_id'] = value
+                row['opportunity_id'] = value
+                public = project_public_feed({'opportunities': [row]})
+                serialized = str(project_public_opportunity(public['opportunities'][0]))
+                self.assertNotIn(value, serialized)
+                self.assertNotIn('product_detail', public['opportunities'][0])
+
     def test_public_feed_only_contains_goods_candidates_and_safe_top_level(self):
         good = self.sample()
         bad = dict(good)
