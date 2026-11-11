@@ -44,7 +44,11 @@ def ted_search(query: str, limit: int = 100):
         with urllib.request.urlopen(req,timeout=40) as r:
             return json.load(r)
     except HTTPError as e:
-        raise RuntimeError("TED HTTP %s: %s" % (e.code,e.read().decode("utf-8","replace"))) from e
+        # TED may rate-limit independent GitHub workflows. Never echo an
+        # untrusted response body into Actions logs; report only the status.
+        if e.code == 429:
+            raise RuntimeError("TED_HTTP_RATE_LIMITED_429") from e
+        raise RuntimeError("TED_HTTP_STATUS_%d" % e.code) from e
 
 def text_of(x):
     if isinstance(x,str): return x
