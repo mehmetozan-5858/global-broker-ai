@@ -1,8 +1,11 @@
 import unittest
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
 from src.private_snapshot_identity_gate import (
     PrivateSnapshotIdentityError, inspect_private_snapshot,
-    require_unique_private_snapshot,
+    require_unique_private_snapshot, main,
 )
 
 
@@ -74,6 +77,26 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
                 with self.assertRaisesRegex(PrivateSnapshotIdentityError,'invalid_opportunity_id') as err:
                     require_unique_private_snapshot(rows)
                 self.assertNotIn('sensitive',str(err.exception))
+
+    def test_duplicate_fail_still_writes_only_safe_aggregate_artifact(self):
+        rows=[
+            {'opportunity_id':'private-123','source':'source-A','contact_email':'private@example.test'},
+            {'opportunity_id':'private-123','source':'source-B','contact_email':'other@example.test'},
+        ]
+        with TemporaryDirectory() as tmp:
+            source=Path(tmp)/'private.json'
+            aggregate=Path(tmp)/'safe.json'
+            source.write_text(json.dumps({'opportunities':rows}),encoding='utf-8')
+            with self.assertRaisesRegex(PrivateSnapshotIdentityError,'duplicate_opportunity_id'):
+                main(str(source),str(aggregate))
+            report=json.loads(aggregate.read_text(encoding='utf-8'))
+            self.assertEqual(report['cross_source_groups'],1)
+            self.assertEqual(report['duplicate_groups'],1)
+            self.assertFalse(report['accepted_for_remote_write'])
+            dumped=json.dumps(report)
+            self.assertNotIn('private-123',dumped)
+            self.assertNotIn('private@example.test',dumped)
+            self.assertNotIn('source-A',dumped)
 
     def test_payload_cap_is_not_bypassed_by_repeat_id(self):
         row = {"opportunity_id": "same-synthetic-notice"}
