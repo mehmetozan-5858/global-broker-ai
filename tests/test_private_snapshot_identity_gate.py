@@ -1,3 +1,4 @@
+from src.opportunity_identity import stable_opportunity_id
 import unittest
 import json
 from pathlib import Path
@@ -69,6 +70,13 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
             require_unique_private_snapshot(rows)
         self.assertIn('missing_source_provenance',str(exc.exception))
         self.assertNotIn('private-sensitive-id',str(exc.exception))
+
+    def test_upstream_identity_builder_does_not_truncate_before_gate(self):
+        very_long_id="synthetic-notice-" + "x"*201
+        prepared=stable_opportunity_id({'opportunity_id':very_long_id,'source':'synthetic'})
+        self.assertEqual(prepared,very_long_id)
+        with self.assertRaisesRegex(PrivateSnapshotIdentityError,'invalid_opportunity_id'):
+            require_unique_private_snapshot([{'opportunity_id':prepared,'source':'synthetic'}])
 
     def test_reject_overlong_or_nonstring_identity_without_leaking_value(self):
         for raw in ['x'*201, {'private':'sensitive'}, ['private'], 3]:
