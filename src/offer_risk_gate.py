@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 from .ted_search_fields import notice_context
-from .ted_known_blockers import tender_specific_blockers
+from .ted_known_blockers import tender_specific_blockers, deadline_revision_review
 
 
 def _bool_status(container: dict[str, Any], truthy_statuses: set[str]) -> bool:
@@ -77,6 +77,9 @@ def evaluate(item: dict[str, Any]) -> dict[str, Any]:
             "external action is ever authorized automatically."
         ),
     }
+    deadline_review = deadline_revision_review(item)
+    if deadline_review is not None:
+        result["ted_deadline_revision_review"] = deadline_review
     item["offer_risk_gate"] = result
     return result
 
