@@ -153,8 +153,7 @@ jobs:
               from openpyxl import load_workbook
               from collections import Counter
               from openpyxl.formula.tokenizer import Tokenizer
-              from openpyxl.utils.exceptions import TokenizerError
-              wb = load_workbook(temporary, read_only=True, data_only=False, keep_links=False)
+                  wb = load_workbook(temporary, read_only=True, data_only=False, keep_links=False)
               signatures = Counter()
               complexity = Counter()
               try:
@@ -169,7 +168,7 @@ jobs:
                                   funcs = [t.value.split('(')[0].upper() for t in tokens if t.type == 'FUNC' and t.subtype == 'OPEN']
                                   signatures.update(funcs if funcs else ['ARITHMETIC_OR_REFERENCE'])
                                   complexity.update(['contains_function' if funcs else 'no_function'])
-                              except (TokenizerError, ValueError):
+                              except (ValueError, IndexError):
                                   complexity.update(['parse_error'])
               finally:
                   wb.close()
