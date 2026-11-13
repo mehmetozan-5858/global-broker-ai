@@ -29,8 +29,14 @@ def audit(data):
         if any(isinstance(v, bool) or not isinstance(v, (int, float)) or v <= 0 for v in (d, h, target, count)):
             raise ValueError("Invalid dimensional input")
         upper_l = math.pi * d * d * h / 4 / 1_000_000
-        # Always use a strict upper-bound comparison, not rounded display numbers.
+        # Also test the LARGEST cylinder allowed by the amended specification.
+        # Even that optimistic envelope may be too small to meet the volume.
+        spec_upper_l = math.pi * item["max_diameter_mm"] ** 2 * item["max_height_mm"] / 4 / 1_000_000
+        required_height_at_drawing_diameter_mm = 4 * target * 1_000_000 / (math.pi * d * d)
+        required_height_at_spec_max_diameter_mm = 4 * target * 1_000_000 / (math.pi * item["max_diameter_mm"] ** 2)
+        # Always use strict unrounded comparisons for fail-closed decisions.
         impossible = upper_l < target
+        impossible_under_spec = spec_upper_l < target
         results.append({
             "site": item["site"],
             "drawing_page": item["page"],
@@ -39,6 +45,10 @@ def audit(data):
             "outer_cylinder_upper_bound_each_l": round(upper_l),
             "deficit_each_l_if_impossible": math.ceil(target - upper_l) if impossible else 0,
             "drawing_envelope_below_required_volume": impossible,
+            "spec_max_outer_cylinder_upper_bound_each_l": round(spec_upper_l),
+            "spec_dimensional_envelope_below_required_volume": impossible_under_spec,
+            "minimum_ideal_cylinder_height_at_drawn_diameter_mm": math.ceil(required_height_at_drawing_diameter_mm),
+            "minimum_ideal_cylinder_height_at_allowed_max_diameter_mm": math.ceil(required_height_at_spec_max_diameter_mm),
             "usable_volume_verified": False,
             "technical_approval": False,
         })
@@ -48,6 +58,8 @@ def audit(data):
         "rows": results,
         "sites_with_impossible_envelope": sum(r["drawing_envelope_below_required_volume"] for r in results),
         "tanks_in_impossible_envelopes": sum(r["new_tank_count"] for r in results if r["drawing_envelope_below_required_volume"]),
+        "sites_impossible_under_spec_cylinder_envelope": sum(r["spec_dimensional_envelope_below_required_volume"] for r in results),
+        "tanks_impossible_under_spec_cylinder_envelope": sum(r["new_tank_count"] for r in results if r["spec_dimensional_envelope_below_required_volume"]),
         "independent_capacity_validation": False,
         "technical_approval": False,
         "commercial_approval": False,
