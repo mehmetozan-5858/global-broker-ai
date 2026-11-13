@@ -63,6 +63,35 @@ class TedQuarantineOfferTests(unittest.TestCase):
             self.assertTrue(evaluate(row)["draft_offer_ready"])
             self.assertEqual(build({"opportunities": [row]})["candidate_count"], 1)
 
+    def test_exact_official_ted_link_blocks_even_without_publication_number(self):
+        row = otherwise_ready()
+        row["source_url"] = "https://ted.europa.eu/en/notice/-/detail/702997-2026"
+        self.assertTrue(is_quarantined_ted(row))
+        self.assertFalse(evaluate(row)["draft_offer_ready"])
+        self.assertEqual(build({"opportunities": [row]})["candidate_count"], 0)
+
+    def test_amendment_link_in_official_links_blocks_stale_ready_queue(self):
+        row = {
+            "official_links": ["https://ted.europa.eu/en/notice/-/detail/746528-2026"],
+            "offer_risk_gate": {"draft_offer_ready": True, "risk_flags": []},
+        }
+        self.assertTrue(is_quarantined_ted(row))
+        self.assertEqual(build({"opportunities": [row]})["candidate_count"], 0)
+
+    def test_noncanonical_or_untrusted_lookalike_links_do_not_quarantine(self):
+        examples = (
+            "https://ted.europa.eu.evil.example/en/notice/-/detail/702997-2026",
+            "http://ted.europa.eu/en/notice/-/detail/702997-2026",
+            "https://ted.europa.eu/en/notice/-/detail/702997-2026-extra",
+            "https://ted.europa.eu/en/notice/-/detail/702998-2026",
+            "https://ted.europa.eu/en/notice/-/detail/702997-2026?redirect=1",
+            "https://ted.europa.eu:bad/en/notice/-/detail/702997-2026",
+            "https://evil.example/path/702997-2026",
+        )
+        for url in examples:
+            with self.subTest(url=url):
+                self.assertFalse(is_quarantined_ted({"source_url": url}))
+
     def test_unknown_source_and_absent_notice_do_not_inherit_named_case(self):
         row = otherwise_ready()
         row["title"] = "Discussion of 702997-2026 in prose"
