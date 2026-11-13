@@ -61,3 +61,19 @@ Formula: `maximum_geometric_envelope_L = π × (diameter_mm/2)^2 × height_mm / 
 **Minimum safe resolution:** check authoritative annex revision and the buyer's technical dimension definitions, request a documented drawing clarification through an authorized procurement channel before sourcing or scoring any tank model. Obtain dimensioned, certified tank volume curves / usable fill level and site fit evidence. No contact, offer, paid action, merge, deployment or technical approval has been authorized by this note.
 
 **Automation:** `scripts/audit_ted_tank_capacity_envelopes.py` and `tests/test_ted_tank_capacity_envelopes.py` detect and fail closed on these exact drawing discrepancies. GitHub CI test success verifies the detection logic; it **does not** turn these capacity conflicts into acceptance. `technical_approval=false`, `commercial_approval=false`.
+
+
+## ESCALATED BLOCKER — amended dimensional ceilings are mutually incompatible at Slavkov
+
+Re-examination of drawing p. 6 (Veselí nad Moravou) and p. 9 (Slavkov u Brna) reconfirmed both use **ZN 15 labels Ø 2,400 mm × 3,000 mm**, whose ideal full cylinder envelope is **13,571.68 L**, short of a 15,000 L requirement by **1,428.32 L** per tank. The drawings thus contradict the specified minimum volume for **2 + 3 tanks** if the given dimensions are their maximum outer envelopes.
+
+**Distinguish the two situations:**
+
+- **Veselí nad Moravou:** amended site ceiling is **Ø 2,400 mm × H 4,400 mm**. At the printed Ø 2,400 mm, even a fully utilized ideal cylindrical volume of 15,000 L requires a **minimum ideal height of ~3,316 mm** (real engineering fill height likely more). That is above its **drawn** 3,000 mm but below the site's 4,400 mm ceiling. A revised taller drawing might be geometrically possible, subject to actual tank design, usable capacity and site fit.
+- **Slavkov u Brna:** amended ceiling is **Ø 2,450 mm × H 3,000 mm**, *even though the drawing uses Ø 2,400 mm*. At the site **maximum permitted dimensions**, the ideal full cylinder volume is **~14,143.06 L**, still **~856.94 L below 15,000 L**. A 15,000 L *ideal cylinder* at Ø 2,450 mm would need at least **~3,182 mm** height, which exceeds the stated 3,000 mm maximum. This is a **specification-level geometric contradiction** for a cylindrical, fully bounded tank, not merely a drawing height typo.
+
+**Limits:** This audit applies to the dimensioned cylindrical outside envelopes stated in the specification and drawings, not to hypothetical alternative geometry/interpretations or undisclosed usable volume definitions. A human reviewer must confirm that all height/diameter dimensions, nominal volume definitions and placement constraints have that intended meaning before asserting a formal tender inconsistency.
+
+**Next safe action:** raise a clarification request **draft only** for authorized procurement review; independently check original Czech wording and any post-27-October authority amendments, and request corrected dimensioned capacity drawing or clarification of the Slavkov volume-vs-envelope requirement and Veselí drawing height. Do **not** contact buyer or suppliers, send any question, issue an offer, or change production on this evidence alone.
+
+This finding is recorded by `scripts/audit_ted_tank_capacity_envelopes.py` with two separate fields: `drawing_envelope_below_required_volume` and `spec_dimensional_envelope_below_required_volume`. Technical and commercial acceptance remain **false**.
