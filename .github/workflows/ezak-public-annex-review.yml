@@ -217,6 +217,42 @@ jobs:
           finally:
               temporary.unlink(missing_ok=True)
           PY
+      - name: Audit hash-pinned PDF page inventory (not visual acceptance)
+        if: always()
+        shell: bash
+        run: |
+          python -m pip install 'pypdf==6.1.1' --disable-pip-version-check --quiet
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          from pypdf import PdfReader
+          expected = 'cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f'
+          folder = Path(os.environ['RUNNER_TEMP']) / 'ezak-47078'
+          manifest = folder / 'manifest.json'
+          if not manifest.is_file(): raise SystemExit('PDF inventory BLOCKED: missing manifest')
+          rows = json.loads(manifest.read_text(encoding='utf-8')).get('records', [])
+          matches = [r for r in rows if r.get('sha256') == expected and r.get('kind') == 'pdf']
+          if len(matches) != 1: raise SystemExit('PDF inventory BLOCKED: hash-verified drawing not found uniquely')
+          path = folder / matches[0]['file']
+          if path.stat().st_size > 5_000_000 or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+              raise SystemExit('PDF inventory BLOCKED: size/hash check failed')
+          pdf = PdfReader(str(path), strict=True)
+          count = len(pdf.pages)
+          if not (1 <= count <= 100): raise SystemExit('PDF inventory BLOCKED: abnormal page count')
+          xobjects = {'image': 0, 'form': 0, 'other': 0}
+          for page in pdf.pages:
+              resources = page.get('/Resources')
+              if not resources: continue
+              resources = resources.get_object()
+              objects = resources.get('/XObject')
+              if not objects: continue
+              for obj in objects.get_object().values():
+                  subtype = str(obj.get_object().get('/Subtype'))
+                  category = 'image' if subtype == '/Image' else 'form' if subtype == '/Form' else 'other'
+                  xobjects[category] += 1
+          print('Drawing PDF structural inventory:', json.dumps({'sha256_match': True, 'pages': count, 'direct_xobjects': xobjects, 'visual_review_completed': False, 'technical_approval': False}, sort_keys=True))
+          print('PDF visual acceptance: BLOCKED pending actual rendering and reviewer inspection')
+          PY
       - name: Enforce fail-closed review outcome
         if: always()
         shell: bash
