@@ -95,6 +95,9 @@ def get_cell(sheet,cell,seen,depth):
     key=(sheet.title,cell.coordinate)
     if key in seen: raise Unsupported("circular_reference")
     if cell.data_type == "f": return evaluate(sheet,cell.value,seen | {key},depth)
+    # In simple arithmetic and SUM, a truly empty referenced cell contributes 0.
+    # Text, error cells and any other non-numeric data remain unsupported.
+    if cell.value is None and cell.data_type != "e": return Decimal(0)
     return decimal_number(cell.value)
 
 def verify(path):
