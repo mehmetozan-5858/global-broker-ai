@@ -9,3 +9,12 @@
 - **Pending critical cases:** Slavkov u Brna specification-level geometric volume contradiction (3 tanks) and Veselí nad Moravou drawing-dimension discrepancy (2 tanks). No official technical resolution was verified by this limited page-section scan.
 - **Minimum safe next action:** confirm any official clarification, precise volume/dimension definitions, Annex 8 revision and publication sequence through source documents and authorized technical review. A prepared clarification request remains UNSENT.
 - **No changes authorized:** merge, production deployment, budgets, supplier contact, tender submission or buyer communications.
+
+
+## 14 Nov 2026 — quote analysis protection (isolated PR #222)
+
+The price/margin gate in `src/price_margin_gate.py` now detects an **exact** `702997-2026` notice value in `notice_id`, `ted_notice_id` or `source_notice_id`. For this notice only, it adds `ted_702997_2026_unresolved_technical_capacity_conflict` to the blocking issues, keeps `price_ready=false` and `margin_ready=false`, and does not emit gross-spread figures. All unrelated notice identifiers retain their original pricing behavior.
+
+This is **scoped to the isolated review branch**, not a production fix. The guard assumes the opportunity has a correctly populated official notice identity; a missing or differently formatted identity is **not** caught by this exact-match rule, and requires separate source identity verification. Do not represent this as a global cross-format notice resolver or a live safeguard.
+
+GitHub Actions run `43510976062` confirmed **703 Python tests** passed, plus the JavaScript test step. The separate tender technical gate continued to report `BLOCKED` with five drawing-conflicted tanks and unresolved independent acceptance evidence. All commercial/production approvals remain false.
