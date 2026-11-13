@@ -2,10 +2,10 @@ name: TED Search Source Probe
 on:
   pull_request:
     branches: [main]
-    paths: ['src/broker.py', 'src/ted_search_fields.py', 'src/ted_search_probe.py', 'src/ted_xml_enricher.py', 'src/document_parser.py', 'src/ted_document_probe.py', '.github/workflows/ted-search-source-probe.yml']
+    paths: ['src/broker.py', 'src/ted_search_fields.py', 'src/ted_search_probe.py', 'src/ted_xml_enricher.py', 'src/document_parser.py', 'src/ted_document_probe.py', 'src/ted_bulk.py', 'src/ted_bulk_probe.py', '.github/workflows/ted-search-source-probe.yml']
   push:
     branches: [main]
-    paths: ['src/broker.py', 'src/ted_search_fields.py', 'src/ted_search_probe.py', 'src/ted_xml_enricher.py', 'src/document_parser.py', 'src/ted_document_probe.py', '.github/workflows/ted-search-source-probe.yml']
+    paths: ['src/broker.py', 'src/ted_search_fields.py', 'src/ted_search_probe.py', 'src/ted_xml_enricher.py', 'src/document_parser.py', 'src/ted_document_probe.py', 'src/ted_bulk.py', 'src/ted_bulk_probe.py', '.github/workflows/ted-search-source-probe.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -32,4 +32,32 @@ jobs:
       - name: Install existing pinned document reader
         run: python -m pip install --disable-pip-version-check pypdf==6.1.1
       - name: Probe two official competition documents without external writes
+        env:
+          TED_RESPONSE_DIAGNOSTICS: '1'
         run: python -m src.ted_document_probe
+
+  bulk-document-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install existing pinned document reader
+        run: python -m pip install --disable-pip-version-check pypdf==6.1.1
+      - name: Verify two official notice XMLs through documented daily packages
+        run: python -m src.ted_bulk_probe
+
+  technical-annex-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install existing pinned document reader
+        run: python -m pip install --disable-pip-version-check pypdf==6.1.1
+      - name: Read notice-linked real tender PDF and technical DOCX
+        run: python -m src.ted_annex_probe

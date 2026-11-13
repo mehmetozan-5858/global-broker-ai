@@ -17,6 +17,9 @@ from src.opportunity_identity import stable_opportunity_id
 from src.ted_search_fields import notice_context
 
 BUYER_DISPLAY = "Alıcı kimliği kontrollü tanıştırma ile paylaşılır"
+CONTACT_VALUE = re.compile(
+    r"(?i)(mailto:|tel:|(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})"
+)
 
 SECTOR_KEYWORDS = {
     "furniture": ("furniture", "mobilya", "chair", "table", "desk", "cabinet", "wood"),
@@ -33,7 +36,12 @@ SECTOR_KEYWORDS = {
 
 
 def _scalar(value: Any) -> Any:
-    return value if isinstance(value, (str, int, float, bool)) and value not in ("") else None
+    # An approved field name does not make source-provided free text safe.
+    # Omit the whole value instead of publishing a partial or invented fact;
+    # include bare URI prefixes that the independent publication gate rejects.
+    if isinstance(value, str) and CONTACT_VALUE.search(value):
+        return None
+    return value if isinstance(value, (str, int, float, bool)) and value != "" else None
 
 
 def _pick(row: dict[str, Any], keys: tuple[str, ...]) -> Any:
@@ -78,11 +86,13 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
     verification = row.get("verification") if isinstance(row.get("verification"), dict) else {}
 
     result: dict[str, Any] = {
-        "opportunity_id": stable_opportunity_id(row),
         "buyer_masked": True,
         "buyer_display": BUYER_DISPLAY,
-        "sector_id": sector_id or infer_sector(row),
+        "sector_id": _scalar(sector_id) or infer_sector(row),
     }
+    identity = _scalar(stable_opportunity_id(row))
+    if identity is not None:
+        result["opportunity_id"] = identity
     context = notice_context(row)
     previous_context = row.get("notice_context")
     if "form-type" not in row and isinstance(previous_context, dict) and (row.get("source") == "TED" or row.get("source_name") == "TED"):
@@ -171,7 +181,8 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
     if reasons is None and row.get("buyer_masked") is True:
         # Preserve vetted enum codes when re-projecting an already public feed.
         reasons = row.get("document_coverage_blockers")
-    allowed_reasons = ("source_text_truncated", "attachment_candidates_skipped")
+    allowed_reasons = ("source_text_truncated", "attachment_candidates_skipped",
+                       "attachment_downloads_failed", "document_versions_require_review")
     if isinstance(reasons, list):
         approved_reasons = [code for code in allowed_reasons if code in reasons]
         if approved_reasons:
@@ -182,6 +193,8 @@ def project_public_opportunity(row: dict[str, Any], *, sector_id: str | None = N
         result["lot_selection_required"] = True
     if "lot_count" not in result and type(row.get("lot_count")) is int and row["lot_count"] > 0:
         result["lot_count"] = row["lot_count"]
+        if "lot_selection_required" not in result and row.get("lot_selection_required") is False:
+            result["lot_selection_required"] = False
     if row.get("source") == "WORLD_BANK" and type(row.get("source_lot_count")) is int and 0 < row["source_lot_count"] <= 64:
         result["lot_count"] = row["source_lot_count"]
     line_items = row.get("source_line_items")
