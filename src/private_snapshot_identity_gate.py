@@ -74,14 +74,31 @@ def require_unique_private_snapshot(rows):
     return outcome
 
 
-def main(path):
+def main(path, aggregate_path=None):
     data = json.loads(Path(path).read_text(encoding="utf-8"))
-    result = require_unique_private_snapshot(data.get("opportunities"))
-    print("PRIVATE_SNAPSHOT_IDENTITY_OK rows={}".format(result["rows"]))
+    rows = data.get("opportunities")
+    # Build a safe diagnostic artifact even when the remote sync must fail.
+    report = inspect_private_snapshot(rows)
+    if aggregate_path is not None:
+        safe = {
+            "schema": "private-ingest-aggregate-v1",
+            "rows": report["rows"],
+            "duplicate_groups": report["duplicate_identity_count"],
+            "conflicting_groups": report["conflicting_identity_count"],
+            "cross_source_groups": report["cross_source_collision_count"],
+            "same_or_unknown_source_groups": report["same_or_unknown_source_duplicate_count"],
+            "missing_source_count": report["missing_source_provenance_count"],
+            "accepted_for_remote_write": False,
+        }
+        Path(aggregate_path).write_text(
+            json.dumps(safe, sort_keys=True, separators=(",", ":")), encoding="utf-8"
+        )
+    require_unique_private_snapshot(rows)
+    print("PRIVATE_SNAPSHOT_IDENTITY_OK rows={}".format(report["rows"]))
 
 
 if __name__ == "__main__":
     try:
-        main(sys.argv[1])
+        main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)
     except (PrivateSnapshotIdentityError, ValueError, KeyError) as exc:
         raise SystemExit("PRIVATE_SNAPSHOT_IDENTITY_BLOCKED " + str(exc))
