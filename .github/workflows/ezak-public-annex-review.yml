@@ -1,15 +1,9 @@
 name: E-ZAK public annex review (manual only)
 
-# Deliberately no schedule or push trigger. The official source has not yet
-# passed a real acquisition acceptance test; no production deployment.
+# Review-only, manually launched. Do not run official source downloads on
+# every commit. No automatic production deployment or commercial acceptance.
 on:
   workflow_dispatch:
-  # One narrowly scoped evidence probe on the isolated review branch.
-  push:
-    branches:
-      - fix/ezak-document-id-discovery-20261113
-    paths:
-      - '.github/workflows/ezak-public-annex-review.yml'
 
 permissions:
   contents: read
