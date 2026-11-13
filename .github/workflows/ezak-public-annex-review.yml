@@ -58,6 +58,28 @@ jobs:
               successes = Counter(row.get('kind', 'unclassified') for row in rows if 'error' not in row)
               print('Redacted failure classes:', json.dumps(dict(sorted(failures.items())), sort_keys=True))
               print('Downloaded signature classes:', json.dumps(dict(sorted(successes.items())), sort_keys=True))
+              # Compare only aggregate hash matches with the 29 Oct historical audit.
+              # No filenames, source URLs, bytes or private document text in logs.
+              reference_hashes = {
+                  'prior_doc_1': '187becc6beef06222861b311e55ddf88ea9f34909860e812768ce758ee745a04',
+                  'prior_doc_2': '7f7347e3e9876504e9012ec1c302f02758505a58b5bcf66d8d7c78f5eac46c45',
+                  'prior_doc_3': 'dcefbca8da9d62fc704a3b95650981d782ba0518d47099a1e461d3e370710229',
+                  'prior_docx_1': '80ace4abf15579d9b08654960e6048fa1636f725116b5af39f2b08de7a87ce6d',
+                  'prior_docx_2': 'd25e7b2577783987970f338b5fd2f57473a17ef1170da29efd161287c1a794f0',
+                  'prior_formula_xlsx': '41144156ef49a411de75c423f3e460732bc1bc111da326d76801cb798de20d45',
+                  'prior_drawing_pdf': 'cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f',
+                  'prior_spec_original': '7b1937a90a083cd594e3bdd82772eaa088ace4300d87676220c8d109fc7c142b',
+                  'prior_spec_amended': 'ec1501d66872990cb18d0e27be2f492d8911b09d28665955ec28f757434a161e',
+                  'prior_tender_pdf': '057d11623a3487273f4c7e49be8858f51f315ef4d163cb191e32bfe7cdfaca27',
+              }
+              received = [row.get('sha256') for row in rows if 'error' not in row]
+              received_set = set(received)
+              matched = sorted(name for name, digest in reference_hashes.items() if digest in received_set)
+              print('Historical SHA-256 baseline match count:', len(matched), 'of', len(reference_hashes))
+              print('Historical SHA-256 baseline match labels:', json.dumps(matched))
+              print('Unique downloaded hash count:', len(received_set))
+              print('Unmatched downloaded hash count:', len(received_set - set(reference_hashes.values())))
+              print('Acceptance remains BLOCKED: source completeness, authoritative revision and lot review unverified.')
               print('Acceptance: BLOCKED pending full annex and amendment reconciliation')
           PY
       - name: Enforce fail-closed review outcome
