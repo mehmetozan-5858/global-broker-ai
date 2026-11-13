@@ -253,6 +253,54 @@ jobs:
           print('Drawing PDF structural inventory:', json.dumps({'sha256_match': True, 'pages': count, 'direct_xobjects': xobjects, 'visual_review_completed': False, 'technical_approval': False}, sort_keys=True))
           print('PDF visual acceptance: BLOCKED pending actual rendering and reviewer inspection')
           PY
+      - name: Render hash-pinned drawing PDF contact sheet (review artifact only)
+        if: always()
+        shell: bash
+        run: |
+          python -m pip install 'pymupdf==1.26.5' 'Pillow==11.3.0' --disable-pip-version-check --quiet
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          import fitz
+          from PIL import Image, ImageDraw
+          folder = Path(os.environ['RUNNER_TEMP']) / 'ezak-47078'
+          manifest = folder / 'manifest.json'
+          expected = 'cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f'
+          if not manifest.is_file(): raise SystemExit('Drawing preview blocked: no manifest')
+          rows = json.loads(manifest.read_text(encoding='utf-8')).get('records', [])
+          matches = [r for r in rows if r.get('sha256') == expected and r.get('kind') == 'pdf']
+          if len(matches) != 1: raise SystemExit('Drawing preview blocked: no unique hash match')
+          path = folder / matches[0]['file']
+          if path.stat().st_size > 5_000_000 or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+              raise SystemExit('Drawing preview blocked: hash or bounds mismatch')
+          doc = fitz.open(str(path))
+          if len(doc) != 12: raise SystemExit('Drawing preview blocked: unexpected page count')
+          tile_w, tile_h, columns = 480, 400, 3
+          canvas = Image.new('RGB', (columns*tile_w, 4*tile_h), '#ffffff')
+          draw = ImageDraw.Draw(canvas)
+          for index in range(12):
+              page = doc[index]
+              matrix = fitz.Matrix(0.70,0.70)
+              pix = page.get_pixmap(matrix=matrix, alpha=False)
+              img = Image.frombytes('RGB',[pix.width,pix.height],pix.samples)
+              img.thumbnail((tile_w-24,tile_h-36))
+              x=(index%columns)*tile_w+(tile_w-img.width)//2
+              y=(index//columns)*tile_h+24
+              canvas.paste(img,(x,y))
+              draw.text(((index%columns)*tile_w+12,(index//columns)*tile_h+5),f'Page {index+1}',fill='#111111')
+          output = folder / 'drawing-contact-sheet.png'
+          canvas.save(output)
+          doc.close()
+          print('Drawing preview artifact produced: 12 pages; technical visual approval remains false')
+          PY
+      - name: Upload drawing contact sheet for isolated visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-drawing-contact-sheet
+          path: ${{ runner.temp }}/ezak-47078/drawing-contact-sheet.png
+          if-no-files-found: ignore
+          retention-days: 1
       - name: Enforce fail-closed review outcome
         if: always()
         shell: bash
