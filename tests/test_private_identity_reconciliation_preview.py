@@ -26,6 +26,21 @@ class IdentityReconciliationPreviewTests(unittest.TestCase):
         self.assertNotEqual(a,b)
         self.assertNotEqual(a,c)
         self.assertEqual(a,draft_namespaced_identifier(source_key='a',notice_id='n'))
+    def test_linked_customer_references_require_explicit_reconciliation(self):
+        rows=[{'opportunity_id':'shared-private-id','source':'official-A'},
+              {'opportunity_id':'shared-private-id','source':'official-B'}]
+        unknown=analyze_collision_rekey(rows)
+        self.assertFalse(unknown['reference_snapshot_verified'])
+        self.assertIsNone(unknown['referenced_collision_groups'])
+        linked=analyze_collision_rekey(rows,referenced_ids={'shared-private-id'})
+        self.assertTrue(linked['reference_snapshot_verified'])
+        self.assertEqual(linked['referenced_collision_groups'],1)
+        self.assertFalse(linked['safe_to_apply'])
+        self.assertNotIn('shared-private-id',str(linked))
+        verified_no_links=analyze_collision_rekey(rows,referenced_ids=set())
+        self.assertEqual(verified_no_links['referenced_collision_groups'],0)
+        self.assertFalse(verified_no_links['safe_to_apply'])
+
     def test_missing_source_or_notice_blocks_preview(self):
         for source,notice,lot in [('', 'n',None),('s','',None),('s','n','')]:
             self.assertIsNone(draft_namespaced_identifier(source_key=source,notice_id=notice,lot_id=lot))
