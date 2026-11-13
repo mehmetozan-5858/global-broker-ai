@@ -42,23 +42,23 @@ jobs:
           python - <<'PY'
           import json, os
           from pathlib import Path
-          path = Path(os.environ["RUNNER_TEMP"]) / "ezak-47078" / "manifest.json"
+          from collections import Counter
+          path = Path(os.environ['RUNNER_TEMP']) / 'ezak-47078' / 'manifest.json'
           if not path.is_file():
-              print("Official acquisition: BLOCKED (no manifest)")
+              print('Official acquisition: BLOCKED (no manifest)')
           else:
-              data = json.loads(path.read_text(encoding="utf-8"))
-              rows = data.get("records", [])
-              from collections import Counter
-          print(f"Official acquisition: {len(rows)} discovered links, {sum('error' in r for r in rows)} failed")
-          failures = Counter(
-              f"HTTP {row['http_status']}" if "http_status" in row
-              else row.get("failure_class", row["error"])
-              for row in rows if "error" in row
-          )
-          successes = Counter(row.get("kind", "unclassified") for row in rows if "error" not in row)
-          print("Redacted failure classes:", json.dumps(dict(sorted(failures.items())), sort_keys=True))
-          print("Downloaded signature classes:", json.dumps(dict(sorted(successes.items())), sort_keys=True))
-              print("Acceptance: BLOCKED pending full annex and amendment reconciliation")
+              data = json.loads(path.read_text(encoding='utf-8'))
+              rows = data.get('records', [])
+              print(f"Official acquisition: {len(rows)} discovered links, {sum('error' in r for r in rows)} failed")
+              failures = Counter(
+                  f"HTTP {row['http_status']}" if 'http_status' in row
+                  else row.get('failure_class', row['error'])
+                  for row in rows if 'error' in row
+              )
+              successes = Counter(row.get('kind', 'unclassified') for row in rows if 'error' not in row)
+              print('Redacted failure classes:', json.dumps(dict(sorted(failures.items())), sort_keys=True))
+              print('Downloaded signature classes:', json.dumps(dict(sorted(successes.items())), sort_keys=True))
+              print('Acceptance: BLOCKED pending full annex and amendment reconciliation')
           PY
       - name: Enforce fail-closed review outcome
         if: always()
