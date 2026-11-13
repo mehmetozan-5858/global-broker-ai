@@ -176,6 +176,7 @@ jobs:
               print('XLSX formula parsing categories:', json.dumps(dict(sorted(complexity.items())), sort_keys=True))
               print('Formula values and cell addresses intentionally not logged')
               from scripts.review_ted_xlsx_arithmetic import verify
+              # Offline independent comparison reports only fixed failure classes.
               arithmetic = verify(temporary)
               print('Independent arithmetic review:', json.dumps(arithmetic, sort_keys=True))
               if not arithmetic['formula_acceptance']:
