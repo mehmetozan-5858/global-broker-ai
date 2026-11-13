@@ -373,6 +373,53 @@ jobs:
           path: ${{ runner.temp }}/ezak-47078/remaining-drawings/*.png
           if-no-files-found: ignore
           retention-days: 1
+      - name: Compare hash-pinned original and amended technical DOCX
+        if: always()
+        shell: bash
+        run: |
+          python -m pip install 'python-docx==1.2.0' --disable-pip-version-check --quiet
+          python - <<'PY'
+          import hashlib, json, os, difflib
+          from pathlib import Path
+          from docx import Document
+          root=Path(os.environ['RUNNER_TEMP'])/'ezak-47078'
+          manifest=root/'manifest.json'
+          oldhash='7b1937a90a083cd594e3bdd82772eaa088ace4300d87676220c8d109fc7c142b'
+          newhash='ec1501d66872990cb18d0e27be2f492d8911b09d28665955ec28f757434a161e'
+          if not manifest.is_file(): raise SystemExit('Technical DOCX comparison blocked: manifest missing')
+          rows=json.loads(manifest.read_text(encoding='utf-8')).get('records',[])
+          def source_for(digest):
+              matches=[r for r in rows if r.get('sha256')==digest and r.get('kind')=='zip-based-office']
+              if len(matches)!=1: raise SystemExit('Technical DOCX comparison blocked: missing unique hash')
+              p=root/matches[0]['file']
+              if p.stat().st_size>250_000 or hashlib.sha256(p.read_bytes()).hexdigest()!=digest:
+                  raise SystemExit('Technical DOCX comparison blocked: file bounds or SHA mismatch')
+              return p
+          def lines(path):
+              doc=Document(str(path))
+              output=[p.text.strip() for p in doc.paragraphs if p.text.strip()]
+              for table in doc.tables:
+                  for row in table.rows:
+                      value=' | '.join(c.text.replace('\n','; ').strip() for c in row.cells)
+                      if value.strip(' |'): output.append('[TABLE] '+value)
+              if sum(map(len,output))>200000: raise SystemExit('Technical DOCX comparison blocked: text budget')
+              return output
+          original=lines(source_for(oldhash))
+          amended=lines(source_for(newhash))
+          output=root/'amended-spec-diff.txt'
+          changes=list(difflib.unified_diff(original,amended,fromfile='original_technical_spec',tofile='amended_2026_10_27',lineterm='',n=1))
+          if len(changes)>1000: raise SystemExit('Technical DOCX comparison blocked: too many diff lines')
+          output.write_text('\n'.join(changes),encoding='utf-8')
+          print('Hash-pinned DOCX comparison:',json.dumps({'original_paragraphs_and_rows':len(original),'amended_paragraphs_and_rows':len(amended),'changed_diff_lines':len(changes),'amendment_semantic_approval':False},sort_keys=True))
+          PY
+      - name: Upload DOCX revision text differences for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-technical-spec-diff
+          path: ${{ runner.temp }}/ezak-47078/amended-spec-diff.txt
+          if-no-files-found: ignore
+          retention-days: 1
       - name: Enforce fail-closed review outcome
         if: always()
         shell: bash
