@@ -52,11 +52,12 @@ def _exact_official_ted_urls(item: dict) -> set[str]:
             or url.fragment
         ):
             continue
-        prefix = "/en/notice/-/detail/"
-        if url.path.startswith(prefix):
-            suffix = url.path[len(prefix):]
-            if suffix in PUBLICATIONS:
-                found.add(suffix)
+        for locale in ("en", "cs"):
+            prefix = f"/{locale}/notice/-/detail/"
+            if url.path.startswith(prefix):
+                suffix = url.path[len(prefix):]
+                if suffix in PUBLICATIONS:
+                    found.add(suffix)
     return found
 
 
