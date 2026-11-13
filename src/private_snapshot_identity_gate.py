@@ -21,7 +21,9 @@ def inspect_private_snapshot(rows):
     seen = {}
     duplicates = set()
     conflicts = set()
-    for index, row in enumerate(rows):
+    cross_source = set()
+    same_source = set()
+    for row in rows:
         if not isinstance(row, dict):
             raise PrivateSnapshotIdentityError("invalid_opportunity_row")
         identifier = str(row.get("opportunity_id") or row.get("id") or "")[:200]
@@ -30,23 +32,32 @@ def inspect_private_snapshot(rows):
         digest = hashlib.sha256(
             json.dumps(row, sort_keys=True, ensure_ascii=False, separators=(",", ":"), default=str).encode()
         ).hexdigest()
+        source = str(row.get('source') or row.get('source_name') or '').strip()
         if identifier in seen:
             duplicates.add(identifier)
-            if seen[identifier] != digest:
+            previous_digest, previous_source = seen[identifier]
+            if previous_digest != digest:
                 conflicts.add(identifier)
+            if previous_source and source and previous_source != source:
+                cross_source.add(identifier)
+            else:
+                same_source.add(identifier)
         else:
-            seen[identifier] = digest
+            seen[identifier] = (digest, source)
     # No IDs or row text returned or logged: only aggregate counts.
     return {"rows": len(rows), "duplicate_identity_count": len(duplicates),
-            "conflicting_identity_count": len(conflicts)}
+            "conflicting_identity_count": len(conflicts),
+            "cross_source_collision_count": len(cross_source),
+            "same_or_unknown_source_duplicate_count": len(same_source)}
 
 
 def require_unique_private_snapshot(rows):
     outcome = inspect_private_snapshot(rows)
     if outcome["duplicate_identity_count"]:
         raise PrivateSnapshotIdentityError(
-            "duplicate_opportunity_id: repeated={} conflicting={}".format(
-                outcome["duplicate_identity_count"], outcome["conflicting_identity_count"]
+            "duplicate_opportunity_id: repeated={} conflicting={} cross_source={}".format(
+                outcome["duplicate_identity_count"], outcome["conflicting_identity_count"],
+                outcome["cross_source_collision_count"]
             )
         )
     return outcome
