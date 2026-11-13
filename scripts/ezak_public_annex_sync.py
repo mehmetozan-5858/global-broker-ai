@@ -74,9 +74,12 @@ def discover(index_html, index_url=BASE):
         if not official_url(url):
             continue
         path = unquote(urlparse(url).path).lower()
-        # E-ZAK uses extensionless download endpoints. Avoid unrelated navigation
-        # such as documentation/help pages; only known download URL patterns.
-        if any(path.endswith(ext) for ext in EXTENSIONS) or re.search(r"/(?:download|document_download|file_download)(?:/|_|\\.|$)", path):
+        # Accept only official E-ZAK document_ID links in addition to existing
+        # extension and download endpoint patterns; no arbitrary site navigation.
+        is_document_id = bool(re.fullmatch(r"/document_[0-9]+/[^/]+", path))
+        if (any(path.endswith(ext) for ext in EXTENSIONS)
+                or re.search(r"/(?:download|document_download|file_download)(?:/|_|\\.|$)", path)
+                or is_document_id):
             found[url] = True
     return sorted(found)
 
