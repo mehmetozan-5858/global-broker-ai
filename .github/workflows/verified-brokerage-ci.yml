@@ -5,6 +5,7 @@ on:
     branches:
       - feat/verified-brokerage-pipeline
       - feat/broker-ceo-sales-current-main
+      - fix/ezak-document-id-discovery-20261113
       - main
     paths:
       - 'src/**'
