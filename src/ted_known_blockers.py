@@ -66,5 +66,36 @@ def is_quarantined_ted(item: dict) -> bool:
     return bool((_exact_identifiers(item) | _exact_official_ted_urls(item)) & PUBLICATIONS)
 
 
+
+def deadline_revision_review(item: dict) -> dict | None:
+    """Internal warning; never overwrite the deadline shown by TED ingestion.
+
+    The amended notice has been published with a 2026-11-27 date, while
+    historical mirrors of the original show 2026-11-11. This check is a
+    provenance discrepancy signal, NOT authoritative present validity.
+    """
+    if not is_quarantined_ted(item):
+        return None
+    names = ("deadline-receipt-tender-date-lot", "deadline", "submission_deadline")
+    observed = set()
+    for name in names:
+        value = item.get(name)
+        samples = value if isinstance(value, list) else [value]
+        for sample in samples:
+            if isinstance(sample, str):
+                date_part = sample.strip()[:10]
+                if date_part in {"2026-11-11", "2026-11-27"}:
+                    observed.add(date_part)
+    return {
+        "amendment_notice": "746528-2026",
+        "amendment_published_deadline_date": "2026-11-27",
+        "old_original_deadline_present": "2026-11-11" in observed,
+        "incoming_deadline_dates": sorted(observed),
+        "live_deadline_authoritatively_verified": False,
+        "automatic_deadline_replacement": False,
+        "offer_submission_authorized": False,
+    }
+
+
 def tender_specific_blockers(item: dict) -> list[str]:
     return list(REASONS) if is_quarantined_ted(item) else []
