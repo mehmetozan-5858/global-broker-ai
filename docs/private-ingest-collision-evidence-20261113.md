@@ -16,6 +16,18 @@
   `notice_id`/`notice-number`/`reference` JSON key set queried; source
   identity may exist under a different key. Do not infer that notice IDs are absent.
 
+## Additional archive-only diagnosis (read-only, 13 Nov)
+- The 1,564 archive rows contain **83 repeated-ID groups** comprising **200
+  extra historical rows** beyond one per identifier; the largest group has
+  18 historical versions.
+- All 83 repeated-ID groups used **one consistent recorded source** per
+  identifier in the archive; no cross-source historical ID group was observed
+  by this source-field comparison.
+- These are *versions/history*, not proof of duplicate IDs in the failed
+  incoming packet. Do not delete or merge archive records to fix ingestion.
+- The preceding live SQL inspection also confirmed six active IDs are present
+  in the archive. Preserve these relationships during any reconciliation.
+
 ## Interpretation
 The **incoming failed payload was not stored** and is not available as rows in
 production. The observed error alone cannot identify which two incoming
