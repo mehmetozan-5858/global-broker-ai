@@ -410,7 +410,7 @@ jobs:
           changes=list(difflib.unified_diff(original,amended,fromfile='original_technical_spec',tofile='amended_2026_10_27',lineterm='',n=1))
           if len(changes)>1000: raise SystemExit('Technical DOCX comparison blocked: too many diff lines')
           output.write_text('\n'.join(changes),encoding='utf-8')
-          print('Hash-pinned DOCX comparison:',json.dumps({'original_paragraphs_and_rows':len(original),'amended_paragraphs_and_rows':len(amended),'changed_diff_lines':len(changes),'amendment_semantic_approval':False},sort_keys=True))
+          print('Hash-pinned DOCX comparison:',json.dumps({'original_paragraphs_and_rows':len(original),'amended_paragraphs_and_rows':len(amended),'changed_diff_lines':len(changes),'added_diff_lines':sum(line.startswith('+') and not line.startswith('+++') for line in changes),'removed_diff_lines':sum(line.startswith('-') and not line.startswith('---') for line in changes),'amendment_semantic_approval':False},sort_keys=True))
           PY
       - name: Upload DOCX revision text differences for review
         if: always()
