@@ -149,6 +149,33 @@ jobs:
           try:
               result = inspect(temporary, allow_printer_settings=True)
               print('Hash-verified XLSX inventory:', json.dumps(result, sort_keys=True))
+              # Classification only: do not execute formulas or emit cell references.
+              from openpyxl import load_workbook
+              from collections import Counter
+              from openpyxl.formula.tokenizer import Tokenizer
+              from openpyxl.utils.exceptions import TokenizerError
+              wb = load_workbook(temporary, read_only=True, data_only=False, keep_links=False)
+              signatures = Counter()
+              complexity = Counter()
+              try:
+                  for sheet in wb:
+                      for row in sheet.iter_rows():
+                          for cell in row:
+                              if cell.data_type != 'f':
+                                  continue
+                              formula = str(cell.value or '')
+                              try:
+                                  tokens = Tokenizer(formula).items
+                                  funcs = [t.value.split('(')[0].upper() for t in tokens if t.type == 'FUNC' and t.subtype == 'OPEN']
+                                  signatures.update(funcs if funcs else ['ARITHMETIC_OR_REFERENCE'])
+                                  complexity.update(['contains_function' if funcs else 'no_function'])
+                              except (TokenizerError, ValueError):
+                                  complexity.update(['parse_error'])
+              finally:
+                  wb.close()
+              print('XLSX formula function categories:', json.dumps(dict(sorted(signatures.items())), sort_keys=True))
+              print('XLSX formula parsing categories:', json.dumps(dict(sorted(complexity.items())), sort_keys=True))
+              print('Formula values and cell addresses intentionally not logged')
               print('Formula calculation acceptance: BLOCKED; inventory is not evaluation')
           finally:
               temporary.unlink(missing_ok=True)
