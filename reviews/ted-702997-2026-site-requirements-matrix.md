@@ -43,3 +43,21 @@ Each described device: integrated plastic reservoir **≥5,000 L**, two pumps wi
 - **Special requirements:** verify the Blansko/Tišnov overflow sensors; the eight **explicitly filtered** standalone pumps; Vranovská Ves's standalone pump without explicit filter wording; restricted shelters at Hustopeče and Kyjov.
 - **Scope/revision:** confirm TED amendment and official authoritative applicability, mandatory annex inventory, lot-wide completeness, buyer prerequisites and independent engineering approval.
 - **Status:** `technical_approval=false`, `commercial_approval=false`, `supplier_acceptance=false`, `deployment_approval=false`. This is a review/control matrix, **not** a purchase list, quote, supplier qualification, product recommendation, or authorization to execute commercial acts.
+
+
+## CRITICAL BLOCKER — geometric volume inconsistency detected (13 Nov 2026)
+
+A separate read-only geometric audit of the exact-hash drawing geometry transcription found **two site-level contradictions affecting five proposed new tanks**. These are drawing-versus-requirement conflicts, not verified supplier noncompliance:
+
+| Site (PDF page) | New tanks | Revised minimum per tank | Drawn outside Ø × height | Ideal full cylinder upper bound per tank | Shortfall to specified minimum |
+| --- | ---: | ---: | --- | ---: | ---: |
+| Veselí nad Moravou (p. 6) | 2 | 15,000 L | 2,400 × 3,000 mm | ~13,572 L | ~1,428 L |
+| Slavkov u Brna (p. 9) | 3 | 15,000 L | 2,400 × 3,000 mm | ~13,572 L | ~1,428 L |
+
+Formula: `maximum_geometric_envelope_L = π × (diameter_mm/2)^2 × height_mm / 1,000,000`. Using the *outside* diameter and height and assuming a completely filled perfect circular cylinder deliberately **overstates** usable liquid capacity. Thus a 13,572 L envelope cannot contain 15,000 L within those limits. Printed values rounded for review; the code compares unrounded values.
+
+**What is not yet established:** whether drawing dimensions are correct, whether those drawings are superseded, or whether another design/model with larger height (up to the amended site's specified maximum where applicable) is intended for delivery. The drawing's `ZN 15` label is not 15,000 L physical-volume proof. Do not resolve the contradiction by assuming a model label or setting `capacity_verified=true`.
+
+**Minimum safe resolution:** check authoritative annex revision and the buyer's technical dimension definitions, request a documented drawing clarification through an authorized procurement channel before sourcing or scoring any tank model. Obtain dimensioned, certified tank volume curves / usable fill level and site fit evidence. No contact, offer, paid action, merge, deployment or technical approval has been authorized by this note.
+
+**Automation:** `scripts/audit_ted_tank_capacity_envelopes.py` and `tests/test_ted_tank_capacity_envelopes.py` detect and fail closed on these exact drawing discrepancies. GitHub CI test success verifies the detection logic; it **does not** turn these capacity conflicts into acceptance. `technical_approval=false`, `commercial_approval=false`.
