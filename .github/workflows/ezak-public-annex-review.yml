@@ -301,6 +301,42 @@ jobs:
           path: ${{ runner.temp }}/ezak-47078/drawing-contact-sheet.png
           if-no-files-found: ignore
           retention-days: 1
+      - name: Render priority drawing pages at review resolution
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          import fitz
+          folder=Path(os.environ['RUNNER_TEMP'])/'ezak-47078'
+          manifest=folder/'manifest.json'
+          expected='cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f'
+          if not manifest.is_file(): raise SystemExit('Drawing review BLOCKED: manifest missing')
+          records=json.loads(manifest.read_text(encoding='utf-8')).get('records',[])
+          candidates=[r for r in records if r.get('sha256')==expected and r.get('kind')=='pdf']
+          if len(candidates)!=1: raise SystemExit('Drawing review BLOCKED: hash identity not unique')
+          source=folder/candidates[0]['file']
+          if hashlib.sha256(source.read_bytes()).hexdigest()!=expected: raise SystemExit('Drawing review BLOCKED: SHA mismatch')
+          pdf=fitz.open(str(source))
+          if len(pdf)!=12: raise SystemExit('Drawing review BLOCKED: page count changed')
+          out=folder/'priority-drawings'
+          out.mkdir(exist_ok=True)
+          for num in (1,6,9,11,12):
+              page=pdf[num-1]
+              pix=page.get_pixmap(matrix=fitz.Matrix(2,2),alpha=False)
+              pix.save(str(out/f'page-{num:02d}.png'))
+          print('High-resolution drawing pages rendered: 1,6,9,11,12; visual/technical approval false')
+          pdf.close()
+          PY
+      - name: Upload priority drawings for human review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-priority-drawings
+          path: ${{ runner.temp }}/ezak-47078/priority-drawings/*.png
+          if-no-files-found: ignore
+          retention-days: 1
       - name: Enforce fail-closed review outcome
         if: always()
         shell: bash
