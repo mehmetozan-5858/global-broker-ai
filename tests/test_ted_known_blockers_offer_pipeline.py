@@ -43,6 +43,27 @@ class TedQuarantineOfferTests(unittest.TestCase):
         row["publication-number"] = ["746528-2026"]
         self.assertFalse(evaluate(row)["draft_offer_ready"])
 
+    def test_stale_original_deadline_is_warned_without_replacement(self):
+        row = otherwise_ready()
+        row["publication-number"] = "702997-2026"
+        row["deadline-receipt-tender-date-lot"] = "2026-11-11"
+        result = evaluate(row)
+        review = result["ted_deadline_revision_review"]
+        self.assertTrue(review["old_original_deadline_present"])
+        self.assertEqual(review["amendment_published_deadline_date"], "2026-11-27")
+        self.assertFalse(review["live_deadline_authoritatively_verified"])
+        self.assertFalse(review["automatic_deadline_replacement"])
+        self.assertEqual(row["deadline-receipt-tender-date-lot"], "2026-11-11")
+        self.assertFalse(result["draft_offer_ready"])
+
+    def test_other_notice_has_no_case_specific_deadline_warning(self):
+        row = otherwise_ready()
+        row["publication-number"] = "702998-2026"
+        row["deadline-receipt-tender-date-lot"] = "2026-11-11"
+        result = evaluate(row)
+        self.assertNotIn("ted_deadline_revision_review", result)
+        self.assertTrue(result["draft_offer_ready"])
+
     def test_summary_and_candidate_queue_fail_closed(self):
         row = otherwise_ready()
         row["publication-number"] = "702997-2026"
