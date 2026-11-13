@@ -136,7 +136,15 @@ jobs:
       - name: Prepare private opportunity identities
         run: python -m src.private_sync_payload data/latest-opportunities.private.json
       - name: Refuse duplicate private opportunity IDs before remote write
-        run: python -m src.private_snapshot_identity_gate data/latest-opportunities.private.json
+        run: python -m src.private_snapshot_identity_gate data/latest-opportunities.private.json data/private-identity-aggregate.json
+      - name: Preserve only sanitized identity collision counts for inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: private-ingest-aggregate-only
+          path: data/private-identity-aggregate.json
+          if-no-files-found: ignore
+          retention-days: 3
       - name: Sync full opportunities to private Supabase storage
         env:
           PRIVATE_INGEST_URL: https://yhzdqrqzjruduohypvqf.supabase.co/functions/v1/broker-private-ingest
