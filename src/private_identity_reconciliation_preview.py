@@ -6,7 +6,7 @@ private opportunity/source identities. A proposed ID is NOT a migration plan.
 import hashlib
 import json
 
-def analyze_collision_rekey(rows, referenced_ids=None):
+def analyze_collision_rekey(rows, referenced_ids=None, archived_ids=None):
     if not isinstance(rows,list):
         return {"safe_to_apply":False,"reason":"invalid-input"}
     by_id={}
@@ -28,6 +28,11 @@ def analyze_collision_rekey(rows, referenced_ids=None):
     if reference_snapshot_verified:
         reference_ids=set(str(x) for x in referenced_ids)
         referenced_collision_groups=sum(1 for key in duplicates if key in reference_ids)
+    archive_snapshot_verified=isinstance(archived_ids,(set,list,tuple))
+    archived_collision_groups=None
+    if archive_snapshot_verified:
+        archived_set=set(str(x) for x in archived_ids)
+        archived_collision_groups=sum(1 for key in duplicates if key in archived_set)
     # Not enough to make a durable rekey decision: lot, revision and references
     # must be examined separately from source names.
     return {"safe_to_apply":False,"reason":"requires-reference-and-lot-reconciliation",
@@ -36,7 +41,9 @@ def analyze_collision_rekey(rows, referenced_ids=None):
             "same_source_groups":repeated_same_source,
             "requires_manual_reference_review":bool(duplicates),
             "reference_snapshot_verified":reference_snapshot_verified,
-            "referenced_collision_groups":referenced_collision_groups}
+            "referenced_collision_groups":referenced_collision_groups,
+            "archive_snapshot_verified":archive_snapshot_verified,
+            "archived_collision_groups":archived_collision_groups}
 
 def draft_namespaced_identifier(*,source_key,notice_id,lot_id=None):
     """Preview only: deterministic candidate, never write as existing ID."""
