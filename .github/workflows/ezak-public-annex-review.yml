@@ -79,6 +79,23 @@ jobs:
               print('Historical SHA-256 baseline match labels:', json.dumps(matched))
               print('Unique downloaded hash count:', len(received_set))
               print('Unmatched downloaded hash count:', len(received_set - set(reference_hashes.values())))
+              from urllib.parse import urlparse, unquote
+              import re
+              def doc_id(row):
+                  path = unquote(urlparse(row.get('source_url', '')).path)
+                  match = re.match(r'^/document_([0-9]+)/', path, re.I)
+                  return match.group(1) if match else None
+              ok_ids = {doc_id(r) for r in rows if 'error' not in r and doc_id(r)}
+              failed_ids = {doc_id(r) for r in rows if 'error' in r and doc_id(r)}
+              print('Document-ID grouping:', json.dumps({
+                  'successful_id_count': len(ok_ids),
+                  'failed_id_count': len(failed_ids),
+                  'shared_ids_success_and_failure': len(ok_ids & failed_ids),
+                  'failed_ids_without_success': len(failed_ids - ok_ids),
+                  'failed_non_document_id_links': sum(1 for r in rows if 'error' in r and not doc_id(r)),
+                  'successful_non_document_id_links': sum(1 for r in rows if 'error' not in r and not doc_id(r)),
+              }, sort_keys=True))
+              # These counts are diagnostic only: no revision or completeness acceptance.
               print('Acceptance remains BLOCKED: source completeness, authoritative revision and lot review unverified.')
               print('Acceptance: BLOCKED pending full annex and amendment reconciliation')
           PY
