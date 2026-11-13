@@ -47,7 +47,7 @@ def _exact_official_ted_urls(item: dict) -> set[str]:
             or url.hostname != "ted.europa.eu"
             or url.username is not None
             or url.password is not None
-            or url.port not in (None, 443)
+            or url.netloc.lower() not in ('ted.europa.eu', 'ted.europa.eu:443')
             or url.query
             or url.fragment
         ):
