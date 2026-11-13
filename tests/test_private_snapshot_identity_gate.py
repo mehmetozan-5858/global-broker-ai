@@ -41,6 +41,23 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
                 with self.assertRaises(PrivateSnapshotIdentityError):
                     require_unique_private_snapshot(rows)
 
+    def test_two_official_sources_with_same_notice_number_block_until_identity_review(self):
+        # The legacy stable ID is not source-namespaced. This is a *risk
+        # demonstration*, not permission to silently re-key existing records.
+        from src.opportunity_identity import stable_opportunity_id
+        a = {"source": "official-portal-A", "notice_id": "common-number", "title": "A"}
+        b = {"source": "official-portal-B", "notice_id": "common-number", "title": "B"}
+        self.assertEqual(stable_opportunity_id(a), stable_opportunity_id(b))
+        for row in (a, b):
+            row["opportunity_id"] = stable_opportunity_id(row)
+        with self.assertRaises(PrivateSnapshotIdentityError):
+            require_unique_private_snapshot([a, b])
+
+    def test_payload_cap_is_not_bypassed_by_repeat_id(self):
+        row = {"opportunity_id": "same-synthetic-notice"}
+        with self.assertRaises(PrivateSnapshotIdentityError):
+            require_unique_private_snapshot([row] * 1001)
+
 
 if __name__ == "__main__":
     unittest.main()
