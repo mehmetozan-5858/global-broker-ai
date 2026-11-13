@@ -20,6 +20,8 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
         report = inspect_private_snapshot([row, dict(row)])
         self.assertEqual(report["duplicate_identity_count"], 1)
         self.assertEqual(report["conflicting_identity_count"], 0)
+        self.assertEqual(report["same_or_unknown_source_duplicate_count"], 1)
+        self.assertEqual(report["cross_source_collision_count"], 0)
         with self.assertRaisesRegex(PrivateSnapshotIdentityError, "duplicate_opportunity_id"):
             require_unique_private_snapshot([row, dict(row)])
 
@@ -50,6 +52,9 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
         self.assertEqual(stable_opportunity_id(a), stable_opportunity_id(b))
         for row in (a, b):
             row["opportunity_id"] = stable_opportunity_id(row)
+        report=inspect_private_snapshot([a,b])
+        self.assertEqual(report['cross_source_collision_count'],1)
+        self.assertEqual(report['same_or_unknown_source_duplicate_count'],0)
         with self.assertRaises(PrivateSnapshotIdentityError):
             require_unique_private_snapshot([a, b])
 
