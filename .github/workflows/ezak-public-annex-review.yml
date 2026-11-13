@@ -99,6 +99,34 @@ jobs:
               print('Acceptance remains BLOCKED: source completeness, authoritative revision and lot review unverified.')
               print('Acceptance: BLOCKED pending full annex and amendment reconciliation')
           PY
+      - name: Inspect previously hashed XLSX formula inventory (read-only)
+        if: always()
+        shell: bash
+        run: |
+          python -m pip install 'openpyxl==3.1.5' --disable-pip-version-check --quiet
+          python - <<'PY'
+          import json, os, shutil
+          from pathlib import Path
+          from scripts.review_ted_xlsx_formulas import EXPECTED_SHA256, inspect
+          folder = Path(os.environ['RUNNER_TEMP']) / 'ezak-47078'
+          manifest = folder / 'manifest.json'
+          if not manifest.is_file():
+              raise SystemExit('XLSX review BLOCKED: manifest missing')
+          rows = json.loads(manifest.read_text(encoding='utf-8')).get('records', [])
+          matches = [r for r in rows if r.get('sha256') == EXPECTED_SHA256 and 'error' not in r]
+          if len(matches) != 1:
+              raise SystemExit(f'XLSX review BLOCKED: expected one matching workbook, found {len(matches)}')
+          original = folder / matches[0]['file']
+          # The source sync saves Office packages as .bin; openpyxl needs .xlsx.
+          temporary = folder / 'hash-verified-workbook.xlsx'
+          shutil.copyfile(original, temporary)
+          try:
+              result = inspect(temporary)
+              print('Hash-verified XLSX inventory:', json.dumps(result, sort_keys=True))
+              print('Formula calculation acceptance: BLOCKED; inventory is not evaluation')
+          finally:
+              temporary.unlink(missing_ok=True)
+          PY
       - name: Enforce fail-closed review outcome
         if: always()
         shell: bash
