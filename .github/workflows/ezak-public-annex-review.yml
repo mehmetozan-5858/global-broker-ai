@@ -147,7 +147,7 @@ jobs:
           print('XLSX binary placement categories:', json.dumps(dict(sorted(Counter(bin_class(x) for x in bins).items())), sort_keys=True))
           print('XLSX safety policy: no binary content executed, formula evaluation remains disabled')
           try:
-              result = inspect(temporary)
+              result = inspect(temporary, allow_printer_settings=True)
               print('Hash-verified XLSX inventory:', json.dumps(result, sort_keys=True))
               print('Formula calculation acceptance: BLOCKED; inventory is not evaluation')
           finally:
