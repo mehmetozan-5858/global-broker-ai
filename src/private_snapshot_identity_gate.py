@@ -19,6 +19,7 @@ def inspect_private_snapshot(rows):
     if len(rows) > 1000:
         raise PrivateSnapshotIdentityError("too_many_rows")
     seen = {}
+    missing_provenance = 0
     duplicates = set()
     conflicts = set()
     cross_source = set()
@@ -33,6 +34,8 @@ def inspect_private_snapshot(rows):
             json.dumps(row, sort_keys=True, ensure_ascii=False, separators=(",", ":"), default=str).encode()
         ).hexdigest()
         source = str(row.get('source') or row.get('source_name') or '').strip()
+        if not source:
+            missing_provenance += 1
         if identifier in seen:
             duplicates.add(identifier)
             previous_digest, previous_source = seen[identifier]
@@ -45,7 +48,8 @@ def inspect_private_snapshot(rows):
         else:
             seen[identifier] = (digest, source)
     # No IDs or row text returned or logged: only aggregate counts.
-    return {"rows": len(rows), "duplicate_identity_count": len(duplicates),
+    return {"rows": len(rows), "missing_source_provenance_count": missing_provenance,
+            "duplicate_identity_count": len(duplicates),
             "conflicting_identity_count": len(conflicts),
             "cross_source_collision_count": len(cross_source),
             "same_or_unknown_source_duplicate_count": len(same_source)}
@@ -53,6 +57,10 @@ def inspect_private_snapshot(rows):
 
 def require_unique_private_snapshot(rows):
     outcome = inspect_private_snapshot(rows)
+    if outcome["missing_source_provenance_count"]:
+        raise PrivateSnapshotIdentityError(
+            "missing_source_provenance: rows={}".format(outcome["missing_source_provenance_count"])
+        )
     if outcome["duplicate_identity_count"]:
         raise PrivateSnapshotIdentityError(
             "duplicate_opportunity_id: repeated={} conflicting={} cross_source={}".format(
