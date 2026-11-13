@@ -30,6 +30,17 @@ class EzakDiscoveryTests(unittest.TestCase):
         html = b'<html><a href="/documentation/help">help</a><a href="/file_manager">files</a><a href="/contract_display_47078.html">notice</a></html>'
         self.assertEqual(mod.discover(html), [])
 
+    def test_official_document_id_links_and_dedup(self):
+        actual = "/document_254114/70456a8a24715db566d2cb2f10172d37-priloha-c-5-zd-technicka-specifikace_27_10_2026-docx"
+        html = (f'<html><a href="{actual}">new</a>'
+                f'<a href="{actual}">duplicate</a>'
+                '<a href="https://evil.test/document_254114/fake-docx">evil</a>'
+                '<a href="/manual/document_254114/fake-docx">navigation</a>'
+                '<a href="/document_abc/fake-docx">invalid ID</a>'
+                '<a href="/document_254114/another/path">nested path</a></html>').encode()
+        self.assertEqual(mod.discover(html),
+                         ["https://zakazky.krajbezkorupce.cz" + actual])
+
     def test_invalid_port_is_rejected(self):
         self.assertFalse(mod.official_url("https://zakazky.krajbezkorupce.cz:bad/doc.pdf"))
 
