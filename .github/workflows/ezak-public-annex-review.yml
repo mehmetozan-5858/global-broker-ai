@@ -201,6 +201,10 @@ jobs:
               print('XLSX reference shapes:', json.dumps(dict(sorted(reference_shapes.items())), sort_keys=True))
               print('XLSX worksheet counts:', json.dumps(dict(sorted(sheet_counts.items())), sort_keys=True))
               print('Formula values and cell addresses intentionally not logged')
+              from scripts.recalculate_ted_xlsx_bounded import recalculate
+              independently_checked = recalculate(temporary)
+              print('XLSX independent restricted recalculation:', json.dumps(independently_checked, sort_keys=True))
+              print('Excel technical and commercial acceptance: BLOCKED pending independent reviewer and tender requirements')
               from scripts.review_ted_xlsx_arithmetic import verify
               # Offline independent comparison reports only fixed failure classes.
               # Re-run with Excel blank-reference arithmetic semantics; no other coercion.
