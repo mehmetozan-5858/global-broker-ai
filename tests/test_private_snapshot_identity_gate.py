@@ -25,15 +25,15 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
 
     def test_conflicting_identity_blocks_snapshot_without_exposing_contact(self):
         rows = [
-            {"opportunity_id": "repeat", "contact_email": "private@example.test"},
-            {"opportunity_id": "repeat", "contact_email": "different@example.test"},
+            {"opportunity_id": "private-id-94f", "contact_email": "private@example.test"},
+            {"opportunity_id": "private-id-94f", "contact_email": "different@example.test"},
         ]
         report = inspect_private_snapshot(rows)
         self.assertEqual(report["conflicting_identity_count"], 1)
         with self.assertRaises(PrivateSnapshotIdentityError) as error:
             require_unique_private_snapshot(rows)
         self.assertNotIn("private@example.test", str(error.exception))
-        self.assertNotIn("repeat", str(error.exception))
+        self.assertNotIn("private-id-94f", str(error.exception))
 
     def test_empty_missing_and_over_cap_fail_closed(self):
         for rows in ([], None, [{"title": "No ID"}], [{}] * 1001):
