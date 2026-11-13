@@ -103,6 +103,7 @@ def verify(path):
     formulas=load_workbook(path,read_only=False,data_only=False,keep_links=False)
     cached=load_workbook(path,read_only=True,data_only=True,keep_links=False)
     stats=Counter()
+    unsupported_kinds=Counter()
     try:
         for sheet in formulas:
             for row in sheet.iter_rows():
@@ -115,10 +116,15 @@ def verify(path):
                             stats["independently_matched"]+=1
                         else:
                             stats["mismatched"]+=1
-                    except (Unsupported, InvalidOperation, SyntaxError, ValueError, TypeError, OverflowError, RecursionError) as exc:
+                    except Unsupported as exc:
                         stats["unsupported"]+=1
+                        unsupported_kinds[str(exc)]+=1
+                    except (InvalidOperation, SyntaxError, ValueError, TypeError, OverflowError, RecursionError):
+                        stats["unsupported"]+=1
+                        unsupported_kinds["other_parser_error"]+=1
         return {"formula_count":13,"independently_matched":stats["independently_matched"],
                 "mismatched":stats["mismatched"],"unsupported":stats["unsupported"],
+                "unsupported_classes":dict(sorted(unsupported_kinds.items())),
                 "technical_approval":False,
                 "formula_acceptance":stats["independently_matched"]==13 and not stats["mismatched"] and not stats["unsupported"]}
     finally:
