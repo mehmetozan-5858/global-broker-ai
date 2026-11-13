@@ -120,6 +120,18 @@ jobs:
           # The source sync saves Office packages as .bin; openpyxl needs .xlsx.
           temporary = folder / 'hash-verified-workbook.xlsx'
           shutil.copyfile(original, temporary)
+          # Report only which archive-safety class was triggered; do not publish
+          # ZIP filenames, raw formulas, or document content.
+          from zipfile import ZipFile
+          with ZipFile(temporary) as archive:
+              members = [n.filename.lower() for n in archive.infolist()]
+          print('XLSX archive safety categories:', json.dumps({
+              'external_link_entries': sum(x.startswith('xl/externallinks/') for x in members),
+              'binary_or_executable_entries': sum(x.endswith(('.bin', '.exe')) for x in members),
+              'vba_member_entries': sum('vbaproject' in x for x in members),
+              'unsafe_path_entries': sum(x.startswith('/') or chr(92) in x or '..' in x.split('/') for x in members),
+              'entry_count': len(members)
+          }, sort_keys=True))
           try:
               result = inspect(temporary)
               print('Hash-verified XLSX inventory:', json.dumps(result, sort_keys=True))
