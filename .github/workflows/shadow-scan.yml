@@ -135,6 +135,8 @@ jobs:
           mv "$NEXT" data/latest-opportunities.private.json
       - name: Prepare private opportunity identities
         run: python -m src.private_sync_payload data/latest-opportunities.private.json
+      - name: Refuse duplicate private opportunity IDs before remote write
+        run: python -m src.private_snapshot_identity_gate data/latest-opportunities.private.json
       - name: Sync full opportunities to private Supabase storage
         env:
           PRIVATE_INGEST_URL: https://yhzdqrqzjruduohypvqf.supabase.co/functions/v1/broker-private-ingest
