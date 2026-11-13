@@ -93,6 +93,12 @@ def assess(item: dict, today: date | None = None) -> dict:
     issues: list[str] = []
     if item.get("ted_lot_selection_required") is True or item.get("source_lot_selection_required") is True:
         issues.append("lot_selection")
+    # Isolated exact-identity hold for the unresolved E-ZAK source geometry.
+    # Do not use product titles/partial numeric matches: only official notice fields.
+    # This does not assert anything about unrelated procurement notices.
+    identifiers = tuple(item.get(key) for key in ("notice_id", "ted_notice_id", "source_notice_id"))
+    if any(isinstance(identity, str) and identity.strip() == "702997-2026" for identity in identifiers):
+        issues.append("ted_702997_2026_unresolved_technical_capacity_conflict")
 
     buy = _positive(item.get("verified_unit_price"))
     buy_source = item.get("verified_unit_price_source")
@@ -125,6 +131,7 @@ def assess(item: dict, today: date | None = None) -> dict:
 
     buy_blockers = {
         "lot_selection",
+        "ted_702997_2026_unresolved_technical_capacity_conflict",
         "verified_supplier_quote", "financially_eligible_exact_spec_supplier",
         "supplier_quote_reference", "supplier_quote_date", "supplier_price_unit",
         "supplier_quantity_basis", "quote_valid_until", "quote_expired",
