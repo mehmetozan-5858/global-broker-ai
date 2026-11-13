@@ -41,6 +41,18 @@ class IdentityReconciliationPreviewTests(unittest.TestCase):
         self.assertEqual(verified_no_links['referenced_collision_groups'],0)
         self.assertFalse(verified_no_links['safe_to_apply'])
 
+    def test_archive_links_are_independent_reconciliation_blocker(self):
+        rows=[{'opportunity_id':'historical-notice','source':'official-A'},
+              {'opportunity_id':'historical-notice','source':'official-B'}]
+        unknown=analyze_collision_rekey(rows)
+        self.assertFalse(unknown['archive_snapshot_verified'])
+        self.assertIsNone(unknown['archived_collision_groups'])
+        confirmed=analyze_collision_rekey(rows,referenced_ids=set(),archived_ids={'historical-notice'})
+        self.assertTrue(confirmed['archive_snapshot_verified'])
+        self.assertEqual(confirmed['archived_collision_groups'],1)
+        self.assertFalse(confirmed['safe_to_apply'])
+        self.assertNotIn('historical-notice',str(confirmed))
+
     def test_missing_source_or_notice_blocks_preview(self):
         for source,notice,lot in [('', 'n',None),('s','',None),('s','n','')]:
             self.assertIsNone(draft_namespaced_identifier(source_key=source,notice_id=notice,lot_id=lot))
