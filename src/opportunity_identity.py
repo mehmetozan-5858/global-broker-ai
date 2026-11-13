@@ -24,7 +24,7 @@ def stable_opportunity_id(row):
     for key in ID_KEYS:
         value=_text(row.get(key))
         if value:
-            return value[:200]
+            return value  # keep complete identity for fail-closed pre-ingest length gate
     evidence=row.get("field_evidence") or {}
     parts=[
         _text(row.get("source")),
