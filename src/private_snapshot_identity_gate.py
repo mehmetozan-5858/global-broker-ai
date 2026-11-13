@@ -27,9 +27,12 @@ def inspect_private_snapshot(rows):
     for row in rows:
         if not isinstance(row, dict):
             raise PrivateSnapshotIdentityError("invalid_opportunity_row")
-        identifier = str(row.get("opportunity_id") or row.get("id") or "")[:200]
-        if not identifier:
-            raise PrivateSnapshotIdentityError("missing_opportunity_id")
+        raw_id = row.get("opportunity_id") or row.get("id")
+        # Never silently coerce a JSON object/list or truncate an identifier:
+        # different sources can otherwise collapse onto the same 200-char key.
+        if not isinstance(raw_id, str) or not raw_id.strip() or len(raw_id) > 200:
+            raise PrivateSnapshotIdentityError("invalid_opportunity_id")
+        identifier = raw_id
         digest = hashlib.sha256(
             json.dumps(row, sort_keys=True, ensure_ascii=False, separators=(",", ":"), default=str).encode()
         ).hexdigest()
