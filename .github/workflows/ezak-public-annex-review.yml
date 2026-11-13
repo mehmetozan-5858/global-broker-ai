@@ -420,6 +420,46 @@ jobs:
           path: ${{ runner.temp }}/ezak-47078/amended-spec-diff.txt
           if-no-files-found: ignore
           retention-days: 1
+      - name: Extract bounded technical criteria for drawing reconciliation
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, re
+          from pathlib import Path
+          from docx import Document
+          root=Path(os.environ['RUNNER_TEMP'])/'ezak-47078'
+          manifest=root/'manifest.json'
+          digest='ec1501d66872990cb18d0e27be2f492d8911b09d28665955ec28f757434a161e'
+          if not manifest.is_file(): raise SystemExit('Criteria review blocked: missing manifest')
+          rows=json.loads(manifest.read_text(encoding='utf-8')).get('records',[])
+          matches=[r for r in rows if r.get('sha256')==digest and r.get('kind')=='zip-based-office']
+          if len(matches)!=1: raise SystemExit('Criteria review blocked: missing unique amended DOCX')
+          source=root/matches[0]['file']
+          if source.stat().st_size>250_000 or hashlib.sha256(source.read_bytes()).hexdigest()!=digest:
+              raise SystemExit('Criteria review blocked: hash/size mismatch')
+          document=Document(str(source))
+          chunks=[p.text.strip() for p in document.paragraphs if p.text.strip()]
+          for table in document.tables:
+              for row in table.rows:
+                  value=' | '.join(c.text.replace(chr(10),' ; ').strip() for c in row.cells)
+                  if value.strip(' |'): chunks.append('[TABLE] '+value)
+          pattern=re.compile(r'(Lechovice|Vranovsk|nádrž|míchad|potrub|přípoj|připoj|čerpad|armatur|průměr|výšk|objem|hadic|rozměr|přívod|odvod|ventil|montáž|výtlak|přečerp|plnění)',re.I)
+          selected=[(i,x) for i,x in enumerate(chunks) if pattern.search(x)]
+          bounded='\n'.join(f'[{i}] {line}' for i,line in selected)
+          if len(chunks)>500 or len(selected)>130 or len(bounded)>27000:
+              raise SystemExit('Criteria review blocked: extraction exceeds limits')
+          (root/'amended-technical-criteria.txt').write_text(bounded,encoding='utf-8')
+          print('Amended technical criteria excerpt:',json.dumps({'total_blocks':len(chunks),'matched_blocks':len(selected),'excerpt_created':True,'technical_approval':False},sort_keys=True))
+          PY
+      - name: Upload amended criteria excerpt for manual engineering review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-amended-technical-criteria
+          path: ${{ runner.temp }}/ezak-47078/amended-technical-criteria.txt
+          if-no-files-found: ignore
+          retention-days: 1
       - name: Enforce fail-closed review outcome
         if: always()
         shell: bash
