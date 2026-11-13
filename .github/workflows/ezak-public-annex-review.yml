@@ -337,6 +337,42 @@ jobs:
           path: ${{ runner.temp }}/ezak-47078/priority-drawings/*.png
           if-no-files-found: ignore
           retention-days: 1
+      - name: Render remaining seven hash-pinned drawing pages
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          import fitz
+          root=Path(os.environ['RUNNER_TEMP'])/'ezak-47078'
+          manifest=root/'manifest.json'
+          expected='cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f'
+          if not manifest.is_file(): raise SystemExit('Remaining drawings BLOCKED: manifest missing')
+          rows=json.loads(manifest.read_text(encoding='utf-8')).get('records',[])
+          matches=[r for r in rows if r.get('sha256')==expected and r.get('kind')=='pdf']
+          if len(matches)!=1: raise SystemExit('Remaining drawings BLOCKED: unique hash match missing')
+          src=root/matches[0]['file']
+          if src.stat().st_size>5_000_000 or hashlib.sha256(src.read_bytes()).hexdigest()!=expected:
+              raise SystemExit('Remaining drawings BLOCKED: identity/size invalid')
+          pdf=fitz.open(str(src))
+          if len(pdf)!=12: raise SystemExit('Remaining drawings BLOCKED: unexpected pages')
+          output=root/'remaining-drawings'
+          output.mkdir(exist_ok=True)
+          for number in (2,3,4,5,7,8,10):
+              pix=pdf[number-1].get_pixmap(matrix=fitz.Matrix(2,2),alpha=False)
+              pix.save(str(output/f'page-{number:02d}.png'))
+          pdf.close()
+          print('Remaining seven drawings rendered: pages 2,3,4,5,7,8,10; visual acceptance false')
+          PY
+      - name: Upload remaining drawings for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-remaining-drawings
+          path: ${{ runner.temp }}/ezak-47078/remaining-drawings/*.png
+          if-no-files-found: ignore
+          retention-days: 1
       - name: Enforce fail-closed review outcome
         if: always()
         shell: bash
