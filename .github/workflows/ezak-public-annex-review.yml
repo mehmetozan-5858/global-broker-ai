@@ -175,7 +175,13 @@ jobs:
               print('XLSX formula function categories:', json.dumps(dict(sorted(signatures.items())), sort_keys=True))
               print('XLSX formula parsing categories:', json.dumps(dict(sorted(complexity.items())), sort_keys=True))
               print('Formula values and cell addresses intentionally not logged')
-              print('Formula calculation acceptance: BLOCKED; inventory is not evaluation')
+              from scripts.review_ted_xlsx_arithmetic import verify
+              arithmetic = verify(temporary)
+              print('Independent arithmetic review:', json.dumps(arithmetic, sort_keys=True))
+              if not arithmetic['formula_acceptance']:
+                  print('Formula calculation acceptance: BLOCKED; unsupported/mismatched cases need human review')
+              else:
+                  print('Formula math acceptance: MATCHED, subject to workbook semantic and revision review')
           finally:
               temporary.unlink(missing_ok=True)
           PY
