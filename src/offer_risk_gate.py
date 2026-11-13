@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 from .ted_search_fields import notice_context
+from .ted_known_blockers import tender_specific_blockers
 
 
 def _bool_status(container: dict[str, Any], truthy_statuses: set[str]) -> bool:
@@ -31,7 +32,7 @@ def evaluate(item: dict[str, Any]) -> dict[str, Any]:
         ((feasibility.get("facts") or {}).get("destination") or {}).get("value")
     )
 
-    blockers: list[str] = []
+    blockers: list[str] = tender_specific_blockers(item)
     context = notice_context(item)
     if context is not None and context["call_for_tenders"] is not True:
         blockers.append("not_current_tender_call")
