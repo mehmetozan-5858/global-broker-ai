@@ -132,6 +132,20 @@ jobs:
               'unsafe_path_entries': sum(x.startswith('/') or chr(92) in x or '..' in x.split('/') for x in members),
               'entry_count': len(members)
           }, sort_keys=True))
+          # Classify binary OOXML members by their structural placement only.
+          # Never log member names, formulas, ZIP bytes or untrusted XML values.
+          from collections import Counter
+          def bin_class(name):
+              name = name.lower()
+              if name.startswith('xl/printersettings/'): return 'printer_settings'
+              if name.startswith('xl/embeddings/'): return 'embedded_object'
+              if name.startswith('xl/activex/'): return 'activex'
+              if 'vbaproject' in name: return 'vba'
+              if name.startswith('xl/'): return 'other_excel_binary'
+              return 'other_binary'
+          bins = [x for x in members if x.endswith('.bin')]
+          print('XLSX binary placement categories:', json.dumps(dict(sorted(Counter(bin_class(x) for x in bins).items())), sort_keys=True))
+          print('XLSX safety policy: no binary content executed, formula evaluation remains disabled')
           try:
               result = inspect(temporary)
               print('Hash-verified XLSX inventory:', json.dumps(result, sort_keys=True))
