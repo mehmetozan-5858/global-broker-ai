@@ -67,6 +67,14 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
         self.assertIn('missing_source_provenance',str(exc.exception))
         self.assertNotIn('private-sensitive-id',str(exc.exception))
 
+    def test_reject_overlong_or_nonstring_identity_without_leaking_value(self):
+        for raw in ['x'*201, {'private':'sensitive'}, ['private'], 3]:
+            with self.subTest(type=type(raw).__name__):
+                rows=[{'opportunity_id':raw,'source':'synthetic'}]
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError,'invalid_opportunity_id') as err:
+                    require_unique_private_snapshot(rows)
+                self.assertNotIn('sensitive',str(err.exception))
+
     def test_payload_cap_is_not_bypassed_by_repeat_id(self):
         row = {"opportunity_id": "same-synthetic-notice"}
         with self.assertRaises(PrivateSnapshotIdentityError):
