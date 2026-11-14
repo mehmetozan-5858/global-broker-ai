@@ -58,6 +58,38 @@ class TedPriceReadinessHoldTests(unittest.TestCase):
                 self.assertNotIn("gross_product_spread", result)
                 self.assertFalse(result["external_outreach_enabled"])
 
+    def test_original_amendment_and_official_ted_url_share_hold(self):
+        cases = (
+            {"publication-number": "702997-2026"},
+            {"publication-number": ["746528-2026"]},
+            {"publication_number": "746528-2026"},
+            {"notice_id": "746528-2026"},
+            {"source_url": "https://ted.europa.eu/en/notice/-/detail/746528-2026"},
+            {"official_links": ["https://ted.europa.eu/cs/notice/-/detail/702997-2026"]},
+        )
+        for fields in cases:
+            with self.subTest(fields=fields):
+                item = fully_evidenced_fixture()
+                item.update(fields)
+                status = assess(item, TODAY)
+                self.assertFalse(status["price_ready"])
+                self.assertFalse(status["margin_ready"])
+                self.assertNotIn("gross_product_spread", status)
+                self.assertIn("ted_702997_2026_unresolved_technical_capacity_conflict",
+                              status["missing_or_invalid"])
+
+    def test_lookalike_domain_and_invalid_url_cannot_trigger_ted_quarantine(self):
+        urls = (
+            "https://ted.europa.eu.attacker.invalid/en/notice/-/detail/702997-2026",
+            "https://ted.europa.eu/en/notice/-/detail/702997-2026-extra",
+            "https://ted.europa.eu/en/notice/-/detail/702997-2026?other=1",
+        )
+        for value in urls:
+            with self.subTest(value=value):
+                item = fully_evidenced_fixture()
+                item["source_url"] = value
+                self.assertTrue(assess(item, TODAY)["price_ready"])
+
     def test_preapproved_or_untrusted_evidence_field_cannot_override_hold(self):
         item = fully_evidenced_fixture()
         item.update(notice_id="702997-2026", technical_approval=True, capacity_verified=True)
