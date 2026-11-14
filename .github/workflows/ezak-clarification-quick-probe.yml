@@ -1,0 +1,25 @@
+name: E-ZAK official clarification quick probe (review only)
+
+# Single branch-scoped lightweight probe. Restore manual-only after observation.
+on:
+  push:
+    branches: [fix/ezak-document-id-discovery-20261113]
+    paths:
+      - .github/workflows/ezak-clarification-quick-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quick-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read public official explanation section only
+        run: |
+          python -m scripts.ezak_official_clarification_probe
