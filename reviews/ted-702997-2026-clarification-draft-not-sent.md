@@ -18,3 +18,22 @@
 - `sent=false`, `technical_approval=false`, `commercial_approval=false`, `deployment_approval=false`.
 
 **Internal next step:** Reconcile any documented official answer or updated Annex 8 with the exact-hash source inventory, then re-run capacity envelope checks and obtain independent engineering sign-off.
+
+
+## Czech-language clarification text for authorized review — NOT SENT
+
+**Předmět:** Žádost o vysvětlení zadávací dokumentace – veřejná zakázka Z2026-054508, dodávka míchacích zařízení a nádrží
+
+Vážený zadavateli,
+
+při posouzení přílohy č. 5 „Technická specifikace“ ve znění ze dne 27. 10. 2026 (dokument E-ZAK č. 254114) a přílohy č. 8 „Orientační situace“ jsme zjistili následující rozpor v požadovaných parametrech skladovacích nádrží. Prosíme o závazné upřesnění:
+
+1. **Slavkov u Brna:** Pro tři nové nádrže se uvádí minimální objem 15 000 litrů na nádrž, maximální průměr 2 450 mm a maximální výška 3 000 mm. U svislé válcové nádrže v těchto maximálních vnějších rozměrech činí ideální geometrický objem přibližně 14 143 litrů, tedy méně než požadovaných 15 000 litrů. Situační výkres navíc uvádí rozměry Ø 2 400 × 3 000 mm. Žádáme o vysvětlení, jak má být splnění požadovaného objemu a vnějších rozměrů doloženo, popř. zda bude technická specifikace opravena.
+
+2. **Veselí nad Moravou:** Pro dvě nové nádrže se uvádí minimální objem 15 000 litrů, maximální průměr 2 400 mm a maximální výška 4 400 mm, zatímco situační výkres uvádí Ø 2 400 × 3 000 mm. Ideální válcový objem podle rozměrů výkresu činí jen přibližně 13 572 litrů. Prosíme o potvrzení, zda je výkres pouze orientační a zda lze použít vyšší nádrže v rámci maximální výšky stanovené technickou specifikací.
+
+3. Prosíme také o potvrzení, která verze situačních výkresů je pro přípravu nabídky závazná, a zda existuje pozdější vysvětlení či změna těchto podkladů. Uveďte prosím, zda minimálním objemem rozumíte jmenovitý nebo skutečně využitelný objem nádrže a zda uvedené rozměry zahrnují celé vnější rozměry včetně příslušenství.
+
+Děkujeme za upřesnění zadávacích podmínek.
+
+**Interní poznámka:** Před případným použitím musí být text ověřen česky hovořícím odborníkem na zadávací řízení a autorizován oprávněným zástupcem. `sent=false`. Žádné sdělení nebylo odesláno.
