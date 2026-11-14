@@ -55,5 +55,31 @@ class V9Tests(unittest.TestCase):
     def test_non_dict_record(self):
         self.check("REVIEW_SCOPE", "Do you support English?", [rec("We support English."), 42])
 
+    # Independently added adversarial synthetic cases; these must fail closed.
+    def test_future_english_promise(self):
+        self.check("REVIEW_SCOPE", "Do you support English?", [rec("We support English next year.")])
+    def test_conditional_english(self):
+        self.check("REVIEW_SCOPE", "Do you support English?", [rec("We support English if we hire more staff.")])
+    def test_question_not_evidence(self):
+        self.check("REVIEW_SCOPE", "Do you support English?", [rec("We support English? No confirmation is available.")])
+    def test_contract_specific_exception(self):
+        self.check("REVIEW_SCOPE", "Do you support English?", [rec("We support English, but cannot provide it for this contract.")])
+    def test_iso_negative_long_form(self):
+        self.check("NEGATIVE", "ISO 27001 belgeniz var mı?", [rec("We are not ISO 27001 certified.")])
+    def test_revoked_iso(self):
+        self.check("REVIEW_SCOPE", "ISO 27001 belgeniz var mı?", [rec("Our ISO 27001 certification was revoked.", verified=True)])
+    def test_qualified_uptime(self):
+        self.check("REVIEW_SCOPE", "Do you guarantee 99.9% uptime?", [rec("We guarantee 99.9% uptime except peak hours.")])
+    def test_provisional_uptime(self):
+        self.check("REVIEW_SCOPE", "Do you guarantee 99.9% uptime?", [rec("We guarantee 99.9% uptime once infrastructure upgrades complete.")])
+    def test_positive_cert_verified_metadata_only(self):
+        self.check("POSITIVE", "ISO 27001 belgeniz var mı?", [rec("ISO 27001 sertifikamız vardır.", verified=True)])
+    def test_english_other_company_sentence(self):
+        self.check("REVIEW_SCOPE", "Do you support English?", [rec("Our sister company supports English.")])
+    def test_mixed_unknown_and_negative(self):
+        self.check("REVIEW_SCOPE", "Do you support English?", [rec("We do not support English."),rec("English support status pending.",line="L2")])
+    def test_missing_line_reference(self):
+        self.check("REVIEW_SCOPE", "Do you support English?", [rec("We support English.", line=None)])
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
