@@ -27,6 +27,19 @@ class QuoteReviewAnalysisTests(unittest.TestCase):
         self.assertFalse(result['commercial_approval']); self.assertFalse(result['persisted_prices'])
         self.assertEqual(context, original)
 
+    def test_ted_702997_capacity_hold_survives_private_quote_analysis(self):
+        context = self.context()
+        context['opportunity']['notice_id'] = '702997-2026'
+        result = analyze(context, date(2026, 10, 20))
+        self.assertEqual(result['status'], 'analysis_only')
+        self.assertFalse(result['price_gate']['price_ready'])
+        self.assertFalse(result['price_gate']['margin_ready'])
+        self.assertIn('ted_702997_2026_unresolved_technical_capacity_conflict',
+                      result['price_gate']['missing_or_invalid'])
+        self.assertNotIn('gross_product_spread', result['price_gate'])
+        self.assertFalse(result['commercial_approval'])
+        self.assertFalse(result['external_actions_enabled'])
+
     def test_capability_only_supplier_stays_blocked_after_human_document_review(self):
         result = analyze(self.context(False), date(2026, 10, 20))
         self.assertFalse(result['price_gate']['price_ready'])

@@ -74,9 +74,12 @@ def discover(index_html, index_url=BASE):
         if not official_url(url):
             continue
         path = unquote(urlparse(url).path).lower()
-        # E-ZAK uses extensionless download endpoints. Avoid unrelated navigation
-        # such as documentation/help pages; only known download URL patterns.
-        if any(path.endswith(ext) for ext in EXTENSIONS) or re.search(r"/(?:download|document_download|file_download)(?:/|_|\\.|$)", path):
+        # Accept only official E-ZAK document_ID links in addition to existing
+        # extension and download endpoint patterns; no arbitrary site navigation.
+        is_document_id = bool(re.fullmatch(r"/document_[0-9]+/[^/]+", path))
+        if (any(path.endswith(ext) for ext in EXTENSIONS)
+                or re.search(r"/(?:download|document_download|file_download)(?:/|_|\\.|$)", path)
+                or is_document_id):
             found[url] = True
     return sorted(found)
 
@@ -112,7 +115,19 @@ def sync(output):
             records.append({"source_url": final, "sha256": digest, "bytes": len(data), "kind": kind, "file": filename,
                             "matches_prior_xlsx_sha256": digest == EXPECTED_XLSX, "accepted": False})
         except (HTTPError, URLError, ValueError, TimeoutError) as exc:
-            records.append({"source_url": url, "error": type(exc).__name__, "accepted": False})
+            error_record = {"source_url": url, "error": type(exc).__name__, "accepted": False}
+            # Fixed diagnostic classes only; no exception messages or document bodies.
+            if isinstance(exc, HTTPError):
+                error_record["http_status"] = exc.code
+            elif isinstance(exc, ValueError):
+                reason = str(exc)
+                error_record["failure_class"] = (
+                    "html_or_challenge" if "Error or challenge envelope" in reason
+                    else "unknown_signature" if "Unknown document signature" in reason
+                    else "size_limit" if "exceeds configured byte limit" in reason
+                    else "official_host" if "official" in reason.lower() else "validation"
+                )
+            records.append(error_record)
     manifest = {"notice": "702997-2026", "amendment": "746528-2026", "ezak_dbid": 47078,
                 "source_index": BASE, "records": records, "commercial_approval": False,
                 "revision_verified": False, "complete_annex_set_verified": False}

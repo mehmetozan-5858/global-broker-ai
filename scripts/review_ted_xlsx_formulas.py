@@ -16,7 +16,7 @@ MAX_UNCOMPRESSED = 25_000_000
 MAX_ENTRIES = 300
 
 
-def validate_archive(path: Path):
+def validate_archive(path: Path, *, allow_printer_settings: bool = False):
     """Reject macros, external links, oversized expansion and suspicious ZIP entries."""
     with ZipFile(path) as archive:
         members = archive.infolist()
@@ -28,21 +28,28 @@ def validate_archive(path: Path):
         if any(
             name.startswith("/") or "\\" in name or ".." in name.split("/")
             or name.startswith("xl/externallinks/")
-            or "vbaproject" in name or name.endswith((".bin", ".exe"))
+            or "vbaproject" in name
+            or name.endswith(".exe")
+            or (name.endswith(".bin") and not (
+                allow_printer_settings and name.startswith("xl/printersettings/")
+                and name.count("/") == 2
+            ))
             for name in names
         ):
             raise ValueError("Workbook contains forbidden archive member")
+        if allow_printer_settings and sum(n.endswith(".bin") for n in names) != 1:
+            raise ValueError("Expected exactly one scoped printer settings binary member")
         if "[content_types].xml" not in names or "xl/workbook.xml" not in names:
             raise ValueError("Workbook required OOXML members missing")
 
 
-def inspect(path: Path):
+def inspect(path: Path, *, allow_printer_settings: bool = False):
     if not path.is_file() or path.stat().st_size > MAX_BYTES:
         raise ValueError("Missing or oversized workbook")
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
     if digest != EXPECTED_SHA256:
         raise ValueError("Workbook SHA-256 mismatch: not the reviewed source")
-    validate_archive(path)
+    validate_archive(path, allow_printer_settings=allow_printer_settings)
     from openpyxl import load_workbook
 
     formulas = load_workbook(path, read_only=True, data_only=False, keep_links=False)
@@ -62,7 +69,8 @@ def inspect(path: Path):
             raise ValueError("Formula count mismatch: human review required")
         return {"sha256_match": True, "formula_count": count,
                 "cached_result_count": cached_count,
-                "formulas_evaluated": False, "technical_approval": False}
+                "formulas_evaluated": False, "technical_approval": False,
+                "printer_settings_scoped_review": allow_printer_settings}
     finally:
         formulas.close()
         cached.close()
