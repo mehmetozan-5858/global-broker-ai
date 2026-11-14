@@ -19,11 +19,10 @@ def inspect_private_snapshot(rows):
     if len(rows) > 1000:
         raise PrivateSnapshotIdentityError("too_many_rows")
     seen = {}
+    sources_by_id = {}
     missing_provenance = 0
     duplicates = set()
     conflicts = set()
-    cross_source = set()
-    same_source = set()
     for row in rows:
         if not isinstance(row, dict):
             raise PrivateSnapshotIdentityError("invalid_opportunity_row")
@@ -43,23 +42,26 @@ def inspect_private_snapshot(rows):
         source = str(row.get('source') or row.get('source_name') or '').strip()
         if not source:
             missing_provenance += 1
+        sources_by_id.setdefault(identifier, set()).add(source)
         if identifier in seen:
             duplicates.add(identifier)
-            previous_digest, previous_source = seen[identifier]
-            if previous_digest != digest:
+            if seen[identifier] != digest:
                 conflicts.add(identifier)
-            if previous_source and source and previous_source != source:
-                cross_source.add(identifier)
-            else:
-                same_source.add(identifier)
         else:
-            seen[identifier] = (digest, source)
+            seen[identifier] = digest
+    # Classify each duplicate group exactly once; mixed A/B/A inputs
+    # must not inflate the same-source and cross-source totals.
+    cross_source = sum(
+        1 for key in duplicates
+        if len(sources_by_id[key]) > 1 and "" not in sources_by_id[key]
+    )
+    same_or_unknown_source = len(duplicates) - cross_source
     # No IDs or row text returned or logged: only aggregate counts.
     return {"rows": len(rows), "missing_source_provenance_count": missing_provenance,
             "duplicate_identity_count": len(duplicates),
             "conflicting_identity_count": len(conflicts),
-            "cross_source_collision_count": len(cross_source),
-            "same_or_unknown_source_duplicate_count": len(same_source)}
+            "cross_source_collision_count": cross_source,
+            "same_or_unknown_source_duplicate_count": same_or_unknown_source}
 
 
 def require_unique_private_snapshot(rows):
