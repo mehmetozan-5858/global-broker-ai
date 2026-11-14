@@ -76,10 +76,10 @@ class IngestionTests(unittest.TestCase):
         self.assertEqual(rows[0]["line"],"L2")
         self.assertEqual(snap["DOC1"]["lines"]["L1"],"")
     def test_21_pdf_magic_rejected(self):
-        body=b"%PDF-1.4\\n1 0 obj\\n"
+        body=b"%PDF-1.4\n1 0 obj\n"
         self.assert_rejected("UNSUPPORTED_DOCUMENT_TYPE",body)
     def test_22_control_byte_rejected(self):
-        body=b"We support English.\\x01\\n"
+        body=b"We support English.\x01\\n"
         self.assert_rejected("UNSUPPORTED_TEXT_FORMAT",body)
     def test_20_tampered_record_is_blocked_by_gate(self):
         body=b"We support English.\n"
