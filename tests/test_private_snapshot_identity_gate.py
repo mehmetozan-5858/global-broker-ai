@@ -29,6 +29,27 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
         with self.assertRaisesRegex(PrivateSnapshotIdentityError, "duplicate_opportunity_id"):
             require_unique_private_snapshot([row, dict(row)])
 
+    def test_three_row_collision_groups_are_mutually_exclusive(self):
+        rows = [
+            {"opportunity_id":"synthetic-A","source":"portal-A","title":"first"},
+            {"opportunity_id":"synthetic-A","source":"portal-B","title":"second"},
+            {"opportunity_id":"synthetic-A","source":"portal-A","title":"third"},
+            {"opportunity_id":"synthetic-B","source":"portal-X","title":"first"},
+            {"opportunity_id":"synthetic-B","source":"portal-X","title":"second"},
+        ]
+        result = inspect_private_snapshot(rows)
+        self.assertEqual(result["duplicate_identity_count"], 2)
+        self.assertEqual(result["cross_source_collision_count"], 1)
+        self.assertEqual(result["same_or_unknown_source_duplicate_count"], 1)
+        self.assertEqual(result["conflicting_identity_count"], 2)
+        self.assertEqual(
+            result["cross_source_collision_count"] +
+            result["same_or_unknown_source_duplicate_count"],
+            result["duplicate_identity_count"],
+        )
+        with self.assertRaisesRegex(PrivateSnapshotIdentityError, "duplicate_opportunity_id"):
+            require_unique_private_snapshot(rows)
+
     def test_conflicting_identity_blocks_snapshot_without_exposing_contact(self):
         rows = [
             {"opportunity_id": "private-id-94f", "contact_email": "private@example.test", "source":"synthetic"},
