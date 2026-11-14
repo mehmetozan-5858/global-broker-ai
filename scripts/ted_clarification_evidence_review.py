@@ -162,7 +162,7 @@ def check_official_manifest_record(candidate, manifest, private_directory):
     if not result["errors"]:
         filename = matches[0].get("file")
         if (not isinstance(filename, str) or
-                not re.fullmatch(r"annex-[0-9]{3}-[a-f0-9]{16}\\.(?:bin|pdf)", filename) or
+                not re.fullmatch(r"annex-[0-9]{3}-[a-f0-9]{16}\.(?:bin|pdf)", filename) or
                 not filename.endswith((".bin", ".pdf"))):
             result["errors"].append("invalid_manifest_file_identity")
         else:
@@ -171,6 +171,8 @@ def check_official_manifest_record(candidate, manifest, private_directory):
             result["manifest_source_record_match"] = True
             if not local["claimed_sha256_matches_local_bytes"]:
                 result["errors"].append("manifest_local_sha256_mismatch")
+            elif not path.is_file() or path.is_symlink():
+                result["errors"].append("manifest_local_file_invalid")
             elif path.stat().st_size != matches[0]["bytes"]:
                 result["errors"].append("manifest_file_size_mismatch")
             else:
