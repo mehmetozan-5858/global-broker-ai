@@ -62,3 +62,12 @@ A separate public-index comparison on **14 November 2026** found these **non-liv
 - `technical_approval=false`, `commercial_approval=false`, `deployment_approval=false`, `external_contact_sent=false`. Neither production nor supplier outreach took place.
 
 **Next external dependency:** an authorized procurement representative must seek a written binding dimension/volume clarification through E-ZAK; signed technical approval and measured usable tank volumes cannot be manufactured through software tests.
+
+
+## 14 November 2026, 14:19 UTC — successful timeout-conscious quick retry
+
+A **separate, explanation-only** GitHub Actions probe completed **SUCCESS**: `https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/43604247992`. It used the bounded official-host read rather than crawling all 20 document/navigation links. Observed: official explanation section detected, **one date 27.10.2026**, `authoritative_revision_verified=false`, `clarifications_complete=false`, `technical_approval=false`. This supports only a narrow date observation, not proof there is no newer authoritative attachment or clarification.
+
+The earlier full download job's failure was an intentional fail-closed outcome for **10 non-document candidate links among 20**, **not a timeout**. All five contested tank technical requirements, lot completeness and supplier usable-capacity proofs remain open.
+
+The fast probe workflow was returned to **manual-only** after this single successful execution; no schedule, deployment, spending or external correspondence was initiated.
