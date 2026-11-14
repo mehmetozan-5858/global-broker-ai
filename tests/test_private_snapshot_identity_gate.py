@@ -92,6 +92,21 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
         self.assertIn('missing_source_provenance',str(exc.exception))
         self.assertNotIn('private-sensitive-id',str(exc.exception))
 
+    def test_malformed_source_provenance_never_counts_as_verified(self):
+        for raw in ({'url':'private'}, ['hidden'], 123, False, '', '   '):
+            with self.subTest(type=type(raw).__name__):
+                rows=[{'opportunity_id':'synthetic-id','source':raw,
+                       'source_name':'fallback-not-authoritative'}]
+                counts=inspect_private_snapshot(rows)
+                self.assertEqual(counts['missing_source_provenance_count'],1)
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError,
+                                             'missing_source_provenance'):
+                    require_unique_private_snapshot(rows)
+        good=require_unique_private_snapshot([
+            {'opportunity_id':'synthetic-id','source':None,'source_name':'official-feed'}
+        ])
+        self.assertEqual(good['missing_source_provenance_count'],0)
+
     def test_upstream_identity_builder_does_not_truncate_before_gate(self):
         very_long_id="synthetic-notice-" + "x"*201
         prepared=stable_opportunity_id({'opportunity_id':very_long_id,'source':'synthetic'})
