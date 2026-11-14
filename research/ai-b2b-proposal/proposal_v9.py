@@ -26,11 +26,21 @@ def topic_in_text(text):
 
 def classify(topic, text):
     s = normalized(text)
+    # Future, qualified or disputed claims cannot establish current capability.
+    qualifiers = (
+        "next year", "if we hire", "if approved", "pending",
+        "not confirmed", "no confirmation", "cannot provide",
+        "except peak hours", "once infrastructure", "subject to",
+        "was revoked", "is revoked", "only for germany",
+        "for germany only",
+    )
+    if any(marker in s for marker in qualifiers) or "?" in text:
+        return "UNRESOLVED"
     if topic == "english":
         if any(x in s for x in ("do not support english", "only german is supported", "english support is unavailable")): return "NEGATIVE"
         if "we support english" in s: return "POSITIVE"
     if topic == "iso27001":
-        if any(x in s for x in ("sertifikamiz yoktur", "not certified", "expired", "suresi doldu")): return "NEGATIVE"
+        if any(x in s for x in ("sertifikamiz yoktur", "not certified", "not iso 27001 certified", "expired", "suresi doldu")): return "NEGATIVE"
         if any(x in s for x in ("sertifikamiz vardir", "we are iso 27001 certified")): return "POSITIVE"
     if topic == "uptime":
         if any(x in s for x in ("do not guarantee", "not guaranteed", "no availability guarantee")): return "NEGATIVE"
@@ -50,7 +60,10 @@ def verify_v9(question, records, company="OUR_COMPANY", region=None, as_of=None)
         if not isinstance(r, dict):
             response["review"].append((str(i + 1), "RECORD_INVALID"))
             continue
-        line = str(r.get("line") or f"R{i + 1}")
+        if not isinstance(r.get("line"), str) or not r["line"].strip():
+            response["review"].append((str(i + 1), "SOURCE_LINE_MISSING"))
+            continue
+        line = r["line"]
         raw = r.get("text")
         declared_topic = r.get("topic")
         if declared_topic is not None and declared_topic not in ("english", "iso27001", "uptime"):
