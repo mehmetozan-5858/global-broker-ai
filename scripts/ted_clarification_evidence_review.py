@@ -120,6 +120,68 @@ def check_local_evidence_bytes(candidate, file_path):
     return outcome
 
 
+def check_official_manifest_record(candidate, manifest, private_directory):
+    """Cross-check candidate local bytes against a bounded official-fetch manifest.
+
+    This establishes evidence-chain consistency only if the manifest was
+    genuinely produced by the official-host downloader; a supplied JSON file
+    alone is not authenticated. It never verifies authoritative revisions.
+    """
+    result = review_candidate(candidate)
+    result["manifest_source_record_match"] = False
+    result["manifest_file_sha256_match"] = False
+    if not result["metadata_complete"]:
+        return result
+    if not isinstance(manifest, dict) or any(
+        manifest.get(key) != value
+        for key, value in (
+            ("notice", "702997-2026"),
+            ("amendment", "746528-2026"),
+            ("ezak_dbid", 47078),
+            ("source_index", "https://zakazky.krajbezkorupce.cz/contract_display_47078.html"),
+            ("revision_verified", False),
+            ("complete_annex_set_verified", False),
+        )
+    ):
+        result["errors"].append("incorrect_or_unbounded_manifest")
+    records = manifest.get("records") if isinstance(manifest, dict) else None
+    if not isinstance(records, list) or len(records) > 40:
+        result["errors"].append("invalid_manifest_records")
+        records = []
+    matches = [
+        row for row in records
+        if isinstance(row, dict)
+        and row.get("source_url") == candidate.get("official_url")
+        and row.get("sha256") == candidate.get("sha256")
+        and row.get("accepted") is False
+        and isinstance(row.get("bytes"), int)
+        and 0 < row["bytes"] <= MAX_SOURCE_BYTES
+    ]
+    if len(matches) != 1:
+        result["errors"].append("unique_manifest_document_record_required")
+    if not result["errors"]:
+        filename = matches[0].get("file")
+        if (not isinstance(filename, str) or
+                not re.fullmatch(r"annex-[0-9]{3}-[a-f0-9]{16}\\.(?:bin|pdf)", filename) or
+                not filename.endswith((".bin", ".pdf"))):
+            result["errors"].append("invalid_manifest_file_identity")
+        else:
+            path = Path(private_directory) / filename
+            local = check_local_evidence_bytes(candidate, path)
+            result["manifest_source_record_match"] = True
+            if not local["claimed_sha256_matches_local_bytes"]:
+                result["errors"].append("manifest_local_sha256_mismatch")
+            elif path.stat().st_size != matches[0]["bytes"]:
+                result["errors"].append("manifest_file_size_mismatch")
+            else:
+                result["manifest_file_sha256_match"] = True
+    if result["errors"]:
+        result["status"] = "INVALID_OR_INCOMPLETE"
+    # A manifest and downloaded bytes are still not proof that the document
+    # supersedes the 27 October technical specification.
+    return result
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) not in (2, 3):
