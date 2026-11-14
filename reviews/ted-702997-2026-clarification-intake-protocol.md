@@ -28,6 +28,12 @@ The script `scripts/ted_clarification_evidence_review.py` consumes a JSON object
 
 **Limitations:** The intake never fetches a URL, adjudicates the amended technical requirement or releases the quarantine. Its optional offline local-file mode calculates SHA-256 from a bounded file (maximum 12 MB) and compares it with the stated digest. Even a match verifies only local-file consistency, not official source provenance or authorized publication. Even structurally complete input produces `NEEDS_INDEPENDENT_SOURCE_REVIEW`. Any user-supplied `technical_approval` or `quarantine_release_authorized` field is ignored.
 
+## New bounded manifest-to-file provenance consistency check (14 Nov 2026)
+
+The optional offline function `check_official_manifest_record(candidate, manifest, private_directory)` requires a **unique** document entry matching both candidate URL and SHA-256, in a bounded E-ZAK contract 47078 manifest. The manifest must identify both notice `702997-2026` and amendment `746528-2026`, indicate its source index, and retain its explicit `revision_verified=false` and `complete_annex_set_verified=false` safeguards. A strict local annex filename, file size and recomputed file SHA-256 must also match. Malformed/missing/changed files and incorrect source identifiers fail closed.
+
+**Trust boundary:** This verifies consistency **only** within an authentic official-fetch session. A separately supplied JSON manifest and matching bytes can both be fabricated, so this function explicitly returns `authoritative_revision_verified=false`, `source_content_verified=false`, `capacity_conflict_resolved=false`, `quarantine_release_authorized=false`. No candidate clarification was authenticated or reviewed by adding these tests.
+
 ## Current state
 
 - Source clarification for two site discrepancies: **unverified / no resolution**.
