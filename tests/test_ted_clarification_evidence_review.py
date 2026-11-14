@@ -4,7 +4,7 @@ import hashlib
 import tempfile
 from pathlib import Path
 import unittest
-from scripts.ted_clarification_evidence_review import review_candidate, check_local_evidence_bytes
+from scripts.ted_clarification_evidence_review import review_candidate, check_local_evidence_bytes, check_official_manifest_record
 
 
 def synthetic():
@@ -93,6 +93,58 @@ class ClarificationIntakeTests(unittest.TestCase):
             self.assertFalse(result["local_bytes_checked"])
             self.assertFalse(result["quarantine_release_authorized"])
             self.assertEqual(result["status"], "INVALID_OR_INCOMPLETE")
+
+    def test_official_manifest_and_actual_bytes_can_match_without_approval(self):
+        raw = b"synthetic document from allowed test host"
+        row = synthetic()
+        digest = hashlib.sha256(raw).hexdigest()
+        row["sha256"] = digest
+        filename = f"annex-001-{digest[:16]}.pdf"
+        manifest = {
+            "notice": "702997-2026",
+            "amendment": "746528-2026",
+            "ezak_dbid": 47078,
+            "source_index": "https://zakazky.krajbezkorupce.cz/contract_display_47078.html",
+            "revision_verified": False,
+            "complete_annex_set_verified": False,
+            "records": [{"source_url": row["official_url"], "sha256": digest, "file": filename,
+                         "bytes": len(raw), "accepted": False}],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory) / filename).write_bytes(raw)
+            result = check_official_manifest_record(row, manifest, directory)
+            self.assertTrue(result["manifest_source_record_match"])
+            self.assertTrue(result["manifest_file_sha256_match"])
+            self.assertEqual(result["status"], "NEEDS_INDEPENDENT_SOURCE_REVIEW")
+            self.assertFalse(result["authoritative_revision_verified"])
+            self.assertFalse(result["quarantine_release_authorized"])
+            altered = copy.deepcopy(manifest)
+            altered["records"][0]["file"] = "../other.pdf"
+            rejected = check_official_manifest_record(row, altered, directory)
+            self.assertEqual(rejected["status"], "INVALID_OR_INCOMPLETE")
+            self.assertFalse(rejected["manifest_file_sha256_match"])
+            altered = copy.deepcopy(manifest)
+            altered["ezak_dbid"] = 99999
+            rejected = check_official_manifest_record(row, altered, directory)
+            self.assertIn("incorrect_or_unbounded_manifest", rejected["errors"])
+            (Path(directory) / filename).write_bytes(b"tampered")
+            rejected = check_official_manifest_record(row, manifest, directory)
+            self.assertFalse(rejected["manifest_file_sha256_match"])
+            self.assertFalse(rejected["quarantine_release_authorized"])
+
+    def test_wrong_document_hash_record_never_matches(self):
+        row = synthetic()
+        manifest = {
+            "notice": "702997-2026", "amendment": "746528-2026", "ezak_dbid": 47078,
+            "source_index": "https://zakazky.krajbezkorupce.cz/contract_display_47078.html",
+            "revision_verified": False, "complete_annex_set_verified": False,
+            "records": [{"source_url": row["official_url"], "sha256": "b" * 64,
+                         "file": "annex-001-" + "b" * 16 + ".pdf",
+                         "bytes": 9, "accepted": False}],
+        }
+        result = check_official_manifest_record(row, manifest, ".")
+        self.assertEqual(result["status"], "INVALID_OR_INCOMPLETE")
+        self.assertIn("unique_manifest_document_record_required", result["errors"])
 
     def test_user_supplied_approval_claims_do_not_change_decision(self):
         row = synthetic()
