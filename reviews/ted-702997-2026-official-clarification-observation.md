@@ -48,3 +48,17 @@ A separate public-index comparison on **14 November 2026** found these **non-liv
 4. The Czech clarification draft remains **UNSENT**; no email, bid, quote, price, supplier-contact, merge or deployment action was performed.
 
 **Evidence decision:** `known_27_oct_revision_file_identity_verified=true`; `latest_authoritative_complete_annex_set_verified=false`; `buyer_resolution_of_5_tank_conflicts=false`; `technical_approval=false`; `commercial_approval=false`; `external_contact_sent=false`.
+
+
+## 14 November 2026 — live official E-ZAK runner recheck, attempt 2
+
+**Source:** existing official-host-only, read-only GitHub Actions evidence workflow, rerun of `43481047398`, attempt 2 (job `132471719675`), `https://github.com/mehmetozan-5858/global-broker-ai/actions/runs/43481047398/attempts/2`.
+
+**Observed live results** (runner timestamp 2026-11-14 14:06 UTC):
+- Official index acquisition succeeded: **20 discovered candidate links**. **10 official document-ID files succeeded**, **10 non-document/navigation links failed**. The entire acquisition job is deliberately **FAILURE**, not full-annex acceptance.
+- Bounded official explanation-section metadata probe succeeded: section detected, **one date observed: 27.10.2026**; `authoritative_revision_verified=false`, `clarifications_complete=false`.
+- This does **not** establish that the complete official publication/amendment record has no later entries; no verified later official correction to either tank-site contradiction was found in this bounded probe.
+- No engineering volume acceptance: Slavkov u Brna 3 tanks and Veselí nad Moravou 2 tanks remain blocked. No supplier usable capacity certificates or independently signed reconciliation collected.
+- `technical_approval=false`, `commercial_approval=false`, `deployment_approval=false`, `external_contact_sent=false`. Neither production nor supplier outreach took place.
+
+**Next external dependency:** an authorized procurement representative must seek a written binding dimension/volume clarification through E-ZAK; signed technical approval and measured usable tank volumes cannot be manufactured through software tests.
