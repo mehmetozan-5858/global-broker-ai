@@ -63,7 +63,7 @@ class IngestionTests(unittest.TestCase):
         body=b"x"*(MAX_BYTES+1)
         self.assert_rejected("INPUT_BYTES_INVALID",body)
     def test_16_nonbytes_rejected(self):
-        self.assert_rejected("INPUT_BYTES_INVALID","We support English.")
+        self.assert_rejected("INPUT_BYTES_INVALID","We support English.",fixture(b"alternate"))
     def test_17_invalid_source_identifier(self):
         body=b"We support English.\n";m=fixture(body);m["source_id"]="../escape"
         self.assert_rejected("SOURCE_ID_INVALID",body,m,source_id="../escape")
@@ -75,6 +75,12 @@ class IngestionTests(unittest.TestCase):
         snap, rows=ingest_pinned_text(body,source_id="DOC1",trusted_manifest=fixture(body))
         self.assertEqual(rows[0]["line"],"L2")
         self.assertEqual(snap["DOC1"]["lines"]["L1"],"")
+    def test_21_pdf_magic_rejected(self):
+        body=b"%PDF-1.4\\n1 0 obj\\n"
+        self.assert_rejected("UNSUPPORTED_DOCUMENT_TYPE",body)
+    def test_22_control_byte_rejected(self):
+        body=b"We support English.\\x01\\n"
+        self.assert_rejected("UNSUPPORTED_TEXT_FORMAT",body)
     def test_20_tampered_record_is_blocked_by_gate(self):
         body=b"We support English.\n"
         snap, rows=ingest_pinned_text(body,source_id="DOC1",trusted_manifest=fixture(body))
