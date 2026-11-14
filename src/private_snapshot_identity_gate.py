@@ -27,7 +27,11 @@ def inspect_private_snapshot(rows):
     for row in rows:
         if not isinstance(row, dict):
             raise PrivateSnapshotIdentityError("invalid_opportunity_row")
-        raw_id = row.get("opportunity_id") or row.get("id")
+        # Match the RPC COALESCE semantics: an explicit empty opportunity_id
+        # must fail, not fall back to a different id field.
+        raw_id = row.get("opportunity_id")
+        if raw_id is None:
+            raw_id = row.get("id")
         # Never silently coerce a JSON object/list or truncate an identifier:
         # different sources can otherwise collapse onto the same 200-char key.
         if not isinstance(raw_id, str) or not raw_id.strip() or len(raw_id) > 200:
