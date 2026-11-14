@@ -16,7 +16,7 @@ REASONS = (
 
 
 def _exact_identifiers(item: dict) -> set[str]:
-    names = ("publication-number", "publication_number", "notice_id", "id", "opportunity_id")
+    names = ("publication-number", "publication_number", "notice_id", "ted_notice_id", "source_notice_id", "id", "opportunity_id")
     values = set()
     for field in names:
         value = item.get(field)
