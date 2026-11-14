@@ -116,7 +116,11 @@ def prepare(path):
     for row in rows:
         if not isinstance(row, dict): continue
         if (row.get("export_goods_review") or {}).get("status") != "goods_candidate": continue
-        row["opportunity_id"] = stable_opportunity_id(row)
+        # Preserve an explicitly supplied primary identity for the strict
+        # pre-ingest gate. Never rewrite malformed/blank IDs into a fallback:
+        # doing so would conceal invalid input before the validator sees it.
+        if row.get("opportunity_id") is None:
+            row["opportunity_id"] = stable_opportunity_id(row)
         row["sector_id"] = sector_for(row)
         row["country_code"] = country_code(row)
         enrich_private_contact(row)
