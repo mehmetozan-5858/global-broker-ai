@@ -47,7 +47,9 @@ def ingest_pinned_text(raw_bytes, *, source_id, trusted_manifest):
         text = raw_bytes.decode("utf-8", errors="strict")
     except UnicodeDecodeError as exc:
         raise IngestionRejected("ENCODING_INVALID") from exc
-    if text.startswith("\ufeff") or "\x00" in text or "\r" in text:
+    if raw_bytes.startswith(b"%PDF-"):
+        raise IngestionRejected("UNSUPPORTED_DOCUMENT_TYPE")
+    if text.startswith("\ufeff") or "\r" in text or any((ord(ch) < 32 and ch not in "\n\t") or ord(ch) == 127 for ch in text):
         raise IngestionRejected("UNSUPPORTED_TEXT_FORMAT")
     physical_lines = text.split("\n")
     if physical_lines and physical_lines[-1] == "":
