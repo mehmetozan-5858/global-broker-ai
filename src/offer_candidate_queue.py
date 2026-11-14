@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from .ted_known_blockers import is_quarantined_ted
+
 
 def build(payload: dict[str, Any]) -> dict[str, Any]:
     """Build an internal-only offer review queue from A8 evidence gates.
@@ -14,6 +16,10 @@ def build(payload: dict[str, Any]) -> dict[str, Any]:
     queue: list[dict[str, Any]] = []
 
     for row in rows:
+        # Defense in depth: a forged or stale A8 draft flag cannot place this
+        # specifically quarantined TED opportunity into the internal queue.
+        if is_quarantined_ted(row):
+            continue
         gate = row.get("offer_risk_gate") if isinstance(row.get("offer_risk_gate"), dict) else {}
         if gate.get("draft_offer_ready") is not True:
             continue

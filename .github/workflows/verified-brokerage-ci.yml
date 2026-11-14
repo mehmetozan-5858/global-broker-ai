@@ -5,6 +5,7 @@ on:
     branches:
       - feat/verified-brokerage-pipeline
       - feat/broker-ceo-sales-current-main
+      - fix/ezak-document-id-discovery-20261113
       - main
     paths:
       - 'src/**'
@@ -38,6 +39,18 @@ jobs:
           python-version: "3.12"
       - name: Run brokerage test suite
         run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Report TED technical blockers (review branch; not acceptance)
+        if: github.ref == 'refs/heads/fix/ezak-document-id-discovery-20261113'
+        run: |
+          python - <<'PY'
+          import json
+          from scripts.ted_technical_acceptance_gate import decision
+          from scripts.audit_ted_tank_capacity_envelopes import SOURCE
+          status = decision(json.loads(SOURCE.read_text(encoding='utf-8')))
+          assert status['status'] == 'BLOCKED'
+          assert status['technical_approval'] is False
+          print('TED technical acceptance (must remain blocked):', json.dumps(status, ensure_ascii=False, sort_keys=True))
+          PY
       - name: Check mobile dashboard JavaScript syntax
         run: |
           node --check web/ceo-dashboard.js

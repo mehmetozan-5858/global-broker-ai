@@ -10,6 +10,7 @@ from datetime import date
 from decimal import Decimal, InvalidOperation
 from typing import Any
 from urllib.parse import urlparse
+from .ted_known_blockers import is_quarantined_ted
 
 CURRENCIES = {"USD", "EUR", "GBP", "TRY", "CNY", "AED", "SAR", "QAR", "JPY", "CHF", "CAD", "AUD"}
 
@@ -93,6 +94,10 @@ def assess(item: dict, today: date | None = None) -> dict:
     issues: list[str] = []
     if item.get("ted_lot_selection_required") is True or item.get("source_lot_selection_required") is True:
         issues.append("lot_selection")
+    # Reuse the exact notice/amendment identity predicate from the offer-risk
+    # gate. No title/substring matching or false readiness for 746528-2026.
+    if is_quarantined_ted(item):
+        issues.append("ted_702997_2026_unresolved_technical_capacity_conflict")
 
     buy = _positive(item.get("verified_unit_price"))
     buy_source = item.get("verified_unit_price_source")
@@ -125,6 +130,7 @@ def assess(item: dict, today: date | None = None) -> dict:
 
     buy_blockers = {
         "lot_selection",
+        "ted_702997_2026_unresolved_technical_capacity_conflict",
         "verified_supplier_quote", "financially_eligible_exact_spec_supplier",
         "supplier_quote_reference", "supplier_quote_date", "supplier_price_unit",
         "supplier_quantity_basis", "quote_valid_until", "quote_expired",

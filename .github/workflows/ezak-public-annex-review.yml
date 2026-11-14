@@ -1,7 +1,7 @@
 name: E-ZAK public annex review (manual only)
 
-# Deliberately no schedule or push trigger. The official source has not yet
-# passed a real acquisition acceptance test; no production deployment.
+# Review-only, manually launched. Do not run official source downloads on
+# every commit. No automatic production deployment or commercial acceptance.
 on:
   workflow_dispatch:
 
@@ -36,15 +36,433 @@ jobs:
           python - <<'PY'
           import json, os
           from pathlib import Path
-          path = Path(os.environ["RUNNER_TEMP"]) / "ezak-47078" / "manifest.json"
+          from collections import Counter
+          path = Path(os.environ['RUNNER_TEMP']) / 'ezak-47078' / 'manifest.json'
           if not path.is_file():
-              print("Official acquisition: BLOCKED (no manifest)")
+              print('Official acquisition: BLOCKED (no manifest)')
           else:
-              data = json.loads(path.read_text(encoding="utf-8"))
-              rows = data.get("records", [])
+              data = json.loads(path.read_text(encoding='utf-8'))
+              rows = data.get('records', [])
               print(f"Official acquisition: {len(rows)} discovered links, {sum('error' in r for r in rows)} failed")
-              print("Acceptance: BLOCKED pending full annex and amendment reconciliation")
+              failures = Counter(
+                  f"HTTP {row['http_status']}" if 'http_status' in row
+                  else row.get('failure_class', row['error'])
+                  for row in rows if 'error' in row
+              )
+              successes = Counter(row.get('kind', 'unclassified') for row in rows if 'error' not in row)
+              print('Redacted failure classes:', json.dumps(dict(sorted(failures.items())), sort_keys=True))
+              print('Downloaded signature classes:', json.dumps(dict(sorted(successes.items())), sort_keys=True))
+              # Compare only aggregate hash matches with the 29 Oct historical audit.
+              # No filenames, source URLs, bytes or private document text in logs.
+              reference_hashes = {
+                  'prior_doc_1': '187becc6beef06222861b311e55ddf88ea9f34909860e812768ce758ee745a04',
+                  'prior_doc_2': '7f7347e3e9876504e9012ec1c302f02758505a58b5bcf66d8d7c78f5eac46c45',
+                  'prior_doc_3': 'dcefbca8da9d62fc704a3b95650981d782ba0518d47099a1e461d3e370710229',
+                  'prior_docx_1': '80ace4abf15579d9b08654960e6048fa1636f725116b5af39f2b08de7a87ce6d',
+                  'prior_docx_2': 'd25e7b2577783987970f338b5fd2f57473a17ef1170da29efd161287c1a794f0',
+                  'prior_formula_xlsx': '41144156ef49a411de75c423f3e460732bc1bc111da326d76801cb798de20d45',
+                  'prior_drawing_pdf': 'cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f',
+                  'prior_spec_original': '7b1937a90a083cd594e3bdd82772eaa088ace4300d87676220c8d109fc7c142b',
+                  'prior_spec_amended': 'ec1501d66872990cb18d0e27be2f492d8911b09d28665955ec28f757434a161e',
+                  'prior_tender_pdf': '057d11623a3487273f4c7e49be8858f51f315ef4d163cb191e32bfe7cdfaca27',
+              }
+              received = [row.get('sha256') for row in rows if 'error' not in row]
+              received_set = set(received)
+              matched = sorted(name for name, digest in reference_hashes.items() if digest in received_set)
+              print('Historical SHA-256 baseline match count:', len(matched), 'of', len(reference_hashes))
+              print('Historical SHA-256 baseline match labels:', json.dumps(matched))
+              print('Unique downloaded hash count:', len(received_set))
+              print('Unmatched downloaded hash count:', len(received_set - set(reference_hashes.values())))
+              from urllib.parse import urlparse, unquote
+              import re
+              def doc_id(row):
+                  path = unquote(urlparse(row.get('source_url', '')).path)
+                  match = re.match(r'^/document_([0-9]+)/', path, re.I)
+                  return match.group(1) if match else None
+              ok_ids = {doc_id(r) for r in rows if 'error' not in r and doc_id(r)}
+              failed_ids = {doc_id(r) for r in rows if 'error' in r and doc_id(r)}
+              print('Document-ID grouping:', json.dumps({
+                  'successful_id_count': len(ok_ids),
+                  'failed_id_count': len(failed_ids),
+                  'shared_ids_success_and_failure': len(ok_ids & failed_ids),
+                  'failed_ids_without_success': len(failed_ids - ok_ids),
+                  'failed_non_document_id_links': sum(1 for r in rows if 'error' in r and not doc_id(r)),
+                  'successful_non_document_id_links': sum(1 for r in rows if 'error' not in r and not doc_id(r)),
+              }, sort_keys=True))
+              # These counts are diagnostic only: no revision or completeness acceptance.
+              print('Acceptance remains BLOCKED: source completeness, authoritative revision and lot review unverified.')
+              print('Acceptance: BLOCKED pending full annex and amendment reconciliation')
           PY
+      - name: Inspect previously hashed XLSX formula inventory (read-only)
+        if: always()
+        shell: bash
+        run: |
+          python -m pip install 'openpyxl==3.1.5' --disable-pip-version-check --quiet
+          python - <<'PY'
+          import json, os, shutil
+          from pathlib import Path
+          from scripts.review_ted_xlsx_formulas import EXPECTED_SHA256, inspect
+          folder = Path(os.environ['RUNNER_TEMP']) / 'ezak-47078'
+          manifest = folder / 'manifest.json'
+          if not manifest.is_file():
+              raise SystemExit('XLSX review BLOCKED: manifest missing')
+          rows = json.loads(manifest.read_text(encoding='utf-8')).get('records', [])
+          matches = [r for r in rows if r.get('sha256') == EXPECTED_SHA256 and 'error' not in r]
+          if len(matches) != 1:
+              raise SystemExit(f'XLSX review BLOCKED: expected one matching workbook, found {len(matches)}')
+          original = folder / matches[0]['file']
+          # The source sync saves Office packages as .bin; openpyxl needs .xlsx.
+          temporary = folder / 'hash-verified-workbook.xlsx'
+          shutil.copyfile(original, temporary)
+          # Report only which archive-safety class was triggered; do not publish
+          # ZIP filenames, raw formulas, or document content.
+          from zipfile import ZipFile
+          with ZipFile(temporary) as archive:
+              members = [n.filename.lower() for n in archive.infolist()]
+          print('XLSX archive safety categories:', json.dumps({
+              'external_link_entries': sum(x.startswith('xl/externallinks/') for x in members),
+              'binary_or_executable_entries': sum(x.endswith(('.bin', '.exe')) for x in members),
+              'vba_member_entries': sum('vbaproject' in x for x in members),
+              'unsafe_path_entries': sum(x.startswith('/') or chr(92) in x or '..' in x.split('/') for x in members),
+              'entry_count': len(members)
+          }, sort_keys=True))
+          # Classify binary OOXML members by their structural placement only.
+          # Never log member names, formulas, ZIP bytes or untrusted XML values.
+          from collections import Counter
+          def bin_class(name):
+              name = name.lower()
+              if name.startswith('xl/printersettings/'): return 'printer_settings'
+              if name.startswith('xl/embeddings/'): return 'embedded_object'
+              if name.startswith('xl/activex/'): return 'activex'
+              if 'vbaproject' in name: return 'vba'
+              if name.startswith('xl/'): return 'other_excel_binary'
+              return 'other_binary'
+          bins = [x for x in members if x.endswith('.bin')]
+          print('XLSX binary placement categories:', json.dumps(dict(sorted(Counter(bin_class(x) for x in bins).items())), sort_keys=True))
+          print('XLSX safety policy: no binary content executed, formula evaluation remains disabled')
+          try:
+              result = inspect(temporary, allow_printer_settings=True)
+              print('Hash-verified XLSX inventory:', json.dumps(result, sort_keys=True))
+              # Classification only: do not execute formulas or emit cell references.
+              from openpyxl import load_workbook
+              from collections import Counter
+              from openpyxl.formula.tokenizer import Tokenizer
+              wb = load_workbook(temporary, read_only=True, data_only=False, keep_links=False)
+              signatures = Counter()
+              complexity = Counter()
+              try:
+                  for sheet in wb:
+                      for row in sheet.iter_rows():
+                          for cell in row:
+                              if cell.data_type != 'f':
+                                  continue
+                              formula = str(cell.value or '')
+                              try:
+                                  tokens = Tokenizer(formula).items
+                                  funcs = [t.value.split('(')[0].upper() for t in tokens if t.type == 'FUNC' and t.subtype == 'OPEN']
+                                  signatures.update(funcs if funcs else ['ARITHMETIC_OR_REFERENCE'])
+                                  complexity.update(['contains_function' if funcs else 'no_function'])
+                              except (ValueError, IndexError):
+                                  complexity.update(['parse_error'])
+              finally:
+                  wb.close()
+              print('XLSX formula function categories:', json.dumps(dict(sorted(signatures.items())), sort_keys=True))
+              print('XLSX formula parsing categories:', json.dumps(dict(sorted(complexity.items())), sort_keys=True))
+              from collections import Counter as FormulaCounter
+              token_kinds = FormulaCounter()
+              operators = FormulaCounter()
+              reference_shapes = FormulaCounter()
+              sheet_counts = FormulaCounter()
+              wb = load_workbook(temporary, read_only=True, data_only=False, keep_links=False)
+              try:
+                  for sheet in wb:
+                      sheet_counts['sheets_with_formulas' if any(cell.data_type == 'f' for row in sheet.iter_rows() for cell in row) else 'sheets_without_formulas'] += 1
+                      for row in sheet.iter_rows():
+                          for cell in row:
+                              if cell.data_type != 'f': continue
+                              try: parts = Tokenizer(str(cell.value)).items
+                              except (ValueError, IndexError):
+                                  token_kinds['parse_error'] += 1
+                                  continue
+                              for token in parts:
+                                  token_kinds[f'{token.type}:{token.subtype or "none"}'] += 1
+                                  if token.type.startswith('OPERATOR'): operators[token.value] += 1
+                                  if token.type == 'OPERAND' and token.subtype == 'RANGE':
+                                      reference_shapes['range' if ':' in token.value else 'single_cell_or_name'] += 1
+              finally: wb.close()
+              print('XLSX token categories:', json.dumps(dict(sorted(token_kinds.items())), sort_keys=True))
+              print('XLSX operator counts:', json.dumps(dict(sorted(operators.items())), sort_keys=True))
+              print('XLSX reference shapes:', json.dumps(dict(sorted(reference_shapes.items())), sort_keys=True))
+              print('XLSX worksheet counts:', json.dumps(dict(sorted(sheet_counts.items())), sort_keys=True))
+              print('Formula values and cell addresses intentionally not logged')
+              from scripts.recalculate_ted_xlsx_bounded import recalculate
+              independently_checked = recalculate(temporary)
+              print('XLSX independent restricted recalculation:', json.dumps(independently_checked, sort_keys=True))
+              print('Excel technical and commercial acceptance: BLOCKED pending independent reviewer and tender requirements')
+              from scripts.review_ted_xlsx_arithmetic import verify
+              # Offline independent comparison reports only fixed failure classes.
+              # Re-run with Excel blank-reference arithmetic semantics; no other coercion.
+              arithmetic = verify(temporary)
+              print('Independent arithmetic review:', json.dumps(arithmetic, sort_keys=True))
+              if not arithmetic['formula_acceptance']:
+                  print('Formula calculation acceptance: BLOCKED; unsupported/mismatched cases need human review')
+              else:
+                  print('Formula math acceptance: MATCHED, subject to workbook semantic and revision review')
+          finally:
+              temporary.unlink(missing_ok=True)
+          PY
+      - name: Audit hash-pinned PDF page inventory (not visual acceptance)
+        if: always()
+        shell: bash
+        run: |
+          python -m pip install 'pypdf==6.1.1' --disable-pip-version-check --quiet
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          from pypdf import PdfReader
+          expected = 'cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f'
+          folder = Path(os.environ['RUNNER_TEMP']) / 'ezak-47078'
+          manifest = folder / 'manifest.json'
+          if not manifest.is_file(): raise SystemExit('PDF inventory BLOCKED: missing manifest')
+          rows = json.loads(manifest.read_text(encoding='utf-8')).get('records', [])
+          matches = [r for r in rows if r.get('sha256') == expected and r.get('kind') == 'pdf']
+          if len(matches) != 1: raise SystemExit('PDF inventory BLOCKED: hash-verified drawing not found uniquely')
+          path = folder / matches[0]['file']
+          if path.stat().st_size > 5_000_000 or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+              raise SystemExit('PDF inventory BLOCKED: size/hash check failed')
+          pdf = PdfReader(str(path), strict=True)
+          count = len(pdf.pages)
+          if not (1 <= count <= 100): raise SystemExit('PDF inventory BLOCKED: abnormal page count')
+          xobjects = {'image': 0, 'form': 0, 'other': 0}
+          for page in pdf.pages:
+              resources = page.get('/Resources')
+              if not resources: continue
+              resources = resources.get_object()
+              objects = resources.get('/XObject')
+              if not objects: continue
+              for obj in objects.get_object().values():
+                  subtype = str(obj.get_object().get('/Subtype'))
+                  category = 'image' if subtype == '/Image' else 'form' if subtype == '/Form' else 'other'
+                  xobjects[category] += 1
+          print('Drawing PDF structural inventory:', json.dumps({'sha256_match': True, 'pages': count, 'direct_xobjects': xobjects, 'visual_review_completed': False, 'technical_approval': False}, sort_keys=True))
+          print('PDF visual acceptance: BLOCKED pending actual rendering and reviewer inspection')
+          PY
+      - name: Render hash-pinned drawing PDF contact sheet (review artifact only)
+        if: always()
+        shell: bash
+        run: |
+          python -m pip install 'pymupdf==1.26.5' 'Pillow==11.3.0' --disable-pip-version-check --quiet
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          import fitz
+          from PIL import Image, ImageDraw
+          folder = Path(os.environ['RUNNER_TEMP']) / 'ezak-47078'
+          manifest = folder / 'manifest.json'
+          expected = 'cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f'
+          if not manifest.is_file(): raise SystemExit('Drawing preview blocked: no manifest')
+          rows = json.loads(manifest.read_text(encoding='utf-8')).get('records', [])
+          matches = [r for r in rows if r.get('sha256') == expected and r.get('kind') == 'pdf']
+          if len(matches) != 1: raise SystemExit('Drawing preview blocked: no unique hash match')
+          path = folder / matches[0]['file']
+          if path.stat().st_size > 5_000_000 or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+              raise SystemExit('Drawing preview blocked: hash or bounds mismatch')
+          doc = fitz.open(str(path))
+          if len(doc) != 12: raise SystemExit('Drawing preview blocked: unexpected page count')
+          tile_w, tile_h, columns = 480, 400, 3
+          canvas = Image.new('RGB', (columns*tile_w, 4*tile_h), '#ffffff')
+          draw = ImageDraw.Draw(canvas)
+          for index in range(12):
+              page = doc[index]
+              matrix = fitz.Matrix(0.70,0.70)
+              pix = page.get_pixmap(matrix=matrix, alpha=False)
+              img = Image.frombytes('RGB',[pix.width,pix.height],pix.samples)
+              img.thumbnail((tile_w-24,tile_h-36))
+              x=(index%columns)*tile_w+(tile_w-img.width)//2
+              y=(index//columns)*tile_h+24
+              canvas.paste(img,(x,y))
+              draw.text(((index%columns)*tile_w+12,(index//columns)*tile_h+5),f'Page {index+1}',fill='#111111')
+          output = folder / 'drawing-contact-sheet.png'
+          canvas.save(output)
+          doc.close()
+          print('Drawing preview artifact produced: 12 pages; technical visual approval remains false')
+          PY
+      - name: Upload drawing contact sheet for isolated visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-drawing-contact-sheet
+          path: ${{ runner.temp }}/ezak-47078/drawing-contact-sheet.png
+          if-no-files-found: ignore
+          retention-days: 1
+      - name: Render priority drawing pages at review resolution
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          import fitz
+          folder=Path(os.environ['RUNNER_TEMP'])/'ezak-47078'
+          manifest=folder/'manifest.json'
+          expected='cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f'
+          if not manifest.is_file(): raise SystemExit('Drawing review BLOCKED: manifest missing')
+          records=json.loads(manifest.read_text(encoding='utf-8')).get('records',[])
+          candidates=[r for r in records if r.get('sha256')==expected and r.get('kind')=='pdf']
+          if len(candidates)!=1: raise SystemExit('Drawing review BLOCKED: hash identity not unique')
+          source=folder/candidates[0]['file']
+          if hashlib.sha256(source.read_bytes()).hexdigest()!=expected: raise SystemExit('Drawing review BLOCKED: SHA mismatch')
+          pdf=fitz.open(str(source))
+          if len(pdf)!=12: raise SystemExit('Drawing review BLOCKED: page count changed')
+          out=folder/'priority-drawings'
+          out.mkdir(exist_ok=True)
+          for num in (1,6,9,11,12):
+              page=pdf[num-1]
+              pix=page.get_pixmap(matrix=fitz.Matrix(2,2),alpha=False)
+              pix.save(str(out/f'page-{num:02d}.png'))
+          print('High-resolution drawing pages rendered: 1,6,9,11,12; visual/technical approval false')
+          pdf.close()
+          PY
+      - name: Upload priority drawings for human review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-priority-drawings
+          path: ${{ runner.temp }}/ezak-47078/priority-drawings/*.png
+          if-no-files-found: ignore
+          retention-days: 1
+      - name: Render remaining seven hash-pinned drawing pages
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          import fitz
+          root=Path(os.environ['RUNNER_TEMP'])/'ezak-47078'
+          manifest=root/'manifest.json'
+          expected='cab5b314b5d59fb7fad3618ec1d6398dcf8cf6f32fbce41c88a06642e09f767f'
+          if not manifest.is_file(): raise SystemExit('Remaining drawings BLOCKED: manifest missing')
+          rows=json.loads(manifest.read_text(encoding='utf-8')).get('records',[])
+          matches=[r for r in rows if r.get('sha256')==expected and r.get('kind')=='pdf']
+          if len(matches)!=1: raise SystemExit('Remaining drawings BLOCKED: unique hash match missing')
+          src=root/matches[0]['file']
+          if src.stat().st_size>5_000_000 or hashlib.sha256(src.read_bytes()).hexdigest()!=expected:
+              raise SystemExit('Remaining drawings BLOCKED: identity/size invalid')
+          pdf=fitz.open(str(src))
+          if len(pdf)!=12: raise SystemExit('Remaining drawings BLOCKED: unexpected pages')
+          output=root/'remaining-drawings'
+          output.mkdir(exist_ok=True)
+          for number in (2,3,4,5,7,8,10):
+              pix=pdf[number-1].get_pixmap(matrix=fitz.Matrix(2,2),alpha=False)
+              pix.save(str(output/f'page-{number:02d}.png'))
+          pdf.close()
+          print('Remaining seven drawings rendered: pages 2,3,4,5,7,8,10; visual acceptance false')
+          PY
+      - name: Upload remaining drawings for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-remaining-drawings
+          path: ${{ runner.temp }}/ezak-47078/remaining-drawings/*.png
+          if-no-files-found: ignore
+          retention-days: 1
+      - name: Compare hash-pinned original and amended technical DOCX
+        if: always()
+        shell: bash
+        run: |
+          python -m pip install 'python-docx==1.2.0' --disable-pip-version-check --quiet
+          python - <<'PY'
+          import hashlib, json, os, difflib
+          from pathlib import Path
+          from docx import Document
+          root=Path(os.environ['RUNNER_TEMP'])/'ezak-47078'
+          manifest=root/'manifest.json'
+          oldhash='7b1937a90a083cd594e3bdd82772eaa088ace4300d87676220c8d109fc7c142b'
+          newhash='ec1501d66872990cb18d0e27be2f492d8911b09d28665955ec28f757434a161e'
+          if not manifest.is_file(): raise SystemExit('Technical DOCX comparison blocked: manifest missing')
+          rows=json.loads(manifest.read_text(encoding='utf-8')).get('records',[])
+          def source_for(digest):
+              matches=[r for r in rows if r.get('sha256')==digest and r.get('kind')=='zip-based-office']
+              if len(matches)!=1: raise SystemExit('Technical DOCX comparison blocked: missing unique hash')
+              p=root/matches[0]['file']
+              if p.stat().st_size>250_000 or hashlib.sha256(p.read_bytes()).hexdigest()!=digest:
+                  raise SystemExit('Technical DOCX comparison blocked: file bounds or SHA mismatch')
+              return p
+          def lines(path):
+              doc=Document(str(path))
+              output=[p.text.strip() for p in doc.paragraphs if p.text.strip()]
+              for table in doc.tables:
+                  for row in table.rows:
+                      value=' | '.join(c.text.replace('\n','; ').strip() for c in row.cells)
+                      if value.strip(' |'): output.append('[TABLE] '+value)
+              if sum(map(len,output))>200000: raise SystemExit('Technical DOCX comparison blocked: text budget')
+              return output
+          original=lines(source_for(oldhash))
+          amended=lines(source_for(newhash))
+          output=root/'amended-spec-diff.txt'
+          changes=list(difflib.unified_diff(original,amended,fromfile='original_technical_spec',tofile='amended_2026_10_27',lineterm='',n=1))
+          if len(changes)>1000: raise SystemExit('Technical DOCX comparison blocked: too many diff lines')
+          output.write_text('\n'.join(changes),encoding='utf-8')
+          print('Hash-pinned DOCX comparison:',json.dumps({'original_paragraphs_and_rows':len(original),'amended_paragraphs_and_rows':len(amended),'changed_diff_lines':len(changes),'added_diff_lines':sum(line.startswith('+') and not line.startswith('+++') for line in changes),'removed_diff_lines':sum(line.startswith('-') and not line.startswith('---') for line in changes),'amendment_semantic_approval':False},sort_keys=True))
+          PY
+      - name: Upload DOCX revision text differences for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-technical-spec-diff
+          path: ${{ runner.temp }}/ezak-47078/amended-spec-diff.txt
+          if-no-files-found: ignore
+          retention-days: 1
+      - name: Extract bounded technical criteria for drawing reconciliation
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, re
+          from pathlib import Path
+          from docx import Document
+          root=Path(os.environ['RUNNER_TEMP'])/'ezak-47078'
+          manifest=root/'manifest.json'
+          digest='ec1501d66872990cb18d0e27be2f492d8911b09d28665955ec28f757434a161e'
+          if not manifest.is_file(): raise SystemExit('Criteria review blocked: missing manifest')
+          rows=json.loads(manifest.read_text(encoding='utf-8')).get('records',[])
+          matches=[r for r in rows if r.get('sha256')==digest and r.get('kind')=='zip-based-office']
+          if len(matches)!=1: raise SystemExit('Criteria review blocked: missing unique amended DOCX')
+          source=root/matches[0]['file']
+          if source.stat().st_size>250_000 or hashlib.sha256(source.read_bytes()).hexdigest()!=digest:
+              raise SystemExit('Criteria review blocked: hash/size mismatch')
+          document=Document(str(source))
+          chunks=[p.text.strip() for p in document.paragraphs if p.text.strip()]
+          for table in document.tables:
+              for row in table.rows:
+                  value=' | '.join(c.text.replace(chr(10),' ; ').strip() for c in row.cells)
+                  if value.strip(' |'): chunks.append('[TABLE] '+value)
+          pattern=re.compile(r'(Lechovice|Vranovsk|nádrž|míchad|potrub|přípoj|připoj|čerpad|armatur|průměr|výšk|objem|hadic|rozměr|přívod|odvod|ventil|montáž|výtlak|přečerp|plnění)',re.I)
+          selected=[(i,x) for i,x in enumerate(chunks) if pattern.search(x)]
+          bounded='\n'.join(f'[{i}] {line}' for i,line in selected)
+          if len(chunks)>500 or len(selected)>130 or len(bounded)>27000:
+              raise SystemExit('Criteria review blocked: extraction exceeds limits')
+          (root/'amended-technical-criteria.txt').write_text(bounded,encoding='utf-8')
+          complete='\n'.join(f'[{i}] {line}' for i,line in enumerate(chunks))
+          if len(complete)>40000: raise SystemExit('Full criteria indexing blocked: text budget')
+          (root/'amended-spec-indexed.txt').write_text(complete,encoding='utf-8')
+          print('Amended technical criteria excerpt:',json.dumps({'total_blocks':len(chunks),'matched_blocks':len(selected),'excerpt_created':True,'technical_approval':False},sort_keys=True))
+          PY
+      - name: Upload amended criteria excerpt for manual engineering review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezak-47078-amended-technical-criteria
+          path: |
+            ${{ runner.temp }}/ezak-47078/amended-technical-criteria.txt
+            ${{ runner.temp }}/ezak-47078/amended-spec-indexed.txt
+          if-no-files-found: ignore
+          retention-days: 1
+      - name: Screen official E-ZAK clarification metadata (no acceptance)
+        if: always()
+        continue-on-error: true
+        run: python -m scripts.ezak_official_clarification_probe
       - name: Enforce fail-closed review outcome
         if: always()
         shell: bash

@@ -1,0 +1,21 @@
+name: E-ZAK official clarification quick probe (review only)
+
+# Manual-only bounded public source screening. No background polling.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quick-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read public official explanation section only
+        run: |
+          python -m scripts.ezak_official_clarification_probe
