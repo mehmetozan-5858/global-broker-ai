@@ -86,6 +86,27 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
                     require_unique_private_snapshot(rows)
                 self.assertNotIn('sensitive',str(err.exception))
 
+    def test_explicit_empty_primary_id_never_falls_back_to_secondary_id(self):
+        # SQL COALESCE does not treat '' as NULL. Match the actual RPC.
+        for raw in ("", "   "):
+            with self.subTest(value_length=len(raw)):
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError, "invalid_opportunity_id"):
+                    require_unique_private_snapshot([
+                        {"opportunity_id": raw, "id": "synthetic-valid", "source": "synthetic"}
+                    ])
+        result = require_unique_private_snapshot([
+            {"opportunity_id": None, "id": "synthetic-valid", "source": "synthetic"}
+        ])
+        self.assertEqual(result["rows"], 1)
+
+    def test_identity_selection_must_not_mask_a_invalid_primary(self):
+        for raw in ([], {}, 0, False):
+            with self.subTest(value_type=type(raw).__name__):
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError, "invalid_opportunity_id"):
+                    require_unique_private_snapshot([
+                        {"opportunity_id": raw, "id": "synthetic-valid", "source": "synthetic"}
+                    ])
+
     def test_duplicate_fail_still_writes_only_safe_aggregate_artifact(self):
         rows=[
             {'opportunity_id':'private-123','source':'source-A','contact_email':'private@example.test'},
