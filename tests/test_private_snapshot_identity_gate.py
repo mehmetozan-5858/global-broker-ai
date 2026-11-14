@@ -143,6 +143,39 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
                         {"opportunity_id": raw, "id": "synthetic-valid", "source": "synthetic"}
                     ])
 
+    def test_preparer_preserves_invalid_explicit_identity_for_gate(self):
+        # This exercises the real sequence: prepare -> pre-ingest gate.
+        from src.private_sync_payload import prepare
+        for raw in ("", "   ", [], {"private":"sensitive"}, 0, False):
+            with self.subTest(primary_type=type(raw).__name__):
+                row={"opportunity_id":raw,"id":"synthetic-valid",
+                     "source":"synthetic","export_goods_review":{"status":"goods_candidate"}}
+                with TemporaryDirectory() as tmp:
+                    src=Path(tmp)/"private.json"
+                    src.write_text(json.dumps({"opportunities":[row]}),encoding="utf-8")
+                    prepare(str(src))
+                    prepared=json.loads(src.read_text(encoding="utf-8"))["opportunities"]
+                    self.assertEqual(prepared[0]["opportunity_id"],raw)
+                    with self.assertRaisesRegex(PrivateSnapshotIdentityError,
+                                                "invalid_opportunity_id"):
+                        require_unique_private_snapshot(prepared)
+
+    def test_preparer_generates_id_only_when_primary_missing(self):
+        from src.private_sync_payload import prepare
+        for original in (
+            {"id":"synthetic-secondary","source":"synthetic"},
+            {"opportunity_id":None,"id":"synthetic-secondary","source":"synthetic"},
+        ):
+            with TemporaryDirectory() as tmp:
+                src=Path(tmp)/"private.json"
+                src.write_text(json.dumps({"opportunities":[{
+                    **original,"export_goods_review":{"status":"goods_candidate"}
+                }]}),encoding="utf-8")
+                prepare(str(src))
+                rows=json.loads(src.read_text(encoding="utf-8"))["opportunities"]
+                self.assertEqual(rows[0]["opportunity_id"],"synthetic-secondary")
+                self.assertEqual(require_unique_private_snapshot(rows)["rows"],1)
+
     def test_duplicate_fail_still_writes_only_safe_aggregate_artifact(self):
         rows=[
             {'opportunity_id':'private-123','source':'source-A','contact_email':'private@example.test'},
