@@ -1,11 +1,7 @@
 name: E-ZAK official clarification quick probe (review only)
 
-# Single branch-scoped lightweight probe. Restore manual-only after observation.
+# Manual-only bounded public source screening. No background polling.
 on:
-  push:
-    branches: [fix/ezak-document-id-discovery-20261113]
-    paths:
-      - .github/workflows/ezak-clarification-quick-probe.yml
   workflow_dispatch:
 
 permissions:
