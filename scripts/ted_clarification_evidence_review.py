@@ -4,8 +4,10 @@ This module cannot remove the quarantine or approve a supplier. A URL, SHA-256
 and reviewer claim are merely intake metadata, not verification that the source
 actually resolves the contradictory tank requirements.
 """
+import hashlib
 import json
 import re
+from pathlib import Path
 from urllib.parse import urlsplit
 
 TARGETS = ("Slavkov u Brna", "Veselí nad Moravou")
@@ -75,11 +77,54 @@ def review_candidate(candidate):
     }
 
 
+MAX_SOURCE_BYTES = 12_000_000
+
+
+def check_local_evidence_bytes(candidate, file_path):
+    """Verify bounded local bytes against metadata, without trusting provenance.
+
+    Does not fetch URLs, inspect official document semantics, or release holds.
+    A hash match only authenticates consistency with a *user-declared* digest.
+    """
+    outcome = review_candidate(candidate)
+    outcome["claimed_sha256_matches_local_bytes"] = False
+    outcome["local_bytes_checked"] = False
+    if not outcome["metadata_complete"]:
+        return outcome
+    try:
+        path = Path(file_path)
+        if not path.is_file() or path.is_symlink():
+            raise ValueError("missing_or_symlink_file")
+        size = path.stat().st_size
+        if size < 1 or size > MAX_SOURCE_BYTES:
+            raise ValueError("file_outside_size_bound")
+        digest = hashlib.sha256()
+        with path.open("rb") as stream:
+            total = 0
+            while chunk := stream.read(65536):
+                total += len(chunk)
+                if total > MAX_SOURCE_BYTES:
+                    raise ValueError("file_outside_size_bound")
+                digest.update(chunk)
+        outcome["local_bytes_checked"] = True
+        outcome["claimed_sha256_matches_local_bytes"] = (
+            digest.hexdigest() == candidate["sha256"]
+        )
+        if not outcome["claimed_sha256_matches_local_bytes"]:
+            outcome["errors"].append("claimed_sha256_does_not_match_file")
+    except (OSError, ValueError, TypeError):
+        outcome["errors"].append("local_file_missing_or_invalid")
+    if outcome["errors"]:
+        outcome["status"] = "INVALID_OR_INCOMPLETE"
+    # Even a matching claim can be an invented pair of bytes and digest.
+    return outcome
+
+
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) != 2:
-        raise SystemExit("Usage: python -m scripts.ted_clarification_evidence_review <candidate.json>")
-    from pathlib import Path
+    if len(sys.argv) not in (2, 3):
+        raise SystemExit("Usage: python -m scripts.ted_clarification_evidence_review <candidate.json> [local-source-file]")
     record = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-    print(json.dumps(review_candidate(record), sort_keys=True))
+    result = check_local_evidence_bytes(record, sys.argv[2]) if len(sys.argv) == 3 else review_candidate(record)
+    print(json.dumps(result, sort_keys=True))
     raise SystemExit(2)  # Always stay in manual-review state
