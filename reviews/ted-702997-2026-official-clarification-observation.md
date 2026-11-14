@@ -18,3 +18,12 @@ The price/margin gate in `src/price_margin_gate.py` now detects an **exact** `70
 This is **scoped to the isolated review branch**, not a production fix. The guard assumes the opportunity has a correctly populated official notice identity; a missing or differently formatted identity is **not** caught by this exact-match rule, and requires separate source identity verification. Do not represent this as a global cross-format notice resolver or a live safeguard.
 
 GitHub Actions run `43510976062` confirmed **703 Python tests** passed, plus the JavaScript test step. The separate tender technical gate continued to report `BLOCKED` with five drawing-conflicted tanks and unresolved independent acceptance evidence. All commercial/production approvals remain false.
+
+
+## 14 Nov 2026 — source-specific positive verification vs unresolved full revision
+
+- **Verified official document metadata:** E-ZAK technical specification document **254114**, official `https://zakazky.krajbezkorupce.cz/document_download_254114.html`, recorded on **27 October 2026 at 12:50:16** as `Příloha č. 5 ZD Technická specifikace_27_10_2026.docx`. The official public page declares SHA-256 `ec1501d66872990cb18d0e27be2f492d8911b09d28665955ec28f757434a161e`, exactly matching the bounded official-host file acquisition used in these reviews.
+- **Meaning:** the identity, publication timestamp and byte digest for *this one dated technical-specification revision* have official-source corroboration. This is a **closed source-identity subcheck**; do not misstate it as a verified complete tender annex inventory or proof that no later correction exists.
+- **Still open:** official status of *all* later clarification messages and any superseding drawing/specification versions, engineering interpretation of Slavkov u Brna's dimension-volume conflict and Veselí nad Moravou's drawing height, 27 individual usable-capacity certificates, pumps and installations.
+- **Tender date conflict:** the amended TED notice `746528-2026` records **27 Nov 2026 09:00 CET** whereas the cached E-ZAK overview displays **11 Nov 2026 09:00**. Treat the latter as stale/disputed and verify latest authoritative tender state before any submission. This is not authority to submit.
+- **Review state:** `document_254114_source_identity_verified=true`, `latest_authoritative_complete_annex_set_verified=false`, `technical_approval=false`, `commercial_approval=false`, `deployment_approval=false`. No external communication made.
