@@ -39,7 +39,12 @@ def inspect_private_snapshot(rows):
         digest = hashlib.sha256(
             json.dumps(row, sort_keys=True, ensure_ascii=False, separators=(",", ":"), default=str).encode()
         ).hexdigest()
-        source = str(row.get('source') or row.get('source_name') or '').strip()
+        raw_source = row.get('source')
+        if raw_source is None:
+            raw_source = row.get('source_name')
+        # Metadata must be a real source string, never a JSON object/list,
+        # numeric value, or empty primary field disguised by a fallback.
+        source = raw_source.strip() if isinstance(raw_source, str) else ''
         if not source:
             missing_provenance += 1
         sources_by_id.setdefault(identifier, set()).add(source)
