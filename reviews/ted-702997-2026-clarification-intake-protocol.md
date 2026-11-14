@@ -26,7 +26,7 @@ The script `scripts/ted_clarification_evidence_review.py` consumes a JSON object
 - `reviewer`: named independent reviewer
 - `corrected_requirements`: positive integer `minimum_volume_l`, `maximum_diameter_mm`, `maximum_height_mm`
 
-**Limitations:** The intake only checks metadata shape; it does not fetch the evidence, verify the hash against bytes, adjudicate the amended technical requirement or release the quarantine. Even structurally complete input produces `NEEDS_INDEPENDENT_SOURCE_REVIEW`. Any user-supplied `technical_approval` or `quarantine_release_authorized` field is ignored.
+**Limitations:** The intake never fetches a URL, adjudicates the amended technical requirement or releases the quarantine. Its optional offline local-file mode calculates SHA-256 from a bounded file (maximum 12 MB) and compares it with the stated digest. Even a match verifies only local-file consistency, not official source provenance or authorized publication. Even structurally complete input produces `NEEDS_INDEPENDENT_SOURCE_REVIEW`. Any user-supplied `technical_approval` or `quarantine_release_authorized` field is ignored.
 
 ## Current state
 
