@@ -8,6 +8,9 @@ import threading
 import unittest
 
 import psycopg
+from ci_external_recovery_witness import (
+    issue_fixture_witness, consume_with_signed_witness, check_with_signed_witness
+)
 
 from ci_reviewer_read_gateway import GatewayRejected
 from ci_signed_reviewer_session import issue_ci_token
@@ -180,6 +183,49 @@ class SharedSessionGateTests(unittest.TestCase):
         with self.conn() as second:
             with self.assertRaisesRegex(GatewayRejected,"SESSION_REPLAY"):
                 consume_once(second,tok,signing_key=KEY2,now=NOW+1)
+    def test_11g_signed_external_witness_allows_current_generation(self):
+        witness_key=b"external_recovery_ci_witness_key_01234567"
+        with self.conn() as c:
+            current=current_generation_for_ci_witness(c)
+            signed=issue_fixture_witness(current,signing_key=witness_key)
+            self.assertTrue(check_with_signed_witness(c,witness=signed,
+                    witness_key=witness_key,trusted_min_generation=current))
+            result=consume_with_signed_witness(c,jwt("witness-signed-new-001",key=KEY2),
+                    signing_key=KEY2,now=NOW+1,witness=signed,
+                    witness_key=witness_key,trusted_min_generation=current)
+            self.assertEqual(result,A)
+    def test_11h_signed_witness_rejects_stale_db_state(self):
+        witness_key=b"external_recovery_ci_witness_key_01234567"
+        with self.conn() as c:
+            current=current_generation_for_ci_witness(c)
+            signed=issue_fixture_witness(current,signing_key=witness_key)
+            c.execute("UPDATE b2b_eval_ci_control.state SET generation=%s WHERE singleton=1",(current-1,))
+        try:
+            with self.conn() as c:
+                with self.assertRaisesRegex(GatewayRejected,"RECOVERY_ROLLBACK_DETECTED"):
+                    consume_with_signed_witness(c,jwt("witness-rollback-0001",key=KEY2),
+                         signing_key=KEY2,now=NOW+1,witness=signed,witness_key=witness_key,
+                         trusted_min_generation=current)
+        finally:
+            with self.conn() as c:
+                c.execute("UPDATE b2b_eval_ci_control.state SET generation=%s WHERE singleton=1",(current,))
+    def test_11i_witness_rollback_does_not_unlock(self):
+        witness_key=b"external_recovery_ci_witness_key_01234567"
+        with self.conn() as c:
+            current=current_generation_for_ci_witness(c)
+            older=issue_fixture_witness(current-1,signing_key=witness_key)
+            with self.assertRaisesRegex(GatewayRejected,"WITNESS_ROLLBACK_DETECTED"):
+                consume_with_signed_witness(c,jwt("witness-outdated-001",key=KEY2),
+                    signing_key=KEY2,now=NOW+1,witness=older,
+                    witness_key=witness_key,trusted_min_generation=current)
+    def test_11j_invalid_witness_denies_before_db_consume(self):
+        witness_key=b"external_recovery_ci_witness_key_01234567"
+        with self.conn() as c:
+            current=current_generation_for_ci_witness(c)
+            with self.assertRaisesRegex(GatewayRejected,"WITNESS_INVALID"):
+                consume_with_signed_witness(c,jwt("witness-absent-0001",key=KEY2),
+                    signing_key=KEY2,now=NOW+1,witness=None,
+                    witness_key=witness_key,trusted_min_generation=current)
     def test_12_disabled_gate_blocks_peer_connection(self):
         with self.conn() as a, self.conn() as b:
             disable_authority(a)
