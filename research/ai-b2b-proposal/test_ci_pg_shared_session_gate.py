@@ -89,7 +89,7 @@ class SharedSessionGateTests(unittest.TestCase):
         with self.conn() as a:
             tables=a.execute("""SELECT tablename FROM pg_tables
                 WHERE schemaname='b2b_eval_ci_control' ORDER BY tablename""").fetchall()
-            self.assertEqual(tables,[("nonces",),("state",)])
+            self.assertEqual(tables,[("nonces",),("retired_keys",),("state",)])
     def test_07_public_role_has_no_schema_usage(self):
         with self.conn() as a:
             self.assertFalse(a.execute(
@@ -113,6 +113,14 @@ class SharedSessionGateTests(unittest.TestCase):
         with self.conn() as a:
             with self.assertRaisesRegex(GatewayRejected,"COORDINATOR_STALE_ROTATION"):
                 rotate_key(a,old_key=KEY1,new_key=b"another_test_key_only_0123456789abc")
+    def test_16_retired_key_cannot_be_reactivated(self):
+        with self.conn() as a:
+            with self.assertRaisesRegex(GatewayRejected,"COORDINATOR_RETIRED_KEY_REUSE"):
+                rotate_key(a,old_key=KEY2,new_key=KEY1)
+        # State must remain on replacement key after rejected rollback.
+        fresh=jwt("no-rollback-token-001",key=KEY2)
+        with self.conn() as b:
+            self.assertEqual(consume_once(b,fresh,signing_key=KEY2,now=NOW+1),A)
     def test_12_disabled_gate_blocks_peer_connection(self):
         with self.conn() as a, self.conn() as b:
             disable_authority(a)
