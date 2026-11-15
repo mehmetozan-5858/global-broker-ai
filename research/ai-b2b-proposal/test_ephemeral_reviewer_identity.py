@@ -133,9 +133,18 @@ class PgReviewerIsolationTests(unittest.TestCase):
             with self.assertRaises(InsufficientPrivilege):
                 c.execute("ALTER TABLE b2b_research_eval.document_meta DISABLE ROW LEVEL SECURITY")
     def test_19_cannot_grant_table_privileges(self):
+        # PostgreSQL may issue a WARNING rather than error on an unauthorized
+        # GRANT. Verify the EFFECTIVE privilege instead of an exception type.
         with self.reviewer(A) as c:
-            with self.assertRaises(InsufficientPrivilege):
-                c.execute("GRANT INSERT ON b2b_research_eval.document_meta TO " + A)
+            before = c.execute(
+                "SELECT has_table_privilege(%s,'b2b_research_eval.document_meta','INSERT')",
+                (B,)).fetchone()[0]
+            self.assertFalse(before)
+            c.execute("GRANT INSERT ON b2b_research_eval.document_meta TO " + B)
+            after = c.execute(
+                "SELECT has_table_privilege(%s,'b2b_research_eval.document_meta','INSERT')",
+                (B,)).fetchone()[0]
+            self.assertFalse(after)
     def test_20_auth_principal_is_not_session_guc(self):
         with self.reviewer(A) as c:
             c.execute("SELECT set_config('b2b_eval.actor_id',%s,false)",(B,))
