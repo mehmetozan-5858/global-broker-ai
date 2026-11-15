@@ -23,6 +23,7 @@ on:
       - 'research/ai-b2b-proposal/private_eval_postgres.sql'
       - 'research/ai-b2b-proposal/check_private_eval_schema.py'
       - 'research/ai-b2b-proposal/test_private_eval_schema.py'
+      - 'research/ai-b2b-proposal/test_ephemeral_postgres_rls.py'
       - '.github/workflows/ai-b2b-proposal-v9-offline.yml'
   workflow_dispatch:
 permissions:
@@ -46,3 +47,35 @@ jobs:
         run: python3 -m unittest -v test_proposal_v9 test_proposal_source_gate test_proposal_text_ingest test_proposal_pdf_ingest test_independent_eval_gate test_custodian_pinned_eval test_private_eval_metadata_ledger test_private_eval_schema
       - name: Synthetic holdout false-acceptance gate
         run: python3 evaluate_holdout_v9.py
+
+  ephemeral-postgres-rls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: local_ci_only
+          POSTGRES_DB: proposal_eval_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d proposal_eval_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    permissions:
+      contents: read
+    env:
+      B2B_CI_PG_DSN: postgresql://postgres:local_ci_only@127.0.0.1:5432/proposal_eval_ci
+      B2B_CI_READER_DSN: postgresql://b2b_eval_ci_reader:local_ci_only_reader@127.0.0.1:5432/proposal_eval_ci
+    defaults:
+      run:
+        working-directory: research/ai-b2b-proposal
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install isolated PostgreSQL test client
+        run: python3 -m pip install --disable-pip-version-check "psycopg[binary]==3.2.10"
+      - name: Verify default-deny RLS on throwaway PostgreSQL only
+        run: python3 -m unittest -v test_ephemeral_postgres_rls
