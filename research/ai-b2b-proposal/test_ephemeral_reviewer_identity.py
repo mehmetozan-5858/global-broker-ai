@@ -8,6 +8,7 @@ import os
 import unittest
 import psycopg
 from psycopg.errors import InsufficientPrivilege
+from ci_reviewer_read_gateway import read_assigned_document, GatewayRejected
 
 ADMIN_DSN = os.environ.get("B2B_CI_PG_DSN")
 DB = "proposal_eval_ci"
@@ -165,6 +166,35 @@ class PgReviewerIsolationTests(unittest.TestCase):
         with self.reviewer(B) as c:
             with self.assertRaises(InsufficientPrivilege):
                 c.execute("SET SESSION AUTHORIZATION " + A)
+
+    def test_25_gateway_a_read_own_document(self):
+        with self.reviewer(A) as c:
+            result=read_assigned_document(c,document_id=DOC_A)
+            self.assertEqual(result["status"],"FOUND")
+            self.assertEqual(result["document"]["state"],"FROZEN")
+            self.assertFalse(result["commercial_approval"])
+    def test_26_gateway_a_peer_document_not_visible(self):
+        with self.reviewer(A) as c:
+            result=read_assigned_document(c,document_id=DOC_B)
+            self.assertEqual(result["status"],"NOT_VISIBLE")
+            self.assertIsNone(result["document"])
+    def test_27_gateway_b_read_own_document(self):
+        with self.reviewer(B) as c:
+            self.assertEqual(read_assigned_document(c,document_id=DOC_B)["status"],"FOUND")
+    def test_28_gateway_b_peer_document_not_visible(self):
+        with self.reviewer(B) as c:
+            self.assertEqual(read_assigned_document(c,document_id=DOC_A)["status"],"NOT_VISIBLE")
+    def test_29_gateway_rejects_admin_connection(self):
+        with self.assertRaisesRegex(GatewayRejected,"NOT_EPHEMERAL_REVIEWER"):
+            read_assigned_document(self.admin,document_id=DOC_A)
+    def test_30_gateway_rejects_injection_before_query(self):
+        with self.reviewer(A) as c:
+            with self.assertRaisesRegex(GatewayRejected,"DOCUMENT_ID_INVALID"):
+                read_assigned_document(c,document_id="'; DELETE FROM x; --")
+    def test_31_gateway_spoofed_guc_cannot_leak_peer(self):
+        with self.reviewer(A) as c:
+            c.execute("SELECT set_config('b2b_eval.actor_id',%s,false)",(B,))
+            self.assertEqual(read_assigned_document(c,document_id=DOC_B)["status"],"NOT_VISIBLE")
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
