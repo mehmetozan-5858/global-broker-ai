@@ -4,6 +4,7 @@ A single-process, in-memory fixture, not a production identity provider.
 No shared storage, durable revocation, JWKS, OIDC, key custody, or deployment.
 """
 import secrets
+import hashlib
 import threading
 
 from ci_reviewer_read_gateway import GatewayRejected, read_assigned_document
@@ -22,6 +23,7 @@ class CiSessionAuthority:
     def __init__(self, *, signing_key):
         self._lock = threading.Lock()
         self._key = self._validate_key(signing_key)
+        self._retired_key_digests = set()
         self._spent = set()
         self._revoked = set()
         self._disabled = False
@@ -53,7 +55,11 @@ class CiSessionAuthority:
         with self._lock:
             if secrets.compare_digest(new_key, self._key):
                 raise GatewayRejected("ROTATION_KEY_UNCHANGED")
-            # Immediate retirement of previous key: no permissive overlap.
+            digest = hashlib.sha256(new_key).digest()
+            if digest in self._retired_key_digests:
+                raise GatewayRejected('ROTATION_KEY_RETIRED')
+            # Retire old signing key permanently for this authority lifetime.
+            self._retired_key_digests.add(hashlib.sha256(self._key).digest())
             self._key = new_key
 
     def disable(self):
