@@ -42,7 +42,8 @@ def setup_ci_coordinator(conn, *, signing_key):
         conn.execute("""CREATE TABLE b2b_eval_ci_control.state (
             singleton integer PRIMARY KEY CHECK (singleton = 1),
             active_key_sha256 char(64) NOT NULL,
-            disabled boolean NOT NULL DEFAULT false)""")
+            disabled boolean NOT NULL DEFAULT false,
+            generation bigint NOT NULL DEFAULT 0 CHECK (generation >= 0))""")
         conn.execute("""CREATE TABLE b2b_eval_ci_control.nonces (
             nonce_digest char(64) PRIMARY KEY,
             state text NOT NULL CHECK (state IN ('SPENT','REVOKED')) )""")
@@ -69,7 +70,7 @@ def _nonce_digest(nonce):
     return hashlib.sha256(nonce.encode("ascii")).hexdigest()
 
 
-def consume_once(conn, token, *, signing_key, now):
+def consume_once(conn, token, *, signing_key, now, trusted_min_generation=None):
     """Atomic shared one-time consumption; returns verified role, no DB read.
 
     The control-row lock serializes with revoke/rotate. It does NOT prevent an
@@ -81,6 +82,7 @@ def consume_once(conn, token, *, signing_key, now):
     nonce = _nonce_digest(claims["jti"])
     with conn.transaction():
         active = _lock_state(conn)
+        _check_trusted_floor(conn, trusted_min_generation)
         if active != fp:
             raise GatewayRejected("COORDINATOR_KEY_RETIRED")
         existing = conn.execute("""SELECT state FROM b2b_eval_ci_control.nonces
@@ -89,6 +91,7 @@ def consume_once(conn, token, *, signing_key, now):
             raise GatewayRejected("SESSION_REVOKED" if existing[0]=="REVOKED" else "SESSION_REPLAY")
         conn.execute("""INSERT INTO b2b_eval_ci_control.nonces(nonce_digest,state)
             VALUES (%s,'SPENT')""", (nonce,))
+        _advance_generation(conn)
     return claims["role"]
 
 
@@ -100,6 +103,7 @@ def revoke_nonce(conn, nonce):
         conn.execute("""INSERT INTO b2b_eval_ci_control.nonces(nonce_digest,state)
             VALUES (%s,'REVOKED')
             ON CONFLICT(nonce_digest) DO UPDATE SET state='REVOKED'""", (digest,))
+        _advance_generation(conn)
 
 
 def rotate_key(conn, *, old_key, new_key):
@@ -120,6 +124,7 @@ def rotate_key(conn, *, old_key, new_key):
         conn.execute("INSERT INTO b2b_eval_ci_control.retired_keys(key_sha256) VALUES (%s)", (old,))
         conn.execute("""UPDATE b2b_eval_ci_control.state
             SET active_key_sha256=%s WHERE singleton=1""", (new,))
+        _advance_generation(conn)
 
 
 def disable_authority(conn):
@@ -130,3 +135,48 @@ def disable_authority(conn):
         if not row:
             raise GatewayRejected("COORDINATOR_STATE_MISSING")
         conn.execute("UPDATE b2b_eval_ci_control.state SET disabled=true WHERE singleton=1")
+        _advance_generation(conn)
+
+def _advance_generation(conn):
+    conn.execute("""UPDATE b2b_eval_ci_control.state
+        SET generation=generation+1 WHERE singleton=1""")
+
+
+def _check_trusted_floor(conn, trusted_min_generation):
+    """Check a value held by an INDEPENDENT external witness.
+
+    A floor read from the same restored DB does not detect database rollback.
+    A number supplied by an untrusted caller is not an authorization claim.
+    """
+    if trusted_min_generation is None:
+        return
+    if (not isinstance(trusted_min_generation, int)
+            or isinstance(trusted_min_generation, bool)
+            or trusted_min_generation < 0):
+        raise GatewayRejected("RECOVERY_FLOOR_INVALID")
+    row = conn.execute("""SELECT generation FROM b2b_eval_ci_control.state
+        WHERE singleton=1""").fetchone()
+    if row is None or row[0] < trusted_min_generation:
+        raise GatewayRejected("RECOVERY_ROLLBACK_DETECTED")
+
+
+def check_external_recovery_floor(conn, *, trusted_min_generation):
+    """Validate floor under state lock; no data access granted."""
+    _guard_connection(conn)
+    with conn.transaction():
+        _lock_state(conn)
+        _check_trusted_floor(conn, trusted_min_generation)
+    return True
+
+
+def current_generation_for_ci_witness(conn):
+    """Read generation for an external witness, AFTER a committed operation.
+
+    Returning a value is NOT proof that a durable external witness exists.
+    """
+    _guard_connection(conn)
+    with conn.transaction():
+        _lock_state(conn)
+        row = conn.execute("""SELECT generation FROM b2b_eval_ci_control.state
+             WHERE singleton=1""").fetchone()
+        return row[0]
