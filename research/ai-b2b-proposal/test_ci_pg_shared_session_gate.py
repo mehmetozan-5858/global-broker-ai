@@ -3,6 +3,7 @@
 No real data, OIDC, cloud DB, or production deployment. Uses CI fixture roles.
 """
 import os
+import hashlib
 import threading
 import unittest
 
@@ -12,7 +13,8 @@ from ci_reviewer_read_gateway import GatewayRejected
 from ci_signed_reviewer_session import issue_ci_token
 from ci_pg_shared_session_gate import (
     setup_ci_coordinator, consume_once, revoke_nonce,
-    rotate_key, disable_authority
+    rotate_key, disable_authority,
+    check_external_recovery_floor, current_generation_for_ci_witness
 )
 
 ADMIN = os.getenv("B2B_CI_PG_DSN")
@@ -121,6 +123,63 @@ class SharedSessionGateTests(unittest.TestCase):
         fresh=jwt("no-rollback-token-001",key=KEY2)
         with self.conn() as b:
             self.assertEqual(consume_once(b,fresh,signing_key=KEY2,now=NOW+1),A)
+    def test_11c_external_floor_detects_simulated_stale_restore(self):
+        # A trusted floor would be stored OUTSIDE this database. This CI
+        # fixture preserves the number in process memory, not durable storage.
+        with self.conn() as admin:
+            floor = current_generation_for_ci_witness(admin)
+            self.assertGreaterEqual(floor, 1)
+            admin.execute("""UPDATE b2b_eval_ci_control.state
+                SET generation=%s WHERE singleton=1""", (floor-1,))
+        try:
+            with self.conn() as reader:
+                with self.assertRaisesRegex(GatewayRejected,"RECOVERY_ROLLBACK_DETECTED"):
+                    check_external_recovery_floor(reader, trusted_min_generation=floor)
+                pending=jwt("rollback-blocked-0001",key=KEY2)
+                with self.assertRaisesRegex(GatewayRejected,"RECOVERY_ROLLBACK_DETECTED"):
+                    consume_once(reader,pending,signing_key=KEY2,now=NOW+1,
+                                 trusted_min_generation=floor)
+        finally:
+            # Fixture repair is admin-only and ONLY in the ephemeral CI DB.
+            with self.conn() as admin:
+                admin.execute("UPDATE b2b_eval_ci_control.state SET generation=%s WHERE singleton=1",(floor,))
+        with self.conn() as reader:
+            self.assertTrue(check_external_recovery_floor(reader,trusted_min_generation=floor))
+            self.assertEqual(consume_once(reader,pending,signing_key=KEY2,now=NOW+1,
+                             trusted_min_generation=floor),A)
+    def test_11d_invalid_external_floor_fails_closed(self):
+        with self.conn() as c:
+            tok=jwt("invalid-floor-0001",key=KEY2)
+            with self.assertRaisesRegex(GatewayRejected,"RECOVERY_FLOOR_INVALID"):
+                consume_once(c,tok,signing_key=KEY2,now=NOW+1,
+                             trusted_min_generation=True)
+    def test_11e_connection_killed_before_commit_does_not_spend(self):
+        # Kill the CI connection during an uncommitted nonce insert; PostgreSQL
+        # must roll back rather than record a successful consume.
+        nonce="killed-before-commit-001"
+        hashed=hashlib.sha256(nonce.encode("ascii")).hexdigest()
+        with self.conn() as victim, self.conn() as killer:
+            with self.assertRaises(psycopg.OperationalError):
+                with victim.transaction():
+                    victim.execute("""SELECT generation FROM b2b_eval_ci_control.state
+                                     WHERE singleton=1 FOR UPDATE""")
+                    victim.execute("""INSERT INTO b2b_eval_ci_control.nonces
+                        (nonce_digest,state) VALUES (%s,'SPENT')""",(hashed,))
+                    killer.execute("SELECT pg_terminate_backend(%s)",(victim.info.backend_pid,))
+                    victim.execute("SELECT 1")
+        with self.conn() as reader:
+            self.assertEqual(consume_once(reader,jwt(nonce,key=KEY2),
+                 signing_key=KEY2,now=NOW+1),A)
+    def test_11f_acknowledgement_loss_after_commit_retries_fail_closed(self):
+        # Simulates lost client acknowledgement AFTER commit, not a real
+        # network failure. Retry must never grant a second consumption.
+        nonce="committed-no-ack-0001"
+        tok=jwt(nonce,key=KEY2)
+        with self.conn() as first:
+            self.assertEqual(consume_once(first,tok,signing_key=KEY2,now=NOW+1),A)
+        with self.conn() as second:
+            with self.assertRaisesRegex(GatewayRejected,"SESSION_REPLAY"):
+                consume_once(second,tok,signing_key=KEY2,now=NOW+1)
     def test_12_disabled_gate_blocks_peer_connection(self):
         with self.conn() as a, self.conn() as b:
             disable_authority(a)
