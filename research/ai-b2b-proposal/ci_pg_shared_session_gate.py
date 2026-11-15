@@ -17,11 +17,14 @@ _NONCE = re.compile(r"^[A-Za-z0-9_-]{16,100}$")
 def _guard_connection(conn):
     if conn is None or not callable(getattr(conn, "execute", None)):
         raise GatewayRejected("COORDINATOR_CONNECTION_MISSING")
-    identity = conn.execute("SELECT current_database(), current_user").fetchone()
+    # Use psycopg's authenticated connection metadata, avoiding an implicit
+    # transaction before the explicit context manager below.
+    identity = (getattr(getattr(conn, "info", None), "dbname", None),
+                getattr(getattr(conn, "info", None), "user", None))
     if identity != (_DB, "postgres"):
         raise GatewayRejected("COORDINATOR_NOT_EPHEMERAL_ADMIN")
-    if conn.autocommit:
-        raise GatewayRejected("COORDINATOR_TRANSACTION_REQUIRED")
+    if not conn.autocommit:
+        raise GatewayRejected("COORDINATOR_AUTOCOMMIT_REQUIRED")
 
 
 def _fingerprint(key):
