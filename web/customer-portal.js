@@ -11,9 +11,10 @@ var loading=false;
 async function readJSON(url,options){var controller=new AbortController(),timer=setTimeout(function(){controller.abort()},15000);try{var response=await fetch(url,Object.assign({},options,{signal:controller.signal}));var data;try{data=await response.json()}catch(error){if(response.ok)throw error}return {ok:response.ok,status:response.status,data:data}}finally{clearTimeout(timer)}}
 async function rpc(name,body){var t=token();if(!t)throw {status:401};var result=await readJSON(SB_URL+'/rest/v1/rpc/'+name,{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+t,'Content-Type':'application/json'},body:JSON.stringify(body||{}),cache:'no-store'});if(!result.ok)throw {status:result.status};return result.data}
 async function loadAccess(){return rpc('my_broker_access',{})}
-async function loadRequests(){var rows=await rpc('my_introduction_requests',{});requestState={};(Array.isArray(rows)?rows:[]).forEach(function(r){if(r&&r.opportunity_id)requestState[r.opportunity_id]=r});return requestState}
+async function loadRequests(){var rows=await rpc('my_introduction_requests',{});if(!Array.isArray(rows))throw new Error('request_history_unavailable');var next=Object.create(null);rows.forEach(function(r){if(!r||typeof r!=='object'||typeof r.opportunity_id!=='string'||!r.opportunity_id.trim()||typeof r.status!=='string'||!r.status.trim())throw new Error('request_history_invalid');if(Object.prototype.hasOwnProperty.call(next,r.opportunity_id))throw new Error('request_history_duplicate');next[r.opportunity_id]=r});requestState=next;return requestState}
 
 function txt(v){return v==null?'':String(v).trim()}
+function htmlText(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function safe(v,fallback){var s=txt(v);return s||fallback}
 function product(o){return safe(o.product_detail||o.product_name,'Ürün bilgisi kaynakta henüz netleşmedi')}
 function country(o){return safe(o.country||o.country_code,'Ülke bilgisi kaynakta henüz netleşmedi')}
@@ -66,22 +67,31 @@ async function requestIntroduction(o,button,box){
       box.textContent=messages[data.status]||'Tanıştırma talebi şu anda oluşturulamadı.';
       button.disabled=false;button.textContent='Tanıştırma talebi gönder (1 kredi)';return;
     }
-    requestState[o.opportunity_id]={request_id:data.request_id,opportunity_id:o.opportunity_id,status:data.request_status||'requested'};
+    var validStatuses=['requested','verifying','buyer_consent_pending','approved','introduced','declined','expired','refunded'];
+    if(!data||data.status!=='INTRODUCTION_REQUESTED'||typeof data.request_id!=='string'||!data.request_id.trim()||
+       data.opportunity_id!==o.opportunity_id||validStatuses.indexOf(data.request_status)<0||
+       !(data.credits_remaining==null||(Number.isInteger(data.credits_remaining)&&data.credits_remaining>=0))){
+      box.textContent='Talebin sonucu doğrulanamadı. Tekrar göndermeden önce sayfayı yenileyerek talep durumunu kontrol edin.';
+      button.disabled=true;button.textContent='Talep durumu kontrol edilmeli';return;
+    }
+    requestState[o.opportunity_id]={request_id:data.request_id,opportunity_id:o.opportunity_id,status:data.request_status};
     if(accessState&&accessState.entitlement)accessState.entitlement.contact_credits_remaining=data.credits_remaining;
     var credit=document.getElementById('cpCredits');if(credit)credit.textContent=data.credits_remaining==null?'Sınırsız':String(data.credits_remaining);
     box.className='cp-intro-status';box.textContent=data.already_requested?'Mevcut talep: '+statusLabel(data.request_status):'Tanıştırma talebiniz alındı. Alıcı ve erişim yolu doğrulanacak; uygun değilse kredi iade edilecek.';
     button.textContent=statusLabel(data.request_status||'requested');button.disabled=true;
-  }catch(e){box.textContent='Bağlantı hatası nedeniyle tanıştırma talebi gönderilemedi.';button.disabled=false;button.textContent='Tanıştırma talebi gönder (1 kredi)'}
+  }catch(e){box.textContent='Bağlantı kesildi; talebin ulaşıp ulaşmadığı bilinmiyor. Tekrar göndermeden önce sayfayı yenileyip talep durumunu kontrol edin.';button.disabled=true;button.textContent='Talep durumu kontrol edilmeli'}
 }
 
 function mount(rows){
-  rows=(rows||[]).filter(isGoods).filter(allowedByPlan);
+  var sourceRows=Array.isArray(rows)?rows:[];
+  var goodsRows=sourceRows.filter(isGoods);
+  rows=goodsRows.filter(allowedByPlan);
   var cards=document.getElementById('cards');if(!cards)return;
   var old=document.getElementById('customerSearch');if(old)old.remove();
   var e=entitlement(),p=preferences(),policy=pricing();
   var selectedNames=(p.selected_sectors||[]).map(function(id){return policy&&policy.sectorClusters&&policy.sectorClusters[id]?policy.sectorClusters[id].name:id}).join(', ');
   var panel=document.createElement('section');panel.id='customerSearch';panel.className='cp-panel';
-  panel.innerHTML='<div class="cp-head"><div><small>MÜŞTERİ FIRSAT PORTALI · '+String(e.plan_id||'free').toUpperCase()+'</small><h2>Sektörünüze uygun doğrulanabilir ticaret fırsatları</h2><p>'+(selectedNames?'Aktif sektörler: '+selectedNames+'. ':'Henüz sektör seçmediniz. Hesabım ekranından sektör kümenizi seçin. ')+'Bu ekranda yalnız müşteri için güvenli alanlar gösterilir. Alıcı kimliği ve iletişim bilgileri Tanıştırma Kredisi sonrasında kontrollü doğrulama süreciyle paylaşılır.</p></div><div class="cp-count" id="cpCount">0 fırsat</div></div><div class="cp-access"><span>Kalan Tanıştırma Kredisi: <b id="cpCredits">'+String(e.contact_credits_remaining==null?'Sınırsız':e.contact_credits_remaining)+'</b></span><a href="/account">Sektör / paket ayarları →</a></div><div class="cp-help"><b>Nasıl kullanılır?</b> Ürün ve ülke filtrelerini daraltın, karttaki kaynak kapsamını kontrol edin ve uygun fırsatta “Tanıştırma talebi gönder” düğmesini kullanın. Eksik alanlar tahmin edilmez; “belirtilmemiş” olarak gösterilir.</div><div class="cp-filters"><label>Ürün ara<input id="cpQuery" type="search" placeholder="Örn. pompa, mobilya, laboratuvar..." autocomplete="off"></label><label>Ülke<select id="cpCountry"><option value="">Tüm seçili ülkeler</option></select></label><label>Kaynak kapsamı<select id="cpQuality"><option value="0">Tümü</option><option value="2">En az 2 alan</option><option value="4">En az 4 alan</option><option value="6">6 alan</option></select></label></div><div id="cpResults" class="cp-results"></div>';
+  panel.innerHTML='<div class="cp-head"><div><small>MÜŞTERİ FIRSAT PORTALI · '+htmlText(String(e.plan_id||'free').toUpperCase())+'</small><h2>Sektörünüze uygun doğrulanabilir ticaret fırsatları</h2><p>'+(selectedNames?'Aktif sektörler: '+htmlText(selectedNames)+'. ':'Henüz sektör seçmediniz. Hesabım ekranından sektör kümenizi seçin. ')+'Bu ekranda yalnız müşteri için güvenli alanlar gösterilir. Alıcı kimliği ve iletişim bilgileri Tanıştırma Kredisi sonrasında kontrollü doğrulama süreciyle paylaşılır.</p></div><div class="cp-count" id="cpCount">0 fırsat</div></div><div class="cp-access"><span>Kalan Tanıştırma Kredisi: <b id="cpCredits">'+htmlText(e.contact_credits_remaining==null?'Sınırsız':e.contact_credits_remaining)+'</b></span><a href="/account">Sektör / paket ayarları →</a></div><div class="cp-help"><b>Nasıl kullanılır?</b> Ürün ve ülke filtrelerini daraltın, karttaki kaynak kapsamını kontrol edin ve uygun fırsatta “Tanıştırma talebi gönder” düğmesini kullanın. Eksik alanlar tahmin edilmez; “belirtilmemiş” olarak gösterilir.</div><div class="cp-filters"><label>Ürün ara<input id="cpQuery" type="search" placeholder="Örn. pompa, mobilya, laboratuvar..." autocomplete="off"></label><label>Ülke<select id="cpCountry"><option value="">Tüm seçili ülkeler</option></select></label><label>Kaynak kapsamı<select id="cpQuality"><option value="0">Tümü</option><option value="2">En az 2 alan</option><option value="4">En az 4 alan</option><option value="5">En az 5 alan</option><option value="6">6 alan</option></select></label></div><div id="cpResults" class="cp-results"></div>';
   cards.parentNode.insertBefore(panel,cards);
   var countrySel=document.getElementById('cpCountry'),qualitySel=document.getElementById('cpQuality'),query=document.getElementById('cpQuery'),results=document.getElementById('cpResults'),count=document.getElementById('cpCount');
   unique(rows,country).filter(function(v){return v.indexOf('henüz netleşmedi')<0}).forEach(function(v){option(countrySel,v)});
@@ -89,7 +99,8 @@ function mount(rows){
     var q=query.value.trim().toLocaleLowerCase('tr'),c=countrySel.value,minCoverage=Number(qualitySel.value||0);
     var filtered=rows.filter(function(o){var hay=(product(o)+' '+country(o)+' '+source(o)).toLocaleLowerCase('tr');return (!q||hay.indexOf(q)>=0)&&(!c||country(o)===c)&&coverage(o)>=minCoverage}).sort(function(a,b){var d=coverage(b)-coverage(a);return d||product(a).localeCompare(product(b),'tr')});
     count.textContent=filtered.length+' fırsat';results.textContent='';
-    if(!filtered.length){var empty=document.createElement('div');empty.className='cp-empty';if(!e.all_sectors&&!(p.selected_sectors||[]).length)empty.innerHTML='<b>Henüz sektör seçmediniz.</b><br>Hesabım ekranından sektör kümenizi seçtiğinizde uygun fırsatlar burada görünür.';else empty.innerHTML='<b>Bu filtrelerle eşleşen fırsat yok.</b><br>Ürün aramasını temizleyin, ülke filtresini genişletin veya daha sonra yeniden kontrol edin.';results.appendChild(empty);return}
+    if(!filtered.length){var empty=document.createElement('div');empty.className='cp-empty';if(!e.all_sectors&&!(p.selected_sectors||[]).length)empty.innerHTML='<b>Henüz sektör seçmediniz.</b><br>Hesabım ekranından sektör kümenizi seçtiğinizde uygun fırsatlar burada görünür.';else if(!goodsRows.length)empty.innerHTML='<b>Şu anda gösterilebilir fiziksel ürün fırsatı yok.</b><br>Kaynak doğrulaması tamamlanan uygun kayıtlar olduğunda burada görünür. Bu durum bir bağlantı hatası değildir.';else if(!rows.length)empty.innerHTML='<b>Seçtiğiniz sektör ve ülkelerde fırsat bulunamadı.</b><br>Hesabım ekranından tercihlerinizi gözden geçirebilir veya daha sonra yeniden kontrol edebilirsiniz.';else{empty.innerHTML='<b>Bu filtrelerle eşleşen fırsat yok.</b><br>Ürün aramasını temizleyin, ülke filtresini genişletin veya kaynak kapsamı eşiğini düşürün.';var reset=document.createElement('button');reset.type='button';reset.className='cp-unlock';reset.textContent='Filtreleri temizle';reset.onclick=function(){query.value='';countrySel.value='';qualitySel.value='0';var quick=document.getElementById('cpQuickViews');if(quick){Array.prototype.forEach.call(quick.querySelectorAll('button[data-q]'),function(btn){btn.classList.toggle('active',btn.getAttribute('data-q')==='0')})}render()};empty.appendChild(reset)}if(goodsRows.length&&!rows.length){var settings=document.createElement('a');settings.className='cp-unlock';settings.href='/account';settings.target='_top';settings.textContent='Sektör / ülke ayarları';empty.appendChild(settings)}results.appendChild(empty);return}
+    if(filtered.length>100){var limitNote=document.createElement('p');limitNote.className='cp-contact-msg';limitNote.textContent='İlk 100 fırsat gösteriliyor. Daha dar ürün, ülke veya kaynak kapsamı filtresi kullanın.';results.appendChild(limitNote);}
     filtered.slice(0,100).forEach(function(o){
       var card=document.createElement('article');card.className='cp-card';
       var top=document.createElement('div');top.className='cp-card-top';var title=document.createElement('h3');title.textContent=product(o);top.appendChild(title);var badge=document.createElement('span');badge.className='cp-badge';badge.textContent=(policy&&policy.sectorClusters&&policy.sectorClusters[sectorOf(o)]?policy.sectorClusters[sectorOf(o)].name:'Fiziksel ürün');top.appendChild(badge);card.appendChild(top);
@@ -122,7 +133,7 @@ async function loadPortal(){
   if(loading)return;loading=true;requestState={};loadState('loading');
   try{
     if(!token())throw {status:401};
-    var results=await Promise.all([loadAccess(),loadRequests().catch(function(){requestState={};return {}})]);
+    var results=await Promise.all([loadAccess(),loadRequests()]);
     accessState=results[0];if(!accessState||!accessState.entitlement||typeof accessState.entitlement!=='object'||Array.isArray(accessState.entitlement))throw new Error('access');
     var feed=await readJSON('/data/latest-opportunities.json?t='+Date.now(),{cache:'no-store'});
     if(!feed.ok)throw {status:feed.status};
