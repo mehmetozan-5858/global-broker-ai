@@ -34,8 +34,13 @@ class PrivateSchemaReviewTests(unittest.TestCase):
         self.assertNotIn("FOR INSERT ",self.sql.upper())
         self.assertNotIn("FOR UPDATE ",self.sql.upper())
         self.assertNotIn("FOR DELETE ",self.sql.upper())
+    def test_11_spoofable_policy_forbidden(self):
+        compromised = self.sql + "\\nCREATE POLICY bad ON x USING (current_setting('role')='admin');"
+        self.assertFalse(audit_sql(compromised)["valid_structure"])
+    def test_12_rbac_grants_forbidden(self):
+        self.assertFalse(audit_sql(self.sql+"\\nGRANT SELECT ON x TO PUBLIC;")["valid_structure"])
     def test_10_isolation_caveat_present(self):
-        self.assertIn("custom GUCs are caller-controlled",self.sql)
+        self.assertIn("caller-controlled session settings",self.sql)
         self.assertIn("DO NOT EXECUTE IN PRODUCTION",self.sql)
 
 if __name__ == "__main__":
