@@ -60,8 +60,10 @@ class RevocationTests(unittest.TestCase):
     def test_06_old_key_cannot_be_used_after_rotation(self):
         old=self.issue()
         self.authority.rotate_signing_key(KEY2)
-        self.authority.rotate_signing_key(KEY1)
-        self.assertEqual(self.read(old)["status"],"FOUND")
+        with self.assertRaisesRegex(GatewayRejected,"ROTATION_KEY_RETIRED"):
+            self.authority.rotate_signing_key(KEY1)
+        with self.assertRaisesRegex(GatewayRejected,"SIGNATURE_INVALID"):
+            self.read(old)
     def test_07_rotation_same_key_forbidden(self):
         with self.assertRaisesRegex(GatewayRejected,"ROTATION_KEY_UNCHANGED"):
             self.authority.rotate_signing_key(KEY1)
