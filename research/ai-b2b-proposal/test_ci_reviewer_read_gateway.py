@@ -38,7 +38,7 @@ class ReviewerGatewayUnitTests(unittest.TestCase):
     def test_05_unknown_reviewer_rejected(self):
         self.rejected("NOT_EPHEMERAL_REVIEWER",FakeConn(identity=("proposal_eval_ci","attacker")))
     def test_06_noncanonical_uuid_rejected(self):
-        self.rejected("DOCUMENT_ID_NOT_CANONICAL",FakeConn(),DOC.upper())
+        self.rejected("DOCUMENT_ID_NOT_CANONICAL",FakeConn(),"AAAAAAAA-AAAA-4AAA-8AAA-AAAAAAAAAAAA")
     def test_07_sql_injection_id_rejected(self):
         self.rejected("DOCUMENT_ID_INVALID",FakeConn(),"x'; DROP TABLE foo; --")
     def test_08_nonstring_document_rejected(self):
