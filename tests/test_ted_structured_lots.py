@@ -92,7 +92,7 @@ class TedStructuredLotTests(unittest.TestCase):
         self.assertEqual(_ted_xml_url(row),'https://ted.europa.eu/en/notice/12345-2026/xml')
         self.assertEqual(_ted_xml_url({'source':'TED','publication-number':'12345-2026'}),'https://ted.europa.eu/en/notice/12345-2026/xml')
 
-    def test_html_response_to_xml_uses_identity_checked_html_download(self):
+    def test_html_response_to_xml_does_not_use_untrusted_html_fallback(self):
         row={'source':'TED','publication-number':'12345-2026'}
         html=('<html><body><h1>Notice 12345-2026</h1><p>'+('Procurement of industrial pumps, source-backed technical and participation conditions. '*5)+'</p></body></html>').encode()
         calls=[]
@@ -100,9 +100,9 @@ class TedStructuredLotTests(unittest.TestCase):
             calls.append(url)
             return html,'text/html',url
         with patch('src.document_parser._download',side_effect=download):
-            self.assertTrue(enrich_opportunity(row))
-        self.assertEqual(calls,['https://ted.europa.eu/en/notice/12345-2026/xml','https://ted.europa.eu/en/notice/12345-2026/html'])
-        self.assertTrue(row['document_extraction']['ted_html_parsed'])
+            self.assertFalse(enrich_opportunity(row))
+        self.assertEqual(calls,['https://ted.europa.eu/en/notice/12345-2026/xml'])
+        self.assertFalse(row['document_extraction'].get('ted_html_parsed', False))
         self.assertFalse(row['document_extraction']['ted_xml_parsed'])
         self.assertFalse(is_xml_source(html,'text/html',calls[0]))
 

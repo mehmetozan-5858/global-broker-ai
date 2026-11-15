@@ -65,7 +65,7 @@ print(json.dumps(rows))
     await page.getByRole('heading',{name:'Fixture scope',exact:true}).waitFor();
     if(feedReads!==beforeRetry+1)throw Error('retry issued duplicate reads');
     feedMode='empty';await page.goto('https://fixture.invalid/');await page.addScriptTag({content:deployed});
-    await page.getByText('Bu filtrelerle eşleşen fırsat yok.',{exact:true}).waitFor();
+    await page.getByText('Şu anda gösterilebilir fiziksel ürün fırsatı yok.',{exact:true}).waitFor();
     if((await page.locator('body').innerText()).includes('Fırsatlar yüklenemedi'))throw Error('successful empty response rendered as failure');
     if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('load-state overflow '+name+' '+width);
     console.log('CUSTOMER_FEED_RECOVERY_PASS',name,width);feedMode='success';

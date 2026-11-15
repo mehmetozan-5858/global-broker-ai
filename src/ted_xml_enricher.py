@@ -1,6 +1,12 @@
 from __future__ import annotations
 
 import json
+import os
+import time
+import threading
+import urllib.error
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from collections import Counter
 import re
 from concurrent.futures import ThreadPoolExecutor
@@ -11,12 +17,74 @@ from xml.etree import ElementTree
 from typing import Any
 
 from src import document_parser
+from src.specification import _safe_omitted_attachment_count as _safe_previous_omissions
 from src.ted_search_fields import notice_context
 from src.notice_fact_cache import process as process_fact_cache
 from src.ted_xml_parser import extract_ted_contacts, is_xml_source, parse_ted_xml, extract_ted_lots, apply_ted_lots
 
 MIN_SOURCE_TEXT_CHARS = 160
 MAX_EXTRACTED_CHARS = document_parser.MAX_EXTRACTED_CHARS
+
+
+# A single gate shares pacing across all TED document workers.
+_TED_RATE_LOCK = threading.Lock()
+_TED_NEXT_REQUEST = 0.0
+_TED_MIN_INTERVAL = 1.0
+
+
+def _download_ted(url: str, limit: int):
+    global _TED_NEXT_REQUEST
+    for retry in range(3):
+        try:
+            with _TED_RATE_LOCK:
+                delay = max(0.0, _TED_NEXT_REQUEST - time.monotonic())
+                if delay:
+                    time.sleep(delay)
+                _TED_NEXT_REQUEST = time.monotonic() + _TED_MIN_INTERVAL
+                # Hold the gate through the response: no overlapping TED
+                # document fetches, even when the pipeline has four workers.
+                return document_parser._download(url, limit)
+        except urllib.error.HTTPError as error:
+            if error.code != 429 or retry == 2:
+                raise
+            raw = (error.headers.get("Retry-After") if error.headers else "") or ""
+            # Both delta-seconds and HTTP-date are valid Retry-After forms.
+            # Ignore invalid inputs; never let a remote header force an
+            # unbounded wait or expose the response body in logs.
+            requested_wait = 0.0
+            if raw.isdecimal():
+                requested_wait = min(8.0, float(raw[:8]))
+            elif raw:
+                try:
+                    date = parsedate_to_datetime(raw)
+                    if date.tzinfo is not None:
+                        requested_wait = max(0.0, (date - datetime.now(timezone.utc)).total_seconds())
+                except (TypeError, ValueError, OverflowError):
+                    pass
+            time.sleep(min(8.0, max(float(2 ** retry), requested_wait)))
+    raise ValueError("ted_retry_exhausted")
+
+
+def _api_xml_link(item: dict[str, Any]) -> str | None:
+    links = item.get("links")
+    if not isinstance(links, dict):
+        return None
+    xml = links.get("xml")
+    if not isinstance(xml, dict):
+        return None
+    url = xml.get("MUL")
+    if not isinstance(url, str):
+        return None
+    parsed = urllib.parse.urlparse(url)
+    expected = str(item.get("publication-number") or "")
+    if parsed.scheme != "https" or parsed.hostname != "ted.europa.eu":
+        return None
+    identity = _ted_notice_id(url)
+    if not identity or (expected and identity != expected):
+        return None
+    if not parsed.path.lower().endswith("/xml"):
+        return None
+    return url
 
 
 TED_NOTICE_ID_RE = re.compile(r"/notice/(?:-/detail/)?([0-9]{1,8}-[0-9]{4})(?:/|$)")
@@ -36,12 +104,34 @@ def _verify_ted_redirect(requested_url: str, final_url: str) -> None:
         raise ValueError("ted_document_origin_changed")
     requested_id = _ted_notice_id(requested_url)
     final_id = _ted_notice_id(final_url)
-    if requested_id and final_id and requested_id != final_id:
+    if requested_id and final_id != requested_id:
+        # A generic TED landing page (no notice ID) is not evidence of
+        # the requested notice, even when the redirect stays on TED.
         raise ValueError("ted_document_notice_redirect_mismatch")
+
+
+def _api_pdf_link(item: dict[str, Any], publication: str) -> str | None:
+    links = item.get("links")
+    pdfs = links.get("pdf") if isinstance(links, dict) else None
+    if not isinstance(pdfs, dict):
+        return None
+    for lang in ("ENG", "MUL"):
+        url = pdfs.get(lang)
+        if not isinstance(url, str):
+            continue
+        parsed = urllib.parse.urlparse(url)
+        if (parsed.scheme == "https" and parsed.hostname == "ted.europa.eu"
+                and parsed.path.lower().endswith("/pdf")
+                and _ted_notice_id(url) == publication):
+            return url
+    return None
 
 
 def _ted_xml_url(item: dict[str, Any]) -> str | None:
     source = str(item.get("source") or item.get("source_name") or "").upper()
+    api_link = _api_xml_link(item)
+    if api_link:
+        return api_link
     urls = document_parser._all_urls(item)
     expected_id = str(item.get("publication-number") or "")
     if not re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", expected_id):
@@ -55,7 +145,9 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
             continue
         if host == "ted.europa.eu" and (path.endswith("/xml") or path.endswith(".xml")):
             link_id = _ted_notice_id(url)
-            if expected_id and link_id and link_id != expected_id:
+            # Never select an unidentifiable XML URL or a different notice.
+            # Otherwise the document could be attributed to the wrong tender.
+            if not link_id or (expected_id and link_id != expected_id):
                 continue
             return url
     if source == "TED":
@@ -82,16 +174,16 @@ def _fallback_document(xml_url: str, item: dict, attempts: list):
     if parsed.hostname != "ted.europa.eu" or not match:
         raise ValueError("ted_fallback_notice_identity_missing")
     publication = match.group(1)
-    formats = [("html", "ted_html_download")]
+    formats = []  # HTML shells are not accepted as official notice evidence.
     if (notice_context(item) or {}).get("call_for_tenders") is True:
         formats.append(("pdf", "ted_pdf_download"))
     last_error = None
     for suffix, kind in formats:
-        url = urllib.parse.urlunparse(parsed._replace(path=parsed.path[:-3] + suffix, query="", fragment=""))
+        url = (_api_pdf_link(item, publication) if suffix == "pdf" else None) or urllib.parse.urlunparse(parsed._replace(path=parsed.path[:-3] + suffix, query="", fragment=""))
         attempt = {"url": url, "status": "pending", "source": kind}
         try:
             limit = document_parser.MAX_DOCUMENT_BYTES if suffix == "pdf" else document_parser.MAX_SOURCE_PAGE_BYTES
-            data, content_type, final_url = document_parser._download(url, limit)
+            data, content_type, final_url = _download_ted(url, limit)
             _verify_ted_redirect(url, final_url)
             if suffix == "pdf":
                 if not data.startswith(b"%PDF"):
@@ -115,7 +207,7 @@ def _fallback_document(xml_url: str, item: dict, attempts: list):
     raise last_error or ValueError("ted_fallback_unavailable")
 
 
-def enrich_opportunity(item: dict[str, Any]) -> bool:
+def enrich_opportunity(item: dict[str, Any], *, bulk_notice=None) -> bool:
     url = _ted_xml_url(item)
     if not url:
         return False
@@ -123,12 +215,22 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
     info = item.get("document_extraction")
     if not isinstance(info, dict):
         info = {}
-    attempts = list(info.get("attempts") or [])
+    # Imported or cached extraction metadata is untrusted. A string/dict
+    # must never become an iterable of bogus attempts or crash enrichment.
+    previous_attempts = info.get("attempts")
+    attempts = [entry for entry in previous_attempts if isinstance(entry, dict)] if isinstance(previous_attempts, list) else []
     attempt: dict[str, Any] = {"url": url, "status": "pending", "source": "ted_xml"}
 
     try:
         try:
-            data, content_type, final_url = document_parser._download(url, document_parser.MAX_SOURCE_PAGE_BYTES)
+            if bulk_notice is None:
+                data, content_type, final_url = _download_ted(url, document_parser.MAX_SOURCE_PAGE_BYTES)
+            else:
+                data, content_type, final_url = bulk_notice.verified_payload(item.get('publication-number'))
+                from src.ted_bulk import daily_url
+                attempt.update({'source_package_url': daily_url(bulk_notice.edition),
+                                'source_package_sha256': bulk_notice.package_sha256,
+                                'source_channel': 'official_daily_xml_package'})
             _verify_ted_redirect(url, final_url)
             if not is_xml_source(data, content_type, final_url):
                 raise ValueError("ted_source_not_xml")
@@ -143,6 +245,9 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
                 raise ValueError("insufficient_ted_xml_text")
             kind = "ted_xml"
         except Exception as xml_error:
+            if bulk_notice is not None:
+                # A wrong/corrupt package must never become a successful fallback.
+                raise
             attempt.update({"status": "failed", "error": type(xml_error).__name__ + ":" + str(xml_error)[:180]})
             attempts.append(attempt)
             data, content_type, final_url, text, attachments, kind, attempt = _fallback_document(url, item, attempts)
@@ -213,9 +318,12 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "parsed_count": sum(1 for x in attempts if isinstance(x, dict) and x.get("status") == "parsed" and x.get("source") != "document_index"),
             "attempts": attempts,
             "text_chars": len(merged),
-            "text_truncated": len(full_text) > MAX_EXTRACTED_CHARS or xml_omitted_chars > 0,
-            "omitted_chars": max(0, len(full_text) - MAX_EXTRACTED_CHARS) + xml_omitted_chars,
-            "attachment_candidates_omitted": max(0, len(attachments) - len(selected_attachments)),
+            "text_truncated": info.get('text_truncated') is True or len(full_text) > MAX_EXTRACTED_CHARS or xml_omitted_chars > 0,
+            "omitted_chars": (_safe_previous_omissions(info.get('omitted_chars'))
+                              + max(0, len(full_text) - MAX_EXTRACTED_CHARS) + xml_omitted_chars),
+            "attachment_candidates_omitted": max(
+                _safe_previous_omissions(info.get('attachment_candidates_omitted')),
+                len(attachments) - len(selected_attachments)),
             "ted_xml_parsed": kind == "ted_xml",
             "ted_html_parsed": kind == "ted_html_download",
             "ted_pdf_parsed": kind == "ted_pdf_download",
@@ -239,7 +347,9 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
 # Fixed classification avoids storing exception text, arbitrary URLs or tokens in
 # aggregate scan diagnostics. An unrecognized error stays explicitly unknown.
 TED_FAILURE_MARKERS = (
+    "ted_waf_challenge",
     "ted_source_not_xml",
+    "ted_xml_notice_root_missing",
     "ted_document_notice_redirect_mismatch",
     "ted_document_origin_changed",
     "insufficient_ted_xml_text",
@@ -260,7 +370,7 @@ def _failure_category(attempt: dict[str, Any]) -> str:
     return "other"
 
 
-def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
+def enrich_payload(payload: dict[str, Any], *, bulk_enabled: bool = False) -> dict[str, Any]:
     opportunities = payload.get("opportunities")
     if not isinstance(opportunities, list):
         return payload
@@ -281,8 +391,15 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
     attempted = len(candidates)
     with ThreadPoolExecutor(max_workers=min(4, document_parser.MAX_WORKERS)) as executor:
         results = list(executor.map(enrich_opportunity, candidates))
+    bulk_summary = None
+    if bulk_enabled is True:
+        from src.ted_bulk_fallback import apply_bulk_fallback
+        bulk_summary = apply_bulk_fallback(candidates, results)
     for item, success in zip(candidates, results):
-        attempts = (item.get("document_extraction") or {}).get("attempts") or []
+        extraction = item.get("document_extraction")
+        attempts = extraction.get("attempts") if isinstance(extraction, dict) else []
+        if not isinstance(attempts, list):
+            attempts = []
         if not success:
             failed = [entry for entry in attempts if isinstance(entry, dict)
                       and entry.get("status") == "failed"
@@ -326,6 +443,10 @@ def enrich_payload(payload: dict[str, Any]) -> dict[str, Any]:
         ),
     })
     payload["document_extraction"] = summary
+    if bulk_summary is not None:
+        summary['ted_bulk_fallback'] = bulk_summary
+    else:
+        summary.pop('ted_bulk_fallback', None)
     return payload
 
 
@@ -334,7 +455,7 @@ def main() -> None:
         raise SystemExit("usage: python -m src.ted_xml_enricher <json-file>")
     path = Path(sys.argv[1])
     payload = json.loads(path.read_text(encoding="utf-8"))
-    payload = enrich_payload(payload)
+    payload = enrich_payload(payload, bulk_enabled=os.environ.get('GB_TED_BULK_FALLBACK') == '1')
     cache_path = path.parent / "notice-facts-cache.json"
     try:
         cache = json.loads(cache_path.read_text(encoding="utf-8"))
