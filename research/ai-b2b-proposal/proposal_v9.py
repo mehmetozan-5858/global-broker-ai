@@ -46,9 +46,9 @@ def classify(topic, text):
         if any(x in s for x in ("do not guarantee", "not guaranteed", "no availability guarantee")):
             return "NEGATIVE"
     scope_words = re.search(
-        r"\\b(?:if|only|but|except|unless|once|after|before|until|"
+        r"\b(?:if|only|but|except|unless|once|after|before|until|"
         r"exclusively|restricted|limited|provided|subject|"
-        r"subsidiary|partner|during|conditional|excluding)\\b", s
+        r"subsidiary|partner|during|conditional|excluding)\b", s
     )
     if scope_words or any(marker in s for marker in qualifiers) or "?" in text:
         return "UNRESOLVED"
@@ -56,7 +56,7 @@ def classify(topic, text):
         return "POSITIVE"
     if topic == "iso27001" and any(x in s for x in ("sertifikamiz vardir", "we are iso 27001 certified")):
         return "POSITIVE"
-    if topic == "uptime" and re.search(r"guarantee 99[.,]9\\s*% uptime", s):
+    if topic == "uptime" and re.search(r"guarantee 99[.,]9\s*% uptime", s):
         return "POSITIVE"
     return "UNRESOLVED"
 
