@@ -3,13 +3,17 @@
 Not a database deployment or proof of database access security.
 """
 from pathlib import Path
+import re
 
 SCHEMA = Path(__file__).with_name("private_eval_postgres.sql")
 
 def audit_sql(sql):
     if not isinstance(sql, str):
         raise ValueError("SQL_INPUT_INVALID")
-    upper = sql.upper()
+    # Ignore explanatory SQL comments when looking for executable statements.
+    executable = re.sub(r'/\\*.*?\\*/', '', sql, flags=re.S)
+    executable = re.sub(r'--[^\\n]*', '', executable)
+    upper = executable.upper()
     required = (
         "CREATE SCHEMA IF NOT EXISTS B2B_RESEARCH_EVAL",
         "REVOKE ALL ON SCHEMA B2B_RESEARCH_EVAL FROM PUBLIC",
@@ -18,7 +22,6 @@ def audit_sql(sql):
         "CREATE TABLE IF NOT EXISTS B2B_RESEARCH_EVAL.AUDIT_EVENT",
         "ENABLE ROW LEVEL SECURITY",
         "FORCE ROW LEVEL SECURITY",
-        "REVOKE ALL ON SCHEMA B2B_RESEARCH_EVAL FROM PUBLIC",
     )
     missing=[x for x in required if x not in upper]
     forbidden=("DROP SCHEMA", "DROP DATABASE", "TRUNCATE ", "ALTER SYSTEM",
