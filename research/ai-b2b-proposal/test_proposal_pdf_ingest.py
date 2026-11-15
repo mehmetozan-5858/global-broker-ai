@@ -91,7 +91,7 @@ class PdfIngestionTests(unittest.TestCase):
         self.rejects("PDF_INPUT_INVALID",b"")
 
     def test_13_wrong_type(self):
-        self.rejects("PDF_INPUT_INVALID","%PDF-")
+        self.rejects("PDF_INPUT_INVALID","%PDF-",manifest(b"bad-type"))
 
     def test_14_oversize(self):
         raw=b"%PDF-"+b"x"*MAX_PDF_BYTES
