@@ -33,6 +33,8 @@ on:
       - 'research/ai-b2b-proposal/test_ci_session_revocation.py'
       - 'research/ai-b2b-proposal/ci_pg_shared_session_gate.py'
       - 'research/ai-b2b-proposal/test_ci_pg_shared_session_gate.py'
+      - 'research/ai-b2b-proposal/ci_external_recovery_witness.py'
+      - 'research/ai-b2b-proposal/test_ci_external_recovery_witness.py'
       - '.github/workflows/ai-b2b-proposal-v9-offline.yml'
   workflow_dispatch:
 permissions:
@@ -51,9 +53,9 @@ jobs:
       - name: Install pinned PDF parser
         run: python3 -m pip install --disable-pip-version-check pypdf==6.1.1
       - name: Validate syntax
-        run: python3 -m py_compile proposal_v9.py test_proposal_v9.py proposal_source_gate.py test_proposal_source_gate.py proposal_text_ingest.py test_proposal_text_ingest.py proposal_pdf_ingest.py test_proposal_pdf_ingest.py evaluation_holdout_v9.py evaluate_holdout_v9.py independent_eval_gate.py test_independent_eval_gate.py custodian_pinned_eval.py test_custodian_pinned_eval.py private_eval_metadata_ledger.py test_private_eval_metadata_ledger.py check_private_eval_schema.py test_private_eval_schema.py ci_reviewer_read_gateway.py test_ci_reviewer_read_gateway.py ci_signed_reviewer_session.py test_ci_signed_reviewer_session.py ci_session_revocation.py test_ci_session_revocation.py
+        run: python3 -m py_compile proposal_v9.py test_proposal_v9.py proposal_source_gate.py test_proposal_source_gate.py proposal_text_ingest.py test_proposal_text_ingest.py proposal_pdf_ingest.py test_proposal_pdf_ingest.py evaluation_holdout_v9.py evaluate_holdout_v9.py independent_eval_gate.py test_independent_eval_gate.py custodian_pinned_eval.py test_custodian_pinned_eval.py private_eval_metadata_ledger.py test_private_eval_metadata_ledger.py check_private_eval_schema.py test_private_eval_schema.py ci_reviewer_read_gateway.py test_ci_reviewer_read_gateway.py ci_signed_reviewer_session.py test_ci_signed_reviewer_session.py ci_session_revocation.py test_ci_session_revocation.py ci_external_recovery_witness.py test_ci_external_recovery_witness.py
       - name: Offline v9 regression
-        run: python3 -m unittest -v test_proposal_v9 test_proposal_source_gate test_proposal_text_ingest test_proposal_pdf_ingest test_independent_eval_gate test_custodian_pinned_eval test_private_eval_metadata_ledger test_private_eval_schema test_ci_reviewer_read_gateway test_ci_signed_reviewer_session test_ci_session_revocation
+        run: python3 -m unittest -v test_proposal_v9 test_proposal_source_gate test_proposal_text_ingest test_proposal_pdf_ingest test_independent_eval_gate test_custodian_pinned_eval test_private_eval_metadata_ledger test_private_eval_schema test_ci_reviewer_read_gateway test_ci_signed_reviewer_session test_ci_session_revocation test_ci_external_recovery_witness
       - name: Synthetic holdout false-acceptance gate
         run: python3 evaluate_holdout_v9.py
 
