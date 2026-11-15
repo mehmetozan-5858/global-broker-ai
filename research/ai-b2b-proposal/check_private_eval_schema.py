@@ -11,8 +11,8 @@ def audit_sql(sql):
     if not isinstance(sql, str):
         raise ValueError("SQL_INPUT_INVALID")
     # Ignore explanatory SQL comments when looking for executable statements.
-    executable = re.sub(r'/\\*.*?\\*/', '', sql, flags=re.S)
-    executable = re.sub(r'--[^\\n]*', '', executable)
+    executable = re.sub(r"/[*].*?[*]/", "", sql, flags=re.S)
+    executable = "\n".join(line.split("--", 1)[0] for line in executable.splitlines())
     upper = executable.upper()
     required = (
         "CREATE SCHEMA IF NOT EXISTS B2B_RESEARCH_EVAL",
