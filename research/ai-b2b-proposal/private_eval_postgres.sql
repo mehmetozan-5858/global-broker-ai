@@ -36,25 +36,10 @@ ALTER TABLE b2b_research_eval.review FORCE ROW LEVEL SECURITY;
 ALTER TABLE b2b_research_eval.audit_event ENABLE ROW LEVEL SECURITY;
 ALTER TABLE b2b_research_eval.audit_event FORCE ROW LEVEL SECURITY;
 
--- These policies are DOCUMENTATION-ONLY: custom GUCs are caller-controlled
--- if users can issue arbitrary SQL. An authenticated, narrowly scoped
--- service gateway MUST inject verified identity; do not grant direct SQL.
--- No grants are issued here: access remains denied unless separately approved.
-CREATE POLICY document_owner_read ON b2b_research_eval.document_meta
-  FOR SELECT USING (
-    current_setting('b2b_eval.actor_role', true) = 'custodian'
-    OR (current_setting('b2b_eval.actor_role', true) = 'reviewer'
-        AND assigned_reviewer = current_setting('b2b_eval.actor_id', true))
-  );
-CREATE POLICY review_assigned_read ON b2b_research_eval.review
-  FOR SELECT USING (
-    reviewer_id = current_setting('b2b_eval.actor_id', true)
-    AND current_setting('b2b_eval.actor_role', true) = 'reviewer'
-  );
-CREATE POLICY audit_custodian_read ON b2b_research_eval.audit_event
-  FOR SELECT USING (
-    current_setting('b2b_eval.actor_role', true) = 'custodian'
-  );
--- No INSERT/UPDATE/DELETE policy: default-deny. Thus even an authenticated
--- user cannot write before a separate controlled procedure is reviewed.
+-- SECURITY: No RLS policies are installed. PostgreSQL RLS remains default-deny
+-- even if a test role is granted SELECT/INSERT. This avoids trusting
+-- caller-controlled session settings (custom GUC values can be forged).
+-- No table grants or login roles are created here. Any future grants,
+-- gateway and identity checks require separate review on a test-only DB.
+-- Superusers and BYPASSRLS roles are outside this protection boundary.
 COMMIT;
