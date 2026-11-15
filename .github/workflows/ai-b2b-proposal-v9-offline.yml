@@ -35,6 +35,7 @@ on:
       - 'research/ai-b2b-proposal/test_ci_pg_shared_session_gate.py'
       - 'research/ai-b2b-proposal/ci_external_recovery_witness.py'
       - 'research/ai-b2b-proposal/test_ci_external_recovery_witness.py'
+      - 'research/ai-b2b-proposal/ci_actual_pg_restore_check.py'
       - '.github/workflows/ai-b2b-proposal-v9-offline.yml'
   workflow_dispatch:
 permissions:
@@ -90,3 +91,53 @@ jobs:
         run: python3 -m pip install --disable-pip-version-check "psycopg[binary]==3.2.10"
       - name: Verify default-deny RLS on throwaway PostgreSQL only
         run: python3 -m unittest -v test_ephemeral_postgres_rls test_ephemeral_reviewer_identity test_ci_pg_shared_session_gate
+
+  ephemeral-pg-dump-restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: local_ci_only
+          POSTGRES_DB: proposal_eval_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d proposal_eval_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      B2B_CI_PG_DSN: postgresql://postgres:local_ci_only@127.0.0.1:5432/proposal_eval_ci
+      PGPASSWORD: local_ci_only
+    defaults:
+      run:
+        working-directory: research/ai-b2b-proposal
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install disposable PostgreSQL test client
+        run: python3 -m pip install --disable-pip-version-check "psycopg[binary]==3.2.10"
+      - name: Initialize rollback-safe CI fixture
+        run: python3 ci_actual_pg_restore_check.py init
+      - name: Capture actual PostgreSQL custom-format backup
+        run: |
+          docker run --rm --network host -e PGPASSWORD=local_ci_only postgres:16-alpine \
+            pg_dump --host=127.0.0.1 --username=postgres --dbname=proposal_eval_ci \
+            --schema=b2b_eval_ci_control --format=custom > /tmp/b2b-eval-ci-restore.dump
+          test -s /tmp/b2b-eval-ci-restore.dump
+      - name: Commit a token use after backup
+        run: python3 ci_actual_pg_restore_check.py advance
+      - name: Remove isolated CI schema for restore
+        run: python3 ci_actual_pg_restore_check.py before_restore
+      - name: Restore actual backup into same ephemeral CI database
+        run: |
+          docker run --rm --network host -e PGPASSWORD=local_ci_only \
+            -v /tmp/b2b-eval-ci-restore.dump:/tmp/restore.dump:ro postgres:16-alpine \
+            pg_restore --host=127.0.0.1 --username=postgres --dbname=proposal_eval_ci \
+            --no-owner --no-privileges /tmp/restore.dump
+      - name: Confirm rollback old token rejected by independently pinned floor
+        run: python3 ci_actual_pg_restore_check.py verify
