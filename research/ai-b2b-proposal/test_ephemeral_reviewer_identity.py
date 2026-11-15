@@ -105,7 +105,7 @@ class PgReviewerIsolationTests(unittest.TestCase):
         with psycopg.connect(os.environ["B2B_CI_READER_DSN"],autocommit=True) as c:
             self.assertEqual(c.execute("SELECT count(*) FROM b2b_research_eval.document_meta").fetchone()[0],0)
     def test_12_no_write_policies_even_after_read_policy(self):
-        policies = self.admin.execute("""SELECT cmd,polname FROM pg_policies
+        policies = self.admin.execute("""SELECT cmd,policyname FROM pg_policies
            WHERE schemaname='b2b_research_eval'""").fetchall()
         self.assertEqual(policies,[('SELECT','ci_reviewer_identity_read')])
     def test_13_reviewer_membership_not_cross_granted(self):
