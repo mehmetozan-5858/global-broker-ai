@@ -16,6 +16,8 @@ on:
       - 'research/ai-b2b-proposal/evaluate_holdout_v9.py'
       - 'research/ai-b2b-proposal/independent_eval_gate.py'
       - 'research/ai-b2b-proposal/test_independent_eval_gate.py'
+      - 'research/ai-b2b-proposal/custodian_pinned_eval.py'
+      - 'research/ai-b2b-proposal/test_custodian_pinned_eval.py'
       - '.github/workflows/ai-b2b-proposal-v9-offline.yml'
   workflow_dispatch:
 permissions:
@@ -34,8 +36,8 @@ jobs:
       - name: Install pinned PDF parser
         run: python3 -m pip install --disable-pip-version-check pypdf==6.1.1
       - name: Validate syntax
-        run: python3 -m py_compile proposal_v9.py test_proposal_v9.py proposal_source_gate.py test_proposal_source_gate.py proposal_text_ingest.py test_proposal_text_ingest.py proposal_pdf_ingest.py test_proposal_pdf_ingest.py evaluation_holdout_v9.py evaluate_holdout_v9.py independent_eval_gate.py test_independent_eval_gate.py
+        run: python3 -m py_compile proposal_v9.py test_proposal_v9.py proposal_source_gate.py test_proposal_source_gate.py proposal_text_ingest.py test_proposal_text_ingest.py proposal_pdf_ingest.py test_proposal_pdf_ingest.py evaluation_holdout_v9.py evaluate_holdout_v9.py independent_eval_gate.py test_independent_eval_gate.py custodian_pinned_eval.py test_custodian_pinned_eval.py
       - name: Offline v9 regression
-        run: python3 -m unittest -v test_proposal_v9 test_proposal_source_gate test_proposal_text_ingest test_proposal_pdf_ingest test_independent_eval_gate
+        run: python3 -m unittest -v test_proposal_v9 test_proposal_source_gate test_proposal_text_ingest test_proposal_pdf_ingest test_independent_eval_gate test_custodian_pinned_eval
       - name: Synthetic holdout false-acceptance gate
         run: python3 evaluate_holdout_v9.py
