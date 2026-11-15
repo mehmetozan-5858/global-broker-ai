@@ -115,5 +115,47 @@ class PgReviewerIsolationTests(unittest.TestCase):
         with self.reviewer(B) as c:
             self.assertEqual(c.execute("SELECT current_user").fetchone()[0],B)
 
+    def test_15_set_role_other_reviewer_denied(self):
+        with self.reviewer(A) as c:
+            with self.assertRaises(InsufficientPrivilege):
+                c.execute("SET ROLE " + B)
+    def test_16_set_role_postgres_admin_denied(self):
+        with self.reviewer(B) as c:
+            with self.assertRaises(InsufficientPrivilege):
+                c.execute("SET ROLE postgres")
+    def test_17_cannot_create_rls_policy(self):
+        with self.reviewer(A) as c:
+            with self.assertRaises(InsufficientPrivilege):
+                c.execute("""CREATE POLICY attacker_read ON b2b_research_eval.document_meta
+                    FOR SELECT USING (true)""")
+    def test_18_cannot_disable_rls(self):
+        with self.reviewer(B) as c:
+            with self.assertRaises(InsufficientPrivilege):
+                c.execute("ALTER TABLE b2b_research_eval.document_meta DISABLE ROW LEVEL SECURITY")
+    def test_19_cannot_grant_table_privileges(self):
+        with self.reviewer(A) as c:
+            with self.assertRaises(InsufficientPrivilege):
+                c.execute("GRANT INSERT ON b2b_research_eval.document_meta TO " + A)
+    def test_20_auth_principal_is_not_session_guc(self):
+        with self.reviewer(A) as c:
+            c.execute("SELECT set_config('b2b_eval.actor_id',%s,false)",(B,))
+            self.assertEqual(c.execute("SELECT current_user").fetchone()[0], A)
+            self.assertEqual(c.execute("SELECT document_id::text FROM b2b_research_eval.document_meta").fetchall(),[(DOC_A,)])
+    def test_21_search_path_shadow_does_not_affect_qualified_query(self):
+        with self.reviewer(A) as c:
+            c.execute("SET search_path TO pg_temp, public")
+            self.assertEqual(c.execute("SELECT document_id::text FROM b2b_research_eval.document_meta").fetchall(),[(DOC_A,)])
+    def test_22_cross_tenant_count_is_still_one(self):
+        with self.reviewer(B) as c:
+            self.assertEqual(c.execute("SELECT count(*) FROM b2b_research_eval.document_meta").fetchone()[0],1)
+    def test_23_cannot_delete_assigned_data(self):
+        with self.reviewer(A) as c:
+            with self.assertRaises(InsufficientPrivilege):
+                c.execute("DELETE FROM b2b_research_eval.document_meta WHERE document_id=%s",(DOC_A,))
+    def test_24_reviewer_cannot_switch_role_via_set_session_authorization(self):
+        with self.reviewer(B) as c:
+            with self.assertRaises(InsufficientPrivilege):
+                c.execute("SET SESSION AUTHORIZATION " + A)
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
