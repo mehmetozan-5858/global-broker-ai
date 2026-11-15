@@ -113,7 +113,7 @@ class SharedSessionGateTests(unittest.TestCase):
         with self.conn() as a:
             with self.assertRaisesRegex(GatewayRejected,"COORDINATOR_STALE_ROTATION"):
                 rotate_key(a,old_key=KEY1,new_key=b"another_test_key_only_0123456789abc")
-    def test_16_retired_key_cannot_be_reactivated(self):
+    def test_11b_retired_key_cannot_be_reactivated(self):
         with self.conn() as a:
             with self.assertRaisesRegex(GatewayRejected,"COORDINATOR_RETIRED_KEY_REUSE"):
                 rotate_key(a,old_key=KEY2,new_key=KEY1)
