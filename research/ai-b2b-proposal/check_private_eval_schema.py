@@ -18,13 +18,12 @@ def audit_sql(sql):
         "CREATE TABLE IF NOT EXISTS B2B_RESEARCH_EVAL.AUDIT_EVENT",
         "ENABLE ROW LEVEL SECURITY",
         "FORCE ROW LEVEL SECURITY",
-        "CREATE POLICY",
-        "CURRENT_SETTING('B2B_EVAL.ACTOR_ID', TRUE)",
-        "CURRENT_SETTING('B2B_EVAL.ACTOR_ROLE', TRUE)",
+        "REVOKE ALL ON SCHEMA B2B_RESEARCH_EVAL FROM PUBLIC",
     )
     missing=[x for x in required if x not in upper]
     forbidden=("DROP SCHEMA", "DROP DATABASE", "TRUNCATE ", "ALTER SYSTEM",
-               "CREATE EXTENSION", "GRANT ALL ON DATABASE", "CREATE POLICY PUBLIC")
+               "CREATE EXTENSION", "GRANT ALL ON DATABASE", "CREATE POLICY",
+               "CURRENT_SETTING(", "GRANT SELECT", "GRANT INSERT", "CREATE ROLE")
     dangerous=[x for x in forbidden if x in upper]
     return {"valid_structure":not missing and not dangerous,
             "missing_required":missing,"unsafe_tokens":dangerous,
