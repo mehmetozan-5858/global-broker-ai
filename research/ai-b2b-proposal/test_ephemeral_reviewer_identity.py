@@ -9,6 +9,7 @@ import unittest
 import psycopg
 from psycopg.errors import InsufficientPrivilege
 from ci_reviewer_read_gateway import read_assigned_document, GatewayRejected
+from ci_signed_reviewer_session import issue_ci_token, read_with_verified_ci_session
 
 ADMIN_DSN = os.environ.get("B2B_CI_PG_DSN")
 DB = "proposal_eval_ci"
@@ -195,6 +196,33 @@ class PgReviewerIsolationTests(unittest.TestCase):
         with self.reviewer(A) as c:
             c.execute("SELECT set_config('b2b_eval.actor_id',%s,false)",(B,))
             self.assertEqual(read_assigned_document(c,document_id=DOC_B)["status"],"NOT_VISIBLE")
+
+    def test_32_signed_ci_session_a_reads_own_document(self):
+        key=b"ci_fixture_key_strictly_not_for_production_12345"
+        tok=issue_ci_token(role=A,now=1700000000,nonce="session-test-a-0001",signing_key=key)
+        out=read_with_verified_ci_session(tok,signing_key=key,now=1700000001,
+            replay_registry=set(),connect_for_role=self.reviewer,document_id=DOC_A)
+        self.assertEqual(out["status"],"FOUND")
+    def test_33_signed_ci_session_a_peer_document_hidden(self):
+        key=b"ci_fixture_key_strictly_not_for_production_12345"
+        tok=issue_ci_token(role=A,now=1700000000,nonce="session-test-a-0002",signing_key=key)
+        out=read_with_verified_ci_session(tok,signing_key=key,now=1700000001,
+            replay_registry=set(),connect_for_role=self.reviewer,document_id=DOC_B)
+        self.assertEqual(out["status"],"NOT_VISIBLE")
+    def test_34_signed_ci_session_b_peer_document_hidden(self):
+        key=b"ci_fixture_key_strictly_not_for_production_12345"
+        tok=issue_ci_token(role=B,now=1700000000,nonce="session-test-b-0003",signing_key=key)
+        out=read_with_verified_ci_session(tok,signing_key=key,now=1700000001,
+            replay_registry=set(),connect_for_role=self.reviewer,document_id=DOC_A)
+        self.assertEqual(out["status"],"NOT_VISIBLE")
+    def test_35_expired_session_never_opens_db_connection(self):
+        key=b"ci_fixture_key_strictly_not_for_production_12345"
+        tok=issue_ci_token(role=A,now=1700000000,nonce="session-test-a-0004",signing_key=key)
+        called=[]
+        with self.assertRaisesRegex(GatewayRejected,"TOKEN_EXPIRED_OR_NOT_YET_VALID"):
+            read_with_verified_ci_session(tok,signing_key=key,now=1700000070,
+                replay_registry=set(),connect_for_role=lambda role:called.append(role),document_id=DOC_A)
+        self.assertEqual(called,[])
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
