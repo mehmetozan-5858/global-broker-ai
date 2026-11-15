@@ -46,6 +46,8 @@ def setup_ci_coordinator(conn, *, signing_key):
         conn.execute("""CREATE TABLE b2b_eval_ci_control.nonces (
             nonce_digest char(64) PRIMARY KEY,
             state text NOT NULL CHECK (state IN ('SPENT','REVOKED')) )""")
+        conn.execute("""CREATE TABLE b2b_eval_ci_control.retired_keys (
+            key_sha256 char(64) PRIMARY KEY)""")
         conn.execute("REVOKE ALL ON SCHEMA b2b_eval_ci_control FROM PUBLIC")
         conn.execute("""INSERT INTO b2b_eval_ci_control.state
             (singleton,active_key_sha256) VALUES (1,%s)""", (digest,))
@@ -111,6 +113,11 @@ def rotate_key(conn, *, old_key, new_key):
         active = _lock_state(conn)
         if active != old:
             raise GatewayRejected("COORDINATOR_STALE_ROTATION")
+        retired = conn.execute("""SELECT 1 FROM b2b_eval_ci_control.retired_keys
+            WHERE key_sha256=%s""", (new,)).fetchone()
+        if retired:
+            raise GatewayRejected("COORDINATOR_RETIRED_KEY_REUSE")
+        conn.execute("INSERT INTO b2b_eval_ci_control.retired_keys(key_sha256) VALUES (%s)", (old,))
         conn.execute("""UPDATE b2b_eval_ci_control.state
             SET active_key_sha256=%s WHERE singleton=1""", (new,))
 
