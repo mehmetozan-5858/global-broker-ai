@@ -10,6 +10,7 @@ import psycopg
 from psycopg.errors import InsufficientPrivilege
 from ci_reviewer_read_gateway import read_assigned_document, GatewayRejected
 from ci_signed_reviewer_session import issue_ci_token, read_with_verified_ci_session
+from ci_session_revocation import CiSessionAuthority
 
 ADMIN_DSN = os.environ.get("B2B_CI_PG_DSN")
 DB = "proposal_eval_ci"
@@ -223,6 +224,42 @@ class PgReviewerIsolationTests(unittest.TestCase):
             read_with_verified_ci_session(tok,signing_key=key,now=1700000070,
                 replay_registry=set(),connect_for_role=lambda role:called.append(role),document_id=DOC_A)
         self.assertEqual(called,[])
+
+    def test_36_revoked_session_never_reads_database(self):
+        authority=CiSessionAuthority(signing_key=b"ci_ephemeral_key_for_revocation_tests_1234")
+        nonce="ci-live-revoked-0001"
+        token=authority.issue_fixture(role=A,now=1700000000,nonce=nonce)
+        authority.revoke_nonce(nonce)
+        attempts=[]
+        with self.assertRaisesRegex(GatewayRejected,"SESSION_REVOKED"):
+            authority.read_once(token,now=1700000001,
+                connect_for_role=lambda role:attempts.append(role),document_id=DOC_A)
+        self.assertEqual(attempts,[])
+    def test_37_rotated_session_old_token_rejected(self):
+        authority=CiSessionAuthority(signing_key=b"ci_ephemeral_key_for_revocation_tests_1234")
+        token=authority.issue_fixture(role=A,now=1700000000,nonce="ci-live-key-old-0001")
+        authority.rotate_signing_key(b"ci_ephemeral_replacement_signing_key_1234")
+        attempts=[]
+        with self.assertRaisesRegex(GatewayRejected,"SIGNATURE_INVALID"):
+            authority.read_once(token,now=1700000001,
+                connect_for_role=lambda role:attempts.append(role),document_id=DOC_A)
+        self.assertEqual(attempts,[])
+    def test_38_rotated_new_session_reads_only_own_record(self):
+        authority=CiSessionAuthority(signing_key=b"ci_ephemeral_key_for_revocation_tests_1234")
+        authority.rotate_signing_key(b"ci_ephemeral_replacement_signing_key_1234")
+        token=authority.issue_fixture(role=B,now=1700000000,nonce="ci-live-key-new-0002")
+        result=authority.read_once(token,now=1700000001,
+            connect_for_role=self.reviewer,document_id=DOC_A)
+        self.assertEqual(result["status"],"NOT_VISIBLE")
+    def test_39_disabled_authority_blocks_db_read(self):
+        authority=CiSessionAuthority(signing_key=b"ci_ephemeral_key_for_revocation_tests_1234")
+        token=authority.issue_fixture(role=A,now=1700000000,nonce="ci-live-disabled-0001")
+        authority.disable()
+        calls=[]
+        with self.assertRaisesRegex(GatewayRejected,"AUTHORITY_DISABLED"):
+            authority.read_once(token,now=1700000001,
+                connect_for_role=lambda role:calls.append(role),document_id=DOC_A)
+        self.assertEqual(calls,[])
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
