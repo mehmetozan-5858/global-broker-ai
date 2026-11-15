@@ -8,6 +8,7 @@ import threading
 import unittest
 
 import psycopg
+from ci_uncertain_commit_reconciliation import reconcile_without_authorizing
 from ci_external_recovery_witness import (
     issue_fixture_witness, consume_with_signed_witness, check_with_signed_witness
 )
@@ -226,6 +227,65 @@ class SharedSessionGateTests(unittest.TestCase):
                 consume_with_signed_witness(c,jwt("witness-absent-0001",key=KEY2),
                     signing_key=KEY2,now=NOW+1,witness=None,
                     witness_key=witness_key,trusted_min_generation=current)
+    def test_11k_reconcile_spent_nonce_never_regrants(self):
+        witness_key=b"synthetic_ci_reconcile_pg_witness_key_012345"
+        nonce="reconcile-spent-pg-001"
+        tok=jwt(nonce,key=KEY2)
+        with self.conn() as c:
+            self.assertEqual(consume_once(c,tok,signing_key=KEY2,now=NOW+1),A)
+            generation=current_generation_for_ci_witness(c)
+            class Provider:
+                def read(self):
+                    return (issue_fixture_witness(generation,signing_key=witness_key),generation)
+            result=reconcile_without_authorizing(
+                c,tok,signing_key=KEY2,now=NOW+1,
+                provider=Provider(),witness_key=witness_key)
+            self.assertEqual(result["status"],"BLOCKED_SPENT_NO_REAUTHORIZATION")
+            self.assertFalse(result["authorized"])
+            self.assertFalse(result["retry_consumption"])
+            with self.assertRaisesRegex(GatewayRejected,"SESSION_REPLAY"):
+                consume_once(c,tok,signing_key=KEY2,now=NOW+1)
+    def test_11l_reconcile_witness_lag_no_automatic_repair(self):
+        witness_key=b"synthetic_ci_reconcile_pg_witness_key_012345"
+        nonce="reconcile-lag-pg-0001"
+        tok=jwt(nonce,key=KEY2)
+        with self.conn() as c:
+            previous=current_generation_for_ci_witness(c)
+            consume_once(c,tok,signing_key=KEY2,now=NOW+1)
+            latest=current_generation_for_ci_witness(c)
+            self.assertGreater(latest,previous)
+            class Provider:
+                def read(self):
+                    return (issue_fixture_witness(previous,signing_key=witness_key),previous)
+            result=reconcile_without_authorizing(
+                c,tok,signing_key=KEY2,now=NOW+1,
+                provider=Provider(),witness_key=witness_key)
+            self.assertEqual(result["status"],"BLOCKED_WITNESS_LAG_OPERATOR_REVIEW")
+            self.assertFalse(result["auto_advance_witness"])
+            self.assertEqual(current_generation_for_ci_witness(c),latest)
+    def test_11m_reconcile_witness_outage_denies_before_db(self):
+        witness_key=b"synthetic_ci_reconcile_pg_witness_key_012345"
+        class Provider:
+            def read(self):raise TimeoutError("synthetic outage")
+        with self.conn() as c:
+            with self.assertRaisesRegex(GatewayRejected,"RECONCILE_WITNESS_READ_FAILED"):
+                reconcile_without_authorizing(c,jwt("reconcile-outage-0001",key=KEY2),
+                    signing_key=KEY2,now=NOW+1,provider=Provider(),witness_key=witness_key)
+    def test_11n_reconcile_missing_nonce_does_not_consume(self):
+        witness_key=b"synthetic_ci_reconcile_pg_witness_key_012345"
+        with self.conn() as c:
+            generation=current_generation_for_ci_witness(c)
+            class Provider:
+                def read(self):
+                    return (issue_fixture_witness(generation,signing_key=witness_key),generation)
+            nonce="reconcile-absent-0001"
+            tok=jwt(nonce,key=KEY2)
+            result=reconcile_without_authorizing(
+                c,tok,signing_key=KEY2,now=NOW+1,
+                provider=Provider(),witness_key=witness_key)
+            self.assertEqual(result["status"],"BLOCKED_NO_COMMITTED_NONCE")
+            self.assertFalse(result["authorized"])
+            self.assertEqual(current_generation_for_ci_witness(c),generation)
     def test_12_disabled_gate_blocks_peer_connection(self):
         with self.conn() as a, self.conn() as b:
             disable_authority(a)
