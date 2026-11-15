@@ -31,6 +31,8 @@ on:
       - 'research/ai-b2b-proposal/test_ci_signed_reviewer_session.py'
       - 'research/ai-b2b-proposal/ci_session_revocation.py'
       - 'research/ai-b2b-proposal/test_ci_session_revocation.py'
+      - 'research/ai-b2b-proposal/ci_pg_shared_session_gate.py'
+      - 'research/ai-b2b-proposal/test_ci_pg_shared_session_gate.py'
       - '.github/workflows/ai-b2b-proposal-v9-offline.yml'
   workflow_dispatch:
 permissions:
@@ -85,4 +87,4 @@ jobs:
       - name: Install isolated PostgreSQL test client
         run: python3 -m pip install --disable-pip-version-check "psycopg[binary]==3.2.10"
       - name: Verify default-deny RLS on throwaway PostgreSQL only
-        run: python3 -m unittest -v test_ephemeral_postgres_rls test_ephemeral_reviewer_identity
+        run: python3 -m unittest -v test_ephemeral_postgres_rls test_ephemeral_reviewer_identity test_ci_pg_shared_session_gate
