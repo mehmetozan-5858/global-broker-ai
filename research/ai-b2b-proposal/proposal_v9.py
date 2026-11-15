@@ -34,17 +34,30 @@ def classify(topic, text):
         "was revoked", "is revoked", "only for germany",
         "for germany only",
     )
-    if any(marker in s for marker in qualifiers) or "?" in text:
-        return "UNRESOLVED"
+    # Determine explicit, unqualified negative first. Restrict positives much more
+    # conservatively: scoped/conditional promises require human review.
     if topic == "english":
-        if any(x in s for x in ("do not support english", "only german is supported", "english support is unavailable")): return "NEGATIVE"
-        if "we support english" in s: return "POSITIVE"
+        if any(x in s for x in ("do not support english", "only german is supported", "english support is unavailable")):
+            return "NEGATIVE"
     if topic == "iso27001":
-        if any(x in s for x in ("sertifikamiz yoktur", "not certified", "not iso 27001 certified", "expired", "suresi doldu")): return "NEGATIVE"
-        if any(x in s for x in ("sertifikamiz vardir", "we are iso 27001 certified")): return "POSITIVE"
+        if any(x in s for x in ("sertifikamiz yoktur", "not certified", "not iso 27001 certified", "expired", "suresi doldu")):
+            return "NEGATIVE"
     if topic == "uptime":
-        if any(x in s for x in ("do not guarantee", "not guaranteed", "no availability guarantee")): return "NEGATIVE"
-        if re.search(r"guarantee 99[.,]9\s*% uptime", s): return "POSITIVE"
+        if any(x in s for x in ("do not guarantee", "not guaranteed", "no availability guarantee")):
+            return "NEGATIVE"
+    scope_words = re.search(
+        r"\\b(?:if|only|but|except|unless|once|after|before|until|"
+        r"exclusively|restricted|limited|provided|subject|"
+        r"subsidiary|partner|during|conditional|excluding)\\b", s
+    )
+    if scope_words or any(marker in s for marker in qualifiers) or "?" in text:
+        return "UNRESOLVED"
+    if topic == "english" and "we support english" in s:
+        return "POSITIVE"
+    if topic == "iso27001" and any(x in s for x in ("sertifikamiz vardir", "we are iso 27001 certified")):
+        return "POSITIVE"
+    if topic == "uptime" and re.search(r"guarantee 99[.,]9\\s*% uptime", s):
+        return "POSITIVE"
     return "UNRESOLVED"
 
 def verify_v9(question, records, company="OUR_COMPANY", region=None, as_of=None):
