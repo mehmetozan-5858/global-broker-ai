@@ -1,0 +1,115 @@
+"""Preflight private snapshot identities before remote Supabase ingest.
+
+Never publish row content, direct contacts or opportunity IDs to CI output.
+This is a fail-closed diagnostic, not a deduplication or acceptance shortcut.
+"""
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+
+class PrivateSnapshotIdentityError(ValueError):
+    pass
+
+
+def inspect_private_snapshot(rows):
+    if not isinstance(rows, list) or not rows:
+        raise PrivateSnapshotIdentityError("empty_or_invalid_snapshot")
+    if len(rows) > 1000:
+        raise PrivateSnapshotIdentityError("too_many_rows")
+    seen = {}
+    sources_by_id = {}
+    missing_provenance = 0
+    duplicates = set()
+    conflicts = set()
+    for row in rows:
+        if not isinstance(row, dict):
+            raise PrivateSnapshotIdentityError("invalid_opportunity_row")
+        # Match the RPC COALESCE semantics: an explicit empty opportunity_id
+        # must fail, not fall back to a different id field.
+        raw_id = row.get("opportunity_id")
+        if raw_id is None:
+            raw_id = row.get("id")
+        # Never silently coerce a JSON object/list or truncate an identifier:
+        # different sources can otherwise collapse onto the same 200-char key.
+        if not isinstance(raw_id, str) or not raw_id.strip() or len(raw_id) > 200:
+            raise PrivateSnapshotIdentityError("invalid_opportunity_id")
+        identifier = raw_id
+        digest = hashlib.sha256(
+            json.dumps(row, sort_keys=True, ensure_ascii=False, separators=(",", ":"), default=str).encode()
+        ).hexdigest()
+        raw_source = row.get('source')
+        if raw_source is None:
+            raw_source = row.get('source_name')
+        # Metadata must be a real source string, never a JSON object/list,
+        # numeric value, or empty primary field disguised by a fallback.
+        source = raw_source.strip() if isinstance(raw_source, str) else ''
+        if not source:
+            missing_provenance += 1
+        sources_by_id.setdefault(identifier, set()).add(source)
+        if identifier in seen:
+            duplicates.add(identifier)
+            if seen[identifier] != digest:
+                conflicts.add(identifier)
+        else:
+            seen[identifier] = digest
+    # Classify each duplicate group exactly once; mixed A/B/A inputs
+    # must not inflate the same-source and cross-source totals.
+    cross_source = sum(
+        1 for key in duplicates
+        if len(sources_by_id[key]) > 1 and "" not in sources_by_id[key]
+    )
+    same_or_unknown_source = len(duplicates) - cross_source
+    # No IDs or row text returned or logged: only aggregate counts.
+    return {"rows": len(rows), "missing_source_provenance_count": missing_provenance,
+            "duplicate_identity_count": len(duplicates),
+            "conflicting_identity_count": len(conflicts),
+            "cross_source_collision_count": cross_source,
+            "same_or_unknown_source_duplicate_count": same_or_unknown_source}
+
+
+def require_unique_private_snapshot(rows):
+    outcome = inspect_private_snapshot(rows)
+    if outcome["missing_source_provenance_count"]:
+        raise PrivateSnapshotIdentityError(
+            "missing_source_provenance: rows={}".format(outcome["missing_source_provenance_count"])
+        )
+    if outcome["duplicate_identity_count"]:
+        raise PrivateSnapshotIdentityError(
+            "duplicate_opportunity_id: repeated={} conflicting={} cross_source={}".format(
+                outcome["duplicate_identity_count"], outcome["conflicting_identity_count"],
+                outcome["cross_source_collision_count"]
+            )
+        )
+    return outcome
+
+
+def main(path, aggregate_path=None):
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    rows = data.get("opportunities")
+    # Build a safe diagnostic artifact even when the remote sync must fail.
+    report = inspect_private_snapshot(rows)
+    if aggregate_path is not None:
+        safe = {
+            "schema": "private-ingest-aggregate-v1",
+            "rows": report["rows"],
+            "duplicate_groups": report["duplicate_identity_count"],
+            "conflicting_groups": report["conflicting_identity_count"],
+            "cross_source_groups": report["cross_source_collision_count"],
+            "same_or_unknown_source_groups": report["same_or_unknown_source_duplicate_count"],
+            "missing_source_count": report["missing_source_provenance_count"],
+            "accepted_for_remote_write": False,
+        }
+        Path(aggregate_path).write_text(
+            json.dumps(safe, sort_keys=True, separators=(",", ":")), encoding="utf-8"
+        )
+    require_unique_private_snapshot(rows)
+    print("PRIVATE_SNAPSHOT_IDENTITY_OK rows={}".format(report["rows"]))
+
+
+if __name__ == "__main__":
+    try:
+        main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)
+    except (PrivateSnapshotIdentityError, ValueError, KeyError) as exc:
+        raise SystemExit("PRIVATE_SNAPSHOT_IDENTITY_BLOCKED " + str(exc))
