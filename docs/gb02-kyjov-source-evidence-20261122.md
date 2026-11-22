@@ -21,3 +21,11 @@ Downloaded every file indexed in the live procurement document section. All seve
 | 254811, 254812, 254817 | Eligibility, conflicts declaration and significant deliveries list |
 
 Read commercial and technical fields from the PDF, XLSX and contract DOCX. The public clarification section showed no entries at the time of review. The current source review covers this Kyjov opportunity. Supplier fit, offer delivery and commercial acceptance remain open. No third party was contacted.
+
+## Supplier candidate review
+
+- Candidate configuration: Lenovo ThinkCentre neo 50s Gen 5, Czech SKU 12XD000CCK. Manufacturer spec: https://psref.lenovo.com/Detail/2497?M=12XD000CCK
+- The model provides i5-14400, 16 GB RAM, 512 GB NVMe and a three-year on-site support upgrade. Published material does not establish next-working-day on-site service for this exact offer.
+- The Czech Bechtle catalogue listed the SKU at CZK 16,146 excluding VAT per unit and "ships when available"; the individual catalogue link was unavailable on review. Catalogue: https://www.bechtle.com/cz-en/shop/hardware/computing/pcs--10003002--c/lenovo--m
+- At that indicative unit price, 50 units total CZK 807,300 before VAT and any additional support, versus the buyer estimate of CZK 730,000. This is not a supplier quote or a binding buyer ceiling.
+- GB-03 remains open pending an exact configuration with full specification coverage, 50-unit availability, next-working-day on-site service in Kyjov and a support-inclusive price. No contact was made.
