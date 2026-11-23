@@ -17,6 +17,15 @@ class TedNoticeRedirectTests(unittest.TestCase):
             "https://ted.europa.eu/en/notice/775258-2026/xml",
         )
 
+    def test_generic_ted_xml_url_is_not_a_verified_notice(self):
+        self.assertIsNone(_ted_xml_url({
+            "source":"OTHER","source_url":"https://ted.europa.eu/en/some-generic.xml"
+        }))
+        self.assertEqual(_ted_xml_url({
+            "source":"TED","publication-number":"775258-2026",
+            "source_url":"https://ted.europa.eu/en/some-generic.xml"
+        }), "https://ted.europa.eu/en/notice/775258-2026/xml")
+
     def test_matching_notice_redirect_allowed(self):
         _verify_ted_redirect(
             "https://ted.europa.eu/en/notice/775258-2026/xml",
