@@ -47,11 +47,13 @@ class TedXmlFeedTests(unittest.TestCase):
             ted_xml_enricher.document_parser,
             "_download",
             return_value=(b"<?xml version='1.0'?><Notice><Title>Short</Title></Notice>", "application/xml", item["source_url"]),
-        ):
+        ) as download:
             ok = ted_xml_enricher.enrich_opportunity(item)
         self.assertFalse(ok)
-        self.assertEqual(item["document_extraction"]["status"], "attempted_no_text")
-        self.assertFalse(item["document_extraction"]["ted_xml_parsed"])
+        # An incomplete publication identifier must be rejected *before* any
+        # network fetch or source-backed extraction evidence is created.
+        download.assert_not_called()
+        self.assertNotIn("document_extraction", item)
 
     def test_non_ted_item_is_ignored(self):
         payload = {"opportunities": [{"source": "World Bank", "source_url": "https://example.com/tender"}]}
