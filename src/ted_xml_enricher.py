@@ -63,7 +63,7 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
                 and parsed.port in (None, 443)
                 and (path.endswith("/xml") or path.endswith(".xml"))):
             link_id = _ted_notice_id(url)
-            if expected_id and link_id and link_id != expected_id:
+            if not link_id or (expected_id and link_id != expected_id):
                 continue
             return url
     if source == "TED":
