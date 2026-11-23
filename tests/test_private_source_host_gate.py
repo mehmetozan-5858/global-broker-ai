@@ -1,5 +1,5 @@
 import unittest
-from src.private_source_host_gate import official_source_host, summarize_source_hosts
+from src.private_source_host_gate import official_source_host, summarize_source_hosts, require_official_source_hosts
 
 
 class PrivateSourceHostGateTests(unittest.TestCase):
@@ -43,6 +43,17 @@ class PrivateSourceHostGateTests(unittest.TestCase):
         self.assertFalse(report["content_and_annex_verified"])
         self.assertFalse(report["commercial_party_verified"])
         self.assertNotIn("secret@example.test", str(report))
+
+
+    def test_preflight_rejects_unofficial_host_even_with_unique_identity(self):
+        valid={"source":"TED","source_url":"https://ted.europa.eu/en/notice/123",
+               "opportunity_id":"synthetic-1"}
+        self.assertEqual(require_official_source_hosts([valid])["official_host_matches"],1)
+        bad={**valid,"source_url":"https://ted.europa.eu.attacker.test/en/notice/123"}
+        with self.assertRaisesRegex(ValueError,"source_host_validation_blocked"):
+            require_official_source_hosts([valid,bad])
+        with self.assertRaises(ValueError):
+            require_official_source_hosts([])
 
 
 if __name__ == "__main__":
