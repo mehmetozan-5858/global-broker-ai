@@ -58,7 +58,10 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
             host = (parsed.hostname or "").lower()
         except (TypeError, ValueError):
             continue
-        if host == "ted.europa.eu" and (path.endswith("/xml") or path.endswith(".xml")):
+        if (parsed.scheme == "https" and host == "ted.europa.eu"
+                and parsed.username is None and parsed.password is None
+                and parsed.port in (None, 443)
+                and (path.endswith("/xml") or path.endswith(".xml"))):
             link_id = _ted_notice_id(url)
             if expected_id and link_id and link_id != expected_id:
                 continue
@@ -73,7 +76,9 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
                 except (TypeError, ValueError):
                     continue
                 match = re.search(r"/notice/(?:-/detail/)?([0-9]{1,8}-[0-9]{4})(?:/|$)", parsed.path)
-                if host == "ted.europa.eu" and match:
+                if (parsed.scheme == "https" and host == "ted.europa.eu"
+                        and parsed.username is None and parsed.password is None
+                        and parsed.port in (None, 443) and match):
                     publication = match.group(1)
                     break
         if re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
