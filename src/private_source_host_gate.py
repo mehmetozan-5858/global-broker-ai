@@ -4,6 +4,9 @@ A canonical source host is a minimum prerequisite, never an official notice
 content, annex, supplier or commercial validation. Only aggregate counts returned.
 """
 from urllib.parse import urlsplit
+import json
+import sys
+from pathlib import Path
 
 OFFICIAL_HOSTS = {
     "TED": frozenset({"ted.europa.eu"}),
@@ -50,3 +53,31 @@ def summarize_source_hosts(rows):
         "content_and_annex_verified": False,
         "commercial_party_verified": False,
     }
+
+
+def require_official_source_hosts(rows):
+    report = summarize_source_hosts(rows)
+    if not report["rows"] or report["official_host_mismatches"]:
+        raise ValueError(
+            "source_host_validation_blocked rows={} mismatches={}".format(
+                report["rows"], report["official_host_mismatches"]
+            )
+        )
+    return report
+
+
+def main(snapshot_path):
+    data = json.loads(Path(snapshot_path).read_text(encoding="utf-8"))
+    rows = data.get("opportunities") if isinstance(data, dict) else None
+    result = require_official_source_hosts(rows)
+    print("OFFICIAL_SOURCE_HOST_OK rows={}".format(result["rows"]))
+
+
+if __name__ == "__main__":
+    try:
+        main(sys.argv[1])
+    except (IndexError, ValueError, OSError) as exc:
+        # Never emit snapshot or contact contents in CI output.
+        raise SystemExit("OFFICIAL_SOURCE_HOST_BLOCKED " + (
+            str(exc) if isinstance(exc, ValueError) else type(exc).__name__
+        ))
