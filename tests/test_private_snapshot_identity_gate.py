@@ -228,5 +228,27 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
             self.assertNotIn(secret, str(error.exception))
 
 
+    def test_duplicate_before_remote_ingest_never_returns_success_marker(self):
+        # CI preflight must fail even for a byte-for-byte duplicate.
+        from contextlib import redirect_stdout
+        from io import StringIO
+        rows = [
+            {'opportunity_id': 'private-repeated', 'source': 'official-a',
+             'contact_email': 'not-for-logs@example.test'},
+            {'opportunity_id': 'private-repeated', 'source': 'official-a',
+             'contact_email': 'not-for-logs@example.test'},
+        ]
+        with TemporaryDirectory() as tmp:
+            source = Path(tmp) / 'snapshot.json'
+            aggregate = Path(tmp) / 'aggregate.json'
+            source.write_text(json.dumps({'opportunities': rows}), encoding='utf-8')
+            output = StringIO()
+            with redirect_stdout(output):
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError, 'duplicate_opportunity_id'):
+                    main(str(source), str(aggregate))
+            self.assertNotIn('PRIVATE_SNAPSHOT_IDENTITY_OK', output.getvalue())
+            self.assertFalse(json.loads(aggregate.read_text())['accepted_for_remote_write'])
+
+
 if __name__ == "__main__":
     unittest.main()
