@@ -39,6 +39,10 @@ def official_source_host(source, value):
 
 def summarize_source_hosts(rows):
     if not isinstance(rows, list):
+        raise ValueError('invalid_source_snapshot')
+    if len(rows) > 1000:
+        raise ValueError('too_many_source_rows')
+    if not isinstance(rows, list):
         raise ValueError("invalid_source_snapshot")
     return {
         "rows": len(rows),
