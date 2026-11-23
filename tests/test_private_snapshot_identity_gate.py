@@ -202,5 +202,31 @@ class PrivateSnapshotIdentityGateTests(unittest.TestCase):
             require_unique_private_snapshot([row] * 1001)
 
 
+    def test_exact_snapshot_row_limit_accepts_unique_ids_but_rejects_one_extra(self):
+        rows = [
+            {'opportunity_id': f'synthetic-{i:04d}', 'source': 'synthetic'}
+            for i in range(1000)
+        ]
+        self.assertEqual(require_unique_private_snapshot(rows)['rows'], 1000)
+        with self.assertRaisesRegex(PrivateSnapshotIdentityError, 'too_many_rows'):
+            require_unique_private_snapshot(rows + [
+                {'opportunity_id': 'synthetic-extra', 'source': 'synthetic'}
+            ])
+
+    def test_cross_source_collision_never_leaks_private_contact_in_errors(self):
+        rows = [
+            {'opportunity_id': 'sensitive-id', 'source': 'source-one',
+             'contact_email': 'secret-one@example.test'},
+            {'opportunity_id': 'sensitive-id', 'source': 'source-two',
+             'contact_email': 'secret-two@example.test'}
+        ]
+        with self.assertRaisesRegex(PrivateSnapshotIdentityError,
+                                    'duplicate_opportunity_id') as error:
+            require_unique_private_snapshot(rows)
+        for secret in ('sensitive-id', 'secret-one@example.test',
+                       'secret-two@example.test', 'source-one', 'source-two'):
+            self.assertNotIn(secret, str(error.exception))
+
+
 if __name__ == "__main__":
     unittest.main()
