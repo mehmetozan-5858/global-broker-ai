@@ -145,6 +145,8 @@ jobs:
           path: data/private-identity-aggregate.json
           if-no-files-found: ignore
           retention-days: 3
+      - name: Refuse untrusted official-source hosts before remote write
+        run: python -m src.private_source_host_gate data/latest-opportunities.private.json
       - name: Sync full opportunities to private Supabase storage
         env:
           PRIVATE_INGEST_URL: https://yhzdqrqzjruduohypvqf.supabase.co/functions/v1/broker-private-ingest
