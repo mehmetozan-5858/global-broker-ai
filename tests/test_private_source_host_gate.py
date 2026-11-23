@@ -30,6 +30,16 @@ class PrivateSourceHostGateTests(unittest.TestCase):
                 self.assertFalse(official_source_host("TED", url))
         self.assertFalse(official_source_host("UNKNOWN", "https://ted.europa.eu/en/notice/123"))
 
+    def test_shadow_scan_runs_source_gate_before_remote_ingest(self):
+        from pathlib import Path
+        workflow = (Path(__file__).resolve().parents[1] /
+                    ".github" / "workflows" / "shadow-scan.yml").read_text(encoding="utf-8")
+        identity = workflow.index("python -m src.private_snapshot_identity_gate")
+        source = workflow.index("python -m src.private_source_host_gate")
+        remote = workflow.index("PRIVATE_INGEST_URL:")
+        self.assertLess(identity, source)
+        self.assertLess(source, remote)
+
     def test_aggregate_never_claims_content_or_party_verification(self):
         data = [
             {"source": "TED", "source_url": "https://ted.europa.eu/en/notice/123", "contact": "secret@example.test"},
