@@ -1,5 +1,5 @@
 import unittest
-from src.private_source_host_gate import official_source_host, summarize_source_hosts, require_official_source_hosts
+from src.private_source_host_gate import official_source_host, summarize_source_hosts, require_official_source_hosts, require_official_source_hosts
 
 
 class PrivateSourceHostGateTests(unittest.TestCase):
@@ -54,6 +54,18 @@ class PrivateSourceHostGateTests(unittest.TestCase):
             require_official_source_hosts([valid,bad])
         with self.assertRaises(ValueError):
             require_official_source_hosts([])
+
+
+    def test_invalid_snapshot_fails_closed_without_echoing_input(self):
+        for value in [None, {}, "private contact secret", 123]:
+            with self.subTest(value_type=type(value).__name__):
+                with self.assertRaisesRegex(ValueError, "invalid_source_snapshot"):
+                    require_official_source_hosts(value)
+
+    def test_oversized_snapshot_fails_closed(self):
+        rows = [{"source": "TED", "source_url": "https://ted.europa.eu/en/notice/123"}] * 1001
+        with self.assertRaisesRegex(ValueError, "too_many_source_rows"):
+            require_official_source_hosts(rows)
 
 
 if __name__ == "__main__":
