@@ -32,11 +32,16 @@ def _ted_notice_id(url: str) -> str | None:
 
 def _verify_ted_redirect(requested_url: str, final_url: str) -> None:
     """Reject off-site or cross-notice redirects before trusting any document."""
-    if urllib.parse.urlparse(final_url).hostname != "ted.europa.eu":
+    parsed = urllib.parse.urlparse(final_url)
+    if (parsed.scheme != "https" or parsed.hostname != "ted.europa.eu"
+            or parsed.username is not None or parsed.password is not None
+            or parsed.port not in (None, 443)):
         raise ValueError("ted_document_origin_changed")
     requested_id = _ted_notice_id(requested_url)
     final_id = _ted_notice_id(final_url)
-    if requested_id and final_id and requested_id != final_id:
+    # A redirect to the homepage or a generic search page has no notice
+    # identity and must never be accepted as the requested source document.
+    if requested_id and final_id != requested_id:
         raise ValueError("ted_document_notice_redirect_mismatch")
 
 
