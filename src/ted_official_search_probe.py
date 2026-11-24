@@ -6,6 +6,7 @@ import json
 import re
 import sys
 from urllib.request import Request, build_opener, HTTPRedirectHandler
+from urllib.parse import urlsplit
 
 ENDPOINT = "https://api.ted.europa.eu/v3/notices/search"
 NOTICE = re.compile(r"^[0-9]{1,8}-[0-9]{4}$")
@@ -14,6 +15,28 @@ NOTICE = re.compile(r"^[0-9]{1,8}-[0-9]{4}$")
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         raise ValueError("ted_search_redirect_blocked")
+
+
+def official_xml_links(notice, number):
+    """Inspect TED-advertised links only; never dereference or accept bytes."""
+    found=set()
+    stack=[notice]
+    for _ in range(150):
+        if not stack:
+            break
+        node=stack.pop()
+        if isinstance(node,dict):
+            stack.extend(list(node.values())[:40])
+        elif isinstance(node,list):
+            stack.extend(node[:40])
+        elif isinstance(node,str) and len(node)<=1000:
+            url=urlsplit(node)
+            if (url.scheme=="https" and url.hostname=="ted.europa.eu"
+                and url.username is None and url.password is None
+                and url.port in (None,443)
+                and url.path.endswith("/notice/"+number+"/xml")):
+                found.add(node)
+    return len(found)
 
 
 def search(number: str, fetcher=None):
@@ -42,9 +65,11 @@ def search(number: str, fetcher=None):
     exact=[x for x in notices if isinstance(x,dict) and x.get("publication-number")==number]
     if len(exact)>1:
         raise ValueError("ted_search_duplicate_notice")
+    advertised=official_xml_links(exact[0],number) if exact else 0
     return {"queried_publication":number,"official_search_endpoint":ENDPOINT,
             "matching_records":len(exact),
             "metadata_match_only":bool(exact),
+            "official_xml_download_links_advertised":advertised,
             "official_xml_bytes_verified":False,
             "annexes_verified":False,
             "commercial_acceptance":False}
