@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from src.ted_official_notice_probe import inspect_notice
+from src.ted_official_notice_probe import inspect_notice, safe_error_code
 
 
 class OfficialTedProbeTests(unittest.TestCase):
@@ -42,6 +42,13 @@ class OfficialTedProbeTests(unittest.TestCase):
                     inspect_notice("775258-2026",
                         fetcher=lambda url:(b"<?xml version='1.0'?><Notice/>",
                                           "application/xml",final))
+    def test_safe_classification_never_logs_external_urls(self):
+        from urllib.error import HTTPError, URLError
+        self.assertEqual(safe_error_code(ValueError("ted_source_not_xml")), "ted_source_not_xml")
+        self.assertEqual(safe_error_code(HTTPError("https://private.example", 403, "Forbidden", {}, None)), "ted_http_403")
+        self.assertEqual(safe_error_code(URLError("secret.example?token=private")), "ted_network_unreachable")
+        self.assertEqual(safe_error_code(ValueError("private_token=secret")), "ValueError")
+
     def test_invalid_number_rejected_before_network(self):
         with self.assertRaises(ValueError):
             inspect_notice("../invalid",fetcher=lambda _:self.fail("network called"))
