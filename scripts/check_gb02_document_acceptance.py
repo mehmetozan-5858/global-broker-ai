@@ -13,9 +13,13 @@ MARKER = "TED_DOCUMENT_SOURCE_PROBE "
 
 
 def evaluate(record):
+    # Only exact non-negative integers count; booleans and strings are not evidence.
+    attempted = record.get("attempted")
+    linked = record.get("linked_documents_parsed")
+    counts_valid = (type(attempted) is int and attempted > 0
+                    and type(linked) is int and 0 < linked <= attempted)
     required = (
-        record.get("attempted", 0) > 0
-        and record.get("linked_documents_parsed", 0) > 0
+        counts_valid
         and record.get("linked_document_evidence_accepted") is True
         and record.get("annex_completeness_verified") is True
         and record.get("document_gate") == "accepted"
@@ -23,7 +27,7 @@ def evaluate(record):
     )
     return {
         "gb02_document_acceptance": bool(required),
-        "linked_documents_parsed": record.get("linked_documents_parsed", 0),
+        "linked_documents_parsed": linked if type(linked) is int and linked >= 0 else 0,
         "annex_completeness_verified": record.get("annex_completeness_verified") is True,
         "commercial_approval": False,
         "status": "document_evidence_ready_for_separate_review" if required else "blocked",
