@@ -46,11 +46,16 @@ def inspect_notice(number: str, *, fetcher=fetch_official_xml):
     _verify_ted_redirect(url, final_url)
     if not isinstance(data, bytes) or len(data) > LIMIT:
         raise ValueError("invalid_ted_source_bytes")
-    if not isinstance(content_type, str) or "xml" not in content_type.lower():
-        # Some official endpoints use application/octet-stream for XML files.
-        if not data.lstrip().startswith(b"<?xml"):
-            raise ValueError("ted_source_not_xml")
-    root = ElementTree.fromstring(data)
+    # Some XML feeds use binary MIME types or omit the optional XML
+    # declaration. Validate the parsed document, not a MIME/header shortcut.
+    # A TED HTML error page must never pass as XML evidence.
+    try:
+        root = ElementTree.fromstring(data)
+    except ElementTree.ParseError:
+        raise ValueError("ted_source_not_xml") from None
+    local_tag = root.tag.rsplit("}", 1)[-1].lower()
+    if local_tag in {"html", "body", "head"}:
+        raise ValueError("ted_source_not_xml")
     text = " ".join(t.strip() for t in root.itertext() if t and t.strip())
     # An official host and a parsed XML file do not by themselves establish
     # that the notice has the exact publication identity requested.
