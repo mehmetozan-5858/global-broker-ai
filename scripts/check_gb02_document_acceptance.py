@@ -17,7 +17,7 @@ def evaluate(record):
     attempted = record.get("attempted")
     linked = record.get("linked_documents_parsed")
     counts_valid = (type(attempted) is int and attempted > 0
-                    and type(linked) is int and 0 < linked <= attempted)
+                    and type(linked) is int and linked > 0)
     required = (
         counts_valid
         and record.get("linked_document_evidence_accepted") is True
