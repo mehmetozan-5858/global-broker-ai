@@ -36,6 +36,17 @@ class OfficialTedProbeTests(unittest.TestCase):
             inspect_notice("775258-2026",
                 fetcher=lambda url:(b"<html><body>775258-2026</body></html>","text/html",url))
 
+    def test_non_xml_official_responses_are_classified_without_content(self):
+        for raw,code in [
+            (b"<!DOCTYPE html><html><body>service error</body></html>", "ted_nonxml_html"),
+            (b'{"error":"service"}', "ted_nonxml_json"),
+            (b"  ", "ted_empty_response"),
+        ]:
+            with self.subTest(code=code):
+                with self.assertRaisesRegex(ValueError, code):
+                    inspect_notice("775258-2026",
+                        fetcher=lambda url:(raw,"text/html",url))
+
     def test_wrong_notice_identity_fails_closed(self):
         xml = b"<?xml version='1.0'?><Notice><Publication>775259-2026</Publication></Notice>"
         with patch("src.ted_official_notice_probe.parse_ted_xml",return_value=("x"*200,[])),patch(
