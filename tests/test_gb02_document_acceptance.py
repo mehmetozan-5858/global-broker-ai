@@ -38,5 +38,19 @@ class Gb02GateTests(unittest.TestCase):
         self.assertFalse(result["commercial_approval"])
 
 
+    def test_string_and_boolean_counts_cannot_authorize_documents(self):
+        sample = {"attempted": 2, "linked_documents_parsed": 1,
+                  "linked_document_evidence_accepted": True,
+                  "annex_completeness_verified": True,
+                  "commercial_approval": False, "document_gate": "accepted"}
+        for key, invalid in (("attempted", True),
+                             ("attempted", "2"),
+                             ("linked_documents_parsed", True),
+                             ("linked_documents_parsed", "1"),
+                             ("linked_documents_parsed", -1)):
+            with self.subTest(key=key, invalid=invalid):
+                self.assertFalse(module.evaluate({**sample, key: invalid})["gb02_document_acceptance"])
+
+
 if __name__ == "__main__":
     unittest.main()
