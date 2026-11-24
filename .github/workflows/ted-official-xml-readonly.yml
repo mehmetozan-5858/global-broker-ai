@@ -4,7 +4,9 @@ on:
   pull_request:
     paths:
       - 'src/ted_official_notice_probe.py'
+      - 'src/ted_official_search_probe.py'
       - 'tests/test_ted_official_notice_probe.py'
+      - 'tests/test_ted_official_search_probe.py'
       - '.github/workflows/ted-official-xml-readonly.yml'
   workflow_dispatch:
 
@@ -24,3 +26,9 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_ted_official_notice_probe.py' -v
       - name: Probe exact official notice without writing production data
         run: python -m src.ted_official_notice_probe 775258-2026
+      - name: Test official Search API read-only metadata parser
+        if: always()
+        run: python -m unittest discover -s tests -p 'test_ted_official_search_probe.py' -v
+      - name: Probe official TED v3 search independently of XML failure
+        if: always()
+        run: python -m src.ted_official_search_probe 775258-2026
