@@ -71,12 +71,32 @@ def inspect_notice(number: str, *, fetcher=fetch_official_xml):
     }
 
 
+SAFE_FAILURES = frozenset({
+    "ted_document_origin_changed", "ted_document_notice_redirect_mismatch",
+    "ted_xml_too_large", "invalid_ted_source_bytes", "ted_source_not_xml",
+    "invalid_notice_number"
+})
+
+
+def safe_error_code(exc):
+    from urllib.error import HTTPError, URLError
+    if isinstance(exc, HTTPError) and 400 <= exc.code <= 599:
+        return "ted_http_" + str(exc.code)
+    if isinstance(exc, URLError):
+        return "ted_network_unreachable"
+    if isinstance(exc, ElementTree.ParseError):
+        return "ted_xml_parse_error"
+    if isinstance(exc, ValueError) and str(exc) in SAFE_FAILURES:
+        return str(exc)
+    return type(exc).__name__
+
+
 def main():
     try:
         print(json.dumps(inspect_notice(sys.argv[1]), sort_keys=True))
     except (IndexError, ValueError, OSError, ElementTree.ParseError) as exc:
-        # Never print downloaded content or third-party URL query parameters.
-        raise SystemExit("TED_OFFICIAL_PROBE_BLOCKED " + type(exc).__name__)
+        # Fixed codes only: never expose document text, query parameters or headers.
+        raise SystemExit("TED_OFFICIAL_PROBE_BLOCKED " + safe_error_code(exc))
 
 
 if __name__ == "__main__":
