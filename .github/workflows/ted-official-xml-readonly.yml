@@ -1,9 +1,7 @@
 name: TED official XML read-only diagnostic
 
 on:
-  push:
-    branches:
-      - audit/duplicate-opportunity-id-20261113
+  pull_request:
     paths:
       - 'src/ted_official_notice_probe.py'
       - 'tests/test_ted_official_notice_probe.py'
