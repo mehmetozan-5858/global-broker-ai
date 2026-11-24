@@ -1,0 +1,147 @@
+name: AI B2B Proposal v9 Offline Tests
+on:
+  push:
+    branches:
+      - research/ai-b2b-proposal-pilot
+    paths:
+      - 'research/ai-b2b-proposal/proposal_v9.py'
+      - 'research/ai-b2b-proposal/test_proposal_v9.py'
+      - 'research/ai-b2b-proposal/proposal_source_gate.py'
+      - 'research/ai-b2b-proposal/test_proposal_source_gate.py'
+      - 'research/ai-b2b-proposal/proposal_text_ingest.py'
+      - 'research/ai-b2b-proposal/test_proposal_text_ingest.py'
+      - 'research/ai-b2b-proposal/proposal_pdf_ingest.py'
+      - 'research/ai-b2b-proposal/test_proposal_pdf_ingest.py'
+      - 'research/ai-b2b-proposal/evaluation_holdout_v9.py'
+      - 'research/ai-b2b-proposal/evaluate_holdout_v9.py'
+      - 'research/ai-b2b-proposal/independent_eval_gate.py'
+      - 'research/ai-b2b-proposal/test_independent_eval_gate.py'
+      - 'research/ai-b2b-proposal/custodian_pinned_eval.py'
+      - 'research/ai-b2b-proposal/test_custodian_pinned_eval.py'
+      - 'research/ai-b2b-proposal/private_eval_metadata_ledger.py'
+      - 'research/ai-b2b-proposal/test_private_eval_metadata_ledger.py'
+      - 'research/ai-b2b-proposal/private_eval_postgres.sql'
+      - 'research/ai-b2b-proposal/check_private_eval_schema.py'
+      - 'research/ai-b2b-proposal/test_private_eval_schema.py'
+      - 'research/ai-b2b-proposal/test_ephemeral_postgres_rls.py'
+      - 'research/ai-b2b-proposal/test_ephemeral_reviewer_identity.py'
+      - 'research/ai-b2b-proposal/ci_reviewer_read_gateway.py'
+      - 'research/ai-b2b-proposal/test_ci_reviewer_read_gateway.py'
+      - 'research/ai-b2b-proposal/ci_signed_reviewer_session.py'
+      - 'research/ai-b2b-proposal/test_ci_signed_reviewer_session.py'
+      - 'research/ai-b2b-proposal/ci_session_revocation.py'
+      - 'research/ai-b2b-proposal/test_ci_session_revocation.py'
+      - 'research/ai-b2b-proposal/ci_pg_shared_session_gate.py'
+      - 'research/ai-b2b-proposal/test_ci_pg_shared_session_gate.py'
+      - 'research/ai-b2b-proposal/ci_external_recovery_witness.py'
+      - 'research/ai-b2b-proposal/test_ci_external_recovery_witness.py'
+      - 'research/ai-b2b-proposal/ci_actual_pg_restore_check.py'
+      - 'research/ai-b2b-proposal/ci_required_witness_gate.py'
+      - 'research/ai-b2b-proposal/test_ci_required_witness_gate.py'
+      - 'research/ai-b2b-proposal/ci_uncertain_commit_reconciliation.py'
+      - 'research/ai-b2b-proposal/test_ci_uncertain_commit_reconciliation.py'
+      - '.github/workflows/ai-b2b-proposal-v9-offline.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: research/ai-b2b-proposal
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python version
+        run: python3 --version
+      - name: Install pinned PDF parser
+        run: python3 -m pip install --disable-pip-version-check pypdf==6.1.1
+      - name: Validate syntax
+        run: python3 -m py_compile proposal_v9.py test_proposal_v9.py proposal_source_gate.py test_proposal_source_gate.py proposal_text_ingest.py test_proposal_text_ingest.py proposal_pdf_ingest.py test_proposal_pdf_ingest.py evaluation_holdout_v9.py evaluate_holdout_v9.py independent_eval_gate.py test_independent_eval_gate.py custodian_pinned_eval.py test_custodian_pinned_eval.py private_eval_metadata_ledger.py test_private_eval_metadata_ledger.py check_private_eval_schema.py test_private_eval_schema.py ci_reviewer_read_gateway.py test_ci_reviewer_read_gateway.py ci_signed_reviewer_session.py test_ci_signed_reviewer_session.py ci_session_revocation.py test_ci_session_revocation.py ci_external_recovery_witness.py test_ci_external_recovery_witness.py ci_required_witness_gate.py test_ci_required_witness_gate.py ci_uncertain_commit_reconciliation.py test_ci_uncertain_commit_reconciliation.py
+      - name: Offline v9 regression
+        run: python3 -m unittest -v test_proposal_v9 test_proposal_source_gate test_proposal_text_ingest test_proposal_pdf_ingest test_independent_eval_gate test_custodian_pinned_eval test_private_eval_metadata_ledger test_private_eval_schema test_ci_reviewer_read_gateway test_ci_signed_reviewer_session test_ci_session_revocation test_ci_external_recovery_witness test_ci_required_witness_gate test_ci_uncertain_commit_reconciliation
+      - name: Synthetic holdout false-acceptance gate
+        run: python3 evaluate_holdout_v9.py
+
+  ephemeral-postgres-rls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: local_ci_only
+          POSTGRES_DB: proposal_eval_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d proposal_eval_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    permissions:
+      contents: read
+    env:
+      B2B_CI_PG_DSN: postgresql://postgres:local_ci_only@127.0.0.1:5432/proposal_eval_ci
+      B2B_CI_READER_DSN: postgresql://b2b_eval_ci_reader:local_ci_only_reader@127.0.0.1:5432/proposal_eval_ci
+    defaults:
+      run:
+        working-directory: research/ai-b2b-proposal
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install isolated PostgreSQL test client
+        run: python3 -m pip install --disable-pip-version-check "psycopg[binary]==3.2.10"
+      - name: Verify default-deny RLS on throwaway PostgreSQL only
+        run: python3 -m unittest -v test_ephemeral_postgres_rls test_ephemeral_reviewer_identity test_ci_pg_shared_session_gate
+
+  ephemeral-pg-dump-restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: local_ci_only
+          POSTGRES_DB: proposal_eval_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d proposal_eval_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      B2B_CI_PG_DSN: postgresql://postgres:local_ci_only@127.0.0.1:5432/proposal_eval_ci
+      PGPASSWORD: local_ci_only
+    defaults:
+      run:
+        working-directory: research/ai-b2b-proposal
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install disposable PostgreSQL test client
+        run: python3 -m pip install --disable-pip-version-check "psycopg[binary]==3.2.10"
+      - name: Initialize rollback-safe CI fixture
+        run: python3 ci_actual_pg_restore_check.py init
+      - name: Capture actual PostgreSQL custom-format backup
+        run: |
+          docker run --rm --network host -e PGPASSWORD=local_ci_only postgres:16-alpine \
+            pg_dump --host=127.0.0.1 --username=postgres --dbname=proposal_eval_ci \
+            --schema=b2b_eval_ci_control --format=custom > /tmp/b2b-eval-ci-restore.dump
+          test -s /tmp/b2b-eval-ci-restore.dump
+      - name: Commit a token use after backup
+        run: python3 ci_actual_pg_restore_check.py advance
+      - name: Remove isolated CI schema for restore
+        run: python3 ci_actual_pg_restore_check.py before_restore
+      - name: Restore actual backup into same ephemeral CI database
+        run: |
+          docker run --rm --network host -e PGPASSWORD=local_ci_only \
+            -v /tmp/b2b-eval-ci-restore.dump:/tmp/restore.dump:ro postgres:16-alpine \
+            pg_restore --host=127.0.0.1 --username=postgres --dbname=proposal_eval_ci \
+            --no-owner --no-privileges /tmp/restore.dump
+      - name: Confirm rollback old token rejected by independently pinned floor
+        run: python3 ci_actual_pg_restore_check.py verify
