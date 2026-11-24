@@ -24,6 +24,18 @@ class OfficialTedProbeTests(unittest.TestCase):
         self.assertFalse(result["commercial_acceptance"])
         self.assertNotIn("Verified technical scope", str(result))
 
+    def test_xml_without_declaration_accepted_but_html_denied(self):
+        source = (b"<Notice><Publication>775258-2026</Publication>"
+                  b"<Description>Official notice body placeholder</Description></Notice>")
+        with patch("src.ted_official_notice_probe.parse_ted_xml",return_value=("x"*200,[])),patch(
+                "src.ted_official_notice_probe.extract_ted_lots",return_value=[]):
+            report=inspect_notice("775258-2026",
+                fetcher=lambda url:(source,"application/octet-stream",url))
+        self.assertTrue(report["notice_identity_found"])
+        with self.assertRaisesRegex(ValueError,"ted_source_not_xml"):
+            inspect_notice("775258-2026",
+                fetcher=lambda url:(b"<html><body>775258-2026</body></html>","text/html",url))
+
     def test_wrong_notice_identity_fails_closed(self):
         xml = b"<?xml version='1.0'?><Notice><Publication>775259-2026</Publication></Notice>"
         with patch("src.ted_official_notice_probe.parse_ted_xml",return_value=("x"*200,[])),patch(
