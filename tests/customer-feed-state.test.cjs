@@ -1,14 +1,14 @@
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),path=require('node:path');
 const source=fs.readFileSync(path.join(__dirname,'../web/customer-portal.js'),'utf8');
 const flush=async()=>{for(let i=0;i<8;i++)await new Promise(r=>setImmediate(r))};
-function harness({status=503,payload={},noToken=false,network=false,hung=false,invalidJSON=false}={}){
+function harness({status=503,payload={},noToken=false,network=false,hung=false,invalidJSON=false,requestMode='ok'}={}){
  const ids=new Map(),all=[],timers=new Map();let timerId=0,feedCalls=0,rpcCalls=0;
  function element(tag){const node={tag,children:[],textContent:'',setAttribute(){},appendChild(child){this.children.push(child)},remove(){ids.delete(this.id)}};Object.defineProperty(node,'id',{get(){return this._id},set(id){this._id=id;ids.set(id,this)}});all.push(node);return node}
  const parent={insertBefore(node){ids.set(node.id,node)}},cards=element('section');cards.id='cards';cards.parentNode=parent;
  const response=(code,data)=>({ok:code>=200&&code<300,status:code,json:async()=>{if(invalidJSON&&code===status)throw Error('PRIVATE SERVER TRACE');return data}});
  const fetch=async(url,opts)=>{
   if(hung)return new Promise((resolve,reject)=>opts.signal.addEventListener('abort',()=>reject(Error('aborted'))));
-  if(url.includes('/rpc/')){rpcCalls++;return response(200,url.includes('my_broker_access')?{entitlement:{all_sectors:true},preferences:{}}:[])}
+  if(url.includes('/rpc/')){rpcCalls++;if(url.includes('my_introduction_requests')){if(requestMode==='network')throw Error('PRIVATE HISTORY TRACE');if(requestMode==='http503')return response(503,{message:'PRIVATE HISTORY TRACE'});if(requestMode==='malformed')return response(200,{});if(requestMode==='duplicate')return response(200,[{opportunity_id:'same',status:'requested'},{opportunity_id:'same',status:'introduced'}]);if(requestMode==='invalid')return response(200,[{opportunity_id:'same'}]);return response(200,[])}return response(200,{entitlement:{all_sectors:true},preferences:{}})}
   feedCalls++;if(network)throw Error('PRIVATE NETWORK ERROR');return response(status,payload);
  };
  const context={window:{},document:{getElementById:id=>ids.get(id)||null,createElement:element,head:{appendChild(){}}},localStorage:{getItem:()=>noToken?'':'synthetic-fixture'},fetch,AbortController,setTimeout:(fn,ms)=>{timers.set(++timerId,{fn,ms});return timerId},clearTimeout:id=>timers.delete(id),console};
@@ -23,3 +23,14 @@ test('network errors and malformed successful payloads never become empty lists'
 test('non-JSON unauthorized response still prompts login',async()=>{const h=harness({status:401,invalidJSON:true});await flush();assert.match(h.text(),/Yeniden giriş yapın/)});
 test('bounded access requests abort and release all timers',async()=>{const h=harness({hung:true});assert.ok(h.timers.size>0);for(const timer of [...h.timers.values()]){assert.equal(timer.ms,15000);timer.fn()}await flush();assert.match(h.text(),/Fırsatlar yüklenemedi/);assert.equal(h.timers.size,0)});
 test('rapid retry clicks start one additional read and no writes',async()=>{const h=harness();await flush();const retry=h.all.find(n=>n.tag==='button');retry.onclick();retry.onclick();await flush();assert.equal(h.feedCalls(),2);assert.equal(h.rpcCalls(),4);assert.equal(h.timers.size,0);assert.match(h.text(),/Fırsatlar yüklenemedi/)});
+
+test('unreadable introduction request history never renders actionable opportunity feed',async()=>{
+ for(const requestMode of ['network','http503','malformed','duplicate','invalid']){
+  const h=harness({requestMode,status:200,payload:{opportunities:[]}});
+  await flush();
+  assert.match(h.text(),/Fırsatlar yüklenemedi/,requestMode);
+  assert.doesNotMatch(h.text(),/PRIVATE|eşleşen fırsat yok/,requestMode);
+  assert.equal(h.feedCalls(),0,requestMode);
+  assert.equal(h.timers.size,0,requestMode);
+ }
+});
