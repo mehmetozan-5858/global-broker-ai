@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from collections import Counter
 import re
 from concurrent.futures import ThreadPoolExecutor
@@ -211,6 +212,9 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "final_url": final_url,
             "content_type": content_type,
             "bytes": len(data),
+            # Digest only authenticated-to-notice downloaded raw bytes. A URL
+            # or parsed text alone cannot establish stable document evidence.
+            "sha256": hashlib.sha256(data).hexdigest(),
             "extracted_chars": len(text),
             "discovered_attachments": len(attachments),
             "attachment_candidates_omitted": max(0, len(attachments) - len(selected_attachments)),
@@ -226,6 +230,8 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "text_truncated": len(full_text) > MAX_EXTRACTED_CHARS or xml_omitted_chars > 0,
             "omitted_chars": max(0, len(full_text) - MAX_EXTRACTED_CHARS) + xml_omitted_chars,
             "attachment_candidates_omitted": max(0, len(attachments) - len(selected_attachments)),
+            "official_source_sha256": hashlib.sha256(data).hexdigest(),
+            "official_source_bytes": len(data),
             "ted_xml_parsed": kind == "ted_xml",
             "ted_html_parsed": kind == "ted_html_download",
             "ted_pdf_parsed": kind == "ted_pdf_download",
