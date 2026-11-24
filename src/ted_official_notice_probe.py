@@ -46,6 +46,12 @@ def inspect_notice(number: str, *, fetcher=fetch_official_xml):
     _verify_ted_redirect(url, final_url)
     if not isinstance(data, bytes) or len(data) > LIMIT:
         raise ValueError("invalid_ted_source_bytes")
+    if not isinstance(data, bytes) or not data.strip():
+        raise ValueError("ted_empty_response")
+    if data.lstrip()[:32].lower().startswith((b"<!doctype html", b"<html")):
+        raise ValueError("ted_nonxml_html")
+    if data.lstrip()[:1] in (b"{", b"["):
+        raise ValueError("ted_nonxml_json")
     # Some XML feeds use binary MIME types or omit the optional XML
     # declaration. Validate the parsed document, not a MIME/header shortcut.
     # A TED HTML error page must never pass as XML evidence.
@@ -79,6 +85,7 @@ def inspect_notice(number: str, *, fetcher=fetch_official_xml):
 SAFE_FAILURES = frozenset({
     "ted_document_origin_changed", "ted_document_notice_redirect_mismatch",
     "ted_xml_too_large", "invalid_ted_source_bytes", "ted_source_not_xml",
+    "ted_nonxml_html", "ted_nonxml_json", "ted_empty_response",
     "invalid_notice_number"
 })
 
