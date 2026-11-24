@@ -1,0 +1,28 @@
+name: TED official XML read-only diagnostic
+
+on:
+  push:
+    branches:
+      - audit/duplicate-opportunity-id-20261113
+    paths:
+      - 'src/ted_official_notice_probe.py'
+      - 'tests/test_ted_official_notice_probe.py'
+      - '.github/workflows/ted-official-xml-readonly.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ted-official-xml:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run offline safety regression
+        run: python -m unittest discover -s tests -p 'test_ted_official_notice_probe.py' -v
+      - name: Probe exact official notice without writing production data
+        run: python -m src.ted_official_notice_probe 775258-2026
