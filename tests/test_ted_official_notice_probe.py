@@ -32,7 +32,7 @@ class OfficialTedProbeTests(unittest.TestCase):
             report=inspect_notice("775258-2026",
                 fetcher=lambda url:(source,"application/octet-stream",url))
         self.assertTrue(report["notice_identity_found"])
-        with self.assertRaisesRegex(ValueError,"ted_source_not_xml"):
+        with self.assertRaisesRegex(ValueError,"ted_nonxml_html"):
             inspect_notice("775258-2026",
                 fetcher=lambda url:(b"<html><body>775258-2026</body></html>","text/html",url))
 
