@@ -36,7 +36,7 @@ CATEGORY_HINTS = {
 def ted_search(query: str, limit: int = 100):
     body=json.dumps({
         "query":query,
-        "fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","classification-cpv","description-lot","quantity-lot","procedure-type","contract-nature","links","identifier-lot","estimated-value-lot","estimated-value-cur-lot","form-type","document-url-lot"],
+        "fields":["ojs-number","publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline-receipt-tender-date-lot","classification-cpv","description-lot","quantity-lot","procedure-type","contract-nature","links","identifier-lot","estimated-value-lot","estimated-value-cur-lot","form-type","document-url-lot"],
         "page":1,"limit":limit,"scope":"ACTIVE","checkQuerySyntax":False,"paginationMode":"PAGE_NUMBER","onlyLatestVersions":False
     }).encode()
     req=urllib.request.Request(TED_URL,data=body,headers={"Content-Type":"application/json","Accept":"*/*"})
@@ -44,7 +44,11 @@ def ted_search(query: str, limit: int = 100):
         with urllib.request.urlopen(req,timeout=40) as r:
             return json.load(r)
     except HTTPError as e:
-        raise RuntimeError("TED HTTP %s: %s" % (e.code,e.read().decode("utf-8","replace"))) from e
+        # TED may rate-limit independent GitHub workflows. Never echo an
+        # untrusted response body into Actions logs; report only the status.
+        if e.code == 429:
+            raise RuntimeError("TED_HTTP_RATE_LIMITED_429") from e
+        raise RuntimeError("TED_HTTP_STATUS_%d" % e.code) from e
 
 def text_of(x):
     if isinstance(x,str): return x

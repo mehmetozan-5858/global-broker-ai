@@ -24,10 +24,14 @@ function coverageWarnings(o){
   var english=/^en(?:-|$)/i.test((document.documentElement&&document.documentElement.lang)||'');
   var labels=english?{
     source_text_truncated:'Official document text is incomplete; full specification review is required.',
-    attachment_candidates_skipped:'Some official annexes have not been reviewed; sourcing readiness is pending.'
+    attachment_candidates_skipped:'Some official annexes have not been reviewed; sourcing readiness is pending.',
+    attachment_downloads_failed:'Some official documents could not be read; review is required.',
+    document_versions_require_review:'Multiple document versions were found; the applicable version needs review.'
   }:{
     source_text_truncated:'Resmî belge metni eksik okundu; tam şartname kontrolü gerekiyor.',
-    attachment_candidates_skipped:'Bazı resmî teknik ekler incelenemedi; tedarikçi hazırlığı bekliyor.'
+    attachment_candidates_skipped:'Bazı resmî teknik ekler incelenemedi; tedarikçi hazırlığı bekliyor.',
+    attachment_downloads_failed:'Bazı resmî belgeler okunamadı; belge kontrolü gerekiyor.',
+    document_versions_require_review:'Birden fazla belge sürümü bulundu; geçerli sürümün kontrolü gerekiyor.'
   };
   return Object.keys(labels).filter(function(k){return codes.indexOf(k)>=0}).map(function(k){return labels[k]});
 }
