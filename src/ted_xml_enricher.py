@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from collections import Counter
 import re
 from concurrent.futures import ThreadPoolExecutor
@@ -32,11 +33,16 @@ def _ted_notice_id(url: str) -> str | None:
 
 def _verify_ted_redirect(requested_url: str, final_url: str) -> None:
     """Reject off-site or cross-notice redirects before trusting any document."""
-    if urllib.parse.urlparse(final_url).hostname != "ted.europa.eu":
+    parsed = urllib.parse.urlparse(final_url)
+    if (parsed.scheme != "https" or parsed.hostname != "ted.europa.eu"
+            or parsed.username is not None or parsed.password is not None
+            or parsed.port not in (None, 443)):
         raise ValueError("ted_document_origin_changed")
     requested_id = _ted_notice_id(requested_url)
     final_id = _ted_notice_id(final_url)
-    if requested_id and final_id and requested_id != final_id:
+    # A redirect to the homepage or a generic search page has no notice
+    # identity and must never be accepted as the requested source document.
+    if requested_id and final_id != requested_id:
         raise ValueError("ted_document_notice_redirect_mismatch")
 
 
@@ -53,9 +59,12 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
             host = (parsed.hostname or "").lower()
         except (TypeError, ValueError):
             continue
-        if host == "ted.europa.eu" and (path.endswith("/xml") or path.endswith(".xml")):
+        if (parsed.scheme == "https" and host == "ted.europa.eu"
+                and parsed.username is None and parsed.password is None
+                and parsed.port in (None, 443)
+                and (path.endswith("/xml") or path.endswith(".xml"))):
             link_id = _ted_notice_id(url)
-            if expected_id and link_id and link_id != expected_id:
+            if not link_id or (expected_id and link_id != expected_id):
                 continue
             return url
     if source == "TED":
@@ -68,7 +77,9 @@ def _ted_xml_url(item: dict[str, Any]) -> str | None:
                 except (TypeError, ValueError):
                     continue
                 match = re.search(r"/notice/(?:-/detail/)?([0-9]{1,8}-[0-9]{4})(?:/|$)", parsed.path)
-                if host == "ted.europa.eu" and match:
+                if (parsed.scheme == "https" and host == "ted.europa.eu"
+                        and parsed.username is None and parsed.password is None
+                        and parsed.port in (None, 443) and match):
                     publication = match.group(1)
                     break
         if re.fullmatch(r"[0-9]{1,8}-[0-9]{4}", publication):
@@ -201,6 +212,9 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "final_url": final_url,
             "content_type": content_type,
             "bytes": len(data),
+            # Digest only authenticated-to-notice downloaded raw bytes. A URL
+            # or parsed text alone cannot establish stable document evidence.
+            "sha256": hashlib.sha256(data).hexdigest(),
             "extracted_chars": len(text),
             "discovered_attachments": len(attachments),
             "attachment_candidates_omitted": max(0, len(attachments) - len(selected_attachments)),
@@ -216,6 +230,8 @@ def enrich_opportunity(item: dict[str, Any]) -> bool:
             "text_truncated": len(full_text) > MAX_EXTRACTED_CHARS or xml_omitted_chars > 0,
             "omitted_chars": max(0, len(full_text) - MAX_EXTRACTED_CHARS) + xml_omitted_chars,
             "attachment_candidates_omitted": max(0, len(attachments) - len(selected_attachments)),
+            "official_source_sha256": hashlib.sha256(data).hexdigest(),
+            "official_source_bytes": len(data),
             "ted_xml_parsed": kind == "ted_xml",
             "ted_html_parsed": kind == "ted_html_download",
             "ted_pdf_parsed": kind == "ted_pdf_download",

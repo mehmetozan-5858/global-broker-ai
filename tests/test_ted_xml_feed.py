@@ -1,3 +1,4 @@
+import hashlib
 import unittest
 from unittest.mock import patch
 
@@ -40,6 +41,15 @@ class TedXmlFeedTests(unittest.TestCase):
         self.assertEqual(item["document_extraction"]["status"], "parsed")
         self.assertIn("50 corrosion resistant industrial pumps", item["document_extracted_text"])
         self.assertEqual(item["document_extraction"]["parsed_count"], 1)
+        self.assertEqual(
+            item["document_extraction"]["official_source_sha256"],
+            hashlib.sha256(xml).hexdigest(),
+        )
+        self.assertEqual(item["document_extraction"]["official_source_bytes"], len(xml))
+        parsed_attempts=[entry for entry in item["document_extraction"]["attempts"]
+                         if entry.get("source")=="ted_xml" and entry.get("status")=="parsed"]
+        self.assertEqual(len(parsed_attempts),1)
+        self.assertEqual(parsed_attempts[0]["sha256"], hashlib.sha256(xml).hexdigest())
 
     def test_short_or_invalid_xml_does_not_open_gate(self):
         item = {"source": "TED", "source_url": "https://ted.europa.eu/en/notice/1/xml"}
@@ -47,11 +57,13 @@ class TedXmlFeedTests(unittest.TestCase):
             ted_xml_enricher.document_parser,
             "_download",
             return_value=(b"<?xml version='1.0'?><Notice><Title>Short</Title></Notice>", "application/xml", item["source_url"]),
-        ):
+        ) as download:
             ok = ted_xml_enricher.enrich_opportunity(item)
         self.assertFalse(ok)
-        self.assertEqual(item["document_extraction"]["status"], "attempted_no_text")
-        self.assertFalse(item["document_extraction"]["ted_xml_parsed"])
+        # An incomplete publication identifier must be rejected *before* any
+        # network fetch or source-backed extraction evidence is created.
+        download.assert_not_called()
+        self.assertNotIn("document_extraction", item)
 
     def test_non_ted_item_is_ignored(self):
         payload = {"opportunities": [{"source": "World Bank", "source_url": "https://example.com/tender"}]}

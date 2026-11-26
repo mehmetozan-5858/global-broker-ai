@@ -1,0 +1,254 @@
+from src.opportunity_identity import stable_opportunity_id
+import unittest
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+from src.private_snapshot_identity_gate import (
+    PrivateSnapshotIdentityError, inspect_private_snapshot,
+    require_unique_private_snapshot, main,
+)
+
+
+class PrivateSnapshotIdentityGateTests(unittest.TestCase):
+    def test_unique_rows_pass(self):
+        result = require_unique_private_snapshot([
+            {"opportunity_id": "notice-1", "title": "Synthetic A", "source":"synthetic"},
+            {"opportunity_id": "notice-2", "title": "Synthetic B", "source":"synthetic"},
+        ])
+        self.assertEqual(result["rows"], 2)
+        self.assertEqual(result["duplicate_identity_count"], 0)
+
+    def test_same_identity_same_content_is_not_silently_deduplicated(self):
+        row = {"opportunity_id": "repeat", "title": "Synthetic", "source":"synthetic"}
+        report = inspect_private_snapshot([row, dict(row)])
+        self.assertEqual(report["duplicate_identity_count"], 1)
+        self.assertEqual(report["conflicting_identity_count"], 0)
+        self.assertEqual(report["same_or_unknown_source_duplicate_count"], 1)
+        self.assertEqual(report["cross_source_collision_count"], 0)
+        with self.assertRaisesRegex(PrivateSnapshotIdentityError, "duplicate_opportunity_id"):
+            require_unique_private_snapshot([row, dict(row)])
+
+    def test_three_row_collision_groups_are_mutually_exclusive(self):
+        rows = [
+            {"opportunity_id":"synthetic-A","source":"portal-A","title":"first"},
+            {"opportunity_id":"synthetic-A","source":"portal-B","title":"second"},
+            {"opportunity_id":"synthetic-A","source":"portal-A","title":"third"},
+            {"opportunity_id":"synthetic-B","source":"portal-X","title":"first"},
+            {"opportunity_id":"synthetic-B","source":"portal-X","title":"second"},
+        ]
+        result = inspect_private_snapshot(rows)
+        self.assertEqual(result["duplicate_identity_count"], 2)
+        self.assertEqual(result["cross_source_collision_count"], 1)
+        self.assertEqual(result["same_or_unknown_source_duplicate_count"], 1)
+        self.assertEqual(result["conflicting_identity_count"], 2)
+        self.assertEqual(
+            result["cross_source_collision_count"] +
+            result["same_or_unknown_source_duplicate_count"],
+            result["duplicate_identity_count"],
+        )
+        with self.assertRaisesRegex(PrivateSnapshotIdentityError, "duplicate_opportunity_id"):
+            require_unique_private_snapshot(rows)
+
+    def test_conflicting_identity_blocks_snapshot_without_exposing_contact(self):
+        rows = [
+            {"opportunity_id": "private-id-94f", "contact_email": "private@example.test", "source":"synthetic"},
+            {"opportunity_id": "private-id-94f", "contact_email": "different@example.test", "source":"synthetic"},
+        ]
+        report = inspect_private_snapshot(rows)
+        self.assertEqual(report["conflicting_identity_count"], 1)
+        with self.assertRaises(PrivateSnapshotIdentityError) as error:
+            require_unique_private_snapshot(rows)
+        self.assertNotIn("private@example.test", str(error.exception))
+        self.assertNotIn("private-id-94f", str(error.exception))
+
+    def test_empty_missing_and_over_cap_fail_closed(self):
+        for rows in ([], None, [{"title": "No ID"}], [{}] * 1001):
+            with self.subTest(rows_type=type(rows).__name__):
+                with self.assertRaises(PrivateSnapshotIdentityError):
+                    require_unique_private_snapshot(rows)
+
+    def test_two_official_sources_with_same_notice_number_block_until_identity_review(self):
+        # The legacy stable ID is not source-namespaced. This is a *risk
+        # demonstration*, not permission to silently re-key existing records.
+        from src.opportunity_identity import stable_opportunity_id
+        a = {"source": "official-portal-A", "notice_id": "common-number", "title": "A"}
+        b = {"source": "official-portal-B", "notice_id": "common-number", "title": "B"}
+        self.assertEqual(stable_opportunity_id(a), stable_opportunity_id(b))
+        for row in (a, b):
+            row["opportunity_id"] = stable_opportunity_id(row)
+        report=inspect_private_snapshot([a,b])
+        self.assertEqual(report['cross_source_collision_count'],1)
+        self.assertEqual(report['same_or_unknown_source_duplicate_count'],0)
+        with self.assertRaises(PrivateSnapshotIdentityError):
+            require_unique_private_snapshot([a, b])
+
+    def test_source_missing_rejected_without_printing_private_identifiers(self):
+        rows=[{"opportunity_id":"private-sensitive-id","title":"private notice"}]
+        result=inspect_private_snapshot(rows)
+        self.assertEqual(result['missing_source_provenance_count'],1)
+        with self.assertRaises(PrivateSnapshotIdentityError) as exc:
+            require_unique_private_snapshot(rows)
+        self.assertIn('missing_source_provenance',str(exc.exception))
+        self.assertNotIn('private-sensitive-id',str(exc.exception))
+
+    def test_malformed_source_provenance_never_counts_as_verified(self):
+        for raw in ({'url':'private'}, ['hidden'], 123, False, '', '   '):
+            with self.subTest(type=type(raw).__name__):
+                rows=[{'opportunity_id':'synthetic-id','source':raw,
+                       'source_name':'fallback-not-authoritative'}]
+                counts=inspect_private_snapshot(rows)
+                self.assertEqual(counts['missing_source_provenance_count'],1)
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError,
+                                             'missing_source_provenance'):
+                    require_unique_private_snapshot(rows)
+        good=require_unique_private_snapshot([
+            {'opportunity_id':'synthetic-id','source':None,'source_name':'official-feed'}
+        ])
+        self.assertEqual(good['missing_source_provenance_count'],0)
+
+    def test_upstream_identity_builder_does_not_truncate_before_gate(self):
+        very_long_id="synthetic-notice-" + "x"*201
+        prepared=stable_opportunity_id({'opportunity_id':very_long_id,'source':'synthetic'})
+        self.assertEqual(prepared,very_long_id)
+        with self.assertRaisesRegex(PrivateSnapshotIdentityError,'invalid_opportunity_id'):
+            require_unique_private_snapshot([{'opportunity_id':prepared,'source':'synthetic'}])
+
+    def test_reject_overlong_or_nonstring_identity_without_leaking_value(self):
+        for raw in ['x'*201, {'private':'sensitive'}, ['private'], 3]:
+            with self.subTest(type=type(raw).__name__):
+                rows=[{'opportunity_id':raw,'source':'synthetic'}]
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError,'invalid_opportunity_id') as err:
+                    require_unique_private_snapshot(rows)
+                self.assertNotIn('sensitive',str(err.exception))
+
+    def test_explicit_empty_primary_id_never_falls_back_to_secondary_id(self):
+        # SQL COALESCE does not treat '' as NULL. Match the actual RPC.
+        for raw in ("", "   "):
+            with self.subTest(value_length=len(raw)):
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError, "invalid_opportunity_id"):
+                    require_unique_private_snapshot([
+                        {"opportunity_id": raw, "id": "synthetic-valid", "source": "synthetic"}
+                    ])
+        result = require_unique_private_snapshot([
+            {"opportunity_id": None, "id": "synthetic-valid", "source": "synthetic"}
+        ])
+        self.assertEqual(result["rows"], 1)
+
+    def test_identity_selection_must_not_mask_a_invalid_primary(self):
+        for raw in ([], {}, 0, False):
+            with self.subTest(value_type=type(raw).__name__):
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError, "invalid_opportunity_id"):
+                    require_unique_private_snapshot([
+                        {"opportunity_id": raw, "id": "synthetic-valid", "source": "synthetic"}
+                    ])
+
+    def test_preparer_preserves_invalid_explicit_identity_for_gate(self):
+        # This exercises the real sequence: prepare -> pre-ingest gate.
+        from src.private_sync_payload import prepare
+        for raw in ("", "   ", [], {"private":"sensitive"}, 0, False):
+            with self.subTest(primary_type=type(raw).__name__):
+                row={"opportunity_id":raw,"id":"synthetic-valid",
+                     "source":"synthetic","export_goods_review":{"status":"goods_candidate"}}
+                with TemporaryDirectory() as tmp:
+                    src=Path(tmp)/"private.json"
+                    src.write_text(json.dumps({"opportunities":[row]}),encoding="utf-8")
+                    prepare(str(src))
+                    prepared=json.loads(src.read_text(encoding="utf-8"))["opportunities"]
+                    self.assertEqual(prepared[0]["opportunity_id"],raw)
+                    with self.assertRaisesRegex(PrivateSnapshotIdentityError,
+                                                "invalid_opportunity_id"):
+                        require_unique_private_snapshot(prepared)
+
+    def test_preparer_generates_id_only_when_primary_missing(self):
+        from src.private_sync_payload import prepare
+        for original in (
+            {"id":"synthetic-secondary","source":"synthetic"},
+            {"opportunity_id":None,"id":"synthetic-secondary","source":"synthetic"},
+        ):
+            with TemporaryDirectory() as tmp:
+                src=Path(tmp)/"private.json"
+                src.write_text(json.dumps({"opportunities":[{
+                    **original,"export_goods_review":{"status":"goods_candidate"}
+                }]}),encoding="utf-8")
+                prepare(str(src))
+                rows=json.loads(src.read_text(encoding="utf-8"))["opportunities"]
+                self.assertEqual(rows[0]["opportunity_id"],"synthetic-secondary")
+                self.assertEqual(require_unique_private_snapshot(rows)["rows"],1)
+
+    def test_duplicate_fail_still_writes_only_safe_aggregate_artifact(self):
+        rows=[
+            {'opportunity_id':'private-123','source':'source-A','contact_email':'private@example.test'},
+            {'opportunity_id':'private-123','source':'source-B','contact_email':'other@example.test'},
+        ]
+        with TemporaryDirectory() as tmp:
+            source=Path(tmp)/'private.json'
+            aggregate=Path(tmp)/'safe.json'
+            source.write_text(json.dumps({'opportunities':rows}),encoding='utf-8')
+            with self.assertRaisesRegex(PrivateSnapshotIdentityError,'duplicate_opportunity_id'):
+                main(str(source),str(aggregate))
+            report=json.loads(aggregate.read_text(encoding='utf-8'))
+            self.assertEqual(report['cross_source_groups'],1)
+            self.assertEqual(report['duplicate_groups'],1)
+            self.assertFalse(report['accepted_for_remote_write'])
+            dumped=json.dumps(report)
+            self.assertNotIn('private-123',dumped)
+            self.assertNotIn('private@example.test',dumped)
+            self.assertNotIn('source-A',dumped)
+
+    def test_payload_cap_is_not_bypassed_by_repeat_id(self):
+        row = {"opportunity_id": "same-synthetic-notice"}
+        with self.assertRaises(PrivateSnapshotIdentityError):
+            require_unique_private_snapshot([row] * 1001)
+
+
+    def test_exact_snapshot_row_limit_accepts_unique_ids_but_rejects_one_extra(self):
+        rows = [
+            {'opportunity_id': f'synthetic-{i:04d}', 'source': 'synthetic'}
+            for i in range(1000)
+        ]
+        self.assertEqual(require_unique_private_snapshot(rows)['rows'], 1000)
+        with self.assertRaisesRegex(PrivateSnapshotIdentityError, 'too_many_rows'):
+            require_unique_private_snapshot(rows + [
+                {'opportunity_id': 'synthetic-extra', 'source': 'synthetic'}
+            ])
+
+    def test_cross_source_collision_never_leaks_private_contact_in_errors(self):
+        rows = [
+            {'opportunity_id': 'sensitive-id', 'source': 'source-one',
+             'contact_email': 'secret-one@example.test'},
+            {'opportunity_id': 'sensitive-id', 'source': 'source-two',
+             'contact_email': 'secret-two@example.test'}
+        ]
+        with self.assertRaisesRegex(PrivateSnapshotIdentityError,
+                                    'duplicate_opportunity_id') as error:
+            require_unique_private_snapshot(rows)
+        for secret in ('sensitive-id', 'secret-one@example.test',
+                       'secret-two@example.test', 'source-one', 'source-two'):
+            self.assertNotIn(secret, str(error.exception))
+
+
+    def test_duplicate_before_remote_ingest_never_returns_success_marker(self):
+        # CI preflight must fail even for a byte-for-byte duplicate.
+        from contextlib import redirect_stdout
+        from io import StringIO
+        rows = [
+            {'opportunity_id': 'private-repeated', 'source': 'official-a',
+             'contact_email': 'not-for-logs@example.test'},
+            {'opportunity_id': 'private-repeated', 'source': 'official-a',
+             'contact_email': 'not-for-logs@example.test'},
+        ]
+        with TemporaryDirectory() as tmp:
+            source = Path(tmp) / 'snapshot.json'
+            aggregate = Path(tmp) / 'aggregate.json'
+            source.write_text(json.dumps({'opportunities': rows}), encoding='utf-8')
+            output = StringIO()
+            with redirect_stdout(output):
+                with self.assertRaisesRegex(PrivateSnapshotIdentityError, 'duplicate_opportunity_id'):
+                    main(str(source), str(aggregate))
+            self.assertNotIn('PRIVATE_SNAPSHOT_IDENTITY_OK', output.getvalue())
+            self.assertFalse(json.loads(aggregate.read_text())['accepted_for_remote_write'])
+
+
+if __name__ == "__main__":
+    unittest.main()

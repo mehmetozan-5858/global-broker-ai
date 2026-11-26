@@ -1,0 +1,42 @@
+name: TED official XML read-only diagnostic
+
+on:
+  pull_request:
+    paths:
+      - 'src/ted_official_notice_probe.py'
+      - 'src/ted_official_search_probe.py'
+      - 'src/ted_official_pdf_probe.py'
+      - 'tests/test_ted_official_notice_probe.py'
+      - 'tests/test_ted_official_search_probe.py'
+      - 'tests/test_ted_official_pdf_probe.py'
+      - '.github/workflows/ted-official-xml-readonly.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ted-official-xml:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run offline safety regression
+        run: python -m unittest discover -s tests -p 'test_ted_official_notice_probe.py' -v
+      - name: Probe exact official notice without writing production data
+        run: python -m src.ted_official_notice_probe 775258-2026
+      - name: Test official Search API read-only metadata parser
+        if: always()
+        run: python -m unittest discover -s tests -p 'test_ted_official_search_probe.py' -v
+      - name: Probe official TED v3 search independently of XML failure
+        if: always()
+        run: python -m src.ted_official_search_probe 775258-2026
+      - name: Offline signed PDF transport negative tests
+        if: always()
+        run: python -m unittest discover -s tests -p 'test_ted_official_pdf_probe.py' -v
+      - name: Probe alternate official signed PDF separately from XML
+        if: always()
+        run: python -m src.ted_official_pdf_probe 775258-2026

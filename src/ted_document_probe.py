@@ -43,6 +43,11 @@ def main():
                     kind+='_'+reason
                 counts['error_'+('HTTP_'+code.group(1) if code else kind)]+=1
         assert 'verified_unit_price' not in row and row.get('buyer_verified') is not True
-    print('TED_DOCUMENT_SOURCE_PROBE',json.dumps({'attempted':len(selected),'selected_with_document_links':sum(bool(row.get('ted_document_link_count')) for row in selected),'parsed':sum(success),'no_text':len(selected)-sum(success),**dict(counts)},sort_keys=True))
+    linked=int(counts.get('linked_documents_parsed',0))
+    evidence={'linked_document_evidence_accepted': linked>0,
+              'annex_completeness_verified': False,
+              'commercial_approval': False,
+              'document_gate': 'review' if linked>0 else 'blocked_no_linked_document'}
+    print('TED_DOCUMENT_SOURCE_PROBE',json.dumps({'attempted':len(selected),'selected_with_document_links':sum(bool(row.get('ted_document_link_count')) for row in selected),'parsed':sum(success),'no_text':len(selected)-sum(success),**dict(counts),**evidence},sort_keys=True))
 
 if __name__=='__main__':main()
